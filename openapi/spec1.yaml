@@ -555,6 +555,13 @@ paths:
       summary: List customers
       description: By default newest customers will be first on the list.
       operationId: List customers
+      x-codeSamples:
+        - lang: curl
+          label: cURL
+          source: |
+            curl 'https://api.tucuota.com/v1/customers' \
+            -H 'Authorization: Bearer sk_...'
+            -H 'content-type: application/json'
       parameters:
         - name: page
           in: query

@@ -87,6 +87,13 @@
         "summary": "List customers",
         "description": "By default newest customers will be first on the list.",
         "operationId": "List customers",
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl 'https://api.tucuota.com/v1/customers' \\\n-H 'Authorization: Bearer sk_...'\n-H 'content-type: application/json'\n"
+          }
+        ],
         "parameters": [
           {
             "name": "page",
