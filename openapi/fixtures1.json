@@ -148,7 +148,7 @@
       "livemode": false,
       "enabled": true,
       "brands": [],
-      "public_uri": "https://tucuota.test/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2",
+      "public_uri": "https://tucuota.com/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2",
       "user": {
         "country": "AR",
         "organization_name": "TuCuota",
@@ -318,7 +318,7 @@
       "deleted_at": null,
       "livemode": false,
       "brands": [],
-      "public_uri": "https://tucuota.test/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81",
+      "public_uri": "https://tucuota.com/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81",
       "link_id": "b7fba990-83cc-11ec-8c7b-5b2fd150abb2",
       "user": {
         "country": "AR",
@@ -406,7 +406,7 @@
     "webhook": {
       "id": "WHGdOz9vReVZ",
       "object": "webhook",
-      "url": "https://tucuota.test/webhook/200",
+      "url": "https://tucuota.com/webhook/200",
       "enabled": true,
       "enabled_events": ["customer.created", "customer.disabled"],
       "secret": "Rrdm41mW4x54uUS2A6QnHhm7hXwpuR",

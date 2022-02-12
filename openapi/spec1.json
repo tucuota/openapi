@@ -1458,14 +1458,14 @@
                     }
                   ],
                   "links": {
-                    "first": "https://tucuota.test/api/imports?page=1",
-                    "last": "https://tucuota.test/api/imports?page=1"
+                    "first": "https://tucuota.com/api/imports?page=1",
+                    "last": "https://tucuota.com/api/imports?page=1"
                   },
                   "meta": {
                     "current_page": 1,
                     "from": 1,
                     "last_page": 1,
-                    "path": "https://tucuota.test/api/imports",
+                    "path": "https://tucuota.com/api/imports",
                     "per_page": 25,
                     "to": 2,
                     "total": 2
