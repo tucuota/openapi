@@ -7,13 +7,13 @@ info:
   description: |
     # Introduction
 
-    The TuCuota API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+    TuCuota serves a REST API. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
     The base URLs for the TuCuota API is: `https://api.tucuota.com`.
 
     ### Content types
 
-    TuCuota API only supports `json`. Make sure to include the following header on your requests.
+    TuCuota API supports only `JSON` content types. Make sure to include the following header on your requests.
 
     #### Content-Type Header
 
@@ -26,7 +26,7 @@ info:
 
     ### Get an API key
 
-    To create new API keys please login and go to the [developers section](https:///dashboard.tucuota.com/developers) of the dashboard.
+    To create new API keys, please visit the [developers section](https:///dashboard.tucuota.com/developers) of our site.
 
     For each environment (live and test) yo'll find two types of API Keys:
 
@@ -49,17 +49,18 @@ info:
     - `200 OK` - Response to a successful GET, PUT, PATCH or DELETE.
     - `201 Created` - Response to a POST that results in a creation.
     - `204 No Content` - Response to a successful request that won't be returning a body (like a DELETE request).
-    - `400 Bad Request` - Malformed request; form validation errors.
+    - `400 Bad Request` - Malformed request.
     - `401 Unauthorized` - When no or invalid authentication details are provided.
     - `403 Forbidden` - When authentication succeeded but authenticated user doesn't have access to the resource.
     - `404 Not Found` - When a non-existent resource is requested.
     - `405 Method Not Allowed` - Method not allowed.
     - `406 Not Acceptable` - Could not satisfy the request Accept header.
     - `415 Unsupported Media Type` - Unsupported media type in request.
+    - `422 Unprocessable Entity` - Form validation errors.
 
     #### Error response
 
-    This API returns both, machine-readable error codes and human-readable error messages in response body when an error is encountered.
+    This API returns both, machine-readable error codes and human-readable error messages when there's an error.
 
     ##### Example
 
@@ -119,7 +120,7 @@ info:
 
     An example of a Link header is described in [GitHub documentation](https://developer.github.com/guides/traversing-with-pagination/).
 
-    By default, each page contains `25` elements. It can be requested up to `100` elements per page adding the `limit` parameter. For example adding `?limit=100&page=2` will return the second page of `100` elements.
+    By default, each page contains `25` elements. It can be requested up to `100` elements per page by adding the `limit` parameter. For example adding `?limit=100&page=2` will return the second page of `100` elements.
     # Request IDs
 
     Each API request has an associated request identifier. You can find this value in the response headers, under `Request-Id`. You can also find request identifiers in the URLs of individual request logs in your [Dashboard](https://dashboard.tucuota.com/developer/logs).
