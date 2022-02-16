@@ -188,6 +188,169 @@ info:
     `GET` and `DELETE` requests has no effect and should be avoided, as these
     requests are idempotent by definition.
 
+    # Metadata
+
+
+    The following objects have a metadata parameter that you can use this
+    parameter to attach key-value data: - Customer - Mandate - Payment - Payment
+    Method - Subscription
+
+
+    You can specify up to 50 keys, with key names up to 40 characters long and
+    values up to 500 characters long.
+
+
+    Metadata is useful for storing additional, structured information on an
+    object.
+
+
+    Do not store any sensitive information (bank account numbers, card details,
+    etc.) as metadata.
+
+    # Pagination
+
+
+    This API uses the [Link header - RFC
+    5988](http://tools.ietf.org/html/rfc5988#page-6) to include pagination
+    details.
+
+
+    An example of a Link header is described in [GitHub
+    documentation](https://developer.github.com/guides/traversing-with-pagination/).
+
+
+    By default, each page contains `25` elements. It can be requested up to
+    `100` elements per page adding the `limit` parameter. For example adding
+    `?limit=100&page=2` will return the second page of `100` elements.
+
+    # Request IDs
+
+
+    Each API request has an associated request identifier. You can find this
+    value in the response headers, under `Request-Id`. You can also find request
+    identifiers in the URLs of individual request logs in your
+    (Dashboard)[https://dashboard.tucuota.com/developer/logs].
+
+    # Conventions
+
+
+    ### Notational Conventions
+
+
+    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+    document are to be interpreted as described in
+    [RFC2119](https://www.ietf.org/rfc/rfc2119).
+
+
+    ### HTTP Methods
+
+
+    This API uses HTTP verbs (methods) as following:
+
+
+    - `GET` - _Read_ - used to **read** (or retrieve) a representation of a
+    resource,
+
+    - `POST` - _Create_ - used to **create** new resources. In particular, it's
+    used to create subordinate resources.
+
+    - `PUT` - _Update/Replace_ - used for **update** capabilities, PUT-ing to a
+    known resource URI with the request body containing the newly-updated
+    representation of the original resource. On successful request, replaces
+    identified resource with the request body.
+
+    - `PATCH` - _Update/Modify_ - used for **modify** capabilities. The PATCH
+    request only needs to contain the changes to the resource, not the complete
+    resource.
+
+    - `DELETE` - _Delete_ - used to **delete** a resource identified by a URI.
+
+
+    ### Representation of Date and Time
+
+
+    All exchange of date and time-related data MUST be done according to [RFC339
+    standard](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+
+
+    ### Versioning
+
+
+    This API uses `Api-Version` header to identify requested version. Every
+    **minor** version SHOULD be backward compatible. However, **major** versions
+    MAY introduce _breaking changes_.
+
+
+    `Api-Version: `
+
+
+    This header SHOULD be present in every request. If not, API MUST use the
+    newest available major release.
+
+
+    If requested version is not available, API SHOULD try to fall back to the
+    next available minor release.
+
+
+    When backwards-incompatible changes are made to the API, a new, dated
+    version is released. The current version of the API is `2022-02-14`.
+
+
+    ### Resource IDs
+
+
+    This API uses short non-sequential url-friendly unique ids. Every resource
+    id MUST consists of 12 url-friendly characters: `A-Z`, `a-z`, `0-9`, `_` and
+    `-`.
+
+
+    #### Example
+
+
+    `PY6b3Rr6nRMo`
+
+    # Testing
+
+
+    ### Testing Card and CBU numbers
+
+
+    In sandbox mode the following test cards and CBUs can be used to create
+    payments that produce specific responses useful for testing different
+    scenarios.
+
+
+    | Brand      | Number                 | Result     |
+
+    | ---------- | ---------------------- | ---------- |
+
+    | cbu        | 2859363672283668188432 | approved   |
+
+    | cbu        | 2852656051819605126406 | rejected   |
+
+    | cbu        | 2858814288841490615567 | failed     |
+
+    | cbu        | 0110022831266917230013 | will_retry |
+
+    | mastercard | 5447651834106668       | approved   |
+
+    | mastercard | 5457948807868523       | rejected   |
+
+    | mastercard | 5292525121482410       | failed     |
+
+    | visa       | 4024007127322104       | approved   |
+
+    | visa       | 4556854712355908       | rejected   |
+
+    | visa       | 4485388690536078       | failed     |
+
+    | amex       | 377539501632477        | approved   |
+
+    | amex       | 341400508811411        | rejected   |
+
+    | amex       | 372974912152697        | failed     |
+
     # Webhooks
 
 
@@ -312,236 +475,6 @@ info:
     accessible from the internet so TuCuota can reach it with HTTP requests. If
     you’re working locally, the easiest way to do this is with
     [ngrok](https://ngrok.com/).
-
-    ### Testing Card and CBU numbers
-
-
-    In sandbox mode the following test cards and CBUs can be used to create
-    payments that produce specific responses useful for testing different
-    scenarios.
-
-
-    | Brand      | Number                 | Result     |
-
-    | ---------- | ---------------------- | ---------- |
-
-    | cbu        | 2859363672283668188432 | approved   |
-
-    | cbu        | 2852656051819605126406 | rejected   |
-
-    | cbu        | 2858814288841490615567 | failed     |
-
-    | cbu        | 0110022831266917230013 | will_retry |
-
-    | mastercard | 5447651834106668       | approved   |
-
-    | mastercard | 5457948807868523       | rejected   |
-
-    | mastercard | 5292525121482410       | failed     |
-
-    | visa       | 4024007127322104       | approved   |
-
-    | visa       | 4556854712355908       | rejected   |
-
-    | visa       | 4485388690536078       | failed     |
-
-    | amex       | 377539501632477        | approved   |
-
-    | amex       | 341400508811411        | rejected   |
-
-    | amex       | 372974912152697        | failed     |
-
-    ## Statuses reference
-
-
-
-
-    ### Subscriptions statuses
-
-
-    | Status      |
-    Meaning                                                                                 
-    |
-
-    | ----------- |
-    ----------------------------------------------------------------------------------------
-    |
-
-    | `active`    | The subscription is active and generating
-    payments                                       |
-
-    | `paused`    | The subscription have been manually paused and won't
-    generate payments until is resumed. |
-
-    | `cancelled` | The subscription have been manually
-    cancelled.                                           |
-
-    | `finished`  | The subscription is completed: all the payments were
-    collected succ                      |
-
-    # HTTP Methods
-
-
-    This API uses HTTP verbs (methods) as following:
-
-
-    - `GET` - _Read_ - used to **read** (or retrieve) a representation of a
-    resource,
-
-    - `POST` - _Create_ - used to **create** new resources. In particular, it's
-    used to create subordinate resources.
-
-    - `PUT` - _Update/Replace_ - used for **update** capabilities, PUT-ing to a
-    known resource URI with the request body containing the newly-updated
-    representation of the original resource. On successful request, replaces
-    identified resource with the request body.
-
-    - `PATCH` - _Update/Modify_ - used for **modify** capabilities. The PATCH
-    request only needs to contain the changes to the resource, not the complete
-    resource.
-
-    - `DELETE` - _Delete_ - used to **delete** a resource identified by a URI.
-
-    # Notational Conventions
-
-
-    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-    document are to be interpreted as described in
-    [RFC2119](https://www.ietf.org/rfc/rfc2119).
-
-    # Representation of Date and Time
-
-
-    All exchange of date and time-related data MUST be done according to [RFC339
-    standard](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-
-    ### Resource IDs
-
-
-    This API uses short non-sequential url-friendly unique ids. Every resource
-    id MUST consists of 12 url-friendly characters: `A-Z`, `a-z`, `0-9`, `_` and
-    `-`.
-
-
-    #### Example
-
-
-    `PY6b3Rr6nRMo`
-
-    # Filtering
-
-
-    ##### Filtering, Ordering, Pagination & Searching
-
-
-    Some endpoints can be filtered by adding query parameters to the request.
-    This is specified on each resource page.
-
-
-    # Pagination
-
-
-    This API uses the [Link header - RFC
-    5988](http://tools.ietf.org/html/rfc5988#page-6) to include pagination
-    details.
-
-
-    An example of a Link header is described in [GitHub
-    documentation](https://developer.github.com/guides/traversing-with-pagination/).
-
-
-    By default, each page contains `25` elements. It can be requested up to
-    `100` elements per page adding the `limit` parameter. For example adding
-    `?limit=100&page=2` will return the second page of `100` elements.
-
-    # Errors
-
-
-    This API uses HTTP status codes to communicate with the API consumer.
-
-
-    - `200 OK` - Response to a successful GET, PUT, PATCH or DELETE.
-
-    - `201 Created` - Response to a POST that results in a creation.
-
-    - `204 No Content` - Response to a successful request that won't be
-    returning a body (like a DELETE request).
-
-    - `400 Bad Request` - Malformed request; form validation errors.
-
-    - `401 Unauthorized` - When no or invalid authentication details are
-    provided.
-
-    - `403 Forbidden` - When authentication succeeded but authenticated user
-    doesn't have access to the resource.
-
-    - `404 Not Found` - When a non-existent resource is requested.
-
-    - `405 Method Not Allowed` - Method not allowed.
-
-    - `406 Not Acceptable` - Could not satisfy the request Accept header.
-
-    - `415 Unsupported Media Type` - Unsupported media type in request.
-
-
-    #### Error response
-
-
-    This API returns both, machine-readable error codes and human-readable error
-    messages in response body when an error is encountered.
-
-
-    ##### Example
-
-
-    ###### Validation Error
-
-
-    ```json
-
-    {
-      "message": "The given data was invalid.",
-      "errors": {
-        "organization_name": ["El campo debe tener algún valor."],
-        "mobile_number": ["El campo debe tener algún valor."],
-        "province": ["El campo debe tener algún valor."],
-        "locality": ["El campo debe tener algún valor."],
-        "address": ["El campo debe tener algún valor."]
-      }
-    }
-
-    ```
-
-
-    ###### Generic Error
-
-
-    ```json
-
-    {
-      "message": "Unauthenticated."
-    }
-
-    ```
-
-    # Versioning
-
-
-    This API uses `Api-Version` header to identify requested version. Every
-    **minor** version SHOULD be backward compatible. However, **major** versions
-    MAY introduce _breaking changes_.
-
-
-    `Api-Version: v1`
-
-
-    This header SHOULD be present in every request. If not, API MUST use the
-    newest available major release.
-
-
-    If requested version is not available, API SHOULD try to fall back to the
-    next available minor release.
   termsOfService: http://swagger.io/terms/
   contact:
     name: TuCuota Devs
@@ -606,11 +539,11 @@ components:
           type: string
         - type: 'null'
       description: >-
-        Set of [key-value pairs](https://tucuota.com/docs/api#sections/Metadata)
-        that you can attach to an object. This can be useful for storing
-        additional information about the object in a structured format.
-        Individual keys can be unset by posting an empty value to them. All keys
-        can be unset by posting an empty value to `metadata`.
+        Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata) that
+        you can attach to an object. This can be useful for storing additional
+        information about the object in a structured format. Individual keys can
+        be unset by posting an empty value to them. All keys can be unset by
+        posting an empty value to `metadata`.
     created_at:
       type: string
       format: date-time
@@ -661,12 +594,11 @@ components:
           example: *ref_0
           anyOf: *ref_1
           description: >-
-            Set of [key-value
-            pairs](https://tucuota.com/docs/api#sections/Metadata) that you can
-            attach to an object. This can be useful for storing additional
-            information about the object in a structured format. Individual keys
-            can be unset by posting an empty value to them. All keys can be
-            unset by posting an empty value to `metadata`.
+            Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata)
+            that you can attach to an object. This can be useful for storing
+            additional information about the object in a structured format.
+            Individual keys can be unset by posting an empty value to them. All
+            keys can be unset by posting an empty value to `metadata`.
         mobile_number:
           oneOf:
             - type: 'null'
@@ -978,12 +910,11 @@ components:
           example: *ref_0
           anyOf: *ref_1
           description: >-
-            Set of [key-value
-            pairs](https://tucuota.com/docs/api#sections/Metadata) that you can
-            attach to an object. This can be useful for storing additional
-            information about the object in a structured format. Individual keys
-            can be unset by posting an empty value to them. All keys can be
-            unset by posting an empty value to `metadata`.
+            Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata)
+            that you can attach to an object. This can be useful for storing
+            additional information about the object in a structured format.
+            Individual keys can be unset by posting an empty value to them. All
+            keys can be unset by posting an empty value to `metadata`.
         created_at:
           type: string
           format: date-time
@@ -1076,12 +1007,11 @@ components:
           example: *ref_0
           anyOf: *ref_1
           description: >-
-            Set of [key-value
-            pairs](https://tucuota.com/docs/api#sections/Metadata) that you can
-            attach to an object. This can be useful for storing additional
-            information about the object in a structured format. Individual keys
-            can be unset by posting an empty value to them. All keys can be
-            unset by posting an empty value to `metadata`.
+            Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata)
+            that you can attach to an object. This can be useful for storing
+            additional information about the object in a structured format.
+            Individual keys can be unset by posting an empty value to them. All
+            keys can be unset by posting an empty value to `metadata`.
         created_at:
           type: string
           format: date-time
@@ -1111,6 +1041,73 @@ components:
         payment_method:
           type: object
           properties: *ref_7
+    subscription:
+      title: Subscription
+      description: This object represents a subscription of your organization.
+      type: object
+      properties: &ref_17
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          description: >-
+            Time at which the object was created. Formatting follows
+            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+        currency:
+          type: string
+        approved_payments_count:
+          type: number
+        approved_payments_sum:
+          type: number
+        customer:
+          title: Customer
+          description: This object represents a customer of your organization.
+          type: object
+          properties: *ref_6
+        first_date:
+          type: string
+        id:
+          type: string
+        livemode:
+          description: >-
+            Has the value `true` if the object exists in live mode or the value
+            `false` if the object exists in test mode.
+          type: boolean
+        metadata:
+          example: *ref_0
+          anyOf: *ref_1
+          description: >-
+            Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata)
+            that you can attach to an object. This can be useful for storing
+            additional information about the object in a structured format.
+            Individual keys can be unset by posting an empty value to them. All
+            keys can be unset by posting an empty value to `metadata`.
+        object:
+          type: string
+        payment_method:
+          type: object
+          properties: *ref_7
+        rejected_payments_count:
+          type: number
+        rejected_payments_sum:
+          type: number
+        start_date:
+          type: string
+        status:
+          type: string
+        upcoming_dates:
+          type: array
+          items:
+            type: object
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          description: >-
+            Time at which the object was last updated. Formatting follows
+            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+    payment:
+      type: object
     completed_at:
       type: string
       format: date-time
@@ -1126,7 +1123,7 @@ components:
       title: Session
       description: This object represents a session of your organization.
       type: object
-      properties: &ref_17
+      properties: &ref_18
         amount:
           type: number
           description: Amount to be collected
@@ -1170,12 +1167,11 @@ components:
           example: *ref_0
           anyOf: *ref_1
           description: >-
-            Set of [key-value
-            pairs](https://tucuota.com/docs/api#sections/Metadata) that you can
-            attach to an object. This can be useful for storing additional
-            information about the object in a structured format. Individual keys
-            can be unset by posting an empty value to them. All keys can be
-            unset by posting an empty value to `metadata`.
+            Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata)
+            that you can attach to an object. This can be useful for storing
+            additional information about the object in a structured format.
+            Individual keys can be unset by posting an empty value to them. All
+            keys can be unset by posting an empty value to `metadata`.
         mobile_number:
           oneOf:
             - type: 'null'
@@ -1244,72 +1240,6 @@ components:
           example: '2022-02-11T23:19:22-03:00'
           description: >-
             Time at which the object was deleted. Formatting follows
-            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-    subscription:
-      title: Subscription
-      description: This object represents a subscription of your organization.
-      type: object
-      properties: &ref_18
-        created_at:
-          type: string
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
-          description: >-
-            Time at which the object was created. Formatting follows
-            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-        currency:
-          type: string
-        approved_payments_count:
-          type: number
-        approved_payments_sum:
-          type: number
-        customer:
-          title: Customer
-          description: This object represents a customer of your organization.
-          type: object
-          properties: *ref_6
-        first_date:
-          type: string
-        id:
-          type: string
-        livemode:
-          description: >-
-            Has the value `true` if the object exists in live mode or the value
-            `false` if the object exists in test mode.
-          type: boolean
-        metadata:
-          example: *ref_0
-          anyOf: *ref_1
-          description: >-
-            Set of [key-value
-            pairs](https://tucuota.com/docs/api#sections/Metadata) that you can
-            attach to an object. This can be useful for storing additional
-            information about the object in a structured format. Individual keys
-            can be unset by posting an empty value to them. All keys can be
-            unset by posting an empty value to `metadata`.
-        object:
-          type: string
-        payment_method:
-          type: object
-          properties: *ref_7
-        rejected_payments_count:
-          type: number
-        rejected_payments_sum:
-          type: number
-        start_date:
-          type: string
-        status:
-          type: string
-        upcoming_dates:
-          type: array
-          items:
-            type: object
-        updated_at:
-          type: string
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
-          description: >-
-            Time at which the object was last updated. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
     webhook:
       title: Webhook
@@ -2131,8 +2061,8 @@ paths:
                   anyOf: *ref_1
                   description: >-
                     Set of [key-value
-                    pairs](https://tucuota.com/docs/api#sections/Metadata) that
-                    you can attach to an object. This can be useful for storing
+                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
                     value to them. All keys can be unset by posting an empty
@@ -2245,8 +2175,8 @@ paths:
                   anyOf: *ref_1
                   description: >-
                     Set of [key-value
-                    pairs](https://tucuota.com/docs/api#sections/Metadata) that
-                    you can attach to an object. This can be useful for storing
+                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
                     value to them. All keys can be unset by posting an empty
@@ -2557,8 +2487,8 @@ paths:
                   anyOf: *ref_1
                   description: >-
                     Set of [key-value
-                    pairs](https://tucuota.com/docs/api#sections/Metadata) that
-                    you can attach to an object. This can be useful for storing
+                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
                     value to them. All keys can be unset by posting an empty
@@ -3086,6 +3016,357 @@ paths:
                     title: Unauthorized
                     description: Unauthorized response
                     properties: *ref_10
+  /v1/payments:
+    get:
+      tags:
+        - Payments
+      summary: List payments
+      description: Newest payments will be first on the list.
+      operationId: PaymentsGetPayments
+      parameters:
+        - name: page
+          in: query
+          description: Cursor value to paginate response.
+          required: false
+          schema:
+            type: number
+          example: '10'
+        - name: limit
+          in: query
+          description: Number of records to return.
+          required: false
+          schema:
+            type: number
+          example: '1'
+        - name: search
+          in: query
+          description: Search.
+          schema:
+            type: string
+          example: foo@bar.com
+        - name: customer_id
+          in: query
+          description: Show only payment methods from a given customer.
+          required: false
+          schema:
+            type: string
+          example: CS9PL8eeo8aB
+        - name: subscription_id
+          in: query
+          description: Show only payment methods from a given subscription.
+          required: false
+          schema:
+            type: string
+          example: SBmX1MrZ77Mwq3
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      title: Subscription
+                      description: >-
+                        This object represents a subscription of your
+                        organization.
+                      type: object
+                      properties: *ref_17
+                  links:
+                    title: Response Meta
+                    description: Pagination metadata
+                    type: object
+                    properties: *ref_8
+                  meta:
+                    title: Response Meta
+                    description: Pagination metadata
+                    type: object
+                    properties: *ref_9
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_10
+    post:
+      tags:
+        - Payments
+      summary: Create a customer
+      description: Create a payment
+      x-codegen-request-body-name: body
+      operationId: PaymentsCreatePayment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - amount
+                - description
+                - customer_id
+                - payment_method_id
+              properties:
+                amount:
+                  type: number
+                  description: The amount of the payment.
+                description:
+                  type: string
+                  description: The title of the payment.
+                customer_id:
+                  type: string
+                  description: |
+                    [Customer ID](#tag/Customers).
+                  example: CSgaZlLaPMZO.
+                payment_method_id:
+                  type: string
+                  description: >-
+                    The [token of the card or cbu](#tag/PaymentMethods) for this
+                    payment.
+                charge_date:
+                  type: string
+                  format: date
+                  description: >-
+                    A future date on which the payment should be collected. If
+                    not specified, the payment will be collected as soon as
+                    possible.
+                can_auto_retry_until:
+                  type: string
+                  format: date
+                  description: The maximum date the payment could be retried automatically.
+                auto_retries_max_attempts:
+                  type: integer
+                  description: >-
+                    The maximum amount of times the payment could be retried
+                    automatically.
+                gateway_identifier:
+                  type: string
+                  description: Gateway identifier for your payment.
+                metadata:
+                  example: *ref_0
+                  anyOf: *ref_1
+                  description: >-
+                    Set of [key-value
+                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    attach to an object. This can be useful for storing
+                    additional information about the object in a structured
+                    format. Individual keys can be unset by posting an empty
+                    value to them. All keys can be unset by posting an empty
+                    value to `metadata`.
+              example:
+                amount: 100
+                description: Unique payment
+                gateway_identifier: '001234'
+                customer_id: CSr7Dg3LkDP2
+                payment_method_number: '4024007127322104'
+        required: false
+      responses:
+        '201':
+          description: Payment created.
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_10
+  /v1/payments/{id}:
+    get:
+      tags:
+        - Payments
+      summary: Retrieve a payment
+      description: Retrieve a payment.
+      operationId: PaymentsGetPayment
+      parameters:
+        - name: id
+          in: path
+          description: Payment ID.
+          required: true
+          schema:
+            type: string
+          example: PYdOz9bgVReV
+      responses:
+        '200':
+          description: Retrieve a payment.
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+        '404':
+          description: Payment not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Not Found
+                    description: Not Found response
+                    properties: *ref_11
+    put:
+      tags:
+        - Payments
+      summary: Update a payment
+      description: Update a payment.
+      x-codegen-request-body-name: body
+      operationId: PaymentsUpdatePayment
+      parameters:
+        - name: id
+          in: path
+          description: Payment ID.
+          required: true
+          schema:
+            type: string
+          example: PYdOz9bgVReV
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  description: The new amount of the payment.
+                auto_retries_max_attempts:
+                  type: integer
+                  description: >-
+                    The maximum amount of times the payment could be retried
+                    automatically.
+                can_auto_retry_until:
+                  type: string
+                  format: date
+                  description: The maximum date the payment could be retried automatically.
+                charge_date:
+                  type: string
+                  format: date
+                  description: A future date on which the payment should be collected.
+                description:
+                  type: string
+                  description: The new title of the payment.
+                payment_method_id:
+                  type: string
+                  description: The token of the card or cbu for the payment.
+                metadata:
+                  example: *ref_0
+                  anyOf: *ref_1
+                  description: >-
+                    Set of [key-value
+                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    attach to an object. This can be useful for storing
+                    additional information about the object in a structured
+                    format. Individual keys can be unset by posting an empty
+                    value to them. All keys can be unset by posting an empty
+                    value to `metadata`.
+              example:
+                description: New payment title
+        required: true
+      responses:
+        '200':
+          description: Payment updated
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_10
+  /v1/payments/{id}/actions/cancel:
+    post:
+      tags:
+        - Payments
+      summary: Cancel payment
+      description: Cancel payment.
+      operationId: PaymentsCancelPayment
+      parameters:
+        - name: id
+          in: path
+          description: Payment ID.
+          required: true
+          schema:
+            type: string
+          example: PYdOz9bgVReV
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              example:
+                message: Cancelled successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_10
+  /v1/payments/{id}/actions/retry:
+    post:
+      tags:
+        - Payments
+      summary: Retry a payment
+      description: Retry a payment.
+      operationId: PaymentsRetryPayment
+      parameters:
+        - name: id
+          in: path
+          description: Payment ID.
+          required: true
+          schema:
+            type: string
+          example: PYdOz9bgVReV
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              example:
+                message: Retried successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_10
   /v1/sessions:
     post:
       tags:
@@ -3118,17 +3399,88 @@ paths:
                 description:
                   type: string
                   description: The title of the payment or subscription.
+                customer_id:
+                  type: string
+                  description: >
+                    TuCuota customer_id if exists en TuCuota. Example:
+                    CSgaZlLaPMZO.
+                customer_name:
+                  type: string
+                  description: >
+                    Name of your customer. You can fill it or ask the customer
+                    to fill this field in the checkout process.
+                customer_email:
+                  type: string
+                  description: >
+                    Email of your customer. You can fill it or ask the customer
+                    to fill this field in the checkout process.
+                editable_amount:
+                  type: boolean
+                  description: |
+                    Allow the customer to set the amount, useful for donations.
+                installments:
+                  type: integer
+                  description: >
+                    Only for payments, quantity of payments on which the amount
+                    will be splitted.
+                max_installments:
+                  type: integer
+                  description: >
+                    Only for payments, allow the customer to choose how many
+                    installments can split the payment.
+                interval_unit:
+                  type: string
+                  enum:
+                    - weekly
+                    - monthly
+                    - yearly
+                  description: >
+                    Only for subscriptions, the unit of time between customer
+                    charge dates. One of weekly, monthly or yearly.
+                interval:
+                  type: integer
+                  description: >
+                    Only for subscriptions, the number of interval_units between
+                    customer charge dates. Must be greater than to 1. If
+                    interval_unit is weekly and interval is 2, then the customer
+                    will be charged every two weeks. Defaults to 1.
+                day_of_month:
+                  type: integer
+                  description: >
+                    Only for subscriptions, the day of month, from 1 to 28. Use
+                    only if you need the subscription to start in a specyfic
+                    date. In most cases this should be null, therefore TuCuota
+                    will use the date of the moment when the user completes the
+                    checkout.
+                day_of_week:
+                  type: integer
+                  description: >
+                    Only for subscriptions, the day of week number, from 0
+                    (Sunday) to 6 (Saturday). Use only if you need the
+                    subscription to start in a specyfic date. In most cases this
+                    should be null, therefore TuCuota will use the date of the
+                    moment when the user completes the checkout.
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
                   description: >-
                     Set of [key-value
-                    pairs](https://tucuota.com/docs/api#sections/Metadata) that
-                    you can attach to an object. This can be useful for storing
+                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
                     value to them. All keys can be unset by posting an empty
                     value to `metadata`.
+                count:
+                  type: integer
+                  description: >
+                    Only for subscriptions, the total number of payments that
+                    should
+
+                    be taken by this subscription. If not specified the
+                    subscription
+
+                    will continue until you cancel it.
                 editable_count:
                   description: >
                     Only for subscriptions, allow the customer to set the
@@ -3153,7 +3505,7 @@ paths:
                     type: object
                     title: Session
                     description: This object represents a session of your organization.
-                    properties: *ref_17
+                    properties: *ref_18
         '422':
           description: Unprocessable Entity
           content:
@@ -3189,7 +3541,7 @@ paths:
                     type: object
                     title: Session
                     description: This object represents a session of your organization.
-                    properties: *ref_17
+                    properties: *ref_18
         '404':
           description: Session not found
           content:
@@ -3221,7 +3573,7 @@ paths:
                         This object represents a subscription of your
                         organization.
                       type: object
-                      properties: *ref_18
+                      properties: *ref_17
                   links:
                     title: Response Meta
                     description: Pagination metadata
@@ -3324,8 +3676,8 @@ paths:
                   anyOf: *ref_1
                   description: >-
                     Set of [key-value
-                    pairs](https://tucuota.com/docs/api#sections/Metadata) that
-                    you can attach to an object. This can be useful for storing
+                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
                     value to them. All keys can be unset by posting an empty
@@ -3353,7 +3705,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_17
         '422':
           description: Unprocessable Entity
           content:
@@ -3379,8 +3731,8 @@ paths:
             type: string
           example: SBmX1MrZ77Mwq3
       responses:
-        '201':
-          description: Subscription created sucessfully.
+        '200':
+          description: Retrieve a subscription
           content:
             application/json:
               schema:
@@ -3391,7 +3743,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_17
         '404':
           description: Object not found
           content:
@@ -3492,8 +3844,8 @@ paths:
                   anyOf: *ref_1
                   description: >-
                     Set of [key-value
-                    pairs](https://tucuota.com/docs/api#sections/Metadata) that
-                    you can attach to an object. This can be useful for storing
+                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
                     value to them. All keys can be unset by posting an empty
@@ -3521,7 +3873,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_17
         '422':
           description: Unprocessable Entity
           content:
@@ -3558,7 +3910,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_17
         '422':
           description: Unprocessable Entity
           content:
@@ -3592,7 +3944,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_17
         '422':
           description: Unprocessable Entity
           content:
@@ -3634,7 +3986,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_17
         '422':
           description: Unprocessable Entity
           content:
@@ -3743,16 +4095,11 @@ paths:
                     type: string
                   type: array
                 metadata:
-                  anyOf:
-                    - additionalProperties:
-                        type: string
-                      type: object
-                    - enum:
-                        - ''
-                      type: string
+                  example: *ref_0
+                  anyOf: *ref_1
                   description: >-
                     Set of [key-value
-                    pairs](https://tucuota.com/docs/api/metadata) that you can
+                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
                     attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
