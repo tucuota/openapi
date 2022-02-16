@@ -192,13 +192,13 @@ info:
 
 
     The following objects have a metadata parameter that you can use this
-    parameter to attach key-value data: - Customer - Mandate - Payment - Payment
-    Method - Subscription
+    parameter to attach key-value data:
 
-
-    You can specify up to 50 keys, with key names up to 40 characters long and
-    values up to 500 characters long.
-
+      - [Customer](#tag/Customers)
+      - [Mandate](#tag/Mandates)
+      - [Payment](#tag/Payments)
+      - [Payment Method](#tag/Payment-Methods)
+      - [Subscription](#tag/Subscriptions)
 
     Metadata is useful for storing additional, structured information on an
     object.
@@ -539,11 +539,11 @@ components:
           type: string
         - type: 'null'
       description: >-
-        Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata) that
-        you can attach to an object. This can be useful for storing additional
-        information about the object in a structured format. Individual keys can
-        be unset by posting an empty value to them. All keys can be unset by
-        posting an empty value to `metadata`.
+        Set of [key-value pairs](#section/Metadata) that you can attach to an
+        object. This can be useful for storing additional information about the
+        object in a structured format. Individual keys can be unset by posting
+        an empty value to them. All keys can be unset by posting an empty value
+        to `metadata`.
     created_at:
       type: string
       format: date-time
@@ -594,11 +594,11 @@ components:
           example: *ref_0
           anyOf: *ref_1
           description: >-
-            Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata)
-            that you can attach to an object. This can be useful for storing
-            additional information about the object in a structured format.
-            Individual keys can be unset by posting an empty value to them. All
-            keys can be unset by posting an empty value to `metadata`.
+            Set of [key-value pairs](#section/Metadata) that you can attach to
+            an object. This can be useful for storing additional information
+            about the object in a structured format. Individual keys can be
+            unset by posting an empty value to them. All keys can be unset by
+            posting an empty value to `metadata`.
         mobile_number:
           oneOf:
             - type: 'null'
@@ -789,7 +789,7 @@ components:
           description: ID for the resource attached to the event.
         type:
           type: string
-          description: Event type [asd](https://google.com){:target="_blank"}.
+          description: Event type.
           example: customer.created
           enum:
             - customer.created
@@ -946,11 +946,11 @@ components:
           example: *ref_0
           anyOf: *ref_1
           description: >-
-            Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata)
-            that you can attach to an object. This can be useful for storing
-            additional information about the object in a structured format.
-            Individual keys can be unset by posting an empty value to them. All
-            keys can be unset by posting an empty value to `metadata`.
+            Set of [key-value pairs](#section/Metadata) that you can attach to
+            an object. This can be useful for storing additional information
+            about the object in a structured format. Individual keys can be
+            unset by posting an empty value to them. All keys can be unset by
+            posting an empty value to `metadata`.
         created_at:
           type: string
           format: date-time
@@ -1043,11 +1043,11 @@ components:
           example: *ref_0
           anyOf: *ref_1
           description: >-
-            Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata)
-            that you can attach to an object. This can be useful for storing
-            additional information about the object in a structured format.
-            Individual keys can be unset by posting an empty value to them. All
-            keys can be unset by posting an empty value to `metadata`.
+            Set of [key-value pairs](#section/Metadata) that you can attach to
+            an object. This can be useful for storing additional information
+            about the object in a structured format. Individual keys can be
+            unset by posting an empty value to them. All keys can be unset by
+            posting an empty value to `metadata`.
         created_at:
           type: string
           format: date-time
@@ -1113,11 +1113,11 @@ components:
           example: *ref_0
           anyOf: *ref_1
           description: >-
-            Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata)
-            that you can attach to an object. This can be useful for storing
-            additional information about the object in a structured format.
-            Individual keys can be unset by posting an empty value to them. All
-            keys can be unset by posting an empty value to `metadata`.
+            Set of [key-value pairs](#section/Metadata) that you can attach to
+            an object. This can be useful for storing additional information
+            about the object in a structured format. Individual keys can be
+            unset by posting an empty value to them. All keys can be unset by
+            posting an empty value to `metadata`.
         object:
           type: string
         payment_method:
@@ -1203,11 +1203,11 @@ components:
           example: *ref_0
           anyOf: *ref_1
           description: >-
-            Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata)
-            that you can attach to an object. This can be useful for storing
-            additional information about the object in a structured format.
-            Individual keys can be unset by posting an empty value to them. All
-            keys can be unset by posting an empty value to `metadata`.
+            Set of [key-value pairs](#section/Metadata) that you can attach to
+            an object. This can be useful for storing additional information
+            about the object in a structured format. Individual keys can be
+            unset by posting an empty value to them. All keys can be unset by
+            posting an empty value to `metadata`.
         mobile_number:
           oneOf:
             - type: 'null'
@@ -2096,8 +2096,7 @@ paths:
                   example: *ref_0
                   anyOf: *ref_1
                   description: >-
-                    Set of [key-value
-                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    Set of [key-value pairs](#section/Metadata) that you can
                     attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
@@ -2210,8 +2209,7 @@ paths:
                   example: *ref_0
                   anyOf: *ref_1
                   description: >-
-                    Set of [key-value
-                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    Set of [key-value pairs](#section/Metadata) that you can
                     attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
@@ -2524,8 +2522,7 @@ paths:
                   example: *ref_0
                   anyOf: *ref_1
                   description: >-
-                    Set of [key-value
-                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    Set of [key-value pairs](#section/Metadata) that you can
                     attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
@@ -3186,8 +3183,7 @@ paths:
                   example: *ref_0
                   anyOf: *ref_1
                   description: >-
-                    Set of [key-value
-                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    Set of [key-value pairs](#section/Metadata) that you can
                     attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
@@ -3302,8 +3298,7 @@ paths:
                   example: *ref_0
                   anyOf: *ref_1
                   description: >-
-                    Set of [key-value
-                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    Set of [key-value pairs](#section/Metadata) that you can
                     attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
@@ -3495,8 +3490,7 @@ paths:
                   example: *ref_0
                   anyOf: *ref_1
                   description: >-
-                    Set of [key-value
-                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    Set of [key-value pairs](#section/Metadata) that you can
                     attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
@@ -3706,8 +3700,7 @@ paths:
                   example: *ref_0
                   anyOf: *ref_1
                   description: >-
-                    Set of [key-value
-                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    Set of [key-value pairs](#section/Metadata) that you can
                     attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
@@ -3874,8 +3867,7 @@ paths:
                   example: *ref_0
                   anyOf: *ref_1
                   description: >-
-                    Set of [key-value
-                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    Set of [key-value pairs](#section/Metadata) that you can
                     attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
@@ -4131,8 +4123,7 @@ paths:
                   example: *ref_0
                   anyOf: *ref_1
                   description: >-
-                    Set of [key-value
-                    pairs](http://127.0.0.1:8080/#section/Metadata) that you can
+                    Set of [key-value pairs](#section/Metadata) that you can
                     attach to an object. This can be useful for storing
                     additional information about the object in a structured
                     format. Individual keys can be unset by posting an empty
