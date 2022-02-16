@@ -6698,8 +6698,8 @@
         "tags": [
           "Payments"
         ],
-        "summary": "Create a customer",
-        "description": "Create a payment",
+        "summary": "Create a payment",
+        "description": "Create a payment.",
         "x-codegen-request-body-name": "body",
         "operationId": "PaymentsCreatePayment",
         "requestBody": {
