@@ -15,7 +15,8 @@ resources:
     identification_number: null
     identification_type: null
     livemode: false
-    metadata: null
+    metadata:
+      hello: world
     mobile_number: '5491154876503'
     name: John Doe
     paused_subscriptions_count: 0

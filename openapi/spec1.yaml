@@ -194,11 +194,17 @@ info:
     The following objects have a metadata parameter that you can use this
     parameter to attach key-value data:
 
-      - [Customer](#tag/Customers)
-      - [Mandate](#tag/Mandates)
-      - [Payment](#tag/Payments)
-      - [Payment Method](#tag/Payment-Methods)
-      - [Subscription](#tag/Subscriptions)
+
+    - [Customer](#tag/Customers)
+
+    - [Mandate](#tag/Mandates)
+
+    - [Payment](#tag/Payments)
+
+    - [Payment Method](#tag/Payment-Methods)
+
+    - [Subscription](#tag/Subscriptions)
+
 
     Metadata is useful for storing additional, structured information on an
     object.
@@ -498,7 +504,7 @@ components:
       title: Unauthorized
       description: Unauthorized response
       type: object
-      properties: &ref_10
+      properties: &ref_12
         message:
           type: string
           example: Unauthorized
@@ -506,7 +512,7 @@ components:
       title: Not Found
       description: Not Found response
       type: object
-      properties: &ref_11
+      properties: &ref_13
         message:
           type: string
           example: Record not found
@@ -534,16 +540,29 @@ components:
         - additionalProperties:
             type: string
           type: object
-        - enum:
-            - ''
-          type: string
         - type: 'null'
-      description: >-
-        Set of [key-value pairs](#section/Metadata) that you can attach to an
-        object. This can be useful for storing additional information about the
-        object in a structured format. Individual keys can be unset by posting
-        an empty value to them. All keys can be unset by posting an empty value
-        to `metadata`.
+      description: |
+        Set of [key-value pairs](#section/Metadata) that you can attach
+        to an object. This can be useful for storing additional
+        information about the object in a structured format.
+        All keys can be unset by posting `null` value to `metadata`.
+    gateway_identifier:
+      description: The customer's reference for bank account statements.
+      type: integer
+      format: int32
+      example: 383473
+    identification_number:
+      description: Customer's Document ID number.
+      oneOf: &ref_2
+        - type: 'null'
+        - type: string
+      example: 15.555.324
+    identification_type:
+      description: Customer's Document type.
+      oneOf: &ref_3
+        - type: 'null'
+        - type: string
+      example: DNI
     created_at:
       type: string
       format: date-time
@@ -559,7 +578,7 @@ components:
         Time at which the object was last updated. Formatting follows
         [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
     deleted_at:
-      oneOf: &ref_2
+      oneOf: &ref_4
         - type: 'null'
         - type: string
       format: date-time
@@ -571,7 +590,7 @@ components:
       title: Customer
       description: This object represents a customer of your organization.
       type: object
-      properties: &ref_6
+      properties: &ref_8
         id:
           example: CSljikas98
           description: Unique identifier for the object.
@@ -593,30 +612,29 @@ components:
         metadata:
           example: *ref_0
           anyOf: *ref_1
-          description: >-
-            Set of [key-value pairs](#section/Metadata) that you can attach to
-            an object. This can be useful for storing additional information
-            about the object in a structured format. Individual keys can be
-            unset by posting an empty value to them. All keys can be unset by
-            posting an empty value to `metadata`.
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
         mobile_number:
+          description: Customer's phone number.
           oneOf:
             - type: 'null'
             - type: string
           example: '5491164531234'
         gateway_identifier:
+          description: The customer's reference for bank account statements.
           type: integer
           format: int32
           example: 383473
         identification_number:
-          oneOf:
-            - type: 'null'
-            - type: string
+          description: Customer's Document ID number.
+          oneOf: *ref_2
           example: 15.555.324
         identification_type:
-          oneOf:
-            - type: 'null'
-            - type: string
+          description: Customer's Document type.
+          oneOf: *ref_3
           example: DNI
         created_at:
           type: string
@@ -632,54 +650,63 @@ components:
           description: >-
             Time at which the object was last updated. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-        active_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        active_subscriptions_sum:
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_count:
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_sum:
-          type: integer
-          format: int32
-          example: 0
-        cancelled_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        paused_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_count:
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_sum:
-          type: integer
-          format: int32
-          example: 0
-        finished_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
         deleted_at:
-          oneOf: *ref_2
+          oneOf: *ref_4
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
           description: >-
             Time at which the object was deleted. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+        active_subscriptions_count:
+          description: Active Subscriptions Count
+          type: integer
+          format: int32
+          example: 0
+        active_subscriptions_sum:
+          description: Active Subscriptions Sum
+          type: integer
+          format: int32
+          example: 0
+        approved_payments_count:
+          description: Approved Payments Count
+          type: integer
+          format: int32
+          example: 0
+        approved_payments_sum:
+          description: Approved Payments Sum
+          type: integer
+          format: int32
+          example: 0
+        cancelled_subscriptions_count:
+          description: Cancelled Subscriptions Count
+          type: integer
+          format: int32
+          example: 0
+        paused_subscriptions_count:
+          description: Paused Subscriptions Count
+          type: integer
+          format: int32
+          example: 0
+        rejected_payments_count:
+          description: Rejected Payments Count
+          type: integer
+          format: int32
+          example: 0
+        rejected_payments_sum:
+          description: Rejected Payments Sum
+          type: integer
+          format: int32
+          example: 0
+        finished_subscriptions_count:
+          description: Finished Subscriptions Count
+          type: integer
+          format: int32
+          example: 0
     links:
       title: Response Meta
       description: Pagination metadata
       type: object
-      properties: &ref_8
+      properties: &ref_10
         first:
           type: string
           nullable: true
@@ -700,7 +727,7 @@ components:
       title: Response Meta
       description: Pagination metadata
       type: object
-      properties: &ref_9
+      properties: &ref_11
         current_page:
           type: number
           example: 1
@@ -723,7 +750,7 @@ components:
           type: string
           example: https://api.tucuota.test/v1/customers
     delivered_at:
-      oneOf: &ref_3
+      oneOf: &ref_5
         - type: 'null'
         - type: string
       format: date-time
@@ -735,7 +762,7 @@ components:
       title: Event
       description: This object represents an event on your account.
       type: object
-      properties: &ref_12
+      properties: &ref_14
         id:
           description: Unique identifier for the object.
           maxLength: 5000
@@ -760,7 +787,7 @@ components:
               type: object
               description: Event object.
         delivered_at:
-          oneOf: *ref_3
+          oneOf: *ref_5
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
           description: >-
@@ -849,7 +876,7 @@ components:
       title: Import
       description: This object represents an import of your account.
       type: object
-      properties: &ref_13
+      properties: &ref_15
         id:
           example: IM129038120h
           description: Unique identifier for the object.
@@ -931,7 +958,7 @@ components:
       title: Link
       description: This object represents a public link of your organization.
       type: object
-      properties: &ref_14
+      properties: &ref_16
         id:
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           description: Unique identifier for the object.
@@ -945,12 +972,11 @@ components:
         metadata:
           example: *ref_0
           anyOf: *ref_1
-          description: >-
-            Set of [key-value pairs](#section/Metadata) that you can attach to
-            an object. This can be useful for storing additional information
-            about the object in a structured format. Individual keys can be
-            unset by posting an empty value to them. All keys can be unset by
-            posting an empty value to `metadata`.
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
         created_at:
           type: string
           format: date-time
@@ -966,7 +992,7 @@ components:
             Time at which the object was last updated. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
         deleted_at:
-          oneOf: *ref_2
+          oneOf: *ref_4
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
           description: >-
@@ -974,9 +1000,10 @@ components:
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
     card:
       type: object
-      properties: &ref_4
+      properties: &ref_6
         bank:
           type: string
+          example: Banco Santander Río
         brand:
           type: string
           example: visa-credito
@@ -985,15 +1012,19 @@ components:
           example: AR
         expiration_month:
           type: number
+          example: 11
         expiration_year:
           type: number
+          example: 2030
         fingerprint:
           type: string
+          example: 8712yh2uihiu1123sxas
         last_four_digits:
           type: string
+          example: '9876'
     cbu:
       type: object
-      properties: &ref_5
+      properties: &ref_7
         bank:
           type: string
         country:
@@ -1004,16 +1035,16 @@ components:
           type: string
     payment_method:
       type: object
-      properties: &ref_7
+      properties: &ref_9
         type:
           type: string
           description: 'One of: cbu, card.'
         card:
           type: object
-          properties: *ref_4
+          properties: *ref_6
         cbu:
           type: object
-          properties: *ref_5
+          properties: *ref_7
         created_at:
           type: string
         id:
@@ -1028,7 +1059,7 @@ components:
       title: Mandate
       description: This object represents a mandate of your organization.
       type: object
-      properties: &ref_15
+      properties: &ref_17
         id:
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           description: Unique identifier for the object.
@@ -1042,12 +1073,11 @@ components:
         metadata:
           example: *ref_0
           anyOf: *ref_1
-          description: >-
-            Set of [key-value pairs](#section/Metadata) that you can attach to
-            an object. This can be useful for storing additional information
-            about the object in a structured format. Individual keys can be
-            unset by posting an empty value to them. All keys can be unset by
-            posting an empty value to `metadata`.
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
         created_at:
           type: string
           format: date-time
@@ -1063,7 +1093,7 @@ components:
             Time at which the object was last updated. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
         deleted_at:
-          oneOf: *ref_2
+          oneOf: *ref_4
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
           description: >-
@@ -1073,15 +1103,15 @@ components:
           title: Customer
           description: This object represents a customer of your organization.
           type: object
-          properties: *ref_6
+          properties: *ref_8
         payment_method:
           type: object
-          properties: *ref_7
+          properties: *ref_9
     subscription:
       title: Subscription
       description: This object represents a subscription of your organization.
       type: object
-      properties: &ref_16
+      properties: &ref_18
         created_at:
           type: string
           format: date-time
@@ -1099,7 +1129,7 @@ components:
           title: Customer
           description: This object represents a customer of your organization.
           type: object
-          properties: *ref_6
+          properties: *ref_8
         first_date:
           type: string
         id:
@@ -1112,17 +1142,16 @@ components:
         metadata:
           example: *ref_0
           anyOf: *ref_1
-          description: >-
-            Set of [key-value pairs](#section/Metadata) that you can attach to
-            an object. This can be useful for storing additional information
-            about the object in a structured format. Individual keys can be
-            unset by posting an empty value to them. All keys can be unset by
-            posting an empty value to `metadata`.
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
         object:
           type: string
         payment_method:
           type: object
-          properties: *ref_7
+          properties: *ref_9
         rejected_payments_count:
           type: number
         rejected_payments_sum:
@@ -1159,7 +1188,7 @@ components:
       title: Session
       description: This object represents a session of your organization.
       type: object
-      properties: &ref_17
+      properties: &ref_19
         amount:
           type: number
           description: Amount to be collected
@@ -1202,12 +1231,11 @@ components:
         metadata:
           example: *ref_0
           anyOf: *ref_1
-          description: >-
-            Set of [key-value pairs](#section/Metadata) that you can attach to
-            an object. This can be useful for storing additional information
-            about the object in a structured format. Individual keys can be
-            unset by posting an empty value to them. All keys can be unset by
-            posting an empty value to `metadata`.
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
         mobile_number:
           oneOf:
             - type: 'null'
@@ -1271,7 +1299,7 @@ components:
           format: int32
           example: 0
         deleted_at:
-          oneOf: *ref_2
+          oneOf: *ref_4
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
           description: >-
@@ -1292,7 +1320,7 @@ components:
         dashboard](https://dashboard.tucuota.com/webhooks), which provides a
         user interface for registering and testing your webhook endpoints.
       type: object
-      properties: &ref_18
+      properties: &ref_20
         id:
           description: Unique identifier for the object.
           maxLength: 5000
@@ -1361,7 +1389,7 @@ components:
           description: >-
             Time at which the object was last updated. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-      example: &ref_19
+      example: &ref_21
         created_at: '2022-02-11T23:19:22-03:00'
         enabled: true
         enabled_events:
@@ -1416,7 +1444,8 @@ components:
         identification_number: null
         identification_type: null
         livemode: false
-        metadata: null
+        metadata:
+          hello: world
         mobile_number: '5491154876503'
         name: John Doe
         paused_subscriptions_count: 0
@@ -2007,15 +2036,17 @@ paths:
         - name: page
           in: query
           description: Cursor value to paginate response.
+          required: false
           schema:
             type: number
-          example: '10'
+          example: 1
         - name: limit
           in: query
           description: Number of records to return.
+          required: false
           schema:
             type: number
-          example: '1'
+          example: 20
       responses:
         '200':
           description: OK
@@ -2032,17 +2063,17 @@ paths:
                       title: Customer
                       description: This object represents a customer of your organization.
                       type: object
-                      properties: *ref_6
+                      properties: *ref_8
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_8
+                    properties: *ref_10
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_9
+                    properties: *ref_11
         '401':
           description: Unauthorized
           content:
@@ -2053,7 +2084,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
     post:
       tags:
         - Customers
@@ -2071,9 +2102,11 @@ paths:
             example:
               name: Pedro Lombardo
               email: pedrolombardo@email.com
-              gateway_identifier: '001234'
+              gateway_identifier: 1234
               identification_type: DNI
-              identification_number: 237767265
+              identification_number: '237767265'
+              metadata:
+                some: value
             schema:
               additionalProperties: false
               type: object
@@ -2087,21 +2120,30 @@ paths:
                   type: string
                   example: asd@asd.com
                 gateway_identifier:
-                  type: string
+                  description: The customer's reference for bank account statements.
+                  type: integer
+                  format: int32
+                  example: 383473
                 identification_type:
-                  type: string
+                  description: Customer's Document type.
+                  oneOf: *ref_3
+                  example: DNI
                 identification_number:
-                  type: number
+                  description: Customer's Document ID number.
+                  oneOf: *ref_2
+                  example: 15.555.324
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
-                  description: >-
+                  description: >
                     Set of [key-value pairs](#section/Metadata) that you can
-                    attach to an object. This can be useful for storing
-                    additional information about the object in a structured
-                    format. Individual keys can be unset by posting an empty
-                    value to them. All keys can be unset by posting an empty
-                    value to `metadata`.
+                    attach
+
+                    to an object. This can be useful for storing additional
+
+                    information about the object in a structured format.
+
+                    All keys can be unset by posting `null` value to `metadata`.
         required: true
       responses:
         '201':
@@ -2114,7 +2156,7 @@ paths:
                     type: object
                     title: Customer
                     description: This object represents a customer of your organization.
-                    properties: *ref_6
+                    properties: *ref_8
         '422':
           description: Unprocessable Entity
           content:
@@ -2150,7 +2192,7 @@ paths:
                     type: object
                     title: Customer
                     description: This object represents a customer of your organization.
-                    properties: *ref_6
+                    properties: *ref_8
         '404':
           description: Object not found
           content:
@@ -2161,7 +2203,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_11
+                    properties: *ref_13
     put:
       tags:
         - Customers
@@ -2208,13 +2250,15 @@ paths:
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
-                  description: >-
+                  description: >
                     Set of [key-value pairs](#section/Metadata) that you can
-                    attach to an object. This can be useful for storing
-                    additional information about the object in a structured
-                    format. Individual keys can be unset by posting an empty
-                    value to them. All keys can be unset by posting an empty
-                    value to `metadata`.
+                    attach
+
+                    to an object. This can be useful for storing additional
+
+                    information about the object in a structured format.
+
+                    All keys can be unset by posting `null` value to `metadata`.
         required: true
       responses:
         '200':
@@ -2227,7 +2271,7 @@ paths:
                     type: object
                     title: Customer
                     description: This object represents a customer of your organization.
-                    properties: *ref_6
+                    properties: *ref_8
         '404':
           description: Object not found
           content:
@@ -2238,7 +2282,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_11
+                    properties: *ref_13
         '422':
           description: Unprocessable Entity
           content:
@@ -2280,7 +2324,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_11
+                    properties: *ref_13
   /v1/customers/{id}/actions/restore:
     post:
       tags:
@@ -2313,7 +2357,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_11
+                    properties: *ref_13
   /v1/events:
     get:
       tags:
@@ -2374,17 +2418,17 @@ paths:
                       title: Event
                       description: This object represents an event on your account.
                       type: object
-                      properties: *ref_12
+                      properties: *ref_14
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_8
+                    properties: *ref_10
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_9
+                    properties: *ref_11
         '401':
           description: Unauthorized
           content:
@@ -2395,7 +2439,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
   /v1/imports:
     get:
       tags:
@@ -2482,7 +2526,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
     post:
       tags:
         - Imports
@@ -2521,13 +2565,15 @@ paths:
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
-                  description: >-
+                  description: >
                     Set of [key-value pairs](#section/Metadata) that you can
-                    attach to an object. This can be useful for storing
-                    additional information about the object in a structured
-                    format. Individual keys can be unset by posting an empty
-                    value to them. All keys can be unset by posting an empty
-                    value to `metadata`.
+                    attach
+
+                    to an object. This can be useful for storing additional
+
+                    information about the object in a structured format.
+
+                    All keys can be unset by posting `null` value to `metadata`.
         required: true
       responses:
         '201':
@@ -2540,7 +2586,7 @@ paths:
                     type: object
                     title: Import
                     description: This object represents an import of your account.
-                    properties: *ref_13
+                    properties: *ref_15
         '422':
           description: Unprocessable Entity
           content:
@@ -2576,7 +2622,7 @@ paths:
                     type: object
                     title: Import
                     description: This object represents an import of your account.
-                    properties: *ref_13
+                    properties: *ref_15
         '404':
           description: Object not found
           content:
@@ -2587,12 +2633,13 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_11
+                    properties: *ref_13
   /v1/imports/{id}/rows:
     get:
       tags:
         - Imports
       summary: List Import Rows
+      description: List Import Rows.
       operationId: ImportsListImportRows
       parameters:
         - name: id
@@ -2607,13 +2654,13 @@ paths:
           description: Cursor value to paginate response.
           schema:
             type: number
-          example: '10'
+          example: 1
         - name: limit
           in: query
           description: Number of records to return.
           schema:
             type: number
-          example: '1'
+          example: 20
         - name: filter
           in: query
           description: |
@@ -2637,7 +2684,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
   /v1/links:
     get:
       tags:
@@ -2685,17 +2732,17 @@ paths:
                         This object represents a public link of your
                         organization.
                       type: object
-                      properties: *ref_14
+                      properties: *ref_16
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_8
+                    properties: *ref_10
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_9
+                    properties: *ref_11
         '401':
           description: Unauthorized
           content:
@@ -2706,7 +2753,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
     post:
       tags:
         - Links
@@ -2724,7 +2771,7 @@ paths:
                     type: object
                     title: Link
                     description: This object represents a public link of your organization.
-                    properties: *ref_14
+                    properties: *ref_16
         '401':
           description: Unauthorized
           content:
@@ -2735,7 +2782,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
   /v1/links/{id}:
     get:
       tags:
@@ -2762,7 +2809,7 @@ paths:
                     type: object
                     title: Link
                     description: This object represents a public link of your organization.
-                    properties: *ref_14
+                    properties: *ref_16
         '401':
           description: Unauthorized
           content:
@@ -2773,7 +2820,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
     put:
       tags:
         - Links
@@ -2799,7 +2846,7 @@ paths:
                     type: object
                     title: Link
                     description: This object represents a public link of your organization.
-                    properties: *ref_14
+                    properties: *ref_16
         '401':
           description: Unauthorized
           content:
@@ -2810,7 +2857,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
         '422':
           description: Unprocessable Entity
           content:
@@ -2856,17 +2903,17 @@ paths:
                       title: Mandate
                       description: This object represents a mandate of your organization.
                       type: object
-                      properties: *ref_15
+                      properties: *ref_17
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_8
+                    properties: *ref_10
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_9
+                    properties: *ref_11
         '401':
           description: Unauthorized
           content:
@@ -2877,7 +2924,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
     post:
       tags:
         - Mandates
@@ -2943,7 +2990,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
   /v1/mandates/{id}:
     get:
       tags:
@@ -2970,7 +3017,7 @@ paths:
                     type: object
                     title: Mandate
                     description: This object represents a mandate of your organization.
-                    properties: *ref_15
+                    properties: *ref_17
         '404':
           description: Object not found
           content:
@@ -2981,7 +3028,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_11
+                    properties: *ref_13
   /v1/mandates/{id}/actions/revoke:
     post:
       tags:
@@ -3013,7 +3060,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
   /v1/mandates/{id}/actions/restore:
     post:
       tags:
@@ -3043,7 +3090,180 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
+                    properties: *ref_12
+  /v1/payment_methods:
+    get:
+      tags:
+        - Payment Methods
+      summary: List all payment methods
+      description: Returns a list of payment methods.
+      operationId: PaymentsMethodsGetPaymentMethods
+      parameters:
+        - name: page
+          in: query
+          required: false
+          description: Cursor value to paginate response.
+          schema:
+            type: number
+          example: 1
+        - name: limit
+          in: query
+          required: false
+          description: Number of records to return.
+          schema:
+            type: number
+          example: 20
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                required:
+                  - data
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties: *ref_9
+                  links:
+                    title: Response Meta
+                    description: Pagination metadata
+                    type: object
                     properties: *ref_10
+                  meta:
+                    title: Response Meta
+                    description: Pagination metadata
+                    type: object
+                    properties: *ref_11
+              example:
+                data:
+                  - type: card
+                    card:
+                      bank: Santander
+                      brand: visa-debito
+                      fingerprint: 782uy3h1983gy7sl
+                      last_four_digits: '1481'
+                    created_at: 2019-01-28T15:27:29-0300
+                    id: PMVdYaYwkqOw
+                    livemode: false
+                    object: payment_method
+                    updated_at: 2019-05-23T20:30:01-0300
+                links:
+                  first: https://api.tucuota.com/v1/payment_methods?page=1
+                  last: https://tucuota.com/api/payment_methods?page=2
+                  next: https://api.tucuota.com/v1/payment_methods?page=2
+                meta:
+                  current_page: 1
+                  from: 1
+                  last_page: 2
+                  path: https://api.tucuota.com/v1/payment_methods
+                  per_page: 25
+                  to: 25
+                  total: 34
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_12
+    post:
+      tags:
+        - Payment Methods
+      summary: Create a payment method
+      description: Create a payment method
+      operationId: PaymentsMethodsCreatePaymentMethod
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                card:
+                  type: object
+                  properties:
+                    number:
+                      type: string
+                      description: Credit's card number.
+                    expiration_year:
+                      type: number
+                      description: Credit's card expiration year.
+                    expiration_month:
+                      type: number
+                      description: Credit's card expiration month.
+              example:
+                type: card
+                card:
+                  number: '4242424242424242'
+                  expiration_year: 5
+                  expiration_month: 2027
+        required: false
+      responses:
+        '201':
+          description: Payment Method Created.
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    properties: *ref_9
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_12
+  /v1/payment_methods/{id}:
+    get:
+      tags:
+        - Payment Methods
+      summary: Retrieve a payment method
+      description: Retrieve a payment method.
+      operationId: PaymentMethodsGetPaymentMethod
+      parameters:
+        - name: id
+          in: path
+          description: Payment method ID.
+          required: true
+          schema:
+            type: string
+          example: PMVA0W8y1aQO
+      responses:
+        '200':
+          description: Retrieve a payment method.
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    properties: *ref_9
+        '404':
+          description: Payment not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Not Found
+                    description: Not Found response
+                    properties: *ref_13
   /v1/payments:
     get:
       tags:
@@ -3104,17 +3324,17 @@ paths:
                         This object represents a subscription of your
                         organization.
                       type: object
-                      properties: *ref_16
+                      properties: *ref_18
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_8
+                    properties: *ref_10
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_9
+                    properties: *ref_11
         '401':
           description: Unauthorized
           content:
@@ -3125,7 +3345,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
     post:
       tags:
         - Payments
@@ -3182,13 +3402,15 @@ paths:
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
-                  description: >-
+                  description: >
                     Set of [key-value pairs](#section/Metadata) that you can
-                    attach to an object. This can be useful for storing
-                    additional information about the object in a structured
-                    format. Individual keys can be unset by posting an empty
-                    value to them. All keys can be unset by posting an empty
-                    value to `metadata`.
+                    attach
+
+                    to an object. This can be useful for storing additional
+
+                    information about the object in a structured format.
+
+                    All keys can be unset by posting `null` value to `metadata`.
               example:
                 amount: 100
                 description: Unique payment
@@ -3215,7 +3437,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
   /v1/payments/{id}:
     get:
       tags:
@@ -3250,7 +3472,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_11
+                    properties: *ref_13
     put:
       tags:
         - Payments
@@ -3297,13 +3519,15 @@ paths:
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
-                  description: >-
+                  description: >
                     Set of [key-value pairs](#section/Metadata) that you can
-                    attach to an object. This can be useful for storing
-                    additional information about the object in a structured
-                    format. Individual keys can be unset by posting an empty
-                    value to them. All keys can be unset by posting an empty
-                    value to `metadata`.
+                    attach
+
+                    to an object. This can be useful for storing additional
+
+                    information about the object in a structured format.
+
+                    All keys can be unset by posting `null` value to `metadata`.
               example:
                 description: New payment title
         required: true
@@ -3326,7 +3550,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
   /v1/payments/{id}/actions/cancel:
     post:
       tags:
@@ -3359,7 +3583,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
   /v1/payments/{id}/actions/retry:
     post:
       tags:
@@ -3392,14 +3616,14 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
   /v1/sessions:
     post:
       tags:
         - Sessions
       summary: Create a sesssion
       description: Create a session
-      operationId: PostSession
+      operationId: SessionsCreateSession
       x-codegen-request-body-name: body
       requestBody:
         content:
@@ -3489,13 +3713,15 @@ paths:
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
-                  description: >-
+                  description: >
                     Set of [key-value pairs](#section/Metadata) that you can
-                    attach to an object. This can be useful for storing
-                    additional information about the object in a structured
-                    format. Individual keys can be unset by posting an empty
-                    value to them. All keys can be unset by posting an empty
-                    value to `metadata`.
+                    attach
+
+                    to an object. This can be useful for storing additional
+
+                    information about the object in a structured format.
+
+                    All keys can be unset by posting `null` value to `metadata`.
                 count:
                   type: integer
                   description: >
@@ -3530,7 +3756,7 @@ paths:
                     type: object
                     title: Session
                     description: This object represents a session of your organization.
-                    properties: *ref_17
+                    properties: *ref_19
         '422':
           description: Unprocessable Entity
           content:
@@ -3566,7 +3792,7 @@ paths:
                     type: object
                     title: Session
                     description: This object represents a session of your organization.
-                    properties: *ref_17
+                    properties: *ref_19
         '404':
           description: Session not found
           content:
@@ -3579,7 +3805,7 @@ paths:
         - Subscriptions
       summary: List all subscriptions
       description: By default newest subscriptions will be first on the list.
-      operationId: GetSubscriptions
+      operationId: SubscriptionsGetSubscriptions
       responses:
         '200':
           description: OK
@@ -3598,17 +3824,17 @@ paths:
                         This object represents a subscription of your
                         organization.
                       type: object
-                      properties: *ref_16
+                      properties: *ref_18
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_8
+                    properties: *ref_10
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_9
+                    properties: *ref_11
         '401':
           description: Unauthorized
           content:
@@ -3619,13 +3845,13 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
     post:
       tags:
         - Subscriptions
       summary: Create a subscription
       description: Create a subscription
-      operationId: SubscriptionsPostSubscription
+      operationId: SubscriptionsCreateSubscription
       requestBody:
         content:
           application/json:
@@ -3699,13 +3925,15 @@ paths:
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
-                  description: >-
+                  description: >
                     Set of [key-value pairs](#section/Metadata) that you can
-                    attach to an object. This can be useful for storing
-                    additional information about the object in a structured
-                    format. Individual keys can be unset by posting an empty
-                    value to them. All keys can be unset by posting an empty
-                    value to `metadata`.
+                    attach
+
+                    to an object. This can be useful for storing additional
+
+                    information about the object in a structured format.
+
+                    All keys can be unset by posting `null` value to `metadata`.
               example:
                 amount: 100
                 description: Some subscription description
@@ -3729,7 +3957,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_16
+                    properties: *ref_18
         '422':
           description: Unprocessable Entity
           content:
@@ -3767,7 +3995,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_16
+                    properties: *ref_18
         '404':
           description: Object not found
           content:
@@ -3778,7 +4006,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_11
+                    properties: *ref_13
     put:
       tags:
         - Subscriptions
@@ -3866,13 +4094,15 @@ paths:
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
-                  description: >-
+                  description: >
                     Set of [key-value pairs](#section/Metadata) that you can
-                    attach to an object. This can be useful for storing
-                    additional information about the object in a structured
-                    format. Individual keys can be unset by posting an empty
-                    value to them. All keys can be unset by posting an empty
-                    value to `metadata`.
+                    attach
+
+                    to an object. This can be useful for storing additional
+
+                    information about the object in a structured format.
+
+                    All keys can be unset by posting `null` value to `metadata`.
               example:
                 amount: 100
                 description: Some subscription description
@@ -3896,7 +4126,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_16
+                    properties: *ref_18
         '422':
           description: Unprocessable Entity
           content:
@@ -3934,7 +4164,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_16
+                    properties: *ref_18
         '422':
           description: Unprocessable Entity
           content:
@@ -3969,7 +4199,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_16
+                    properties: *ref_18
         '422':
           description: Unprocessable Entity
           content:
@@ -4011,7 +4241,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_16
+                    properties: *ref_18
         '422':
           description: Unprocessable Entity
           content:
@@ -4024,7 +4254,7 @@ paths:
         - Webhooks
       summary: List all webhooks
       description: Returns a list of your webhooks.
-      operationId: GetWebhooks
+      operationId: WebhooksGetWebhooks
       parameters:
         - name: page
           in: query
@@ -4063,18 +4293,18 @@ paths:
                         which provides a user interface for registering and
                         testing your webhook endpoints.
                       type: object
-                      properties: *ref_18
-                      example: *ref_19
+                      properties: *ref_20
+                      example: *ref_21
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_8
+                    properties: *ref_10
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_9
+                    properties: *ref_11
         '401':
           description: Unauthorized
           content:
@@ -4085,12 +4315,13 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
     post:
       tags:
         - Webhooks
       summary: Create a webhook
-      operationId: CreateWebhook
+      description: Create a webhook.
+      operationId: WebhooksCreateWebhook
       x-codegen-request-body-name: body
       requestBody:
         content:
@@ -4122,13 +4353,15 @@ paths:
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
-                  description: >-
+                  description: >
                     Set of [key-value pairs](#section/Metadata) that you can
-                    attach to an object. This can be useful for storing
-                    additional information about the object in a structured
-                    format. Individual keys can be unset by posting an empty
-                    value to them. All keys can be unset by posting an empty
-                    value to `metadata`.
+                    attach
+
+                    to an object. This can be useful for storing additional
+
+                    information about the object in a structured format.
+
+                    All keys can be unset by posting `null` value to `metadata`.
                 url:
                   description: The URL of the webhook endpoint.
                   type: string
@@ -4161,8 +4394,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_18
-                    example: *ref_19
+                    properties: *ref_20
+                    example: *ref_21
         '422':
           description: Unprocessable Entity
           content:
@@ -4178,7 +4411,7 @@ paths:
         - Webhooks
       summary: Retrieve a webhook
       description: Retrieves a webhook.
-      operationId: GetWebhook
+      operationId: WebhooksGetWebhook
       parameters:
         - name: id
           in: path
@@ -4211,8 +4444,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_18
-                    example: *ref_19
+                    properties: *ref_20
+                    example: *ref_21
           description: Successful response.
         '404':
           content:
@@ -4221,14 +4454,14 @@ paths:
                 title: Not Found
                 description: Not Found response
                 type: object
-                properties: *ref_11
+                properties: *ref_13
           description: Not Found
     put:
       tags:
         - Webhooks
       summary: Update a webhook
       description: Updates a webhook.
-      operationId: PutWebhooks
+      operationId: WebhooksUpdateWebhook
       parameters:
         - name: id
           in: path
@@ -4274,8 +4507,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_18
-                    example: *ref_19
+                    properties: *ref_20
+                    example: *ref_21
         '422':
           description: Unprocessable Entity
           content:
@@ -4290,7 +4523,7 @@ paths:
         - Webhooks
       summary: Delete a webhook
       description: Delete a webhook.
-      operationId: DeleteWebhok
+      operationId: WebhooksDeleteWebhook
       parameters:
         - name: id
           in: path
@@ -4312,4 +4545,4 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_10
+                    properties: *ref_12
