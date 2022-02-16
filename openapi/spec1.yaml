@@ -732,24 +732,18 @@ components:
         Time at which the event was delivered. Formatting follows
         [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
     event:
-      required: &ref_12
-        - created_at
-        - data
-        - delivered_at
-        - id
-        - livemode
-        - object
-        - resource
-        - resource_id
-        - type
+      title: Event
+      description: This object represents an event on your account.
       type: object
-      properties: &ref_13
+      properties: &ref_12
         id:
           description: Unique identifier for the object.
           maxLength: 5000
           type: string
         object:
           type: string
+          enum:
+            - event
         created_at:
           type: string
           format: date-time
@@ -780,12 +774,49 @@ components:
         resource:
           type: string
           example: customer
+          enum:
+            - customer
+            - gateway
+            - import
+            - mandate
+            - payment
+            - payment_method
+            - subscription
+          description: Resource attached to the event.
         resource_id:
           type: string
           example: CS12312d1d1dl
+          description: ID for the resource attached to the event.
         type:
           type: string
+          description: Event type [asd](https://google.com){:target="_blank"}.
           example: customer.created
+          enum:
+            - customer.created
+            - customer.disabled
+            - customer.restored
+            - customer.updated
+            - gateway.created
+            - gateway.disabled
+            - gateway.enabled
+            - gateway.updated
+            - import.processed
+            - mandate.created
+            - mandate.restored
+            - mandate.revoked
+            - payment.cancelled
+            - payment.created
+            - payment.retrying
+            - payment.updated
+            - payment_method.automatically_updated
+            - payment_method.created
+            - payment_method.updated
+            - subscription.cancelled
+            - subscription.created
+            - subscription.finished
+            - subscription.paused
+            - subscription.resumed
+            - subscription.updated
     cancelled_at:
       type: string
       format: date-time
@@ -818,7 +849,7 @@ components:
       title: Import
       description: This object represents an import of your account.
       type: object
-      properties: &ref_14
+      properties: &ref_13
         id:
           example: IM129038120h
           description: Unique identifier for the object.
@@ -900,7 +931,7 @@ components:
       title: Link
       description: This object represents a public link of your organization.
       type: object
-      properties: &ref_15
+      properties: &ref_14
         id:
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           description: Unique identifier for the object.
@@ -997,7 +1028,7 @@ components:
       title: Mandate
       description: This object represents a mandate of your organization.
       type: object
-      properties: &ref_16
+      properties: &ref_15
         id:
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           description: Unique identifier for the object.
@@ -1050,7 +1081,7 @@ components:
       title: Subscription
       description: This object represents a subscription of your organization.
       type: object
-      properties: &ref_17
+      properties: &ref_16
         created_at:
           type: string
           format: date-time
@@ -1128,7 +1159,7 @@ components:
       title: Session
       description: This object represents a session of your organization.
       type: object
-      properties: &ref_18
+      properties: &ref_17
         amount:
           type: number
           description: Amount to be collected
@@ -1261,7 +1292,7 @@ components:
         dashboard](https://dashboard.tucuota.com/webhooks), which provides a
         user interface for registering and testing your webhook endpoints.
       type: object
-      properties: &ref_19
+      properties: &ref_18
         id:
           description: Unique identifier for the object.
           maxLength: 5000
@@ -1330,7 +1361,7 @@ components:
           description: >-
             Time at which the object was last updated. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-      example: &ref_20
+      example: &ref_19
         created_at: '2022-02-11T23:19:22-03:00'
         enabled: true
         enabled_events:
@@ -2342,9 +2373,10 @@ paths:
                   data:
                     type: array
                     items:
-                      required: *ref_12
+                      title: Event
+                      description: This object represents an event on your account.
                       type: object
-                      properties: *ref_13
+                      properties: *ref_12
                   links:
                     title: Response Meta
                     description: Pagination metadata
@@ -2511,7 +2543,7 @@ paths:
                     type: object
                     title: Import
                     description: This object represents an import of your account.
-                    properties: *ref_14
+                    properties: *ref_13
         '422':
           description: Unprocessable Entity
           content:
@@ -2547,7 +2579,7 @@ paths:
                     type: object
                     title: Import
                     description: This object represents an import of your account.
-                    properties: *ref_14
+                    properties: *ref_13
         '404':
           description: Object not found
           content:
@@ -2656,7 +2688,7 @@ paths:
                         This object represents a public link of your
                         organization.
                       type: object
-                      properties: *ref_15
+                      properties: *ref_14
                   links:
                     title: Response Meta
                     description: Pagination metadata
@@ -2695,7 +2727,7 @@ paths:
                     type: object
                     title: Link
                     description: This object represents a public link of your organization.
-                    properties: *ref_15
+                    properties: *ref_14
         '401':
           description: Unauthorized
           content:
@@ -2733,7 +2765,7 @@ paths:
                     type: object
                     title: Link
                     description: This object represents a public link of your organization.
-                    properties: *ref_15
+                    properties: *ref_14
         '401':
           description: Unauthorized
           content:
@@ -2770,7 +2802,7 @@ paths:
                     type: object
                     title: Link
                     description: This object represents a public link of your organization.
-                    properties: *ref_15
+                    properties: *ref_14
         '401':
           description: Unauthorized
           content:
@@ -2827,7 +2859,7 @@ paths:
                       title: Mandate
                       description: This object represents a mandate of your organization.
                       type: object
-                      properties: *ref_16
+                      properties: *ref_15
                   links:
                     title: Response Meta
                     description: Pagination metadata
@@ -2941,7 +2973,7 @@ paths:
                     type: object
                     title: Mandate
                     description: This object represents a mandate of your organization.
-                    properties: *ref_16
+                    properties: *ref_15
         '404':
           description: Object not found
           content:
@@ -3075,7 +3107,7 @@ paths:
                         This object represents a subscription of your
                         organization.
                       type: object
-                      properties: *ref_17
+                      properties: *ref_16
                   links:
                     title: Response Meta
                     description: Pagination metadata
@@ -3504,7 +3536,7 @@ paths:
                     type: object
                     title: Session
                     description: This object represents a session of your organization.
-                    properties: *ref_18
+                    properties: *ref_17
         '422':
           description: Unprocessable Entity
           content:
@@ -3540,7 +3572,7 @@ paths:
                     type: object
                     title: Session
                     description: This object represents a session of your organization.
-                    properties: *ref_18
+                    properties: *ref_17
         '404':
           description: Session not found
           content:
@@ -3572,7 +3604,7 @@ paths:
                         This object represents a subscription of your
                         organization.
                       type: object
-                      properties: *ref_17
+                      properties: *ref_16
                   links:
                     title: Response Meta
                     description: Pagination metadata
@@ -3704,7 +3736,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_17
+                    properties: *ref_16
         '422':
           description: Unprocessable Entity
           content:
@@ -3742,7 +3774,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_17
+                    properties: *ref_16
         '404':
           description: Object not found
           content:
@@ -3872,7 +3904,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_17
+                    properties: *ref_16
         '422':
           description: Unprocessable Entity
           content:
@@ -3910,7 +3942,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_17
+                    properties: *ref_16
         '422':
           description: Unprocessable Entity
           content:
@@ -3945,7 +3977,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_17
+                    properties: *ref_16
         '422':
           description: Unprocessable Entity
           content:
@@ -3987,7 +4019,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_17
+                    properties: *ref_16
         '422':
           description: Unprocessable Entity
           content:
@@ -4039,8 +4071,8 @@ paths:
                         which provides a user interface for registering and
                         testing your webhook endpoints.
                       type: object
-                      properties: *ref_19
-                      example: *ref_20
+                      properties: *ref_18
+                      example: *ref_19
                   links:
                     title: Response Meta
                     description: Pagination metadata
@@ -4138,8 +4170,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_19
-                    example: *ref_20
+                    properties: *ref_18
+                    example: *ref_19
         '422':
           description: Unprocessable Entity
           content:
@@ -4188,8 +4220,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_19
-                    example: *ref_20
+                    properties: *ref_18
+                    example: *ref_19
           description: Successful response.
         '404':
           content:
@@ -4251,8 +4283,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_19
-                    example: *ref_20
+                    properties: *ref_18
+                    example: *ref_19
         '422':
           description: Unprocessable Entity
           content:

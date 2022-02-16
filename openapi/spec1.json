@@ -359,17 +359,8 @@
         "description": "Time at which the event was delivered. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
       },
       "event": {
-        "required": [
-          "created_at",
-          "data",
-          "delivered_at",
-          "id",
-          "livemode",
-          "object",
-          "resource",
-          "resource_id",
-          "type"
-        ],
+        "title": "Event",
+        "description": "This object represents an event on your account.",
         "type": "object",
         "properties": {
           "id": {
@@ -378,7 +369,10 @@
             "type": "string"
           },
           "object": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "event"
+            ]
           },
           "created_at": {
             "type": "string",
@@ -417,15 +411,54 @@
           },
           "resource": {
             "type": "string",
-            "example": "customer"
+            "example": "customer",
+            "enum": [
+              "customer",
+              "gateway",
+              "import",
+              "mandate",
+              "payment",
+              "payment_method",
+              "subscription"
+            ],
+            "description": "Resource attached to the event."
           },
           "resource_id": {
             "type": "string",
-            "example": "CS12312d1d1dl"
+            "example": "CS12312d1d1dl",
+            "description": "ID for the resource attached to the event."
           },
           "type": {
             "type": "string",
-            "example": "customer.created"
+            "description": "Event type [asd](https://google.com){:target=\"_blank\"}.",
+            "example": "customer.created",
+            "enum": [
+              "customer.created",
+              "customer.disabled",
+              "customer.restored",
+              "customer.updated",
+              "gateway.created",
+              "gateway.disabled",
+              "gateway.enabled",
+              "gateway.updated",
+              "import.processed",
+              "mandate.created",
+              "mandate.restored",
+              "mandate.revoked",
+              "payment.cancelled",
+              "payment.created",
+              "payment.retrying",
+              "payment.updated",
+              "payment_method.automatically_updated",
+              "payment_method.created",
+              "payment_method.updated",
+              "subscription.cancelled",
+              "subscription.created",
+              "subscription.finished",
+              "subscription.paused",
+              "subscription.resumed",
+              "subscription.updated"
+            ]
           }
         }
       },
@@ -3309,17 +3342,8 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "required": [
-                          "created_at",
-                          "data",
-                          "delivered_at",
-                          "id",
-                          "livemode",
-                          "object",
-                          "resource",
-                          "resource_id",
-                          "type"
-                        ],
+                        "title": "Event",
+                        "description": "This object represents an event on your account.",
                         "type": "object",
                         "properties": {
                           "id": {
@@ -3328,7 +3352,10 @@
                             "type": "string"
                           },
                           "object": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": [
+                              "event"
+                            ]
                           },
                           "created_at": {
                             "type": "string",
@@ -3367,15 +3394,54 @@
                           },
                           "resource": {
                             "type": "string",
-                            "example": "customer"
+                            "example": "customer",
+                            "enum": [
+                              "customer",
+                              "gateway",
+                              "import",
+                              "mandate",
+                              "payment",
+                              "payment_method",
+                              "subscription"
+                            ],
+                            "description": "Resource attached to the event."
                           },
                           "resource_id": {
                             "type": "string",
-                            "example": "CS12312d1d1dl"
+                            "example": "CS12312d1d1dl",
+                            "description": "ID for the resource attached to the event."
                           },
                           "type": {
                             "type": "string",
-                            "example": "customer.created"
+                            "description": "Event type [asd](https://google.com){:target=\"_blank\"}.",
+                            "example": "customer.created",
+                            "enum": [
+                              "customer.created",
+                              "customer.disabled",
+                              "customer.restored",
+                              "customer.updated",
+                              "gateway.created",
+                              "gateway.disabled",
+                              "gateway.enabled",
+                              "gateway.updated",
+                              "import.processed",
+                              "mandate.created",
+                              "mandate.restored",
+                              "mandate.revoked",
+                              "payment.cancelled",
+                              "payment.created",
+                              "payment.retrying",
+                              "payment.updated",
+                              "payment_method.automatically_updated",
+                              "payment_method.created",
+                              "payment_method.updated",
+                              "subscription.cancelled",
+                              "subscription.created",
+                              "subscription.finished",
+                              "subscription.paused",
+                              "subscription.resumed",
+                              "subscription.updated"
+                            ]
                           }
                         }
                       }
