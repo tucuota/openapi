@@ -3929,8 +3929,8 @@
         "tags": [
           "Imports"
         ],
-        "summary": "List",
-        "operationId": "GetImportsImportRows",
+        "summary": "List Import Rows",
+        "operationId": "ImportsListImportRows",
         "parameters": [
           {
             "name": "id",
@@ -3963,7 +3963,7 @@
           {
             "name": "filter",
             "in": "query",
-            "description": "\n**Validation**. _Example: valid_. Allows values: valid, invalid.\n",
+            "description": "**Validation**. _Example: valid_. Allows values: valid, invalid.\n",
             "schema": {
               "type": "string"
             }
@@ -4012,12 +4012,13 @@
         ],
         "summary": "List links",
         "description": "Returns a list of all your links.",
-        "operationId": "GetLinks",
+        "operationId": "LinksGetLinks",
         "parameters": [
           {
             "name": "page",
             "in": "query",
             "description": "Cursor value to paginate response.",
+            "required": false,
             "schema": {
               "type": "number"
             },
@@ -4027,6 +4028,7 @@
             "name": "limit",
             "in": "query",
             "description": "Number of records to return.",
+            "required": false,
             "schema": {
               "type": "number"
             },
@@ -4036,6 +4038,7 @@
             "name": "search",
             "in": "query",
             "description": "Search.",
+            "required": false,
             "schema": {
               "type": "string"
             },
@@ -4218,11 +4221,83 @@
         ],
         "summary": "Create a link.",
         "description": "Create a link.",
-        "operationId": "LinksPostLink",
+        "operationId": "LinksCreateLink",
         "responses": {
-          "200": {
+          "201": {
             "description": "OK",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "title": "Link",
+                      "description": "This object represents a public link of your organization.",
+                      "properties": {
+                        "id": {
+                          "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc",
+                          "description": "Unique identifier for the object.",
+                          "maxLength": 5000,
+                          "type": "string"
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean"
+                        },
+                        "metadata": {
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "anyOf": [
+                            {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object"
+                            },
+                            {
+                              "enum": [
+                                ""
+                              ],
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "description": "Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`."
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "deleted_at": {
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -4261,12 +4336,12 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Gateway ID.",
+            "description": "Link ID.",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "GWd1e9nQwK7v"
+            "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
           }
         ],
         "responses": {
@@ -4274,20 +4349,73 @@
             "description": "OK",
             "content": {
               "application/json": {
-                "example": {
-                  "data": {
-                    "id": "GWd1e9nQwK7v",
-                    "object": "gateway",
-                    "gatewaykind": "naranja",
-                    "number": 10012341234,
-                    "username": "fernandodelperal@gmail.com",
-                    "disabled": false,
-                    "brand_list": [
-                      "naranja"
-                    ],
-                    "livemode": false,
-                    "updated_at": "2019-07-16T22:41:43-0300",
-                    "created_at": "2019-07-16T22:41:43-0300"
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "title": "Link",
+                      "description": "This object represents a public link of your organization.",
+                      "properties": {
+                        "id": {
+                          "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc",
+                          "description": "Unique identifier for the object.",
+                          "maxLength": 5000,
+                          "type": "string"
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean"
+                        },
+                        "metadata": {
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "anyOf": [
+                            {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object"
+                            },
+                            {
+                              "enum": [
+                                ""
+                              ],
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "description": "Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`."
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "deleted_at": {
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -4328,18 +4456,90 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Gateway ID.",
+            "description": "Link ID.",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "GWd1e9nQwK7v"
+            "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "title": "Link",
+                      "description": "This object represents a public link of your organization.",
+                      "properties": {
+                        "id": {
+                          "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc",
+                          "description": "Unique identifier for the object.",
+                          "maxLength": 5000,
+                          "type": "string"
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean"
+                        },
+                        "metadata": {
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "anyOf": [
+                            {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object"
+                            },
+                            {
+                              "enum": [
+                                ""
+                              ],
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "description": "Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`."
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "deleted_at": {
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -4362,50 +4562,18 @@
                 }
               }
             }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Links"
-        ],
-        "summary": "Update",
-        "operationId": "Update",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Gateway ID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "GWd1e9nQwK7v"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {}
           },
-          "401": {
-            "description": "Unauthorized",
+          "422": {
+            "description": "Unprocessable Entity",
             "content": {
               "application/json": {
-                "schema": {
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "title": "Unauthorized",
-                      "description": "Unauthorized response",
-                      "properties": {
-                        "message": {
-                          "type": "string",
-                          "example": "Unauthorized"
-                        }
-                      }
-                    }
-                  }
+                "example": {
+                  "errors": {
+                    "title": [
+                      "title is required."
+                    ]
+                  },
+                  "message": "The given data was invalid."
                 }
               }
             }
@@ -6834,7 +7002,7 @@
         "tags": [
           "Subscriptions"
         ],
-        "summary": "List all subscriptioms",
+        "summary": "List all subscriptions",
         "description": "By default newest subscriptions will be first on the list.",
         "operationId": "GetSubscriptions",
         "responses": {
@@ -8525,7 +8693,8 @@
         "tags": [
           "Subscriptions"
         ],
-        "summary": "Pause",
+        "summary": "Pause a subscription",
+        "description": "Pause a subscription.",
         "operationId": "SubscriptionsPauseSubscription",
         "parameters": [
           {
@@ -8878,7 +9047,8 @@
         "tags": [
           "Subscriptions"
         ],
-        "summary": "Resume",
+        "summary": "Resume a subscription",
+        "description": "Resume a subscription.",
         "operationId": "SubscriptionsResumeSubscription",
         "parameters": [
           {
@@ -9236,7 +9406,7 @@
         "tags": [
           "Subscriptions"
         ],
-        "summary": "Cancel",
+        "summary": "Cancel a subcription",
         "description": "This action cancels and archive the subscription. Also cancel the payments\nrelated to it.\n",
         "operationId": "SubscriptionsCancelSubscription",
         "parameters": [

@@ -2564,8 +2564,8 @@ paths:
               .asString();
   '/v1/imports/{id}/rows':
     get:
-      operationId: GetImportsImportRows
-      summary: List
+      operationId: ImportsListImportRows
+      summary: List Import Rows
       parameters:
         - name: id
           in: path
@@ -2589,7 +2589,6 @@ paths:
         - name: filter
           in: query
           description: |
-
             **Validation**. _Example: valid_. Allows values: valid, invalid.
           schema:
             type: string
@@ -2719,25 +2718,28 @@ paths:
               .asString();
   /v1/links:
     get:
-      operationId: GetLinks
+      operationId: LinksGetLinks
       summary: List links
       description: Returns a list of all your links.
       parameters:
         - name: page
           in: query
           description: Cursor value to paginate response.
+          required: false
           schema:
             type: number
           example: '10'
         - name: limit
           in: query
           description: Number of records to return.
+          required: false
           schema:
             type: number
           example: '1'
         - name: search
           in: query
           description: Search.
+          required: false
           schema:
             type: string
           example: foo@bar.com
@@ -2960,13 +2962,58 @@ paths:
               .header("Authorization", "Bearer sk_live_...")
               .asString();
     post:
-      operationId: LinksPostLink
+      operationId: LinksCreateLink
       summary: Create a link.
       description: Create a link.
       responses:
-        '200':
+        '201':
           description: OK
-          content: {}
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: This object represents a public link of your organization.
+                    type: object
+                    properties:
+                      id:
+                        description: Unique identifier for the object.
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
+                        maxLength: 5000
+                      livemode:
+                        description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+                        type: boolean
+                      metadata:
+                        description: 'Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.'
+                        example:
+                          some: metadata
+                        anyOf:
+                          - additionalProperties:
+                              type: string
+                            type: object
+                          - enum:
+                              - ''
+                            type: string
+                          - type: 'null'
+                      created_at:
+                        description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      updated_at:
+                        description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      deleted_at:
+                        description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                        oneOf:
+                          - type: 'null'
+                          - type: string
+                    title: Link
         '401':
           description: Unauthorized
           content:
@@ -3081,29 +3128,60 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Gateway ID.
+          description: Link ID.
           required: true
           schema:
             type: string
-          example: GWd1e9nQwK7v
+          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
       responses:
         '200':
           description: OK
           content:
             application/json:
-              example:
-                data:
-                  id: GWd1e9nQwK7v
-                  object: gateway
-                  gatewaykind: naranja
-                  number: 10012341234
-                  username: fernandodelperal@gmail.com
-                  disabled: false
-                  brand_list:
-                    - naranja
-                  livemode: false
-                  updated_at: '2019-07-16T22:41:43-0300'
-                  created_at: '2019-07-16T22:41:43-0300'
+              schema:
+                properties:
+                  data:
+                    description: This object represents a public link of your organization.
+                    type: object
+                    properties:
+                      id:
+                        description: Unique identifier for the object.
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
+                        maxLength: 5000
+                      livemode:
+                        description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+                        type: boolean
+                      metadata:
+                        description: 'Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.'
+                        example:
+                          some: metadata
+                        anyOf:
+                          - additionalProperties:
+                              type: string
+                            type: object
+                          - enum:
+                              - ''
+                            type: string
+                          - type: 'null'
+                      created_at:
+                        description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      updated_at:
+                        description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      deleted_at:
+                        description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                        oneOf:
+                          - type: 'null'
+                          - type: string
+                    title: Link
         '401':
           description: Unauthorized
           content:
@@ -3124,11 +3202,11 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/links/GWd1e9nQwK7v \
+              --url https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Shell + Httpie
           source: |-
-            http GET https://api.tucuota.com/v1/links/GWd1e9nQwK7v \
+            http GET https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc \
               Authorization:'Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -3136,7 +3214,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/links/GWd1e9nQwK7v',
+              url: 'https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -3152,7 +3230,7 @@ paths:
             $curl = curl_init();
 
             curl_setopt_array($curl, [
-              CURLOPT_URL => "https://api.tucuota.com/v1/links/GWd1e9nQwK7v",
+              CURLOPT_URL => "https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc",
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => "",
               CURLOPT_MAXREDIRS => 10,
@@ -3181,7 +3259,7 @@ paths:
             $client = new http\Client;
             $request = new http\Client\Request;
 
-            $request->setRequestUrl('https://api.tucuota.com/v1/links/GWd1e9nQwK7v');
+            $request->setRequestUrl('https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc');
             $request->setRequestMethod('GET');
             $request->setHeaders([
               'Authorization' => 'Bearer sk_live_...'
@@ -3199,7 +3277,7 @@ paths:
 
             headers = { 'Authorization': "Bearer sk_live_..." }
 
-            conn.request("GET", "/v1/links/GWd1e9nQwK7v", headers=headers)
+            conn.request("GET", "/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc", headers=headers)
 
             res = conn.getresponse()
             data = res.read()
@@ -3207,7 +3285,7 @@ paths:
             print(data.decode("utf-8"))
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/links/GWd1e9nQwK7v")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
     put:
@@ -3217,15 +3295,60 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Gateway ID.
+          description: Link ID.
           required: true
           schema:
             type: string
-          example: GWd1e9nQwK7v
+          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
       responses:
         '200':
           description: OK
-          content: {}
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: This object represents a public link of your organization.
+                    type: object
+                    properties:
+                      id:
+                        description: Unique identifier for the object.
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
+                        maxLength: 5000
+                      livemode:
+                        description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+                        type: boolean
+                      metadata:
+                        description: 'Set of [key-value pairs](http://127.0.0.1:8080/#section/Metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.'
+                        example:
+                          some: metadata
+                        anyOf:
+                          - additionalProperties:
+                              type: string
+                            type: object
+                          - enum:
+                              - ''
+                            type: string
+                          - type: 'null'
+                      created_at:
+                        description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      updated_at:
+                        description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      deleted_at:
+                        description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                        oneOf:
+                          - type: 'null'
+                          - type: string
+                    title: Link
         '401':
           description: Unauthorized
           content:
@@ -3240,17 +3363,26 @@ paths:
                         type: string
                         example: Unauthorized
                     title: Unauthorized
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              example:
+                errors:
+                  title:
+                    - title is required.
+                message: The given data was invalid.
       tags:
         - Links
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
             curl --request PUT \
-              --url https://api.tucuota.com/v1/links/GWd1e9nQwK7v \
+              --url https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Shell + Httpie
           source: |-
-            http PUT https://api.tucuota.com/v1/links/GWd1e9nQwK7v \
+            http PUT https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc \
               Authorization:'Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -3258,7 +3390,7 @@ paths:
 
             const options = {
               method: 'PUT',
-              url: 'https://api.tucuota.com/v1/links/GWd1e9nQwK7v',
+              url: 'https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -3274,7 +3406,7 @@ paths:
             $curl = curl_init();
 
             curl_setopt_array($curl, [
-              CURLOPT_URL => "https://api.tucuota.com/v1/links/GWd1e9nQwK7v",
+              CURLOPT_URL => "https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc",
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => "",
               CURLOPT_MAXREDIRS => 10,
@@ -3303,7 +3435,7 @@ paths:
             $client = new http\Client;
             $request = new http\Client\Request;
 
-            $request->setRequestUrl('https://api.tucuota.com/v1/links/GWd1e9nQwK7v');
+            $request->setRequestUrl('https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc');
             $request->setRequestMethod('PUT');
             $request->setHeaders([
               'Authorization' => 'Bearer sk_live_...'
@@ -3321,7 +3453,7 @@ paths:
 
             headers = { 'Authorization': "Bearer sk_live_..." }
 
-            conn.request("PUT", "/v1/links/GWd1e9nQwK7v", headers=headers)
+            conn.request("PUT", "/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc", headers=headers)
 
             res = conn.getresponse()
             data = res.read()
@@ -3329,128 +3461,7 @@ paths:
             print(data.decode("utf-8"))
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.put("https://api.tucuota.com/v1/links/GWd1e9nQwK7v")
-              .header("Authorization", "Bearer sk_live_...")
-              .asString();
-    post:
-      operationId: Update
-      summary: Update
-      parameters:
-        - name: id
-          in: path
-          description: Gateway ID.
-          required: true
-          schema:
-            type: string
-          example: GWd1e9nQwK7v
-      responses:
-        '200':
-          description: OK
-          content: {}
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                properties:
-                  data:
-                    description: Unauthorized response
-                    type: object
-                    properties:
-                      message:
-                        type: string
-                        example: Unauthorized
-                    title: Unauthorized
-      tags:
-        - Links
-      x-codeSamples:
-        - lang: Shell + Curl
-          source: |-
-            curl --request POST \
-              --url https://api.tucuota.com/v1/links/GWd1e9nQwK7v \
-              --header 'Authorization: Bearer sk_live_...'
-        - lang: Shell + Httpie
-          source: |-
-            http POST https://api.tucuota.com/v1/links/GWd1e9nQwK7v \
-              Authorization:'Bearer sk_live_...'
-        - lang: Node + Request
-          source: |
-            const request = require('request');
-
-            const options = {
-              method: 'POST',
-              url: 'https://api.tucuota.com/v1/links/GWd1e9nQwK7v',
-              headers: {Authorization: 'Bearer sk_live_...'}
-            };
-
-            request(options, function (error, response, body) {
-              if (error) throw new Error(error);
-
-              console.log(body);
-            });
-        - lang: Php + Curl
-          source: |-
-            <?php
-
-            $curl = curl_init();
-
-            curl_setopt_array($curl, [
-              CURLOPT_URL => "https://api.tucuota.com/v1/links/GWd1e9nQwK7v",
-              CURLOPT_RETURNTRANSFER => true,
-              CURLOPT_ENCODING => "",
-              CURLOPT_MAXREDIRS => 10,
-              CURLOPT_TIMEOUT => 30,
-              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-              CURLOPT_CUSTOMREQUEST => "POST",
-              CURLOPT_HTTPHEADER => [
-                "Authorization: Bearer sk_live_..."
-              ],
-            ]);
-
-            $response = curl_exec($curl);
-            $err = curl_error($curl);
-
-            curl_close($curl);
-
-            if ($err) {
-              echo "cURL Error #:" . $err;
-            } else {
-              echo $response;
-            }
-        - lang: Php + Http2
-          source: |-
-            <?php
-
-            $client = new http\Client;
-            $request = new http\Client\Request;
-
-            $request->setRequestUrl('https://api.tucuota.com/v1/links/GWd1e9nQwK7v');
-            $request->setRequestMethod('POST');
-            $request->setHeaders([
-              'Authorization' => 'Bearer sk_live_...'
-            ]);
-
-            $client->enqueue($request)->send();
-            $response = $client->getResponse();
-
-            echo $response->getBody();
-        - lang: Python + Python3
-          source: |-
-            import http.client
-
-            conn = http.client.HTTPSConnection("api.tucuota.com")
-
-            headers = { 'Authorization': "Bearer sk_live_..." }
-
-            conn.request("POST", "/v1/links/GWd1e9nQwK7v", headers=headers)
-
-            res = conn.getresponse()
-            data = res.read()
-
-            print(data.decode("utf-8"))
-        - lang: Java + Unirest
-          source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/links/GWd1e9nQwK7v")
+            HttpResponse<String> response = Unirest.put("https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
   /v1/mandates:
@@ -6382,7 +6393,7 @@ paths:
   /v1/subscriptions:
     get:
       operationId: GetSubscriptions
-      summary: List all subscriptioms
+      summary: List all subscriptions
       description: By default newest subscriptions will be first on the list.
       responses:
         '200':
@@ -7944,7 +7955,8 @@ paths:
   '/v1/subscriptions/{id}/actions/pause':
     post:
       operationId: SubscriptionsPauseSubscription
-      summary: Pause
+      summary: Pause a subscription
+      description: Pause a subscription.
       parameters:
         - name: id
           in: path
@@ -8266,7 +8278,8 @@ paths:
   '/v1/subscriptions/{id}/actions/resume':
     post:
       operationId: SubscriptionsResumeSubscription
-      summary: Resume
+      summary: Resume a subscription
+      description: Resume a subscription.
       parameters:
         - name: id
           in: path
@@ -8591,7 +8604,7 @@ paths:
   '/v1/subscriptions/{id}/actions/cancel':
     post:
       operationId: SubscriptionsCancelSubscription
-      summary: Cancel
+      summary: Cancel a subcription
       description: |
         This action cancels and archive the subscription. Also cancel the payments
         related to it.
