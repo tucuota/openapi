@@ -3091,7 +3091,7 @@ paths:
               .asString();
     post:
       operationId: LinksCreateLink
-      summary: Create a link.
+      summary: Create a link
       description: Create a link.
       responses:
         '201':
@@ -3252,7 +3252,7 @@ paths:
   '/v1/links/{id}':
     get:
       operationId: LinksGetLink
-      summary: Retrieve a link.
+      summary: Retrieve a link
       description: Retrieve a link.
       parameters:
         - name: id

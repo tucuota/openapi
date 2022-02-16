@@ -2834,7 +2834,7 @@ paths:
     post:
       tags:
         - Links
-      summary: Create a link.
+      summary: Create a link
       description: Create a link.
       operationId: LinksCreateLink
       responses:
@@ -2864,7 +2864,7 @@ paths:
     get:
       tags:
         - Links
-      summary: Retrieve a link.
+      summary: Retrieve a link
       description: Retrieve a link.
       operationId: LinksGetLink
       parameters:
