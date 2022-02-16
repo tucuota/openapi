@@ -2677,7 +2677,7 @@ paths:
     get:
       tags:
         - Imports
-      summary: Retrieve a import.
+      summary: Retrieve a import
       description: Retrieve a import.
       operationId: ImportsGetImport
       parameters:

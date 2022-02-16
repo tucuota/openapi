@@ -2497,7 +2497,7 @@ paths:
   '/v1/imports/{id}':
     get:
       operationId: ImportsGetImport
-      summary: Retrieve a import.
+      summary: Retrieve a import
       description: Retrieve a import.
       parameters:
         - name: id
