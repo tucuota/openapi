@@ -759,7 +759,12 @@ components:
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
         data:
           type: object
-          description: Event object.
+          required:
+            - object
+          properties:
+            object:
+              type: object
+              description: Event object.
         delivered_at:
           oneOf: *ref_3
           format: date-time
@@ -2311,18 +2316,19 @@ paths:
                 data:
                   - created_at: '2022-02-05T01:42:13-03:00'
                     data:
-                      created_at: '2022-02-05T01:42:13-03:00'
-                      deleted_at: null
-                      email: john@doe.com
-                      gateway_identifier: 383473
-                      id: CSnlZxyY3jwr
-                      identification_number: null
-                      identification_type: null
-                      livemode: false
-                      metadata: null
-                      mobile_number: '5491154876503'
-                      name: John Doe
-                      updated_at: '2022-02-05T01:42:13-03:00'
+                      object:
+                        created_at: '2022-02-05T01:42:13-03:00'
+                        deleted_at: null
+                        email: john@doe.com
+                        gateway_identifier: 383473
+                        id: CSnlZxyY3jwr
+                        identification_number: null
+                        identification_type: null
+                        livemode: false
+                        metadata: null
+                        mobile_number: '5491154876503'
+                        name: John Doe
+                        updated_at: '2022-02-05T01:42:13-03:00'
                     delivered_at: '2022-02-11T20:11:38-03:00'
                     id: EVaX3JagwR6x
                     livemode: false
