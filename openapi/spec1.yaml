@@ -505,7 +505,7 @@ components:
       title: Unauthorized
       description: Unauthorized response
       type: object
-      properties: &ref_12
+      properties: &ref_13
         message:
           type: string
           example: Unauthorized
@@ -513,7 +513,7 @@ components:
       title: Not Found
       description: Not Found response
       type: object
-      properties: &ref_13
+      properties: &ref_14
         message:
           type: string
           example: Record not found
@@ -711,7 +711,7 @@ components:
       title: Response Meta
       description: Pagination metadata
       type: object
-      properties: &ref_10
+      properties: &ref_11
         first:
           type: string
           nullable: true
@@ -732,7 +732,7 @@ components:
       title: Response Meta
       description: Pagination metadata
       type: object
-      properties: &ref_11
+      properties: &ref_12
         current_page:
           type: number
           example: 1
@@ -767,7 +767,7 @@ components:
       title: Event
       description: This object represents an event on your account.
       type: object
-      properties: &ref_14
+      properties: &ref_15
         id:
           description: Unique identifier for the object.
           maxLength: 5000
@@ -881,7 +881,7 @@ components:
       title: Import
       description: This object represents an import of your account.
       type: object
-      properties: &ref_15
+      properties: &ref_16
         id:
           example: IM129038120h
           description: Unique identifier for the object.
@@ -963,7 +963,7 @@ components:
       title: Link
       description: This object represents a public link of your organization.
       type: object
-      properties: &ref_16
+      properties: &ref_17
         id:
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           description: Unique identifier for the object.
@@ -1082,11 +1082,13 @@ components:
           type: string
           example: '9876'
     payment_method:
+      title: Payment Method
+      description: This object represents a payment method of your account.
       type: object
       properties: &ref_9
         type:
           type: string
-          description: 'One of: cbu, card.'
+          description: 'Type of paymet method. One of: cbu, card.'
           enum:
             - card
             - cbu
@@ -1132,17 +1134,31 @@ components:
       title: Mandate
       description: This object represents a mandate of your organization.
       type: object
-      properties: &ref_17
+      properties: &ref_18
         id:
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           description: Unique identifier for the object.
           maxLength: 5000
           type: string
+        object:
+          type: string
+          enum:
+            - mandate
         livemode:
           description: >-
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
+        customer:
+          title: Customer
+          description: This object represents a customer of your organization.
+          type: object
+          properties: *ref_8
+        payment_method:
+          title: Payment Method
+          description: This object represents a payment method of your account.
+          type: object
+          properties: *ref_9
         metadata:
           example: *ref_0
           anyOf: *ref_1
@@ -1172,23 +1188,26 @@ components:
           description: >-
             Time at which the object was deleted. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-        customer:
-          title: Customer
-          description: This object represents a customer of your organization.
-          type: object
-          properties: *ref_8
-        payment_method:
-          type: object
-          properties: *ref_9
-        object:
-          type: string
-          enum:
-            - mandate
+    currency:
+      description: >-
+        Currency for the transacion using
+        [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to
+        account's default.
+      type: string
+      enum: &ref_10
+        - ARS
+        - BRL
+        - CLP
+        - COP
+        - MXN
+        - USB
+        - USD
+      example: USD
     subscription:
       title: Subscription
       description: This object represents a subscription of your organization.
       type: object
-      properties: &ref_18
+      properties: &ref_19
         created_at:
           type: string
           format: date-time
@@ -1197,7 +1216,13 @@ components:
             Time at which the object was created. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
         currency:
+          description: >-
+            Currency for the transacion using
+            [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults
+            to account's default.
           type: string
+          enum: *ref_10
+          example: USD
         approved_payments_count:
           type: number
         approved_payments_sum:
@@ -1227,6 +1252,8 @@ components:
         object:
           type: string
         payment_method:
+          title: Payment Method
+          description: This object represents a payment method of your account.
           type: object
           properties: *ref_9
         rejected_payments_count:
@@ -1265,7 +1292,7 @@ components:
       title: Session
       description: This object represents a session of your organization.
       type: object
-      properties: &ref_19
+      properties: &ref_20
         amount:
           type: number
           description: Amount to be collected
@@ -1397,7 +1424,7 @@ components:
         dashboard](https://dashboard.tucuota.com/webhooks), which provides a
         user interface for registering and testing your webhook endpoints.
       type: object
-      properties: &ref_20
+      properties: &ref_21
         id:
           description: Unique identifier for the object.
           maxLength: 5000
@@ -1466,7 +1493,7 @@ components:
           description: >-
             Time at which the object was last updated. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-      example: &ref_21
+      example: &ref_22
         created_at: '2022-02-11T23:19:22-03:00'
         enabled: true
         enabled_events:
@@ -2145,12 +2172,12 @@ paths:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_10
+                    properties: *ref_11
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_11
+                    properties: *ref_12
         '401':
           description: Unauthorized
           content:
@@ -2161,7 +2188,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
     post:
       tags:
         - Customers
@@ -2280,7 +2307,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_13
+                    properties: *ref_14
     put:
       tags:
         - Customers
@@ -2366,7 +2393,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_13
+                    properties: *ref_14
         '422':
           description: Unprocessable Entity
           content:
@@ -2408,7 +2435,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_13
+                    properties: *ref_14
   /v1/customers/{id}/actions/restore:
     post:
       tags:
@@ -2441,7 +2468,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_13
+                    properties: *ref_14
   /v1/events:
     get:
       tags:
@@ -2502,17 +2529,17 @@ paths:
                       title: Event
                       description: This object represents an event on your account.
                       type: object
-                      properties: *ref_14
+                      properties: *ref_15
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_10
+                    properties: *ref_11
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_11
+                    properties: *ref_12
         '401':
           description: Unauthorized
           content:
@@ -2523,7 +2550,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/imports:
     get:
       tags:
@@ -2610,7 +2637,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
     post:
       tags:
         - Imports
@@ -2670,7 +2697,7 @@ paths:
                     type: object
                     title: Import
                     description: This object represents an import of your account.
-                    properties: *ref_15
+                    properties: *ref_16
         '422':
           description: Unprocessable Entity
           content:
@@ -2706,7 +2733,7 @@ paths:
                     type: object
                     title: Import
                     description: This object represents an import of your account.
-                    properties: *ref_15
+                    properties: *ref_16
         '404':
           description: Object not found
           content:
@@ -2717,7 +2744,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_13
+                    properties: *ref_14
   /v1/imports/{id}/rows:
     get:
       tags:
@@ -2768,7 +2795,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/links:
     get:
       tags:
@@ -2816,17 +2843,17 @@ paths:
                         This object represents a public link of your
                         organization.
                       type: object
-                      properties: *ref_16
+                      properties: *ref_17
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_10
+                    properties: *ref_11
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_11
+                    properties: *ref_12
         '401':
           description: Unauthorized
           content:
@@ -2837,7 +2864,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
     post:
       tags:
         - Links
@@ -2855,7 +2882,7 @@ paths:
                     type: object
                     title: Link
                     description: This object represents a public link of your organization.
-                    properties: *ref_16
+                    properties: *ref_17
         '401':
           description: Unauthorized
           content:
@@ -2866,7 +2893,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/links/{id}:
     get:
       tags:
@@ -2893,7 +2920,7 @@ paths:
                     type: object
                     title: Link
                     description: This object represents a public link of your organization.
-                    properties: *ref_16
+                    properties: *ref_17
         '401':
           description: Unauthorized
           content:
@@ -2904,7 +2931,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
     put:
       tags:
         - Links
@@ -2930,7 +2957,7 @@ paths:
                     type: object
                     title: Link
                     description: This object represents a public link of your organization.
-                    properties: *ref_16
+                    properties: *ref_17
         '401':
           description: Unauthorized
           content:
@@ -2941,7 +2968,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
         '422':
           description: Unprocessable Entity
           content:
@@ -2987,17 +3014,17 @@ paths:
                       title: Mandate
                       description: This object represents a mandate of your organization.
                       type: object
-                      properties: *ref_17
+                      properties: *ref_18
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_10
+                    properties: *ref_11
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_11
+                    properties: *ref_12
         '401':
           description: Unauthorized
           content:
@@ -3008,7 +3035,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
     post:
       tags:
         - Mandates
@@ -3077,7 +3104,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/mandates/{id}:
     get:
       tags:
@@ -3104,7 +3131,7 @@ paths:
                     type: object
                     title: Mandate
                     description: This object represents a mandate of your organization.
-                    properties: *ref_17
+                    properties: *ref_18
         '404':
           description: Object not found
           content:
@@ -3115,7 +3142,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_13
+                    properties: *ref_14
   /v1/mandates/{id}/actions/revoke:
     post:
       tags:
@@ -3146,7 +3173,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/mandates/{id}/actions/restore:
     post:
       tags:
@@ -3175,7 +3202,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/payment_methods:
     get:
       tags:
@@ -3211,18 +3238,20 @@ paths:
                   data:
                     type: array
                     items:
+                      title: Payment Method
+                      description: This object represents a payment method of your account.
                       type: object
                       properties: *ref_9
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_10
+                    properties: *ref_11
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_11
+                    properties: *ref_12
               example:
                 data:
                   - type: card
@@ -3258,7 +3287,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
     post:
       tags:
         - Payment Methods
@@ -3301,6 +3330,8 @@ paths:
                 properties:
                   data:
                     type: object
+                    title: Payment Method
+                    description: This object represents a payment method of your account.
                     properties: *ref_9
         '401':
           description: Unauthorized
@@ -3312,7 +3343,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/payment_methods/{id}:
     get:
       tags:
@@ -3337,6 +3368,8 @@ paths:
                 properties:
                   data:
                     type: object
+                    title: Payment Method
+                    description: This object represents a payment method of your account.
                     properties: *ref_9
         '404':
           description: Payment method not found
@@ -3348,7 +3381,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_13
+                    properties: *ref_14
   /v1/payments:
     get:
       tags:
@@ -3409,17 +3442,17 @@ paths:
                         This object represents a subscription of your
                         organization.
                       type: object
-                      properties: *ref_18
+                      properties: *ref_19
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_10
+                    properties: *ref_11
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_11
+                    properties: *ref_12
         '401':
           description: Unauthorized
           content:
@@ -3430,7 +3463,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
     post:
       tags:
         - Payments
@@ -3522,7 +3555,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/payments/{id}:
     get:
       tags:
@@ -3557,7 +3590,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_13
+                    properties: *ref_14
     put:
       tags:
         - Payments
@@ -3635,7 +3668,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/payments/{id}/actions/cancel:
     post:
       tags:
@@ -3668,7 +3701,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/payments/{id}/actions/retry:
     post:
       tags:
@@ -3701,7 +3734,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
   /v1/sessions:
     post:
       tags:
@@ -3841,7 +3874,7 @@ paths:
                     type: object
                     title: Session
                     description: This object represents a session of your organization.
-                    properties: *ref_19
+                    properties: *ref_20
         '422':
           description: Unprocessable Entity
           content:
@@ -3877,7 +3910,7 @@ paths:
                     type: object
                     title: Session
                     description: This object represents a session of your organization.
-                    properties: *ref_19
+                    properties: *ref_20
         '404':
           description: Session not found
           content:
@@ -3909,17 +3942,17 @@ paths:
                         This object represents a subscription of your
                         organization.
                       type: object
-                      properties: *ref_18
+                      properties: *ref_19
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_10
+                    properties: *ref_11
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_11
+                    properties: *ref_12
         '401':
           description: Unauthorized
           content:
@@ -3930,7 +3963,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
     post:
       tags:
         - Subscriptions
@@ -4044,7 +4077,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_19
         '422':
           description: Unprocessable Entity
           content:
@@ -4082,7 +4115,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_19
         '404':
           description: Object not found
           content:
@@ -4093,7 +4126,7 @@ paths:
                     type: object
                     title: Not Found
                     description: Not Found response
-                    properties: *ref_13
+                    properties: *ref_14
     put:
       tags:
         - Subscriptions
@@ -4215,7 +4248,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_19
         '422':
           description: Unprocessable Entity
           content:
@@ -4253,7 +4286,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_19
         '422':
           description: Unprocessable Entity
           content:
@@ -4288,7 +4321,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_19
         '422':
           description: Unprocessable Entity
           content:
@@ -4330,7 +4363,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_18
+                    properties: *ref_19
         '422':
           description: Unprocessable Entity
           content:
@@ -4382,18 +4415,18 @@ paths:
                         which provides a user interface for registering and
                         testing your webhook endpoints.
                       type: object
-                      properties: *ref_20
-                      example: *ref_21
+                      properties: *ref_21
+                      example: *ref_22
                   links:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_10
+                    properties: *ref_11
                   meta:
                     title: Response Meta
                     description: Pagination metadata
                     type: object
-                    properties: *ref_11
+                    properties: *ref_12
         '401':
           description: Unauthorized
           content:
@@ -4404,7 +4437,7 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13
     post:
       tags:
         - Webhooks
@@ -4483,8 +4516,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_20
-                    example: *ref_21
+                    properties: *ref_21
+                    example: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -4533,8 +4566,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_20
-                    example: *ref_21
+                    properties: *ref_21
+                    example: *ref_22
           description: Successful response.
         '404':
           content:
@@ -4543,7 +4576,7 @@ paths:
                 title: Not Found
                 description: Not Found response
                 type: object
-                properties: *ref_13
+                properties: *ref_14
           description: Not Found
     put:
       tags:
@@ -4596,8 +4629,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_20
-                    example: *ref_21
+                    properties: *ref_21
+                    example: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -4634,4 +4667,4 @@ paths:
                     type: object
                     title: Unauthorized
                     description: Unauthorized response
-                    properties: *ref_12
+                    properties: *ref_13

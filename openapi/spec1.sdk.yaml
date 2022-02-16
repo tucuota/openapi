@@ -3644,39 +3644,13 @@ paths:
                           type: string
                           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                           maxLength: 5000
+                        object:
+                          type: string
+                          enum:
+                            - mandate
                         livemode:
                           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                           type: boolean
-                        metadata:
-                          description: |
-                            Set of [key-value pairs](#section/Metadata) that you can attach
-                            to an object. This can be useful for storing additional
-                            information about the object in a structured format.
-                            All keys can be unset by posting `null` value to `metadata`.
-                          example:
-                            some: metadata
-                          anyOf:
-                            - additionalProperties:
-                                type: string
-                              type: object
-                            - type: 'null'
-                        created_at:
-                          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-                          type: string
-                          format: date-time
-                          example: '2022-02-11T23:19:22-03:00'
-                        updated_at:
-                          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-                          type: string
-                          format: date-time
-                          example: '2022-02-11T23:19:22-03:00'
-                        deleted_at:
-                          description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-                          format: date-time
-                          example: '2022-02-11T23:19:22-03:00'
-                          oneOf:
-                            - type: 'null'
-                            - type: string
                         customer:
                           description: This object represents a customer of your organization.
                           type: object
@@ -3801,10 +3775,11 @@ paths:
                               example: 0
                           title: Customer
                         payment_method:
+                          description: This object represents a payment method of your account.
                           type: object
                           properties:
                             type:
-                              description: 'One of: cbu, card.'
+                              description: 'Type of paymet method. One of: cbu, card.'
                               type: string
                               enum:
                                 - card
@@ -3907,10 +3882,37 @@ paths:
                               type: string
                               format: date-time
                               example: '2022-02-11T23:19:22-03:00'
-                        object:
+                          title: Payment Method
+                        metadata:
+                          description: |
+                            Set of [key-value pairs](#section/Metadata) that you can attach
+                            to an object. This can be useful for storing additional
+                            information about the object in a structured format.
+                            All keys can be unset by posting `null` value to `metadata`.
+                          example:
+                            some: metadata
+                          anyOf:
+                            - additionalProperties:
+                                type: string
+                              type: object
+                            - type: 'null'
+                        created_at:
+                          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                           type: string
-                          enum:
-                            - mandate
+                          format: date-time
+                          example: '2022-02-11T23:19:22-03:00'
+                        updated_at:
+                          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                          type: string
+                          format: date-time
+                          example: '2022-02-11T23:19:22-03:00'
+                        deleted_at:
+                          description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                          format: date-time
+                          example: '2022-02-11T23:19:22-03:00'
+                          oneOf:
+                            - type: 'null'
+                            - type: string
                   links:
                     description: Pagination metadata
                     type: object
@@ -4287,39 +4289,13 @@ paths:
                         type: string
                         example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         maxLength: 5000
+                      object:
+                        type: string
+                        enum:
+                          - mandate
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
-                      metadata:
-                        description: |
-                          Set of [key-value pairs](#section/Metadata) that you can attach
-                          to an object. This can be useful for storing additional
-                          information about the object in a structured format.
-                          All keys can be unset by posting `null` value to `metadata`.
-                        example:
-                          some: metadata
-                        anyOf:
-                          - additionalProperties:
-                              type: string
-                            type: object
-                          - type: 'null'
-                      created_at:
-                        description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-                        type: string
-                        format: date-time
-                        example: '2022-02-11T23:19:22-03:00'
-                      updated_at:
-                        description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-                        type: string
-                        format: date-time
-                        example: '2022-02-11T23:19:22-03:00'
-                      deleted_at:
-                        description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-                        format: date-time
-                        example: '2022-02-11T23:19:22-03:00'
-                        oneOf:
-                          - type: 'null'
-                          - type: string
                       customer:
                         description: This object represents a customer of your organization.
                         type: object
@@ -4444,10 +4420,11 @@ paths:
                             example: 0
                         title: Customer
                       payment_method:
+                        description: This object represents a payment method of your account.
                         type: object
                         properties:
                           type:
-                            description: 'One of: cbu, card.'
+                            description: 'Type of paymet method. One of: cbu, card.'
                             type: string
                             enum:
                               - card
@@ -4550,10 +4527,37 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
-                      object:
+                        title: Payment Method
+                      metadata:
+                        description: |
+                          Set of [key-value pairs](#section/Metadata) that you can attach
+                          to an object. This can be useful for storing additional
+                          information about the object in a structured format.
+                          All keys can be unset by posting `null` value to `metadata`.
+                        example:
+                          some: metadata
+                        anyOf:
+                          - additionalProperties:
+                              type: string
+                            type: object
+                          - type: 'null'
+                      created_at:
+                        description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                         type: string
-                        enum:
-                          - mandate
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      updated_at:
+                        description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      deleted_at:
+                        description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                        oneOf:
+                          - type: 'null'
+                          - type: string
                     title: Mandate
         '404':
           description: Object not found
@@ -4936,10 +4940,12 @@ paths:
                   data:
                     type: array
                     items:
+                      title: Payment Method
+                      description: This object represents a payment method of your account.
                       type: object
                       properties:
                         type:
-                          description: 'One of: cbu, card.'
+                          description: 'Type of paymet method. One of: cbu, card.'
                           type: string
                           enum:
                             - card
@@ -5267,10 +5273,11 @@ paths:
               schema:
                 properties:
                   data:
+                    description: This object represents a payment method of your account.
                     type: object
                     properties:
                       type:
-                        description: 'One of: cbu, card.'
+                        description: 'Type of paymet method. One of: cbu, card.'
                         type: string
                         enum:
                           - card
@@ -5373,6 +5380,7 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                    title: Payment Method
         '401':
           description: Unauthorized
           content:
@@ -5527,10 +5535,11 @@ paths:
               schema:
                 properties:
                   data:
+                    description: This object represents a payment method of your account.
                     type: object
                     properties:
                       type:
-                        description: 'One of: cbu, card.'
+                        description: 'Type of paymet method. One of: cbu, card.'
                         type: string
                         enum:
                           - card
@@ -5633,6 +5642,7 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                    title: Payment Method
         '404':
           description: Payment method not found
           content:
@@ -5800,7 +5810,17 @@ paths:
                           format: date-time
                           example: '2022-02-11T23:19:22-03:00'
                         currency:
+                          description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
                           type: string
+                          example: USD
+                          enum:
+                            - ARS
+                            - BRL
+                            - CLP
+                            - COP
+                            - MXN
+                            - USB
+                            - USD
                         approved_payments_count:
                           type: number
                         approved_payments_sum:
@@ -5951,10 +5971,11 @@ paths:
                         object:
                           type: string
                         payment_method:
+                          description: This object represents a payment method of your account.
                           type: object
                           properties:
                             type:
-                              description: 'One of: cbu, card.'
+                              description: 'Type of paymet method. One of: cbu, card.'
                               type: string
                               enum:
                                 - card
@@ -6057,6 +6078,7 @@ paths:
                               type: string
                               format: date-time
                               example: '2022-02-11T23:19:22-03:00'
+                          title: Payment Method
                         rejected_payments_count:
                           type: number
                         rejected_payments_sum:
@@ -7647,7 +7669,17 @@ paths:
                           format: date-time
                           example: '2022-02-11T23:19:22-03:00'
                         currency:
+                          description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
                           type: string
+                          example: USD
+                          enum:
+                            - ARS
+                            - BRL
+                            - CLP
+                            - COP
+                            - MXN
+                            - USB
+                            - USD
                         approved_payments_count:
                           type: number
                         approved_payments_sum:
@@ -7798,10 +7830,11 @@ paths:
                         object:
                           type: string
                         payment_method:
+                          description: This object represents a payment method of your account.
                           type: object
                           properties:
                             type:
-                              description: 'One of: cbu, card.'
+                              description: 'Type of paymet method. One of: cbu, card.'
                               type: string
                               enum:
                                 - card
@@ -7904,6 +7937,7 @@ paths:
                               type: string
                               format: date-time
                               example: '2022-02-11T23:19:22-03:00'
+                          title: Payment Method
                         rejected_payments_count:
                           type: number
                         rejected_payments_sum:
@@ -8175,7 +8209,17 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       currency:
+                        description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
                         type: string
+                        example: USD
+                        enum:
+                          - ARS
+                          - BRL
+                          - CLP
+                          - COP
+                          - MXN
+                          - USB
+                          - USD
                       approved_payments_count:
                         type: number
                       approved_payments_sum:
@@ -8326,10 +8370,11 @@ paths:
                       object:
                         type: string
                       payment_method:
+                        description: This object represents a payment method of your account.
                         type: object
                         properties:
                           type:
-                            description: 'One of: cbu, card.'
+                            description: 'Type of paymet method. One of: cbu, card.'
                             type: string
                             enum:
                               - card
@@ -8432,6 +8477,7 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                        title: Payment Method
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -8613,7 +8659,17 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       currency:
+                        description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
                         type: string
+                        example: USD
+                        enum:
+                          - ARS
+                          - BRL
+                          - CLP
+                          - COP
+                          - MXN
+                          - USB
+                          - USD
                       approved_payments_count:
                         type: number
                       approved_payments_sum:
@@ -8764,10 +8820,11 @@ paths:
                       object:
                         type: string
                       payment_method:
+                        description: This object represents a payment method of your account.
                         type: object
                         properties:
                           type:
-                            description: 'One of: cbu, card.'
+                            description: 'Type of paymet method. One of: cbu, card.'
                             type: string
                             enum:
                               - card
@@ -8870,6 +8927,7 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                        title: Payment Method
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -9101,7 +9159,17 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       currency:
+                        description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
                         type: string
+                        example: USD
+                        enum:
+                          - ARS
+                          - BRL
+                          - CLP
+                          - COP
+                          - MXN
+                          - USB
+                          - USD
                       approved_payments_count:
                         type: number
                       approved_payments_sum:
@@ -9252,10 +9320,11 @@ paths:
                       object:
                         type: string
                       payment_method:
+                        description: This object represents a payment method of your account.
                         type: object
                         properties:
                           type:
-                            description: 'One of: cbu, card.'
+                            description: 'Type of paymet method. One of: cbu, card.'
                             type: string
                             enum:
                               - card
@@ -9358,6 +9427,7 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                        title: Payment Method
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -9539,7 +9609,17 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       currency:
+                        description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
                         type: string
+                        example: USD
+                        enum:
+                          - ARS
+                          - BRL
+                          - CLP
+                          - COP
+                          - MXN
+                          - USB
+                          - USD
                       approved_payments_count:
                         type: number
                       approved_payments_sum:
@@ -9690,10 +9770,11 @@ paths:
                       object:
                         type: string
                       payment_method:
+                        description: This object represents a payment method of your account.
                         type: object
                         properties:
                           type:
-                            description: 'One of: cbu, card.'
+                            description: 'Type of paymet method. One of: cbu, card.'
                             type: string
                             enum:
                               - card
@@ -9796,6 +9877,7 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                        title: Payment Method
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -9942,7 +10024,17 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       currency:
+                        description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
                         type: string
+                        example: USD
+                        enum:
+                          - ARS
+                          - BRL
+                          - CLP
+                          - COP
+                          - MXN
+                          - USB
+                          - USD
                       approved_payments_count:
                         type: number
                       approved_payments_sum:
@@ -10093,10 +10185,11 @@ paths:
                       object:
                         type: string
                       payment_method:
+                        description: This object represents a payment method of your account.
                         type: object
                         properties:
                           type:
-                            description: 'One of: cbu, card.'
+                            description: 'Type of paymet method. One of: cbu, card.'
                             type: string
                             enum:
                               - card
@@ -10199,6 +10292,7 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                        title: Payment Method
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -10350,7 +10444,17 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       currency:
+                        description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
                         type: string
+                        example: USD
+                        enum:
+                          - ARS
+                          - BRL
+                          - CLP
+                          - COP
+                          - MXN
+                          - USB
+                          - USD
                       approved_payments_count:
                         type: number
                       approved_payments_sum:
@@ -10501,10 +10605,11 @@ paths:
                       object:
                         type: string
                       payment_method:
+                        description: This object represents a payment method of your account.
                         type: object
                         properties:
                           type:
-                            description: 'One of: cbu, card.'
+                            description: 'Type of paymet method. One of: cbu, card.'
                             type: string
                             enum:
                               - card
@@ -10607,6 +10712,7 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                        title: Payment Method
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -12327,10 +12433,11 @@ components:
           example: '9876'
       title: CBU
     payment_method:
+      description: This object represents a payment method of your account.
       type: object
       properties:
         type:
-          description: 'One of: cbu, card.'
+          description: 'Type of paymet method. One of: cbu, card.'
           type: string
           enum:
             - card
@@ -12433,6 +12540,7 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
+      title: Payment Method
     mandate:
       description: This object represents a mandate of your organization.
       type: object
@@ -12442,39 +12550,13 @@ components:
           type: string
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           maxLength: 5000
+        object:
+          type: string
+          enum:
+            - mandate
         livemode:
           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
           type: boolean
-        metadata:
-          description: |
-            Set of [key-value pairs](#section/Metadata) that you can attach
-            to an object. This can be useful for storing additional
-            information about the object in a structured format.
-            All keys can be unset by posting `null` value to `metadata`.
-          example:
-            some: metadata
-          anyOf:
-            - additionalProperties:
-                type: string
-              type: object
-            - type: 'null'
-        created_at:
-          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-          type: string
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
-        updated_at:
-          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-          type: string
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
-        deleted_at:
-          description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
-          oneOf:
-            - type: 'null'
-            - type: string
         customer:
           description: This object represents a customer of your organization.
           type: object
@@ -12599,10 +12681,11 @@ components:
               example: 0
           title: Customer
         payment_method:
+          description: This object represents a payment method of your account.
           type: object
           properties:
             type:
-              description: 'One of: cbu, card.'
+              description: 'Type of paymet method. One of: cbu, card.'
               type: string
               enum:
                 - card
@@ -12705,11 +12788,50 @@ components:
               type: string
               format: date-time
               example: '2022-02-11T23:19:22-03:00'
-        object:
+          title: Payment Method
+        metadata:
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
+          example:
+            some: metadata
+          anyOf:
+            - additionalProperties:
+                type: string
+              type: object
+            - type: 'null'
+        created_at:
+          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
           type: string
-          enum:
-            - mandate
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        updated_at:
+          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        deleted_at:
+          description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          oneOf:
+            - type: 'null'
+            - type: string
       title: Mandate
+    currency:
+      description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
+      type: string
+      example: USD
+      enum:
+        - ARS
+        - BRL
+        - CLP
+        - COP
+        - MXN
+        - USB
+        - USD
     subscription:
       description: This object represents a subscription of your organization.
       type: object
@@ -12720,7 +12842,17 @@ components:
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
         currency:
+          description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
           type: string
+          example: USD
+          enum:
+            - ARS
+            - BRL
+            - CLP
+            - COP
+            - MXN
+            - USB
+            - USD
         approved_payments_count:
           type: number
         approved_payments_sum:
@@ -12871,10 +13003,11 @@ components:
         object:
           type: string
         payment_method:
+          description: This object represents a payment method of your account.
           type: object
           properties:
             type:
-              description: 'One of: cbu, card.'
+              description: 'Type of paymet method. One of: cbu, card.'
               type: string
               enum:
                 - card
@@ -12977,6 +13110,7 @@ components:
               type: string
               format: date-time
               example: '2022-02-11T23:19:22-03:00'
+          title: Payment Method
         rejected_payments_count:
           type: number
         rejected_payments_sum:

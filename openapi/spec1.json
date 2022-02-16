@@ -761,11 +761,13 @@
         }
       },
       "payment_method": {
+        "title": "Payment Method",
+        "description": "This object represents a payment method of your account.",
         "type": "object",
         "properties": {
           "type": {
             "type": "string",
-            "description": "One of: cbu, card.",
+            "description": "Type of paymet method. One of: cbu, card.",
             "enum": [
               "card",
               "cbu"
@@ -905,51 +907,15 @@
             "maxLength": 5000,
             "type": "string"
           },
+          "object": {
+            "type": "string",
+            "enum": [
+              "mandate"
+            ]
+          },
           "livemode": {
             "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
             "type": "boolean"
-          },
-          "metadata": {
-            "example": {
-              "some": "metadata"
-            },
-            "anyOf": [
-              {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00",
-            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00",
-            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-          },
-          "deleted_at": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00",
-            "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
           },
           "customer": {
             "title": "Customer",
@@ -1123,11 +1089,13 @@
             }
           },
           "payment_method": {
+            "title": "Payment Method",
+            "description": "This object represents a payment method of your account.",
             "type": "object",
             "properties": {
               "type": {
                 "type": "string",
-                "description": "One of: cbu, card.",
+                "description": "Type of paymet method. One of: cbu, card.",
                 "enum": [
                   "card",
                   "cbu"
@@ -1256,13 +1224,63 @@
               }
             }
           },
-          "object": {
+          "metadata": {
+            "example": {
+              "some": "metadata"
+            },
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+          },
+          "created_at": {
             "type": "string",
-            "enum": [
-              "mandate"
-            ]
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "deleted_at": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
           }
         }
+      },
+      "currency": {
+        "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+        "type": "string",
+        "enum": [
+          "ARS",
+          "BRL",
+          "CLP",
+          "COP",
+          "MXN",
+          "USB",
+          "USD"
+        ],
+        "example": "USD"
       },
       "subscription": {
         "title": "Subscription",
@@ -1276,7 +1294,18 @@
             "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
           },
           "currency": {
-            "type": "string"
+            "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+            "type": "string",
+            "enum": [
+              "ARS",
+              "BRL",
+              "CLP",
+              "COP",
+              "MXN",
+              "USB",
+              "USD"
+            ],
+            "example": "USD"
           },
           "approved_payments_count": {
             "type": "number"
@@ -1486,11 +1515,13 @@
             "type": "string"
           },
           "payment_method": {
+            "title": "Payment Method",
+            "description": "This object represents a payment method of your account.",
             "type": "object",
             "properties": {
               "type": {
                 "type": "string",
-                "description": "One of: cbu, card.",
+                "description": "Type of paymet method. One of: cbu, card.",
                 "enum": [
                   "card",
                   "cbu"
@@ -5047,51 +5078,15 @@
                             "maxLength": 5000,
                             "type": "string"
                           },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "mandate"
+                            ]
+                          },
                           "livemode": {
                             "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                             "type": "boolean"
-                          },
-                          "metadata": {
-                            "example": {
-                              "some": "metadata"
-                            },
-                            "anyOf": [
-                              {
-                                "additionalProperties": {
-                                  "type": "string"
-                                },
-                                "type": "object"
-                              },
-                              {
-                                "type": "null"
-                              }
-                            ],
-                            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
-                          },
-                          "created_at": {
-                            "type": "string",
-                            "format": "date-time",
-                            "example": "2022-02-11T23:19:22-03:00",
-                            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-                          },
-                          "updated_at": {
-                            "type": "string",
-                            "format": "date-time",
-                            "example": "2022-02-11T23:19:22-03:00",
-                            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-                          },
-                          "deleted_at": {
-                            "oneOf": [
-                              {
-                                "type": "null"
-                              },
-                              {
-                                "type": "string"
-                              }
-                            ],
-                            "format": "date-time",
-                            "example": "2022-02-11T23:19:22-03:00",
-                            "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                           },
                           "customer": {
                             "title": "Customer",
@@ -5265,11 +5260,13 @@
                             }
                           },
                           "payment_method": {
+                            "title": "Payment Method",
+                            "description": "This object represents a payment method of your account.",
                             "type": "object",
                             "properties": {
                               "type": {
                                 "type": "string",
-                                "description": "One of: cbu, card.",
+                                "description": "Type of paymet method. One of: cbu, card.",
                                 "enum": [
                                   "card",
                                   "cbu"
@@ -5398,11 +5395,47 @@
                               }
                             }
                           },
-                          "object": {
+                          "metadata": {
+                            "example": {
+                              "some": "metadata"
+                            },
+                            "anyOf": [
+                              {
+                                "additionalProperties": {
+                                  "type": "string"
+                                },
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ],
+                            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                          },
+                          "created_at": {
                             "type": "string",
-                            "enum": [
-                              "mandate"
-                            ]
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                          },
+                          "deleted_at": {
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                           }
                         }
                       }
@@ -5634,51 +5667,15 @@
                           "maxLength": 5000,
                           "type": "string"
                         },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "mandate"
+                          ]
+                        },
                         "livemode": {
                           "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                           "type": "boolean"
-                        },
-                        "metadata": {
-                          "example": {
-                            "some": "metadata"
-                          },
-                          "anyOf": [
-                            {
-                              "additionalProperties": {
-                                "type": "string"
-                              },
-                              "type": "object"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
-                        },
-                        "created_at": {
-                          "type": "string",
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00",
-                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-                        },
-                        "updated_at": {
-                          "type": "string",
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00",
-                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-                        },
-                        "deleted_at": {
-                          "oneOf": [
-                            {
-                              "type": "null"
-                            },
-                            {
-                              "type": "string"
-                            }
-                          ],
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00",
-                          "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         },
                         "customer": {
                           "title": "Customer",
@@ -5852,11 +5849,13 @@
                           }
                         },
                         "payment_method": {
+                          "title": "Payment Method",
+                          "description": "This object represents a payment method of your account.",
                           "type": "object",
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card.",
+                              "description": "Type of paymet method. One of: cbu, card.",
                               "enum": [
                                 "card",
                                 "cbu"
@@ -5985,11 +5984,47 @@
                             }
                           }
                         },
-                        "object": {
+                        "metadata": {
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "anyOf": [
+                            {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                        },
+                        "created_at": {
                           "type": "string",
-                          "enum": [
-                            "mandate"
-                          ]
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "deleted_at": {
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         }
                       }
                     }
@@ -6165,11 +6200,13 @@
                     "data": {
                       "type": "array",
                       "items": {
+                        "title": "Payment Method",
+                        "description": "This object represents a payment method of your account.",
                         "type": "object",
                         "properties": {
                           "type": {
                             "type": "string",
-                            "description": "One of: cbu, card.",
+                            "description": "Type of paymet method. One of: cbu, card.",
                             "enum": [
                               "card",
                               "cbu"
@@ -6478,10 +6515,12 @@
                   "properties": {
                     "data": {
                       "type": "object",
+                      "title": "Payment Method",
+                      "description": "This object represents a payment method of your account.",
                       "properties": {
                         "type": {
                           "type": "string",
-                          "description": "One of: cbu, card.",
+                          "description": "Type of paymet method. One of: cbu, card.",
                           "enum": [
                             "card",
                             "cbu"
@@ -6669,10 +6708,12 @@
                   "properties": {
                     "data": {
                       "type": "object",
+                      "title": "Payment Method",
+                      "description": "This object represents a payment method of your account.",
                       "properties": {
                         "type": {
                           "type": "string",
-                          "description": "One of: cbu, card.",
+                          "description": "Type of paymet method. One of: cbu, card.",
                           "enum": [
                             "card",
                             "cbu"
@@ -6915,7 +6956,18 @@
                             "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                           },
                           "currency": {
-                            "type": "string"
+                            "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                            "type": "string",
+                            "enum": [
+                              "ARS",
+                              "BRL",
+                              "CLP",
+                              "COP",
+                              "MXN",
+                              "USB",
+                              "USD"
+                            ],
+                            "example": "USD"
                           },
                           "approved_payments_count": {
                             "type": "number"
@@ -7125,11 +7177,13 @@
                             "type": "string"
                           },
                           "payment_method": {
+                            "title": "Payment Method",
+                            "description": "This object represents a payment method of your account.",
                             "type": "object",
                             "properties": {
                               "type": {
                                 "type": "string",
-                                "description": "One of: cbu, card.",
+                                "description": "Type of paymet method. One of: cbu, card.",
                                 "enum": [
                                   "card",
                                   "cbu"
@@ -8353,7 +8407,18 @@
                             "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                           },
                           "currency": {
-                            "type": "string"
+                            "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                            "type": "string",
+                            "enum": [
+                              "ARS",
+                              "BRL",
+                              "CLP",
+                              "COP",
+                              "MXN",
+                              "USB",
+                              "USD"
+                            ],
+                            "example": "USD"
                           },
                           "approved_payments_count": {
                             "type": "number"
@@ -8563,11 +8628,13 @@
                             "type": "string"
                           },
                           "payment_method": {
+                            "title": "Payment Method",
+                            "description": "This object represents a payment method of your account.",
                             "type": "object",
                             "properties": {
                               "type": {
                                 "type": "string",
-                                "description": "One of: cbu, card.",
+                                "description": "Type of paymet method. One of: cbu, card.",
                                 "enum": [
                                   "card",
                                   "cbu"
@@ -8935,7 +9002,18 @@
                           "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         },
                         "currency": {
-                          "type": "string"
+                          "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                          "type": "string",
+                          "enum": [
+                            "ARS",
+                            "BRL",
+                            "CLP",
+                            "COP",
+                            "MXN",
+                            "USB",
+                            "USD"
+                          ],
+                          "example": "USD"
                         },
                         "approved_payments_count": {
                           "type": "number"
@@ -9145,11 +9223,13 @@
                           "type": "string"
                         },
                         "payment_method": {
+                          "title": "Payment Method",
+                          "description": "This object represents a payment method of your account.",
                           "type": "object",
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card.",
+                              "description": "Type of paymet method. One of: cbu, card.",
                               "enum": [
                                 "card",
                                 "cbu"
@@ -9366,7 +9446,18 @@
                           "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         },
                         "currency": {
-                          "type": "string"
+                          "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                          "type": "string",
+                          "enum": [
+                            "ARS",
+                            "BRL",
+                            "CLP",
+                            "COP",
+                            "MXN",
+                            "USB",
+                            "USD"
+                          ],
+                          "example": "USD"
                         },
                         "approved_payments_count": {
                           "type": "number"
@@ -9576,11 +9667,13 @@
                           "type": "string"
                         },
                         "payment_method": {
+                          "title": "Payment Method",
+                          "description": "This object represents a payment method of your account.",
                           "type": "object",
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card.",
+                              "description": "Type of paymet method. One of: cbu, card.",
                               "enum": [
                                 "card",
                                 "cbu"
@@ -9897,7 +9990,18 @@
                           "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         },
                         "currency": {
-                          "type": "string"
+                          "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                          "type": "string",
+                          "enum": [
+                            "ARS",
+                            "BRL",
+                            "CLP",
+                            "COP",
+                            "MXN",
+                            "USB",
+                            "USD"
+                          ],
+                          "example": "USD"
                         },
                         "approved_payments_count": {
                           "type": "number"
@@ -10107,11 +10211,13 @@
                           "type": "string"
                         },
                         "payment_method": {
+                          "title": "Payment Method",
+                          "description": "This object represents a payment method of your account.",
                           "type": "object",
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card.",
+                              "description": "Type of paymet method. One of: cbu, card.",
                               "enum": [
                                 "card",
                                 "cbu"
@@ -10328,7 +10434,18 @@
                           "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         },
                         "currency": {
-                          "type": "string"
+                          "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                          "type": "string",
+                          "enum": [
+                            "ARS",
+                            "BRL",
+                            "CLP",
+                            "COP",
+                            "MXN",
+                            "USB",
+                            "USD"
+                          ],
+                          "example": "USD"
                         },
                         "approved_payments_count": {
                           "type": "number"
@@ -10538,11 +10655,13 @@
                           "type": "string"
                         },
                         "payment_method": {
+                          "title": "Payment Method",
+                          "description": "This object represents a payment method of your account.",
                           "type": "object",
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card.",
+                              "description": "Type of paymet method. One of: cbu, card.",
                               "enum": [
                                 "card",
                                 "cbu"
@@ -10754,7 +10873,18 @@
                           "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         },
                         "currency": {
-                          "type": "string"
+                          "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                          "type": "string",
+                          "enum": [
+                            "ARS",
+                            "BRL",
+                            "CLP",
+                            "COP",
+                            "MXN",
+                            "USB",
+                            "USD"
+                          ],
+                          "example": "USD"
                         },
                         "approved_payments_count": {
                           "type": "number"
@@ -10964,11 +11094,13 @@
                           "type": "string"
                         },
                         "payment_method": {
+                          "title": "Payment Method",
+                          "description": "This object represents a payment method of your account.",
                           "type": "object",
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card.",
+                              "description": "Type of paymet method. One of: cbu, card.",
                               "enum": [
                                 "card",
                                 "cbu"
@@ -11185,7 +11317,18 @@
                           "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         },
                         "currency": {
-                          "type": "string"
+                          "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                          "type": "string",
+                          "enum": [
+                            "ARS",
+                            "BRL",
+                            "CLP",
+                            "COP",
+                            "MXN",
+                            "USB",
+                            "USD"
+                          ],
+                          "example": "USD"
                         },
                         "approved_payments_count": {
                           "type": "number"
@@ -11395,11 +11538,13 @@
                           "type": "string"
                         },
                         "payment_method": {
+                          "title": "Payment Method",
+                          "description": "This object represents a payment method of your account.",
                           "type": "object",
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card.",
+                              "description": "Type of paymet method. One of: cbu, card.",
                               "enum": [
                                 "card",
                                 "cbu"
