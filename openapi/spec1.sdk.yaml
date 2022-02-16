@@ -118,7 +118,7 @@ info:
     By default, each page contains `25` elements. It can be requested up to `100` elements per page adding the `limit` parameter. For example adding `?limit=100&page=2` will return the second page of `100` elements.
     # Request IDs
 
-    Each API request has an associated request identifier. You can find this value in the response headers, under `Request-Id`. You can also find request identifiers in the URLs of individual request logs in your (Dashboard)[https://dashboard.tucuota.com/developer/logs].
+    Each API request has an associated request identifier. You can find this value in the response headers, under `Request-Id`. You can also find request identifiers in the URLs of individual request logs in your [Dashboard](https://dashboard.tucuota.com/developer/logs).
     # Conventions
 
     ### Notational Conventions
