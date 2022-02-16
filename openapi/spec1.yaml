@@ -2319,11 +2319,18 @@ paths:
                   type: string
                   example: asd@asd.com
                 gateway_identifier:
-                  type: string
+                  description: The customer's reference for bank account statements.
+                  type: integer
+                  format: int32
+                  example: 383473
                 identification_type:
-                  type: string
+                  description: Customer's Document type.
+                  oneOf: *ref_3
+                  example: DNI
                 identification_number:
-                  type: number
+                  description: Customer's Document ID number.
+                  oneOf: *ref_2
+                  example: 15.555.324
                 metadata:
                   example: *ref_0
                   anyOf: *ref_1
@@ -3128,8 +3135,7 @@ paths:
           example: 85641980-8a28-11ea-a926-d51efa41533d
       responses:
         '202':
-          description: Accepted
-          content: {}
+          description: Mandate revoked
         '401':
           description: Unauthorized
           content:
@@ -3158,8 +3164,7 @@ paths:
           example: 85641980-8a28-11ea-a926-d51efa41533d
       responses:
         '202':
-          description: Accepted
-          content: {}
+          description: Mandate restored
         '401':
           description: Unauthorized
           content:

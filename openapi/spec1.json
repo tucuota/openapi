@@ -3261,13 +3261,34 @@
                     "example": "asd@asd.com"
                   },
                   "gateway_identifier": {
-                    "type": "string"
+                    "description": "The customer's reference for bank account statements.",
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 383473
                   },
                   "identification_type": {
-                    "type": "string"
+                    "description": "Customer's Document type.",
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ],
+                    "example": "DNI"
                   },
                   "identification_number": {
-                    "type": "number"
+                    "description": "Customer's Document ID number.",
+                    "oneOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ],
+                    "example": "15.555.324"
                   },
                   "metadata": {
                     "example": {
@@ -6024,8 +6045,7 @@
         ],
         "responses": {
           "202": {
-            "description": "Accepted",
-            "content": {}
+            "description": "Mandate revoked"
           },
           "401": {
             "description": "Unauthorized",
@@ -6074,8 +6094,7 @@
         ],
         "responses": {
           "202": {
-            "description": "Accepted",
-            "content": {}
+            "description": "Mandate restored"
           },
           "401": {
             "description": "Unauthorized",
