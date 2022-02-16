@@ -286,7 +286,7 @@ servers:
 paths:
   /v1/customers:
     get:
-      operationId: GetCustomers
+      operationId: CustomersGetCustomers
       summary: List all customers
       description: By default newest customers will be first on the list.
       parameters:
@@ -599,9 +599,9 @@ paths:
               .header("Authorization", "Bearer sk_live_...")
               .asString();
     post:
-      operationId: PostCustomer
+      operationId: CustomersCreateCustomer
       summary: Create a customer
-      description: Create a customer
+      description: Create a customer.
       requestBody:
         content:
           application/json:

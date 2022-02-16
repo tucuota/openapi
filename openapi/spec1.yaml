@@ -2108,7 +2108,7 @@ paths:
         - Customers
       summary: List all customers
       description: By default newest customers will be first on the list.
-      operationId: GetCustomers
+      operationId: CustomersGetCustomers
       parameters:
         - name: page
           in: query
@@ -2166,8 +2166,8 @@ paths:
       tags:
         - Customers
       summary: Create a customer
-      description: Create a customer
-      operationId: PostCustomer
+      description: Create a customer.
+      operationId: CustomersCreateCustomer
       x-codegen-request-body-name: body
       requestBody:
         content:
