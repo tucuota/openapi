@@ -604,6 +604,10 @@ components:
           description: The customer's email address.
           type: string
           example: asd@asd.com
+        object:
+          type: string
+          enum:
+            - customer
         livemode:
           description: >-
             Has the value `true` if the object exists in live mode or the value
@@ -999,62 +1003,130 @@ components:
             Time at which the object was deleted. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
     card:
+      title: Credit Card
+      description: This object represents a credit card on your account.
       type: object
       properties: &ref_6
         bank:
+          description: Credit card's bank or financial institution.
           type: string
           example: Banco Santander Río
         brand:
+          description: Credit card's brand.
           type: string
           example: visa-credito
+          enum:
+            - amex
+            - argencard
+            - cabal
+            - cabal-debito
+            - cbu
+            - cencosud
+            - cmr-falabella
+            - cordobesa
+            - diners-club
+            - discover
+            - jcb
+            - lider
+            - maestro
+            - mastercard
+            - mastercard-debit
+            - naranja
+            - naranja-visa
+            - nativa
+            - visa-credito
+            - visa-debito
+            - favacard
         country:
+          description: >-
+            Credit card's [ISO_3166-1_alpha-2 country
+            code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
           type: string
           example: AR
         expiration_month:
+          description: Expiration month.
           type: number
           example: 11
         expiration_year:
+          description: Expiration year.
           type: number
           example: 2030
         fingerprint:
+          description: Unique fingerprint for this credit card number on your account.
           type: string
           example: 8712yh2uihiu1123sxas
         last_four_digits:
+          description: Credit's card last four digits.
           type: string
           example: '9876'
     cbu:
+      title: CBU
+      description: This object represents a CBU bak account on your account.
       type: object
       properties: &ref_7
         bank:
+          description: Bank.
           type: string
         country:
+          description: Bank account country.
           type: string
+          enum:
+            - AR
         fingerprint:
+          description: Unique fingerprint for this bank account number on your account.
           type: string
+          example: 8712yh2uihiu1123sxas
         last_four_digits:
+          description: Bank account last four digits.
           type: string
+          example: '9876'
     payment_method:
       type: object
       properties: &ref_9
         type:
           type: string
           description: 'One of: cbu, card.'
+          enum:
+            - card
+            - cbu
         card:
+          title: Credit Card
+          description: This object represents a credit card on your account.
           type: object
           properties: *ref_6
         cbu:
+          title: CBU
+          description: This object represents a CBU bak account on your account.
           type: object
           properties: *ref_7
         created_at:
           type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          description: >-
+            Time at which the object was created. Formatting follows
+            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
         id:
+          example: PM1982h3129
+          description: Unique identifier for the object.
+          maxLength: 5000
           type: string
         livemode:
+          description: >-
+            Has the value `true` if the object exists in live mode or the value
+            `false` if the object exists in test mode.
           type: boolean
         object:
           type: string
+          enum:
+            - payment_method
         updated_at:
           type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          description: >-
+            Time at which the object was last updated. Formatting follows
+            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
     mandate:
       title: Mandate
       description: This object represents a mandate of your organization.
@@ -1107,6 +1179,10 @@ components:
         payment_method:
           type: object
           properties: *ref_9
+        object:
+          type: string
+          enum:
+            - mandate
     subscription:
       title: Subscription
       description: This object represents a subscription of your organization.
@@ -2940,6 +3016,9 @@ paths:
               properties:
                 customer_id:
                   type: string
+                  description: |
+                    [Customer ID](#tag/Customers).
+                  example: CSgaZlLaPMZO.
                 payment_method_number:
                   type: string
               example:
@@ -3651,9 +3730,9 @@ paths:
                   description: The title of the payment or subscription.
                 customer_id:
                   type: string
-                  description: >
-                    TuCuota customer_id if exists en TuCuota. Example:
-                    CSgaZlLaPMZO.
+                  description: |
+                    [Customer ID](#tag/Customers).
+                  example: CSgaZlLaPMZO.
                 customer_name:
                   type: string
                   description: >
@@ -3886,7 +3965,9 @@ paths:
                     subscription will continue until you cancel it.
                 customer_id:
                   type: string
-                  description: Customer reference
+                  description: |
+                    [Customer ID](#tag/Customers).
+                  example: CSgaZlLaPMZO.
                 payment_method_id:
                   type: string
                   description: >
@@ -4055,7 +4136,9 @@ paths:
                     subscription will continue until you cancel it.
                 customer_id:
                   type: string
-                  description: Customer reference
+                  description: |
+                    [Customer ID](#tag/Customers).
+                  example: CSgaZlLaPMZO.
                 payment_method_id:
                   type: string
                   description: >

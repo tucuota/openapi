@@ -170,6 +170,12 @@
             "type": "string",
             "example": "asd@asd.com"
           },
+          "object": {
+            "type": "string",
+            "enum": [
+              "customer"
+            ]
+          },
           "livemode": {
             "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
             "type": "boolean"
@@ -662,52 +668,95 @@
         }
       },
       "card": {
+        "title": "Credit Card",
+        "description": "This object represents a credit card on your account.",
         "type": "object",
         "properties": {
           "bank": {
+            "description": "Credit card's bank or financial institution.",
             "type": "string",
             "example": "Banco Santander Río"
           },
           "brand": {
+            "description": "Credit card's brand.",
             "type": "string",
-            "example": "visa-credito"
+            "example": "visa-credito",
+            "enum": [
+              "amex",
+              "argencard",
+              "cabal",
+              "cabal-debito",
+              "cbu",
+              "cencosud",
+              "cmr-falabella",
+              "cordobesa",
+              "diners-club",
+              "discover",
+              "jcb",
+              "lider",
+              "maestro",
+              "mastercard",
+              "mastercard-debit",
+              "naranja",
+              "naranja-visa",
+              "nativa",
+              "visa-credito",
+              "visa-debito",
+              "favacard"
+            ]
           },
           "country": {
+            "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
             "type": "string",
             "example": "AR"
           },
           "expiration_month": {
+            "description": "Expiration month.",
             "type": "number",
             "example": 11
           },
           "expiration_year": {
+            "description": "Expiration year.",
             "type": "number",
             "example": 2030
           },
           "fingerprint": {
+            "description": "Unique fingerprint for this credit card number on your account.",
             "type": "string",
             "example": "8712yh2uihiu1123sxas"
           },
           "last_four_digits": {
+            "description": "Credit's card last four digits.",
             "type": "string",
             "example": "9876"
           }
         }
       },
       "cbu": {
+        "title": "CBU",
+        "description": "This object represents a CBU bak account on your account.",
         "type": "object",
         "properties": {
           "bank": {
+            "description": "Bank.",
             "type": "string"
           },
           "country": {
-            "type": "string"
+            "description": "Bank account country.",
+            "type": "string",
+            "enum": [
+              "AR"
+            ]
           },
           "fingerprint": {
-            "type": "string"
+            "description": "Unique fingerprint for this bank account number on your account.",
+            "type": "string",
+            "example": "8712yh2uihiu1123sxas"
           },
           "last_four_digits": {
-            "type": "string"
+            "description": "Bank account last four digits.",
+            "type": "string",
+            "example": "9876"
           }
         }
       },
@@ -716,72 +765,132 @@
         "properties": {
           "type": {
             "type": "string",
-            "description": "One of: cbu, card."
+            "description": "One of: cbu, card.",
+            "enum": [
+              "card",
+              "cbu"
+            ]
           },
           "card": {
+            "title": "Credit Card",
+            "description": "This object represents a credit card on your account.",
             "type": "object",
             "properties": {
               "bank": {
+                "description": "Credit card's bank or financial institution.",
                 "type": "string",
                 "example": "Banco Santander Río"
               },
               "brand": {
+                "description": "Credit card's brand.",
                 "type": "string",
-                "example": "visa-credito"
+                "example": "visa-credito",
+                "enum": [
+                  "amex",
+                  "argencard",
+                  "cabal",
+                  "cabal-debito",
+                  "cbu",
+                  "cencosud",
+                  "cmr-falabella",
+                  "cordobesa",
+                  "diners-club",
+                  "discover",
+                  "jcb",
+                  "lider",
+                  "maestro",
+                  "mastercard",
+                  "mastercard-debit",
+                  "naranja",
+                  "naranja-visa",
+                  "nativa",
+                  "visa-credito",
+                  "visa-debito",
+                  "favacard"
+                ]
               },
               "country": {
+                "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                 "type": "string",
                 "example": "AR"
               },
               "expiration_month": {
+                "description": "Expiration month.",
                 "type": "number",
                 "example": 11
               },
               "expiration_year": {
+                "description": "Expiration year.",
                 "type": "number",
                 "example": 2030
               },
               "fingerprint": {
+                "description": "Unique fingerprint for this credit card number on your account.",
                 "type": "string",
                 "example": "8712yh2uihiu1123sxas"
               },
               "last_four_digits": {
+                "description": "Credit's card last four digits.",
                 "type": "string",
                 "example": "9876"
               }
             }
           },
           "cbu": {
+            "title": "CBU",
+            "description": "This object represents a CBU bak account on your account.",
             "type": "object",
             "properties": {
               "bank": {
+                "description": "Bank.",
                 "type": "string"
               },
               "country": {
-                "type": "string"
+                "description": "Bank account country.",
+                "type": "string",
+                "enum": [
+                  "AR"
+                ]
               },
               "fingerprint": {
-                "type": "string"
+                "description": "Unique fingerprint for this bank account number on your account.",
+                "type": "string",
+                "example": "8712yh2uihiu1123sxas"
               },
               "last_four_digits": {
-                "type": "string"
+                "description": "Bank account last four digits.",
+                "type": "string",
+                "example": "9876"
               }
             }
           },
           "created_at": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
           },
           "id": {
+            "example": "PM1982h3129",
+            "description": "Unique identifier for the object.",
+            "maxLength": 5000,
             "type": "string"
           },
           "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
             "type": "boolean"
           },
           "object": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "payment_method"
+            ]
           },
           "updated_at": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
           }
         }
       },
@@ -862,6 +971,12 @@
                 "description": "The customer's email address.",
                 "type": "string",
                 "example": "asd@asd.com"
+              },
+              "object": {
+                "type": "string",
+                "enum": [
+                  "customer"
+                ]
               },
               "livemode": {
                 "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
@@ -1012,74 +1127,140 @@
             "properties": {
               "type": {
                 "type": "string",
-                "description": "One of: cbu, card."
+                "description": "One of: cbu, card.",
+                "enum": [
+                  "card",
+                  "cbu"
+                ]
               },
               "card": {
+                "title": "Credit Card",
+                "description": "This object represents a credit card on your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
+                    "description": "Credit card's bank or financial institution.",
                     "type": "string",
                     "example": "Banco Santander Río"
                   },
                   "brand": {
+                    "description": "Credit card's brand.",
                     "type": "string",
-                    "example": "visa-credito"
+                    "example": "visa-credito",
+                    "enum": [
+                      "amex",
+                      "argencard",
+                      "cabal",
+                      "cabal-debito",
+                      "cbu",
+                      "cencosud",
+                      "cmr-falabella",
+                      "cordobesa",
+                      "diners-club",
+                      "discover",
+                      "jcb",
+                      "lider",
+                      "maestro",
+                      "mastercard",
+                      "mastercard-debit",
+                      "naranja",
+                      "naranja-visa",
+                      "nativa",
+                      "visa-credito",
+                      "visa-debito",
+                      "favacard"
+                    ]
                   },
                   "country": {
+                    "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                     "type": "string",
                     "example": "AR"
                   },
                   "expiration_month": {
+                    "description": "Expiration month.",
                     "type": "number",
                     "example": 11
                   },
                   "expiration_year": {
+                    "description": "Expiration year.",
                     "type": "number",
                     "example": 2030
                   },
                   "fingerprint": {
+                    "description": "Unique fingerprint for this credit card number on your account.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
                   },
                   "last_four_digits": {
+                    "description": "Credit's card last four digits.",
                     "type": "string",
                     "example": "9876"
                   }
                 }
               },
               "cbu": {
+                "title": "CBU",
+                "description": "This object represents a CBU bak account on your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
+                    "description": "Bank.",
                     "type": "string"
                   },
                   "country": {
-                    "type": "string"
+                    "description": "Bank account country.",
+                    "type": "string",
+                    "enum": [
+                      "AR"
+                    ]
                   },
                   "fingerprint": {
-                    "type": "string"
+                    "description": "Unique fingerprint for this bank account number on your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
                   },
                   "last_four_digits": {
-                    "type": "string"
+                    "description": "Bank account last four digits.",
+                    "type": "string",
+                    "example": "9876"
                   }
                 }
               },
               "created_at": {
-                "type": "string"
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
               },
               "id": {
+                "example": "PM1982h3129",
+                "description": "Unique identifier for the object.",
+                "maxLength": 5000,
                 "type": "string"
               },
               "livemode": {
+                "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                 "type": "boolean"
               },
               "object": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "payment_method"
+                ]
               },
               "updated_at": {
-                "type": "string"
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
               }
             }
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "mandate"
+            ]
           }
         }
       },
@@ -1123,6 +1304,12 @@
                 "description": "The customer's email address.",
                 "type": "string",
                 "example": "asd@asd.com"
+              },
+              "object": {
+                "type": "string",
+                "enum": [
+                  "customer"
+                ]
               },
               "livemode": {
                 "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
@@ -1303,72 +1490,132 @@
             "properties": {
               "type": {
                 "type": "string",
-                "description": "One of: cbu, card."
+                "description": "One of: cbu, card.",
+                "enum": [
+                  "card",
+                  "cbu"
+                ]
               },
               "card": {
+                "title": "Credit Card",
+                "description": "This object represents a credit card on your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
+                    "description": "Credit card's bank or financial institution.",
                     "type": "string",
                     "example": "Banco Santander Río"
                   },
                   "brand": {
+                    "description": "Credit card's brand.",
                     "type": "string",
-                    "example": "visa-credito"
+                    "example": "visa-credito",
+                    "enum": [
+                      "amex",
+                      "argencard",
+                      "cabal",
+                      "cabal-debito",
+                      "cbu",
+                      "cencosud",
+                      "cmr-falabella",
+                      "cordobesa",
+                      "diners-club",
+                      "discover",
+                      "jcb",
+                      "lider",
+                      "maestro",
+                      "mastercard",
+                      "mastercard-debit",
+                      "naranja",
+                      "naranja-visa",
+                      "nativa",
+                      "visa-credito",
+                      "visa-debito",
+                      "favacard"
+                    ]
                   },
                   "country": {
+                    "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                     "type": "string",
                     "example": "AR"
                   },
                   "expiration_month": {
+                    "description": "Expiration month.",
                     "type": "number",
                     "example": 11
                   },
                   "expiration_year": {
+                    "description": "Expiration year.",
                     "type": "number",
                     "example": 2030
                   },
                   "fingerprint": {
+                    "description": "Unique fingerprint for this credit card number on your account.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
                   },
                   "last_four_digits": {
+                    "description": "Credit's card last four digits.",
                     "type": "string",
                     "example": "9876"
                   }
                 }
               },
               "cbu": {
+                "title": "CBU",
+                "description": "This object represents a CBU bak account on your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
+                    "description": "Bank.",
                     "type": "string"
                   },
                   "country": {
-                    "type": "string"
+                    "description": "Bank account country.",
+                    "type": "string",
+                    "enum": [
+                      "AR"
+                    ]
                   },
                   "fingerprint": {
-                    "type": "string"
+                    "description": "Unique fingerprint for this bank account number on your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
                   },
                   "last_four_digits": {
-                    "type": "string"
+                    "description": "Bank account last four digits.",
+                    "type": "string",
+                    "example": "9876"
                   }
                 }
               },
               "created_at": {
-                "type": "string"
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
               },
               "id": {
+                "example": "PM1982h3129",
+                "description": "Unique identifier for the object.",
+                "maxLength": 5000,
                 "type": "string"
               },
               "livemode": {
+                "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                 "type": "boolean"
               },
               "object": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "payment_method"
+                ]
               },
               "updated_at": {
-                "type": "string"
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
               }
             }
           },
@@ -2202,6 +2449,12 @@
                             "type": "string",
                             "example": "asd@asd.com"
                           },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "customer"
+                            ]
+                          },
                           "livemode": {
                             "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                             "type": "boolean"
@@ -2560,6 +2813,12 @@
                           "type": "string",
                           "example": "asd@asd.com"
                         },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "customer"
+                          ]
+                        },
                         "livemode": {
                           "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                           "type": "boolean"
@@ -2774,6 +3033,12 @@
                           "description": "The customer's email address.",
                           "type": "string",
                           "example": "asd@asd.com"
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "customer"
+                          ]
                         },
                         "livemode": {
                           "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
@@ -3054,6 +3319,12 @@
                           "description": "The customer's email address.",
                           "type": "string",
                           "example": "asd@asd.com"
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "customer"
+                          ]
                         },
                         "livemode": {
                           "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
@@ -4822,6 +5093,12 @@
                                 "type": "string",
                                 "example": "asd@asd.com"
                               },
+                              "object": {
+                                "type": "string",
+                                "enum": [
+                                  "customer"
+                                ]
+                              },
                               "livemode": {
                                 "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                                 "type": "boolean"
@@ -4971,74 +5248,140 @@
                             "properties": {
                               "type": {
                                 "type": "string",
-                                "description": "One of: cbu, card."
+                                "description": "One of: cbu, card.",
+                                "enum": [
+                                  "card",
+                                  "cbu"
+                                ]
                               },
                               "card": {
+                                "title": "Credit Card",
+                                "description": "This object represents a credit card on your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
+                                    "description": "Credit card's bank or financial institution.",
                                     "type": "string",
                                     "example": "Banco Santander Río"
                                   },
                                   "brand": {
+                                    "description": "Credit card's brand.",
                                     "type": "string",
-                                    "example": "visa-credito"
+                                    "example": "visa-credito",
+                                    "enum": [
+                                      "amex",
+                                      "argencard",
+                                      "cabal",
+                                      "cabal-debito",
+                                      "cbu",
+                                      "cencosud",
+                                      "cmr-falabella",
+                                      "cordobesa",
+                                      "diners-club",
+                                      "discover",
+                                      "jcb",
+                                      "lider",
+                                      "maestro",
+                                      "mastercard",
+                                      "mastercard-debit",
+                                      "naranja",
+                                      "naranja-visa",
+                                      "nativa",
+                                      "visa-credito",
+                                      "visa-debito",
+                                      "favacard"
+                                    ]
                                   },
                                   "country": {
+                                    "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                     "type": "string",
                                     "example": "AR"
                                   },
                                   "expiration_month": {
+                                    "description": "Expiration month.",
                                     "type": "number",
                                     "example": 11
                                   },
                                   "expiration_year": {
+                                    "description": "Expiration year.",
                                     "type": "number",
                                     "example": 2030
                                   },
                                   "fingerprint": {
+                                    "description": "Unique fingerprint for this credit card number on your account.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
                                   "last_four_digits": {
+                                    "description": "Credit's card last four digits.",
                                     "type": "string",
                                     "example": "9876"
                                   }
                                 }
                               },
                               "cbu": {
+                                "title": "CBU",
+                                "description": "This object represents a CBU bak account on your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
+                                    "description": "Bank.",
                                     "type": "string"
                                   },
                                   "country": {
-                                    "type": "string"
+                                    "description": "Bank account country.",
+                                    "type": "string",
+                                    "enum": [
+                                      "AR"
+                                    ]
                                   },
                                   "fingerprint": {
-                                    "type": "string"
+                                    "description": "Unique fingerprint for this bank account number on your account.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
                                   },
                                   "last_four_digits": {
-                                    "type": "string"
+                                    "description": "Bank account last four digits.",
+                                    "type": "string",
+                                    "example": "9876"
                                   }
                                 }
                               },
                               "created_at": {
-                                "type": "string"
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00",
+                                "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                               },
                               "id": {
+                                "example": "PM1982h3129",
+                                "description": "Unique identifier for the object.",
+                                "maxLength": 5000,
                                 "type": "string"
                               },
                               "livemode": {
+                                "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                                 "type": "boolean"
                               },
                               "object": {
-                                "type": "string"
+                                "type": "string",
+                                "enum": [
+                                  "payment_method"
+                                ]
                               },
                               "updated_at": {
-                                "type": "string"
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00",
+                                "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                               }
                             }
+                          },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "mandate"
+                            ]
                           }
                         }
                       }
@@ -5149,7 +5492,9 @@
                 "type": "object",
                 "properties": {
                   "customer_id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "[Customer ID](#tag/Customers).\n",
+                    "example": "CSgaZlLaPMZO."
                   },
                   "payment_method_number": {
                     "type": "string"
@@ -5335,6 +5680,12 @@
                               "type": "string",
                               "example": "asd@asd.com"
                             },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "customer"
+                              ]
+                            },
                             "livemode": {
                               "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
@@ -5484,74 +5835,140 @@
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card."
+                              "description": "One of: cbu, card.",
+                              "enum": [
+                                "card",
+                                "cbu"
+                              ]
                             },
                             "card": {
+                              "title": "Credit Card",
+                              "description": "This object represents a credit card on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Credit card's bank or financial institution.",
                                   "type": "string",
                                   "example": "Banco Santander Río"
                                 },
                                 "brand": {
+                                  "description": "Credit card's brand.",
                                   "type": "string",
-                                  "example": "visa-credito"
+                                  "example": "visa-credito",
+                                  "enum": [
+                                    "amex",
+                                    "argencard",
+                                    "cabal",
+                                    "cabal-debito",
+                                    "cbu",
+                                    "cencosud",
+                                    "cmr-falabella",
+                                    "cordobesa",
+                                    "diners-club",
+                                    "discover",
+                                    "jcb",
+                                    "lider",
+                                    "maestro",
+                                    "mastercard",
+                                    "mastercard-debit",
+                                    "naranja",
+                                    "naranja-visa",
+                                    "nativa",
+                                    "visa-credito",
+                                    "visa-debito",
+                                    "favacard"
+                                  ]
                                 },
                                 "country": {
+                                  "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                   "type": "string",
                                   "example": "AR"
                                 },
                                 "expiration_month": {
+                                  "description": "Expiration month.",
                                   "type": "number",
                                   "example": 11
                                 },
                                 "expiration_year": {
+                                  "description": "Expiration year.",
                                   "type": "number",
                                   "example": 2030
                                 },
                                 "fingerprint": {
+                                  "description": "Unique fingerprint for this credit card number on your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
+                                  "description": "Credit's card last four digits.",
                                   "type": "string",
                                   "example": "9876"
                                 }
                               }
                             },
                             "cbu": {
+                              "title": "CBU",
+                              "description": "This object represents a CBU bak account on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Bank.",
                                   "type": "string"
                                 },
                                 "country": {
-                                  "type": "string"
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "AR"
+                                  ]
                                 },
                                 "fingerprint": {
-                                  "type": "string"
+                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
-                                  "type": "string"
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
                                 }
                               }
                             },
                             "created_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             },
                             "id": {
+                              "example": "PM1982h3129",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
                               "type": "string"
                             },
                             "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
                             },
                             "object": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "payment_method"
+                              ]
                             },
                             "updated_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             }
                           }
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "mandate"
+                          ]
                         }
                       }
                     }
@@ -5733,72 +6150,132 @@
                         "properties": {
                           "type": {
                             "type": "string",
-                            "description": "One of: cbu, card."
+                            "description": "One of: cbu, card.",
+                            "enum": [
+                              "card",
+                              "cbu"
+                            ]
                           },
                           "card": {
+                            "title": "Credit Card",
+                            "description": "This object represents a credit card on your account.",
                             "type": "object",
                             "properties": {
                               "bank": {
+                                "description": "Credit card's bank or financial institution.",
                                 "type": "string",
                                 "example": "Banco Santander Río"
                               },
                               "brand": {
+                                "description": "Credit card's brand.",
                                 "type": "string",
-                                "example": "visa-credito"
+                                "example": "visa-credito",
+                                "enum": [
+                                  "amex",
+                                  "argencard",
+                                  "cabal",
+                                  "cabal-debito",
+                                  "cbu",
+                                  "cencosud",
+                                  "cmr-falabella",
+                                  "cordobesa",
+                                  "diners-club",
+                                  "discover",
+                                  "jcb",
+                                  "lider",
+                                  "maestro",
+                                  "mastercard",
+                                  "mastercard-debit",
+                                  "naranja",
+                                  "naranja-visa",
+                                  "nativa",
+                                  "visa-credito",
+                                  "visa-debito",
+                                  "favacard"
+                                ]
                               },
                               "country": {
+                                "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                 "type": "string",
                                 "example": "AR"
                               },
                               "expiration_month": {
+                                "description": "Expiration month.",
                                 "type": "number",
                                 "example": 11
                               },
                               "expiration_year": {
+                                "description": "Expiration year.",
                                 "type": "number",
                                 "example": 2030
                               },
                               "fingerprint": {
+                                "description": "Unique fingerprint for this credit card number on your account.",
                                 "type": "string",
                                 "example": "8712yh2uihiu1123sxas"
                               },
                               "last_four_digits": {
+                                "description": "Credit's card last four digits.",
                                 "type": "string",
                                 "example": "9876"
                               }
                             }
                           },
                           "cbu": {
+                            "title": "CBU",
+                            "description": "This object represents a CBU bak account on your account.",
                             "type": "object",
                             "properties": {
                               "bank": {
+                                "description": "Bank.",
                                 "type": "string"
                               },
                               "country": {
-                                "type": "string"
+                                "description": "Bank account country.",
+                                "type": "string",
+                                "enum": [
+                                  "AR"
+                                ]
                               },
                               "fingerprint": {
-                                "type": "string"
+                                "description": "Unique fingerprint for this bank account number on your account.",
+                                "type": "string",
+                                "example": "8712yh2uihiu1123sxas"
                               },
                               "last_four_digits": {
-                                "type": "string"
+                                "description": "Bank account last four digits.",
+                                "type": "string",
+                                "example": "9876"
                               }
                             }
                           },
                           "created_at": {
-                            "type": "string"
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                           },
                           "id": {
+                            "example": "PM1982h3129",
+                            "description": "Unique identifier for the object.",
+                            "maxLength": 5000,
                             "type": "string"
                           },
                           "livemode": {
+                            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                             "type": "boolean"
                           },
                           "object": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": [
+                              "payment_method"
+                            ]
                           },
                           "updated_at": {
-                            "type": "string"
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                           }
                         }
                       }
@@ -5985,72 +6462,132 @@
                       "properties": {
                         "type": {
                           "type": "string",
-                          "description": "One of: cbu, card."
+                          "description": "One of: cbu, card.",
+                          "enum": [
+                            "card",
+                            "cbu"
+                          ]
                         },
                         "card": {
+                          "title": "Credit Card",
+                          "description": "This object represents a credit card on your account.",
                           "type": "object",
                           "properties": {
                             "bank": {
+                              "description": "Credit card's bank or financial institution.",
                               "type": "string",
                               "example": "Banco Santander Río"
                             },
                             "brand": {
+                              "description": "Credit card's brand.",
                               "type": "string",
-                              "example": "visa-credito"
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             },
                             "country": {
+                              "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                               "type": "string",
                               "example": "AR"
                             },
                             "expiration_month": {
+                              "description": "Expiration month.",
                               "type": "number",
                               "example": 11
                             },
                             "expiration_year": {
+                              "description": "Expiration year.",
                               "type": "number",
                               "example": 2030
                             },
                             "fingerprint": {
+                              "description": "Unique fingerprint for this credit card number on your account.",
                               "type": "string",
                               "example": "8712yh2uihiu1123sxas"
                             },
                             "last_four_digits": {
+                              "description": "Credit's card last four digits.",
                               "type": "string",
                               "example": "9876"
                             }
                           }
                         },
                         "cbu": {
+                          "title": "CBU",
+                          "description": "This object represents a CBU bak account on your account.",
                           "type": "object",
                           "properties": {
                             "bank": {
+                              "description": "Bank.",
                               "type": "string"
                             },
                             "country": {
-                              "type": "string"
+                              "description": "Bank account country.",
+                              "type": "string",
+                              "enum": [
+                                "AR"
+                              ]
                             },
                             "fingerprint": {
-                              "type": "string"
+                              "description": "Unique fingerprint for this bank account number on your account.",
+                              "type": "string",
+                              "example": "8712yh2uihiu1123sxas"
                             },
                             "last_four_digits": {
-                              "type": "string"
+                              "description": "Bank account last four digits.",
+                              "type": "string",
+                              "example": "9876"
                             }
                           }
                         },
                         "created_at": {
-                          "type": "string"
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         },
                         "id": {
+                          "example": "PM1982h3129",
+                          "description": "Unique identifier for the object.",
+                          "maxLength": 5000,
                           "type": "string"
                         },
                         "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                           "type": "boolean"
                         },
                         "object": {
-                          "type": "string"
+                          "type": "string",
+                          "enum": [
+                            "payment_method"
+                          ]
                         },
                         "updated_at": {
-                          "type": "string"
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         }
                       }
                     }
@@ -6116,72 +6653,132 @@
                       "properties": {
                         "type": {
                           "type": "string",
-                          "description": "One of: cbu, card."
+                          "description": "One of: cbu, card.",
+                          "enum": [
+                            "card",
+                            "cbu"
+                          ]
                         },
                         "card": {
+                          "title": "Credit Card",
+                          "description": "This object represents a credit card on your account.",
                           "type": "object",
                           "properties": {
                             "bank": {
+                              "description": "Credit card's bank or financial institution.",
                               "type": "string",
                               "example": "Banco Santander Río"
                             },
                             "brand": {
+                              "description": "Credit card's brand.",
                               "type": "string",
-                              "example": "visa-credito"
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             },
                             "country": {
+                              "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                               "type": "string",
                               "example": "AR"
                             },
                             "expiration_month": {
+                              "description": "Expiration month.",
                               "type": "number",
                               "example": 11
                             },
                             "expiration_year": {
+                              "description": "Expiration year.",
                               "type": "number",
                               "example": 2030
                             },
                             "fingerprint": {
+                              "description": "Unique fingerprint for this credit card number on your account.",
                               "type": "string",
                               "example": "8712yh2uihiu1123sxas"
                             },
                             "last_four_digits": {
+                              "description": "Credit's card last four digits.",
                               "type": "string",
                               "example": "9876"
                             }
                           }
                         },
                         "cbu": {
+                          "title": "CBU",
+                          "description": "This object represents a CBU bak account on your account.",
                           "type": "object",
                           "properties": {
                             "bank": {
+                              "description": "Bank.",
                               "type": "string"
                             },
                             "country": {
-                              "type": "string"
+                              "description": "Bank account country.",
+                              "type": "string",
+                              "enum": [
+                                "AR"
+                              ]
                             },
                             "fingerprint": {
-                              "type": "string"
+                              "description": "Unique fingerprint for this bank account number on your account.",
+                              "type": "string",
+                              "example": "8712yh2uihiu1123sxas"
                             },
                             "last_four_digits": {
-                              "type": "string"
+                              "description": "Bank account last four digits.",
+                              "type": "string",
+                              "example": "9876"
                             }
                           }
                         },
                         "created_at": {
-                          "type": "string"
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         },
                         "id": {
+                          "example": "PM1982h3129",
+                          "description": "Unique identifier for the object.",
+                          "maxLength": 5000,
                           "type": "string"
                         },
                         "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                           "type": "boolean"
                         },
                         "object": {
-                          "type": "string"
+                          "type": "string",
+                          "enum": [
+                            "payment_method"
+                          ]
                         },
                         "updated_at": {
-                          "type": "string"
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                         }
                       }
                     }
@@ -6327,6 +6924,12 @@
                                 "description": "The customer's email address.",
                                 "type": "string",
                                 "example": "asd@asd.com"
+                              },
+                              "object": {
+                                "type": "string",
+                                "enum": [
+                                  "customer"
+                                ]
                               },
                               "livemode": {
                                 "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
@@ -6507,72 +7110,132 @@
                             "properties": {
                               "type": {
                                 "type": "string",
-                                "description": "One of: cbu, card."
+                                "description": "One of: cbu, card.",
+                                "enum": [
+                                  "card",
+                                  "cbu"
+                                ]
                               },
                               "card": {
+                                "title": "Credit Card",
+                                "description": "This object represents a credit card on your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
+                                    "description": "Credit card's bank or financial institution.",
                                     "type": "string",
                                     "example": "Banco Santander Río"
                                   },
                                   "brand": {
+                                    "description": "Credit card's brand.",
                                     "type": "string",
-                                    "example": "visa-credito"
+                                    "example": "visa-credito",
+                                    "enum": [
+                                      "amex",
+                                      "argencard",
+                                      "cabal",
+                                      "cabal-debito",
+                                      "cbu",
+                                      "cencosud",
+                                      "cmr-falabella",
+                                      "cordobesa",
+                                      "diners-club",
+                                      "discover",
+                                      "jcb",
+                                      "lider",
+                                      "maestro",
+                                      "mastercard",
+                                      "mastercard-debit",
+                                      "naranja",
+                                      "naranja-visa",
+                                      "nativa",
+                                      "visa-credito",
+                                      "visa-debito",
+                                      "favacard"
+                                    ]
                                   },
                                   "country": {
+                                    "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                     "type": "string",
                                     "example": "AR"
                                   },
                                   "expiration_month": {
+                                    "description": "Expiration month.",
                                     "type": "number",
                                     "example": 11
                                   },
                                   "expiration_year": {
+                                    "description": "Expiration year.",
                                     "type": "number",
                                     "example": 2030
                                   },
                                   "fingerprint": {
+                                    "description": "Unique fingerprint for this credit card number on your account.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
                                   "last_four_digits": {
+                                    "description": "Credit's card last four digits.",
                                     "type": "string",
                                     "example": "9876"
                                   }
                                 }
                               },
                               "cbu": {
+                                "title": "CBU",
+                                "description": "This object represents a CBU bak account on your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
+                                    "description": "Bank.",
                                     "type": "string"
                                   },
                                   "country": {
-                                    "type": "string"
+                                    "description": "Bank account country.",
+                                    "type": "string",
+                                    "enum": [
+                                      "AR"
+                                    ]
                                   },
                                   "fingerprint": {
-                                    "type": "string"
+                                    "description": "Unique fingerprint for this bank account number on your account.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
                                   },
                                   "last_four_digits": {
-                                    "type": "string"
+                                    "description": "Bank account last four digits.",
+                                    "type": "string",
+                                    "example": "9876"
                                   }
                                 }
                               },
                               "created_at": {
-                                "type": "string"
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00",
+                                "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                               },
                               "id": {
+                                "example": "PM1982h3129",
+                                "description": "Unique identifier for the object.",
+                                "maxLength": 5000,
                                 "type": "string"
                               },
                               "livemode": {
+                                "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                                 "type": "boolean"
                               },
                               "object": {
-                                "type": "string"
+                                "type": "string",
+                                "enum": [
+                                  "payment_method"
+                                ]
                               },
                               "updated_at": {
-                                "type": "string"
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00",
+                                "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                               }
                             }
                           },
@@ -7146,7 +7809,8 @@
                   },
                   "customer_id": {
                     "type": "string",
-                    "description": "TuCuota customer_id if exists en TuCuota. Example: CSgaZlLaPMZO.\n"
+                    "description": "[Customer ID](#tag/Customers).\n",
+                    "example": "CSgaZlLaPMZO."
                   },
                   "customer_name": {
                     "type": "string",
@@ -7699,6 +8363,12 @@
                                 "type": "string",
                                 "example": "asd@asd.com"
                               },
+                              "object": {
+                                "type": "string",
+                                "enum": [
+                                  "customer"
+                                ]
+                              },
                               "livemode": {
                                 "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                                 "type": "boolean"
@@ -7878,72 +8548,132 @@
                             "properties": {
                               "type": {
                                 "type": "string",
-                                "description": "One of: cbu, card."
+                                "description": "One of: cbu, card.",
+                                "enum": [
+                                  "card",
+                                  "cbu"
+                                ]
                               },
                               "card": {
+                                "title": "Credit Card",
+                                "description": "This object represents a credit card on your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
+                                    "description": "Credit card's bank or financial institution.",
                                     "type": "string",
                                     "example": "Banco Santander Río"
                                   },
                                   "brand": {
+                                    "description": "Credit card's brand.",
                                     "type": "string",
-                                    "example": "visa-credito"
+                                    "example": "visa-credito",
+                                    "enum": [
+                                      "amex",
+                                      "argencard",
+                                      "cabal",
+                                      "cabal-debito",
+                                      "cbu",
+                                      "cencosud",
+                                      "cmr-falabella",
+                                      "cordobesa",
+                                      "diners-club",
+                                      "discover",
+                                      "jcb",
+                                      "lider",
+                                      "maestro",
+                                      "mastercard",
+                                      "mastercard-debit",
+                                      "naranja",
+                                      "naranja-visa",
+                                      "nativa",
+                                      "visa-credito",
+                                      "visa-debito",
+                                      "favacard"
+                                    ]
                                   },
                                   "country": {
+                                    "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                     "type": "string",
                                     "example": "AR"
                                   },
                                   "expiration_month": {
+                                    "description": "Expiration month.",
                                     "type": "number",
                                     "example": 11
                                   },
                                   "expiration_year": {
+                                    "description": "Expiration year.",
                                     "type": "number",
                                     "example": 2030
                                   },
                                   "fingerprint": {
+                                    "description": "Unique fingerprint for this credit card number on your account.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
                                   "last_four_digits": {
+                                    "description": "Credit's card last four digits.",
                                     "type": "string",
                                     "example": "9876"
                                   }
                                 }
                               },
                               "cbu": {
+                                "title": "CBU",
+                                "description": "This object represents a CBU bak account on your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
+                                    "description": "Bank.",
                                     "type": "string"
                                   },
                                   "country": {
-                                    "type": "string"
+                                    "description": "Bank account country.",
+                                    "type": "string",
+                                    "enum": [
+                                      "AR"
+                                    ]
                                   },
                                   "fingerprint": {
-                                    "type": "string"
+                                    "description": "Unique fingerprint for this bank account number on your account.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
                                   },
                                   "last_four_digits": {
-                                    "type": "string"
+                                    "description": "Bank account last four digits.",
+                                    "type": "string",
+                                    "example": "9876"
                                   }
                                 }
                               },
                               "created_at": {
-                                "type": "string"
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00",
+                                "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                               },
                               "id": {
+                                "example": "PM1982h3129",
+                                "description": "Unique identifier for the object.",
+                                "maxLength": 5000,
                                 "type": "string"
                               },
                               "livemode": {
+                                "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                                 "type": "boolean"
                               },
                               "object": {
-                                "type": "string"
+                                "type": "string",
+                                "enum": [
+                                  "payment_method"
+                                ]
                               },
                               "updated_at": {
-                                "type": "string"
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00",
+                                "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                               }
                             }
                           },
@@ -8106,7 +8836,8 @@
                   },
                   "customer_id": {
                     "type": "string",
-                    "description": "Customer reference"
+                    "description": "[Customer ID](#tag/Customers).\n",
+                    "example": "CSgaZlLaPMZO."
                   },
                   "payment_method_id": {
                     "type": "string",
@@ -8213,6 +8944,12 @@
                               "description": "The customer's email address.",
                               "type": "string",
                               "example": "asd@asd.com"
+                            },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "customer"
+                              ]
                             },
                             "livemode": {
                               "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
@@ -8393,72 +9130,132 @@
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card."
+                              "description": "One of: cbu, card.",
+                              "enum": [
+                                "card",
+                                "cbu"
+                              ]
                             },
                             "card": {
+                              "title": "Credit Card",
+                              "description": "This object represents a credit card on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Credit card's bank or financial institution.",
                                   "type": "string",
                                   "example": "Banco Santander Río"
                                 },
                                 "brand": {
+                                  "description": "Credit card's brand.",
                                   "type": "string",
-                                  "example": "visa-credito"
+                                  "example": "visa-credito",
+                                  "enum": [
+                                    "amex",
+                                    "argencard",
+                                    "cabal",
+                                    "cabal-debito",
+                                    "cbu",
+                                    "cencosud",
+                                    "cmr-falabella",
+                                    "cordobesa",
+                                    "diners-club",
+                                    "discover",
+                                    "jcb",
+                                    "lider",
+                                    "maestro",
+                                    "mastercard",
+                                    "mastercard-debit",
+                                    "naranja",
+                                    "naranja-visa",
+                                    "nativa",
+                                    "visa-credito",
+                                    "visa-debito",
+                                    "favacard"
+                                  ]
                                 },
                                 "country": {
+                                  "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                   "type": "string",
                                   "example": "AR"
                                 },
                                 "expiration_month": {
+                                  "description": "Expiration month.",
                                   "type": "number",
                                   "example": 11
                                 },
                                 "expiration_year": {
+                                  "description": "Expiration year.",
                                   "type": "number",
                                   "example": 2030
                                 },
                                 "fingerprint": {
+                                  "description": "Unique fingerprint for this credit card number on your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
+                                  "description": "Credit's card last four digits.",
                                   "type": "string",
                                   "example": "9876"
                                 }
                               }
                             },
                             "cbu": {
+                              "title": "CBU",
+                              "description": "This object represents a CBU bak account on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Bank.",
                                   "type": "string"
                                 },
                                 "country": {
-                                  "type": "string"
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "AR"
+                                  ]
                                 },
                                 "fingerprint": {
-                                  "type": "string"
+                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
-                                  "type": "string"
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
                                 }
                               }
                             },
                             "created_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             },
                             "id": {
+                              "example": "PM1982h3129",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
                               "type": "string"
                             },
                             "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
                             },
                             "object": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "payment_method"
+                              ]
                             },
                             "updated_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             }
                           }
                         },
@@ -8579,6 +9376,12 @@
                               "type": "string",
                               "example": "asd@asd.com"
                             },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "customer"
+                              ]
+                            },
                             "livemode": {
                               "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
@@ -8758,72 +9561,132 @@
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card."
+                              "description": "One of: cbu, card.",
+                              "enum": [
+                                "card",
+                                "cbu"
+                              ]
                             },
                             "card": {
+                              "title": "Credit Card",
+                              "description": "This object represents a credit card on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Credit card's bank or financial institution.",
                                   "type": "string",
                                   "example": "Banco Santander Río"
                                 },
                                 "brand": {
+                                  "description": "Credit card's brand.",
                                   "type": "string",
-                                  "example": "visa-credito"
+                                  "example": "visa-credito",
+                                  "enum": [
+                                    "amex",
+                                    "argencard",
+                                    "cabal",
+                                    "cabal-debito",
+                                    "cbu",
+                                    "cencosud",
+                                    "cmr-falabella",
+                                    "cordobesa",
+                                    "diners-club",
+                                    "discover",
+                                    "jcb",
+                                    "lider",
+                                    "maestro",
+                                    "mastercard",
+                                    "mastercard-debit",
+                                    "naranja",
+                                    "naranja-visa",
+                                    "nativa",
+                                    "visa-credito",
+                                    "visa-debito",
+                                    "favacard"
+                                  ]
                                 },
                                 "country": {
+                                  "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                   "type": "string",
                                   "example": "AR"
                                 },
                                 "expiration_month": {
+                                  "description": "Expiration month.",
                                   "type": "number",
                                   "example": 11
                                 },
                                 "expiration_year": {
+                                  "description": "Expiration year.",
                                   "type": "number",
                                   "example": 2030
                                 },
                                 "fingerprint": {
+                                  "description": "Unique fingerprint for this credit card number on your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
+                                  "description": "Credit's card last four digits.",
                                   "type": "string",
                                   "example": "9876"
                                 }
                               }
                             },
                             "cbu": {
+                              "title": "CBU",
+                              "description": "This object represents a CBU bak account on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Bank.",
                                   "type": "string"
                                 },
                                 "country": {
-                                  "type": "string"
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "AR"
+                                  ]
                                 },
                                 "fingerprint": {
-                                  "type": "string"
+                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
-                                  "type": "string"
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
                                 }
                               }
                             },
                             "created_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             },
                             "id": {
+                              "example": "PM1982h3129",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
                               "type": "string"
                             },
                             "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
                             },
                             "object": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "payment_method"
+                              ]
                             },
                             "updated_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             }
                           }
                         },
@@ -8935,7 +9798,8 @@
                   },
                   "customer_id": {
                     "type": "string",
-                    "description": "Customer reference"
+                    "description": "[Customer ID](#tag/Customers).\n",
+                    "example": "CSgaZlLaPMZO."
                   },
                   "payment_method_id": {
                     "type": "string",
@@ -9042,6 +9906,12 @@
                               "description": "The customer's email address.",
                               "type": "string",
                               "example": "asd@asd.com"
+                            },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "customer"
+                              ]
                             },
                             "livemode": {
                               "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
@@ -9222,72 +10092,132 @@
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card."
+                              "description": "One of: cbu, card.",
+                              "enum": [
+                                "card",
+                                "cbu"
+                              ]
                             },
                             "card": {
+                              "title": "Credit Card",
+                              "description": "This object represents a credit card on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Credit card's bank or financial institution.",
                                   "type": "string",
                                   "example": "Banco Santander Río"
                                 },
                                 "brand": {
+                                  "description": "Credit card's brand.",
                                   "type": "string",
-                                  "example": "visa-credito"
+                                  "example": "visa-credito",
+                                  "enum": [
+                                    "amex",
+                                    "argencard",
+                                    "cabal",
+                                    "cabal-debito",
+                                    "cbu",
+                                    "cencosud",
+                                    "cmr-falabella",
+                                    "cordobesa",
+                                    "diners-club",
+                                    "discover",
+                                    "jcb",
+                                    "lider",
+                                    "maestro",
+                                    "mastercard",
+                                    "mastercard-debit",
+                                    "naranja",
+                                    "naranja-visa",
+                                    "nativa",
+                                    "visa-credito",
+                                    "visa-debito",
+                                    "favacard"
+                                  ]
                                 },
                                 "country": {
+                                  "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                   "type": "string",
                                   "example": "AR"
                                 },
                                 "expiration_month": {
+                                  "description": "Expiration month.",
                                   "type": "number",
                                   "example": 11
                                 },
                                 "expiration_year": {
+                                  "description": "Expiration year.",
                                   "type": "number",
                                   "example": 2030
                                 },
                                 "fingerprint": {
+                                  "description": "Unique fingerprint for this credit card number on your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
+                                  "description": "Credit's card last four digits.",
                                   "type": "string",
                                   "example": "9876"
                                 }
                               }
                             },
                             "cbu": {
+                              "title": "CBU",
+                              "description": "This object represents a CBU bak account on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Bank.",
                                   "type": "string"
                                 },
                                 "country": {
-                                  "type": "string"
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "AR"
+                                  ]
                                 },
                                 "fingerprint": {
-                                  "type": "string"
+                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
-                                  "type": "string"
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
                                 }
                               }
                             },
                             "created_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             },
                             "id": {
+                              "example": "PM1982h3129",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
                               "type": "string"
                             },
                             "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
                             },
                             "object": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "payment_method"
+                              ]
                             },
                             "updated_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             }
                           }
                         },
@@ -9408,6 +10338,12 @@
                               "type": "string",
                               "example": "asd@asd.com"
                             },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "customer"
+                              ]
+                            },
                             "livemode": {
                               "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
@@ -9587,72 +10523,132 @@
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card."
+                              "description": "One of: cbu, card.",
+                              "enum": [
+                                "card",
+                                "cbu"
+                              ]
                             },
                             "card": {
+                              "title": "Credit Card",
+                              "description": "This object represents a credit card on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Credit card's bank or financial institution.",
                                   "type": "string",
                                   "example": "Banco Santander Río"
                                 },
                                 "brand": {
+                                  "description": "Credit card's brand.",
                                   "type": "string",
-                                  "example": "visa-credito"
+                                  "example": "visa-credito",
+                                  "enum": [
+                                    "amex",
+                                    "argencard",
+                                    "cabal",
+                                    "cabal-debito",
+                                    "cbu",
+                                    "cencosud",
+                                    "cmr-falabella",
+                                    "cordobesa",
+                                    "diners-club",
+                                    "discover",
+                                    "jcb",
+                                    "lider",
+                                    "maestro",
+                                    "mastercard",
+                                    "mastercard-debit",
+                                    "naranja",
+                                    "naranja-visa",
+                                    "nativa",
+                                    "visa-credito",
+                                    "visa-debito",
+                                    "favacard"
+                                  ]
                                 },
                                 "country": {
+                                  "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                   "type": "string",
                                   "example": "AR"
                                 },
                                 "expiration_month": {
+                                  "description": "Expiration month.",
                                   "type": "number",
                                   "example": 11
                                 },
                                 "expiration_year": {
+                                  "description": "Expiration year.",
                                   "type": "number",
                                   "example": 2030
                                 },
                                 "fingerprint": {
+                                  "description": "Unique fingerprint for this credit card number on your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
+                                  "description": "Credit's card last four digits.",
                                   "type": "string",
                                   "example": "9876"
                                 }
                               }
                             },
                             "cbu": {
+                              "title": "CBU",
+                              "description": "This object represents a CBU bak account on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Bank.",
                                   "type": "string"
                                 },
                                 "country": {
-                                  "type": "string"
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "AR"
+                                  ]
                                 },
                                 "fingerprint": {
-                                  "type": "string"
+                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
-                                  "type": "string"
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
                                 }
                               }
                             },
                             "created_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             },
                             "id": {
+                              "example": "PM1982h3129",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
                               "type": "string"
                             },
                             "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
                             },
                             "object": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "payment_method"
+                              ]
                             },
                             "updated_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             }
                           }
                         },
@@ -9768,6 +10764,12 @@
                               "type": "string",
                               "example": "asd@asd.com"
                             },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "customer"
+                              ]
+                            },
                             "livemode": {
                               "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
@@ -9947,72 +10949,132 @@
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card."
+                              "description": "One of: cbu, card.",
+                              "enum": [
+                                "card",
+                                "cbu"
+                              ]
                             },
                             "card": {
+                              "title": "Credit Card",
+                              "description": "This object represents a credit card on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Credit card's bank or financial institution.",
                                   "type": "string",
                                   "example": "Banco Santander Río"
                                 },
                                 "brand": {
+                                  "description": "Credit card's brand.",
                                   "type": "string",
-                                  "example": "visa-credito"
+                                  "example": "visa-credito",
+                                  "enum": [
+                                    "amex",
+                                    "argencard",
+                                    "cabal",
+                                    "cabal-debito",
+                                    "cbu",
+                                    "cencosud",
+                                    "cmr-falabella",
+                                    "cordobesa",
+                                    "diners-club",
+                                    "discover",
+                                    "jcb",
+                                    "lider",
+                                    "maestro",
+                                    "mastercard",
+                                    "mastercard-debit",
+                                    "naranja",
+                                    "naranja-visa",
+                                    "nativa",
+                                    "visa-credito",
+                                    "visa-debito",
+                                    "favacard"
+                                  ]
                                 },
                                 "country": {
+                                  "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                   "type": "string",
                                   "example": "AR"
                                 },
                                 "expiration_month": {
+                                  "description": "Expiration month.",
                                   "type": "number",
                                   "example": 11
                                 },
                                 "expiration_year": {
+                                  "description": "Expiration year.",
                                   "type": "number",
                                   "example": 2030
                                 },
                                 "fingerprint": {
+                                  "description": "Unique fingerprint for this credit card number on your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
+                                  "description": "Credit's card last four digits.",
                                   "type": "string",
                                   "example": "9876"
                                 }
                               }
                             },
                             "cbu": {
+                              "title": "CBU",
+                              "description": "This object represents a CBU bak account on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Bank.",
                                   "type": "string"
                                 },
                                 "country": {
-                                  "type": "string"
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "AR"
+                                  ]
                                 },
                                 "fingerprint": {
-                                  "type": "string"
+                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
-                                  "type": "string"
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
                                 }
                               }
                             },
                             "created_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             },
                             "id": {
+                              "example": "PM1982h3129",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
                               "type": "string"
                             },
                             "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
                             },
                             "object": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "payment_method"
+                              ]
                             },
                             "updated_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             }
                           }
                         },
@@ -10133,6 +11195,12 @@
                               "type": "string",
                               "example": "asd@asd.com"
                             },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "customer"
+                              ]
+                            },
                             "livemode": {
                               "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
@@ -10312,72 +11380,132 @@
                           "properties": {
                             "type": {
                               "type": "string",
-                              "description": "One of: cbu, card."
+                              "description": "One of: cbu, card.",
+                              "enum": [
+                                "card",
+                                "cbu"
+                              ]
                             },
                             "card": {
+                              "title": "Credit Card",
+                              "description": "This object represents a credit card on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Credit card's bank or financial institution.",
                                   "type": "string",
                                   "example": "Banco Santander Río"
                                 },
                                 "brand": {
+                                  "description": "Credit card's brand.",
                                   "type": "string",
-                                  "example": "visa-credito"
+                                  "example": "visa-credito",
+                                  "enum": [
+                                    "amex",
+                                    "argencard",
+                                    "cabal",
+                                    "cabal-debito",
+                                    "cbu",
+                                    "cencosud",
+                                    "cmr-falabella",
+                                    "cordobesa",
+                                    "diners-club",
+                                    "discover",
+                                    "jcb",
+                                    "lider",
+                                    "maestro",
+                                    "mastercard",
+                                    "mastercard-debit",
+                                    "naranja",
+                                    "naranja-visa",
+                                    "nativa",
+                                    "visa-credito",
+                                    "visa-debito",
+                                    "favacard"
+                                  ]
                                 },
                                 "country": {
+                                  "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
                                   "type": "string",
                                   "example": "AR"
                                 },
                                 "expiration_month": {
+                                  "description": "Expiration month.",
                                   "type": "number",
                                   "example": 11
                                 },
                                 "expiration_year": {
+                                  "description": "Expiration year.",
                                   "type": "number",
                                   "example": 2030
                                 },
                                 "fingerprint": {
+                                  "description": "Unique fingerprint for this credit card number on your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
+                                  "description": "Credit's card last four digits.",
                                   "type": "string",
                                   "example": "9876"
                                 }
                               }
                             },
                             "cbu": {
+                              "title": "CBU",
+                              "description": "This object represents a CBU bak account on your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
+                                  "description": "Bank.",
                                   "type": "string"
                                 },
                                 "country": {
-                                  "type": "string"
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "AR"
+                                  ]
                                 },
                                 "fingerprint": {
-                                  "type": "string"
+                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
                                 },
                                 "last_four_digits": {
-                                  "type": "string"
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
                                 }
                               }
                             },
                             "created_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             },
                             "id": {
+                              "example": "PM1982h3129",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
                               "type": "string"
                             },
                             "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
                               "type": "boolean"
                             },
                             "object": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "payment_method"
+                              ]
                             },
                             "updated_at": {
-                              "type": "string"
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
                             }
                           }
                         },

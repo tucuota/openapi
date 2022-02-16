@@ -331,6 +331,10 @@ paths:
                           description: The customer's email address.
                           type: string
                           example: asd@asd.com
+                        object:
+                          type: string
+                          enum:
+                            - customer
                         livemode:
                           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                           type: boolean
@@ -679,6 +683,10 @@ paths:
                         description: The customer's email address.
                         type: string
                         example: asd@asd.com
+                      object:
+                        type: string
+                        enum:
+                          - customer
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
@@ -951,6 +959,10 @@ paths:
                         description: The customer's email address.
                         type: string
                         example: asd@asd.com
+                      object:
+                        type: string
+                        enum:
+                          - customer
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
@@ -1237,6 +1249,10 @@ paths:
                         description: The customer's email address.
                         type: string
                         example: asd@asd.com
+                      object:
+                        type: string
+                        enum:
+                          - customer
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
@@ -3666,6 +3682,10 @@ paths:
                               description: The customer's email address.
                               type: string
                               example: asd@asd.com
+                            object:
+                              type: string
+                              enum:
+                                - customer
                             livemode:
                               description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                               type: boolean
@@ -3774,51 +3794,111 @@ paths:
                             type:
                               description: 'One of: cbu, card.'
                               type: string
+                              enum:
+                                - card
+                                - cbu
                             card:
+                              description: This object represents a credit card on your account.
                               type: object
                               properties:
                                 bank:
+                                  description: Credit card's bank or financial institution.
                                   type: string
                                   example: Banco Santander Río
                                 brand:
+                                  description: Credit card's brand.
                                   type: string
                                   example: visa-credito
+                                  enum:
+                                    - amex
+                                    - argencard
+                                    - cabal
+                                    - cabal-debito
+                                    - cbu
+                                    - cencosud
+                                    - cmr-falabella
+                                    - cordobesa
+                                    - diners-club
+                                    - discover
+                                    - jcb
+                                    - lider
+                                    - maestro
+                                    - mastercard
+                                    - mastercard-debit
+                                    - naranja
+                                    - naranja-visa
+                                    - nativa
+                                    - visa-credito
+                                    - visa-debito
+                                    - favacard
                                 country:
+                                  description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                                   type: string
                                   example: AR
                                 expiration_month:
+                                  description: Expiration month.
                                   type: number
                                   example: 11
                                 expiration_year:
+                                  description: Expiration year.
                                   type: number
                                   example: 2030
                                 fingerprint:
+                                  description: Unique fingerprint for this credit card number on your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 last_four_digits:
+                                  description: Credit's card last four digits.
                                   type: string
                                   example: '9876'
+                              title: Credit Card
                             cbu:
+                              description: This object represents a CBU bak account on your account.
                               type: object
                               properties:
                                 bank:
+                                  description: Bank.
                                   type: string
                                 country:
+                                  description: Bank account country.
                                   type: string
+                                  enum:
+                                    - AR
                                 fingerprint:
+                                  description: Unique fingerprint for this bank account number on your account.
                                   type: string
+                                  example: 8712yh2uihiu1123sxas
                                 last_four_digits:
+                                  description: Bank account last four digits.
                                   type: string
+                                  example: '9876'
+                              title: CBU
                             created_at:
+                              description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                               type: string
+                              format: date-time
+                              example: '2022-02-11T23:19:22-03:00'
                             id:
+                              description: Unique identifier for the object.
                               type: string
+                              example: PM1982h3129
+                              maxLength: 5000
                             livemode:
+                              description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                               type: boolean
                             object:
                               type: string
+                              enum:
+                                - payment_method
                             updated_at:
+                              description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                               type: string
+                              format: date-time
+                              example: '2022-02-11T23:19:22-03:00'
+                        object:
+                          type: string
+                          enum:
+                            - mandate
                   links:
                     description: Pagination metadata
                     type: object
@@ -3991,7 +4071,10 @@ paths:
               type: object
               properties:
                 customer_id:
+                  description: |
+                    [Customer ID](#tag/Customers).
                   type: string
+                  example: CSgaZlLaPMZO.
                 payment_method_number:
                   type: string
               example:
@@ -4242,6 +4325,10 @@ paths:
                             description: The customer's email address.
                             type: string
                             example: asd@asd.com
+                          object:
+                            type: string
+                            enum:
+                              - customer
                           livemode:
                             description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
@@ -4350,51 +4437,111 @@ paths:
                           type:
                             description: 'One of: cbu, card.'
                             type: string
+                            enum:
+                              - card
+                              - cbu
                           card:
+                            description: This object represents a credit card on your account.
                             type: object
                             properties:
                               bank:
+                                description: Credit card's bank or financial institution.
                                 type: string
                                 example: Banco Santander Río
                               brand:
+                                description: Credit card's brand.
                                 type: string
                                 example: visa-credito
+                                enum:
+                                  - amex
+                                  - argencard
+                                  - cabal
+                                  - cabal-debito
+                                  - cbu
+                                  - cencosud
+                                  - cmr-falabella
+                                  - cordobesa
+                                  - diners-club
+                                  - discover
+                                  - jcb
+                                  - lider
+                                  - maestro
+                                  - mastercard
+                                  - mastercard-debit
+                                  - naranja
+                                  - naranja-visa
+                                  - nativa
+                                  - visa-credito
+                                  - visa-debito
+                                  - favacard
                               country:
+                                description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                                 type: string
                                 example: AR
                               expiration_month:
+                                description: Expiration month.
                                 type: number
                                 example: 11
                               expiration_year:
+                                description: Expiration year.
                                 type: number
                                 example: 2030
                               fingerprint:
+                                description: Unique fingerprint for this credit card number on your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Credit's card last four digits.
                                 type: string
                                 example: '9876'
+                            title: Credit Card
                           cbu:
+                            description: This object represents a CBU bak account on your account.
                             type: object
                             properties:
                               bank:
+                                description: Bank.
                                 type: string
                               country:
+                                description: Bank account country.
                                 type: string
+                                enum:
+                                  - AR
                               fingerprint:
+                                description: Unique fingerprint for this bank account number on your account.
                                 type: string
+                                example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Bank account last four digits.
                                 type: string
+                                example: '9876'
+                            title: CBU
                           created_at:
+                            description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                           id:
+                            description: Unique identifier for the object.
                             type: string
+                            example: PM1982h3129
+                            maxLength: 5000
                           livemode:
+                            description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
                           object:
                             type: string
+                            enum:
+                              - payment_method
                           updated_at:
+                            description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
+                      object:
+                        type: string
+                        enum:
+                          - mandate
                     title: Mandate
         '404':
           description: Object not found
@@ -4784,51 +4931,107 @@ paths:
                         type:
                           description: 'One of: cbu, card.'
                           type: string
+                          enum:
+                            - card
+                            - cbu
                         card:
+                          description: This object represents a credit card on your account.
                           type: object
                           properties:
                             bank:
+                              description: Credit card's bank or financial institution.
                               type: string
                               example: Banco Santander Río
                             brand:
+                              description: Credit card's brand.
                               type: string
                               example: visa-credito
+                              enum:
+                                - amex
+                                - argencard
+                                - cabal
+                                - cabal-debito
+                                - cbu
+                                - cencosud
+                                - cmr-falabella
+                                - cordobesa
+                                - diners-club
+                                - discover
+                                - jcb
+                                - lider
+                                - maestro
+                                - mastercard
+                                - mastercard-debit
+                                - naranja
+                                - naranja-visa
+                                - nativa
+                                - visa-credito
+                                - visa-debito
+                                - favacard
                             country:
+                              description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                               type: string
                               example: AR
                             expiration_month:
+                              description: Expiration month.
                               type: number
                               example: 11
                             expiration_year:
+                              description: Expiration year.
                               type: number
                               example: 2030
                             fingerprint:
+                              description: Unique fingerprint for this credit card number on your account.
                               type: string
                               example: 8712yh2uihiu1123sxas
                             last_four_digits:
+                              description: Credit's card last four digits.
                               type: string
                               example: '9876'
+                          title: Credit Card
                         cbu:
+                          description: This object represents a CBU bak account on your account.
                           type: object
                           properties:
                             bank:
+                              description: Bank.
                               type: string
                             country:
+                              description: Bank account country.
                               type: string
+                              enum:
+                                - AR
                             fingerprint:
+                              description: Unique fingerprint for this bank account number on your account.
                               type: string
+                              example: 8712yh2uihiu1123sxas
                             last_four_digits:
+                              description: Bank account last four digits.
                               type: string
+                              example: '9876'
+                          title: CBU
                         created_at:
+                          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                           type: string
+                          format: date-time
+                          example: '2022-02-11T23:19:22-03:00'
                         id:
+                          description: Unique identifier for the object.
                           type: string
+                          example: PM1982h3129
+                          maxLength: 5000
                         livemode:
+                          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                           type: boolean
                         object:
                           type: string
+                          enum:
+                            - payment_method
                         updated_at:
+                          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                           type: string
+                          format: date-time
+                          example: '2022-02-11T23:19:22-03:00'
                   links:
                     description: Pagination metadata
                     type: object
@@ -5059,51 +5262,107 @@ paths:
                       type:
                         description: 'One of: cbu, card.'
                         type: string
+                        enum:
+                          - card
+                          - cbu
                       card:
+                        description: This object represents a credit card on your account.
                         type: object
                         properties:
                           bank:
+                            description: Credit card's bank or financial institution.
                             type: string
                             example: Banco Santander Río
                           brand:
+                            description: Credit card's brand.
                             type: string
                             example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                           country:
+                            description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                             type: string
                             example: AR
                           expiration_month:
+                            description: Expiration month.
                             type: number
                             example: 11
                           expiration_year:
+                            description: Expiration year.
                             type: number
                             example: 2030
                           fingerprint:
+                            description: Unique fingerprint for this credit card number on your account.
                             type: string
                             example: 8712yh2uihiu1123sxas
                           last_four_digits:
+                            description: Credit's card last four digits.
                             type: string
                             example: '9876'
+                        title: Credit Card
                       cbu:
+                        description: This object represents a CBU bak account on your account.
                         type: object
                         properties:
                           bank:
+                            description: Bank.
                             type: string
                           country:
+                            description: Bank account country.
                             type: string
+                            enum:
+                              - AR
                           fingerprint:
+                            description: Unique fingerprint for this bank account number on your account.
                             type: string
+                            example: 8712yh2uihiu1123sxas
                           last_four_digits:
+                            description: Bank account last four digits.
                             type: string
+                            example: '9876'
+                        title: CBU
                       created_at:
+                        description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                         type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
                       id:
+                        description: Unique identifier for the object.
                         type: string
+                        example: PM1982h3129
+                        maxLength: 5000
                       livemode:
+                        description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
                       object:
                         type: string
+                        enum:
+                          - payment_method
                       updated_at:
+                        description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                         type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
         '401':
           description: Unauthorized
           content:
@@ -5263,51 +5522,107 @@ paths:
                       type:
                         description: 'One of: cbu, card.'
                         type: string
+                        enum:
+                          - card
+                          - cbu
                       card:
+                        description: This object represents a credit card on your account.
                         type: object
                         properties:
                           bank:
+                            description: Credit card's bank or financial institution.
                             type: string
                             example: Banco Santander Río
                           brand:
+                            description: Credit card's brand.
                             type: string
                             example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                           country:
+                            description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                             type: string
                             example: AR
                           expiration_month:
+                            description: Expiration month.
                             type: number
                             example: 11
                           expiration_year:
+                            description: Expiration year.
                             type: number
                             example: 2030
                           fingerprint:
+                            description: Unique fingerprint for this credit card number on your account.
                             type: string
                             example: 8712yh2uihiu1123sxas
                           last_four_digits:
+                            description: Credit's card last four digits.
                             type: string
                             example: '9876'
+                        title: Credit Card
                       cbu:
+                        description: This object represents a CBU bak account on your account.
                         type: object
                         properties:
                           bank:
+                            description: Bank.
                             type: string
                           country:
+                            description: Bank account country.
                             type: string
+                            enum:
+                              - AR
                           fingerprint:
+                            description: Unique fingerprint for this bank account number on your account.
                             type: string
+                            example: 8712yh2uihiu1123sxas
                           last_four_digits:
+                            description: Bank account last four digits.
                             type: string
+                            example: '9876'
+                        title: CBU
                       created_at:
+                        description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                         type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
                       id:
+                        description: Unique identifier for the object.
                         type: string
+                        example: PM1982h3129
+                        maxLength: 5000
                       livemode:
+                        description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
                       object:
                         type: string
+                        enum:
+                          - payment_method
                       updated_at:
+                        description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                         type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
         '404':
           description: Payment not found
           content:
@@ -5497,6 +5812,10 @@ paths:
                               description: The customer's email address.
                               type: string
                               example: asd@asd.com
+                            object:
+                              type: string
+                              enum:
+                                - customer
                             livemode:
                               description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                               type: boolean
@@ -5627,51 +5946,107 @@ paths:
                             type:
                               description: 'One of: cbu, card.'
                               type: string
+                              enum:
+                                - card
+                                - cbu
                             card:
+                              description: This object represents a credit card on your account.
                               type: object
                               properties:
                                 bank:
+                                  description: Credit card's bank or financial institution.
                                   type: string
                                   example: Banco Santander Río
                                 brand:
+                                  description: Credit card's brand.
                                   type: string
                                   example: visa-credito
+                                  enum:
+                                    - amex
+                                    - argencard
+                                    - cabal
+                                    - cabal-debito
+                                    - cbu
+                                    - cencosud
+                                    - cmr-falabella
+                                    - cordobesa
+                                    - diners-club
+                                    - discover
+                                    - jcb
+                                    - lider
+                                    - maestro
+                                    - mastercard
+                                    - mastercard-debit
+                                    - naranja
+                                    - naranja-visa
+                                    - nativa
+                                    - visa-credito
+                                    - visa-debito
+                                    - favacard
                                 country:
+                                  description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                                   type: string
                                   example: AR
                                 expiration_month:
+                                  description: Expiration month.
                                   type: number
                                   example: 11
                                 expiration_year:
+                                  description: Expiration year.
                                   type: number
                                   example: 2030
                                 fingerprint:
+                                  description: Unique fingerprint for this credit card number on your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 last_four_digits:
+                                  description: Credit's card last four digits.
                                   type: string
                                   example: '9876'
+                              title: Credit Card
                             cbu:
+                              description: This object represents a CBU bak account on your account.
                               type: object
                               properties:
                                 bank:
+                                  description: Bank.
                                   type: string
                                 country:
+                                  description: Bank account country.
                                   type: string
+                                  enum:
+                                    - AR
                                 fingerprint:
+                                  description: Unique fingerprint for this bank account number on your account.
                                   type: string
+                                  example: 8712yh2uihiu1123sxas
                                 last_four_digits:
+                                  description: Bank account last four digits.
                                   type: string
+                                  example: '9876'
+                              title: CBU
                             created_at:
+                              description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                               type: string
+                              format: date-time
+                              example: '2022-02-11T23:19:22-03:00'
                             id:
+                              description: Unique identifier for the object.
                               type: string
+                              example: PM1982h3129
+                              maxLength: 5000
                             livemode:
+                              description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                               type: boolean
                             object:
                               type: string
+                              enum:
+                                - payment_method
                             updated_at:
+                              description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                               type: string
+                              format: date-time
+                              example: '2022-02-11T23:19:22-03:00'
                         rejected_payments_count:
                           type: number
                         rejected_payments_sum:
@@ -6671,8 +7046,9 @@ paths:
                   type: string
                 customer_id:
                   description: |
-                    TuCuota customer_id if exists en TuCuota. Example: CSgaZlLaPMZO.
+                    [Customer ID](#tag/Customers).
                   type: string
+                  example: CSgaZlLaPMZO.
                 customer_name:
                   description: |
                     Name of your customer. You can fill it or ask the customer to fill this field in the checkout process.
@@ -7283,6 +7659,10 @@ paths:
                               description: The customer's email address.
                               type: string
                               example: asd@asd.com
+                            object:
+                              type: string
+                              enum:
+                                - customer
                             livemode:
                               description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                               type: boolean
@@ -7413,51 +7793,107 @@ paths:
                             type:
                               description: 'One of: cbu, card.'
                               type: string
+                              enum:
+                                - card
+                                - cbu
                             card:
+                              description: This object represents a credit card on your account.
                               type: object
                               properties:
                                 bank:
+                                  description: Credit card's bank or financial institution.
                                   type: string
                                   example: Banco Santander Río
                                 brand:
+                                  description: Credit card's brand.
                                   type: string
                                   example: visa-credito
+                                  enum:
+                                    - amex
+                                    - argencard
+                                    - cabal
+                                    - cabal-debito
+                                    - cbu
+                                    - cencosud
+                                    - cmr-falabella
+                                    - cordobesa
+                                    - diners-club
+                                    - discover
+                                    - jcb
+                                    - lider
+                                    - maestro
+                                    - mastercard
+                                    - mastercard-debit
+                                    - naranja
+                                    - naranja-visa
+                                    - nativa
+                                    - visa-credito
+                                    - visa-debito
+                                    - favacard
                                 country:
+                                  description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                                   type: string
                                   example: AR
                                 expiration_month:
+                                  description: Expiration month.
                                   type: number
                                   example: 11
                                 expiration_year:
+                                  description: Expiration year.
                                   type: number
                                   example: 2030
                                 fingerprint:
+                                  description: Unique fingerprint for this credit card number on your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 last_four_digits:
+                                  description: Credit's card last four digits.
                                   type: string
                                   example: '9876'
+                              title: Credit Card
                             cbu:
+                              description: This object represents a CBU bak account on your account.
                               type: object
                               properties:
                                 bank:
+                                  description: Bank.
                                   type: string
                                 country:
+                                  description: Bank account country.
                                   type: string
+                                  enum:
+                                    - AR
                                 fingerprint:
+                                  description: Unique fingerprint for this bank account number on your account.
                                   type: string
+                                  example: 8712yh2uihiu1123sxas
                                 last_four_digits:
+                                  description: Bank account last four digits.
                                   type: string
+                                  example: '9876'
+                              title: CBU
                             created_at:
+                              description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                               type: string
+                              format: date-time
+                              example: '2022-02-11T23:19:22-03:00'
                             id:
+                              description: Unique identifier for the object.
                               type: string
+                              example: PM1982h3129
+                              maxLength: 5000
                             livemode:
+                              description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                               type: boolean
                             object:
                               type: string
+                              enum:
+                                - payment_method
                             updated_at:
+                              description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                               type: string
+                              format: date-time
+                              example: '2022-02-11T23:19:22-03:00'
                         rejected_payments_count:
                           type: number
                         rejected_payments_sum:
@@ -7659,8 +8095,10 @@ paths:
                     subscription will continue until you cancel it.
                   type: number
                 customer_id:
-                  description: Customer reference
+                  description: |
+                    [Customer ID](#tag/Customers).
                   type: string
+                  example: CSgaZlLaPMZO.
                 payment_method_id:
                   description: |
                     The token of the card or cbu for each payment of the subscription. This field is required if
@@ -7749,6 +8187,10 @@ paths:
                             description: The customer's email address.
                             type: string
                             example: asd@asd.com
+                          object:
+                            type: string
+                            enum:
+                              - customer
                           livemode:
                             description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
@@ -7879,51 +8321,107 @@ paths:
                           type:
                             description: 'One of: cbu, card.'
                             type: string
+                            enum:
+                              - card
+                              - cbu
                           card:
+                            description: This object represents a credit card on your account.
                             type: object
                             properties:
                               bank:
+                                description: Credit card's bank or financial institution.
                                 type: string
                                 example: Banco Santander Río
                               brand:
+                                description: Credit card's brand.
                                 type: string
                                 example: visa-credito
+                                enum:
+                                  - amex
+                                  - argencard
+                                  - cabal
+                                  - cabal-debito
+                                  - cbu
+                                  - cencosud
+                                  - cmr-falabella
+                                  - cordobesa
+                                  - diners-club
+                                  - discover
+                                  - jcb
+                                  - lider
+                                  - maestro
+                                  - mastercard
+                                  - mastercard-debit
+                                  - naranja
+                                  - naranja-visa
+                                  - nativa
+                                  - visa-credito
+                                  - visa-debito
+                                  - favacard
                               country:
+                                description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                                 type: string
                                 example: AR
                               expiration_month:
+                                description: Expiration month.
                                 type: number
                                 example: 11
                               expiration_year:
+                                description: Expiration year.
                                 type: number
                                 example: 2030
                               fingerprint:
+                                description: Unique fingerprint for this credit card number on your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Credit's card last four digits.
                                 type: string
                                 example: '9876'
+                            title: Credit Card
                           cbu:
+                            description: This object represents a CBU bak account on your account.
                             type: object
                             properties:
                               bank:
+                                description: Bank.
                                 type: string
                               country:
+                                description: Bank account country.
                                 type: string
+                                enum:
+                                  - AR
                               fingerprint:
+                                description: Unique fingerprint for this bank account number on your account.
                                 type: string
+                                example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Bank account last four digits.
                                 type: string
+                                example: '9876'
+                            title: CBU
                           created_at:
+                            description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                           id:
+                            description: Unique identifier for the object.
                             type: string
+                            example: PM1982h3129
+                            maxLength: 5000
                           livemode:
+                            description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
                           object:
                             type: string
+                            enum:
+                              - payment_method
                           updated_at:
+                            description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -8127,6 +8625,10 @@ paths:
                             description: The customer's email address.
                             type: string
                             example: asd@asd.com
+                          object:
+                            type: string
+                            enum:
+                              - customer
                           livemode:
                             description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
@@ -8257,51 +8759,107 @@ paths:
                           type:
                             description: 'One of: cbu, card.'
                             type: string
+                            enum:
+                              - card
+                              - cbu
                           card:
+                            description: This object represents a credit card on your account.
                             type: object
                             properties:
                               bank:
+                                description: Credit card's bank or financial institution.
                                 type: string
                                 example: Banco Santander Río
                               brand:
+                                description: Credit card's brand.
                                 type: string
                                 example: visa-credito
+                                enum:
+                                  - amex
+                                  - argencard
+                                  - cabal
+                                  - cabal-debito
+                                  - cbu
+                                  - cencosud
+                                  - cmr-falabella
+                                  - cordobesa
+                                  - diners-club
+                                  - discover
+                                  - jcb
+                                  - lider
+                                  - maestro
+                                  - mastercard
+                                  - mastercard-debit
+                                  - naranja
+                                  - naranja-visa
+                                  - nativa
+                                  - visa-credito
+                                  - visa-debito
+                                  - favacard
                               country:
+                                description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                                 type: string
                                 example: AR
                               expiration_month:
+                                description: Expiration month.
                                 type: number
                                 example: 11
                               expiration_year:
+                                description: Expiration year.
                                 type: number
                                 example: 2030
                               fingerprint:
+                                description: Unique fingerprint for this credit card number on your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Credit's card last four digits.
                                 type: string
                                 example: '9876'
+                            title: Credit Card
                           cbu:
+                            description: This object represents a CBU bak account on your account.
                             type: object
                             properties:
                               bank:
+                                description: Bank.
                                 type: string
                               country:
+                                description: Bank account country.
                                 type: string
+                                enum:
+                                  - AR
                               fingerprint:
+                                description: Unique fingerprint for this bank account number on your account.
                                 type: string
+                                example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Bank account last four digits.
                                 type: string
+                                example: '9876'
+                            title: CBU
                           created_at:
+                            description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                           id:
+                            description: Unique identifier for the object.
                             type: string
+                            example: PM1982h3129
+                            maxLength: 5000
                           livemode:
+                            description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
                           object:
                             type: string
+                            enum:
+                              - payment_method
                           updated_at:
+                            description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -8463,8 +9021,10 @@ paths:
                     subscription will continue until you cancel it.
                   type: number
                 customer_id:
-                  description: Customer reference
+                  description: |
+                    [Customer ID](#tag/Customers).
                   type: string
+                  example: CSgaZlLaPMZO.
                 payment_method_id:
                   description: |
                     The token of the card or cbu for each payment of the subscription. This field is required if
@@ -8553,6 +9113,10 @@ paths:
                             description: The customer's email address.
                             type: string
                             example: asd@asd.com
+                          object:
+                            type: string
+                            enum:
+                              - customer
                           livemode:
                             description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
@@ -8683,51 +9247,107 @@ paths:
                           type:
                             description: 'One of: cbu, card.'
                             type: string
+                            enum:
+                              - card
+                              - cbu
                           card:
+                            description: This object represents a credit card on your account.
                             type: object
                             properties:
                               bank:
+                                description: Credit card's bank or financial institution.
                                 type: string
                                 example: Banco Santander Río
                               brand:
+                                description: Credit card's brand.
                                 type: string
                                 example: visa-credito
+                                enum:
+                                  - amex
+                                  - argencard
+                                  - cabal
+                                  - cabal-debito
+                                  - cbu
+                                  - cencosud
+                                  - cmr-falabella
+                                  - cordobesa
+                                  - diners-club
+                                  - discover
+                                  - jcb
+                                  - lider
+                                  - maestro
+                                  - mastercard
+                                  - mastercard-debit
+                                  - naranja
+                                  - naranja-visa
+                                  - nativa
+                                  - visa-credito
+                                  - visa-debito
+                                  - favacard
                               country:
+                                description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                                 type: string
                                 example: AR
                               expiration_month:
+                                description: Expiration month.
                                 type: number
                                 example: 11
                               expiration_year:
+                                description: Expiration year.
                                 type: number
                                 example: 2030
                               fingerprint:
+                                description: Unique fingerprint for this credit card number on your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Credit's card last four digits.
                                 type: string
                                 example: '9876'
+                            title: Credit Card
                           cbu:
+                            description: This object represents a CBU bak account on your account.
                             type: object
                             properties:
                               bank:
+                                description: Bank.
                                 type: string
                               country:
+                                description: Bank account country.
                                 type: string
+                                enum:
+                                  - AR
                               fingerprint:
+                                description: Unique fingerprint for this bank account number on your account.
                                 type: string
+                                example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Bank account last four digits.
                                 type: string
+                                example: '9876'
+                            title: CBU
                           created_at:
+                            description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                           id:
+                            description: Unique identifier for the object.
                             type: string
+                            example: PM1982h3129
+                            maxLength: 5000
                           livemode:
+                            description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
                           object:
                             type: string
+                            enum:
+                              - payment_method
                           updated_at:
+                            description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -8931,6 +9551,10 @@ paths:
                             description: The customer's email address.
                             type: string
                             example: asd@asd.com
+                          object:
+                            type: string
+                            enum:
+                              - customer
                           livemode:
                             description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
@@ -9061,51 +9685,107 @@ paths:
                           type:
                             description: 'One of: cbu, card.'
                             type: string
+                            enum:
+                              - card
+                              - cbu
                           card:
+                            description: This object represents a credit card on your account.
                             type: object
                             properties:
                               bank:
+                                description: Credit card's bank or financial institution.
                                 type: string
                                 example: Banco Santander Río
                               brand:
+                                description: Credit card's brand.
                                 type: string
                                 example: visa-credito
+                                enum:
+                                  - amex
+                                  - argencard
+                                  - cabal
+                                  - cabal-debito
+                                  - cbu
+                                  - cencosud
+                                  - cmr-falabella
+                                  - cordobesa
+                                  - diners-club
+                                  - discover
+                                  - jcb
+                                  - lider
+                                  - maestro
+                                  - mastercard
+                                  - mastercard-debit
+                                  - naranja
+                                  - naranja-visa
+                                  - nativa
+                                  - visa-credito
+                                  - visa-debito
+                                  - favacard
                               country:
+                                description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                                 type: string
                                 example: AR
                               expiration_month:
+                                description: Expiration month.
                                 type: number
                                 example: 11
                               expiration_year:
+                                description: Expiration year.
                                 type: number
                                 example: 2030
                               fingerprint:
+                                description: Unique fingerprint for this credit card number on your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Credit's card last four digits.
                                 type: string
                                 example: '9876'
+                            title: Credit Card
                           cbu:
+                            description: This object represents a CBU bak account on your account.
                             type: object
                             properties:
                               bank:
+                                description: Bank.
                                 type: string
                               country:
+                                description: Bank account country.
                                 type: string
+                                enum:
+                                  - AR
                               fingerprint:
+                                description: Unique fingerprint for this bank account number on your account.
                                 type: string
+                                example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Bank account last four digits.
                                 type: string
+                                example: '9876'
+                            title: CBU
                           created_at:
+                            description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                           id:
+                            description: Unique identifier for the object.
                             type: string
+                            example: PM1982h3129
+                            maxLength: 5000
                           livemode:
+                            description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
                           object:
                             type: string
+                            enum:
+                              - payment_method
                           updated_at:
+                            description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -9274,6 +9954,10 @@ paths:
                             description: The customer's email address.
                             type: string
                             example: asd@asd.com
+                          object:
+                            type: string
+                            enum:
+                              - customer
                           livemode:
                             description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
@@ -9404,51 +10088,107 @@ paths:
                           type:
                             description: 'One of: cbu, card.'
                             type: string
+                            enum:
+                              - card
+                              - cbu
                           card:
+                            description: This object represents a credit card on your account.
                             type: object
                             properties:
                               bank:
+                                description: Credit card's bank or financial institution.
                                 type: string
                                 example: Banco Santander Río
                               brand:
+                                description: Credit card's brand.
                                 type: string
                                 example: visa-credito
+                                enum:
+                                  - amex
+                                  - argencard
+                                  - cabal
+                                  - cabal-debito
+                                  - cbu
+                                  - cencosud
+                                  - cmr-falabella
+                                  - cordobesa
+                                  - diners-club
+                                  - discover
+                                  - jcb
+                                  - lider
+                                  - maestro
+                                  - mastercard
+                                  - mastercard-debit
+                                  - naranja
+                                  - naranja-visa
+                                  - nativa
+                                  - visa-credito
+                                  - visa-debito
+                                  - favacard
                               country:
+                                description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                                 type: string
                                 example: AR
                               expiration_month:
+                                description: Expiration month.
                                 type: number
                                 example: 11
                               expiration_year:
+                                description: Expiration year.
                                 type: number
                                 example: 2030
                               fingerprint:
+                                description: Unique fingerprint for this credit card number on your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Credit's card last four digits.
                                 type: string
                                 example: '9876'
+                            title: Credit Card
                           cbu:
+                            description: This object represents a CBU bak account on your account.
                             type: object
                             properties:
                               bank:
+                                description: Bank.
                                 type: string
                               country:
+                                description: Bank account country.
                                 type: string
+                                enum:
+                                  - AR
                               fingerprint:
+                                description: Unique fingerprint for this bank account number on your account.
                                 type: string
+                                example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Bank account last four digits.
                                 type: string
+                                example: '9876'
+                            title: CBU
                           created_at:
+                            description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                           id:
+                            description: Unique identifier for the object.
                             type: string
+                            example: PM1982h3129
+                            maxLength: 5000
                           livemode:
+                            description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
                           object:
                             type: string
+                            enum:
+                              - payment_method
                           updated_at:
+                            description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -9622,6 +10362,10 @@ paths:
                             description: The customer's email address.
                             type: string
                             example: asd@asd.com
+                          object:
+                            type: string
+                            enum:
+                              - customer
                           livemode:
                             description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
@@ -9752,51 +10496,107 @@ paths:
                           type:
                             description: 'One of: cbu, card.'
                             type: string
+                            enum:
+                              - card
+                              - cbu
                           card:
+                            description: This object represents a credit card on your account.
                             type: object
                             properties:
                               bank:
+                                description: Credit card's bank or financial institution.
                                 type: string
                                 example: Banco Santander Río
                               brand:
+                                description: Credit card's brand.
                                 type: string
                                 example: visa-credito
+                                enum:
+                                  - amex
+                                  - argencard
+                                  - cabal
+                                  - cabal-debito
+                                  - cbu
+                                  - cencosud
+                                  - cmr-falabella
+                                  - cordobesa
+                                  - diners-club
+                                  - discover
+                                  - jcb
+                                  - lider
+                                  - maestro
+                                  - mastercard
+                                  - mastercard-debit
+                                  - naranja
+                                  - naranja-visa
+                                  - nativa
+                                  - visa-credito
+                                  - visa-debito
+                                  - favacard
                               country:
+                                description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                                 type: string
                                 example: AR
                               expiration_month:
+                                description: Expiration month.
                                 type: number
                                 example: 11
                               expiration_year:
+                                description: Expiration year.
                                 type: number
                                 example: 2030
                               fingerprint:
+                                description: Unique fingerprint for this credit card number on your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Credit's card last four digits.
                                 type: string
                                 example: '9876'
+                            title: Credit Card
                           cbu:
+                            description: This object represents a CBU bak account on your account.
                             type: object
                             properties:
                               bank:
+                                description: Bank.
                                 type: string
                               country:
+                                description: Bank account country.
                                 type: string
+                                enum:
+                                  - AR
                               fingerprint:
+                                description: Unique fingerprint for this bank account number on your account.
                                 type: string
+                                example: 8712yh2uihiu1123sxas
                               last_four_digits:
+                                description: Bank account last four digits.
                                 type: string
+                                example: '9876'
+                            title: CBU
                           created_at:
+                            description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                           id:
+                            description: Unique identifier for the object.
                             type: string
+                            example: PM1982h3129
+                            maxLength: 5000
                           livemode:
+                            description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                             type: boolean
                           object:
                             type: string
+                            enum:
+                              - payment_method
                           updated_at:
+                            description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
                             type: string
+                            format: date-time
+                            example: '2022-02-11T23:19:22-03:00'
                       rejected_payments_count:
                         type: number
                       rejected_payments_sum:
@@ -11067,6 +11867,10 @@ components:
           description: The customer's email address.
           type: string
           example: asd@asd.com
+        object:
+          type: string
+          enum:
+            - customer
         livemode:
           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
           type: boolean
@@ -11437,91 +12241,188 @@ components:
             - type: string
       title: Link
     card:
+      description: This object represents a credit card on your account.
       type: object
       properties:
         bank:
+          description: Credit card's bank or financial institution.
           type: string
           example: Banco Santander Río
         brand:
+          description: Credit card's brand.
           type: string
           example: visa-credito
+          enum:
+            - amex
+            - argencard
+            - cabal
+            - cabal-debito
+            - cbu
+            - cencosud
+            - cmr-falabella
+            - cordobesa
+            - diners-club
+            - discover
+            - jcb
+            - lider
+            - maestro
+            - mastercard
+            - mastercard-debit
+            - naranja
+            - naranja-visa
+            - nativa
+            - visa-credito
+            - visa-debito
+            - favacard
         country:
+          description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
           type: string
           example: AR
         expiration_month:
+          description: Expiration month.
           type: number
           example: 11
         expiration_year:
+          description: Expiration year.
           type: number
           example: 2030
         fingerprint:
+          description: Unique fingerprint for this credit card number on your account.
           type: string
           example: 8712yh2uihiu1123sxas
         last_four_digits:
+          description: Credit's card last four digits.
           type: string
           example: '9876'
+      title: Credit Card
     cbu:
+      description: This object represents a CBU bak account on your account.
       type: object
       properties:
         bank:
+          description: Bank.
           type: string
         country:
+          description: Bank account country.
           type: string
+          enum:
+            - AR
         fingerprint:
+          description: Unique fingerprint for this bank account number on your account.
           type: string
+          example: 8712yh2uihiu1123sxas
         last_four_digits:
+          description: Bank account last four digits.
           type: string
+          example: '9876'
+      title: CBU
     payment_method:
       type: object
       properties:
         type:
           description: 'One of: cbu, card.'
           type: string
+          enum:
+            - card
+            - cbu
         card:
+          description: This object represents a credit card on your account.
           type: object
           properties:
             bank:
+              description: Credit card's bank or financial institution.
               type: string
               example: Banco Santander Río
             brand:
+              description: Credit card's brand.
               type: string
               example: visa-credito
+              enum:
+                - amex
+                - argencard
+                - cabal
+                - cabal-debito
+                - cbu
+                - cencosud
+                - cmr-falabella
+                - cordobesa
+                - diners-club
+                - discover
+                - jcb
+                - lider
+                - maestro
+                - mastercard
+                - mastercard-debit
+                - naranja
+                - naranja-visa
+                - nativa
+                - visa-credito
+                - visa-debito
+                - favacard
             country:
+              description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
               type: string
               example: AR
             expiration_month:
+              description: Expiration month.
               type: number
               example: 11
             expiration_year:
+              description: Expiration year.
               type: number
               example: 2030
             fingerprint:
+              description: Unique fingerprint for this credit card number on your account.
               type: string
               example: 8712yh2uihiu1123sxas
             last_four_digits:
+              description: Credit's card last four digits.
               type: string
               example: '9876'
+          title: Credit Card
         cbu:
+          description: This object represents a CBU bak account on your account.
           type: object
           properties:
             bank:
+              description: Bank.
               type: string
             country:
+              description: Bank account country.
               type: string
+              enum:
+                - AR
             fingerprint:
+              description: Unique fingerprint for this bank account number on your account.
               type: string
+              example: 8712yh2uihiu1123sxas
             last_four_digits:
+              description: Bank account last four digits.
               type: string
+              example: '9876'
+          title: CBU
         created_at:
+          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
           type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
         id:
+          description: Unique identifier for the object.
           type: string
+          example: PM1982h3129
+          maxLength: 5000
         livemode:
+          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
           type: boolean
         object:
           type: string
+          enum:
+            - payment_method
         updated_at:
+          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
           type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
     mandate:
       description: This object represents a mandate of your organization.
       type: object
@@ -11581,6 +12482,10 @@ components:
               description: The customer's email address.
               type: string
               example: asd@asd.com
+            object:
+              type: string
+              enum:
+                - customer
             livemode:
               description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
               type: boolean
@@ -11689,51 +12594,111 @@ components:
             type:
               description: 'One of: cbu, card.'
               type: string
+              enum:
+                - card
+                - cbu
             card:
+              description: This object represents a credit card on your account.
               type: object
               properties:
                 bank:
+                  description: Credit card's bank or financial institution.
                   type: string
                   example: Banco Santander Río
                 brand:
+                  description: Credit card's brand.
                   type: string
                   example: visa-credito
+                  enum:
+                    - amex
+                    - argencard
+                    - cabal
+                    - cabal-debito
+                    - cbu
+                    - cencosud
+                    - cmr-falabella
+                    - cordobesa
+                    - diners-club
+                    - discover
+                    - jcb
+                    - lider
+                    - maestro
+                    - mastercard
+                    - mastercard-debit
+                    - naranja
+                    - naranja-visa
+                    - nativa
+                    - visa-credito
+                    - visa-debito
+                    - favacard
                 country:
+                  description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                   type: string
                   example: AR
                 expiration_month:
+                  description: Expiration month.
                   type: number
                   example: 11
                 expiration_year:
+                  description: Expiration year.
                   type: number
                   example: 2030
                 fingerprint:
+                  description: Unique fingerprint for this credit card number on your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
                 last_four_digits:
+                  description: Credit's card last four digits.
                   type: string
                   example: '9876'
+              title: Credit Card
             cbu:
+              description: This object represents a CBU bak account on your account.
               type: object
               properties:
                 bank:
+                  description: Bank.
                   type: string
                 country:
+                  description: Bank account country.
                   type: string
+                  enum:
+                    - AR
                 fingerprint:
+                  description: Unique fingerprint for this bank account number on your account.
                   type: string
+                  example: 8712yh2uihiu1123sxas
                 last_four_digits:
+                  description: Bank account last four digits.
                   type: string
+                  example: '9876'
+              title: CBU
             created_at:
+              description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
               type: string
+              format: date-time
+              example: '2022-02-11T23:19:22-03:00'
             id:
+              description: Unique identifier for the object.
               type: string
+              example: PM1982h3129
+              maxLength: 5000
             livemode:
+              description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
               type: boolean
             object:
               type: string
+              enum:
+                - payment_method
             updated_at:
+              description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
               type: string
+              format: date-time
+              example: '2022-02-11T23:19:22-03:00'
+        object:
+          type: string
+          enum:
+            - mandate
       title: Mandate
     subscription:
       description: This object represents a subscription of your organization.
@@ -11767,6 +12732,10 @@ components:
               description: The customer's email address.
               type: string
               example: asd@asd.com
+            object:
+              type: string
+              enum:
+                - customer
             livemode:
               description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
               type: boolean
@@ -11897,51 +12866,107 @@ components:
             type:
               description: 'One of: cbu, card.'
               type: string
+              enum:
+                - card
+                - cbu
             card:
+              description: This object represents a credit card on your account.
               type: object
               properties:
                 bank:
+                  description: Credit card's bank or financial institution.
                   type: string
                   example: Banco Santander Río
                 brand:
+                  description: Credit card's brand.
                   type: string
                   example: visa-credito
+                  enum:
+                    - amex
+                    - argencard
+                    - cabal
+                    - cabal-debito
+                    - cbu
+                    - cencosud
+                    - cmr-falabella
+                    - cordobesa
+                    - diners-club
+                    - discover
+                    - jcb
+                    - lider
+                    - maestro
+                    - mastercard
+                    - mastercard-debit
+                    - naranja
+                    - naranja-visa
+                    - nativa
+                    - visa-credito
+                    - visa-debito
+                    - favacard
                 country:
+                  description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
                   type: string
                   example: AR
                 expiration_month:
+                  description: Expiration month.
                   type: number
                   example: 11
                 expiration_year:
+                  description: Expiration year.
                   type: number
                   example: 2030
                 fingerprint:
+                  description: Unique fingerprint for this credit card number on your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
                 last_four_digits:
+                  description: Credit's card last four digits.
                   type: string
                   example: '9876'
+              title: Credit Card
             cbu:
+              description: This object represents a CBU bak account on your account.
               type: object
               properties:
                 bank:
+                  description: Bank.
                   type: string
                 country:
+                  description: Bank account country.
                   type: string
+                  enum:
+                    - AR
                 fingerprint:
+                  description: Unique fingerprint for this bank account number on your account.
                   type: string
+                  example: 8712yh2uihiu1123sxas
                 last_four_digits:
+                  description: Bank account last four digits.
                   type: string
+                  example: '9876'
+              title: CBU
             created_at:
+              description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
               type: string
+              format: date-time
+              example: '2022-02-11T23:19:22-03:00'
             id:
+              description: Unique identifier for the object.
               type: string
+              example: PM1982h3129
+              maxLength: 5000
             livemode:
+              description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
               type: boolean
             object:
               type: string
+              enum:
+                - payment_method
             updated_at:
+              description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
               type: string
+              format: date-time
+              example: '2022-02-11T23:19:22-03:00'
         rejected_payments_count:
           type: number
         rejected_payments_sum:
