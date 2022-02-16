@@ -3288,7 +3288,7 @@ paths:
         required: false
       responses:
         '201':
-          description: Payment Method Created.
+          description: Payment Method Created
           content:
             application/json:
               schema:
@@ -3324,7 +3324,7 @@ paths:
           example: PMVA0W8y1aQO
       responses:
         '200':
-          description: Retrieve a payment method.
+          description: Retrieve a payment method
           content:
             application/json:
               schema:
@@ -3333,7 +3333,7 @@ paths:
                     type: object
                     properties: *ref_9
         '404':
-          description: Payment not found
+          description: Payment method not found
           content:
             application/json:
               schema:

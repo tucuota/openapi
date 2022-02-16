@@ -6452,7 +6452,7 @@
         },
         "responses": {
           "201": {
-            "description": "Payment Method Created.",
+            "description": "Payment Method Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -6643,7 +6643,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieve a payment method.",
+            "description": "Retrieve a payment method",
             "content": {
               "application/json": {
                 "schema": {
@@ -6788,7 +6788,7 @@
             }
           },
           "404": {
-            "description": "Payment not found",
+            "description": "Payment method not found",
             "content": {
               "application/json": {
                 "schema": {
