@@ -1,29 +1,30 @@
 {
   "resources": {
     "customer": {
-      "active_subscriptions_count": 0,
-      "active_subscriptions_sum": 0,
-      "approved_payments_count": 0,
-      "approved_payments_sum": 0,
-      "cancelled_subscriptions_count": 0,
-      "created_at": "2022-02-05T01:42:13-03:00",
-      "deleted_at": null,
-      "email": "john@doe.com",
-      "finished_subscriptions_count": 0,
-      "gateway_identifier": 383473,
-      "id": "CSnlZxyY3jwr",
-      "identification_number": null,
+      "id": "CS3Z25Agp708",
+      "object": "customer",
+      "gateway_identifier": 1723393503,
+      "name": "Andrés Bahena Tercero",
+      "email": "andres37@calvillo.info",
       "identification_type": null,
-      "livemode": false,
+      "identification_number": null,
+      "mobile_number": "+5481934863501",
       "metadata": {
-        "hello": "world"
+        "external_id": "0Qk3IJY5"
       },
-      "mobile_number": "5491154876503",
-      "name": "John Doe",
+      "livemode": false,
+      "created_at": "2021-07-05T12:24:32-03:00",
+      "updated_at": "2021-07-05T12:24:32-03:00",
+      "deleted_at": null,
+      "approved_payments_count": 13,
+      "approved_payments_sum": 47900,
+      "rejected_payments_count": 1,
+      "rejected_payments_sum": 3500,
+      "active_subscriptions_count": 1,
+      "active_subscriptions_sum": 3500,
       "paused_subscriptions_count": 0,
-      "rejected_payments_count": 0,
-      "rejected_payments_sum": 0,
-      "updated_at": "2022-02-05T01:42:13-03:00"
+      "cancelled_subscriptions_count": 0,
+      "finished_subscriptions_count": 0
     },
     "event": {
       "created_at": "2022-02-05T01:42:13-03:00",
@@ -62,23 +63,24 @@
       "updated_at": "2022-01-26T15:36:57-03:00"
     },
     "gateway": {
+      "id": "GWRqj9QPKlMk",
+      "object": "gateway",
+      "gatewaykind": "visaD",
+      "number": "111111",
+      "username": null,
+      "number_bank_retries": null,
+      "code_length": 5,
+      "disabled": false,
       "brand_list": [
         "visa-debito"
       ],
+      "livemode": false,
+      "created_at": "2021-07-05T12:24:32-03:00",
+      "updated_at": "2021-07-05T12:24:32-03:00",
+      "approved_at": "2021-07-05T12:24:32-03:00",
       "brands": {
         "visa-debito": true
-      },
-      "code_length": null,
-      "created_at": "2021-06-07T17:51:37-03:00",
-      "disabled": false,
-      "gatewaykind": "visaD",
-      "id": "GWOa6APJMKze",
-      "livemode": false,
-      "number": "12111",
-      "number_bank_retries": null,
-      "object": "gateway",
-      "updated_at": "2021-06-07T17:51:37-03:00",
-      "username": "DEMENTIRITA"
+      }
     },
     "import": {
       "batch_job": {
@@ -191,36 +193,36 @@
       "updated_at": "2022-02-01T19:06:37-03:00"
     },
     "payment": {
-      "amount": 75,
-      "auto_retries_max_attempts": null,
-      "can_auto_retry_until": null,
-      "charge_date": "2022-02-01",
-      "created_at": "2022-02-01T23:13:05-03:00",
-      "currency": "ARS",
-      "customer": {
-        "$ref": "#/components/examples/customer"
-      },
-      "description": "poco",
-      "effective_charged_date": null,
-      "estimated_accreditation_date": null,
-      "gateway": "GWZYpKR8bA0W",
-      "gateway_identifier": null,
-      "id": "PYa6k6LlypzP",
-      "livemode": false,
-      "metadata": [],
+      "id": "PY9J8YYdylz6",
       "object": "payment",
-      "paid": false,
-      "payment_method": {
-        "$ref": "#/components/examples/payment_method"
-      },
-      "response_message": "",
+      "amount": 2300,
+      "amount_refunded": 0,
+      "currency": "ARS",
+      "description": "Ajuste por deuda pasada",
+      "status": "approved",
+      "response_message": "Transacción aceptada",
+      "paid": true,
       "retryable": false,
-      "status": "pending_submission",
-      "submissions_count": 0,
+      "refundable": true,
+      "amount_refundable": 2300,
+      "livemode": false,
+      "created_at": "2022-08-03T12:24:33-03:00",
+      "charge_date": "2022-08-03",
+      "submissions_count": 1,
+      "can_auto_retry_until": null,
+      "auto_retries_max_attempts": null,
+      "effective_charged_date": "2022-08-05",
+      "estimated_accreditation_date": "2022-08-19",
+      "updated_at": "2022-08-03T12:24:33-03:00",
+      "updated_status": "2022-08-05",
+      "customer": "ref \"#/components/examples/customer\"",
       "subscription": null,
       "subscription_payment_number": null,
-      "updated_at": "2022-02-01T23:13:05-03:00",
-      "updated_status": null
+      "gateway": "GW1L49J7ARW3",
+      "payment_method": "ref \"#/components/examples/payment_method\"",
+      "gateway_identifier": null,
+      "metadata": null,
+      "refunds": []
     },
     "payment_method": {
       "bank": "Visa",
@@ -283,44 +285,41 @@
       }
     },
     "subscription": {
-      "amount": 900,
-      "approved_payments_count": 0,
-      "approved_payments_sum": 0,
-      "count": null,
-      "created_at": "2021-06-08T09:49:06-03:00",
+      "id": "SBmQ6j9NWxblNv",
+      "object": "subscription",
+      "amount": 5200,
+      "description": "Cuota mensual",
       "currency": "ARS",
+      "status": "active",
+      "count": null,
+      "start_date": "2021-07-01",
+      "interval_unit": "monthly",
+      "interval": 1,
+      "day_of_month": 1,
+      "day_of_week": null,
+      "livemode": false,
+      "created_at": "2021-07-01T12:24:32-03:00",
+      "updated_at": "2021-07-01T12:24:32-03:00",
+      "first_date": "2022-09-01",
+      "upcoming_dates": [
+        "2022-09-01",
+        "2022-10-01",
+        "2022-11-01",
+        "2022-12-01",
+        "2023-01-01"
+      ],
       "customer": {
         "$ref": "#/components/examples/customer"
       },
-      "day_of_month": 14,
-      "day_of_week": null,
-      "description": "Expensas",
-      "first_date": "2022-02-14",
-      "id": "SBawNMWW2AMlWZ",
-      "interval": 1,
-      "interval_unit": "monthly",
-      "livemode": false,
-      "metadata": {
-        "additional_data": null,
-        "more_data": null
-      },
-      "object": "subscription",
       "payment_method": {
         "$ref": "#/components/examples/payment_method"
       },
-      "payments_created": 4,
-      "rejected_payments_count": 0,
-      "rejected_payments_sum": 0,
-      "start_date": null,
-      "status": "active",
-      "upcoming_dates": [
-        "2022-02-14",
-        "2022-03-14",
-        "2022-04-14",
-        "2022-05-14",
-        "2022-06-14"
-      ],
-      "updated_at": "2021-06-08T09:49:06-03:00"
+      "metadata": null,
+      "payments_created": 14,
+      "approved_payments_count": 9,
+      "approved_payments_sum": 46800,
+      "rejected_payments_count": 1,
+      "rejected_payments_sum": 5200
     },
     "webhook": {
       "created_at": "2022-02-11T23:19:22-03:00",

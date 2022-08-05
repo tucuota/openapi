@@ -1990,29 +1990,30 @@
       "customer": {
         "summary": "Sample Customer",
         "value": {
-          "active_subscriptions_count": 0,
-          "active_subscriptions_sum": 0,
-          "approved_payments_count": 0,
-          "approved_payments_sum": 0,
-          "cancelled_subscriptions_count": 0,
-          "created_at": "2022-02-05T01:42:13-03:00",
-          "deleted_at": null,
-          "email": "john@doe.com",
-          "finished_subscriptions_count": 0,
-          "gateway_identifier": 383473,
-          "id": "CSnlZxyY3jwr",
-          "identification_number": null,
+          "id": "CS3Z25Agp708",
+          "object": "customer",
+          "gateway_identifier": 1723393503,
+          "name": "Andrés Bahena Tercero",
+          "email": "andres37@calvillo.info",
           "identification_type": null,
-          "livemode": false,
+          "identification_number": null,
+          "mobile_number": "+5481934863501",
           "metadata": {
-            "hello": "world"
+            "external_id": "0Qk3IJY5"
           },
-          "mobile_number": "5491154876503",
-          "name": "John Doe",
+          "livemode": false,
+          "created_at": "2021-07-05T12:24:32-03:00",
+          "updated_at": "2021-07-05T12:24:32-03:00",
+          "deleted_at": null,
+          "approved_payments_count": 13,
+          "approved_payments_sum": 47900,
+          "rejected_payments_count": 1,
+          "rejected_payments_sum": 3500,
+          "active_subscriptions_count": 1,
+          "active_subscriptions_sum": 3500,
           "paused_subscriptions_count": 0,
-          "rejected_payments_count": 0,
-          "rejected_payments_sum": 0,
-          "updated_at": "2022-02-05T01:42:13-03:00"
+          "cancelled_subscriptions_count": 0,
+          "finished_subscriptions_count": 0
         }
       },
       "event": {
@@ -2060,23 +2061,24 @@
       "gateway": {
         "summary": "Sample Gateway",
         "value": {
+          "id": "GWRqj9QPKlMk",
+          "object": "gateway",
+          "gatewaykind": "visaD",
+          "number": "111111",
+          "username": null,
+          "number_bank_retries": null,
+          "code_length": 5,
+          "disabled": false,
           "brand_list": [
             "visa-debito"
           ],
+          "livemode": false,
+          "created_at": "2021-07-05T12:24:32-03:00",
+          "updated_at": "2021-07-05T12:24:32-03:00",
+          "approved_at": "2021-07-05T12:24:32-03:00",
           "brands": {
             "visa-debito": true
-          },
-          "code_length": null,
-          "created_at": "2021-06-07T17:51:37-03:00",
-          "disabled": false,
-          "gatewaykind": "visaD",
-          "id": "GWOa6APJMKze",
-          "livemode": false,
-          "number": "12111",
-          "number_bank_retries": null,
-          "object": "gateway",
-          "updated_at": "2021-06-07T17:51:37-03:00",
-          "username": "DEMENTIRITA"
+          }
         }
       },
       "import": {
@@ -2201,36 +2203,36 @@
       "payment": {
         "summary": "Sample Payment",
         "value": {
-          "amount": 75,
-          "auto_retries_max_attempts": null,
-          "can_auto_retry_until": null,
-          "charge_date": "2022-02-01",
-          "created_at": "2022-02-01T23:13:05-03:00",
-          "currency": "ARS",
-          "customer": {
-            "$ref": "#/components/examples/customer"
-          },
-          "description": "poco",
-          "effective_charged_date": null,
-          "estimated_accreditation_date": null,
-          "gateway": "GWZYpKR8bA0W",
-          "gateway_identifier": null,
-          "id": "PYa6k6LlypzP",
-          "livemode": false,
-          "metadata": [],
+          "id": "PY9J8YYdylz6",
           "object": "payment",
-          "paid": false,
-          "payment_method": {
-            "$ref": "#/components/examples/payment_method"
-          },
-          "response_message": "",
+          "amount": 2300,
+          "amount_refunded": 0,
+          "currency": "ARS",
+          "description": "Ajuste por deuda pasada",
+          "status": "approved",
+          "response_message": "Transacción aceptada",
+          "paid": true,
           "retryable": false,
-          "status": "pending_submission",
-          "submissions_count": 0,
+          "refundable": true,
+          "amount_refundable": 2300,
+          "livemode": false,
+          "created_at": "2022-08-03T12:24:33-03:00",
+          "charge_date": "2022-08-03",
+          "submissions_count": 1,
+          "can_auto_retry_until": null,
+          "auto_retries_max_attempts": null,
+          "effective_charged_date": "2022-08-05",
+          "estimated_accreditation_date": "2022-08-19",
+          "updated_at": "2022-08-03T12:24:33-03:00",
+          "updated_status": "2022-08-05",
+          "customer": "ref \"#/components/examples/customer\"",
           "subscription": null,
           "subscription_payment_number": null,
-          "updated_at": "2022-02-01T23:13:05-03:00",
-          "updated_status": null
+          "gateway": "GW1L49J7ARW3",
+          "payment_method": "ref \"#/components/examples/payment_method\"",
+          "gateway_identifier": null,
+          "metadata": null,
+          "refunds": []
         }
       },
       "payment_method": {
@@ -2302,44 +2304,41 @@
       "subscription": {
         "summary": "Sample Subscription",
         "value": {
-          "amount": 900,
-          "approved_payments_count": 0,
-          "approved_payments_sum": 0,
-          "count": null,
-          "created_at": "2021-06-08T09:49:06-03:00",
+          "id": "SBmQ6j9NWxblNv",
+          "object": "subscription",
+          "amount": 5200,
+          "description": "Cuota mensual",
           "currency": "ARS",
+          "status": "active",
+          "count": null,
+          "start_date": "2021-07-01",
+          "interval_unit": "monthly",
+          "interval": 1,
+          "day_of_month": 1,
+          "day_of_week": null,
+          "livemode": false,
+          "created_at": "2021-07-01T12:24:32-03:00",
+          "updated_at": "2021-07-01T12:24:32-03:00",
+          "first_date": "2022-09-01",
+          "upcoming_dates": [
+            "2022-09-01",
+            "2022-10-01",
+            "2022-11-01",
+            "2022-12-01",
+            "2023-01-01"
+          ],
           "customer": {
             "$ref": "#/components/examples/customer"
           },
-          "day_of_month": 14,
-          "day_of_week": null,
-          "description": "Expensas",
-          "first_date": "2022-02-14",
-          "id": "SBawNMWW2AMlWZ",
-          "interval": 1,
-          "interval_unit": "monthly",
-          "livemode": false,
-          "metadata": {
-            "additional_data": null,
-            "more_data": null
-          },
-          "object": "subscription",
           "payment_method": {
             "$ref": "#/components/examples/payment_method"
           },
-          "payments_created": 4,
-          "rejected_payments_count": 0,
-          "rejected_payments_sum": 0,
-          "start_date": null,
-          "status": "active",
-          "upcoming_dates": [
-            "2022-02-14",
-            "2022-03-14",
-            "2022-04-14",
-            "2022-05-14",
-            "2022-06-14"
-          ],
-          "updated_at": "2021-06-08T09:49:06-03:00"
+          "metadata": null,
+          "payments_created": 14,
+          "approved_payments_count": 9,
+          "approved_payments_sum": 46800,
+          "rejected_payments_count": 1,
+          "rejected_payments_sum": 5200
         }
       },
       "webhook": {
@@ -2376,7 +2375,7 @@
   "tags": [
     {
       "name": "Customers",
-      "description": "A Customer is Loremmmm ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/customer\" exampleRef=\"#/components/examples/customer\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "A Customer is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/customer\" exampleRef=\"#/components/examples/customer\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Events",
@@ -2400,15 +2399,15 @@
     },
     {
       "name": "Payments",
-      "description": "A Payment is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n| Status                 | Meaning                                                                            |\n| ---------------------- | ---------------------------------------------------------------------------------- |\n| **pending_submission** | The payment has been issued, but still not submitted to the finnancial entity      |\n| **cancelled**          | The payment has been manually cancelled                                            |\n| **submitted**          | The payment is succesfully submitted and being processing in the finnancial entity |\n| **failed**             | Couldn't be submitted to the finnancial entity. There is an error in the request   |\n| **will_retry**         | The attempt failed, but the finnancial entity will make a new attempt              |\n| **approved**           | Submitted OK and approved                                                          |\n| **rejected**           | Submitted OK but couldn't make the collection                                      |\n| **charged_back**       | The payment has been returned to the customer                                      |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment\" exampleRef=\"#/components/examples/payment\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "A Payment is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n| Status               | Meaning                                                                            |\n| -------------------- | ---------------------------------------------------------------------------------- |\n| `pending_submission` | The payment has been issued, but still not submitted to the finnancial entity      |\n| `cancelled`          | The payment has been manually cancelled                                            |\n| `submitted`          | The payment is succesfully submitted and being processing in the finnancial entity |\n| `failed`             | Couldn't be submitted to the finnancial entity. There is an error in the request   |\n| `will_retry`         | The attempt failed, but the finnancial entity will make a new attempt              |\n| `approved`           | Submitted OK and approved                                                          |\n| `rejected`           | Submitted OK but couldn't make the collection                                      |\n| `chargeback`         | The customer asked the bank to get them their money back                           |\n| `refunded`           | The payment has been returned to the customer                                      |\n| `partially_refunded` | A partial amount of the payment has been returned to the customer                  |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment\" exampleRef=\"#/components/examples/payment\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Sessions",
-      "description": "A Session is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n|  Status       | Meaning                                                                                  |\n| ------------- | ---------------------------------------------------------------------------------------- |\n| **active**    | The subscription is active and generating payments                                       |\n| **paused**    | The subscription have been manually paused and won't generate payments until is resumed. |\n| **cancelled** | The subscription have been manually cancelled.                                           |\n| **finished**  | The subscription is completed: all the payments were collected succesfully.              |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/subscription\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "A Session is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/subscription\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Subscriptions",
-      "description": "A Subscription is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n| Status        | Meaning                                                                                  |\n| ------------- | ---------------------------------------------------------------------------------------- |\n| **active**    | The subscription is active and generating payments                                       |\n| **paused**    | The subscription have been manually paused and won't generate payments until is resumed. |\n| **cancelled** | The subscription have been manually cancelled.                                           |\n| **finished**  | The subscription is completed: all the payments were collected succ                      |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/subscription\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "A Subscription is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n| Status      | Meaning                                                                                  |\n| ----------- | ---------------------------------------------------------------------------------------- |\n| `active`    | The subscription is active and generating payments                                       |\n| `paused`    | The subscription have been manually paused and won't generate payments until is resumed. |\n| `cancelled` | The subscription have been manually cancelled.                                           |\n| `finished`  | The subscription is completed: all the payments were collected succ                      |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/subscription\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Webhooks",
