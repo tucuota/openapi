@@ -328,22 +328,22 @@
           "first": {
             "type": "string",
             "nullable": true,
-            "example": "https://api.tucuota.test/v1/customers"
+            "example": "https://api.tucuota.com/v1/customers"
           },
           "last": {
             "type": "string",
             "nullable": true,
-            "example": "https://api.tucuota.test/v1/customers"
+            "example": "https://api.tucuota.com/v1/customers"
           },
           "next": {
             "type": "string",
             "nullable": true,
-            "example": "https://api.tucuota.test/v1/customers"
+            "example": "https://api.tucuota.com/v1/customers"
           },
           "prev": {
             "type": "string",
             "nullable": true,
-            "example": "https://api.tucuota.test/v1/customers"
+            "example": "https://api.tucuota.com/v1/customers"
           }
         }
       },
@@ -378,7 +378,7 @@
           },
           "path": {
             "type": "string",
-            "example": "https://api.tucuota.test/v1/customers"
+            "example": "https://api.tucuota.com/v1/customers"
           }
         }
       },
@@ -397,7 +397,7 @@
       },
       "event": {
         "title": "Event",
-        "description": "This object represents an event on your account.",
+        "description": "This object represents an event of your account.",
         "type": "object",
         "properties": {
           "id": {
@@ -669,7 +669,7 @@
       },
       "card": {
         "title": "Credit Card",
-        "description": "This object represents a credit card on your account.",
+        "description": "This object represents a credit card of your account.",
         "type": "object",
         "properties": {
           "bank": {
@@ -721,7 +721,7 @@
             "example": 2030
           },
           "fingerprint": {
-            "description": "Unique fingerprint for this credit card number on your account.",
+            "description": "Unique fingerprint for this credit card number of your account.",
             "type": "string",
             "example": "8712yh2uihiu1123sxas"
           },
@@ -734,7 +734,7 @@
       },
       "cbu": {
         "title": "CBU",
-        "description": "This object represents a CBU bak account on your account.",
+        "description": "This object represents a CBU bak account of your account.",
         "type": "object",
         "properties": {
           "bank": {
@@ -749,7 +749,7 @@
             ]
           },
           "fingerprint": {
-            "description": "Unique fingerprint for this bank account number on your account.",
+            "description": "Unique fingerprint for this bank account number of your account.",
             "type": "string",
             "example": "8712yh2uihiu1123sxas"
           },
@@ -775,7 +775,7 @@
           },
           "card": {
             "title": "Credit Card",
-            "description": "This object represents a credit card on your account.",
+            "description": "This object represents a credit card of your account.",
             "type": "object",
             "properties": {
               "bank": {
@@ -827,7 +827,7 @@
                 "example": 2030
               },
               "fingerprint": {
-                "description": "Unique fingerprint for this credit card number on your account.",
+                "description": "Unique fingerprint for this credit card number of your account.",
                 "type": "string",
                 "example": "8712yh2uihiu1123sxas"
               },
@@ -840,7 +840,7 @@
           },
           "cbu": {
             "title": "CBU",
-            "description": "This object represents a CBU bak account on your account.",
+            "description": "This object represents a CBU bak account of your account.",
             "type": "object",
             "properties": {
               "bank": {
@@ -855,7 +855,7 @@
                 ]
               },
               "fingerprint": {
-                "description": "Unique fingerprint for this bank account number on your account.",
+                "description": "Unique fingerprint for this bank account number of your account.",
                 "type": "string",
                 "example": "8712yh2uihiu1123sxas"
               },
@@ -1103,7 +1103,7 @@
               },
               "card": {
                 "title": "Credit Card",
-                "description": "This object represents a credit card on your account.",
+                "description": "This object represents a credit card of your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
@@ -1155,7 +1155,7 @@
                     "example": 2030
                   },
                   "fingerprint": {
-                    "description": "Unique fingerprint for this credit card number on your account.",
+                    "description": "Unique fingerprint for this credit card number of your account.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
                   },
@@ -1168,7 +1168,7 @@
               },
               "cbu": {
                 "title": "CBU",
-                "description": "This object represents a CBU bak account on your account.",
+                "description": "This object represents a CBU bak account of your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
@@ -1183,7 +1183,7 @@
                     ]
                   },
                   "fingerprint": {
-                    "description": "Unique fingerprint for this bank account number on your account.",
+                    "description": "Unique fingerprint for this bank account number of your account.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
                   },
@@ -1529,7 +1529,7 @@
               },
               "card": {
                 "title": "Credit Card",
-                "description": "This object represents a credit card on your account.",
+                "description": "This object represents a credit card of your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
@@ -1581,7 +1581,7 @@
                     "example": 2030
                   },
                   "fingerprint": {
-                    "description": "Unique fingerprint for this credit card number on your account.",
+                    "description": "Unique fingerprint for this credit card number of your account.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
                   },
@@ -1594,7 +1594,7 @@
               },
               "cbu": {
                 "title": "CBU",
-                "description": "This object represents a CBU bak account on your account.",
+                "description": "This object represents a CBU bak account of your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
@@ -1609,7 +1609,7 @@
                     ]
                   },
                   "fingerprint": {
-                    "description": "Unique fingerprint for this bank account number on your account.",
+                    "description": "Unique fingerprint for this bank account number of your account.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
                   },
@@ -1678,6 +1678,88 @@
       },
       "payment": {
         "type": "object"
+      },
+      "refund": {
+        "title": "Refund",
+        "description": "This object represents a refunds of your organization.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "example": "RFljikas98",
+            "description": "Unique identifier for the object.",
+            "maxLength": 5000,
+            "type": "string"
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "refund"
+            ]
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "[Payment ID](#tag/Payments).\n",
+            "example": "PYgaZlLaPMZO."
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount to be refunded. If is null it will refund the whole payment.",
+            "example": "12.5"
+          },
+          "currency": {
+            "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+            "type": "string",
+            "enum": [
+              "ARS",
+              "BRL",
+              "CLP",
+              "COP",
+              "MXN",
+              "USB",
+              "USD"
+            ],
+            "example": "USD"
+          },
+          "reason": {
+            "description": "Refund Reason",
+            "type": "string",
+            "example": "requested_by_customer"
+          },
+          "status": {
+            "description": "Refund Status",
+            "type": "string",
+            "example": "approved"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "metadata": {
+            "example": {
+              "some": "metadata"
+            },
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+          }
+        }
       },
       "completed_at": {
         "type": "string",
@@ -1941,6 +2023,1031 @@
           "secret": "DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0",
           "updated_at": "2022-02-11T23:19:22-03:00",
           "url": "https://site.com/webhook"
+        }
+      },
+      "Customer": {
+        "title": "Customer",
+        "description": "This object represents a customer of your organization.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "example": "CSljikas98",
+            "description": "Unique identifier for the object.",
+            "maxLength": 5000,
+            "type": "string"
+          },
+          "name": {
+            "description": "The customer's full name or business name.",
+            "type": "string",
+            "example": "Jorgelina Castro"
+          },
+          "email": {
+            "description": "The customer's email address.",
+            "type": "string",
+            "example": "asd@asd.com"
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "customer"
+            ]
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean"
+          },
+          "metadata": {
+            "example": {
+              "some": "metadata"
+            },
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+          },
+          "mobile_number": {
+            "description": "Customer's phone number.",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "5491164531234"
+          },
+          "gateway_identifier": {
+            "description": "The customer's reference for bank account statements.",
+            "type": "integer",
+            "format": "int32",
+            "example": 383473
+          },
+          "identification_number": {
+            "description": "Customer's Document ID number.",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "15.555.324"
+          },
+          "identification_type": {
+            "description": "Customer's Document type.",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "DNI"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "deleted_at": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "active_subscriptions_count": {
+            "description": "Active Subscriptions Count",
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "active_subscriptions_sum": {
+            "description": "Active Subscriptions Sum",
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "approved_payments_count": {
+            "description": "Approved Payments Count",
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "approved_payments_sum": {
+            "description": "Approved Payments Sum",
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "cancelled_subscriptions_count": {
+            "description": "Cancelled Subscriptions Count",
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "paused_subscriptions_count": {
+            "description": "Paused Subscriptions Count",
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "rejected_payments_count": {
+            "description": "Rejected Payments Count",
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "rejected_payments_sum": {
+            "description": "Rejected Payments Sum",
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "finished_subscriptions_count": {
+            "description": "Finished Subscriptions Count",
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          }
+        }
+      },
+      "Event": {
+        "title": "Event",
+        "description": "This object represents an event of your account.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the object.",
+            "maxLength": 5000,
+            "type": "string"
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "event"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "data": {
+            "type": "object",
+            "required": [
+              "object"
+            ],
+            "properties": {
+              "object": {
+                "type": "object",
+                "description": "Event object."
+              }
+            }
+          },
+          "delivered_at": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the event was delivered. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean"
+          },
+          "resource": {
+            "type": "string",
+            "example": "customer",
+            "enum": [
+              "customer",
+              "gateway",
+              "import",
+              "mandate",
+              "payment",
+              "payment_method",
+              "subscription"
+            ],
+            "description": "Resource attached to the event."
+          },
+          "resource_id": {
+            "type": "string",
+            "example": "CS12312d1d1dl",
+            "description": "ID for the resource attached to the event."
+          },
+          "type": {
+            "type": "string",
+            "description": "Event type.",
+            "example": "customer.created",
+            "enum": [
+              "customer.created",
+              "customer.disabled",
+              "customer.restored",
+              "customer.updated",
+              "gateway.created",
+              "gateway.disabled",
+              "gateway.enabled",
+              "gateway.updated",
+              "import.processed",
+              "mandate.created",
+              "mandate.restored",
+              "mandate.revoked",
+              "payment.cancelled",
+              "payment.created",
+              "payment.retrying",
+              "payment.updated",
+              "payment_method.automatically_updated",
+              "payment_method.created",
+              "payment_method.updated",
+              "subscription.cancelled",
+              "subscription.created",
+              "subscription.finished",
+              "subscription.paused",
+              "subscription.resumed",
+              "subscription.updated"
+            ]
+          }
+        }
+      },
+      "Import": {
+        "title": "Import",
+        "description": "This object represents an import of your account.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "example": "IM129038120h",
+            "description": "Unique identifier for the object.",
+            "maxLength": 5000,
+            "type": "string"
+          },
+          "batch_job": {
+            "type": "object"
+          },
+          "cancelled_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the import was marked as cancelled. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "invalid_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the import was marked as invalid. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "processed_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the import was marked as processed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "ready_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the import was marked as ready. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "invalid_rows_count": {
+            "description": "Invalid Rows Count",
+            "type": "number",
+            "example": 0
+          },
+          "valid_rows_count": {
+            "description": "Valid Rows Count",
+            "type": "number",
+            "example": 0
+          },
+          "rows_count": {
+            "description": "Rows Count",
+            "type": "number",
+            "example": 0
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean"
+          },
+          "original_filename": {
+            "type": "string",
+            "example": "subscriptions-import-template.csv"
+          },
+          "type": {
+            "description": "Import Type",
+            "type": "string",
+            "example": "subscriptions"
+          },
+          "status": {
+            "description": "Import Status",
+            "type": "string",
+            "example": "processed"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          }
+        }
+      },
+      "Subscription": {
+        "title": "Subscription",
+        "description": "This object represents a subscription of your organization.",
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "currency": {
+            "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+            "type": "string",
+            "enum": [
+              "ARS",
+              "BRL",
+              "CLP",
+              "COP",
+              "MXN",
+              "USB",
+              "USD"
+            ],
+            "example": "USD"
+          },
+          "approved_payments_count": {
+            "type": "number"
+          },
+          "approved_payments_sum": {
+            "type": "number"
+          },
+          "customer": {
+            "title": "Customer",
+            "description": "This object represents a customer of your organization.",
+            "type": "object",
+            "properties": {
+              "id": {
+                "example": "CSljikas98",
+                "description": "Unique identifier for the object.",
+                "maxLength": 5000,
+                "type": "string"
+              },
+              "name": {
+                "description": "The customer's full name or business name.",
+                "type": "string",
+                "example": "Jorgelina Castro"
+              },
+              "email": {
+                "description": "The customer's email address.",
+                "type": "string",
+                "example": "asd@asd.com"
+              },
+              "object": {
+                "type": "string",
+                "enum": [
+                  "customer"
+                ]
+              },
+              "livemode": {
+                "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                "type": "boolean"
+              },
+              "metadata": {
+                "example": {
+                  "some": "metadata"
+                },
+                "anyOf": [
+                  {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+              },
+              "mobile_number": {
+                "description": "Customer's phone number.",
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "5491164531234"
+              },
+              "gateway_identifier": {
+                "description": "The customer's reference for bank account statements.",
+                "type": "integer",
+                "format": "int32",
+                "example": 383473
+              },
+              "identification_number": {
+                "description": "Customer's Document ID number.",
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "15.555.324"
+              },
+              "identification_type": {
+                "description": "Customer's Document type.",
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "DNI"
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+              },
+              "updated_at": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+              },
+              "deleted_at": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+              },
+              "active_subscriptions_count": {
+                "description": "Active Subscriptions Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "active_subscriptions_sum": {
+                "description": "Active Subscriptions Sum",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "approved_payments_count": {
+                "description": "Approved Payments Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "approved_payments_sum": {
+                "description": "Approved Payments Sum",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "cancelled_subscriptions_count": {
+                "description": "Cancelled Subscriptions Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "paused_subscriptions_count": {
+                "description": "Paused Subscriptions Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "rejected_payments_count": {
+                "description": "Rejected Payments Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "rejected_payments_sum": {
+                "description": "Rejected Payments Sum",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "finished_subscriptions_count": {
+                "description": "Finished Subscriptions Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              }
+            }
+          },
+          "first_date": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean"
+          },
+          "metadata": {
+            "example": {
+              "some": "metadata"
+            },
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+          },
+          "object": {
+            "type": "string"
+          },
+          "payment_method": {
+            "title": "Payment Method",
+            "description": "This object represents a payment method of your account.",
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Type of paymet method. One of: cbu, card.",
+                "enum": [
+                  "card",
+                  "cbu"
+                ]
+              },
+              "card": {
+                "title": "Credit Card",
+                "description": "This object represents a credit card of your account.",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Credit card's bank or financial institution.",
+                    "type": "string",
+                    "example": "Banco Santander Río"
+                  },
+                  "brand": {
+                    "description": "Credit card's brand.",
+                    "type": "string",
+                    "example": "visa-credito",
+                    "enum": [
+                      "amex",
+                      "argencard",
+                      "cabal",
+                      "cabal-debito",
+                      "cbu",
+                      "cencosud",
+                      "cmr-falabella",
+                      "cordobesa",
+                      "diners-club",
+                      "discover",
+                      "jcb",
+                      "lider",
+                      "maestro",
+                      "mastercard",
+                      "mastercard-debit",
+                      "naranja",
+                      "naranja-visa",
+                      "nativa",
+                      "visa-credito",
+                      "visa-debito",
+                      "favacard"
+                    ]
+                  },
+                  "country": {
+                    "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
+                    "type": "string",
+                    "example": "AR"
+                  },
+                  "expiration_month": {
+                    "description": "Expiration month.",
+                    "type": "number",
+                    "example": 11
+                  },
+                  "expiration_year": {
+                    "description": "Expiration year.",
+                    "type": "number",
+                    "example": 2030
+                  },
+                  "fingerprint": {
+                    "description": "Unique fingerprint for this credit card number of your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "last_four_digits": {
+                    "description": "Credit's card last four digits.",
+                    "type": "string",
+                    "example": "9876"
+                  }
+                }
+              },
+              "cbu": {
+                "title": "CBU",
+                "description": "This object represents a CBU bak account of your account.",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Bank.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "Bank account country.",
+                    "type": "string",
+                    "enum": [
+                      "AR"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Unique fingerprint for this bank account number of your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "last_four_digits": {
+                    "description": "Bank account last four digits.",
+                    "type": "string",
+                    "example": "9876"
+                  }
+                }
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+              },
+              "id": {
+                "example": "PM1982h3129",
+                "description": "Unique identifier for the object.",
+                "maxLength": 5000,
+                "type": "string"
+              },
+              "livemode": {
+                "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                "type": "boolean"
+              },
+              "object": {
+                "type": "string",
+                "enum": [
+                  "payment_method"
+                ]
+              },
+              "updated_at": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+              }
+            }
+          },
+          "rejected_payments_count": {
+            "type": "number"
+          },
+          "rejected_payments_sum": {
+            "type": "number"
+          },
+          "start_date": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "upcoming_dates": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          }
+        }
+      },
+      "Webhook": {
+        "title": "Webhook",
+        "description": "You can configure [webhook endpoints](https://tucuota.com/docs/webhooks/) via the API to be\nnotified about events that happen in your TuCuota account or connected\naccounts.\n\nMost users configure webhooks from [the dashboard](https://dashboard.tucuota.com/webhooks), which provides a user interface for registering and testing your webhook endpoints.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the object.",
+            "maxLength": 5000,
+            "type": "string"
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "webhook"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL of the webhook endpoint.",
+            "maxLength": 5000,
+            "example": "https://tucuota.com/webhook/200"
+          },
+          "enabled": {
+            "description": "Whether the webhook is enabled.",
+            "type": "boolean"
+          },
+          "enabled_events": {
+            "description": "One of: `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.updated`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`\n",
+            "type": "array",
+            "example": [
+              "customer.created",
+              "customer.updated",
+              "payment.created"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "secret": {
+            "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/webhooks/signatures).",
+            "maxLength": 5000,
+            "type": "string",
+            "example": "Rrdm41mW4x54uUS2A6QnHhm7hXwpuR"
+          },
+          "failed_lately_count": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "success_lately_count": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          }
+        },
+        "example": {
+          "created_at": "2022-02-11T23:19:22-03:00",
+          "enabled": true,
+          "enabled_events": [
+            "*"
+          ],
+          "id": "WHq4VzyAzDgB",
+          "livemode": false,
+          "object": "webhook",
+          "secret": "DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0",
+          "updated_at": "2022-02-11T23:19:22-03:00",
+          "url": "https://site.com/webhook"
+        }
+      },
+      "Refund": {
+        "title": "Refund",
+        "description": "This object represents a refunds of your organization.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "example": "RFljikas98",
+            "description": "Unique identifier for the object.",
+            "maxLength": 5000,
+            "type": "string"
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "refund"
+            ]
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "[Payment ID](#tag/Payments).\n",
+            "example": "PYgaZlLaPMZO."
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount to be refunded. If is null it will refund the whole payment.",
+            "example": "12.5"
+          },
+          "currency": {
+            "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+            "type": "string",
+            "enum": [
+              "ARS",
+              "BRL",
+              "CLP",
+              "COP",
+              "MXN",
+              "USB",
+              "USD"
+            ],
+            "example": "USD"
+          },
+          "reason": {
+            "description": "Refund Reason",
+            "type": "string",
+            "example": "requested_by_customer"
+          },
+          "status": {
+            "description": "Refund Status",
+            "type": "string",
+            "example": "approved"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "metadata": {
+            "example": {
+              "some": "metadata"
+            },
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+          }
+        }
+      },
+      "Validation-error": {
+        "title": "Validation Error",
+        "description": "asd",
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Api-response": {
+        "description": "A better exclusion of the two groups of properties, using oneOf.",
+        "oneOf": [
+          {
+            "properties": {
+              "data": {
+                "description": "The matching data",
+                "type": "array"
+              },
+              "meta": {
+                "description": "Any relevant metadata",
+                "type": "object"
+              }
+            }
+          },
+          {
+            "properties": {
+              "errors": {
+                "description": "",
+                "type": "array"
+              }
+            }
+          }
+        ],
+        "type": "object"
+      },
+      "Meta": {
+        "title": "Response Meta",
+        "description": "Pagination metadata",
+        "type": "object",
+        "properties": {
+          "current_page": {
+            "type": "number",
+            "example": 1
+          },
+          "from": {
+            "type": "number",
+            "example": 1
+          },
+          "last_page": {
+            "type": "number",
+            "example": 28
+          },
+          "per_page": {
+            "type": "number",
+            "example": 1
+          },
+          "to": {
+            "type": "number",
+            "example": 1
+          },
+          "total": {
+            "type": "number",
+            "example": 2
+          },
+          "path": {
+            "type": "string",
+            "example": "https://api.tucuota.com/v1/customers"
+          }
+        }
+      },
+      "Links": {
+        "title": "Response Meta",
+        "description": "Pagination metadata",
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": "string",
+            "nullable": true,
+            "example": "https://api.tucuota.com/v1/customers"
+          },
+          "last": {
+            "type": "string",
+            "nullable": true,
+            "example": "https://api.tucuota.com/v1/customers"
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "example": "https://api.tucuota.com/v1/customers"
+          },
+          "prev": {
+            "type": "string",
+            "nullable": true,
+            "example": "https://api.tucuota.com/v1/customers"
+          }
         }
       },
       "validation-error": {
@@ -2225,14 +3332,37 @@
           "estimated_accreditation_date": "2022-08-19",
           "updated_at": "2022-08-03T12:24:33-03:00",
           "updated_status": "2022-08-05",
-          "customer": "ref \"#/components/examples/customer\"",
+          "customer": [
+            {
+              "$ref": "./customer"
+            }
+          ],
           "subscription": null,
           "subscription_payment_number": null,
           "gateway": "GW1L49J7ARW3",
-          "payment_method": "ref \"#/components/examples/payment_method\"",
+          "payment_method": [
+            {
+              "$ref": "./payment_method"
+            }
+          ],
           "gateway_identifier": null,
           "metadata": null,
           "refunds": []
+        }
+      },
+      "refund": {
+        "summary": "Sample Refund",
+        "value": {
+          "id": "RFOBXM90YZp4AD",
+          "object": "refund",
+          "payment_id": "PYpzMDDy4mJ3",
+          "amount": 100,
+          "currency": "ARS",
+          "reason": "error",
+          "status": "approved",
+          "created_at": "2022-02-05T12:24:33-03:00",
+          "updated_at": "2022-02-05T12:24:33-03:00",
+          "metadata": null
         }
       },
       "payment_method": {
@@ -2375,43 +3505,47 @@
   "tags": [
     {
       "name": "Customers",
-      "description": "A Customer is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/customer\" exampleRef=\"#/components/examples/customer\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "This object represents a customer of your organization. It lets you create subscriptions and track payments that belong to the same customer.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/customer\" exampleRef=\"#/components/examples/customer\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Events",
-      "description": "An Event is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/event\" exampleRef=\"#/components/examples/event\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "Events are our way of letting you know when something interesting happens in your account. When an interesting event occurs, we create a new Event object. For example, when a payment updates, we create a payment.updated event. Note that many API requests may cause multiple events to be created. For example, if you create a new subscription for a customer, you will receive both a customer.subscription.created event and a payment.created event.\n\nEvents occur when the state of another API resource changes. The state of that resource at the time of the change is embedded in the event's data field. For example, a payment.updated event will contain a payment, and an customer.created event will contain a customer.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/event\" exampleRef=\"#/components/examples/event\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Imports",
-      "description": "An Import is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/import\" exampleRef=\"#/components/examples/import\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "An Import is an object which contains data to be created in TuCuota. As these objects may be big, they will be created and processed later. You can check the status of the import.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/import\" exampleRef=\"#/components/examples/import\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Links",
-      "description": "A Link is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/link\" exampleRef=\"#/components/examples/link\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "A link is a shareable URL that will take your customers to a hosted page. Links can create manddates, payments, or subscription easily. A link can be shared and used multiple times.\n\nWhen a customer opens a payment link, the next step will create a new checkout session to render the page. You can use checkout session events to track the results.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/link\" exampleRef=\"#/components/examples/link\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Mandates",
-      "description": "A Mandate is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/mandate\" exampleRef=\"#/components/examples/mandate\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "A Mandate is a record of the permission a customer has given you to debit their payment method.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/mandate\" exampleRef=\"#/components/examples/mandate\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Payment Methods",
-      "description": "A Payment Method is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment_method\" exampleRef=\"#/components/examples/payment_method\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "PaymentMethod objects represent your customer's payment instruments. You can use them with to create Payments or Subscriptions to a Customer.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment_method\" exampleRef=\"#/components/examples/payment_method\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Payments",
-      "description": "A Payment is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n| Status               | Meaning                                                                            |\n| -------------------- | ---------------------------------------------------------------------------------- |\n| `pending_submission` | The payment has been issued, but still not submitted to the finnancial entity      |\n| `cancelled`          | The payment has been manually cancelled                                            |\n| `submitted`          | The payment is succesfully submitted and being processing in the finnancial entity |\n| `failed`             | Couldn't be submitted to the finnancial entity. There is an error in the request   |\n| `will_retry`         | The attempt failed, but the finnancial entity will make a new attempt              |\n| `approved`           | Submitted OK and approved                                                          |\n| `rejected`           | Submitted OK but couldn't make the collection                                      |\n| `chargeback`         | The customer asked the bank to get them their money back                           |\n| `refunded`           | The payment has been returned to the customer                                      |\n| `partially_refunded` | A partial amount of the payment has been returned to the customer                  |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment\" exampleRef=\"#/components/examples/payment\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "A Payment is an object you create to charge a credit, debit card, or bank account. You can retrieve information about the payment and also refund them partially or totally.\n\n| Status               | Meaning                                                                            |\n| -------------------- | ---------------------------------------------------------------------------------- |\n| `pending_submission` | The payment has been issued, but still not submitted to the finnancial entity      |\n| `cancelled`          | The payment has been manually cancelled                                            |\n| `submitted`          | The payment is succesfully submitted and being processing in the finnancial entity |\n| `failed`             | Couldn't be submitted to the finnancial entity. There is an error in the request   |\n| `will_retry`         | The attempt failed, but the finnancial entity will make a new attempt              |\n| `approved`           | Submitted OK and approved                                                          |\n| `rejected`           | Submitted OK but couldn't make the collection                                      |\n| `chargeback`         | The customer asked the bank to get them their money back                           |\n| `refunded`           | The payment has been returned to the customer                                      |\n| `partially_refunded` | A partial amount of the payment has been returned to the customer                  |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment\" exampleRef=\"#/components/examples/payment\" showReadOnly={true} showWriteOnly={true} />\n"
+    },
+    {
+      "name": "Refunds",
+      "description": "Refund objects allow you to refund a payment that has previously been created but not yet totally refunded. Funds will be refunded to the credit, debit card, or bank account that was originally charged.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/refund\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Sessions",
-      "description": "A Session is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/subscription\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "Sessions enable you to use TuCuota's hosted payment pages to set up mandates, subscriptions or payments with your customers.\n\nFirst you create a Session for your customer, and redirect them to the returned redirect url. Your customer supplies their name, email, address, and bank account or card details, and submits the form. This securely stores their details, and redirects them back to your `back_url` with `session_id=THE_SESSION_ID` in the querystring.\n\nYou complete the Session, which creates a customer, payment method, and either payment, mandate or subscription, and returns the ID of the mandate. With this data you may wish to create a subscription or payment at this point.\n\nOnce you have completed the Session via the API, you should display a confirmation page to your customer, confirming that data has been set up. You can build your own page, or redirect to the one we provide in the confirmation_url attribute of the Session.\n\nSession expire after completed. You cannot complete an expired or already completed Session.\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/subscription\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Subscriptions",
-      "description": "A Subscription is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n| Status      | Meaning                                                                                  |\n| ----------- | ---------------------------------------------------------------------------------------- |\n| `active`    | The subscription is active and generating payments                                       |\n| `paused`    | The subscription have been manually paused and won't generate payments until is resumed. |\n| `cancelled` | The subscription have been manually cancelled.                                           |\n| `finished`  | The subscription is completed: all the payments were collected succ                      |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/subscription\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "Subscriptions allow you to charge a customer on a recurring basis according to a schedule.\n\n| Status      | Meaning                                                                                  |\n| ----------- | ---------------------------------------------------------------------------------------- |\n| `active`    | The subscription is active and generating payments.                                      |\n| `paused`    | The subscription have been manually paused and won't generate payments until is resumed. |\n| `cancelled` | The subscription have been manually cancelled.                                           |\n| `finished`  | The subscription is completed: all the payments were created succesfully.                |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/subscription\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Webhooks",
-      "description": "A Webhook is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/webhook\" exampleRef=\"#/components/examples/webhook\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "Webhooks are endpoints you can configure to be notified about events that happen in your TuCuota account. Most users configure Webhooks from the dashboard, which provides a user interface for registering and testing your webhook endpoints.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/webhook\" exampleRef=\"#/components/examples/webhook\" showReadOnly={true} showWriteOnly={true} />\n"
     }
   ],
   "paths": {
@@ -2638,22 +3772,22 @@
                         "first": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "last": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "next": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "prev": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     },
@@ -2688,7 +3822,7 @@
                         },
                         "path": {
                           "type": "string",
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     }
@@ -3750,7 +4884,7 @@
                       "type": "array",
                       "items": {
                         "title": "Event",
-                        "description": "This object represents an event on your account.",
+                        "description": "This object represents an event of your account.",
                         "type": "object",
                         "properties": {
                           "id": {
@@ -3861,22 +4995,22 @@
                         "first": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "last": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "next": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "prev": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     },
@@ -3911,7 +5045,7 @@
                         },
                         "path": {
                           "type": "string",
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     }
@@ -4594,22 +5728,22 @@
                         "first": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "last": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "next": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "prev": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     },
@@ -4644,7 +5778,7 @@
                         },
                         "path": {
                           "type": "string",
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     }
@@ -5273,7 +6407,7 @@
                               },
                               "card": {
                                 "title": "Credit Card",
-                                "description": "This object represents a credit card on your account.",
+                                "description": "This object represents a credit card of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -5325,7 +6459,7 @@
                                     "example": 2030
                                   },
                                   "fingerprint": {
-                                    "description": "Unique fingerprint for this credit card number on your account.",
+                                    "description": "Unique fingerprint for this credit card number of your account.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
@@ -5338,7 +6472,7 @@
                               },
                               "cbu": {
                                 "title": "CBU",
-                                "description": "This object represents a CBU bak account on your account.",
+                                "description": "This object represents a CBU bak account of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -5353,7 +6487,7 @@
                                     ]
                                   },
                                   "fingerprint": {
-                                    "description": "Unique fingerprint for this bank account number on your account.",
+                                    "description": "Unique fingerprint for this bank account number of your account.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
@@ -5447,22 +6581,22 @@
                         "first": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "last": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "next": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "prev": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     },
@@ -5497,7 +6631,7 @@
                         },
                         "path": {
                           "type": "string",
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     }
@@ -5862,7 +6996,7 @@
                             },
                             "card": {
                               "title": "Credit Card",
-                              "description": "This object represents a credit card on your account.",
+                              "description": "This object represents a credit card of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -5914,7 +7048,7 @@
                                   "example": 2030
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this credit card number on your account.",
+                                  "description": "Unique fingerprint for this credit card number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -5927,7 +7061,7 @@
                             },
                             "cbu": {
                               "title": "CBU",
-                              "description": "This object represents a CBU bak account on your account.",
+                              "description": "This object represents a CBU bak account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -5942,7 +7076,7 @@
                                   ]
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -6213,7 +7347,7 @@
                           },
                           "card": {
                             "title": "Credit Card",
-                            "description": "This object represents a credit card on your account.",
+                            "description": "This object represents a credit card of your account.",
                             "type": "object",
                             "properties": {
                               "bank": {
@@ -6265,7 +7399,7 @@
                                 "example": 2030
                               },
                               "fingerprint": {
-                                "description": "Unique fingerprint for this credit card number on your account.",
+                                "description": "Unique fingerprint for this credit card number of your account.",
                                 "type": "string",
                                 "example": "8712yh2uihiu1123sxas"
                               },
@@ -6278,7 +7412,7 @@
                           },
                           "cbu": {
                             "title": "CBU",
-                            "description": "This object represents a CBU bak account on your account.",
+                            "description": "This object represents a CBU bak account of your account.",
                             "type": "object",
                             "properties": {
                               "bank": {
@@ -6293,7 +7427,7 @@
                                 ]
                               },
                               "fingerprint": {
-                                "description": "Unique fingerprint for this bank account number on your account.",
+                                "description": "Unique fingerprint for this bank account number of your account.",
                                 "type": "string",
                                 "example": "8712yh2uihiu1123sxas"
                               },
@@ -6343,22 +7477,22 @@
                         "first": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "last": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "next": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "prev": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     },
@@ -6393,7 +7527,7 @@
                         },
                         "path": {
                           "type": "string",
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     }
@@ -6527,7 +7661,7 @@
                         },
                         "card": {
                           "title": "Credit Card",
-                          "description": "This object represents a credit card on your account.",
+                          "description": "This object represents a credit card of your account.",
                           "type": "object",
                           "properties": {
                             "bank": {
@@ -6579,7 +7713,7 @@
                               "example": 2030
                             },
                             "fingerprint": {
-                              "description": "Unique fingerprint for this credit card number on your account.",
+                              "description": "Unique fingerprint for this credit card number of your account.",
                               "type": "string",
                               "example": "8712yh2uihiu1123sxas"
                             },
@@ -6592,7 +7726,7 @@
                         },
                         "cbu": {
                           "title": "CBU",
-                          "description": "This object represents a CBU bak account on your account.",
+                          "description": "This object represents a CBU bak account of your account.",
                           "type": "object",
                           "properties": {
                             "bank": {
@@ -6607,7 +7741,7 @@
                               ]
                             },
                             "fingerprint": {
-                              "description": "Unique fingerprint for this bank account number on your account.",
+                              "description": "Unique fingerprint for this bank account number of your account.",
                               "type": "string",
                               "example": "8712yh2uihiu1123sxas"
                             },
@@ -6720,7 +7854,7 @@
                         },
                         "card": {
                           "title": "Credit Card",
-                          "description": "This object represents a credit card on your account.",
+                          "description": "This object represents a credit card of your account.",
                           "type": "object",
                           "properties": {
                             "bank": {
@@ -6772,7 +7906,7 @@
                               "example": 2030
                             },
                             "fingerprint": {
-                              "description": "Unique fingerprint for this credit card number on your account.",
+                              "description": "Unique fingerprint for this credit card number of your account.",
                               "type": "string",
                               "example": "8712yh2uihiu1123sxas"
                             },
@@ -6785,7 +7919,7 @@
                         },
                         "cbu": {
                           "title": "CBU",
-                          "description": "This object represents a CBU bak account on your account.",
+                          "description": "This object represents a CBU bak account of your account.",
                           "type": "object",
                           "properties": {
                             "bank": {
@@ -6800,7 +7934,7 @@
                               ]
                             },
                             "fingerprint": {
-                              "description": "Unique fingerprint for this bank account number on your account.",
+                              "description": "Unique fingerprint for this bank account number of your account.",
                               "type": "string",
                               "example": "8712yh2uihiu1123sxas"
                             },
@@ -7190,7 +8324,7 @@
                               },
                               "card": {
                                 "title": "Credit Card",
-                                "description": "This object represents a credit card on your account.",
+                                "description": "This object represents a credit card of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -7242,7 +8376,7 @@
                                     "example": 2030
                                   },
                                   "fingerprint": {
-                                    "description": "Unique fingerprint for this credit card number on your account.",
+                                    "description": "Unique fingerprint for this credit card number of your account.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
@@ -7255,7 +8389,7 @@
                               },
                               "cbu": {
                                 "title": "CBU",
-                                "description": "This object represents a CBU bak account on your account.",
+                                "description": "This object represents a CBU bak account of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -7270,7 +8404,7 @@
                                     ]
                                   },
                                   "fingerprint": {
-                                    "description": "Unique fingerprint for this bank account number on your account.",
+                                    "description": "Unique fingerprint for this bank account number of your account.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
@@ -7346,22 +8480,22 @@
                         "first": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "last": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "next": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "prev": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     },
@@ -7396,7 +8530,7 @@
                         },
                         "path": {
                           "type": "string",
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     }
@@ -7506,8 +8640,7 @@
                   "amount": 100,
                   "description": "Unique payment",
                   "gateway_identifier": "001234",
-                  "customer_id": "CSr7Dg3LkDP2",
-                  "payment_method_number": "4024007127322104"
+                  "customer_id": "CSr7Dg3LkDP2"
                 }
               }
             }
@@ -7836,6 +8969,450 @@
                       }
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/refunds": {
+      "get": {
+        "tags": [
+          "Refunds"
+        ],
+        "summary": "List all refunds",
+        "description": "By default newest refunds will be first on the list.",
+        "operationId": "RefundsGetRefunds",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Cursor value to paginate response.",
+            "required": false,
+            "schema": {
+              "type": "number"
+            },
+            "example": 1
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of records to return.",
+            "required": false,
+            "schema": {
+              "type": "number"
+            },
+            "example": 20
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "data"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "title": "Refund",
+                        "description": "This object represents a refunds of your organization.",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "example": "RFljikas98",
+                            "description": "Unique identifier for the object.",
+                            "maxLength": 5000,
+                            "type": "string"
+                          },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "refund"
+                            ]
+                          },
+                          "customer_id": {
+                            "type": "string",
+                            "description": "[Payment ID](#tag/Payments).\n",
+                            "example": "PYgaZlLaPMZO."
+                          },
+                          "amount": {
+                            "type": "number",
+                            "description": "Amount to be refunded. If is null it will refund the whole payment.",
+                            "example": "12.5"
+                          },
+                          "currency": {
+                            "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                            "type": "string",
+                            "enum": [
+                              "ARS",
+                              "BRL",
+                              "CLP",
+                              "COP",
+                              "MXN",
+                              "USB",
+                              "USD"
+                            ],
+                            "example": "USD"
+                          },
+                          "reason": {
+                            "description": "Refund Reason",
+                            "type": "string",
+                            "example": "requested_by_customer"
+                          },
+                          "status": {
+                            "description": "Refund Status",
+                            "type": "string",
+                            "example": "approved"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                          },
+                          "metadata": {
+                            "example": {
+                              "some": "metadata"
+                            },
+                            "anyOf": [
+                              {
+                                "additionalProperties": {
+                                  "type": "string"
+                                },
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ],
+                            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                          }
+                        }
+                      }
+                    },
+                    "links": {
+                      "title": "Response Meta",
+                      "description": "Pagination metadata",
+                      "type": "object",
+                      "properties": {
+                        "first": {
+                          "type": "string",
+                          "nullable": true,
+                          "example": "https://api.tucuota.com/v1/customers"
+                        },
+                        "last": {
+                          "type": "string",
+                          "nullable": true,
+                          "example": "https://api.tucuota.com/v1/customers"
+                        },
+                        "next": {
+                          "type": "string",
+                          "nullable": true,
+                          "example": "https://api.tucuota.com/v1/customers"
+                        },
+                        "prev": {
+                          "type": "string",
+                          "nullable": true,
+                          "example": "https://api.tucuota.com/v1/customers"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "title": "Response Meta",
+                      "description": "Pagination metadata",
+                      "type": "object",
+                      "properties": {
+                        "current_page": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "from": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "last_page": {
+                          "type": "number",
+                          "example": 28
+                        },
+                        "per_page": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "to": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 2
+                        },
+                        "path": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "title": "Unauthorized",
+                      "description": "Unauthorized response",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Refunds"
+        ],
+        "summary": "Create a refund",
+        "description": "Create a refund.",
+        "operationId": "RefundsCreateRefund",
+        "x-codegen-request-body-name": "body",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "encoding": {
+                "metadata": {
+                  "explode": true,
+                  "style": "deepObject"
+                }
+              },
+              "example": {
+                "amount": 10,
+                "reason": "duplicate",
+                "payment_id": "PY9J8YYdylz6",
+                "metadata": {
+                  "some": "value"
+                }
+              },
+              "schema": {
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "title": "Refund",
+                    "description": "This object represents a refunds of your organization.",
+                    "properties": {
+                      "id": {
+                        "example": "RFljikas98",
+                        "description": "Unique identifier for the object.",
+                        "maxLength": 5000,
+                        "type": "string"
+                      },
+                      "object": {
+                        "type": "string",
+                        "enum": [
+                          "refund"
+                        ]
+                      },
+                      "customer_id": {
+                        "type": "string",
+                        "description": "[Payment ID](#tag/Payments).\n",
+                        "example": "PYgaZlLaPMZO."
+                      },
+                      "amount": {
+                        "type": "number",
+                        "description": "Amount to be refunded. If is null it will refund the whole payment.",
+                        "example": "12.5"
+                      },
+                      "currency": {
+                        "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                        "type": "string",
+                        "enum": [
+                          "ARS",
+                          "BRL",
+                          "CLP",
+                          "COP",
+                          "MXN",
+                          "USB",
+                          "USD"
+                        ],
+                        "example": "USD"
+                      },
+                      "reason": {
+                        "description": "Refund Reason",
+                        "type": "string",
+                        "example": "requested_by_customer"
+                      },
+                      "status": {
+                        "description": "Refund Status",
+                        "type": "string",
+                        "example": "approved"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-02-11T23:19:22-03:00",
+                        "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-02-11T23:19:22-03:00",
+                        "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                      },
+                      "metadata": {
+                        "example": {
+                          "some": "metadata"
+                        },
+                        "anyOf": [
+                          {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "title": "Refund",
+                      "description": "This object represents a refunds of your organization.",
+                      "properties": {
+                        "id": {
+                          "example": "RFljikas98",
+                          "description": "Unique identifier for the object.",
+                          "maxLength": 5000,
+                          "type": "string"
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "refund"
+                          ]
+                        },
+                        "customer_id": {
+                          "type": "string",
+                          "description": "[Payment ID](#tag/Payments).\n",
+                          "example": "PYgaZlLaPMZO."
+                        },
+                        "amount": {
+                          "type": "number",
+                          "description": "Amount to be refunded. If is null it will refund the whole payment.",
+                          "example": "12.5"
+                        },
+                        "currency": {
+                          "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                          "type": "string",
+                          "enum": [
+                            "ARS",
+                            "BRL",
+                            "CLP",
+                            "COP",
+                            "MXN",
+                            "USB",
+                            "USD"
+                          ],
+                          "example": "USD"
+                        },
+                        "reason": {
+                          "description": "Refund Reason",
+                          "type": "string",
+                          "example": "requested_by_customer"
+                        },
+                        "status": {
+                          "description": "Refund Status",
+                          "type": "string",
+                          "example": "approved"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "metadata": {
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "anyOf": [
+                            {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "example": {
+                  "errors": {
+                    "email": [
+                      "El email es inválido."
+                    ]
+                  },
+                  "message": "The given data was invalid."
                 }
               }
             }
@@ -8641,7 +10218,7 @@
                               },
                               "card": {
                                 "title": "Credit Card",
-                                "description": "This object represents a credit card on your account.",
+                                "description": "This object represents a credit card of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -8693,7 +10270,7 @@
                                     "example": 2030
                                   },
                                   "fingerprint": {
-                                    "description": "Unique fingerprint for this credit card number on your account.",
+                                    "description": "Unique fingerprint for this credit card number of your account.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
@@ -8706,7 +10283,7 @@
                               },
                               "cbu": {
                                 "title": "CBU",
-                                "description": "This object represents a CBU bak account on your account.",
+                                "description": "This object represents a CBU bak account of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -8721,7 +10298,7 @@
                                     ]
                                   },
                                   "fingerprint": {
-                                    "description": "Unique fingerprint for this bank account number on your account.",
+                                    "description": "Unique fingerprint for this bank account number of your account.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
@@ -8797,22 +10374,22 @@
                         "first": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "last": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "next": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "prev": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     },
@@ -8847,7 +10424,7 @@
                         },
                         "path": {
                           "type": "string",
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     }
@@ -9236,7 +10813,7 @@
                             },
                             "card": {
                               "title": "Credit Card",
-                              "description": "This object represents a credit card on your account.",
+                              "description": "This object represents a credit card of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -9288,7 +10865,7 @@
                                   "example": 2030
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this credit card number on your account.",
+                                  "description": "Unique fingerprint for this credit card number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -9301,7 +10878,7 @@
                             },
                             "cbu": {
                               "title": "CBU",
-                              "description": "This object represents a CBU bak account on your account.",
+                              "description": "This object represents a CBU bak account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -9316,7 +10893,7 @@
                                   ]
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -9680,7 +11257,7 @@
                             },
                             "card": {
                               "title": "Credit Card",
-                              "description": "This object represents a credit card on your account.",
+                              "description": "This object represents a credit card of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -9732,7 +11309,7 @@
                                   "example": 2030
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this credit card number on your account.",
+                                  "description": "Unique fingerprint for this credit card number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -9745,7 +11322,7 @@
                             },
                             "cbu": {
                               "title": "CBU",
-                              "description": "This object represents a CBU bak account on your account.",
+                              "description": "This object represents a CBU bak account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -9760,7 +11337,7 @@
                                   ]
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -10224,7 +11801,7 @@
                             },
                             "card": {
                               "title": "Credit Card",
-                              "description": "This object represents a credit card on your account.",
+                              "description": "This object represents a credit card of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -10276,7 +11853,7 @@
                                   "example": 2030
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this credit card number on your account.",
+                                  "description": "Unique fingerprint for this credit card number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -10289,7 +11866,7 @@
                             },
                             "cbu": {
                               "title": "CBU",
-                              "description": "This object represents a CBU bak account on your account.",
+                              "description": "This object represents a CBU bak account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -10304,7 +11881,7 @@
                                   ]
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -10668,7 +12245,7 @@
                             },
                             "card": {
                               "title": "Credit Card",
-                              "description": "This object represents a credit card on your account.",
+                              "description": "This object represents a credit card of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -10720,7 +12297,7 @@
                                   "example": 2030
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this credit card number on your account.",
+                                  "description": "Unique fingerprint for this credit card number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -10733,7 +12310,7 @@
                             },
                             "cbu": {
                               "title": "CBU",
-                              "description": "This object represents a CBU bak account on your account.",
+                              "description": "This object represents a CBU bak account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -10748,7 +12325,7 @@
                                   ]
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -11107,7 +12684,7 @@
                             },
                             "card": {
                               "title": "Credit Card",
-                              "description": "This object represents a credit card on your account.",
+                              "description": "This object represents a credit card of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -11159,7 +12736,7 @@
                                   "example": 2030
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this credit card number on your account.",
+                                  "description": "Unique fingerprint for this credit card number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -11172,7 +12749,7 @@
                             },
                             "cbu": {
                               "title": "CBU",
-                              "description": "This object represents a CBU bak account on your account.",
+                              "description": "This object represents a CBU bak account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -11187,7 +12764,7 @@
                                   ]
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -11551,7 +13128,7 @@
                             },
                             "card": {
                               "title": "Credit Card",
-                              "description": "This object represents a credit card on your account.",
+                              "description": "This object represents a credit card of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -11603,7 +13180,7 @@
                                   "example": 2030
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this credit card number on your account.",
+                                  "description": "Unique fingerprint for this credit card number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -11616,7 +13193,7 @@
                             },
                             "cbu": {
                               "title": "CBU",
-                              "description": "This object represents a CBU bak account on your account.",
+                              "description": "This object represents a CBU bak account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -11631,7 +13208,7 @@
                                   ]
                                 },
                                 "fingerprint": {
-                                  "description": "Unique fingerprint for this bank account number on your account.",
+                                  "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
@@ -11843,22 +13420,22 @@
                         "first": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "last": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "next": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         },
                         "prev": {
                           "type": "string",
                           "nullable": true,
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     },
@@ -11893,7 +13470,7 @@
                         },
                         "path": {
                           "type": "string",
-                          "example": "https://api.tucuota.test/v1/customers"
+                          "example": "https://api.tucuota.com/v1/customers"
                         }
                       }
                     }

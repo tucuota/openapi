@@ -215,11 +215,19 @@
       "estimated_accreditation_date": "2022-08-19",
       "updated_at": "2022-08-03T12:24:33-03:00",
       "updated_status": "2022-08-05",
-      "customer": "ref \"#/components/examples/customer\"",
+      "customer": [
+        {
+          "$ref": "./customer"
+        }
+      ],
       "subscription": null,
       "subscription_payment_number": null,
       "gateway": "GW1L49J7ARW3",
-      "payment_method": "ref \"#/components/examples/payment_method\"",
+      "payment_method": [
+        {
+          "$ref": "./payment_method"
+        }
+      ],
       "gateway_identifier": null,
       "metadata": null,
       "refunds": []
@@ -333,6 +341,18 @@
       "secret": "DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0",
       "updated_at": "2022-02-11T23:19:22-03:00",
       "url": "https://site.com/webhook"
+    },
+    "refund": {
+      "id": "RFOBXM90YZp4AD",
+      "object": "refund",
+      "payment_id": "PYpzMDDy4mJ3",
+      "amount": 100,
+      "currency": "ARS",
+      "reason": "error",
+      "status": "approved",
+      "created_at": "2022-02-05T12:24:33-03:00",
+      "updated_at": "2022-02-05T12:24:33-03:00",
+      "metadata": null
     }
   }
 }

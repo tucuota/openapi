@@ -443,19 +443,19 @@ paths:
                     properties:
                       first:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       last:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       next:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       prev:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                     title: Response Meta
                   meta:
@@ -482,7 +482,7 @@ paths:
                         example: 2
                       path:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                     title: Response Meta
                 required:
                   - data
@@ -1822,7 +1822,7 @@ paths:
                     type: array
                     items:
                       title: Event
-                      description: This object represents an event on your account.
+                      description: This object represents an event of your account.
                       type: object
                       properties:
                         id:
@@ -1908,19 +1908,19 @@ paths:
                     properties:
                       first:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       last:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       next:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       prev:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                     title: Response Meta
                   meta:
@@ -1947,7 +1947,7 @@ paths:
                         example: 2
                       path:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                     title: Response Meta
         '401':
           description: Unauthorized
@@ -2940,19 +2940,19 @@ paths:
                     properties:
                       first:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       last:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       next:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       prev:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                     title: Response Meta
                   meta:
@@ -2979,7 +2979,7 @@ paths:
                         example: 2
                       path:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                     title: Response Meta
                 required:
                   - data
@@ -3785,7 +3785,7 @@ paths:
                                 - card
                                 - cbu
                             card:
-                              description: This object represents a credit card on your account.
+                              description: This object represents a credit card of your account.
                               type: object
                               properties:
                                 bank:
@@ -3831,7 +3831,7 @@ paths:
                                   type: number
                                   example: 2030
                                 fingerprint:
-                                  description: Unique fingerprint for this credit card number on your account.
+                                  description: Unique fingerprint for this credit card number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 last_four_digits:
@@ -3840,7 +3840,7 @@ paths:
                                   example: '9876'
                               title: Credit Card
                             cbu:
-                              description: This object represents a CBU bak account on your account.
+                              description: This object represents a CBU bak account of your account.
                               type: object
                               properties:
                                 bank:
@@ -3852,7 +3852,7 @@ paths:
                                   enum:
                                     - AR
                                 fingerprint:
-                                  description: Unique fingerprint for this bank account number on your account.
+                                  description: Unique fingerprint for this bank account number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 last_four_digits:
@@ -3919,19 +3919,19 @@ paths:
                     properties:
                       first:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       last:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       next:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       prev:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                     title: Response Meta
                   meta:
@@ -3958,7 +3958,7 @@ paths:
                         example: 2
                       path:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                     title: Response Meta
                 required:
                   - data
@@ -4093,7 +4093,7 @@ paths:
                   type: string
               example:
                 customer_id: CS3oDRqz9wzB
-                payment_method_number: 4024007127322104
+                payment_method_number: '4024007127322104'
         required: false
       responses:
         '201':
@@ -4170,7 +4170,7 @@ paths:
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
               },
-              body: {customer_id: 'CS3oDRqz9wzB', payment_method_number: 4024007127322104},
+              body: {customer_id: 'CS3oDRqz9wzB', payment_method_number: '4024007127322104'},
               json: true
             };
 
@@ -4430,7 +4430,7 @@ paths:
                               - card
                               - cbu
                           card:
-                            description: This object represents a credit card on your account.
+                            description: This object represents a credit card of your account.
                             type: object
                             properties:
                               bank:
@@ -4476,7 +4476,7 @@ paths:
                                 type: number
                                 example: 2030
                               fingerprint:
-                                description: Unique fingerprint for this credit card number on your account.
+                                description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -4485,7 +4485,7 @@ paths:
                                 example: '9876'
                             title: Credit Card
                           cbu:
-                            description: This object represents a CBU bak account on your account.
+                            description: This object represents a CBU bak account of your account.
                             type: object
                             properties:
                               bank:
@@ -4497,7 +4497,7 @@ paths:
                                 enum:
                                   - AR
                               fingerprint:
-                                description: Unique fingerprint for this bank account number on your account.
+                                description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -4951,7 +4951,7 @@ paths:
                             - card
                             - cbu
                         card:
-                          description: This object represents a credit card on your account.
+                          description: This object represents a credit card of your account.
                           type: object
                           properties:
                             bank:
@@ -4997,7 +4997,7 @@ paths:
                               type: number
                               example: 2030
                             fingerprint:
-                              description: Unique fingerprint for this credit card number on your account.
+                              description: Unique fingerprint for this credit card number of your account.
                               type: string
                               example: 8712yh2uihiu1123sxas
                             last_four_digits:
@@ -5006,7 +5006,7 @@ paths:
                               example: '9876'
                           title: Credit Card
                         cbu:
-                          description: This object represents a CBU bak account on your account.
+                          description: This object represents a CBU bak account of your account.
                           type: object
                           properties:
                             bank:
@@ -5018,7 +5018,7 @@ paths:
                               enum:
                                 - AR
                             fingerprint:
-                              description: Unique fingerprint for this bank account number on your account.
+                              description: Unique fingerprint for this bank account number of your account.
                               type: string
                               example: 8712yh2uihiu1123sxas
                             last_four_digits:
@@ -5054,19 +5054,19 @@ paths:
                     properties:
                       first:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       last:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       next:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       prev:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                     title: Response Meta
                   meta:
@@ -5093,7 +5093,7 @@ paths:
                         example: 2
                       path:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                     title: Response Meta
                 required:
                   - data
@@ -5261,7 +5261,7 @@ paths:
               example:
                 type: card
                 card:
-                  number: 4242424242424242
+                  number: '4242424242424242'
                   expiration_year: 5
                   expiration_month: 2027
         required: false
@@ -5283,7 +5283,7 @@ paths:
                           - card
                           - cbu
                       card:
-                        description: This object represents a credit card on your account.
+                        description: This object represents a credit card of your account.
                         type: object
                         properties:
                           bank:
@@ -5329,7 +5329,7 @@ paths:
                             type: number
                             example: 2030
                           fingerprint:
-                            description: Unique fingerprint for this credit card number on your account.
+                            description: Unique fingerprint for this credit card number of your account.
                             type: string
                             example: 8712yh2uihiu1123sxas
                           last_four_digits:
@@ -5338,7 +5338,7 @@ paths:
                             example: '9876'
                         title: Credit Card
                       cbu:
-                        description: This object represents a CBU bak account on your account.
+                        description: This object represents a CBU bak account of your account.
                         type: object
                         properties:
                           bank:
@@ -5350,7 +5350,7 @@ paths:
                             enum:
                               - AR
                           fingerprint:
-                            description: Unique fingerprint for this bank account number on your account.
+                            description: Unique fingerprint for this bank account number of your account.
                             type: string
                             example: 8712yh2uihiu1123sxas
                           last_four_digits:
@@ -5424,7 +5424,7 @@ paths:
               },
               body: {
                 type: 'card',
-                card: {number: 4242424242424242, expiration_year: 5, expiration_month: 2027}
+                card: {number: '4242424242424242', expiration_year: 5, expiration_month: 2027}
               },
               json: true
             };
@@ -5545,7 +5545,7 @@ paths:
                           - card
                           - cbu
                       card:
-                        description: This object represents a credit card on your account.
+                        description: This object represents a credit card of your account.
                         type: object
                         properties:
                           bank:
@@ -5591,7 +5591,7 @@ paths:
                             type: number
                             example: 2030
                           fingerprint:
-                            description: Unique fingerprint for this credit card number on your account.
+                            description: Unique fingerprint for this credit card number of your account.
                             type: string
                             example: 8712yh2uihiu1123sxas
                           last_four_digits:
@@ -5600,7 +5600,7 @@ paths:
                             example: '9876'
                         title: Credit Card
                       cbu:
-                        description: This object represents a CBU bak account on your account.
+                        description: This object represents a CBU bak account of your account.
                         type: object
                         properties:
                           bank:
@@ -5612,7 +5612,7 @@ paths:
                             enum:
                               - AR
                           fingerprint:
-                            description: Unique fingerprint for this bank account number on your account.
+                            description: Unique fingerprint for this bank account number of your account.
                             type: string
                             example: 8712yh2uihiu1123sxas
                           last_four_digits:
@@ -5981,7 +5981,7 @@ paths:
                                 - card
                                 - cbu
                             card:
-                              description: This object represents a credit card on your account.
+                              description: This object represents a credit card of your account.
                               type: object
                               properties:
                                 bank:
@@ -6027,7 +6027,7 @@ paths:
                                   type: number
                                   example: 2030
                                 fingerprint:
-                                  description: Unique fingerprint for this credit card number on your account.
+                                  description: Unique fingerprint for this credit card number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 last_four_digits:
@@ -6036,7 +6036,7 @@ paths:
                                   example: '9876'
                               title: Credit Card
                             cbu:
-                              description: This object represents a CBU bak account on your account.
+                              description: This object represents a CBU bak account of your account.
                               type: object
                               properties:
                                 bank:
@@ -6048,7 +6048,7 @@ paths:
                                   enum:
                                     - AR
                                 fingerprint:
-                                  description: Unique fingerprint for this bank account number on your account.
+                                  description: Unique fingerprint for this bank account number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 last_four_digits:
@@ -6102,19 +6102,19 @@ paths:
                     properties:
                       first:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       last:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       next:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       prev:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                     title: Response Meta
                   meta:
@@ -6141,7 +6141,7 @@ paths:
                         example: 2
                       path:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                     title: Response Meta
                 required:
                   - data
@@ -6322,7 +6322,6 @@ paths:
                 description: Unique payment
                 gateway_identifier: '001234'
                 customer_id: CSr7Dg3LkDP2
-                payment_method_number: 4024007127322104
               required:
                 - amount
                 - description
@@ -6361,10 +6360,10 @@ paths:
               --url https://api.tucuota.com/v1/payments \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
-              --data '{"amount":100,"description":"Unique payment","gateway_identifier":"001234","customer_id":"CSr7Dg3LkDP2","payment_method_number":"4024007127322104"}'
+              --data '{"amount":100,"description":"Unique payment","gateway_identifier":"001234","customer_id":"CSr7Dg3LkDP2"}'
         - lang: Shell + Httpie
           source: |-
-            echo '{"amount":100,"description":"Unique payment","gateway_identifier":"001234","customer_id":"CSr7Dg3LkDP2","payment_method_number":"4024007127322104"}' |  \
+            echo '{"amount":100,"description":"Unique payment","gateway_identifier":"001234","customer_id":"CSr7Dg3LkDP2"}' |  \
               http POST https://api.tucuota.com/v1/payments \
               Authorization:'Bearer sk_live_...' \
               content-type:application/json
@@ -6383,8 +6382,7 @@ paths:
                 amount: 100,
                 description: 'Unique payment',
                 gateway_identifier: '001234',
-                customer_id: 'CSr7Dg3LkDP2',
-                payment_method_number: 4024007127322104
+                customer_id: 'CSr7Dg3LkDP2'
               },
               json: true
             };
@@ -6408,7 +6406,7 @@ paths:
               CURLOPT_TIMEOUT => 30,
               CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
               CURLOPT_CUSTOMREQUEST => "POST",
-              CURLOPT_POSTFIELDS => "{\"amount\":100,\"description\":\"Unique payment\",\"gateway_identifier\":\"001234\",\"customer_id\":\"CSr7Dg3LkDP2\",\"payment_method_number\":\"4024007127322104\"}",
+              CURLOPT_POSTFIELDS => "{\"amount\":100,\"description\":\"Unique payment\",\"gateway_identifier\":\"001234\",\"customer_id\":\"CSr7Dg3LkDP2\"}",
               CURLOPT_HTTPHEADER => [
                 "Authorization: Bearer sk_live_...",
                 "content-type: application/json"
@@ -6433,7 +6431,7 @@ paths:
             $request = new http\Client\Request;
 
             $body = new http\Message\Body;
-            $body->append('{"amount":100,"description":"Unique payment","gateway_identifier":"001234","customer_id":"CSr7Dg3LkDP2","payment_method_number":"4024007127322104"}');
+            $body->append('{"amount":100,"description":"Unique payment","gateway_identifier":"001234","customer_id":"CSr7Dg3LkDP2"}');
 
             $request->setRequestUrl('https://api.tucuota.com/v1/payments');
             $request->setRequestMethod('POST');
@@ -6454,7 +6452,7 @@ paths:
 
             conn = http.client.HTTPSConnection("api.tucuota.com")
 
-            payload = "{\"amount\":100,\"description\":\"Unique payment\",\"gateway_identifier\":\"001234\",\"customer_id\":\"CSr7Dg3LkDP2\",\"payment_method_number\":\"4024007127322104\"}"
+            payload = "{\"amount\":100,\"description\":\"Unique payment\",\"gateway_identifier\":\"001234\",\"customer_id\":\"CSr7Dg3LkDP2\"}"
 
             headers = {
                 'content-type': "application/json",
@@ -6472,7 +6470,7 @@ paths:
             HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/payments")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
-              .body("{\"amount\":100,\"description\":\"Unique payment\",\"gateway_identifier\":\"001234\",\"customer_id\":\"CSr7Dg3LkDP2\",\"payment_method_number\":\"4024007127322104\"}")
+              .body("{\"amount\":100,\"description\":\"Unique payment\",\"gateway_identifier\":\"001234\",\"customer_id\":\"CSr7Dg3LkDP2\"}")
               .asString();
       x-codegen-request-body-name: body
   '/v1/payments/{id}':
@@ -7049,6 +7047,561 @@ paths:
             HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/retry")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
+  /v1/refunds:
+    get:
+      operationId: RefundsGetRefunds
+      summary: List all refunds
+      description: By default newest refunds will be first on the list.
+      parameters:
+        - name: page
+          in: query
+          description: Cursor value to paginate response.
+          required: false
+          schema:
+            type: number
+          example: 1
+        - name: limit
+          in: query
+          description: Number of records to return.
+          required: false
+          schema:
+            type: number
+          example: 20
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      title: Refund
+                      description: This object represents a refunds of your organization.
+                      type: object
+                      properties:
+                        id:
+                          description: Unique identifier for the object.
+                          type: string
+                          example: RFljikas98
+                          maxLength: 5000
+                        object:
+                          type: string
+                          enum:
+                            - refund
+                        customer_id:
+                          description: |
+                            [Payment ID](#tag/Payments).
+                          type: string
+                          example: PYgaZlLaPMZO.
+                        amount:
+                          description: Amount to be refunded. If is null it will refund the whole payment.
+                          type: number
+                          example: '12.5'
+                        currency:
+                          description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
+                          type: string
+                          example: USD
+                          enum:
+                            - ARS
+                            - BRL
+                            - CLP
+                            - COP
+                            - MXN
+                            - USB
+                            - USD
+                        reason:
+                          description: Refund Reason
+                          type: string
+                          example: requested_by_customer
+                        status:
+                          description: Refund Status
+                          type: string
+                          example: approved
+                        created_at:
+                          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                          type: string
+                          format: date-time
+                          example: '2022-02-11T23:19:22-03:00'
+                        updated_at:
+                          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                          type: string
+                          format: date-time
+                          example: '2022-02-11T23:19:22-03:00'
+                        metadata:
+                          description: |
+                            Set of [key-value pairs](#section/Metadata) that you can attach
+                            to an object. This can be useful for storing additional
+                            information about the object in a structured format.
+                            All keys can be unset by posting `null` value to `metadata`.
+                          example:
+                            some: metadata
+                          anyOf:
+                            - additionalProperties:
+                                type: string
+                              type: object
+                            - type: 'null'
+                  links:
+                    description: Pagination metadata
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'https://api.tucuota.com/v1/customers'
+                        nullable: true
+                      last:
+                        type: string
+                        example: 'https://api.tucuota.com/v1/customers'
+                        nullable: true
+                      next:
+                        type: string
+                        example: 'https://api.tucuota.com/v1/customers'
+                        nullable: true
+                      prev:
+                        type: string
+                        example: 'https://api.tucuota.com/v1/customers'
+                        nullable: true
+                    title: Response Meta
+                  meta:
+                    description: Pagination metadata
+                    type: object
+                    properties:
+                      current_page:
+                        type: number
+                        example: 1
+                      from:
+                        type: number
+                        example: 1
+                      last_page:
+                        type: number
+                        example: 28
+                      per_page:
+                        type: number
+                        example: 1
+                      to:
+                        type: number
+                        example: 1
+                      total:
+                        type: number
+                        example: 2
+                      path:
+                        type: string
+                        example: 'https://api.tucuota.com/v1/customers'
+                    title: Response Meta
+                required:
+                  - data
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: Unauthorized response
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Unauthorized
+                    title: Unauthorized
+      tags:
+        - Refunds
+      x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request GET \
+              --url 'https://api.tucuota.com/v1/refunds?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE' \
+              --header 'Authorization: Bearer sk_live_...'
+        - lang: Shell + Httpie
+          source: |-
+            http GET 'https://api.tucuota.com/v1/refunds?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE' \
+              Authorization:'Bearer sk_live_...'
+        - lang: Node + Request
+          source: |
+            const request = require('request');
+
+            const options = {
+              method: 'GET',
+              url: 'https://api.tucuota.com/v1/refunds',
+              qs: {page: 'SOME_NUMBER_VALUE', limit: 'SOME_NUMBER_VALUE'},
+              headers: {Authorization: 'Bearer sk_live_...'}
+            };
+
+            request(options, function (error, response, body) {
+              if (error) throw new Error(error);
+
+              console.log(body);
+            });
+        - lang: Php + Curl
+          source: |-
+            <?php
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, [
+              CURLOPT_URL => "https://api.tucuota.com/v1/refunds?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE",
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "GET",
+              CURLOPT_HTTPHEADER => [
+                "Authorization: Bearer sk_live_..."
+              ],
+            ]);
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+
+            curl_close($curl);
+
+            if ($err) {
+              echo "cURL Error #:" . $err;
+            } else {
+              echo $response;
+            }
+        - lang: Php + Http2
+          source: |-
+            <?php
+
+            $client = new http\Client;
+            $request = new http\Client\Request;
+
+            $request->setRequestUrl('https://api.tucuota.com/v1/refunds');
+            $request->setRequestMethod('GET');
+            $request->setQuery(new http\QueryString([
+              'page' => 'SOME_NUMBER_VALUE',
+              'limit' => 'SOME_NUMBER_VALUE'
+            ]));
+
+            $request->setHeaders([
+              'Authorization' => 'Bearer sk_live_...'
+            ]);
+
+            $client->enqueue($request)->send();
+            $response = $client->getResponse();
+
+            echo $response->getBody();
+        - lang: Python + Python3
+          source: |-
+            import http.client
+
+            conn = http.client.HTTPSConnection("api.tucuota.com")
+
+            headers = { 'Authorization': "Bearer sk_live_..." }
+
+            conn.request("GET", "/v1/refunds?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE", headers=headers)
+
+            res = conn.getresponse()
+            data = res.read()
+
+            print(data.decode("utf-8"))
+        - lang: Java + Unirest
+          source: |-
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/refunds?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+              .header("Authorization", "Bearer sk_live_...")
+              .asString();
+    post:
+      operationId: RefundsCreateRefund
+      summary: Create a refund
+      description: Create a refund.
+      requestBody:
+        content:
+          application/json:
+            encoding:
+              metadata:
+                explode: true
+                style: deepObject
+            example:
+              amount: 10
+              reason: duplicate
+              payment_id: PY9J8YYdylz6
+              metadata:
+                some: value
+            schema:
+              properties:
+                data:
+                  description: This object represents a refunds of your organization.
+                  type: object
+                  properties:
+                    id:
+                      description: Unique identifier for the object.
+                      type: string
+                      example: RFljikas98
+                      maxLength: 5000
+                    object:
+                      type: string
+                      enum:
+                        - refund
+                    customer_id:
+                      description: |
+                        [Payment ID](#tag/Payments).
+                      type: string
+                      example: PYgaZlLaPMZO.
+                    amount:
+                      description: Amount to be refunded. If is null it will refund the whole payment.
+                      type: number
+                      example: '12.5'
+                    currency:
+                      description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
+                      type: string
+                      example: USD
+                      enum:
+                        - ARS
+                        - BRL
+                        - CLP
+                        - COP
+                        - MXN
+                        - USB
+                        - USD
+                    reason:
+                      description: Refund Reason
+                      type: string
+                      example: requested_by_customer
+                    status:
+                      description: Refund Status
+                      type: string
+                      example: approved
+                    created_at:
+                      description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                      type: string
+                      format: date-time
+                      example: '2022-02-11T23:19:22-03:00'
+                    updated_at:
+                      description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                      type: string
+                      format: date-time
+                      example: '2022-02-11T23:19:22-03:00'
+                    metadata:
+                      description: |
+                        Set of [key-value pairs](#section/Metadata) that you can attach
+                        to an object. This can be useful for storing additional
+                        information about the object in a structured format.
+                        All keys can be unset by posting `null` value to `metadata`.
+                      example:
+                        some: metadata
+                      anyOf:
+                        - additionalProperties:
+                            type: string
+                          type: object
+                        - type: 'null'
+                  title: Refund
+        required: true
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: This object represents a refunds of your organization.
+                    type: object
+                    properties:
+                      id:
+                        description: Unique identifier for the object.
+                        type: string
+                        example: RFljikas98
+                        maxLength: 5000
+                      object:
+                        type: string
+                        enum:
+                          - refund
+                      customer_id:
+                        description: |
+                          [Payment ID](#tag/Payments).
+                        type: string
+                        example: PYgaZlLaPMZO.
+                      amount:
+                        description: Amount to be refunded. If is null it will refund the whole payment.
+                        type: number
+                        example: '12.5'
+                      currency:
+                        description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
+                        type: string
+                        example: USD
+                        enum:
+                          - ARS
+                          - BRL
+                          - CLP
+                          - COP
+                          - MXN
+                          - USB
+                          - USD
+                      reason:
+                        description: Refund Reason
+                        type: string
+                        example: requested_by_customer
+                      status:
+                        description: Refund Status
+                        type: string
+                        example: approved
+                      created_at:
+                        description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      updated_at:
+                        description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      metadata:
+                        description: |
+                          Set of [key-value pairs](#section/Metadata) that you can attach
+                          to an object. This can be useful for storing additional
+                          information about the object in a structured format.
+                          All keys can be unset by posting `null` value to `metadata`.
+                        example:
+                          some: metadata
+                        anyOf:
+                          - additionalProperties:
+                              type: string
+                            type: object
+                          - type: 'null'
+                    title: Refund
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              example:
+                errors:
+                  email:
+                    - El email es inválido.
+                message: The given data was invalid.
+      tags:
+        - Refunds
+      x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request POST \
+              --url https://api.tucuota.com/v1/refunds \
+              --header 'Authorization: Bearer sk_live_...' \
+              --header 'content-type: application/json' \
+              --data '{"data":{"id":"RFljikas98","object":"refund","customer_id":"PYgaZlLaPMZO.","amount":"12.5","currency":"USD","reason":"requested_by_customer","status":"approved","created_at":"2022-02-11T23:19:22-03:00","updated_at":"2022-02-11T23:19:22-03:00","metadata":{"some":"metadata"}}}'
+        - lang: Shell + Httpie
+          source: |-
+            echo '{"data":{"id":"RFljikas98","object":"refund","customer_id":"PYgaZlLaPMZO.","amount":"12.5","currency":"USD","reason":"requested_by_customer","status":"approved","created_at":"2022-02-11T23:19:22-03:00","updated_at":"2022-02-11T23:19:22-03:00","metadata":{"some":"metadata"}}}' |  \
+              http POST https://api.tucuota.com/v1/refunds \
+              Authorization:'Bearer sk_live_...' \
+              content-type:application/json
+        - lang: Node + Request
+          source: |
+            const request = require('request');
+
+            const options = {
+              method: 'POST',
+              url: 'https://api.tucuota.com/v1/refunds',
+              headers: {
+                'content-type': 'application/json',
+                Authorization: 'Bearer sk_live_...'
+              },
+              body: {
+                data: {
+                  id: 'RFljikas98',
+                  object: 'refund',
+                  customer_id: 'PYgaZlLaPMZO.',
+                  amount: '12.5',
+                  currency: 'USD',
+                  reason: 'requested_by_customer',
+                  status: 'approved',
+                  created_at: '2022-02-11T23:19:22-03:00',
+                  updated_at: '2022-02-11T23:19:22-03:00',
+                  metadata: {some: 'metadata'}
+                }
+              },
+              json: true
+            };
+
+            request(options, function (error, response, body) {
+              if (error) throw new Error(error);
+
+              console.log(body);
+            });
+        - lang: Php + Curl
+          source: |-
+            <?php
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, [
+              CURLOPT_URL => "https://api.tucuota.com/v1/refunds",
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "POST",
+              CURLOPT_POSTFIELDS => "{\"data\":{\"id\":\"RFljikas98\",\"object\":\"refund\",\"customer_id\":\"PYgaZlLaPMZO.\",\"amount\":\"12.5\",\"currency\":\"USD\",\"reason\":\"requested_by_customer\",\"status\":\"approved\",\"created_at\":\"2022-02-11T23:19:22-03:00\",\"updated_at\":\"2022-02-11T23:19:22-03:00\",\"metadata\":{\"some\":\"metadata\"}}}",
+              CURLOPT_HTTPHEADER => [
+                "Authorization: Bearer sk_live_...",
+                "content-type: application/json"
+              ],
+            ]);
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+
+            curl_close($curl);
+
+            if ($err) {
+              echo "cURL Error #:" . $err;
+            } else {
+              echo $response;
+            }
+        - lang: Php + Http2
+          source: |-
+            <?php
+
+            $client = new http\Client;
+            $request = new http\Client\Request;
+
+            $body = new http\Message\Body;
+            $body->append('{"data":{"id":"RFljikas98","object":"refund","customer_id":"PYgaZlLaPMZO.","amount":"12.5","currency":"USD","reason":"requested_by_customer","status":"approved","created_at":"2022-02-11T23:19:22-03:00","updated_at":"2022-02-11T23:19:22-03:00","metadata":{"some":"metadata"}}}');
+
+            $request->setRequestUrl('https://api.tucuota.com/v1/refunds');
+            $request->setRequestMethod('POST');
+            $request->setBody($body);
+
+            $request->setHeaders([
+              'content-type' => 'application/json',
+              'Authorization' => 'Bearer sk_live_...'
+            ]);
+
+            $client->enqueue($request)->send();
+            $response = $client->getResponse();
+
+            echo $response->getBody();
+        - lang: Python + Python3
+          source: |-
+            import http.client
+
+            conn = http.client.HTTPSConnection("api.tucuota.com")
+
+            payload = "{\"data\":{\"id\":\"RFljikas98\",\"object\":\"refund\",\"customer_id\":\"PYgaZlLaPMZO.\",\"amount\":\"12.5\",\"currency\":\"USD\",\"reason\":\"requested_by_customer\",\"status\":\"approved\",\"created_at\":\"2022-02-11T23:19:22-03:00\",\"updated_at\":\"2022-02-11T23:19:22-03:00\",\"metadata\":{\"some\":\"metadata\"}}}"
+
+            headers = {
+                'content-type': "application/json",
+                'Authorization': "Bearer sk_live_..."
+                }
+
+            conn.request("POST", "/v1/refunds", payload, headers)
+
+            res = conn.getresponse()
+            data = res.read()
+
+            print(data.decode("utf-8"))
+        - lang: Java + Unirest
+          source: |-
+            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/refunds")
+              .header("content-type", "application/json")
+              .header("Authorization", "Bearer sk_live_...")
+              .body("{\"data\":{\"id\":\"RFljikas98\",\"object\":\"refund\",\"customer_id\":\"PYgaZlLaPMZO.\",\"amount\":\"12.5\",\"currency\":\"USD\",\"reason\":\"requested_by_customer\",\"status\":\"approved\",\"created_at\":\"2022-02-11T23:19:22-03:00\",\"updated_at\":\"2022-02-11T23:19:22-03:00\",\"metadata\":{\"some\":\"metadata\"}}}")
+              .asString();
+      x-codegen-request-body-name: body
   /v1/sessions:
     post:
       operationId: SessionsCreateSession
@@ -7148,7 +7701,7 @@ paths:
               example:
                 kind: payment
                 success_url: 'http://example.com/success'
-                amount: 200.50
+                amount: '200.50'
                 description: Summer school
         required: false
       responses:
@@ -7165,7 +7718,7 @@ paths:
                       amount:
                         description: Amount to be collected
                         type: number
-                        example: 12.5
+                        example: '12.5'
                       brands:
                         type: array
                       completed_at:
@@ -7315,7 +7868,7 @@ paths:
               body: {
                 kind: 'payment',
                 success_url: 'http://example.com/success',
-                amount: 200.50,
+                amount: '200.50',
                 description: 'Summer school'
               },
               json: true
@@ -7434,7 +7987,7 @@ paths:
                       amount:
                         description: Amount to be collected
                         type: number
-                        example: 12.5
+                        example: '12.5'
                       brands:
                         type: array
                       completed_at:
@@ -7840,7 +8393,7 @@ paths:
                                 - card
                                 - cbu
                             card:
-                              description: This object represents a credit card on your account.
+                              description: This object represents a credit card of your account.
                               type: object
                               properties:
                                 bank:
@@ -7886,7 +8439,7 @@ paths:
                                   type: number
                                   example: 2030
                                 fingerprint:
-                                  description: Unique fingerprint for this credit card number on your account.
+                                  description: Unique fingerprint for this credit card number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 last_four_digits:
@@ -7895,7 +8448,7 @@ paths:
                                   example: '9876'
                               title: Credit Card
                             cbu:
-                              description: This object represents a CBU bak account on your account.
+                              description: This object represents a CBU bak account of your account.
                               type: object
                               properties:
                                 bank:
@@ -7907,7 +8460,7 @@ paths:
                                   enum:
                                     - AR
                                 fingerprint:
-                                  description: Unique fingerprint for this bank account number on your account.
+                                  description: Unique fingerprint for this bank account number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 last_four_digits:
@@ -7961,19 +8514,19 @@ paths:
                     properties:
                       first:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       last:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       next:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       prev:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                     title: Response Meta
                   meta:
@@ -8000,7 +8553,7 @@ paths:
                         example: 2
                       path:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                     title: Response Meta
                 required:
                   - data
@@ -8180,7 +8733,7 @@ paths:
                 amount: 100
                 description: Some subscription description
                 customer_id: CS9PL8eeo8aB
-                payment_method_number: 4024007127322104
+                payment_method_number: '4024007127322104'
                 interval_unit: monthly
                 day_of_month: 1
                 metadata:
@@ -8380,7 +8933,7 @@ paths:
                               - card
                               - cbu
                           card:
-                            description: This object represents a credit card on your account.
+                            description: This object represents a credit card of your account.
                             type: object
                             properties:
                               bank:
@@ -8426,7 +8979,7 @@ paths:
                                 type: number
                                 example: 2030
                               fingerprint:
-                                description: Unique fingerprint for this credit card number on your account.
+                                description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -8435,7 +8988,7 @@ paths:
                                 example: '9876'
                             title: Credit Card
                           cbu:
-                            description: This object represents a CBU bak account on your account.
+                            description: This object represents a CBU bak account of your account.
                             type: object
                             properties:
                               bank:
@@ -8447,7 +9000,7 @@ paths:
                                 enum:
                                   - AR
                               fingerprint:
-                                description: Unique fingerprint for this bank account number on your account.
+                                description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -8536,7 +9089,7 @@ paths:
                 amount: 100,
                 description: 'Some subscription description',
                 customer_id: 'CS9PL8eeo8aB',
-                payment_method_number: 4024007127322104,
+                payment_method_number: '4024007127322104',
                 interval_unit: 'monthly',
                 day_of_month: 1,
                 metadata: {some: 'metadata'}
@@ -8830,7 +9383,7 @@ paths:
                               - card
                               - cbu
                           card:
-                            description: This object represents a credit card on your account.
+                            description: This object represents a credit card of your account.
                             type: object
                             properties:
                               bank:
@@ -8876,7 +9429,7 @@ paths:
                                 type: number
                                 example: 2030
                               fingerprint:
-                                description: Unique fingerprint for this credit card number on your account.
+                                description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -8885,7 +9438,7 @@ paths:
                                 example: '9876'
                             title: Credit Card
                           cbu:
-                            description: This object represents a CBU bak account on your account.
+                            description: This object represents a CBU bak account of your account.
                             type: object
                             properties:
                               bank:
@@ -8897,7 +9450,7 @@ paths:
                                 enum:
                                   - AR
                               fingerprint:
-                                description: Unique fingerprint for this bank account number on your account.
+                                description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -9130,7 +9683,7 @@ paths:
                 amount: 100
                 description: Some subscription description
                 customer_id: CS9PL8eeo8aB
-                payment_method_number: 4024007127322104
+                payment_method_number: '4024007127322104'
                 interval_unit: monthly
                 day_of_month: 1
                 metadata:
@@ -9330,7 +9883,7 @@ paths:
                               - card
                               - cbu
                           card:
-                            description: This object represents a credit card on your account.
+                            description: This object represents a credit card of your account.
                             type: object
                             properties:
                               bank:
@@ -9376,7 +9929,7 @@ paths:
                                 type: number
                                 example: 2030
                               fingerprint:
-                                description: Unique fingerprint for this credit card number on your account.
+                                description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -9385,7 +9938,7 @@ paths:
                                 example: '9876'
                             title: Credit Card
                           cbu:
-                            description: This object represents a CBU bak account on your account.
+                            description: This object represents a CBU bak account of your account.
                             type: object
                             properties:
                               bank:
@@ -9397,7 +9950,7 @@ paths:
                                 enum:
                                   - AR
                               fingerprint:
-                                description: Unique fingerprint for this bank account number on your account.
+                                description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -9486,7 +10039,7 @@ paths:
                 amount: 100,
                 description: 'Some subscription description',
                 customer_id: 'CS9PL8eeo8aB',
-                payment_method_number: 4024007127322104,
+                payment_method_number: '4024007127322104',
                 interval_unit: 'monthly',
                 day_of_month: 1,
                 metadata: {some: 'metadata'}
@@ -9780,7 +10333,7 @@ paths:
                               - card
                               - cbu
                           card:
-                            description: This object represents a credit card on your account.
+                            description: This object represents a credit card of your account.
                             type: object
                             properties:
                               bank:
@@ -9826,7 +10379,7 @@ paths:
                                 type: number
                                 example: 2030
                               fingerprint:
-                                description: Unique fingerprint for this credit card number on your account.
+                                description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -9835,7 +10388,7 @@ paths:
                                 example: '9876'
                             title: Credit Card
                           cbu:
-                            description: This object represents a CBU bak account on your account.
+                            description: This object represents a CBU bak account of your account.
                             type: object
                             properties:
                               bank:
@@ -9847,7 +10400,7 @@ paths:
                                 enum:
                                   - AR
                               fingerprint:
-                                description: Unique fingerprint for this bank account number on your account.
+                                description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -10195,7 +10748,7 @@ paths:
                               - card
                               - cbu
                           card:
-                            description: This object represents a credit card on your account.
+                            description: This object represents a credit card of your account.
                             type: object
                             properties:
                               bank:
@@ -10241,7 +10794,7 @@ paths:
                                 type: number
                                 example: 2030
                               fingerprint:
-                                description: Unique fingerprint for this credit card number on your account.
+                                description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -10250,7 +10803,7 @@ paths:
                                 example: '9876'
                             title: Credit Card
                           cbu:
-                            description: This object represents a CBU bak account on your account.
+                            description: This object represents a CBU bak account of your account.
                             type: object
                             properties:
                               bank:
@@ -10262,7 +10815,7 @@ paths:
                                 enum:
                                   - AR
                               fingerprint:
-                                description: Unique fingerprint for this bank account number on your account.
+                                description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -10615,7 +11168,7 @@ paths:
                               - card
                               - cbu
                           card:
-                            description: This object represents a credit card on your account.
+                            description: This object represents a credit card of your account.
                             type: object
                             properties:
                               bank:
@@ -10661,7 +11214,7 @@ paths:
                                 type: number
                                 example: 2030
                               fingerprint:
-                                description: Unique fingerprint for this credit card number on your account.
+                                description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -10670,7 +11223,7 @@ paths:
                                 example: '9876'
                             title: Credit Card
                           cbu:
-                            description: This object represents a CBU bak account on your account.
+                            description: This object represents a CBU bak account of your account.
                             type: object
                             properties:
                               bank:
@@ -10682,7 +11235,7 @@ paths:
                                 enum:
                                   - AR
                               fingerprint:
-                                description: Unique fingerprint for this bank account number on your account.
+                                description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               last_four_digits:
@@ -10931,19 +11484,19 @@ paths:
                     properties:
                       first:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       last:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       next:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                       prev:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                         nullable: true
                     title: Response Meta
                   meta:
@@ -10970,7 +11523,7 @@ paths:
                         example: 2
                       path:
                         type: string
-                        example: 'https://api.tucuota.test/v1/customers'
+                        example: 'https://api.tucuota.com/v1/customers'
                     title: Response Meta
                 required:
                   - data
@@ -12095,19 +12648,19 @@ components:
       properties:
         first:
           type: string
-          example: 'https://api.tucuota.test/v1/customers'
+          example: 'https://api.tucuota.com/v1/customers'
           nullable: true
         last:
           type: string
-          example: 'https://api.tucuota.test/v1/customers'
+          example: 'https://api.tucuota.com/v1/customers'
           nullable: true
         next:
           type: string
-          example: 'https://api.tucuota.test/v1/customers'
+          example: 'https://api.tucuota.com/v1/customers'
           nullable: true
         prev:
           type: string
-          example: 'https://api.tucuota.test/v1/customers'
+          example: 'https://api.tucuota.com/v1/customers'
           nullable: true
       title: Response Meta
     meta:
@@ -12134,7 +12687,7 @@ components:
           example: 2
         path:
           type: string
-          example: 'https://api.tucuota.test/v1/customers'
+          example: 'https://api.tucuota.com/v1/customers'
       title: Response Meta
     delivered_at:
       description: 'Time at which the event was delivered. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
@@ -12144,7 +12697,7 @@ components:
         - type: 'null'
         - type: string
     event:
-      description: This object represents an event on your account.
+      description: This object represents an event of your account.
       type: object
       properties:
         id:
@@ -12357,7 +12910,7 @@ components:
             - type: string
       title: Link
     card:
-      description: This object represents a credit card on your account.
+      description: This object represents a credit card of your account.
       type: object
       properties:
         bank:
@@ -12403,7 +12956,7 @@ components:
           type: number
           example: 2030
         fingerprint:
-          description: Unique fingerprint for this credit card number on your account.
+          description: Unique fingerprint for this credit card number of your account.
           type: string
           example: 8712yh2uihiu1123sxas
         last_four_digits:
@@ -12412,7 +12965,7 @@ components:
           example: '9876'
       title: Credit Card
     cbu:
-      description: This object represents a CBU bak account on your account.
+      description: This object represents a CBU bak account of your account.
       type: object
       properties:
         bank:
@@ -12424,7 +12977,7 @@ components:
           enum:
             - AR
         fingerprint:
-          description: Unique fingerprint for this bank account number on your account.
+          description: Unique fingerprint for this bank account number of your account.
           type: string
           example: 8712yh2uihiu1123sxas
         last_four_digits:
@@ -12443,7 +12996,7 @@ components:
             - card
             - cbu
         card:
-          description: This object represents a credit card on your account.
+          description: This object represents a credit card of your account.
           type: object
           properties:
             bank:
@@ -12489,7 +13042,7 @@ components:
               type: number
               example: 2030
             fingerprint:
-              description: Unique fingerprint for this credit card number on your account.
+              description: Unique fingerprint for this credit card number of your account.
               type: string
               example: 8712yh2uihiu1123sxas
             last_four_digits:
@@ -12498,7 +13051,7 @@ components:
               example: '9876'
           title: Credit Card
         cbu:
-          description: This object represents a CBU bak account on your account.
+          description: This object represents a CBU bak account of your account.
           type: object
           properties:
             bank:
@@ -12510,7 +13063,7 @@ components:
               enum:
                 - AR
             fingerprint:
-              description: Unique fingerprint for this bank account number on your account.
+              description: Unique fingerprint for this bank account number of your account.
               type: string
               example: 8712yh2uihiu1123sxas
             last_four_digits:
@@ -12691,7 +13244,7 @@ components:
                 - card
                 - cbu
             card:
-              description: This object represents a credit card on your account.
+              description: This object represents a credit card of your account.
               type: object
               properties:
                 bank:
@@ -12737,7 +13290,7 @@ components:
                   type: number
                   example: 2030
                 fingerprint:
-                  description: Unique fingerprint for this credit card number on your account.
+                  description: Unique fingerprint for this credit card number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
                 last_four_digits:
@@ -12746,7 +13299,7 @@ components:
                   example: '9876'
               title: Credit Card
             cbu:
-              description: This object represents a CBU bak account on your account.
+              description: This object represents a CBU bak account of your account.
               type: object
               properties:
                 bank:
@@ -12758,7 +13311,7 @@ components:
                   enum:
                     - AR
                 fingerprint:
-                  description: Unique fingerprint for this bank account number on your account.
+                  description: Unique fingerprint for this bank account number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
                 last_four_digits:
@@ -13013,7 +13566,7 @@ components:
                 - card
                 - cbu
             card:
-              description: This object represents a credit card on your account.
+              description: This object represents a credit card of your account.
               type: object
               properties:
                 bank:
@@ -13059,7 +13612,7 @@ components:
                   type: number
                   example: 2030
                 fingerprint:
-                  description: Unique fingerprint for this credit card number on your account.
+                  description: Unique fingerprint for this credit card number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
                 last_four_digits:
@@ -13068,7 +13621,7 @@ components:
                   example: '9876'
               title: Credit Card
             cbu:
-              description: This object represents a CBU bak account on your account.
+              description: This object represents a CBU bak account of your account.
               type: object
               properties:
                 bank:
@@ -13080,7 +13633,7 @@ components:
                   enum:
                     - AR
                 fingerprint:
-                  description: Unique fingerprint for this bank account number on your account.
+                  description: Unique fingerprint for this bank account number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
                 last_four_digits:
@@ -13131,6 +13684,72 @@ components:
       title: Subscription
     payment:
       type: object
+    refund:
+      description: This object represents a refunds of your organization.
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the object.
+          type: string
+          example: RFljikas98
+          maxLength: 5000
+        object:
+          type: string
+          enum:
+            - refund
+        customer_id:
+          description: |
+            [Payment ID](#tag/Payments).
+          type: string
+          example: PYgaZlLaPMZO.
+        amount:
+          description: Amount to be refunded. If is null it will refund the whole payment.
+          type: number
+          example: '12.5'
+        currency:
+          description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
+          type: string
+          example: USD
+          enum:
+            - ARS
+            - BRL
+            - CLP
+            - COP
+            - MXN
+            - USB
+            - USD
+        reason:
+          description: Refund Reason
+          type: string
+          example: requested_by_customer
+        status:
+          description: Refund Status
+          type: string
+          example: approved
+        created_at:
+          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        updated_at:
+          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        metadata:
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
+          example:
+            some: metadata
+          anyOf:
+            - additionalProperties:
+                type: string
+              type: object
+            - type: 'null'
+      title: Refund
     completed_at:
       description: 'Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
       type: string
@@ -13147,7 +13766,7 @@ components:
         amount:
           description: Amount to be collected
           type: number
-          example: 12.5
+          example: '12.5'
         brands:
           type: array
         completed_at:
@@ -13331,6 +13950,788 @@ components:
         updated_at: '2022-02-11T23:19:22-03:00'
         url: 'https://site.com/webhook'
       title: Webhook
+    Customer:
+      description: This object represents a customer of your organization.
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the object.
+          type: string
+          example: CSljikas98
+          maxLength: 5000
+        name:
+          description: The customer's full name or business name.
+          type: string
+          example: Jorgelina Castro
+        email:
+          description: The customer's email address.
+          type: string
+          example: asd@asd.com
+        object:
+          type: string
+          enum:
+            - customer
+        livemode:
+          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+          type: boolean
+        metadata:
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
+          example:
+            some: metadata
+          anyOf:
+            - additionalProperties:
+                type: string
+              type: object
+            - type: 'null'
+        mobile_number:
+          description: Customer's phone number.
+          example: '5491164531234'
+          oneOf:
+            - type: 'null'
+            - type: string
+        gateway_identifier:
+          description: The customer's reference for bank account statements.
+          type: integer
+          format: int32
+          example: 383473
+        identification_number:
+          description: Customer's Document ID number.
+          example: 15.555.324
+          oneOf:
+            - type: 'null'
+            - type: string
+        identification_type:
+          description: Customer's Document type.
+          example: DNI
+          oneOf:
+            - type: 'null'
+            - type: string
+        created_at:
+          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        updated_at:
+          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        deleted_at:
+          description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          oneOf:
+            - type: 'null'
+            - type: string
+        active_subscriptions_count:
+          description: Active Subscriptions Count
+          type: integer
+          format: int32
+          example: 0
+        active_subscriptions_sum:
+          description: Active Subscriptions Sum
+          type: integer
+          format: int32
+          example: 0
+        approved_payments_count:
+          description: Approved Payments Count
+          type: integer
+          format: int32
+          example: 0
+        approved_payments_sum:
+          description: Approved Payments Sum
+          type: integer
+          format: int32
+          example: 0
+        cancelled_subscriptions_count:
+          description: Cancelled Subscriptions Count
+          type: integer
+          format: int32
+          example: 0
+        paused_subscriptions_count:
+          description: Paused Subscriptions Count
+          type: integer
+          format: int32
+          example: 0
+        rejected_payments_count:
+          description: Rejected Payments Count
+          type: integer
+          format: int32
+          example: 0
+        rejected_payments_sum:
+          description: Rejected Payments Sum
+          type: integer
+          format: int32
+          example: 0
+        finished_subscriptions_count:
+          description: Finished Subscriptions Count
+          type: integer
+          format: int32
+          example: 0
+      title: Customer
+    Event:
+      description: This object represents an event of your account.
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the object.
+          type: string
+          maxLength: 5000
+        object:
+          type: string
+          enum:
+            - event
+        created_at:
+          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        data:
+          type: object
+          properties:
+            object:
+              description: Event object.
+              type: object
+          required:
+            - object
+        delivered_at:
+          description: 'Time at which the event was delivered. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          oneOf:
+            - type: 'null'
+            - type: string
+        livemode:
+          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+          type: boolean
+        resource:
+          description: Resource attached to the event.
+          type: string
+          example: customer
+          enum:
+            - customer
+            - gateway
+            - import
+            - mandate
+            - payment
+            - payment_method
+            - subscription
+        resource_id:
+          description: ID for the resource attached to the event.
+          type: string
+          example: CS12312d1d1dl
+        type:
+          description: Event type.
+          type: string
+          example: customer.created
+          enum:
+            - customer.created
+            - customer.disabled
+            - customer.restored
+            - customer.updated
+            - gateway.created
+            - gateway.disabled
+            - gateway.enabled
+            - gateway.updated
+            - import.processed
+            - mandate.created
+            - mandate.restored
+            - mandate.revoked
+            - payment.cancelled
+            - payment.created
+            - payment.retrying
+            - payment.updated
+            - payment_method.automatically_updated
+            - payment_method.created
+            - payment_method.updated
+            - subscription.cancelled
+            - subscription.created
+            - subscription.finished
+            - subscription.paused
+            - subscription.resumed
+            - subscription.updated
+      title: Event
+    Import:
+      description: This object represents an import of your account.
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the object.
+          type: string
+          example: IM129038120h
+          maxLength: 5000
+        batch_job:
+          type: object
+        cancelled_at:
+          description: 'Time at which the import was marked as cancelled. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        invalid_at:
+          description: 'Time at which the import was marked as invalid. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        processed_at:
+          description: 'Time at which the import was marked as processed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        ready_at:
+          description: 'Time at which the import was marked as ready. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        invalid_rows_count:
+          description: Invalid Rows Count
+          type: number
+          example: 0
+        valid_rows_count:
+          description: Valid Rows Count
+          type: number
+          example: 0
+        rows_count:
+          description: Rows Count
+          type: number
+          example: 0
+        livemode:
+          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+          type: boolean
+        original_filename:
+          type: string
+          example: subscriptions-import-template.csv
+        type:
+          description: Import Type
+          type: string
+          example: subscriptions
+        status:
+          description: Import Status
+          type: string
+          example: processed
+        created_at:
+          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        updated_at:
+          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+      title: Import
+    Subscription:
+      description: This object represents a subscription of your organization.
+      type: object
+      properties:
+        created_at:
+          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        currency:
+          description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
+          type: string
+          example: USD
+          enum:
+            - ARS
+            - BRL
+            - CLP
+            - COP
+            - MXN
+            - USB
+            - USD
+        approved_payments_count:
+          type: number
+        approved_payments_sum:
+          type: number
+        customer:
+          description: This object represents a customer of your organization.
+          type: object
+          properties:
+            id:
+              description: Unique identifier for the object.
+              type: string
+              example: CSljikas98
+              maxLength: 5000
+            name:
+              description: The customer's full name or business name.
+              type: string
+              example: Jorgelina Castro
+            email:
+              description: The customer's email address.
+              type: string
+              example: asd@asd.com
+            object:
+              type: string
+              enum:
+                - customer
+            livemode:
+              description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+              type: boolean
+            metadata:
+              description: |
+                Set of [key-value pairs](#section/Metadata) that you can attach
+                to an object. This can be useful for storing additional
+                information about the object in a structured format.
+                All keys can be unset by posting `null` value to `metadata`.
+              example:
+                some: metadata
+              anyOf:
+                - additionalProperties:
+                    type: string
+                  type: object
+                - type: 'null'
+            mobile_number:
+              description: Customer's phone number.
+              example: '5491164531234'
+              oneOf:
+                - type: 'null'
+                - type: string
+            gateway_identifier:
+              description: The customer's reference for bank account statements.
+              type: integer
+              format: int32
+              example: 383473
+            identification_number:
+              description: Customer's Document ID number.
+              example: 15.555.324
+              oneOf:
+                - type: 'null'
+                - type: string
+            identification_type:
+              description: Customer's Document type.
+              example: DNI
+              oneOf:
+                - type: 'null'
+                - type: string
+            created_at:
+              description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+              type: string
+              format: date-time
+              example: '2022-02-11T23:19:22-03:00'
+            updated_at:
+              description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+              type: string
+              format: date-time
+              example: '2022-02-11T23:19:22-03:00'
+            deleted_at:
+              description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+              format: date-time
+              example: '2022-02-11T23:19:22-03:00'
+              oneOf:
+                - type: 'null'
+                - type: string
+            active_subscriptions_count:
+              description: Active Subscriptions Count
+              type: integer
+              format: int32
+              example: 0
+            active_subscriptions_sum:
+              description: Active Subscriptions Sum
+              type: integer
+              format: int32
+              example: 0
+            approved_payments_count:
+              description: Approved Payments Count
+              type: integer
+              format: int32
+              example: 0
+            approved_payments_sum:
+              description: Approved Payments Sum
+              type: integer
+              format: int32
+              example: 0
+            cancelled_subscriptions_count:
+              description: Cancelled Subscriptions Count
+              type: integer
+              format: int32
+              example: 0
+            paused_subscriptions_count:
+              description: Paused Subscriptions Count
+              type: integer
+              format: int32
+              example: 0
+            rejected_payments_count:
+              description: Rejected Payments Count
+              type: integer
+              format: int32
+              example: 0
+            rejected_payments_sum:
+              description: Rejected Payments Sum
+              type: integer
+              format: int32
+              example: 0
+            finished_subscriptions_count:
+              description: Finished Subscriptions Count
+              type: integer
+              format: int32
+              example: 0
+          title: Customer
+        first_date:
+          type: string
+        id:
+          type: string
+        livemode:
+          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+          type: boolean
+        metadata:
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
+          example:
+            some: metadata
+          anyOf:
+            - additionalProperties:
+                type: string
+              type: object
+            - type: 'null'
+        object:
+          type: string
+        payment_method:
+          description: This object represents a payment method of your account.
+          type: object
+          properties:
+            type:
+              description: 'Type of paymet method. One of: cbu, card.'
+              type: string
+              enum:
+                - card
+                - cbu
+            card:
+              description: This object represents a credit card of your account.
+              type: object
+              properties:
+                bank:
+                  description: Credit card's bank or financial institution.
+                  type: string
+                  example: Banco Santander Río
+                brand:
+                  description: Credit card's brand.
+                  type: string
+                  example: visa-credito
+                  enum:
+                    - amex
+                    - argencard
+                    - cabal
+                    - cabal-debito
+                    - cbu
+                    - cencosud
+                    - cmr-falabella
+                    - cordobesa
+                    - diners-club
+                    - discover
+                    - jcb
+                    - lider
+                    - maestro
+                    - mastercard
+                    - mastercard-debit
+                    - naranja
+                    - naranja-visa
+                    - nativa
+                    - visa-credito
+                    - visa-debito
+                    - favacard
+                country:
+                  description: 'Credit card''s [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).'
+                  type: string
+                  example: AR
+                expiration_month:
+                  description: Expiration month.
+                  type: number
+                  example: 11
+                expiration_year:
+                  description: Expiration year.
+                  type: number
+                  example: 2030
+                fingerprint:
+                  description: Unique fingerprint for this credit card number of your account.
+                  type: string
+                  example: 8712yh2uihiu1123sxas
+                last_four_digits:
+                  description: Credit's card last four digits.
+                  type: string
+                  example: '9876'
+              title: Credit Card
+            cbu:
+              description: This object represents a CBU bak account of your account.
+              type: object
+              properties:
+                bank:
+                  description: Bank.
+                  type: string
+                country:
+                  description: Bank account country.
+                  type: string
+                  enum:
+                    - AR
+                fingerprint:
+                  description: Unique fingerprint for this bank account number of your account.
+                  type: string
+                  example: 8712yh2uihiu1123sxas
+                last_four_digits:
+                  description: Bank account last four digits.
+                  type: string
+                  example: '9876'
+              title: CBU
+            created_at:
+              description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+              type: string
+              format: date-time
+              example: '2022-02-11T23:19:22-03:00'
+            id:
+              description: Unique identifier for the object.
+              type: string
+              example: PM1982h3129
+              maxLength: 5000
+            livemode:
+              description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+              type: boolean
+            object:
+              type: string
+              enum:
+                - payment_method
+            updated_at:
+              description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+              type: string
+              format: date-time
+              example: '2022-02-11T23:19:22-03:00'
+          title: Payment Method
+        rejected_payments_count:
+          type: number
+        rejected_payments_sum:
+          type: number
+        start_date:
+          type: string
+        status:
+          type: string
+        upcoming_dates:
+          type: array
+          items:
+            type: object
+        updated_at:
+          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+      title: Subscription
+    Webhook:
+      description: |-
+        You can configure [webhook endpoints](https://tucuota.com/docs/webhooks/) via the API to be
+        notified about events that happen in your TuCuota account or connected
+        accounts.
+
+        Most users configure webhooks from [the dashboard](https://dashboard.tucuota.com/webhooks), which provides a user interface for registering and testing your webhook endpoints.
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the object.
+          type: string
+          maxLength: 5000
+        object:
+          type: string
+          enum:
+            - webhook
+        url:
+          description: The URL of the webhook endpoint.
+          type: string
+          example: 'https://tucuota.com/webhook/200'
+          maxLength: 5000
+        enabled:
+          description: Whether the webhook is enabled.
+          type: boolean
+        enabled_events:
+          description: |
+            One of: `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.updated`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`
+          type: array
+          items:
+            type: string
+          example:
+            - customer.created
+            - customer.updated
+            - payment.created
+        secret:
+          description: 'The endpoint''s secret, used to generate [webhook signatures](https://tucuota.com/docs/webhooks/signatures).'
+          type: string
+          example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
+          maxLength: 5000
+        failed_lately_count:
+          type: integer
+          format: int32
+          example: 0
+        success_lately_count:
+          type: integer
+          format: int32
+          example: 0
+        livemode:
+          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+          type: boolean
+        created_at:
+          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        updated_at:
+          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+      example:
+        created_at: '2022-02-11T23:19:22-03:00'
+        enabled: true
+        enabled_events:
+          - '*'
+        id: WHq4VzyAzDgB
+        livemode: false
+        object: webhook
+        secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
+        updated_at: '2022-02-11T23:19:22-03:00'
+        url: 'https://site.com/webhook'
+      title: Webhook
+    Refund:
+      description: This object represents a refunds of your organization.
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the object.
+          type: string
+          example: RFljikas98
+          maxLength: 5000
+        object:
+          type: string
+          enum:
+            - refund
+        customer_id:
+          description: |
+            [Payment ID](#tag/Payments).
+          type: string
+          example: PYgaZlLaPMZO.
+        amount:
+          description: Amount to be refunded. If is null it will refund the whole payment.
+          type: number
+          example: '12.5'
+        currency:
+          description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
+          type: string
+          example: USD
+          enum:
+            - ARS
+            - BRL
+            - CLP
+            - COP
+            - MXN
+            - USB
+            - USD
+        reason:
+          description: Refund Reason
+          type: string
+          example: requested_by_customer
+        status:
+          description: Refund Status
+          type: string
+          example: approved
+        created_at:
+          description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        updated_at:
+          description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        metadata:
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
+          example:
+            some: metadata
+          anyOf:
+            - additionalProperties:
+                type: string
+              type: object
+            - type: 'null'
+      title: Refund
+    Validation-error:
+      description: asd
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            type: string
+      title: Validation Error
+    Api-response:
+      description: 'A better exclusion of the two groups of properties, using oneOf.'
+      type: object
+      oneOf:
+        - properties:
+            data:
+              description: The matching data
+              type: array
+            meta:
+              description: Any relevant metadata
+              type: object
+        - properties:
+            errors:
+              description: ''
+              type: array
+    Meta:
+      description: Pagination metadata
+      type: object
+      properties:
+        current_page:
+          type: number
+          example: 1
+        from:
+          type: number
+          example: 1
+        last_page:
+          type: number
+          example: 28
+        per_page:
+          type: number
+          example: 1
+        to:
+          type: number
+          example: 1
+        total:
+          type: number
+          example: 2
+        path:
+          type: string
+          example: 'https://api.tucuota.com/v1/customers'
+      title: Response Meta
+    Links:
+      description: Pagination metadata
+      type: object
+      properties:
+        first:
+          type: string
+          example: 'https://api.tucuota.com/v1/customers'
+          nullable: true
+        last:
+          type: string
+          example: 'https://api.tucuota.com/v1/customers'
+          nullable: true
+        next:
+          type: string
+          example: 'https://api.tucuota.com/v1/customers'
+          nullable: true
+        prev:
+          type: string
+          example: 'https://api.tucuota.com/v1/customers'
+          nullable: true
+      title: Response Meta
     validation-error:
       description: asd
       type: object
@@ -13567,14 +14968,29 @@ components:
         estimated_accreditation_date: '2022-08-19'
         updated_at: '2022-08-03T12:24:33-03:00'
         updated_status: '2022-08-05'
-        customer: ref "#/components/examples/customer"
+        customer:
+          - $ref: ./customer
         subscription: null
         subscription_payment_number: null
         gateway: GW1L49J7ARW3
-        payment_method: ref "#/components/examples/payment_method"
+        payment_method:
+          - $ref: ./payment_method
         gateway_identifier: null
         metadata: null
         refunds: []
+    refund:
+      summary: Sample Refund
+      value:
+        id: RFOBXM90YZp4AD
+        object: refund
+        payment_id: PYpzMDDy4mJ3
+        amount: 100
+        currency: ARS
+        reason: error
+        status: approved
+        created_at: '2022-02-05T12:24:33-03:00'
+        updated_at: '2022-02-05T12:24:33-03:00'
+        metadata: null
     payment_method:
       summary: Sample Payment Method
       value:
@@ -13696,60 +15112,41 @@ components:
 tags:
   - name: Customers
     description: |
-      A Customer is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      This object represents a customer of your organization. It lets you create subscriptions and track payments that belong to the same customer.
 
       <SchemaDefinition schemaRef="#/components/schemas/customer" exampleRef="#/components/examples/customer" showReadOnly={true} showWriteOnly={true} />
   - name: Events
     description: |
-      An Event is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Events are our way of letting you know when something interesting happens in your account. When an interesting event occurs, we create a new Event object. For example, when a payment updates, we create a payment.updated event. Note that many API requests may cause multiple events to be created. For example, if you create a new subscription for a customer, you will receive both a customer.subscription.created event and a payment.created event.
+
+      Events occur when the state of another API resource changes. The state of that resource at the time of the change is embedded in the event's data field. For example, a payment.updated event will contain a payment, and an customer.created event will contain a customer.
 
       <SchemaDefinition schemaRef="#/components/schemas/event" exampleRef="#/components/examples/event" showReadOnly={true} showWriteOnly={true} />
   - name: Imports
     description: |
-      An Import is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+      An Import is an object which contains data to be created in TuCuota. As these objects may be big, they will be created and processed later. You can check the status of the import.
 
       <SchemaDefinition schemaRef="#/components/schemas/import" exampleRef="#/components/examples/import" showReadOnly={true} showWriteOnly={true} />
   - name: Links
     description: |
-      A Link is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+      A link is a shareable URL that will take your customers to a hosted page. Links can create manddates, payments, or subscription easily. A link can be shared and used multiple times.
+
+      When a customer opens a payment link, the next step will create a new checkout session to render the page. You can use checkout session events to track the results.
 
       <SchemaDefinition schemaRef="#/components/schemas/link" exampleRef="#/components/examples/link" showReadOnly={true} showWriteOnly={true} />
   - name: Mandates
     description: |
-      A Mandate is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+      A Mandate is a record of the permission a customer has given you to debit their payment method.
 
       <SchemaDefinition schemaRef="#/components/schemas/mandate" exampleRef="#/components/examples/mandate" showReadOnly={true} showWriteOnly={true} />
   - name: Payment Methods
     description: |
-      A Payment Method is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+      PaymentMethod objects represent your customer's payment instruments. You can use them with to create Payments or Subscriptions to a Customer.
 
       <SchemaDefinition schemaRef="#/components/schemas/payment_method" exampleRef="#/components/examples/payment_method" showReadOnly={true} showWriteOnly={true} />
   - name: Payments
     description: |
-      A Payment is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      A Payment is an object you create to charge a credit, debit card, or bank account. You can retrieve information about the payment and also refund them partially or totally.
 
       | Status               | Meaning                                                                            |
       | -------------------- | ---------------------------------------------------------------------------------- |
@@ -13765,41 +15162,40 @@ tags:
       | `partially_refunded` | A partial amount of the payment has been returned to the customer                  |
 
       <SchemaDefinition schemaRef="#/components/schemas/payment" exampleRef="#/components/examples/payment" showReadOnly={true} showWriteOnly={true} />
+  - name: Refunds
+    description: |
+      Refund objects allow you to refund a payment that has previously been created but not yet totally refunded. Funds will be refunded to the credit, debit card, or bank account that was originally charged.
+
+      <SchemaDefinition schemaRef="#/components/schemas/refund" exampleRef="#/components/examples/subscription" showReadOnly={true} showWriteOnly={true} />
   - name: Sessions
     description: |
-      A Session is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Sessions enable you to use TuCuota's hosted payment pages to set up mandates, subscriptions or payments with your customers.
+
+      First you create a Session for your customer, and redirect them to the returned redirect url. Your customer supplies their name, email, address, and bank account or card details, and submits the form. This securely stores their details, and redirects them back to your `back_url` with `session_id=THE_SESSION_ID` in the querystring.
+
+      You complete the Session, which creates a customer, payment method, and either payment, mandate or subscription, and returns the ID of the mandate. With this data you may wish to create a subscription or payment at this point.
+
+      Once you have completed the Session via the API, you should display a confirmation page to your customer, confirming that data has been set up. You can build your own page, or redirect to the one we provide in the confirmation_url attribute of the Session.
+
+      Session expire after completed. You cannot complete an expired or already completed Session.
+
 
       <SchemaDefinition schemaRef="#/components/schemas/subscription" exampleRef="#/components/examples/subscription" showReadOnly={true} showWriteOnly={true} />
   - name: Subscriptions
     description: |
-      A Subscription is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Subscriptions allow you to charge a customer on a recurring basis according to a schedule.
 
       | Status      | Meaning                                                                                  |
       | ----------- | ---------------------------------------------------------------------------------------- |
-      | `active`    | The subscription is active and generating payments                                       |
+      | `active`    | The subscription is active and generating payments.                                      |
       | `paused`    | The subscription have been manually paused and won't generate payments until is resumed. |
       | `cancelled` | The subscription have been manually cancelled.                                           |
-      | `finished`  | The subscription is completed: all the payments were collected succ                      |
+      | `finished`  | The subscription is completed: all the payments were created succesfully.                |
 
       <SchemaDefinition schemaRef="#/components/schemas/subscription" exampleRef="#/components/examples/subscription" showReadOnly={true} showWriteOnly={true} />
   - name: Webhooks
     description: |
-      A Webhook is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Webhooks are endpoints you can configure to be notified about events that happen in your TuCuota account. Most users configure Webhooks from the dashboard, which provides a user interface for registering and testing your webhook endpoints.
 
       <SchemaDefinition schemaRef="#/components/schemas/webhook" exampleRef="#/components/examples/webhook" showReadOnly={true} showWriteOnly={true} />
 externalDocs:
