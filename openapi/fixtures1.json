@@ -225,7 +225,7 @@
       "gateway": "GW1L49J7ARW3",
       "payment_method": [
         {
-          "$ref": "./payment_method"
+          "$ref": "./payment_method.yaml"
         }
       ],
       "gateway_identifier": null,
@@ -320,7 +320,7 @@
         "$ref": "#/components/examples/customer"
       },
       "payment_method": {
-        "$ref": "#/components/examples/payment_method"
+        "$ref": "#/components/examples/payment_method.yaml"
       },
       "metadata": null,
       "payments_created": 14,

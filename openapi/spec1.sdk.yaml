@@ -7085,19 +7085,19 @@ paths:
                         id:
                           description: Unique identifier for the object.
                           type: string
-                          example: RFljikas98
+                          example: RFljikas9Fa8
                           maxLength: 5000
                         object:
                           type: string
                           enum:
                             - refund
-                        customer_id:
+                        payment_id:
                           description: |
                             [Payment ID](#tag/Payments).
                           type: string
                           example: PYgaZlLaPMZO.
                         amount:
-                          description: Amount to be refunded. If is null it will refund the whole payment.
+                          description: Refund amount.
                           type: number
                           example: '12.5'
                         currency:
@@ -7113,7 +7113,7 @@ paths:
                             - USB
                             - USD
                         reason:
-                          description: Refund Reason
+                          description: 'Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.'
                           type: string
                           example: requested_by_customer
                         status:
@@ -7311,88 +7311,47 @@ paths:
       requestBody:
         content:
           application/json:
-            encoding:
-              metadata:
-                explode: true
-                style: deepObject
-            example:
-              amount: 10
-              reason: duplicate
-              payment_id: PY9J8YYdylz6
-              metadata:
-                some: value
             schema:
+              type: object
               properties:
-                data:
-                  description: This object represents a refunds of your organization.
-                  type: object
-                  properties:
-                    id:
-                      description: Unique identifier for the object.
-                      type: string
-                      example: RFljikas98
-                      maxLength: 5000
-                    object:
-                      type: string
-                      enum:
-                        - refund
-                    customer_id:
-                      description: |
-                        [Payment ID](#tag/Payments).
-                      type: string
-                      example: PYgaZlLaPMZO.
-                    amount:
-                      description: Amount to be refunded. If is null it will refund the whole payment.
-                      type: number
-                      example: '12.5'
-                    currency:
-                      description: 'Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account''s default.'
-                      type: string
-                      example: USD
-                      enum:
-                        - ARS
-                        - BRL
-                        - CLP
-                        - COP
-                        - MXN
-                        - USB
-                        - USD
-                    reason:
-                      description: Refund Reason
-                      type: string
-                      example: requested_by_customer
-                    status:
-                      description: Refund Status
-                      type: string
-                      example: approved
-                    created_at:
-                      description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-                      type: string
-                      format: date-time
-                      example: '2022-02-11T23:19:22-03:00'
-                    updated_at:
-                      description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).'
-                      type: string
-                      format: date-time
-                      example: '2022-02-11T23:19:22-03:00'
-                    metadata:
-                      description: |
-                        Set of [key-value pairs](#section/Metadata) that you can attach
-                        to an object. This can be useful for storing additional
-                        information about the object in a structured format.
-                        All keys can be unset by posting `null` value to `metadata`.
-                      example:
-                        some: metadata
-                      anyOf:
-                        - additionalProperties:
-                            type: string
-                          type: object
-                        - type: 'null'
-                  title: Refund
-        required: true
+                payment_id:
+                  description: |
+                    [Payment ID](#tag/Payments).
+                  type: string
+                  example: PYgaZlLaPMZO.
+                amount:
+                  description: Amount to be refunded. If is null it will refund the whole payment.
+                  type: number
+                  example: '12.5'
+                reason:
+                  description: 'Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.'
+                  type: string
+                  example: requested_by_customer
+                metadata:
+                  description: |
+                    Set of [key-value pairs](#section/Metadata) that you can attach
+                    to an object. This can be useful for storing additional
+                    information about the object in a structured format.
+                    All keys can be unset by posting `null` value to `metadata`.
+                  example:
+                    some: metadata
+                  anyOf:
+                    - additionalProperties:
+                        type: string
+                      type: object
+                    - type: 'null'
+              example:
+                amount: 100
+                description: Unique payment
+                gateway_identifier: '001234'
+                customer_id: CSr7Dg3LkDP2
+              required:
+                - payment_id
+                - reason
+        required: false
       responses:
         '201':
-          description: OK
+          description: Refund created.
           content:
             application/json:
               schema:
@@ -7404,19 +7363,19 @@ paths:
                       id:
                         description: Unique identifier for the object.
                         type: string
-                        example: RFljikas98
+                        example: RFljikas9Fa8
                         maxLength: 5000
                       object:
                         type: string
                         enum:
                           - refund
-                      customer_id:
+                      payment_id:
                         description: |
                           [Payment ID](#tag/Payments).
                         type: string
                         example: PYgaZlLaPMZO.
                       amount:
-                        description: Amount to be refunded. If is null it will refund the whole payment.
+                        description: Refund amount.
                         type: number
                         example: '12.5'
                       currency:
@@ -7432,7 +7391,7 @@ paths:
                           - USB
                           - USD
                       reason:
-                        description: Refund Reason
+                        description: 'Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.'
                         type: string
                         example: requested_by_customer
                       status:
@@ -7463,14 +7422,28 @@ paths:
                             type: object
                           - type: 'null'
                     title: Refund
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: Unauthorized response
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Unauthorized
+                    title: Unauthorized
         '422':
           description: Unprocessable Entity
           content:
             application/json:
               example:
                 errors:
-                  email:
-                    - El email es inválido.
+                  payment_id:
+                    - payment_id is required.
                 message: The given data was invalid.
       tags:
         - Refunds
@@ -7481,10 +7454,10 @@ paths:
               --url https://api.tucuota.com/v1/refunds \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
-              --data '{"data":{"id":"RFljikas98","object":"refund","customer_id":"PYgaZlLaPMZO.","amount":"12.5","currency":"USD","reason":"requested_by_customer","status":"approved","created_at":"2022-02-11T23:19:22-03:00","updated_at":"2022-02-11T23:19:22-03:00","metadata":{"some":"metadata"}}}'
+              --data '{"amount":100,"description":"Unique payment","gateway_identifier":"001234","customer_id":"CSr7Dg3LkDP2"}'
         - lang: Shell + Httpie
           source: |-
-            echo '{"data":{"id":"RFljikas98","object":"refund","customer_id":"PYgaZlLaPMZO.","amount":"12.5","currency":"USD","reason":"requested_by_customer","status":"approved","created_at":"2022-02-11T23:19:22-03:00","updated_at":"2022-02-11T23:19:22-03:00","metadata":{"some":"metadata"}}}' |  \
+            echo '{"amount":100,"description":"Unique payment","gateway_identifier":"001234","customer_id":"CSr7Dg3LkDP2"}' |  \
               http POST https://api.tucuota.com/v1/refunds \
               Authorization:'Bearer sk_live_...' \
               content-type:application/json
@@ -7500,18 +7473,10 @@ paths:
                 Authorization: 'Bearer sk_live_...'
               },
               body: {
-                data: {
-                  id: 'RFljikas98',
-                  object: 'refund',
-                  customer_id: 'PYgaZlLaPMZO.',
-                  amount: '12.5',
-                  currency: 'USD',
-                  reason: 'requested_by_customer',
-                  status: 'approved',
-                  created_at: '2022-02-11T23:19:22-03:00',
-                  updated_at: '2022-02-11T23:19:22-03:00',
-                  metadata: {some: 'metadata'}
-                }
+                amount: 100,
+                description: 'Unique payment',
+                gateway_identifier: '001234',
+                customer_id: 'CSr7Dg3LkDP2'
               },
               json: true
             };
@@ -7535,7 +7500,7 @@ paths:
               CURLOPT_TIMEOUT => 30,
               CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
               CURLOPT_CUSTOMREQUEST => "POST",
-              CURLOPT_POSTFIELDS => "{\"data\":{\"id\":\"RFljikas98\",\"object\":\"refund\",\"customer_id\":\"PYgaZlLaPMZO.\",\"amount\":\"12.5\",\"currency\":\"USD\",\"reason\":\"requested_by_customer\",\"status\":\"approved\",\"created_at\":\"2022-02-11T23:19:22-03:00\",\"updated_at\":\"2022-02-11T23:19:22-03:00\",\"metadata\":{\"some\":\"metadata\"}}}",
+              CURLOPT_POSTFIELDS => "{\"amount\":100,\"description\":\"Unique payment\",\"gateway_identifier\":\"001234\",\"customer_id\":\"CSr7Dg3LkDP2\"}",
               CURLOPT_HTTPHEADER => [
                 "Authorization: Bearer sk_live_...",
                 "content-type: application/json"
@@ -7560,7 +7525,7 @@ paths:
             $request = new http\Client\Request;
 
             $body = new http\Message\Body;
-            $body->append('{"data":{"id":"RFljikas98","object":"refund","customer_id":"PYgaZlLaPMZO.","amount":"12.5","currency":"USD","reason":"requested_by_customer","status":"approved","created_at":"2022-02-11T23:19:22-03:00","updated_at":"2022-02-11T23:19:22-03:00","metadata":{"some":"metadata"}}}');
+            $body->append('{"amount":100,"description":"Unique payment","gateway_identifier":"001234","customer_id":"CSr7Dg3LkDP2"}');
 
             $request->setRequestUrl('https://api.tucuota.com/v1/refunds');
             $request->setRequestMethod('POST');
@@ -7581,7 +7546,7 @@ paths:
 
             conn = http.client.HTTPSConnection("api.tucuota.com")
 
-            payload = "{\"data\":{\"id\":\"RFljikas98\",\"object\":\"refund\",\"customer_id\":\"PYgaZlLaPMZO.\",\"amount\":\"12.5\",\"currency\":\"USD\",\"reason\":\"requested_by_customer\",\"status\":\"approved\",\"created_at\":\"2022-02-11T23:19:22-03:00\",\"updated_at\":\"2022-02-11T23:19:22-03:00\",\"metadata\":{\"some\":\"metadata\"}}}"
+            payload = "{\"amount\":100,\"description\":\"Unique payment\",\"gateway_identifier\":\"001234\",\"customer_id\":\"CSr7Dg3LkDP2\"}"
 
             headers = {
                 'content-type': "application/json",
@@ -7599,7 +7564,7 @@ paths:
             HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/refunds")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
-              .body("{\"data\":{\"id\":\"RFljikas98\",\"object\":\"refund\",\"customer_id\":\"PYgaZlLaPMZO.\",\"amount\":\"12.5\",\"currency\":\"USD\",\"reason\":\"requested_by_customer\",\"status\":\"approved\",\"created_at\":\"2022-02-11T23:19:22-03:00\",\"updated_at\":\"2022-02-11T23:19:22-03:00\",\"metadata\":{\"some\":\"metadata\"}}}")
+              .body("{\"amount\":100,\"description\":\"Unique payment\",\"gateway_identifier\":\"001234\",\"customer_id\":\"CSr7Dg3LkDP2\"}")
               .asString();
       x-codegen-request-body-name: body
   /v1/sessions:
@@ -13691,19 +13656,19 @@ components:
         id:
           description: Unique identifier for the object.
           type: string
-          example: RFljikas98
+          example: RFljikas9Fa8
           maxLength: 5000
         object:
           type: string
           enum:
             - refund
-        customer_id:
+        payment_id:
           description: |
             [Payment ID](#tag/Payments).
           type: string
           example: PYgaZlLaPMZO.
         amount:
-          description: Amount to be refunded. If is null it will refund the whole payment.
+          description: Refund amount.
           type: number
           example: '12.5'
         currency:
@@ -13719,7 +13684,7 @@ components:
             - USB
             - USD
         reason:
-          description: Refund Reason
+          description: 'Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.'
           type: string
           example: requested_by_customer
         status:
@@ -14600,19 +14565,19 @@ components:
         id:
           description: Unique identifier for the object.
           type: string
-          example: RFljikas98
+          example: RFljikas9Fa8
           maxLength: 5000
         object:
           type: string
           enum:
             - refund
-        customer_id:
+        payment_id:
           description: |
             [Payment ID](#tag/Payments).
           type: string
           example: PYgaZlLaPMZO.
         amount:
-          description: Amount to be refunded. If is null it will refund the whole payment.
+          description: Refund amount.
           type: number
           example: '12.5'
         currency:
@@ -14628,7 +14593,7 @@ components:
             - USB
             - USD
         reason:
-          description: Refund Reason
+          description: 'Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.'
           type: string
           example: requested_by_customer
         status:
@@ -14974,7 +14939,7 @@ components:
         subscription_payment_number: null
         gateway: GW1L49J7ARW3
         payment_method:
-          - $ref: ./payment_method
+          - $ref: ./payment_method.yaml
         gateway_identifier: null
         metadata: null
         refunds: []
@@ -15079,7 +15044,7 @@ components:
         customer:
           $ref: '#/components/examples/customer'
         payment_method:
-          $ref: '#/components/examples/payment_method'
+          $ref: '#/components/examples/payment_method.yaml'
         metadata: null
         payments_created: 14
         approved_payments_count: 9
@@ -15143,7 +15108,7 @@ tags:
     description: |
       PaymentMethod objects represent your customer's payment instruments. You can use them with to create Payments or Subscriptions to a Customer.
 
-      <SchemaDefinition schemaRef="#/components/schemas/payment_method" exampleRef="#/components/examples/payment_method" showReadOnly={true} showWriteOnly={true} />
+      <SchemaDefinition schemaRef="#/components/schemas/payment_method.yaml" exampleRef="#/components/examples/payment_method.yaml" showReadOnly={true} showWriteOnly={true} />
   - name: Payments
     description: |
       A Payment is an object you create to charge a credit, debit card, or bank account. You can retrieve information about the payment and also refund them partially or totally.

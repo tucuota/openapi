@@ -200,7 +200,7 @@ resources:
     subscription_payment_number: null
     gateway: GW1L49J7ARW3
     payment_method:
-      - $ref: ./payment_method
+      - $ref: ./payment_method.yaml
     gateway_identifier: null
     metadata: null
     refunds: []
@@ -287,7 +287,7 @@ resources:
     customer:
       $ref: '#/components/examples/customer'
     payment_method:
-      $ref: '#/components/examples/payment_method'
+      $ref: '#/components/examples/payment_method.yaml'
     metadata: null
     payments_created: 14
     approved_payments_count: 9

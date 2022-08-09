@@ -1398,7 +1398,7 @@ components:
       type: object
       properties: &ref_17
         id:
-          example: RFljikas98
+          example: RFljikas9Fa8
           description: Unique identifier for the object.
           maxLength: 5000
           type: string
@@ -1406,14 +1406,14 @@ components:
           type: string
           enum:
             - refund
-        customer_id:
+        payment_id:
           type: string
           description: |
             [Payment ID](#tag/Payments).
           example: PYgaZlLaPMZO.
         amount:
           type: number
-          description: Amount to be refunded. If is null it will refund the whole payment.
+          description: Refund amount.
           example: '12.5'
         currency:
           description: >-
@@ -1424,7 +1424,9 @@ components:
           enum: *ref_9
           example: USD
         reason:
-          description: Refund Reason
+          description: >-
+            Refund Reason. One of `duplicate`, `error`, or
+            `requested_by_customer`.
           type: string
           example: requested_by_customer
         status:
@@ -1984,7 +1986,7 @@ components:
         subscription_payment_number: null
         gateway: GW1L49J7ARW3
         payment_method:
-          - $ref: ./payment_method
+          - $ref: ./payment_method.yaml
         gateway_identifier: null
         metadata: null
         refunds: []
@@ -2090,7 +2092,7 @@ components:
         customer:
           $ref: '#/components/examples/customer'
         payment_method:
-          $ref: '#/components/examples/payment_method'
+          $ref: '#/components/examples/payment_method.yaml'
         metadata: null
         payments_created: 14
         approved_payments_count: 9
@@ -2194,8 +2196,8 @@ tags:
       can use them with to create Payments or Subscriptions to a Customer.
 
 
-      <SchemaDefinition schemaRef="#/components/schemas/payment_method"
-      exampleRef="#/components/examples/payment_method" showReadOnly={true}
+      <SchemaDefinition schemaRef="#/components/schemas/payment_method.yaml"
+      exampleRef="#/components/examples/payment_method.yaml" showReadOnly={true}
       showWriteOnly={true} />
   - name: Payments
     description: >
@@ -4261,7 +4263,7 @@ paths:
                       type: object
                       properties: &ref_29
                         id:
-                          example: RFljikas98
+                          example: RFljikas9Fa8
                           description: Unique identifier for the object.
                           maxLength: 5000
                           type: string
@@ -4269,16 +4271,14 @@ paths:
                           type: string
                           enum:
                             - refund
-                        customer_id:
+                        payment_id:
                           type: string
                           description: |
                             [Payment ID](#tag/Payments).
                           example: PYgaZlLaPMZO.
                         amount:
                           type: number
-                          description: >-
-                            Amount to be refunded. If is null it will refund the
-                            whole payment.
+                          description: Refund amount.
                           example: '12.5'
                         currency:
                           description: >-
@@ -4289,7 +4289,9 @@ paths:
                           enum: *ref_9
                           example: USD
                         reason:
-                          description: Refund Reason
+                          description: >-
+                            Refund Reason. One of `duplicate`, `error`, or
+                            `requested_by_customer`.
                           type: string
                           example: requested_by_customer
                         status:
@@ -4352,32 +4354,55 @@ paths:
         - Refunds
       summary: Create a refund
       description: Create a refund.
-      operationId: RefundsCreateRefund
       x-codegen-request-body-name: body
+      operationId: RefundsCreateRefund
       requestBody:
         content:
           application/json:
-            encoding:
-              metadata:
-                explode: true
-                style: deepObject
-            example:
-              amount: 10
-              reason: duplicate
-              payment_id: PY9J8YYdylz6
-              metadata:
-                some: value
             schema:
+              type: object
+              required:
+                - payment_id
+                - reason
               properties:
-                data:
-                  type: object
-                  title: Refund
-                  description: This object represents a refunds of your organization.
-                  properties: *ref_29
-        required: true
+                payment_id:
+                  type: string
+                  description: |
+                    [Payment ID](#tag/Payments).
+                  example: PYgaZlLaPMZO.
+                amount:
+                  type: number
+                  description: >-
+                    Amount to be refunded. If is null it will refund the whole
+                    payment.
+                  example: '12.5'
+                reason:
+                  description: >-
+                    Refund Reason. One of `duplicate`, `error`, or
+                    `requested_by_customer`.
+                  type: string
+                  example: requested_by_customer
+                metadata:
+                  example: *ref_0
+                  anyOf: *ref_1
+                  description: >
+                    Set of [key-value pairs](#section/Metadata) that you can
+                    attach
+
+                    to an object. This can be useful for storing additional
+
+                    information about the object in a structured format.
+
+                    All keys can be unset by posting `null` value to `metadata`.
+              example:
+                amount: 100
+                description: Unique payment
+                gateway_identifier: '001234'
+                customer_id: CSr7Dg3LkDP2
+        required: false
       responses:
         '201':
-          description: OK
+          description: Refund created.
           content:
             application/json:
               schema:
@@ -4387,14 +4412,25 @@ paths:
                     title: Refund
                     description: This object represents a refunds of your organization.
                     properties: *ref_29
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
             application/json:
               example:
                 errors:
-                  email:
-                    - El email es inválido.
+                  payment_id:
+                    - payment_id is required.
                 message: The given data was invalid.
   /v1/sessions:
     post:

@@ -1685,7 +1685,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "example": "RFljikas98",
+            "example": "RFljikas9Fa8",
             "description": "Unique identifier for the object.",
             "maxLength": 5000,
             "type": "string"
@@ -1696,14 +1696,14 @@
               "refund"
             ]
           },
-          "customer_id": {
+          "payment_id": {
             "type": "string",
             "description": "[Payment ID](#tag/Payments).\n",
             "example": "PYgaZlLaPMZO."
           },
           "amount": {
             "type": "number",
-            "description": "Amount to be refunded. If is null it will refund the whole payment.",
+            "description": "Refund amount.",
             "example": "12.5"
           },
           "currency": {
@@ -1721,7 +1721,7 @@
             "example": "USD"
           },
           "reason": {
-            "description": "Refund Reason",
+            "description": "Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.",
             "type": "string",
             "example": "requested_by_customer"
           },
@@ -2870,7 +2870,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "example": "RFljikas98",
+            "example": "RFljikas9Fa8",
             "description": "Unique identifier for the object.",
             "maxLength": 5000,
             "type": "string"
@@ -2881,14 +2881,14 @@
               "refund"
             ]
           },
-          "customer_id": {
+          "payment_id": {
             "type": "string",
             "description": "[Payment ID](#tag/Payments).\n",
             "example": "PYgaZlLaPMZO."
           },
           "amount": {
             "type": "number",
-            "description": "Amount to be refunded. If is null it will refund the whole payment.",
+            "description": "Refund amount.",
             "example": "12.5"
           },
           "currency": {
@@ -2906,7 +2906,7 @@
             "example": "USD"
           },
           "reason": {
-            "description": "Refund Reason",
+            "description": "Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.",
             "type": "string",
             "example": "requested_by_customer"
           },
@@ -3342,7 +3342,7 @@
           "gateway": "GW1L49J7ARW3",
           "payment_method": [
             {
-              "$ref": "./payment_method"
+              "$ref": "./payment_method.yaml"
             }
           ],
           "gateway_identifier": null,
@@ -3461,7 +3461,7 @@
             "$ref": "#/components/examples/customer"
           },
           "payment_method": {
-            "$ref": "#/components/examples/payment_method"
+            "$ref": "#/components/examples/payment_method.yaml"
           },
           "metadata": null,
           "payments_created": 14,
@@ -3525,7 +3525,7 @@
     },
     {
       "name": "Payment Methods",
-      "description": "PaymentMethod objects represent your customer's payment instruments. You can use them with to create Payments or Subscriptions to a Customer.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment_method\" exampleRef=\"#/components/examples/payment_method\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "PaymentMethod objects represent your customer's payment instruments. You can use them with to create Payments or Subscriptions to a Customer.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment_method.yaml\" exampleRef=\"#/components/examples/payment_method.yaml\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Payments",
@@ -9025,7 +9025,7 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "example": "RFljikas98",
+                            "example": "RFljikas9Fa8",
                             "description": "Unique identifier for the object.",
                             "maxLength": 5000,
                             "type": "string"
@@ -9036,14 +9036,14 @@
                               "refund"
                             ]
                           },
-                          "customer_id": {
+                          "payment_id": {
                             "type": "string",
                             "description": "[Payment ID](#tag/Payments).\n",
                             "example": "PYgaZlLaPMZO."
                           },
                           "amount": {
                             "type": "number",
-                            "description": "Amount to be refunded. If is null it will refund the whole payment.",
+                            "description": "Refund amount.",
                             "example": "12.5"
                           },
                           "currency": {
@@ -9061,7 +9061,7 @@
                             "example": "USD"
                           },
                           "reason": {
-                            "description": "Refund Reason",
+                            "description": "Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.",
                             "type": "string",
                             "example": "requested_by_customer"
                           },
@@ -9199,118 +9199,65 @@
         ],
         "summary": "Create a refund",
         "description": "Create a refund.",
-        "operationId": "RefundsCreateRefund",
         "x-codegen-request-body-name": "body",
+        "operationId": "RefundsCreateRefund",
         "requestBody": {
           "content": {
             "application/json": {
-              "encoding": {
-                "metadata": {
-                  "explode": true,
-                  "style": "deepObject"
-                }
-              },
-              "example": {
-                "amount": 10,
-                "reason": "duplicate",
-                "payment_id": "PY9J8YYdylz6",
-                "metadata": {
-                  "some": "value"
-                }
-              },
               "schema": {
+                "type": "object",
+                "required": [
+                  "payment_id",
+                  "reason"
+                ],
                 "properties": {
-                  "data": {
-                    "type": "object",
-                    "title": "Refund",
-                    "description": "This object represents a refunds of your organization.",
-                    "properties": {
-                      "id": {
-                        "example": "RFljikas98",
-                        "description": "Unique identifier for the object.",
-                        "maxLength": 5000,
-                        "type": "string"
-                      },
-                      "object": {
-                        "type": "string",
-                        "enum": [
-                          "refund"
-                        ]
-                      },
-                      "customer_id": {
-                        "type": "string",
-                        "description": "[Payment ID](#tag/Payments).\n",
-                        "example": "PYgaZlLaPMZO."
-                      },
-                      "amount": {
-                        "type": "number",
-                        "description": "Amount to be refunded. If is null it will refund the whole payment.",
-                        "example": "12.5"
-                      },
-                      "currency": {
-                        "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
-                        "type": "string",
-                        "enum": [
-                          "ARS",
-                          "BRL",
-                          "CLP",
-                          "COP",
-                          "MXN",
-                          "USB",
-                          "USD"
-                        ],
-                        "example": "USD"
-                      },
-                      "reason": {
-                        "description": "Refund Reason",
-                        "type": "string",
-                        "example": "requested_by_customer"
-                      },
-                      "status": {
-                        "description": "Refund Status",
-                        "type": "string",
-                        "example": "approved"
-                      },
-                      "created_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2022-02-11T23:19:22-03:00",
-                        "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-                      },
-                      "updated_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2022-02-11T23:19:22-03:00",
-                        "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-                      },
-                      "metadata": {
-                        "example": {
-                          "some": "metadata"
+                  "payment_id": {
+                    "type": "string",
+                    "description": "[Payment ID](#tag/Payments).\n",
+                    "example": "PYgaZlLaPMZO."
+                  },
+                  "amount": {
+                    "type": "number",
+                    "description": "Amount to be refunded. If is null it will refund the whole payment.",
+                    "example": "12.5"
+                  },
+                  "reason": {
+                    "description": "Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.",
+                    "type": "string",
+                    "example": "requested_by_customer"
+                  },
+                  "metadata": {
+                    "example": {
+                      "some": "metadata"
+                    },
+                    "anyOf": [
+                      {
+                        "additionalProperties": {
+                          "type": "string"
                         },
-                        "anyOf": [
-                          {
-                            "additionalProperties": {
-                              "type": "string"
-                            },
-                            "type": "object"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ],
-                        "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
                       }
-                    }
+                    ],
+                    "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
                   }
+                },
+                "example": {
+                  "amount": 100,
+                  "description": "Unique payment",
+                  "gateway_identifier": "001234",
+                  "customer_id": "CSr7Dg3LkDP2"
                 }
               }
             }
           },
-          "required": true
+          "required": false
         },
         "responses": {
           "201": {
-            "description": "OK",
+            "description": "Refund created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9321,7 +9268,7 @@
                       "description": "This object represents a refunds of your organization.",
                       "properties": {
                         "id": {
-                          "example": "RFljikas98",
+                          "example": "RFljikas9Fa8",
                           "description": "Unique identifier for the object.",
                           "maxLength": 5000,
                           "type": "string"
@@ -9332,14 +9279,14 @@
                             "refund"
                           ]
                         },
-                        "customer_id": {
+                        "payment_id": {
                           "type": "string",
                           "description": "[Payment ID](#tag/Payments).\n",
                           "example": "PYgaZlLaPMZO."
                         },
                         "amount": {
                           "type": "number",
-                          "description": "Amount to be refunded. If is null it will refund the whole payment.",
+                          "description": "Refund amount.",
                           "example": "12.5"
                         },
                         "currency": {
@@ -9357,7 +9304,7 @@
                           "example": "USD"
                         },
                         "reason": {
-                          "description": "Refund Reason",
+                          "description": "Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.",
                           "type": "string",
                           "example": "requested_by_customer"
                         },
@@ -9402,14 +9349,36 @@
               }
             }
           },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "title": "Unauthorized",
+                      "description": "Unauthorized response",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
           "422": {
             "description": "Unprocessable Entity",
             "content": {
               "application/json": {
                 "example": {
                   "errors": {
-                    "email": [
-                      "El email es inválido."
+                    "payment_id": [
+                      "payment_id is required."
                     ]
                   },
                   "message": "The given data was invalid."
