@@ -317,10 +317,7 @@ info:
 
     `PY6b3Rr6nRMo`
 
-    # Testing
-
-
-    ### Testing Card and CBU numbers
+    # Testing Card and account numbers
 
 
     In sandbox mode the following test cards and CBUs can be used to create
@@ -741,10 +738,10 @@ components:
           example: 1
         last_page:
           type: number
-          example: 28
+          example: 1
         per_page:
           type: number
-          example: 1
+          example: 25
         to:
           type: number
           example: 1
@@ -1769,349 +1766,6 @@ components:
       description: A better exclusion of the two groups of properties, using oneOf.
       oneOf: *ref_21
       type: object
-  examples:
-    customer:
-      summary: Sample Customer
-      value:
-        id: CS3Z25Agp708
-        object: customer
-        gateway_identifier: 1723393503
-        name: Andrés Bahena Tercero
-        email: andres37@calvillo.info
-        identification_type: null
-        identification_number: null
-        mobile_number: '+5481934863501'
-        metadata:
-          external_id: 0Qk3IJY5
-        livemode: false
-        created_at: '2021-07-05T12:24:32-03:00'
-        updated_at: '2021-07-05T12:24:32-03:00'
-        deleted_at: null
-        approved_payments_count: 13
-        approved_payments_sum: 47900
-        rejected_payments_count: 1
-        rejected_payments_sum: 3500
-        active_subscriptions_count: 1
-        active_subscriptions_sum: 3500
-        paused_subscriptions_count: 0
-        cancelled_subscriptions_count: 0
-        finished_subscriptions_count: 0
-    event:
-      summary: Sample Subscription
-      value:
-        created_at: '2022-02-05T01:42:13-03:00'
-        data:
-          object:
-            created_at: '2022-02-05T01:42:13-03:00'
-            deleted_at: null
-            email: john@doe.com
-            gateway_identifier: 383473
-            id: CSnlZxyY3jwr
-            identification_number: null
-            identification_type: null
-            livemode: false
-            metadata: null
-            mobile_number: '5491154876503'
-            name: John Doe
-            updated_at: '2022-02-05T01:42:13-03:00'
-        delivered_at: '2022-02-11T20:11:38-03:00'
-        id: EVaX3JagwR6x
-        livemode: false
-        object: event
-        resource: customer
-        resource_id: CSnlZxyY3jwr
-        type: customer.created
-    export:
-      summary: Sample Subscription
-      value:
-        created_at: '2022-01-25T14:10:01-03:00'
-        created_from: manual
-        filename: exports/payments_monthly-2022-01-25-LiB4e3h4C1CBlmGK.xlsx
-        id: EXaxk4p1DkXd
-        livemode: false
-        status: ready
-        type: payments_monthly
-        updated_at: '2022-01-26T15:36:57-03:00'
-    gateway:
-      summary: Sample Gateway
-      value:
-        id: GWRqj9QPKlMk
-        object: gateway
-        gatewaykind: visaD
-        number: '111111'
-        username: null
-        number_bank_retries: null
-        code_length: 5
-        disabled: false
-        brand_list:
-          - visa-debito
-        livemode: false
-        created_at: '2021-07-05T12:24:32-03:00'
-        updated_at: '2021-07-05T12:24:32-03:00'
-        approved_at: '2021-07-05T12:24:32-03:00'
-        brands:
-          visa-debito: true
-    import:
-      summary: Sample Import
-      value:
-        batch_job:
-          created_at: '2021-06-08T12:49:06-03:00'
-          failed_jobs: 0
-          finished_at: '2021-06-08T12:49:06-03:00'
-          pending_jobs: 0
-          progress: 100
-          total_jobs: 2
-        cancelled_at: null
-        created_at: '2021-06-08T09:49:04-03:00'
-        id: IMB1rRDqkM5X
-        invalid_at: null
-        invalid_rows_count: 0
-        livemode: false
-        original_filename: subscriptions-import-template.csv
-        processed_at: '2021-06-08T09:49:06-03:00'
-        ready_at: '2021-06-08T09:49:05-03:00'
-        rows_count: 2
-        status: processed
-        type: subscriptions
-        updated_at: '2021-06-08T09:49:06-03:00'
-        valid_rows_count: 2
-    link:
-      summary: Sample Link
-      value:
-        body: hoiadsad ad sad
-        brands: []
-        button_text: null
-        created_at: '2022-02-02T02:06:22.00-03:00'
-        deleted_at: null
-        enabled: true
-        extra_fields: []
-        extra_fields_customer: []
-        id: b7fba990-83cc-11ec-8c7b-5b2fd150abb2
-        kind: payment
-        livemode: false
-        metadata: null
-        name_text: null
-        object: link
-        options:
-          - amount: '100'
-            count: null
-            description: mucho
-            editable_amount: false
-            editable_count: false
-            installments: 1
-            interval: '1'
-            interval_unit: monthly
-            max_installments: null
-            show_count: false
-            show_installments: false
-          - amount: '75'
-            count: null
-            description: poco
-            editable_amount: false
-            editable_count: false
-            installments: 1
-            interval: '1'
-            interval_unit: monthly
-            max_installments: null
-            show_count: false
-            show_installments: false
-        public_uri: https://tucuota.com/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2
-        success_url: null
-        title: Test options
-        updated_at: '2022-02-02T02:06:22.00-03:00'
-        user:
-          country: AR
-          currency: ARS
-          email: juandelperal@gmail.com
-          organization_name: TuCuota
-          preference_color1: '#ffffff'
-          preference_color2: '#d10000'
-          preference_logo: >-
-            https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png
-    mandate:
-      summary: Sample Mandate
-      value:
-        created_at: '2022-02-01T19:06:37-03:00'
-        customer:
-          created_at: '2022-02-05T01:42:13-03:00'
-          deleted_at: null
-          email: john@doe.com
-          gateway_identifier: 383473
-          id: CSnlZxyY3jwr
-          identification_number: null
-          identification_type: null
-          livemode: false
-          metadata: null
-          mobile_number: '5491154876503'
-          name: John Doe
-          updated_at: '2022-02-05T01:42:13-03:00'
-        deleted_at: null
-        id: 3990a740-83ab-11ec-8651-cde6203c968e
-        livemode: false
-        metadata:
-          dni: '1231232131'
-        object: mandate
-        payment_method:
-          $ref: ./payment_method.yaml
-        status: active
-        updated_at: '2022-02-01T19:06:37-03:00'
-    payment:
-      summary: Sample Payment
-      value:
-        id: PY9J8YYdylz6
-        object: payment
-        amount: 2300
-        amount_refunded: 0
-        currency: ARS
-        description: Ajuste por deuda pasada
-        status: approved
-        response_message: Transacción aceptada
-        paid: true
-        retryable: false
-        refundable: true
-        amount_refundable: 2300
-        livemode: false
-        created_at: '2022-08-03T12:24:33-03:00'
-        charge_date: '2022-08-03'
-        submissions_count: 1
-        can_auto_retry_until: null
-        auto_retries_max_attempts: null
-        effective_charged_date: '2022-08-05'
-        estimated_accreditation_date: '2022-08-19'
-        updated_at: '2022-08-03T12:24:33-03:00'
-        updated_status: '2022-08-05'
-        customer:
-          - $ref: ./customer.yaml
-        subscription: null
-        subscription_payment_number: null
-        gateway: GW1L49J7ARW3
-        payment_method:
-          - $ref: ./payment_method.yaml
-        gateway_identifier: null
-        metadata: null
-        refunds: []
-    refund:
-      summary: Sample Refund
-      value:
-        id: RFOBXM90YZp4AD
-        object: refund
-        payment_id: PYpzMDDy4mJ3
-        amount: 100
-        currency: ARS
-        reason: error
-        status: approved
-        created_at: '2022-02-05T12:24:33-03:00'
-        updated_at: '2022-02-05T12:24:33-03:00'
-        metadata: null
-    payment_method:
-      summary: Sample Payment Method
-      value:
-        bank: Visa
-        brand: visa-credito
-        card:
-          bank: Visa
-          brand: visa-credito
-          country: AR
-          expiration_month: null
-          expiration_year: null
-          fingerprint: 0sZQikKp4lImAgIo
-          funding: credit
-          last_four_digits: '4242'
-        created_at: '2022-02-01T23:13:04-03:00'
-        id: PMBja4YZ2GDR
-        livemode: false
-        metadata: null
-        object: payment_method
-        type: card
-        updated_at: '2022-02-01T23:13:04-03:00'
-    session:
-      summary: Sample Session
-      value:
-        amount: '100.00'
-        brands: []
-        completed_at: null
-        count: null
-        created_at: '2022-02-11T23:17:54.00-03:00'
-        customer_email: null
-        customer_id: null
-        customer_name: null
-        day_of_month: null
-        day_of_week: null
-        deleted_at: null
-        description: mucho
-        editable_amount: false
-        editable_count: false
-        extra_fields: []
-        extra_fields_customer: []
-        id: d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81
-        installments: 1
-        interval: 1
-        interval_unit: monthly
-        kind: payment
-        link_id: b7fba990-83cc-11ec-8c7b-5b2fd150abb2
-        livemode: false
-        max_installments: null
-        name_text: null
-        object: session
-        public_uri: https://tucuota.com/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81
-        updated_at: '2022-02-11T23:17:55.00-03:00'
-        user:
-          country: AR
-          currency: ARS
-          email: juandelperal@gmail.com
-          organization_name: TuCuota
-          preference_color1: '#ffffff'
-          preference_color2: '#d10000'
-          preference_logo: >-
-            https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png
-    subscription:
-      summary: Sample Subscription
-      value:
-        id: SBmQ6j9NWxblNv
-        object: subscription
-        amount: 5200
-        description: Cuota mensual
-        currency: ARS
-        status: active
-        count: null
-        start_date: '2021-07-01'
-        interval_unit: monthly
-        interval: 1
-        day_of_month: 1
-        day_of_week: null
-        livemode: false
-        created_at: '2021-07-01T12:24:32-03:00'
-        updated_at: '2021-07-01T12:24:32-03:00'
-        first_date: '2022-09-01'
-        upcoming_dates:
-          - '2022-09-01'
-          - '2022-10-01'
-          - '2022-11-01'
-          - '2022-12-01'
-          - '2023-01-01'
-        customer:
-          $ref: '#/components/examples/customer.yaml'
-        payment_method:
-          $ref: '#/components/examples/payment_method.yaml'
-        metadata: null
-        payments_created: 14
-        approved_payments_count: 9
-        approved_payments_sum: 46800
-        rejected_payments_count: 1
-        rejected_payments_sum: 5200
-    webhook:
-      summary: Sample Webhook
-      value:
-        created_at: '2022-02-11T23:19:22-03:00'
-        enabled: true
-        enabled_events:
-          - '*'
-        id: WHq4VzyAzDgB
-        livemode: false
-        object: webhook
-        secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
-        updated_at: '2022-02-11T23:19:22-03:00'
-        url: https://site.com/webhook
   securitySchemes:
     bearerAuth:
       description: >-
@@ -2406,10 +2060,10 @@ paths:
                         example: 1
                       last_page:
                         type: number
-                        example: 28
+                        example: 1
                       per_page:
                         type: number
-                        example: 1
+                        example: 25
                       to:
                         type: number
                         example: 1
@@ -2502,6 +2156,17 @@ paths:
                     title: Customer
                     description: This object represents a customer of your organization.
                     properties: *ref_10
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -2538,6 +2203,17 @@ paths:
                     title: Customer
                     description: This object represents a customer of your organization.
                     properties: *ref_10
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '404':
           description: Object not found
           content:
@@ -2624,6 +2300,17 @@ paths:
                     title: Customer
                     description: This object represents a customer of your organization.
                     properties: *ref_10
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '404':
           description: Object not found
           content:
@@ -2666,6 +2353,17 @@ paths:
             application/json:
               example:
                 message: Archived successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '404':
           description: Object not found
           content:
@@ -2699,6 +2397,17 @@ paths:
             application/json:
               example:
                 message: Restored successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '404':
           description: Object not found
           content:
@@ -2942,13 +2651,13 @@ paths:
                     updated_at: 2020-11-20T02:37:49-0300
                     ready_at: 2020-11-20T02:37:49-0300
                 links:
-                  first: https://tucuota.com/api/imports?page=1
-                  last: https://tucuota.com/api/imports?page=1
+                  first: https://api.tucuota.com/v1/imports?page=1
+                  last: https://api.tucuota.com/v1/imports?page=1
                 meta:
                   current_page: 1
                   from: 1
                   last_page: 1
-                  path: https://tucuota.com/api/imports
+                  path: https://api.tucuota.com/v1/imports
                   per_page: 25
                   to: 2
                   total: 2
@@ -3107,6 +2816,17 @@ paths:
                           Time at which the object was last updated. Formatting
                           follows
                           [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -3143,6 +2863,17 @@ paths:
                     title: Import
                     description: This object represents an import of your account.
                     properties: *ref_26
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '404':
           description: Object not found
           content:
@@ -3541,6 +3272,17 @@ paths:
                     title: Mandate
                     description: This object represents a mandate of your organization.
                     properties: *ref_28
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '404':
           description: Object not found
           content:
@@ -3676,7 +3418,7 @@ paths:
                     updated_at: 2019-05-23T20:30:01-0300
                 links:
                   first: https://api.tucuota.com/v1/payment_methods?page=1
-                  last: https://tucuota.com/api/payment_methods?page=2
+                  last: https://api.tucuota.com/v1/payment_methods?page=2
                   next: https://api.tucuota.com/v1/payment_methods?page=2
                 meta:
                   current_page: 1
@@ -3780,6 +3522,17 @@ paths:
                     title: Payment Method
                     description: This object represents a payment method of your account.
                     properties: *ref_8
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '404':
           description: Payment method not found
           content:
@@ -4068,6 +3821,17 @@ paths:
                 properties:
                   data:
                     type: object
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '404':
           description: Payment not found
           content:
@@ -4394,12 +4158,6 @@ paths:
                     information about the object in a structured format.
 
                     All keys can be unset by posting `null` value to `metadata`.
-              example:
-                amount: 100
-                description: Unique payment
-                gateway_identifier: '001234'
-                customer_id: CSr7Dg3LkDP2
-        required: false
       responses:
         '201':
           description: Refund created.
@@ -4432,6 +4190,55 @@ paths:
                   payment_id:
                     - payment_id is required.
                 message: The given data was invalid.
+  /v1/refunds/{id}:
+    get:
+      tags:
+        - Refunds
+      summary: Retrieve a refund
+      description: Retrieve a refund
+      operationId: RefundsGetRefund
+      parameters:
+        - name: id
+          in: path
+          description: Refund ID.
+          required: true
+          schema:
+            type: string
+          example: RFgaZlLaPMZO
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Refund
+                    description: This object represents a refunds of your organization.
+                    properties: *ref_29
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
+        '404':
+          description: Object not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Not Found
+                    description: Not Found response
+                    properties: *ref_23
   /v1/sessions:
     post:
       tags:
@@ -4572,6 +4379,17 @@ paths:
                     title: Session
                     description: This object represents a session of your organization.
                     properties: *ref_30
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -4608,6 +4426,17 @@ paths:
                     title: Session
                     description: This object represents a session of your organization.
                     properties: *ref_30
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '404':
           description: Session not found
           content:
@@ -4775,6 +4604,17 @@ paths:
                       This object represents a subscription of your
                       organization.
                     properties: *ref_31
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -4813,6 +4653,17 @@ paths:
                       This object represents a subscription of your
                       organization.
                     properties: *ref_31
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '404':
           description: Object not found
           content:
@@ -4946,6 +4797,17 @@ paths:
                       This object represents a subscription of your
                       organization.
                     properties: *ref_31
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -4984,6 +4846,17 @@ paths:
                       This object represents a subscription of your
                       organization.
                     properties: *ref_31
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -5019,6 +4892,17 @@ paths:
                       This object represents a subscription of your
                       organization.
                     properties: *ref_31
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -5061,6 +4945,17 @@ paths:
                       This object represents a subscription of your
                       organization.
                     properties: *ref_31
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -5299,6 +5194,17 @@ paths:
                       webhook endpoints.
                     properties: *ref_32
                     example: *ref_33
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
@@ -5412,6 +5318,17 @@ paths:
                       webhook endpoints.
                     properties: *ref_32
                     example: *ref_33
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    title: Unauthorized
+                    description: Unauthorized response
+                    properties: *ref_22
         '422':
           description: Unprocessable Entity
           content:
