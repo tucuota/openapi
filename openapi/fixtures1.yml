@@ -195,7 +195,7 @@ resources:
     updated_at: '2022-08-03T12:24:33-03:00'
     updated_status: '2022-08-05'
     customer:
-      - $ref: ./customer
+      - $ref: ./customer.yaml
     subscription: null
     subscription_payment_number: null
     gateway: GW1L49J7ARW3
@@ -285,7 +285,7 @@ resources:
       - '2022-12-01'
       - '2023-01-01'
     customer:
-      $ref: '#/components/examples/customer'
+      $ref: '#/components/examples/customer.yaml'
     payment_method:
       $ref: '#/components/examples/payment_method.yaml'
     metadata: null
