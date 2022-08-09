@@ -13,7 +13,12 @@ info:
     uses standard HTTP response codes, authentication, and verbs.
 
 
-    The base URLs for the TuCuota API is: `https://api.tucuota.com`.
+    The base URLs for the TuCuota API are:
+
+
+    - Live: https://api.tucuota.com/v1/
+
+    - Sandbox: https://sandbox.tucuota.com/api/
 
 
     ### Content types
@@ -202,6 +207,8 @@ info:
 
     - [Payment](#tag/Payments)
 
+    - [Refund](#tag/Refunds)
+
     - [Payment Method](#tag/Payment-Methods)
 
     - [Subscription](#tag/Subscriptions)
@@ -358,8 +365,10 @@ info:
     # Webhooks
 
 
-    To start receiving webhooks, you’ll need to add webhook endpoints from your
-    [Dashboard](/dashboard/developers).
+    Webhooks are endpoints you can configure to be notified about events that
+    happen in your TuCuota account. Most users configure Webhooks from the
+    dashboard, which provides a user interface for registering and testing your
+    webhook endpoints.
 
 
     <blockquote>
@@ -479,6 +488,79 @@ info:
     accessible from the internet so TuCuota can reach it with HTTP requests. If
     you’re working locally, the easiest way to do this is with
     [ngrok](https://ngrok.com/).
+
+
+    ### Webhooks security
+
+
+    TuCuota signs the webhook events it sends to your endpoints by including a
+    signature in each event’s TuCuota-Signature header. This allows you to
+    verify that the events were sent by TuCuota, not by a third party.
+
+
+    Before you can verify signatures, you need to retrieve your endpoint’s
+    secret _"Secreto webhook"_ from your webhooks in our [developers
+    panel](https://tucuota.com/dashboard/developers). Add or select the endpoint
+    you want to obtain the secret for, then click the _"mostrar"_ button.
+
+
+    TuCuota generates a unique secret key for each endpoint. If you use the same
+    endpoint for both test and live API keys, note that the secret is different
+    for each one. Additionally, if you use multiple endpoints, you must obtain a
+    secret for each one you want to verify signatures on. After this setup,
+    TuCuota starts to sign each webhook it sends to the endpoint.
+
+
+    #### Webhooks authenticity validation steps
+
+
+    TuCuota generates signatures using a hash-based message authentication code
+    (HMAC) with SHA-256. To prevent downgrade attacks.
+
+
+    ##### Step 1: Extract the timestamp and signatures from the header
+
+
+    Split the header, using the , character as the separator, to get a list of
+    elements. Then split each element, using the = character as the separator,
+    to get a prefix and value pair.
+
+
+    The value for the prefix t corresponds to the timestamp, and v1 corresponds
+    to the signature (or signatures). You can discard all other elements.
+
+
+    ##### Step 2: Prepare the signed_payload string
+
+
+    The signed_payload string is created by concatenating:
+
+
+    The timestamp (as a string)
+
+    The character .
+
+    The actual JSON payload (that is, the request body)
+
+
+    ##### Step 3: Determine the expected signature
+
+
+    Compute an HMAC with the SHA256 hash function. Use the endpoint’s signing
+    secret as the key, and use the signed_payload string as the message.
+
+
+    ##### Step 4: Compare the signatures
+
+
+    Compare the signature (or signatures) in the header to the expected
+    signature. For an equality match, compute the difference between the current
+    timestamp and the received timestamp, then decide if the difference is
+    within your tolerance.
+
+
+    To protect against timing attacks, use a constant-time string comparison to
+    compare the expected signature to each of the received signatures.
   termsOfService: http://swagger.io/terms/
   contact:
     name: TuCuota Devs
@@ -487,7 +569,7 @@ info:
   x-logo:
     url: https://tucuota.com/img/TuCuota.svg
     altText: TuCuota
-  version: '2022-02-14'
+  version: '2022-08-01'
 externalDocs:
   description: TuCuota Docs.
   url: https://tucuota.com/docs
@@ -531,6 +613,7 @@ components:
         Has the value `true` if the object exists in live mode or the value
         `false` if the object exists in test mode.
       type: boolean
+      example: true
     metadata:
       example: &ref_0
         some: metadata
@@ -611,6 +694,7 @@ components:
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
+          example: true
         metadata:
           example: *ref_0
           anyOf: *ref_1
@@ -800,6 +884,7 @@ components:
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
+          example: true
         resource:
           type: string
           example: customer
@@ -931,6 +1016,7 @@ components:
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
+          example: true
         original_filename:
           type: string
           example: subscriptions-import-template.csv
@@ -971,6 +1057,7 @@ components:
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
+          example: true
         metadata:
           example: *ref_0
           anyOf: *ref_1
@@ -1116,6 +1203,7 @@ components:
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
+          example: true
         object:
           type: string
           enum:
@@ -1146,6 +1234,7 @@ components:
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
+          example: true
         customer:
           title: Customer
           description: This object represents a customer of your organization.
@@ -1173,6 +1262,7 @@ components:
                 Has the value `true` if the object exists in live mode or the
                 value `false` if the object exists in test mode.
               type: boolean
+              example: true
             metadata:
               example: *ref_0
               anyOf: *ref_1
@@ -1314,7 +1404,7 @@ components:
         - MXN
         - USB
         - USD
-      example: USD
+      example: ARS
     subscription:
       title: Subscription
       description: This object represents a subscription of your organization.
@@ -1334,7 +1424,7 @@ components:
             to account's default.
           type: string
           enum: *ref_9
-          example: USD
+          example: ARS
         approved_payments_count:
           type: number
         approved_payments_sum:
@@ -1353,6 +1443,7 @@ components:
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
+          example: true
         metadata:
           example: *ref_0
           anyOf: *ref_1
@@ -1419,7 +1510,7 @@ components:
             to account's default.
           type: string
           enum: *ref_9
-          example: USD
+          example: ARS
         reason:
           description: >-
             Refund Reason. One of `duplicate`, `error`, or
@@ -1507,6 +1598,7 @@ components:
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
+          example: true
         metadata:
           example: *ref_0
           anyOf: *ref_1
@@ -1654,6 +1746,7 @@ components:
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
+          example: true
         created_at:
           type: string
           format: date-time
@@ -1674,7 +1767,7 @@ components:
         enabled_events:
           - '*'
         id: WHq4VzyAzDgB
-        livemode: false
+        livemode: true
         object: webhook
         secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
         updated_at: '2022-02-11T23:19:22-03:00'
@@ -2458,14 +2551,14 @@ paths:
                         id: CSnlZxyY3jwr
                         identification_number: null
                         identification_type: null
-                        livemode: false
+                        livemode: true
                         metadata: null
                         mobile_number: '5491154876503'
                         name: John Doe
                         updated_at: '2022-02-05T01:42:13-03:00'
                     delivered_at: '2022-02-11T20:11:38-03:00'
                     id: EVaX3JagwR6x
-                    livemode: false
+                    livemode: true
                     object: event
                     resource: customer
                     resource_id: CSnlZxyY3jwr
@@ -2518,6 +2611,7 @@ paths:
                             mode or the value `false` if the object exists in
                             test mode.
                           type: boolean
+                          example: true
                         resource:
                           type: string
                           example: customer
@@ -2633,7 +2727,7 @@ paths:
                   - id: IMKd7zlGJAna
                     type: customers
                     status: invalid
-                    livemode: false
+                    livemode: true
                     rows_count: 2
                     valid_rows_count: 0
                     invalid_rows_count: 2
@@ -2643,7 +2737,7 @@ paths:
                   - id: IMGdOz9vReVZ
                     type: customers
                     status: ready
-                    livemode: false
+                    livemode: true
                     rows_count: 2
                     valid_rows_count: 2
                     invalid_rows_count: 0
@@ -2789,6 +2883,7 @@ paths:
                           or the value `false` if the object exists in test
                           mode.
                         type: boolean
+                        example: true
                       original_filename:
                         type: string
                         example: subscriptions-import-template.csv
@@ -3209,7 +3304,7 @@ paths:
                 data:
                   id: 3d48eb80-a5a3-11ea-8439-bdd053d1a65b
                   object: mandate
-                  livemode: false
+                  livemode: true
                   status: active
                   created_at: 2020-06-03T11:05:11-0300
                   updated_at: 2020-06-03T11:05:11-0300
@@ -3222,7 +3317,7 @@ paths:
                     identification_type: ''
                     identification_number: ''
                     mobile_number: ''
-                    livemode: false
+                    livemode: true
                     updated_at: 2020-06-03T11:05:11-0300
                     created_at: 2020-06-03T11:05:11-0300
                   payment_method:
@@ -3231,7 +3326,7 @@ paths:
                     last_four_digits: '2104'
                     brand: visa-credito
                     bank: ''
-                    livemode: false
+                    livemode: true
                     updated_at: 2020-06-03T11:05:11-0300
                     created_at: 2020-06-03T11:05:11-0300
         '401':
@@ -3413,7 +3508,7 @@ paths:
                       last_four_digits: '1481'
                     created_at: 2019-01-28T15:27:29-0300
                     id: PMVdYaYwkqOw
-                    livemode: false
+                    livemode: true
                     object: payment_method
                     updated_at: 2019-05-23T20:30:01-0300
                 links:
@@ -3620,7 +3715,7 @@ paths:
                             codes. Defaults to account's default.
                           type: string
                           enum: *ref_9
-                          example: USD
+                          example: ARS
                         approved_payments_count:
                           type: number
                         approved_payments_sum:
@@ -3642,6 +3737,7 @@ paths:
                             mode or the value `false` if the object exists in
                             test mode.
                           type: boolean
+                          example: true
                         metadata:
                           example: *ref_0
                           anyOf: *ref_1
@@ -4051,7 +4147,7 @@ paths:
                             codes. Defaults to account's default.
                           type: string
                           enum: *ref_9
-                          example: USD
+                          example: ARS
                         reason:
                           description: >-
                             Refund Reason. One of `duplicate`, `error`, or
@@ -5066,6 +5162,7 @@ paths:
                             mode or the value `false` if the object exists in
                             test mode.
                           type: boolean
+                          example: true
                         created_at:
                           type: string
                           format: date-time
@@ -5088,7 +5185,7 @@ paths:
                         enabled_events:
                           - '*'
                         id: WHq4VzyAzDgB
-                        livemode: false
+                        livemode: true
                         object: webhook
                         secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
                         updated_at: '2022-02-11T23:19:22-03:00'
