@@ -1291,6 +1291,828 @@
         ],
         "example": "ARS"
       },
+      "payment": {
+        "title": "Payment",
+        "description": "This object represents a payments of your organization.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "example": "PYljikas9Fa8",
+            "description": "Unique identifier for the object.",
+            "maxLength": 5000,
+            "type": "string"
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "payment"
+            ]
+          },
+          "amount": {
+            "type": "number",
+            "description": "Payment amount.",
+            "example": 12.5
+          },
+          "amount_refunded": {
+            "type": "number",
+            "description": "Payment amount refunded.",
+            "example": 0
+          },
+          "currency": {
+            "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+            "type": "string",
+            "enum": [
+              "ARS",
+              "BRL",
+              "CLP",
+              "COP",
+              "MXN",
+              "USB",
+              "USD"
+            ],
+            "example": "ARS"
+          },
+          "description": {
+            "description": "Payment description",
+            "type": "string",
+            "example": "Ajuste por deuda pasada"
+          },
+          "status": {
+            "description": "Payment Status",
+            "type": "string",
+            "enum": [
+              "pending_submission",
+              "cancelled",
+              "submitted",
+              "failed",
+              "will_retry",
+              "approved",
+              "rejected",
+              "chargeback",
+              "refunded",
+              "partially_refunded"
+            ],
+            "example": "rejected"
+          },
+          "response_message": {
+            "description": "Financial institution detailed response",
+            "type": "string",
+            "example": "Falta de fondos"
+          },
+          "paid": {
+            "description": "The payment has been succesfully collected.",
+            "type": "boolean",
+            "example": false
+          },
+          "retryable": {
+            "description": "The payment can be retried.",
+            "type": "boolean",
+            "example": true
+          },
+          "refundable": {
+            "description": "The payment can be refunded.",
+            "type": "boolean",
+            "example": false
+          },
+          "amount_refundable": {
+            "description": "The amount of payment that can be refunded.",
+            "type": "number",
+            "example": 0
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean",
+            "example": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "charge_date": {
+            "description": "A future date on which the payment should be collected. If not specified, the payment will be collected as soon as possible.",
+            "type": "string",
+            "example": "2022-08-04"
+          },
+          "submissions_count": {
+            "description": "The number of time the payment has been sent to the financial institution.",
+            "type": "number",
+            "example": 1
+          },
+          "can_auto_retry_until": {
+            "description": "The latest date the payment will be sent to the financial institution. Null means no limit",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "2022-08-31"
+          },
+          "auto_retries_max_attempts": {
+            "description": "The maximum number of times the payment could be automatically retried.",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "example": null
+          },
+          "effective_charged_date": {
+            "description": "The date when the payment will be collected.",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": null
+          },
+          "estimated_accreditation_date": {
+            "description": "The estimated date when the financial institution will send the amount collect to your account.",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": null
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "updated_status": {
+            "description": "The latest date the payment status was changed.",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "2022-08-31"
+          },
+          "customer": {
+            "title": "Customer",
+            "description": "This object represents a customer of your organization.",
+            "type": "object",
+            "properties": {
+              "id": {
+                "example": "CSljikas98",
+                "description": "Unique identifier for the object.",
+                "maxLength": 5000,
+                "type": "string"
+              },
+              "name": {
+                "description": "The customer's full name or business name.",
+                "type": "string",
+                "example": "Jorgelina Castro"
+              },
+              "email": {
+                "description": "The customer's email address.",
+                "type": "string",
+                "example": "asd@asd.com"
+              },
+              "object": {
+                "type": "string",
+                "enum": [
+                  "customer"
+                ]
+              },
+              "livemode": {
+                "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                "type": "boolean",
+                "example": true
+              },
+              "metadata": {
+                "example": {
+                  "some": "metadata"
+                },
+                "anyOf": [
+                  {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+              },
+              "mobile_number": {
+                "description": "Customer's phone number.",
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "5491164531234"
+              },
+              "gateway_identifier": {
+                "description": "The customer's reference for bank account statements.",
+                "type": "integer",
+                "format": "int32",
+                "example": 383473
+              },
+              "identification_number": {
+                "description": "Customer's Document ID number.",
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "15.555.324"
+              },
+              "identification_type": {
+                "description": "Customer's Document type.",
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "DNI"
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+              },
+              "updated_at": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+              },
+              "deleted_at": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+              },
+              "active_subscriptions_count": {
+                "description": "Active Subscriptions Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "active_subscriptions_sum": {
+                "description": "Active Subscriptions Sum",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "approved_payments_count": {
+                "description": "Approved Payments Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "approved_payments_sum": {
+                "description": "Approved Payments Sum",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "cancelled_subscriptions_count": {
+                "description": "Cancelled Subscriptions Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "paused_subscriptions_count": {
+                "description": "Paused Subscriptions Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "rejected_payments_count": {
+                "description": "Rejected Payments Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "rejected_payments_sum": {
+                "description": "Rejected Payments Sum",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              },
+              "finished_subscriptions_count": {
+                "description": "Finished Subscriptions Count",
+                "type": "integer",
+                "format": "int32",
+                "example": 0
+              }
+            }
+          },
+          "subscription": {
+            "description": "The [Subscription](#tag/Subscriptions) associated with the payment if existent.",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "SBmX1MrZ77Mwq3"
+          },
+          "subscription_payment_number": {
+            "description": "The number of payment of the associated Subscription, if existent.",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "example": null
+          },
+          "gateway": {
+            "description": "The [Gateway](#tag/Gateways) associated with the payment.",
+            "type": "string",
+            "example": "GW1L49J7ARW3"
+          },
+          "payment_method": {
+            "title": "Payment Method",
+            "description": "This object represents a payment method of your account.",
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Type of paymet method. One of: cbu, card.",
+                "enum": [
+                  "card",
+                  "cbu"
+                ]
+              },
+              "card": {
+                "title": "Credit Card",
+                "description": "This object represents a credit card of your account.",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Credit card's bank or financial institution.",
+                    "type": "string",
+                    "example": "Banco Santander Río"
+                  },
+                  "brand": {
+                    "description": "Credit card's brand.",
+                    "type": "string",
+                    "example": "visa-credito",
+                    "enum": [
+                      "amex",
+                      "argencard",
+                      "cabal",
+                      "cabal-debito",
+                      "cbu",
+                      "cencosud",
+                      "cmr-falabella",
+                      "cordobesa",
+                      "diners-club",
+                      "discover",
+                      "jcb",
+                      "lider",
+                      "maestro",
+                      "mastercard",
+                      "mastercard-debit",
+                      "naranja",
+                      "naranja-visa",
+                      "nativa",
+                      "visa-credito",
+                      "visa-debito",
+                      "favacard"
+                    ]
+                  },
+                  "country": {
+                    "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
+                    "type": "string",
+                    "example": "AR"
+                  },
+                  "expiration_month": {
+                    "description": "Expiration month.",
+                    "type": "number",
+                    "example": 11
+                  },
+                  "expiration_year": {
+                    "description": "Expiration year.",
+                    "type": "number",
+                    "example": 2030
+                  },
+                  "fingerprint": {
+                    "description": "Unique fingerprint for this credit card number of your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "last_four_digits": {
+                    "description": "Credit's card last four digits.",
+                    "type": "string",
+                    "example": "9876"
+                  }
+                }
+              },
+              "cbu": {
+                "title": "CBU",
+                "description": "This object represents a CBU bak account of your account.",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Bank.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "Bank account country.",
+                    "type": "string",
+                    "enum": [
+                      "AR"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Unique fingerprint for this bank account number of your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "last_four_digits": {
+                    "description": "Bank account last four digits.",
+                    "type": "string",
+                    "example": "9876"
+                  }
+                }
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+              },
+              "id": {
+                "example": "PM1982h3129",
+                "description": "Unique identifier for the object.",
+                "maxLength": 5000,
+                "type": "string"
+              },
+              "livemode": {
+                "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                "type": "boolean",
+                "example": true
+              },
+              "object": {
+                "type": "string",
+                "enum": [
+                  "payment_method"
+                ]
+              },
+              "updated_at": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2022-02-11T23:19:22-03:00",
+                "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+              }
+            }
+          },
+          "gateway_identifier": {
+            "description": "The custom number you send to the gateway network. In most cases this value is null.",
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "example": null
+          },
+          "refunds": {
+            "description": "Refunds associated with this payment.",
+            "type": "array",
+            "example": []
+          },
+          "metadata": {
+            "example": {
+              "some": "metadata"
+            },
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+          }
+        }
+      },
+      "refund": {
+        "title": "Refund",
+        "description": "This object represents a refunds of your organization.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "example": "RFljikas9Fa8",
+            "description": "Unique identifier for the object.",
+            "maxLength": 5000,
+            "type": "string"
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "refund"
+            ]
+          },
+          "payment_id": {
+            "type": "string",
+            "description": "[Payment ID](#tag/Payments).\n",
+            "example": "PYgaZlLaPMZO"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Refund amount.",
+            "example": 12.5
+          },
+          "currency": {
+            "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+            "type": "string",
+            "enum": [
+              "ARS",
+              "BRL",
+              "CLP",
+              "COP",
+              "MXN",
+              "USB",
+              "USD"
+            ],
+            "example": "ARS"
+          },
+          "reason": {
+            "description": "Refund Reason",
+            "type": "string",
+            "enum": [
+              "duplicate",
+              "error",
+              "requested_by_customer"
+            ],
+            "example": "requested_by_customer"
+          },
+          "status": {
+            "description": "Refund Status",
+            "type": "string",
+            "enum": [
+              "pending_submission",
+              "submitted",
+              "failed",
+              "approved"
+            ],
+            "example": "approved"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "metadata": {
+            "example": {
+              "some": "metadata"
+            },
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+          }
+        }
+      },
+      "completed_at": {
+        "type": "string",
+        "format": "date-time",
+        "example": "2022-02-11T23:19:22-03:00",
+        "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+      },
+      "uuid": {
+        "description": "UUID identifier for the object.",
+        "type": "string",
+        "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
+      },
+      "session": {
+        "title": "Session",
+        "description": "This object represents a session of your organization.",
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "description": "Amount to be collected",
+            "example": "12.5"
+          },
+          "brands": {
+            "type": "array"
+          },
+          "completed_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "count": {
+            "type": "number"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "id": {
+            "description": "UUID identifier for the object.",
+            "type": "string",
+            "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
+          },
+          "name": {
+            "description": "The customer's full name or business name.",
+            "type": "string",
+            "example": "Jorgelina Castro"
+          },
+          "email": {
+            "description": "The customer's email address.",
+            "type": "string",
+            "example": "asd@asd.com"
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean",
+            "example": true
+          },
+          "metadata": {
+            "example": {
+              "some": "metadata"
+            },
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+          },
+          "mobile_number": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "5491164531234"
+          },
+          "gateway_identifier": {
+            "type": "integer",
+            "format": "int32",
+            "example": 383473
+          },
+          "identification_number": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "15.555.324"
+          },
+          "identification_type": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "DNI"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          },
+          "active_subscriptions_count": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "active_subscriptions_sum": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "approved_payments_count": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "approved_payments_sum": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "cancelled_subscriptions_count": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "paused_subscriptions_count": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "rejected_payments_count": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "rejected_payments_sum": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "finished_subscriptions_count": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "deleted_at": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00",
+            "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+          }
+        }
+      },
       "subscription": {
         "title": "Subscription",
         "description": "This object represents a subscription of your organization.",
@@ -1685,271 +2507,6 @@
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00",
             "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-          }
-        }
-      },
-      "payment": {
-        "type": "object"
-      },
-      "refund": {
-        "title": "Refund",
-        "description": "This object represents a refunds of your organization.",
-        "type": "object",
-        "properties": {
-          "id": {
-            "example": "RFljikas9Fa8",
-            "description": "Unique identifier for the object.",
-            "maxLength": 5000,
-            "type": "string"
-          },
-          "object": {
-            "type": "string",
-            "enum": [
-              "refund"
-            ]
-          },
-          "payment_id": {
-            "type": "string",
-            "description": "[Payment ID](#tag/Payments).\n",
-            "example": "PYgaZlLaPMZO."
-          },
-          "amount": {
-            "type": "number",
-            "description": "Refund amount.",
-            "example": "12.5"
-          },
-          "currency": {
-            "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
-            "type": "string",
-            "enum": [
-              "ARS",
-              "BRL",
-              "CLP",
-              "COP",
-              "MXN",
-              "USB",
-              "USD"
-            ],
-            "example": "ARS"
-          },
-          "reason": {
-            "description": "Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.",
-            "type": "string",
-            "example": "requested_by_customer"
-          },
-          "status": {
-            "description": "Refund Status",
-            "type": "string",
-            "example": "approved"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00",
-            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00",
-            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-          },
-          "metadata": {
-            "example": {
-              "some": "metadata"
-            },
-            "anyOf": [
-              {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
-          }
-        }
-      },
-      "completed_at": {
-        "type": "string",
-        "format": "date-time",
-        "example": "2022-02-11T23:19:22-03:00",
-        "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-      },
-      "uuid": {
-        "description": "UUID identifier for the object.",
-        "type": "string",
-        "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
-      },
-      "session": {
-        "title": "Session",
-        "description": "This object represents a session of your organization.",
-        "type": "object",
-        "properties": {
-          "amount": {
-            "type": "number",
-            "description": "Amount to be collected",
-            "example": "12.5"
-          },
-          "brands": {
-            "type": "array"
-          },
-          "completed_at": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00",
-            "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-          },
-          "count": {
-            "type": "number"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00",
-            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-          },
-          "id": {
-            "description": "UUID identifier for the object.",
-            "type": "string",
-            "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
-          },
-          "name": {
-            "description": "The customer's full name or business name.",
-            "type": "string",
-            "example": "Jorgelina Castro"
-          },
-          "email": {
-            "description": "The customer's email address.",
-            "type": "string",
-            "example": "asd@asd.com"
-          },
-          "livemode": {
-            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
-            "type": "boolean",
-            "example": true
-          },
-          "metadata": {
-            "example": {
-              "some": "metadata"
-            },
-            "anyOf": [
-              {
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
-          },
-          "mobile_number": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "example": "5491164531234"
-          },
-          "gateway_identifier": {
-            "type": "integer",
-            "format": "int32",
-            "example": 383473
-          },
-          "identification_number": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "example": "15.555.324"
-          },
-          "identification_type": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "example": "DNI"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00",
-            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
-          },
-          "active_subscriptions_count": {
-            "type": "integer",
-            "format": "int32",
-            "example": 0
-          },
-          "active_subscriptions_sum": {
-            "type": "integer",
-            "format": "int32",
-            "example": 0
-          },
-          "approved_payments_count": {
-            "type": "integer",
-            "format": "int32",
-            "example": 0
-          },
-          "approved_payments_sum": {
-            "type": "integer",
-            "format": "int32",
-            "example": 0
-          },
-          "cancelled_subscriptions_count": {
-            "type": "integer",
-            "format": "int32",
-            "example": 0
-          },
-          "paused_subscriptions_count": {
-            "type": "integer",
-            "format": "int32",
-            "example": 0
-          },
-          "rejected_payments_count": {
-            "type": "integer",
-            "format": "int32",
-            "example": 0
-          },
-          "rejected_payments_sum": {
-            "type": "integer",
-            "format": "int32",
-            "example": 0
-          },
-          "finished_subscriptions_count": {
-            "type": "integer",
-            "format": "int32",
-            "example": 0
-          },
-          "deleted_at": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00",
-            "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
           }
         }
       },
@@ -2905,12 +3462,12 @@
           "payment_id": {
             "type": "string",
             "description": "[Payment ID](#tag/Payments).\n",
-            "example": "PYgaZlLaPMZO."
+            "example": "PYgaZlLaPMZO"
           },
           "amount": {
             "type": "number",
             "description": "Refund amount.",
-            "example": "12.5"
+            "example": 12.5
           },
           "currency": {
             "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
@@ -2927,13 +3484,24 @@
             "example": "ARS"
           },
           "reason": {
-            "description": "Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.",
+            "description": "Refund Reason",
             "type": "string",
+            "enum": [
+              "duplicate",
+              "error",
+              "requested_by_customer"
+            ],
             "example": "requested_by_customer"
           },
           "status": {
             "description": "Refund Status",
             "type": "string",
+            "enum": [
+              "pending_submission",
+              "submitted",
+              "failed",
+              "approved"
+            ],
             "example": "approved"
           },
           "created_at": {
@@ -3151,15 +3719,15 @@
     },
     {
       "name": "Payment Methods",
-      "description": "PaymentMethod objects represent your customer's payment instruments. You can use them with to create Payments or Subscriptions to a Customer.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment_method.yaml\" exampleRef=\"#/components/examples/payment_method.yaml\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "PaymentMethod objects represent your customer's payment instruments. You can use them with to create Payments or Subscriptions to a Customer.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment_method\" exampleRef=\"#/components/examples/payment_method\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Payments",
-      "description": "A Payment is an object you create to charge a credit, debit card, or bank account. You can retrieve information about the payment and also refund them partially or totally.\n\n| Status               | Meaning                                                                            |\n| -------------------- | ---------------------------------------------------------------------------------- |\n| `pending_submission` | The payment has been issued, but still not submitted to the finnancial entity      |\n| `cancelled`          | The payment has been manually cancelled                                            |\n| `submitted`          | The payment is succesfully submitted and being processing in the finnancial entity |\n| `failed`             | Couldn't be submitted to the finnancial entity. There is an error in the request   |\n| `will_retry`         | The attempt failed, but the finnancial entity will make a new attempt              |\n| `approved`           | Submitted OK and approved                                                          |\n| `rejected`           | Submitted OK but couldn't make the collection                                      |\n| `chargeback`         | The customer asked the bank to get them their money back                           |\n| `refunded`           | The payment has been returned to the customer                                      |\n| `partially_refunded` | A partial amount of the payment has been returned to the customer                  |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment\" exampleRef=\"#/components/examples/payment\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "A Payment is an object you create to charge a credit, debit card, or bank account. You can retrieve information about the payment and also refund them partially or totally.\n\n|        Status        |                                      Meaning                                       |\n| -------------------- | ---------------------------------------------------------------------------------- |\n| `pending_submission` | The payment has been issued, but still not submitted to the finnancial entity      |\n| `cancelled`          | The payment has been manually cancelled                                            |\n| `submitted`          | The payment is succesfully submitted and being processing by the finnancial entity |\n| `failed`             | Couldn't be submitted to the finnancial entity. There is an error in the request   |\n| `will_retry`         | The attempt failed, but the finnancial entity will make a new attempt              |\n| `approved`           | Submitted OK and approved                                                          |\n| `rejected`           | Submitted OK but couldn't make the collection                                      |\n| `chargeback`         | The customer asked the bank to get them their money back                           |\n| `refunded`           | The payment has been returned to the customer                                      |\n| `partially_refunded` | A partial amount of the payment has been returned to the customer                  |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/payment\" exampleRef=\"#/components/examples/payment\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Refunds",
-      "description": "Refund objects allow you to refund a payment that has previously been created but not yet totally refunded. Funds will be refunded to the credit, debit card, or bank account that was originally charged.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/refund\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "Refund objects allow you to refund a payment that has previously been created but not yet totally refunded. Funds will be refunded to the credit, debit card, or bank account that was originally charged.\n\n|        Status        |                                      Meaning                                      |\n| -------------------- | --------------------------------------------------------------------------------- |\n| `pending_submission` | The refund has been issued, but still not submitted to the finnancial entity      |\n| `submitted`          | The refund is succesfully submitted and being processing by the finnancial entity |\n| `failed`             | Submitted OK but rejected by the finnancial entity                                |\n| `approved`           | Submitted OK and approved                                                         |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/refund\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Sessions",
@@ -3167,7 +3735,7 @@
     },
     {
       "name": "Subscriptions",
-      "description": "Subscriptions allow you to charge a customer on a recurring basis according to a schedule.\n\n| Status      | Meaning                                                                                  |\n| ----------- | ---------------------------------------------------------------------------------------- |\n| `active`    | The subscription is active and generating payments.                                      |\n| `paused`    | The subscription have been manually paused and won't generate payments until is resumed. |\n| `cancelled` | The subscription have been manually cancelled.                                           |\n| `finished`  | The subscription is completed: all the payments were created succesfully.                |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/subscription\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "Subscriptions allow you to charge a customer on a recurring basis according to a schedule.\n\n|   Status    |                                         Meaning                                          |\n| ----------- | ---------------------------------------------------------------------------------------- |\n| `active`    | The subscription is active and generating payments.                                      |\n| `paused`    | The subscription have been manually paused and won't generate payments until is resumed. |\n| `cancelled` | The subscription have been manually cancelled.                                           |\n| `finished`  | The subscription is completed: all the payments were created succesfully.                |\n\n<SchemaDefinition schemaRef=\"#/components/schemas/subscription\" exampleRef=\"#/components/examples/subscription\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Webhooks",
@@ -7922,15 +8490,31 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "title": "Subscription",
-                        "description": "This object represents a subscription of your organization.",
+                        "title": "Payment",
+                        "description": "This object represents a payments of your organization.",
                         "type": "object",
                         "properties": {
-                          "created_at": {
+                          "id": {
+                            "example": "PYljikas9Fa8",
+                            "description": "Unique identifier for the object.",
+                            "maxLength": 5000,
+                            "type": "string"
+                          },
+                          "object": {
                             "type": "string",
-                            "format": "date-time",
-                            "example": "2022-02-11T23:19:22-03:00",
-                            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            "enum": [
+                              "payment"
+                            ]
+                          },
+                          "amount": {
+                            "type": "number",
+                            "description": "Payment amount.",
+                            "example": 12.5
+                          },
+                          "amount_refunded": {
+                            "type": "number",
+                            "description": "Payment amount refunded.",
+                            "example": 0
                           },
                           "currency": {
                             "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
@@ -7946,11 +8530,139 @@
                             ],
                             "example": "ARS"
                           },
-                          "approved_payments_count": {
-                            "type": "number"
+                          "description": {
+                            "description": "Payment description",
+                            "type": "string",
+                            "example": "Ajuste por deuda pasada"
                           },
-                          "approved_payments_sum": {
-                            "type": "number"
+                          "status": {
+                            "description": "Payment Status",
+                            "type": "string",
+                            "enum": [
+                              "pending_submission",
+                              "cancelled",
+                              "submitted",
+                              "failed",
+                              "will_retry",
+                              "approved",
+                              "rejected",
+                              "chargeback",
+                              "refunded",
+                              "partially_refunded"
+                            ],
+                            "example": "rejected"
+                          },
+                          "response_message": {
+                            "description": "Financial institution detailed response",
+                            "type": "string",
+                            "example": "Falta de fondos"
+                          },
+                          "paid": {
+                            "description": "The payment has been succesfully collected.",
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "retryable": {
+                            "description": "The payment can be retried.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "refundable": {
+                            "description": "The payment can be refunded.",
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "amount_refundable": {
+                            "description": "The amount of payment that can be refunded.",
+                            "type": "number",
+                            "example": 0
+                          },
+                          "livemode": {
+                            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                          },
+                          "charge_date": {
+                            "description": "A future date on which the payment should be collected. If not specified, the payment will be collected as soon as possible.",
+                            "type": "string",
+                            "example": "2022-08-04"
+                          },
+                          "submissions_count": {
+                            "description": "The number of time the payment has been sent to the financial institution.",
+                            "type": "number",
+                            "example": 1
+                          },
+                          "can_auto_retry_until": {
+                            "description": "The latest date the payment will be sent to the financial institution. Null means no limit",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "example": "2022-08-31"
+                          },
+                          "auto_retries_max_attempts": {
+                            "description": "The maximum number of times the payment could be automatically retried.",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ],
+                            "example": null
+                          },
+                          "effective_charged_date": {
+                            "description": "The date when the payment will be collected.",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "example": null
+                          },
+                          "estimated_accreditation_date": {
+                            "description": "The estimated date when the financial institution will send the amount collect to your account.",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "example": null
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                          },
+                          "updated_status": {
+                            "description": "The latest date the payment status was changed.",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "example": "2022-08-31"
                           },
                           "customer": {
                             "title": "Customer",
@@ -8124,36 +8836,34 @@
                               }
                             }
                           },
-                          "first_date": {
-                            "type": "string"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "livemode": {
-                            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
-                            "type": "boolean",
-                            "example": true
-                          },
-                          "metadata": {
-                            "example": {
-                              "some": "metadata"
-                            },
-                            "anyOf": [
-                              {
-                                "additionalProperties": {
-                                  "type": "string"
-                                },
-                                "type": "object"
-                              },
+                          "subscription": {
+                            "description": "The [Subscription](#tag/Subscriptions) associated with the payment if existent.",
+                            "oneOf": [
                               {
                                 "type": "null"
+                              },
+                              {
+                                "type": "string"
                               }
                             ],
-                            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                            "example": "SBmX1MrZ77Mwq3"
                           },
-                          "object": {
-                            "type": "string"
+                          "subscription_payment_number": {
+                            "description": "The number of payment of the associated Subscription, if existent.",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ],
+                            "example": null
+                          },
+                          "gateway": {
+                            "description": "The [Gateway](#tag/Gateways) associated with the payment.",
+                            "type": "string",
+                            "example": "GW1L49J7ARW3"
                           },
                           "payment_method": {
                             "title": "Payment Method",
@@ -8292,29 +9002,39 @@
                               }
                             }
                           },
-                          "rejected_payments_count": {
-                            "type": "number"
+                          "gateway_identifier": {
+                            "description": "The custom number you send to the gateway network. In most cases this value is null.",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ],
+                            "example": null
                           },
-                          "rejected_payments_sum": {
-                            "type": "number"
-                          },
-                          "start_date": {
-                            "type": "string"
-                          },
-                          "status": {
-                            "type": "string"
-                          },
-                          "upcoming_dates": {
+                          "refunds": {
+                            "description": "Refunds associated with this payment.",
                             "type": "array",
-                            "items": {
-                              "type": "object"
-                            }
+                            "example": []
                           },
-                          "updated_at": {
-                            "type": "string",
-                            "format": "date-time",
-                            "example": "2022-02-11T23:19:22-03:00",
-                            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                          "metadata": {
+                            "example": {
+                              "some": "metadata"
+                            },
+                            "anyOf": [
+                              {
+                                "additionalProperties": {
+                                  "type": "string"
+                                },
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ],
+                            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
                           }
                         }
                       }
@@ -8502,7 +9222,553 @@
                 "schema": {
                   "properties": {
                     "data": {
-                      "type": "object"
+                      "type": "object",
+                      "title": "Payment",
+                      "description": "This object represents a payments of your organization.",
+                      "properties": {
+                        "id": {
+                          "example": "PYljikas9Fa8",
+                          "description": "Unique identifier for the object.",
+                          "maxLength": 5000,
+                          "type": "string"
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "payment"
+                          ]
+                        },
+                        "amount": {
+                          "type": "number",
+                          "description": "Payment amount.",
+                          "example": 12.5
+                        },
+                        "amount_refunded": {
+                          "type": "number",
+                          "description": "Payment amount refunded.",
+                          "example": 0
+                        },
+                        "currency": {
+                          "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                          "type": "string",
+                          "enum": [
+                            "ARS",
+                            "BRL",
+                            "CLP",
+                            "COP",
+                            "MXN",
+                            "USB",
+                            "USD"
+                          ],
+                          "example": "ARS"
+                        },
+                        "description": {
+                          "description": "Payment description",
+                          "type": "string",
+                          "example": "Ajuste por deuda pasada"
+                        },
+                        "status": {
+                          "description": "Payment Status",
+                          "type": "string",
+                          "enum": [
+                            "pending_submission",
+                            "cancelled",
+                            "submitted",
+                            "failed",
+                            "will_retry",
+                            "approved",
+                            "rejected",
+                            "chargeback",
+                            "refunded",
+                            "partially_refunded"
+                          ],
+                          "example": "rejected"
+                        },
+                        "response_message": {
+                          "description": "Financial institution detailed response",
+                          "type": "string",
+                          "example": "Falta de fondos"
+                        },
+                        "paid": {
+                          "description": "The payment has been succesfully collected.",
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "retryable": {
+                          "description": "The payment can be retried.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "refundable": {
+                          "description": "The payment can be refunded.",
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "amount_refundable": {
+                          "description": "The amount of payment that can be refunded.",
+                          "type": "number",
+                          "example": 0
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "charge_date": {
+                          "description": "A future date on which the payment should be collected. If not specified, the payment will be collected as soon as possible.",
+                          "type": "string",
+                          "example": "2022-08-04"
+                        },
+                        "submissions_count": {
+                          "description": "The number of time the payment has been sent to the financial institution.",
+                          "type": "number",
+                          "example": 1
+                        },
+                        "can_auto_retry_until": {
+                          "description": "The latest date the payment will be sent to the financial institution. Null means no limit",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "2022-08-31"
+                        },
+                        "auto_retries_max_attempts": {
+                          "description": "The maximum number of times the payment could be automatically retried.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "effective_charged_date": {
+                          "description": "The date when the payment will be collected.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "estimated_accreditation_date": {
+                          "description": "The estimated date when the financial institution will send the amount collect to your account.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "updated_status": {
+                          "description": "The latest date the payment status was changed.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "2022-08-31"
+                        },
+                        "customer": {
+                          "title": "Customer",
+                          "description": "This object represents a customer of your organization.",
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "example": "CSljikas98",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "The customer's full name or business name.",
+                              "type": "string",
+                              "example": "Jorgelina Castro"
+                            },
+                            "email": {
+                              "description": "The customer's email address.",
+                              "type": "string",
+                              "example": "asd@asd.com"
+                            },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "customer"
+                              ]
+                            },
+                            "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "metadata": {
+                              "example": {
+                                "some": "metadata"
+                              },
+                              "anyOf": [
+                                {
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  },
+                                  "type": "object"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ],
+                              "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                            },
+                            "mobile_number": {
+                              "description": "Customer's phone number.",
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "example": "5491164531234"
+                            },
+                            "gateway_identifier": {
+                              "description": "The customer's reference for bank account statements.",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 383473
+                            },
+                            "identification_number": {
+                              "description": "Customer's Document ID number.",
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "example": "15.555.324"
+                            },
+                            "identification_type": {
+                              "description": "Customer's Document type.",
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "example": "DNI"
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "deleted_at": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "active_subscriptions_count": {
+                              "description": "Active Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "active_subscriptions_sum": {
+                              "description": "Active Subscriptions Sum",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "approved_payments_count": {
+                              "description": "Approved Payments Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "approved_payments_sum": {
+                              "description": "Approved Payments Sum",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "cancelled_subscriptions_count": {
+                              "description": "Cancelled Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "paused_subscriptions_count": {
+                              "description": "Paused Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "rejected_payments_count": {
+                              "description": "Rejected Payments Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "rejected_payments_sum": {
+                              "description": "Rejected Payments Sum",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "finished_subscriptions_count": {
+                              "description": "Finished Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            }
+                          }
+                        },
+                        "subscription": {
+                          "description": "The [Subscription](#tag/Subscriptions) associated with the payment if existent.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "SBmX1MrZ77Mwq3"
+                        },
+                        "subscription_payment_number": {
+                          "description": "The number of payment of the associated Subscription, if existent.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "gateway": {
+                          "description": "The [Gateway](#tag/Gateways) associated with the payment.",
+                          "type": "string",
+                          "example": "GW1L49J7ARW3"
+                        },
+                        "payment_method": {
+                          "title": "Payment Method",
+                          "description": "This object represents a payment method of your account.",
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "Type of paymet method. One of: cbu, card.",
+                              "enum": [
+                                "card",
+                                "cbu"
+                              ]
+                            },
+                            "card": {
+                              "title": "Credit Card",
+                              "description": "This object represents a credit card of your account.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Credit card's bank or financial institution.",
+                                  "type": "string",
+                                  "example": "Banco Santander Río"
+                                },
+                                "brand": {
+                                  "description": "Credit card's brand.",
+                                  "type": "string",
+                                  "example": "visa-credito",
+                                  "enum": [
+                                    "amex",
+                                    "argencard",
+                                    "cabal",
+                                    "cabal-debito",
+                                    "cbu",
+                                    "cencosud",
+                                    "cmr-falabella",
+                                    "cordobesa",
+                                    "diners-club",
+                                    "discover",
+                                    "jcb",
+                                    "lider",
+                                    "maestro",
+                                    "mastercard",
+                                    "mastercard-debit",
+                                    "naranja",
+                                    "naranja-visa",
+                                    "nativa",
+                                    "visa-credito",
+                                    "visa-debito",
+                                    "favacard"
+                                  ]
+                                },
+                                "country": {
+                                  "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
+                                  "type": "string",
+                                  "example": "AR"
+                                },
+                                "expiration_month": {
+                                  "description": "Expiration month.",
+                                  "type": "number",
+                                  "example": 11
+                                },
+                                "expiration_year": {
+                                  "description": "Expiration year.",
+                                  "type": "number",
+                                  "example": 2030
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this credit card number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "last_four_digits": {
+                                  "description": "Credit's card last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                }
+                              }
+                            },
+                            "cbu": {
+                              "title": "CBU",
+                              "description": "This object represents a CBU bak account of your account.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "AR"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                }
+                              }
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "id": {
+                              "example": "PM1982h3129",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
+                              "type": "string"
+                            },
+                            "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "payment_method"
+                              ]
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            }
+                          }
+                        },
+                        "gateway_identifier": {
+                          "description": "The custom number you send to the gateway network. In most cases this value is null.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "refunds": {
+                          "description": "Refunds associated with this payment.",
+                          "type": "array",
+                          "example": []
+                        },
+                        "metadata": {
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "anyOf": [
+                            {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                        }
+                      }
                     }
                   }
                 }
@@ -8562,7 +9828,553 @@
                 "schema": {
                   "properties": {
                     "data": {
-                      "type": "object"
+                      "type": "object",
+                      "title": "Payment",
+                      "description": "This object represents a payments of your organization.",
+                      "properties": {
+                        "id": {
+                          "example": "PYljikas9Fa8",
+                          "description": "Unique identifier for the object.",
+                          "maxLength": 5000,
+                          "type": "string"
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "payment"
+                          ]
+                        },
+                        "amount": {
+                          "type": "number",
+                          "description": "Payment amount.",
+                          "example": 12.5
+                        },
+                        "amount_refunded": {
+                          "type": "number",
+                          "description": "Payment amount refunded.",
+                          "example": 0
+                        },
+                        "currency": {
+                          "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                          "type": "string",
+                          "enum": [
+                            "ARS",
+                            "BRL",
+                            "CLP",
+                            "COP",
+                            "MXN",
+                            "USB",
+                            "USD"
+                          ],
+                          "example": "ARS"
+                        },
+                        "description": {
+                          "description": "Payment description",
+                          "type": "string",
+                          "example": "Ajuste por deuda pasada"
+                        },
+                        "status": {
+                          "description": "Payment Status",
+                          "type": "string",
+                          "enum": [
+                            "pending_submission",
+                            "cancelled",
+                            "submitted",
+                            "failed",
+                            "will_retry",
+                            "approved",
+                            "rejected",
+                            "chargeback",
+                            "refunded",
+                            "partially_refunded"
+                          ],
+                          "example": "rejected"
+                        },
+                        "response_message": {
+                          "description": "Financial institution detailed response",
+                          "type": "string",
+                          "example": "Falta de fondos"
+                        },
+                        "paid": {
+                          "description": "The payment has been succesfully collected.",
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "retryable": {
+                          "description": "The payment can be retried.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "refundable": {
+                          "description": "The payment can be refunded.",
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "amount_refundable": {
+                          "description": "The amount of payment that can be refunded.",
+                          "type": "number",
+                          "example": 0
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "charge_date": {
+                          "description": "A future date on which the payment should be collected. If not specified, the payment will be collected as soon as possible.",
+                          "type": "string",
+                          "example": "2022-08-04"
+                        },
+                        "submissions_count": {
+                          "description": "The number of time the payment has been sent to the financial institution.",
+                          "type": "number",
+                          "example": 1
+                        },
+                        "can_auto_retry_until": {
+                          "description": "The latest date the payment will be sent to the financial institution. Null means no limit",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "2022-08-31"
+                        },
+                        "auto_retries_max_attempts": {
+                          "description": "The maximum number of times the payment could be automatically retried.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "effective_charged_date": {
+                          "description": "The date when the payment will be collected.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "estimated_accreditation_date": {
+                          "description": "The estimated date when the financial institution will send the amount collect to your account.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "updated_status": {
+                          "description": "The latest date the payment status was changed.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "2022-08-31"
+                        },
+                        "customer": {
+                          "title": "Customer",
+                          "description": "This object represents a customer of your organization.",
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "example": "CSljikas98",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "The customer's full name or business name.",
+                              "type": "string",
+                              "example": "Jorgelina Castro"
+                            },
+                            "email": {
+                              "description": "The customer's email address.",
+                              "type": "string",
+                              "example": "asd@asd.com"
+                            },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "customer"
+                              ]
+                            },
+                            "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "metadata": {
+                              "example": {
+                                "some": "metadata"
+                              },
+                              "anyOf": [
+                                {
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  },
+                                  "type": "object"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ],
+                              "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                            },
+                            "mobile_number": {
+                              "description": "Customer's phone number.",
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "example": "5491164531234"
+                            },
+                            "gateway_identifier": {
+                              "description": "The customer's reference for bank account statements.",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 383473
+                            },
+                            "identification_number": {
+                              "description": "Customer's Document ID number.",
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "example": "15.555.324"
+                            },
+                            "identification_type": {
+                              "description": "Customer's Document type.",
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "example": "DNI"
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "deleted_at": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "active_subscriptions_count": {
+                              "description": "Active Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "active_subscriptions_sum": {
+                              "description": "Active Subscriptions Sum",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "approved_payments_count": {
+                              "description": "Approved Payments Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "approved_payments_sum": {
+                              "description": "Approved Payments Sum",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "cancelled_subscriptions_count": {
+                              "description": "Cancelled Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "paused_subscriptions_count": {
+                              "description": "Paused Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "rejected_payments_count": {
+                              "description": "Rejected Payments Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "rejected_payments_sum": {
+                              "description": "Rejected Payments Sum",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "finished_subscriptions_count": {
+                              "description": "Finished Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            }
+                          }
+                        },
+                        "subscription": {
+                          "description": "The [Subscription](#tag/Subscriptions) associated with the payment if existent.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "SBmX1MrZ77Mwq3"
+                        },
+                        "subscription_payment_number": {
+                          "description": "The number of payment of the associated Subscription, if existent.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "gateway": {
+                          "description": "The [Gateway](#tag/Gateways) associated with the payment.",
+                          "type": "string",
+                          "example": "GW1L49J7ARW3"
+                        },
+                        "payment_method": {
+                          "title": "Payment Method",
+                          "description": "This object represents a payment method of your account.",
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "Type of paymet method. One of: cbu, card.",
+                              "enum": [
+                                "card",
+                                "cbu"
+                              ]
+                            },
+                            "card": {
+                              "title": "Credit Card",
+                              "description": "This object represents a credit card of your account.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Credit card's bank or financial institution.",
+                                  "type": "string",
+                                  "example": "Banco Santander Río"
+                                },
+                                "brand": {
+                                  "description": "Credit card's brand.",
+                                  "type": "string",
+                                  "example": "visa-credito",
+                                  "enum": [
+                                    "amex",
+                                    "argencard",
+                                    "cabal",
+                                    "cabal-debito",
+                                    "cbu",
+                                    "cencosud",
+                                    "cmr-falabella",
+                                    "cordobesa",
+                                    "diners-club",
+                                    "discover",
+                                    "jcb",
+                                    "lider",
+                                    "maestro",
+                                    "mastercard",
+                                    "mastercard-debit",
+                                    "naranja",
+                                    "naranja-visa",
+                                    "nativa",
+                                    "visa-credito",
+                                    "visa-debito",
+                                    "favacard"
+                                  ]
+                                },
+                                "country": {
+                                  "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
+                                  "type": "string",
+                                  "example": "AR"
+                                },
+                                "expiration_month": {
+                                  "description": "Expiration month.",
+                                  "type": "number",
+                                  "example": 11
+                                },
+                                "expiration_year": {
+                                  "description": "Expiration year.",
+                                  "type": "number",
+                                  "example": 2030
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this credit card number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "last_four_digits": {
+                                  "description": "Credit's card last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                }
+                              }
+                            },
+                            "cbu": {
+                              "title": "CBU",
+                              "description": "This object represents a CBU bak account of your account.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "AR"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                }
+                              }
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "id": {
+                              "example": "PM1982h3129",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
+                              "type": "string"
+                            },
+                            "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "payment_method"
+                              ]
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            }
+                          }
+                        },
+                        "gateway_identifier": {
+                          "description": "The custom number you send to the gateway network. In most cases this value is null.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "refunds": {
+                          "description": "Refunds associated with this payment.",
+                          "type": "array",
+                          "example": []
+                        },
+                        "metadata": {
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "anyOf": [
+                            {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                        }
+                      }
                     }
                   }
                 }
@@ -8701,7 +10513,553 @@
                 "schema": {
                   "properties": {
                     "data": {
-                      "type": "object"
+                      "type": "object",
+                      "title": "Payment",
+                      "description": "This object represents a payments of your organization.",
+                      "properties": {
+                        "id": {
+                          "example": "PYljikas9Fa8",
+                          "description": "Unique identifier for the object.",
+                          "maxLength": 5000,
+                          "type": "string"
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "payment"
+                          ]
+                        },
+                        "amount": {
+                          "type": "number",
+                          "description": "Payment amount.",
+                          "example": 12.5
+                        },
+                        "amount_refunded": {
+                          "type": "number",
+                          "description": "Payment amount refunded.",
+                          "example": 0
+                        },
+                        "currency": {
+                          "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
+                          "type": "string",
+                          "enum": [
+                            "ARS",
+                            "BRL",
+                            "CLP",
+                            "COP",
+                            "MXN",
+                            "USB",
+                            "USD"
+                          ],
+                          "example": "ARS"
+                        },
+                        "description": {
+                          "description": "Payment description",
+                          "type": "string",
+                          "example": "Ajuste por deuda pasada"
+                        },
+                        "status": {
+                          "description": "Payment Status",
+                          "type": "string",
+                          "enum": [
+                            "pending_submission",
+                            "cancelled",
+                            "submitted",
+                            "failed",
+                            "will_retry",
+                            "approved",
+                            "rejected",
+                            "chargeback",
+                            "refunded",
+                            "partially_refunded"
+                          ],
+                          "example": "rejected"
+                        },
+                        "response_message": {
+                          "description": "Financial institution detailed response",
+                          "type": "string",
+                          "example": "Falta de fondos"
+                        },
+                        "paid": {
+                          "description": "The payment has been succesfully collected.",
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "retryable": {
+                          "description": "The payment can be retried.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "refundable": {
+                          "description": "The payment can be refunded.",
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "amount_refundable": {
+                          "description": "The amount of payment that can be refunded.",
+                          "type": "number",
+                          "example": 0
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "charge_date": {
+                          "description": "A future date on which the payment should be collected. If not specified, the payment will be collected as soon as possible.",
+                          "type": "string",
+                          "example": "2022-08-04"
+                        },
+                        "submissions_count": {
+                          "description": "The number of time the payment has been sent to the financial institution.",
+                          "type": "number",
+                          "example": 1
+                        },
+                        "can_auto_retry_until": {
+                          "description": "The latest date the payment will be sent to the financial institution. Null means no limit",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "2022-08-31"
+                        },
+                        "auto_retries_max_attempts": {
+                          "description": "The maximum number of times the payment could be automatically retried.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "effective_charged_date": {
+                          "description": "The date when the payment will be collected.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "estimated_accreditation_date": {
+                          "description": "The estimated date when the financial institution will send the amount collect to your account.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                        },
+                        "updated_status": {
+                          "description": "The latest date the payment status was changed.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "2022-08-31"
+                        },
+                        "customer": {
+                          "title": "Customer",
+                          "description": "This object represents a customer of your organization.",
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "example": "CSljikas98",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "The customer's full name or business name.",
+                              "type": "string",
+                              "example": "Jorgelina Castro"
+                            },
+                            "email": {
+                              "description": "The customer's email address.",
+                              "type": "string",
+                              "example": "asd@asd.com"
+                            },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "customer"
+                              ]
+                            },
+                            "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "metadata": {
+                              "example": {
+                                "some": "metadata"
+                              },
+                              "anyOf": [
+                                {
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  },
+                                  "type": "object"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ],
+                              "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                            },
+                            "mobile_number": {
+                              "description": "Customer's phone number.",
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "example": "5491164531234"
+                            },
+                            "gateway_identifier": {
+                              "description": "The customer's reference for bank account statements.",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 383473
+                            },
+                            "identification_number": {
+                              "description": "Customer's Document ID number.",
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "example": "15.555.324"
+                            },
+                            "identification_type": {
+                              "description": "Customer's Document type.",
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "example": "DNI"
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "deleted_at": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ],
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "active_subscriptions_count": {
+                              "description": "Active Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "active_subscriptions_sum": {
+                              "description": "Active Subscriptions Sum",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "approved_payments_count": {
+                              "description": "Approved Payments Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "approved_payments_sum": {
+                              "description": "Approved Payments Sum",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "cancelled_subscriptions_count": {
+                              "description": "Cancelled Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "paused_subscriptions_count": {
+                              "description": "Paused Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "rejected_payments_count": {
+                              "description": "Rejected Payments Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "rejected_payments_sum": {
+                              "description": "Rejected Payments Sum",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            },
+                            "finished_subscriptions_count": {
+                              "description": "Finished Subscriptions Count",
+                              "type": "integer",
+                              "format": "int32",
+                              "example": 0
+                            }
+                          }
+                        },
+                        "subscription": {
+                          "description": "The [Subscription](#tag/Subscriptions) associated with the payment if existent.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "example": "SBmX1MrZ77Mwq3"
+                        },
+                        "subscription_payment_number": {
+                          "description": "The number of payment of the associated Subscription, if existent.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "gateway": {
+                          "description": "The [Gateway](#tag/Gateways) associated with the payment.",
+                          "type": "string",
+                          "example": "GW1L49J7ARW3"
+                        },
+                        "payment_method": {
+                          "title": "Payment Method",
+                          "description": "This object represents a payment method of your account.",
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "Type of paymet method. One of: cbu, card.",
+                              "enum": [
+                                "card",
+                                "cbu"
+                              ]
+                            },
+                            "card": {
+                              "title": "Credit Card",
+                              "description": "This object represents a credit card of your account.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Credit card's bank or financial institution.",
+                                  "type": "string",
+                                  "example": "Banco Santander Río"
+                                },
+                                "brand": {
+                                  "description": "Credit card's brand.",
+                                  "type": "string",
+                                  "example": "visa-credito",
+                                  "enum": [
+                                    "amex",
+                                    "argencard",
+                                    "cabal",
+                                    "cabal-debito",
+                                    "cbu",
+                                    "cencosud",
+                                    "cmr-falabella",
+                                    "cordobesa",
+                                    "diners-club",
+                                    "discover",
+                                    "jcb",
+                                    "lider",
+                                    "maestro",
+                                    "mastercard",
+                                    "mastercard-debit",
+                                    "naranja",
+                                    "naranja-visa",
+                                    "nativa",
+                                    "visa-credito",
+                                    "visa-debito",
+                                    "favacard"
+                                  ]
+                                },
+                                "country": {
+                                  "description": "Credit card's [ISO_3166-1_alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
+                                  "type": "string",
+                                  "example": "AR"
+                                },
+                                "expiration_month": {
+                                  "description": "Expiration month.",
+                                  "type": "number",
+                                  "example": 11
+                                },
+                                "expiration_year": {
+                                  "description": "Expiration year.",
+                                  "type": "number",
+                                  "example": 2030
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this credit card number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "last_four_digits": {
+                                  "description": "Credit's card last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                }
+                              }
+                            },
+                            "cbu": {
+                              "title": "CBU",
+                              "description": "This object represents a CBU bak account of your account.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "AR"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                }
+                              }
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            },
+                            "id": {
+                              "example": "PM1982h3129",
+                              "description": "Unique identifier for the object.",
+                              "maxLength": 5000,
+                              "type": "string"
+                            },
+                            "livemode": {
+                              "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "object": {
+                              "type": "string",
+                              "enum": [
+                                "payment_method"
+                              ]
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2022-02-11T23:19:22-03:00",
+                              "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8)."
+                            }
+                          }
+                        },
+                        "gateway_identifier": {
+                          "description": "The custom number you send to the gateway network. In most cases this value is null.",
+                          "oneOf": [
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "example": null
+                        },
+                        "refunds": {
+                          "description": "Refunds associated with this payment.",
+                          "type": "array",
+                          "example": []
+                        },
+                        "metadata": {
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "anyOf": [
+                            {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n"
+                        }
+                      }
                     }
                   }
                 }
@@ -8908,12 +11266,12 @@
                           "payment_id": {
                             "type": "string",
                             "description": "[Payment ID](#tag/Payments).\n",
-                            "example": "PYgaZlLaPMZO."
+                            "example": "PYgaZlLaPMZO"
                           },
                           "amount": {
                             "type": "number",
                             "description": "Refund amount.",
-                            "example": "12.5"
+                            "example": 12.5
                           },
                           "currency": {
                             "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
@@ -8930,13 +11288,24 @@
                             "example": "ARS"
                           },
                           "reason": {
-                            "description": "Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.",
+                            "description": "Refund Reason",
                             "type": "string",
+                            "enum": [
+                              "duplicate",
+                              "error",
+                              "requested_by_customer"
+                            ],
                             "example": "requested_by_customer"
                           },
                           "status": {
                             "description": "Refund Status",
                             "type": "string",
+                            "enum": [
+                              "pending_submission",
+                              "submitted",
+                              "failed",
+                              "approved"
+                            ],
                             "example": "approved"
                           },
                           "created_at": {
@@ -9144,12 +11513,12 @@
                         "payment_id": {
                           "type": "string",
                           "description": "[Payment ID](#tag/Payments).\n",
-                          "example": "PYgaZlLaPMZO."
+                          "example": "PYgaZlLaPMZO"
                         },
                         "amount": {
                           "type": "number",
                           "description": "Refund amount.",
-                          "example": "12.5"
+                          "example": 12.5
                         },
                         "currency": {
                           "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
@@ -9166,13 +11535,24 @@
                           "example": "ARS"
                         },
                         "reason": {
-                          "description": "Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.",
+                          "description": "Refund Reason",
                           "type": "string",
+                          "enum": [
+                            "duplicate",
+                            "error",
+                            "requested_by_customer"
+                          ],
                           "example": "requested_by_customer"
                         },
                         "status": {
                           "description": "Refund Status",
                           "type": "string",
+                          "enum": [
+                            "pending_submission",
+                            "submitted",
+                            "failed",
+                            "approved"
+                          ],
                           "example": "approved"
                         },
                         "created_at": {
@@ -9298,12 +11678,12 @@
                         "payment_id": {
                           "type": "string",
                           "description": "[Payment ID](#tag/Payments).\n",
-                          "example": "PYgaZlLaPMZO."
+                          "example": "PYgaZlLaPMZO"
                         },
                         "amount": {
                           "type": "number",
                           "description": "Refund amount.",
-                          "example": "12.5"
+                          "example": 12.5
                         },
                         "currency": {
                           "description": "Currency for the transacion using [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults to account's default.",
@@ -9320,13 +11700,24 @@
                           "example": "ARS"
                         },
                         "reason": {
-                          "description": "Refund Reason. One of `duplicate`, `error`, or `requested_by_customer`.",
+                          "description": "Refund Reason",
                           "type": "string",
+                          "enum": [
+                            "duplicate",
+                            "error",
+                            "requested_by_customer"
+                          ],
                           "example": "requested_by_customer"
                         },
                         "status": {
                           "description": "Refund Status",
                           "type": "string",
+                          "enum": [
+                            "pending_submission",
+                            "submitted",
+                            "failed",
+                            "approved"
+                          ],
                           "example": "approved"
                         },
                         "created_at": {

@@ -1405,18 +1405,28 @@ components:
         - USB
         - USD
       example: ARS
-    subscription:
-      title: Subscription
-      description: This object represents a subscription of your organization.
+    payment:
+      title: Payment
+      description: This object represents a payments of your organization.
       type: object
-      properties: &ref_14
-        created_at:
+      properties: &ref_29
+        id:
+          example: PYljikas9Fa8
+          description: Unique identifier for the object.
+          maxLength: 5000
           type: string
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
-          description: >-
-            Time at which the object was created. Formatting follows
-            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+        object:
+          type: string
+          enum:
+            - payment
+        amount:
+          type: number
+          description: Payment amount.
+          example: 12.5
+        amount_refunded:
+          type: number
+          description: Payment amount refunded.
+          example: 0
         currency:
           description: >-
             Currency for the transacion using
@@ -1425,25 +1435,153 @@ components:
           type: string
           enum: *ref_9
           example: ARS
-        approved_payments_count:
-          type: number
-        approved_payments_sum:
-          type: number
-        customer:
-          title: Customer
-          description: This object represents a customer of your organization.
-          type: object
-          properties: *ref_10
-        first_date:
+        description:
+          description: Payment description
           type: string
-        id:
+          example: Ajuste por deuda pasada
+        status:
+          description: Payment Status
           type: string
+          enum:
+            - pending_submission
+            - cancelled
+            - submitted
+            - failed
+            - will_retry
+            - approved
+            - rejected
+            - chargeback
+            - refunded
+            - partially_refunded
+          example: rejected
+        response_message:
+          description: Financial institution detailed response
+          type: string
+          example: Falta de fondos
+        paid:
+          description: The payment has been succesfully collected.
+          type: boolean
+          example: false
+        retryable:
+          description: The payment can be retried.
+          type: boolean
+          example: true
+        refundable:
+          description: The payment can be refunded.
+          type: boolean
+          example: false
+        amount_refundable:
+          description: The amount of payment that can be refunded.
+          type: number
+          example: 0
         livemode:
           description: >-
             Has the value `true` if the object exists in live mode or the value
             `false` if the object exists in test mode.
           type: boolean
           example: true
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          description: >-
+            Time at which the object was created. Formatting follows
+            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+        charge_date:
+          description: >-
+            A future date on which the payment should be collected. If not
+            specified, the payment will be collected as soon as possible.
+          type: string
+          example: '2022-08-04'
+        submissions_count:
+          description: >-
+            The number of time the payment has been sent to the financial
+            institution.
+          type: number
+          example: 1
+        can_auto_retry_until:
+          description: >-
+            The latest date the payment will be sent to the financial
+            institution. Null means no limit
+          oneOf:
+            - type: 'null'
+            - type: string
+          example: '2022-08-31'
+        auto_retries_max_attempts:
+          description: >-
+            The maximum number of times the payment could be automatically
+            retried.
+          oneOf:
+            - type: 'null'
+            - type: number
+          example: null
+        effective_charged_date:
+          description: The date when the payment will be collected.
+          oneOf:
+            - type: 'null'
+            - type: string
+          example: null
+        estimated_accreditation_date:
+          description: >-
+            The estimated date when the financial institution will send the
+            amount collect to your account.
+          oneOf:
+            - type: 'null'
+            - type: string
+          example: null
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          description: >-
+            Time at which the object was last updated. Formatting follows
+            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+        updated_status:
+          description: The latest date the payment status was changed.
+          oneOf:
+            - type: 'null'
+            - type: string
+          example: '2022-08-31'
+        customer:
+          title: Customer
+          description: This object represents a customer of your organization.
+          type: object
+          properties: *ref_10
+        subscription:
+          description: >-
+            The [Subscription](#tag/Subscriptions) associated with the payment
+            if existent.
+          oneOf:
+            - type: 'null'
+            - type: string
+          example: SBmX1MrZ77Mwq3
+        subscription_payment_number:
+          description: The number of payment of the associated Subscription, if existent.
+          oneOf:
+            - type: 'null'
+            - type: number
+          example: null
+        gateway:
+          description: The [Gateway](#tag/Gateways) associated with the payment.
+          type: string
+          example: GW1L49J7ARW3
+        payment_method:
+          title: Payment Method
+          description: This object represents a payment method of your account.
+          type: object
+          properties: *ref_8
+        gateway_identifier:
+          description: >-
+            The custom number you send to the gateway network. In most cases
+            this value is null.
+          oneOf:
+            - type: 'null'
+            - type: number
+          example: null
+        refunds:
+          description: Refunds associated with this payment.
+          type: array
+          example: []
         metadata:
           example: *ref_0
           anyOf: *ref_1
@@ -1452,34 +1590,6 @@ components:
             to an object. This can be useful for storing additional
             information about the object in a structured format.
             All keys can be unset by posting `null` value to `metadata`.
-        object:
-          type: string
-        payment_method:
-          title: Payment Method
-          description: This object represents a payment method of your account.
-          type: object
-          properties: *ref_8
-        rejected_payments_count:
-          type: number
-        rejected_payments_sum:
-          type: number
-        start_date:
-          type: string
-        status:
-          type: string
-        upcoming_dates:
-          type: array
-          items:
-            type: object
-        updated_at:
-          type: string
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
-          description: >-
-            Time at which the object was last updated. Formatting follows
-            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-    payment:
-      type: object
     refund:
       title: Refund
       description: This object represents a refunds of your organization.
@@ -1498,11 +1608,11 @@ components:
           type: string
           description: |
             [Payment ID](#tag/Payments).
-          example: PYgaZlLaPMZO.
+          example: PYgaZlLaPMZO
         amount:
           type: number
           description: Refund amount.
-          example: '12.5'
+          example: 12.5
         currency:
           description: >-
             Currency for the transacion using
@@ -1512,14 +1622,21 @@ components:
           enum: *ref_9
           example: ARS
         reason:
-          description: >-
-            Refund Reason. One of `duplicate`, `error`, or
-            `requested_by_customer`.
+          description: Refund Reason
           type: string
+          enum:
+            - duplicate
+            - error
+            - requested_by_customer
           example: requested_by_customer
         status:
           description: Refund Status
           type: string
+          enum:
+            - pending_submission
+            - submitted
+            - failed
+            - approved
           example: approved
         created_at:
           type: string
@@ -1558,7 +1675,7 @@ components:
       title: Session
       description: This object represents a session of your organization.
       type: object
-      properties: &ref_30
+      properties: &ref_31
         amount:
           type: number
           description: Amount to be collected
@@ -1675,6 +1792,79 @@ components:
           example: '2022-02-11T23:19:22-03:00'
           description: >-
             Time at which the object was deleted. Formatting follows
+            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+    subscription:
+      title: Subscription
+      description: This object represents a subscription of your organization.
+      type: object
+      properties: &ref_14
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          description: >-
+            Time at which the object was created. Formatting follows
+            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+        currency:
+          description: >-
+            Currency for the transacion using
+            [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217) codes. Defaults
+            to account's default.
+          type: string
+          enum: *ref_9
+          example: ARS
+        approved_payments_count:
+          type: number
+        approved_payments_sum:
+          type: number
+        customer:
+          title: Customer
+          description: This object represents a customer of your organization.
+          type: object
+          properties: *ref_10
+        first_date:
+          type: string
+        id:
+          type: string
+        livemode:
+          description: >-
+            Has the value `true` if the object exists in live mode or the value
+            `false` if the object exists in test mode.
+          type: boolean
+          example: true
+        metadata:
+          example: *ref_0
+          anyOf: *ref_1
+          description: |
+            Set of [key-value pairs](#section/Metadata) that you can attach
+            to an object. This can be useful for storing additional
+            information about the object in a structured format.
+            All keys can be unset by posting `null` value to `metadata`.
+        object:
+          type: string
+        payment_method:
+          title: Payment Method
+          description: This object represents a payment method of your account.
+          type: object
+          properties: *ref_8
+        rejected_payments_count:
+          type: number
+        rejected_payments_sum:
+          type: number
+        start_date:
+          type: string
+        status:
+          type: string
+        upcoming_dates:
+          type: array
+          items:
+            type: object
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+          description: >-
+            Time at which the object was last updated. Formatting follows
             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
     webhook:
       title: Webhook
@@ -1943,8 +2133,8 @@ tags:
       can use them with to create Payments or Subscriptions to a Customer.
 
 
-      <SchemaDefinition schemaRef="#/components/schemas/payment_method.yaml"
-      exampleRef="#/components/examples/payment_method.yaml" showReadOnly={true}
+      <SchemaDefinition schemaRef="#/components/schemas/payment_method"
+      exampleRef="#/components/examples/payment_method" showReadOnly={true}
       showWriteOnly={true} />
   - name: Payments
     description: >
@@ -1953,9 +2143,8 @@ tags:
       them partially or totally.
 
 
-      | Status               |
-      Meaning                                                                           
-      |
+      |        Status        |                                     
+      Meaning                                       |
 
       | -------------------- |
       ----------------------------------------------------------------------------------
@@ -1968,7 +2157,7 @@ tags:
       cancelled                                            |
 
       | `submitted`          | The payment is succesfully submitted and being
-      processing in the finnancial entity |
+      processing by the finnancial entity |
 
       | `failed`             | Couldn't be submitted to the finnancial entity.
       There is an error in the request   |
@@ -2000,6 +2189,26 @@ tags:
       Refund objects allow you to refund a payment that has previously been
       created but not yet totally refunded. Funds will be refunded to the
       credit, debit card, or bank account that was originally charged.
+
+
+      |        Status        |                                     
+      Meaning                                      |
+
+      | -------------------- |
+      ---------------------------------------------------------------------------------
+      |
+
+      | `pending_submission` | The refund has been issued, but still not
+      submitted to the finnancial entity      |
+
+      | `submitted`          | The refund is succesfully submitted and being
+      processing by the finnancial entity |
+
+      | `failed`             | Submitted OK but rejected by the finnancial
+      entity                                |
+
+      | `approved`           | Submitted OK and
+      approved                                                         |
 
 
       <SchemaDefinition schemaRef="#/components/schemas/refund"
@@ -2044,9 +2253,8 @@ tags:
       according to a schedule.
 
 
-      | Status      |
-      Meaning                                                                                 
-      |
+      |   Status    |                                        
+      Meaning                                          |
 
       | ----------- |
       ----------------------------------------------------------------------------------------
@@ -3694,93 +3902,10 @@ paths:
                   data:
                     type: array
                     items:
-                      title: Subscription
-                      description: >-
-                        This object represents a subscription of your
-                        organization.
+                      title: Payment
+                      description: This object represents a payments of your organization.
                       type: object
-                      properties: &ref_31
-                        created_at:
-                          type: string
-                          format: date-time
-                          example: '2022-02-11T23:19:22-03:00'
-                          description: >-
-                            Time at which the object was created. Formatting
-                            follows
-                            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-                        currency:
-                          description: >-
-                            Currency for the transacion using
-                            [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217)
-                            codes. Defaults to account's default.
-                          type: string
-                          enum: *ref_9
-                          example: ARS
-                        approved_payments_count:
-                          type: number
-                        approved_payments_sum:
-                          type: number
-                        customer:
-                          title: Customer
-                          description: >-
-                            This object represents a customer of your
-                            organization.
-                          type: object
-                          properties: *ref_10
-                        first_date:
-                          type: string
-                        id:
-                          type: string
-                        livemode:
-                          description: >-
-                            Has the value `true` if the object exists in live
-                            mode or the value `false` if the object exists in
-                            test mode.
-                          type: boolean
-                          example: true
-                        metadata:
-                          example: *ref_0
-                          anyOf: *ref_1
-                          description: >
-                            Set of [key-value pairs](#section/Metadata) that you
-                            can attach
-
-                            to an object. This can be useful for storing
-                            additional
-
-                            information about the object in a structured format.
-
-                            All keys can be unset by posting `null` value to
-                            `metadata`.
-                        object:
-                          type: string
-                        payment_method:
-                          title: Payment Method
-                          description: >-
-                            This object represents a payment method of your
-                            account.
-                          type: object
-                          properties: *ref_8
-                        rejected_payments_count:
-                          type: number
-                        rejected_payments_sum:
-                          type: number
-                        start_date:
-                          type: string
-                        status:
-                          type: string
-                        upcoming_dates:
-                          type: array
-                          items:
-                            type: object
-                        updated_at:
-                          type: string
-                          format: date-time
-                          example: '2022-02-11T23:19:22-03:00'
-                          description: >-
-                            Time at which the object was last updated.
-                            Formatting follows
-                            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+                      properties: *ref_29
                   links:
                     title: Response Meta
                     description: Pagination metadata
@@ -3882,6 +4007,9 @@ paths:
                 properties:
                   data:
                     type: object
+                    title: Payment
+                    description: This object represents a payments of your organization.
+                    properties: *ref_29
         '401':
           description: Unauthorized
           content:
@@ -3917,6 +4045,9 @@ paths:
                 properties:
                   data:
                     type: object
+                    title: Payment
+                    description: This object represents a payments of your organization.
+                    properties: *ref_29
         '401':
           description: Unauthorized
           content:
@@ -4006,6 +4137,9 @@ paths:
                 properties:
                   data:
                     type: object
+                    title: Payment
+                    description: This object represents a payments of your organization.
+                    properties: *ref_29
         '401':
           description: Unauthorized
           content:
@@ -4121,7 +4255,7 @@ paths:
                       title: Refund
                       description: This object represents a refunds of your organization.
                       type: object
-                      properties: &ref_29
+                      properties: &ref_30
                         id:
                           example: RFljikas9Fa8
                           description: Unique identifier for the object.
@@ -4135,11 +4269,11 @@ paths:
                           type: string
                           description: |
                             [Payment ID](#tag/Payments).
-                          example: PYgaZlLaPMZO.
+                          example: PYgaZlLaPMZO
                         amount:
                           type: number
                           description: Refund amount.
-                          example: '12.5'
+                          example: 12.5
                         currency:
                           description: >-
                             Currency for the transacion using
@@ -4149,14 +4283,21 @@ paths:
                           enum: *ref_9
                           example: ARS
                         reason:
-                          description: >-
-                            Refund Reason. One of `duplicate`, `error`, or
-                            `requested_by_customer`.
+                          description: Refund Reason
                           type: string
+                          enum:
+                            - duplicate
+                            - error
+                            - requested_by_customer
                           example: requested_by_customer
                         status:
                           description: Refund Status
                           type: string
+                          enum:
+                            - pending_submission
+                            - submitted
+                            - failed
+                            - approved
                           example: approved
                         created_at:
                           type: string
@@ -4265,7 +4406,7 @@ paths:
                     type: object
                     title: Refund
                     description: This object represents a refunds of your organization.
-                    properties: *ref_29
+                    properties: *ref_30
         '401':
           description: Unauthorized
           content:
@@ -4312,7 +4453,7 @@ paths:
                     type: object
                     title: Refund
                     description: This object represents a refunds of your organization.
-                    properties: *ref_29
+                    properties: *ref_30
         '401':
           description: Unauthorized
           content:
@@ -4474,7 +4615,7 @@ paths:
                     type: object
                     title: Session
                     description: This object represents a session of your organization.
-                    properties: *ref_30
+                    properties: *ref_31
         '401':
           description: Unauthorized
           content:
@@ -4521,7 +4662,7 @@ paths:
                     type: object
                     title: Session
                     description: This object represents a session of your organization.
-                    properties: *ref_30
+                    properties: *ref_31
         '401':
           description: Unauthorized
           content:
@@ -4564,7 +4705,88 @@ paths:
                         This object represents a subscription of your
                         organization.
                       type: object
-                      properties: *ref_31
+                      properties: &ref_32
+                        created_at:
+                          type: string
+                          format: date-time
+                          example: '2022-02-11T23:19:22-03:00'
+                          description: >-
+                            Time at which the object was created. Formatting
+                            follows
+                            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+                        currency:
+                          description: >-
+                            Currency for the transacion using
+                            [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217)
+                            codes. Defaults to account's default.
+                          type: string
+                          enum: *ref_9
+                          example: ARS
+                        approved_payments_count:
+                          type: number
+                        approved_payments_sum:
+                          type: number
+                        customer:
+                          title: Customer
+                          description: >-
+                            This object represents a customer of your
+                            organization.
+                          type: object
+                          properties: *ref_10
+                        first_date:
+                          type: string
+                        id:
+                          type: string
+                        livemode:
+                          description: >-
+                            Has the value `true` if the object exists in live
+                            mode or the value `false` if the object exists in
+                            test mode.
+                          type: boolean
+                          example: true
+                        metadata:
+                          example: *ref_0
+                          anyOf: *ref_1
+                          description: >
+                            Set of [key-value pairs](#section/Metadata) that you
+                            can attach
+
+                            to an object. This can be useful for storing
+                            additional
+
+                            information about the object in a structured format.
+
+                            All keys can be unset by posting `null` value to
+                            `metadata`.
+                        object:
+                          type: string
+                        payment_method:
+                          title: Payment Method
+                          description: >-
+                            This object represents a payment method of your
+                            account.
+                          type: object
+                          properties: *ref_8
+                        rejected_payments_count:
+                          type: number
+                        rejected_payments_sum:
+                          type: number
+                        start_date:
+                          type: string
+                        status:
+                          type: string
+                        upcoming_dates:
+                          type: array
+                          items:
+                            type: object
+                        updated_at:
+                          type: string
+                          format: date-time
+                          example: '2022-02-11T23:19:22-03:00'
+                          description: >-
+                            Time at which the object was last updated.
+                            Formatting follows
+                            [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
                   links:
                     title: Response Meta
                     description: Pagination metadata
@@ -4699,7 +4921,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_31
+                    properties: *ref_32
         '401':
           description: Unauthorized
           content:
@@ -4748,7 +4970,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_31
+                    properties: *ref_32
         '401':
           description: Unauthorized
           content:
@@ -4892,7 +5114,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_31
+                    properties: *ref_32
         '401':
           description: Unauthorized
           content:
@@ -4941,7 +5163,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_31
+                    properties: *ref_32
         '401':
           description: Unauthorized
           content:
@@ -4987,7 +5209,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_31
+                    properties: *ref_32
         '401':
           description: Unauthorized
           content:
@@ -5040,7 +5262,7 @@ paths:
                     description: >-
                       This object represents a subscription of your
                       organization.
-                    properties: *ref_31
+                    properties: *ref_32
         '401':
           description: Unauthorized
           content:
@@ -5103,7 +5325,7 @@ paths:
                         which provides a user interface for registering and
                         testing your webhook endpoints.
                       type: object
-                      properties: &ref_32
+                      properties: &ref_33
                         id:
                           description: Unique identifier for the object.
                           maxLength: 5000
@@ -5179,7 +5401,7 @@ paths:
                             Time at which the object was last updated.
                             Formatting follows
                             [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
-                      example: &ref_33
+                      example: &ref_34
                         created_at: '2022-02-11T23:19:22-03:00'
                         enabled: true
                         enabled_events:
@@ -5289,8 +5511,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_32
-                    example: *ref_33
+                    properties: *ref_33
+                    example: *ref_34
         '401':
           description: Unauthorized
           content:
@@ -5350,8 +5572,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_32
-                    example: *ref_33
+                    properties: *ref_33
+                    example: *ref_34
           description: Successful response.
         '404':
           content:
@@ -5413,8 +5635,8 @@ paths:
                       dashboard](https://dashboard.tucuota.com/webhooks), which
                       provides a user interface for registering and testing your
                       webhook endpoints.
-                    properties: *ref_32
-                    example: *ref_33
+                    properties: *ref_33
+                    example: *ref_34
         '401':
           description: Unauthorized
           content:
