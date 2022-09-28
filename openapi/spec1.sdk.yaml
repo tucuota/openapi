@@ -181,11 +181,14 @@ info:
     | mastercard | 5457948807868523       | rejected   |
     | mastercard | 5292525121482410       | failed     |
     | visa       | 4024007127322104       | approved   |
+    | visa       | 4532417816926690       | approved\* |
     | visa       | 4556854712355908       | rejected   |
     | visa       | 4485388690536078       | failed     |
     | amex       | 377539501632477        | approved   |
     | amex       | 341400508811411        | rejected   |
     | amex       | 372974912152697        | failed     |
+
+    \* Using the visa number `4532417816926690` will also trigger a `payment_method.automatically_updated` event, which informs that the payment method number has been changed automatically.
     # Webhooks
 
     Webhooks are endpoints you can configure to be notified about events that happen in your TuCuota account. Most users configure Webhooks from the dashboard, which provides a user interface for registering and testing your webhook endpoints.
