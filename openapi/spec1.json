@@ -7368,13 +7368,13 @@
                     "description": "[Customer ID](#tag/Customers).\n",
                     "example": "CSgaZlLaPMZO."
                   },
-                  "payment_method_number": {
+                  "payment_method_id": {
                     "type": "string"
                   }
                 },
                 "example": {
                   "customer_id": "CS3oDRqz9wzB",
-                  "payment_method_number": "4024007127322104"
+                  "payment_method_id": "PMBja4YZ2GDR"
                 }
               }
             }
@@ -13583,7 +13583,7 @@
                   "amount": 100,
                   "description": "Some subscription description",
                   "customer_id": "CS9PL8eeo8aB",
-                  "payment_method_number": "4024007127322104",
+                  "payment_method_id": "PMBja4YZ2GDR",
                   "interval_unit": "monthly",
                   "day_of_month": 1,
                   "metadata": {
@@ -14827,7 +14827,7 @@
                   "amount": 100,
                   "description": "Some subscription description",
                   "customer_id": "CS9PL8eeo8aB",
-                  "payment_method_number": "4024007127322104",
+                  "payment_method_id": "PMBja4YZ2GDR",
                   "interval_unit": "monthly",
                   "day_of_month": 1,
                   "metadata": {

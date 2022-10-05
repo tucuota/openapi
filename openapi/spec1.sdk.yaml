@@ -3846,11 +3846,11 @@ paths:
                     [Customer ID](#tag/Customers).
                   type: string
                   example: CSgaZlLaPMZO.
-                payment_method_number:
+                payment_method_id:
                   type: string
               example:
                 customer_id: CS3oDRqz9wzB
-                payment_method_number: '4024007127322104'
+                payment_method_id: PMBja4YZ2GDR
         required: false
       responses:
         '201':
@@ -3908,7 +3908,7 @@ paths:
             curl --request POST \
               --url https://api.tucuota.com/v1/mandates \
               --header 'content-type: application/json' \
-              --data '{"customer_id":"CS3oDRqz9wzB","payment_method_number":"4024007127322104"}'
+              --data '{"customer_id":"CS3oDRqz9wzB","payment_method_id":"PMBja4YZ2GDR"}'
         - lang: Node + Request
           source: |
             const request = require('request');
@@ -3917,7 +3917,7 @@ paths:
               method: 'POST',
               url: 'https://api.tucuota.com/v1/mandates',
               headers: {'content-type': 'application/json'},
-              body: {customer_id: 'CS3oDRqz9wzB', payment_method_number: '4024007127322104'},
+              body: {customer_id: 'CS3oDRqz9wzB', payment_method_id: 'PMBja4YZ2GDR'},
               json: true
             };
 
@@ -3938,7 +3938,7 @@ paths:
               'content-type' => 'application/json'
             ]);
 
-            $request->setBody('{"customer_id":"CS3oDRqz9wzB","payment_method_number":"4024007127322104"}');
+            $request->setBody('{"customer_id":"CS3oDRqz9wzB","payment_method_id":"PMBja4YZ2GDR"}');
 
             try {
               $response = $request->send();
@@ -3955,7 +3955,7 @@ paths:
 
             payload = {
                 "customer_id": "CS3oDRqz9wzB",
-                "payment_method_number": "4024007127322104"
+                "payment_method_id": "PMBja4YZ2GDR"
             }
             headers = {"content-type": "application/json"}
 
@@ -3966,7 +3966,7 @@ paths:
           source: |-
             HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/mandates")
               .header("content-type", "application/json")
-              .body("{\"customer_id\":\"CS3oDRqz9wzB\",\"payment_method_number\":\"4024007127322104\"}")
+              .body("{\"customer_id\":\"CS3oDRqz9wzB\",\"payment_method_id\":\"PMBja4YZ2GDR\"}")
               .asString();
         - lang: Ruby + Native
           source: |-
@@ -3982,7 +3982,7 @@ paths:
 
             request = Net::HTTP::Post.new(url)
             request["content-type"] = 'application/json'
-            request.body = "{\"customer_id\":\"CS3oDRqz9wzB\",\"payment_method_number\":\"4024007127322104\"}"
+            request.body = "{\"customer_id\":\"CS3oDRqz9wzB\",\"payment_method_id\":\"PMBja4YZ2GDR\"}"
 
             response = http.request(request)
             puts response.read_body
@@ -9758,7 +9758,7 @@ paths:
                 amount: 100
                 description: Some subscription description
                 customer_id: CS9PL8eeo8aB
-                payment_method_number: '4024007127322104'
+                payment_method_id: PMBja4YZ2GDR
                 interval_unit: monthly
                 day_of_month: 1
                 metadata:
@@ -10196,7 +10196,7 @@ paths:
             curl --request POST \
               --url https://api.tucuota.com/v1/subscriptions \
               --header 'content-type: application/json' \
-              --data '{"amount":100,"description":"Some subscription description","customer_id":"CS9PL8eeo8aB","payment_method_number":"4024007127322104","interval_unit":"monthly","day_of_month":1,"metadata":{"some":"metadata"}}'
+              --data '{"amount":100,"description":"Some subscription description","customer_id":"CS9PL8eeo8aB","payment_method_id":"PMBja4YZ2GDR","interval_unit":"monthly","day_of_month":1,"metadata":{"some":"metadata"}}'
         - lang: Node + Request
           source: |
             const request = require('request');
@@ -10209,7 +10209,7 @@ paths:
                 amount: 100,
                 description: 'Some subscription description',
                 customer_id: 'CS9PL8eeo8aB',
-                payment_method_number: '4024007127322104',
+                payment_method_id: 'PMBja4YZ2GDR',
                 interval_unit: 'monthly',
                 day_of_month: 1,
                 metadata: {some: 'metadata'}
@@ -10234,7 +10234,7 @@ paths:
               'content-type' => 'application/json'
             ]);
 
-            $request->setBody('{"amount":100,"description":"Some subscription description","customer_id":"CS9PL8eeo8aB","payment_method_number":"4024007127322104","interval_unit":"monthly","day_of_month":1,"metadata":{"some":"metadata"}}');
+            $request->setBody('{"amount":100,"description":"Some subscription description","customer_id":"CS9PL8eeo8aB","payment_method_id":"PMBja4YZ2GDR","interval_unit":"monthly","day_of_month":1,"metadata":{"some":"metadata"}}');
 
             try {
               $response = $request->send();
@@ -10253,7 +10253,7 @@ paths:
                 "amount": 100,
                 "description": "Some subscription description",
                 "customer_id": "CS9PL8eeo8aB",
-                "payment_method_number": "4024007127322104",
+                "payment_method_id": "PMBja4YZ2GDR",
                 "interval_unit": "monthly",
                 "day_of_month": 1,
                 "metadata": {"some": "metadata"}
@@ -10267,7 +10267,7 @@ paths:
           source: |-
             HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/subscriptions")
               .header("content-type", "application/json")
-              .body("{\"amount\":100,\"description\":\"Some subscription description\",\"customer_id\":\"CS9PL8eeo8aB\",\"payment_method_number\":\"4024007127322104\",\"interval_unit\":\"monthly\",\"day_of_month\":1,\"metadata\":{\"some\":\"metadata\"}}")
+              .body("{\"amount\":100,\"description\":\"Some subscription description\",\"customer_id\":\"CS9PL8eeo8aB\",\"payment_method_id\":\"PMBja4YZ2GDR\",\"interval_unit\":\"monthly\",\"day_of_month\":1,\"metadata\":{\"some\":\"metadata\"}}")
               .asString();
         - lang: Ruby + Native
           source: |-
@@ -10283,7 +10283,7 @@ paths:
 
             request = Net::HTTP::Post.new(url)
             request["content-type"] = 'application/json'
-            request.body = "{\"amount\":100,\"description\":\"Some subscription description\",\"customer_id\":\"CS9PL8eeo8aB\",\"payment_method_number\":\"4024007127322104\",\"interval_unit\":\"monthly\",\"day_of_month\":1,\"metadata\":{\"some\":\"metadata\"}}"
+            request.body = "{\"amount\":100,\"description\":\"Some subscription description\",\"customer_id\":\"CS9PL8eeo8aB\",\"payment_method_id\":\"PMBja4YZ2GDR\",\"interval_unit\":\"monthly\",\"day_of_month\":1,\"metadata\":{\"some\":\"metadata\"}}"
 
             response = http.request(request)
             puts response.read_body
@@ -10863,7 +10863,7 @@ paths:
                 amount: 100
                 description: Some subscription description
                 customer_id: CS9PL8eeo8aB
-                payment_method_number: '4024007127322104'
+                payment_method_id: PMBja4YZ2GDR
                 interval_unit: monthly
                 day_of_month: 1
                 metadata:
@@ -11301,7 +11301,7 @@ paths:
             curl --request PUT \
               --url https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3 \
               --header 'content-type: application/json' \
-              --data '{"amount":100,"description":"Some subscription description","customer_id":"CS9PL8eeo8aB","payment_method_number":"4024007127322104","interval_unit":"monthly","day_of_month":1,"metadata":{"some":"metadata"}}'
+              --data '{"amount":100,"description":"Some subscription description","customer_id":"CS9PL8eeo8aB","payment_method_id":"PMBja4YZ2GDR","interval_unit":"monthly","day_of_month":1,"metadata":{"some":"metadata"}}'
         - lang: Node + Request
           source: |
             const request = require('request');
@@ -11314,7 +11314,7 @@ paths:
                 amount: 100,
                 description: 'Some subscription description',
                 customer_id: 'CS9PL8eeo8aB',
-                payment_method_number: '4024007127322104',
+                payment_method_id: 'PMBja4YZ2GDR',
                 interval_unit: 'monthly',
                 day_of_month: 1,
                 metadata: {some: 'metadata'}
@@ -11339,7 +11339,7 @@ paths:
               'content-type' => 'application/json'
             ]);
 
-            $request->setBody('{"amount":100,"description":"Some subscription description","customer_id":"CS9PL8eeo8aB","payment_method_number":"4024007127322104","interval_unit":"monthly","day_of_month":1,"metadata":{"some":"metadata"}}');
+            $request->setBody('{"amount":100,"description":"Some subscription description","customer_id":"CS9PL8eeo8aB","payment_method_id":"PMBja4YZ2GDR","interval_unit":"monthly","day_of_month":1,"metadata":{"some":"metadata"}}');
 
             try {
               $response = $request->send();
@@ -11358,7 +11358,7 @@ paths:
                 "amount": 100,
                 "description": "Some subscription description",
                 "customer_id": "CS9PL8eeo8aB",
-                "payment_method_number": "4024007127322104",
+                "payment_method_id": "PMBja4YZ2GDR",
                 "interval_unit": "monthly",
                 "day_of_month": 1,
                 "metadata": {"some": "metadata"}
@@ -11372,7 +11372,7 @@ paths:
           source: |-
             HttpResponse<String> response = Unirest.put("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3")
               .header("content-type", "application/json")
-              .body("{\"amount\":100,\"description\":\"Some subscription description\",\"customer_id\":\"CS9PL8eeo8aB\",\"payment_method_number\":\"4024007127322104\",\"interval_unit\":\"monthly\",\"day_of_month\":1,\"metadata\":{\"some\":\"metadata\"}}")
+              .body("{\"amount\":100,\"description\":\"Some subscription description\",\"customer_id\":\"CS9PL8eeo8aB\",\"payment_method_id\":\"PMBja4YZ2GDR\",\"interval_unit\":\"monthly\",\"day_of_month\":1,\"metadata\":{\"some\":\"metadata\"}}")
               .asString();
         - lang: Ruby + Native
           source: |-
@@ -11388,7 +11388,7 @@ paths:
 
             request = Net::HTTP::Put.new(url)
             request["content-type"] = 'application/json'
-            request.body = "{\"amount\":100,\"description\":\"Some subscription description\",\"customer_id\":\"CS9PL8eeo8aB\",\"payment_method_number\":\"4024007127322104\",\"interval_unit\":\"monthly\",\"day_of_month\":1,\"metadata\":{\"some\":\"metadata\"}}"
+            request.body = "{\"amount\":100,\"description\":\"Some subscription description\",\"customer_id\":\"CS9PL8eeo8aB\",\"payment_method_id\":\"PMBja4YZ2GDR\",\"interval_unit\":\"monthly\",\"day_of_month\":1,\"metadata\":{\"some\":\"metadata\"}}"
 
             response = http.request(request)
             puts response.read_body

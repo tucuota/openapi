@@ -3622,11 +3622,11 @@ paths:
                   description: |
                     [Customer ID](#tag/Customers).
                   example: CSgaZlLaPMZO.
-                payment_method_number:
+                payment_method_id:
                   type: string
               example:
                 customer_id: CS3oDRqz9wzB
-                payment_method_number: '4024007127322104'
+                payment_method_id: PMBja4YZ2GDR
         required: false
       responses:
         '201':
@@ -5118,7 +5118,7 @@ paths:
                 amount: 100
                 description: Some subscription description
                 customer_id: CS9PL8eeo8aB
-                payment_method_number: '4024007127322104'
+                payment_method_id: PMBja4YZ2GDR
                 interval_unit: monthly
                 day_of_month: 1
                 metadata:
@@ -5311,7 +5311,7 @@ paths:
                 amount: 100
                 description: Some subscription description
                 customer_id: CS9PL8eeo8aB
-                payment_method_number: '4024007127322104'
+                payment_method_id: PMBja4YZ2GDR
                 interval_unit: monthly
                 day_of_month: 1
                 metadata:
