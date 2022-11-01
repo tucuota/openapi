@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
   license:
-    name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0.html
+    name: Proprietary
+    url: https://tucuota.com/terms
   title: TuCuota API
   description: |
     # Introduction
@@ -312,7 +312,7 @@ info:
     Compare the signature (or signatures) in the header to the expected signature. For an equality match, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.
 
     To protect against timing attacks, use a constant-time string comparison to compare the expected signature to each of the received signatures.
-  termsOfService: http://swagger.io/terms/
+  termsOfService: https://tucuota.com/terms
   contact:
     name: TuCuota Devs
     email: devs@tucuota.com
