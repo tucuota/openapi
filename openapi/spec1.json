@@ -262,9 +262,9 @@
             }
           },
           "mobile_number": {
-            "description": "Customer's phone number.",
+            "description": "Customer's valid phone number (with area code).",
             "x-description-i18n": {
-              "spa": "Número de teléfono del cliente."
+              "spa": "Número de teléfono válido del cliente (con código de área)."
             },
             "oneOf": [
               {
@@ -1361,9 +1361,9 @@
                 }
               },
               "mobile_number": {
-                "description": "Customer's phone number.",
+                "description": "Customer's valid phone number (with area code).",
                 "x-description-i18n": {
-                  "spa": "Número de teléfono del cliente."
+                  "spa": "Número de teléfono válido del cliente (con código de área)."
                 },
                 "oneOf": [
                   {
@@ -2148,9 +2148,9 @@
                 }
               },
               "mobile_number": {
-                "description": "Customer's phone number.",
+                "description": "Customer's valid phone number (with area code).",
                 "x-description-i18n": {
-                  "spa": "Número de teléfono del cliente."
+                  "spa": "Número de teléfono válido del cliente (con código de área)."
                 },
                 "oneOf": [
                   {
@@ -3201,9 +3201,9 @@
                 }
               },
               "mobile_number": {
-                "description": "Customer's phone number.",
+                "description": "Customer's valid phone number (with area code).",
                 "x-description-i18n": {
-                  "spa": "Número de teléfono del cliente."
+                  "spa": "Número de teléfono válido del cliente (con código de área)."
                 },
                 "oneOf": [
                   {
@@ -3880,9 +3880,9 @@
             }
           },
           "mobile_number": {
-            "description": "Customer's phone number.",
+            "description": "Customer's valid phone number (with area code).",
             "x-description-i18n": {
-              "spa": "Número de teléfono del cliente."
+              "spa": "Número de teléfono válido del cliente (con código de área)."
             },
             "oneOf": [
               {
@@ -4501,9 +4501,9 @@
                 }
               },
               "mobile_number": {
-                "description": "Customer's phone number.",
+                "description": "Customer's valid phone number (with area code).",
                 "x-description-i18n": {
-                  "spa": "Número de teléfono del cliente."
+                  "spa": "Número de teléfono válido del cliente (con código de área)."
                 },
                 "oneOf": [
                   {
@@ -5263,9 +5263,9 @@
                 }
               },
               "mobile_number": {
-                "description": "Customer's phone number.",
+                "description": "Customer's valid phone number (with area code).",
                 "x-description-i18n": {
-                  "spa": "Número de teléfono del cliente."
+                  "spa": "Número de teléfono válido del cliente (con código de área)."
                 },
                 "oneOf": [
                   {
@@ -6523,9 +6523,9 @@
                 }
               },
               "mobile_number": {
-                "description": "Customer's phone number.",
+                "description": "Customer's valid phone number (with area code).",
                 "x-description-i18n": {
-                  "spa": "Número de teléfono del cliente."
+                  "spa": "Número de teléfono válido del cliente (con código de área)."
                 },
                 "oneOf": [
                   {
@@ -7862,9 +7862,9 @@
                             }
                           },
                           "mobile_number": {
-                            "description": "Customer's phone number.",
+                            "description": "Customer's valid phone number (with area code).",
                             "x-description-i18n": {
-                              "spa": "Número de teléfono del cliente."
+                              "spa": "Número de teléfono válido del cliente (con código de área)."
                             },
                             "oneOf": [
                               {
@@ -8343,9 +8343,9 @@
                           }
                         },
                         "mobile_number": {
-                          "description": "Customer's phone number.",
+                          "description": "Customer's valid phone number (with area code).",
                           "x-description-i18n": {
-                            "spa": "Número de teléfono del cliente."
+                            "spa": "Número de teléfono válido del cliente (con código de área)."
                           },
                           "oneOf": [
                             {
@@ -8673,9 +8673,9 @@
                           }
                         },
                         "mobile_number": {
-                          "description": "Customer's phone number.",
+                          "description": "Customer's valid phone number (with area code).",
                           "x-description-i18n": {
-                            "spa": "Número de teléfono del cliente."
+                            "spa": "Número de teléfono válido del cliente (con código de área)."
                           },
                           "oneOf": [
                             {
@@ -9110,9 +9110,9 @@
                           }
                         },
                         "mobile_number": {
-                          "description": "Customer's phone number.",
+                          "description": "Customer's valid phone number (with area code).",
                           "x-description-i18n": {
-                            "spa": "Número de teléfono del cliente."
+                            "spa": "Número de teléfono válido del cliente (con código de área)."
                           },
                           "oneOf": [
                             {
@@ -11507,9 +11507,9 @@
                                 }
                               },
                               "mobile_number": {
-                                "description": "Customer's phone number.",
+                                "description": "Customer's valid phone number (with area code).",
                                 "x-description-i18n": {
-                                  "spa": "Número de teléfono del cliente."
+                                  "spa": "Número de teléfono válido del cliente (con código de área)."
                                 },
                                 "oneOf": [
                                   {
@@ -12333,9 +12333,9 @@
                               }
                             },
                             "mobile_number": {
-                              "description": "Customer's phone number.",
+                              "description": "Customer's valid phone number (with area code).",
                               "x-description-i18n": {
-                                "spa": "Número de teléfono del cliente."
+                                "spa": "Número de teléfono válido del cliente (con código de área)."
                               },
                               "oneOf": [
                                 {
@@ -14492,9 +14492,9 @@
                                 }
                               },
                               "mobile_number": {
-                                "description": "Customer's phone number.",
+                                "description": "Customer's valid phone number (with area code).",
                                 "x-description-i18n": {
-                                  "spa": "Número de teléfono del cliente."
+                                  "spa": "Número de teléfono válido del cliente (con código de área)."
                                 },
                                 "oneOf": [
                                   {
@@ -15518,9 +15518,9 @@
                               }
                             },
                             "mobile_number": {
-                              "description": "Customer's phone number.",
+                              "description": "Customer's valid phone number (with area code).",
                               "x-description-i18n": {
-                                "spa": "Número de teléfono del cliente."
+                                "spa": "Número de teléfono válido del cliente (con código de área)."
                               },
                               "oneOf": [
                                 {
@@ -16384,9 +16384,9 @@
                               }
                             },
                             "mobile_number": {
-                              "description": "Customer's phone number.",
+                              "description": "Customer's valid phone number (with area code).",
                               "x-description-i18n": {
-                                "spa": "Número de teléfono del cliente."
+                                "spa": "Número de teléfono válido del cliente (con código de área)."
                               },
                               "oneOf": [
                                 {
@@ -17356,9 +17356,9 @@
                               }
                             },
                             "mobile_number": {
-                              "description": "Customer's phone number.",
+                              "description": "Customer's valid phone number (with area code).",
                               "x-description-i18n": {
-                                "spa": "Número de teléfono del cliente."
+                                "spa": "Número de teléfono válido del cliente (con código de área)."
                               },
                               "oneOf": [
                                 {
@@ -19827,9 +19827,9 @@
                                 }
                               },
                               "mobile_number": {
-                                "description": "Customer's phone number.",
+                                "description": "Customer's valid phone number (with area code).",
                                 "x-description-i18n": {
-                                  "spa": "Número de teléfono del cliente."
+                                  "spa": "Número de teléfono válido del cliente (con código de área)."
                                 },
                                 "oneOf": [
                                   {
@@ -20743,9 +20743,9 @@
                               }
                             },
                             "mobile_number": {
-                              "description": "Customer's phone number.",
+                              "description": "Customer's valid phone number (with area code).",
                               "x-description-i18n": {
-                                "spa": "Número de teléfono del cliente."
+                                "spa": "Número de teléfono válido del cliente (con código de área)."
                               },
                               "oneOf": [
                                 {
@@ -21518,9 +21518,9 @@
                               }
                             },
                             "mobile_number": {
-                              "description": "Customer's phone number.",
+                              "description": "Customer's valid phone number (with area code).",
                               "x-description-i18n": {
-                                "spa": "Número de teléfono del cliente."
+                                "spa": "Número de teléfono válido del cliente (con código de área)."
                               },
                               "oneOf": [
                                 {
@@ -22393,9 +22393,9 @@
                               }
                             },
                             "mobile_number": {
-                              "description": "Customer's phone number.",
+                              "description": "Customer's valid phone number (with area code).",
                               "x-description-i18n": {
-                                "spa": "Número de teléfono del cliente."
+                                "spa": "Número de teléfono válido del cliente (con código de área)."
                               },
                               "oneOf": [
                                 {
@@ -23162,9 +23162,9 @@
                               }
                             },
                             "mobile_number": {
-                              "description": "Customer's phone number.",
+                              "description": "Customer's valid phone number (with area code).",
                               "x-description-i18n": {
-                                "spa": "Número de teléfono del cliente."
+                                "spa": "Número de teléfono válido del cliente (con código de área)."
                               },
                               "oneOf": [
                                 {
@@ -23929,9 +23929,9 @@
                               }
                             },
                             "mobile_number": {
-                              "description": "Customer's phone number.",
+                              "description": "Customer's valid phone number (with area code).",
                               "x-description-i18n": {
-                                "spa": "Número de teléfono del cliente."
+                                "spa": "Número de teléfono válido del cliente (con código de área)."
                               },
                               "oneOf": [
                                 {
@@ -24704,9 +24704,9 @@
                               }
                             },
                             "mobile_number": {
-                              "description": "Customer's phone number.",
+                              "description": "Customer's valid phone number (with area code).",
                               "x-description-i18n": {
-                                "spa": "Número de teléfono del cliente."
+                                "spa": "Número de teléfono válido del cliente (con código de área)."
                               },
                               "oneOf": [
                                 {

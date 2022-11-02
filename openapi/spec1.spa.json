@@ -199,7 +199,7 @@
             "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
           },
           "mobile_number": {
-            "description": "Número de teléfono del cliente.",
+            "description": "Número de teléfono válido del cliente (con código de área).",
             "oneOf": [
               {
                 "type": "null"
@@ -983,7 +983,7 @@
                 "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
               },
               "mobile_number": {
-                "description": "Número de teléfono del cliente.",
+                "description": "Número de teléfono válido del cliente (con código de área).",
                 "oneOf": [
                   {
                     "type": "null"
@@ -1551,7 +1551,7 @@
                 "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
               },
               "mobile_number": {
-                "description": "Número de teléfono del cliente.",
+                "description": "Número de teléfono válido del cliente (con código de área).",
                 "oneOf": [
                   {
                     "type": "null"
@@ -2337,7 +2337,7 @@
                 "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
               },
               "mobile_number": {
-                "description": "Número de teléfono del cliente.",
+                "description": "Número de teléfono válido del cliente (con código de área).",
                 "oneOf": [
                   {
                     "type": "null"
@@ -2842,7 +2842,7 @@
             "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
           },
           "mobile_number": {
-            "description": "Número de teléfono del cliente.",
+            "description": "Número de teléfono válido del cliente (con código de área).",
             "oneOf": [
               {
                 "type": "null"
@@ -3286,7 +3286,7 @@
                 "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
               },
               "mobile_number": {
-                "description": "Número de teléfono del cliente.",
+                "description": "Número de teléfono válido del cliente (con código de área).",
                 "oneOf": [
                   {
                     "type": "null"
@@ -3835,7 +3835,7 @@
                 "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
               },
               "mobile_number": {
-                "description": "Número de teléfono del cliente.",
+                "description": "Número de teléfono válido del cliente (con código de área).",
                 "oneOf": [
                   {
                     "type": "null"
@@ -4765,7 +4765,7 @@
                 "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
               },
               "mobile_number": {
-                "description": "Número de teléfono del cliente.",
+                "description": "Número de teléfono válido del cliente (con código de área).",
                 "oneOf": [
                   {
                     "type": "null"
@@ -5874,7 +5874,7 @@
                             "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                           },
                           "mobile_number": {
-                            "description": "Número de teléfono del cliente.",
+                            "description": "Número de teléfono válido del cliente (con código de área).",
                             "oneOf": [
                               {
                                 "type": "null"
@@ -6239,7 +6239,7 @@
                           "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                         },
                         "mobile_number": {
-                          "description": "Número de teléfono del cliente.",
+                          "description": "Número de teléfono válido del cliente (con código de área).",
                           "oneOf": [
                             {
                               "type": "null"
@@ -6483,7 +6483,7 @@
                           "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                         },
                         "mobile_number": {
-                          "description": "Número de teléfono del cliente.",
+                          "description": "Número de teléfono válido del cliente (con código de área).",
                           "oneOf": [
                             {
                               "type": "null"
@@ -6813,7 +6813,7 @@
                           "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                         },
                         "mobile_number": {
-                          "description": "Número de teléfono del cliente.",
+                          "description": "Número de teléfono válido del cliente (con código de área).",
                           "oneOf": [
                             {
                               "type": "null"
@@ -8667,7 +8667,7 @@
                                 "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                               },
                               "mobile_number": {
-                                "description": "Número de teléfono del cliente.",
+                                "description": "Número de teléfono válido del cliente (con código de área).",
                                 "oneOf": [
                                   {
                                     "type": "null"
@@ -9279,7 +9279,7 @@
                               "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                             },
                             "mobile_number": {
-                              "description": "Número de teléfono del cliente.",
+                              "description": "Número de teléfono válido del cliente (con código de área).",
                               "oneOf": [
                                 {
                                   "type": "null"
@@ -10844,7 +10844,7 @@
                                 "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                               },
                               "mobile_number": {
-                                "description": "Número de teléfono del cliente.",
+                                "description": "Número de teléfono válido del cliente (con código de área).",
                                 "oneOf": [
                                   {
                                     "type": "null"
@@ -11598,7 +11598,7 @@
                               "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                             },
                             "mobile_number": {
-                              "description": "Número de teléfono del cliente.",
+                              "description": "Número de teléfono válido del cliente (con código de área).",
                               "oneOf": [
                                 {
                                   "type": "null"
@@ -12225,7 +12225,7 @@
                               "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                             },
                             "mobile_number": {
-                              "description": "Número de teléfono del cliente.",
+                              "description": "Número de teléfono válido del cliente (con código de área).",
                               "oneOf": [
                                 {
                                   "type": "null"
@@ -12931,7 +12931,7 @@
                               "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                             },
                             "mobile_number": {
-                              "description": "Número de teléfono del cliente.",
+                              "description": "Número de teléfono válido del cliente (con código de área).",
                               "oneOf": [
                                 {
                                   "type": "null"
@@ -14783,7 +14783,7 @@
                                 "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                               },
                               "mobile_number": {
-                                "description": "Número de teléfono del cliente.",
+                                "description": "Número de teléfono válido del cliente (con código de área).",
                                 "oneOf": [
                                   {
                                     "type": "null"
@@ -15481,7 +15481,7 @@
                               "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                             },
                             "mobile_number": {
-                              "description": "Número de teléfono del cliente.",
+                              "description": "Número de teléfono válido del cliente (con código de área).",
                               "oneOf": [
                                 {
                                   "type": "null"
@@ -16050,7 +16050,7 @@
                               "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                             },
                             "mobile_number": {
-                              "description": "Número de teléfono del cliente.",
+                              "description": "Número de teléfono válido del cliente (con código de área).",
                               "oneOf": [
                                 {
                                   "type": "null"
@@ -16719,7 +16719,7 @@
                               "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                             },
                             "mobile_number": {
-                              "description": "Número de teléfono del cliente.",
+                              "description": "Número de teléfono válido del cliente (con código de área).",
                               "oneOf": [
                                 {
                                   "type": "null"
@@ -17288,7 +17288,7 @@
                               "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                             },
                             "mobile_number": {
-                              "description": "Número de teléfono del cliente.",
+                              "description": "Número de teléfono válido del cliente (con código de área).",
                               "oneOf": [
                                 {
                                   "type": "null"
@@ -17852,7 +17852,7 @@
                               "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                             },
                             "mobile_number": {
-                              "description": "Número de teléfono del cliente.",
+                              "description": "Número de teléfono válido del cliente (con código de área).",
                               "oneOf": [
                                 {
                                   "type": "null"
@@ -18421,7 +18421,7 @@
                               "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n"
                             },
                             "mobile_number": {
-                              "description": "Número de teléfono del cliente.",
+                              "description": "Número de teléfono válido del cliente (con código de área).",
                               "oneOf": [
                                 {
                                   "type": "null"

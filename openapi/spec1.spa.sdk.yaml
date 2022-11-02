@@ -397,7 +397,7 @@ paths:
                               type: object
                             - type: 'null'
                         mobile_number:
-                          description: Número de teléfono del cliente.
+                          description: Número de teléfono válido del cliente (con código de área).
                           example: '5491164531234'
                           oneOf:
                             - type: 'null'
@@ -738,7 +738,7 @@ paths:
                             type: object
                           - type: 'null'
                       mobile_number:
-                        description: Número de teléfono del cliente.
+                        description: Número de teléfono válido del cliente (con código de área).
                         example: '5491164531234'
                         oneOf:
                           - type: 'null'
@@ -1016,7 +1016,7 @@ paths:
                             type: object
                           - type: 'null'
                       mobile_number:
-                        description: Número de teléfono del cliente.
+                        description: Número de teléfono válido del cliente (con código de área).
                         example: '5491164531234'
                         oneOf:
                           - type: 'null'
@@ -1318,7 +1318,7 @@ paths:
                             type: object
                           - type: 'null'
                       mobile_number:
-                        description: Número de teléfono del cliente.
+                        description: Número de teléfono válido del cliente (con código de área).
                         example: '5491164531234'
                         oneOf:
                           - type: 'null'
@@ -3641,7 +3641,7 @@ paths:
                                   type: object
                                 - type: 'null'
                             mobile_number:
-                              description: Número de teléfono del cliente.
+                              description: Número de teléfono válido del cliente (con código de área).
                               example: '5491164531234'
                               oneOf:
                                 - type: 'null'
@@ -4279,7 +4279,7 @@ paths:
                                 type: object
                               - type: 'null'
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
@@ -5913,7 +5913,7 @@ paths:
                                   type: object
                                 - type: 'null'
                             mobile_number:
-                              description: Número de teléfono del cliente.
+                              description: Número de teléfono válido del cliente (con código de área).
                               example: '5491164531234'
                               oneOf:
                                 - type: 'null'
@@ -6557,7 +6557,7 @@ paths:
                                 type: object
                               - type: 'null'
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
@@ -7120,7 +7120,7 @@ paths:
                                 type: object
                               - type: 'null'
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
@@ -7707,7 +7707,7 @@ paths:
                                 type: object
                               - type: 'null'
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
@@ -9740,7 +9740,7 @@ paths:
                                   type: object
                                 - type: 'null'
                             mobile_number:
-                              description: Número de teléfono del cliente.
+                              description: Número de teléfono válido del cliente (con código de área).
                               example: '5491164531234'
                               oneOf:
                                 - type: 'null'
@@ -10357,7 +10357,7 @@ paths:
                                 type: object
                               - type: 'null'
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
@@ -10902,7 +10902,7 @@ paths:
                                 type: object
                               - type: 'null'
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
@@ -11494,7 +11494,7 @@ paths:
                                 type: object
                               - type: 'null'
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
@@ -12039,7 +12039,7 @@ paths:
                                 type: object
                               - type: 'null'
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
@@ -12546,7 +12546,7 @@ paths:
                                 type: object
                               - type: 'null'
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
@@ -13059,7 +13059,7 @@ paths:
                                 type: object
                               - type: 'null'
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
@@ -14564,7 +14564,7 @@ components:
               type: object
             - type: 'null'
         mobile_number:
-          description: Número de teléfono del cliente.
+          description: Número de teléfono válido del cliente (con código de área).
           example: '5491164531234'
           oneOf:
             - type: 'null'
@@ -15198,7 +15198,7 @@ components:
                   type: object
                 - type: 'null'
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
@@ -15630,7 +15630,7 @@ components:
                   type: object
                 - type: 'null'
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
@@ -16233,7 +16233,7 @@ components:
                   type: object
                 - type: 'null'
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
@@ -16627,7 +16627,7 @@ components:
               type: object
             - type: 'null'
         mobile_number:
-          description: Número de teléfono del cliente.
+          description: Número de teléfono válido del cliente (con código de área).
           example: '5491164531234'
           oneOf:
             - type: 'null'
@@ -16982,7 +16982,7 @@ components:
                   type: object
                 - type: 'null'
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
@@ -17398,7 +17398,7 @@ components:
                   type: object
                 - type: 'null'
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
@@ -18117,7 +18117,7 @@ components:
                   type: object
                 - type: 'null'
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               example: '5491164531234'
               oneOf:
                 - type: 'null'

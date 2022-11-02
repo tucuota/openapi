@@ -417,13 +417,13 @@ paths:
                               sobre el objeto en un formato estructurado.
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                         mobile_number:
-                          description: Customer's phone number.
+                          description: Customer's valid phone number (with area code).
                           example: '5491164531234'
                           oneOf:
                             - type: 'null'
                             - type: string
                           x-description-i18n:
-                            spa: Número de teléfono del cliente.
+                            spa: Número de teléfono válido del cliente (con código de área).
                         gateway_identifier:
                           description: The customer's reference for bank account statements.
                           type: integer
@@ -839,13 +839,13 @@ paths:
                             sobre el objeto en un formato estructurado.
                             Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                       mobile_number:
-                        description: Customer's phone number.
+                        description: Customer's valid phone number (with area code).
                         example: '5491164531234'
                         oneOf:
                           - type: 'null'
                           - type: string
                         x-description-i18n:
-                          spa: Número de teléfono del cliente.
+                          spa: Número de teléfono válido del cliente (con código de área).
                       gateway_identifier:
                         description: The customer's reference for bank account statements.
                         type: integer
@@ -1178,13 +1178,13 @@ paths:
                             sobre el objeto en un formato estructurado.
                             Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                       mobile_number:
-                        description: Customer's phone number.
+                        description: Customer's valid phone number (with area code).
                         example: '5491164531234'
                         oneOf:
                           - type: 'null'
                           - type: string
                         x-description-i18n:
-                          spa: Número de teléfono del cliente.
+                          spa: Número de teléfono válido del cliente (con código de área).
                       gateway_identifier:
                         description: The customer's reference for bank account statements.
                         type: integer
@@ -1559,13 +1559,13 @@ paths:
                             sobre el objeto en un formato estructurado.
                             Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                       mobile_number:
-                        description: Customer's phone number.
+                        description: Customer's valid phone number (with area code).
                         example: '5491164531234'
                         oneOf:
                           - type: 'null'
                           - type: string
                         x-description-i18n:
-                          spa: Número de teléfono del cliente.
+                          spa: Número de teléfono válido del cliente (con código de área).
                       gateway_identifier:
                         description: The customer's reference for bank account statements.
                         type: integer
@@ -4264,13 +4264,13 @@ paths:
                                   sobre el objeto en un formato estructurado.
                                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                             mobile_number:
-                              description: Customer's phone number.
+                              description: Customer's valid phone number (with area code).
                               example: '5491164531234'
                               oneOf:
                                 - type: 'null'
                                 - type: string
                               x-description-i18n:
-                                spa: Número de teléfono del cliente.
+                                spa: Número de teléfono válido del cliente (con código de área).
                             gateway_identifier:
                               description: The customer's reference for bank account statements.
                               type: integer
@@ -5054,13 +5054,13 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
                               - type: string
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                           gateway_identifier:
                             description: The customer's reference for bank account statements.
                             type: integer
@@ -7110,13 +7110,13 @@ paths:
                                   sobre el objeto en un formato estructurado.
                                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                             mobile_number:
-                              description: Customer's phone number.
+                              description: Customer's valid phone number (with area code).
                               example: '5491164531234'
                               oneOf:
                                 - type: 'null'
                                 - type: string
                               x-description-i18n:
-                                spa: Número de teléfono del cliente.
+                                spa: Número de teléfono válido del cliente (con código de área).
                             gateway_identifier:
                               description: The customer's reference for bank account statements.
                               type: integer
@@ -7950,13 +7950,13 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
                               - type: string
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                           gateway_identifier:
                             description: The customer's reference for bank account statements.
                             type: integer
@@ -8685,13 +8685,13 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
                               - type: string
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                           gateway_identifier:
                             description: The customer's reference for bank account statements.
                             type: integer
@@ -9464,13 +9464,13 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
                               - type: string
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                           gateway_identifier:
                             description: The customer's reference for bank account statements.
                             type: integer
@@ -11975,13 +11975,13 @@ paths:
                                   sobre el objeto en un formato estructurado.
                                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                             mobile_number:
-                              description: Customer's phone number.
+                              description: Customer's valid phone number (with area code).
                               example: '5491164531234'
                               oneOf:
                                 - type: 'null'
                                 - type: string
                               x-description-i18n:
-                                spa: Número de teléfono del cliente.
+                                spa: Número de teléfono válido del cliente (con código de área).
                             gateway_identifier:
                               description: The customer's reference for bank account statements.
                               type: integer
@@ -12751,13 +12751,13 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
                               - type: string
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                           gateway_identifier:
                             description: The customer's reference for bank account statements.
                             type: integer
@@ -13447,13 +13447,13 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
                               - type: string
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                           gateway_identifier:
                             description: The customer's reference for bank account statements.
                             type: integer
@@ -14195,13 +14195,13 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
                               - type: string
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                           gateway_identifier:
                             description: The customer's reference for bank account statements.
                             type: integer
@@ -14885,13 +14885,13 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
                               - type: string
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                           gateway_identifier:
                             description: The customer's reference for bank account statements.
                             type: integer
@@ -15540,13 +15540,13 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
                               - type: string
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                           gateway_identifier:
                             description: The customer's reference for bank account statements.
                             type: integer
@@ -16204,13 +16204,13 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             example: '5491164531234'
                             oneOf:
                               - type: 'null'
                               - type: string
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                           gateway_identifier:
                             description: The customer's reference for bank account statements.
                             type: integer
@@ -18045,13 +18045,13 @@ components:
               sobre el objeto en un formato estructurado.
               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
         mobile_number:
-          description: Customer's phone number.
+          description: Customer's valid phone number (with area code).
           example: '5491164531234'
           oneOf:
             - type: 'null'
             - type: string
           x-description-i18n:
-            spa: Número de teléfono del cliente.
+            spa: Número de teléfono válido del cliente (con código de área).
         gateway_identifier:
           description: The customer's reference for bank account statements.
           type: integer
@@ -18897,13 +18897,13 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
                 - type: string
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
             gateway_identifier:
               description: The customer's reference for bank account statements.
               type: integer
@@ -19489,13 +19489,13 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
                 - type: string
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
             gateway_identifier:
               description: The customer's reference for bank account statements.
               type: integer
@@ -20290,13 +20290,13 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
                 - type: string
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
             gateway_identifier:
               description: The customer's reference for bank account statements.
               type: integer
@@ -20822,13 +20822,13 @@ components:
               sobre el objeto en un formato estructurado.
               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
         mobile_number:
-          description: Customer's phone number.
+          description: Customer's valid phone number (with area code).
           example: '5491164531234'
           oneOf:
             - type: 'null'
             - type: string
           x-description-i18n:
-            spa: Número de teléfono del cliente.
+            spa: Número de teléfono válido del cliente (con código de área).
         gateway_identifier:
           description: The customer's reference for bank account statements.
           type: integer
@@ -21299,13 +21299,13 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
                 - type: string
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
             gateway_identifier:
               description: The customer's reference for bank account statements.
               type: integer
@@ -21871,13 +21871,13 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
                 - type: string
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
             gateway_identifier:
               description: The customer's reference for bank account statements.
               type: integer
@@ -22834,13 +22834,13 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               example: '5491164531234'
               oneOf:
                 - type: 'null'
                 - type: string
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
             gateway_identifier:
               description: The customer's reference for bank account statements.
               type: integer

@@ -503,9 +503,9 @@ components:
               sobre el objeto en un formato estructurado.
               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
         mobile_number:
-          description: Customer's phone number.
+          description: Customer's valid phone number (with area code).
           x-description-i18n:
-            spa: Número de teléfono del cliente.
+            spa: Número de teléfono válido del cliente (con código de área).
           oneOf:
             - type: 'null'
             - type: string
@@ -1360,9 +1360,9 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: 'null'
                 - type: string
@@ -1950,9 +1950,9 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: 'null'
                 - type: string
@@ -2753,9 +2753,9 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: 'null'
                 - type: string
@@ -3280,9 +3280,9 @@ components:
               sobre el objeto en un formato estructurado.
               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
         mobile_number:
-          description: Customer's phone number.
+          description: Customer's valid phone number (with area code).
           x-description-i18n:
-            spa: Número de teléfono del cliente.
+            spa: Número de teléfono válido del cliente (con código de área).
           oneOf:
             - type: 'null'
             - type: string
@@ -3762,9 +3762,9 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: 'null'
                 - type: string
@@ -4332,9 +4332,9 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: 'null'
                 - type: string
@@ -5297,9 +5297,9 @@ components:
                   sobre el objeto en un formato estructurado.
                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Customer's phone number.
+              description: Customer's valid phone number (with area code).
               x-description-i18n:
-                spa: Número de teléfono del cliente.
+                spa: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: 'null'
                 - type: string
@@ -6443,9 +6443,9 @@ paths:
                               sobre el objeto en un formato estructurado.
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                         mobile_number:
-                          description: Customer's phone number.
+                          description: Customer's valid phone number (with area code).
                           x-description-i18n:
-                            spa: Número de teléfono del cliente.
+                            spa: Número de teléfono válido del cliente (con código de área).
                           oneOf:
                             - type: 'null'
                             - type: string
@@ -6788,9 +6788,9 @@ paths:
                             sobre el objeto en un formato estructurado.
                             Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                       mobile_number:
-                        description: Customer's phone number.
+                        description: Customer's valid phone number (with area code).
                         x-description-i18n:
-                          spa: Número de teléfono del cliente.
+                          spa: Número de teléfono válido del cliente (con código de área).
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -7021,9 +7021,9 @@ paths:
                             sobre el objeto en un formato estructurado.
                             Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                       mobile_number:
-                        description: Customer's phone number.
+                        description: Customer's valid phone number (with area code).
                         x-description-i18n:
-                          spa: Número de teléfono del cliente.
+                          spa: Número de teléfono válido del cliente (con código de área).
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -7330,9 +7330,9 @@ paths:
                             sobre el objeto en un formato estructurado.
                             Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                       mobile_number:
-                        description: Customer's phone number.
+                        description: Customer's valid phone number (with area code).
                         x-description-i18n:
-                          spa: Número de teléfono del cliente.
+                          spa: Número de teléfono válido del cliente (con código de área).
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -9049,9 +9049,9 @@ paths:
                                   sobre el objeto en un formato estructurado.
                                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                             mobile_number:
-                              description: Customer's phone number.
+                              description: Customer's valid phone number (with area code).
                               x-description-i18n:
-                                spa: Número de teléfono del cliente.
+                                spa: Número de teléfono válido del cliente (con código de área).
                               oneOf:
                                 - type: 'null'
                                 - type: string
@@ -9667,9 +9667,9 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -11246,9 +11246,9 @@ paths:
                                   sobre el objeto en un formato estructurado.
                                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                             mobile_number:
-                              description: Customer's phone number.
+                              description: Customer's valid phone number (with area code).
                               x-description-i18n:
-                                spa: Número de teléfono del cliente.
+                                spa: Número de teléfono válido del cliente (con código de área).
                               oneOf:
                                 - type: 'null'
                                 - type: string
@@ -12000,9 +12000,9 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -12631,9 +12631,9 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -13340,9 +13340,9 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -15181,9 +15181,9 @@ paths:
                                   sobre el objeto en un formato estructurado.
                                   Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                             mobile_number:
-                              description: Customer's phone number.
+                              description: Customer's valid phone number (with area code).
                               x-description-i18n:
-                                spa: Número de teléfono del cliente.
+                                spa: Número de teléfono válido del cliente (con código de área).
                               oneOf:
                                 - type: 'null'
                                 - type: string
@@ -15889,9 +15889,9 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -16478,9 +16478,9 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -17151,9 +17151,9 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -17736,9 +17736,9 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -18318,9 +18318,9 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -18911,9 +18911,9 @@ paths:
                                 sobre el objeto en un formato estructurado.
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Customer's phone number.
+                            description: Customer's valid phone number (with area code).
                             x-description-i18n:
-                              spa: Número de teléfono del cliente.
+                              spa: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: 'null'
                               - type: string

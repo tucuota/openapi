@@ -631,7 +631,7 @@ components:
 
             Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
         mobile_number:
-          description: Número de teléfono del cliente.
+          description: Número de teléfono válido del cliente (con código de área).
           oneOf:
             - type: "null"
             - type: string
@@ -1332,7 +1332,7 @@ components:
 
                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: "null"
                 - type: string
@@ -1811,7 +1811,7 @@ components:
 
                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: "null"
                 - type: string
@@ -2482,7 +2482,7 @@ components:
 
                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: "null"
                 - type: string
@@ -2923,7 +2923,7 @@ components:
 
             Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
         mobile_number:
-          description: Número de teléfono del cliente.
+          description: Número de teléfono válido del cliente (con código de área).
           oneOf:
             - type: "null"
             - type: string
@@ -3320,7 +3320,7 @@ components:
 
                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: "null"
                 - type: string
@@ -3781,7 +3781,7 @@ components:
 
                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: "null"
                 - type: string
@@ -4578,7 +4578,7 @@ components:
 
                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
             mobile_number:
-              description: Número de teléfono del cliente.
+              description: Número de teléfono válido del cliente (con código de área).
               oneOf:
                 - type: "null"
                 - type: string
@@ -5671,7 +5671,7 @@ paths:
 
                             Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                         mobile_number:
-                          description: Número de teléfono del cliente.
+                          description: Número de teléfono válido del cliente (con código de área).
                           oneOf:
                             - type: "null"
                             - type: string
@@ -5948,7 +5948,7 @@ paths:
 
                           Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                       mobile_number:
-                        description: Número de teléfono del cliente.
+                        description: Número de teléfono válido del cliente (con código de área).
                         oneOf:
                           - type: "null"
                           - type: string
@@ -6133,7 +6133,7 @@ paths:
 
                           Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                       mobile_number:
-                        description: Número de teléfono del cliente.
+                        description: Número de teléfono válido del cliente (con código de área).
                         oneOf:
                           - type: "null"
                           - type: string
@@ -6380,7 +6380,7 @@ paths:
 
                           Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                       mobile_number:
-                        description: Número de teléfono del cliente.
+                        description: Número de teléfono válido del cliente (con código de área).
                         oneOf:
                           - type: "null"
                           - type: string
@@ -7832,7 +7832,7 @@ paths:
 
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                             mobile_number:
-                              description: Número de teléfono del cliente.
+                              description: Número de teléfono válido del cliente (con código de área).
                               oneOf:
                                 - type: "null"
                                 - type: string
@@ -8335,7 +8335,7 @@ paths:
 
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: "null"
                               - type: string
@@ -9594,7 +9594,7 @@ paths:
 
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                             mobile_number:
-                              description: Número de teléfono del cliente.
+                              description: Número de teléfono válido del cliente (con código de área).
                               oneOf:
                                 - type: "null"
                                 - type: string
@@ -10206,7 +10206,7 @@ paths:
 
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: "null"
                               - type: string
@@ -10713,7 +10713,7 @@ paths:
 
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: "null"
                               - type: string
@@ -11282,7 +11282,7 @@ paths:
 
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: "null"
                               - type: string
@@ -12802,7 +12802,7 @@ paths:
 
                                 Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                             mobile_number:
-                              description: Número de teléfono del cliente.
+                              description: Número de teléfono válido del cliente (con código de área).
                               oneOf:
                                 - type: "null"
                                 - type: string
@@ -13414,7 +13414,7 @@ paths:
 
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: "null"
                               - type: string
@@ -13904,7 +13904,7 @@ paths:
 
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: "null"
                               - type: string
@@ -14491,7 +14491,7 @@ paths:
 
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: "null"
                               - type: string
@@ -14981,7 +14981,7 @@ paths:
 
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: "null"
                               - type: string
@@ -15467,7 +15467,7 @@ paths:
 
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: "null"
                               - type: string
@@ -15959,7 +15959,7 @@ paths:
 
                               Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
                           mobile_number:
-                            description: Número de teléfono del cliente.
+                            description: Número de teléfono válido del cliente (con código de área).
                             oneOf:
                               - type: "null"
                               - type: string
