@@ -320,7 +320,7 @@ info:
   x-logo:
     url: 'https://tucuota.com/img/TuCuota.svg'
     altText: TuCuota
-  version: '2022-08-01T00:00:00.000Z'
+  version: '2022-08-01'
 servers:
   - url: 'https://api.tucuota.com'
     description: Servidor de API
