@@ -424,18 +424,18 @@ paths:
                             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         updated_at:
                           description: |
                             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         deleted_at:
                           description: |
                             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                           oneOf:
                             - type: 'null'
                             - type: string
@@ -765,18 +765,18 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       deleted_at:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -1043,18 +1043,18 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       deleted_at:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -1345,18 +1345,18 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       deleted_at:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -1824,10 +1824,10 @@ paths:
             application/json:
               example:
                 data:
-                  - created_at: '2022-02-05T04:42:13.000Z'
+                  - created_at: '2022-02-05T01:42:13-03:00'
                     data:
                       object:
-                        created_at: '2022-02-05T04:42:13.000Z'
+                        created_at: '2022-02-05T01:42:13-03:00'
                         deleted_at: null
                         email: john@doe.com
                         gateway_identifier: 383473
@@ -1838,8 +1838,8 @@ paths:
                         metadata: null
                         mobile_number: '5491154876503'
                         name: John Doe
-                        updated_at: '2022-02-05T04:42:13.000Z'
-                    delivered_at: '2022-02-11T23:11:38.000Z'
+                        updated_at: '2022-02-05T01:42:13-03:00'
+                    delivered_at: '2022-02-11T20:11:38-03:00'
                     id: EVaX3JagwR6x
                     livemode: true
                     object: event
@@ -1870,7 +1870,7 @@ paths:
                             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         data:
                           type: object
                           properties:
@@ -1884,7 +1884,7 @@ paths:
                             Hora en que se entregó el evento. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                           nullable: true
                         livemode:
                           description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
@@ -2133,9 +2133,9 @@ paths:
                     rows_count: 2
                     valid_rows_count: 0
                     invalid_rows_count: 2
-                    created_at: '2020-11-20T02:38:14-0300'
-                    updated_at: '2020-11-20T02:38:14-0300'
-                    invalid_at: '2020-11-20T02:38:14-0300'
+                    created_at: '2020-11-20T02:38:14-03:00'
+                    updated_at: '2020-11-20T02:38:14-03:00'
+                    invalid_at: '2020-11-20T02:38:14-03:00'
                   - id: IMGdOz9vReVZ
                     type: customers
                     status: ready
@@ -2143,9 +2143,9 @@ paths:
                     rows_count: 2
                     valid_rows_count: 2
                     invalid_rows_count: 0
-                    created_at: '2020-11-20T02:37:48-0300'
-                    updated_at: '2020-11-20T02:37:49-0300'
-                    ready_at: '2020-11-20T02:37:49-0300'
+                    created_at: '2020-11-20T02:37:48-03:00'
+                    updated_at: '2020-11-20T02:37:49-03:00'
+                    ready_at: '2020-11-20T02:37:49-03:00'
                 links:
                   first: 'https://api.tucuota.com/v1/imports?page=1'
                   last: 'https://api.tucuota.com/v1/imports?page=1'
@@ -2330,24 +2330,24 @@ paths:
                           Hora en la que se canceló la importación. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       invalid_at:
                         description: |
                           Hora en la que la importación se marcó como inválida. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       processed_at:
                         description: |
                           Hora en la que la importación se marcó como procesada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       ready_at:
                         description: |
                           Hora en la que la importación se marcó como lista. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       invalid_rows_count:
                         description: Cantidad de filas no válido
                         type: number
@@ -2380,13 +2380,13 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                     title: Importación
         '401':
           description: Unauthorized
@@ -2553,24 +2553,24 @@ paths:
                           Hora en la que se canceló la importación. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       invalid_at:
                         description: |
                           Hora en la que la importación se marcó como inválida. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       processed_at:
                         description: |
                           Hora en la que la importación se marcó como procesada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       ready_at:
                         description: |
                           Hora en la que la importación se marcó como lista. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       invalid_rows_count:
                         description: Cantidad de filas no válido
                         type: number
@@ -2603,13 +2603,13 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                     title: Importación
         '401':
           description: Unauthorized
@@ -2923,18 +2923,18 @@ paths:
                             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         updated_at:
                           description: |
                             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         deleted_at:
                           description: |
                             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                           oneOf:
                             - type: 'null'
                             - type: string
@@ -3131,18 +3131,18 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       deleted_at:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -3287,18 +3287,18 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       deleted_at:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -3442,18 +3442,18 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       deleted_at:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -3668,18 +3668,18 @@ paths:
                                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                             updated_at:
                               description: |
                                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                             deleted_at:
                               description: |
                                 Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                               oneOf:
                                 - type: 'null'
                                 - type: string
@@ -3847,13 +3847,13 @@ paths:
                                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                             updated_at:
                               description: |
                                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                           title: Método de pago
                         metadata:
                           description: |
@@ -3873,18 +3873,18 @@ paths:
                             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         updated_at:
                           description: |
                             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         deleted_at:
                           description: |
                             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                           oneOf:
                             - type: 'null'
                             - type: string
@@ -4069,8 +4069,8 @@ paths:
                   object: mandate
                   livemode: true
                   status: active
-                  created_at: '2020-06-03T11:05:11-0300'
-                  updated_at: '2020-06-03T11:05:11-0300'
+                  created_at: '2020-06-03T11:05:11-03:00'
+                  updated_at: '2020-06-03T11:05:11-03:00'
                   customer:
                     id: CS3oDRqz9wzB
                     object: customer
@@ -4081,8 +4081,8 @@ paths:
                     identification_number: ''
                     mobile_number: ''
                     livemode: true
-                    updated_at: '2020-06-03T11:05:11-0300'
-                    created_at: '2020-06-03T11:05:11-0300'
+                    updated_at: '2020-06-03T11:05:11-03:00'
+                    created_at: '2020-06-03T11:05:11-03:00'
                   payment_method:
                     id: PMyYW9rJ3alN
                     object: payment_method
@@ -4090,8 +4090,8 @@ paths:
                     brand: visa-credito
                     bank: ''
                     livemode: true
-                    updated_at: '2020-06-03T11:05:11-0300'
-                    created_at: '2020-06-03T11:05:11-0300'
+                    updated_at: '2020-06-03T11:05:11-03:00'
+                    created_at: '2020-06-03T11:05:11-03:00'
         '401':
           description: Unauthorized
           content:
@@ -4306,18 +4306,18 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           deleted_at:
                             description: |
                               Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -4485,13 +4485,13 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                         title: Método de pago
                       metadata:
                         description: |
@@ -4511,18 +4511,18 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       deleted_at:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -4989,13 +4989,13 @@ paths:
                             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         updated_at:
                           description: |
                             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                   links:
                     description: Metadata de paginación
                     type: object
@@ -5053,11 +5053,11 @@ paths:
                       brand: visa-debito
                       fingerprint: 782uy3h1983gy7sl
                       last_four_digits: '1481'
-                    created_at: '2019-01-28T15:27:29-0300'
+                    created_at: '2019-01-28T15:27:29-03:00'
                     id: PMVdYaYwkqOw
                     livemode: true
                     object: payment_method
-                    updated_at: '2019-05-23T20:30:01-0300'
+                    updated_at: '2019-05-23T20:30:01-03:00'
                 links:
                   first: 'https://api.tucuota.com/v1/payment_methods?page=1'
                   last: 'https://api.tucuota.com/v1/payment_methods?page=2'
@@ -5323,13 +5323,13 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                     title: Método de pago
         '401':
           description: No Autorizado
@@ -5589,13 +5589,13 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                     title: Método de pago
         '401':
           description: No autorizado
@@ -5829,18 +5829,18 @@ paths:
                             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         charge_date:
                           description: 'Una fecha futura en la que se debe cobrar el pago. Si no se especifica, el pago se cobrará lo antes posible.'
                           type: string
-                          example: '2022-08-04T00:00:00.000Z'
+                          example: '2022-08-04'
                         submissions_count:
                           description: El número de veces que el pago ha sido enviado a la institución financiera.
                           type: number
                           example: 1
                         can_auto_retry_until:
                           description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
-                          example: '2022-08-31T00:00:00.000Z'
+                          example: '2022-08-31'
                           oneOf:
                             - type: 'null'
                             - type: string
@@ -5867,10 +5867,10 @@ paths:
                             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         updated_status:
                           description: La última fecha en que se cambió el estado del pago.
-                          example: '2022-08-31T00:00:00.000Z'
+                          example: '2022-08-31'
                           oneOf:
                             - type: 'null'
                             - type: string
@@ -5940,18 +5940,18 @@ paths:
                                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                             updated_at:
                               description: |
                                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                             deleted_at:
                               description: |
                                 Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                               oneOf:
                                 - type: 'null'
                                 - type: string
@@ -6135,13 +6135,13 @@ paths:
                                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                             updated_at:
                               description: |
                                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                           title: Método de pago
                         gateway_identifier:
                           description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
@@ -6473,18 +6473,18 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       charge_date:
                         description: 'Una fecha futura en la que se debe cobrar el pago. Si no se especifica, el pago se cobrará lo antes posible.'
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       submissions_count:
                         description: El número de veces que el pago ha sido enviado a la institución financiera.
                         type: number
                         example: 1
                       can_auto_retry_until:
                         description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
-                        example: '2022-08-31T00:00:00.000Z'
+                        example: '2022-08-31'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -6511,10 +6511,10 @@ paths:
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_status:
                         description: La última fecha en que se cambió el estado del pago.
-                        example: '2022-08-31T00:00:00.000Z'
+                        example: '2022-08-31'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -6584,18 +6584,18 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           deleted_at:
                             description: |
                               Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -6779,13 +6779,13 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                         title: Método de pago
                       gateway_identifier:
                         description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
@@ -7036,18 +7036,18 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       charge_date:
                         description: 'Una fecha futura en la que se debe cobrar el pago. Si no se especifica, el pago se cobrará lo antes posible.'
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       submissions_count:
                         description: El número de veces que el pago ha sido enviado a la institución financiera.
                         type: number
                         example: 1
                       can_auto_retry_until:
                         description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
-                        example: '2022-08-31T00:00:00.000Z'
+                        example: '2022-08-31'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -7074,10 +7074,10 @@ paths:
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_status:
                         description: La última fecha en que se cambió el estado del pago.
-                        example: '2022-08-31T00:00:00.000Z'
+                        example: '2022-08-31'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -7147,18 +7147,18 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           deleted_at:
                             description: |
                               Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -7342,13 +7342,13 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                         title: Método de pago
                       gateway_identifier:
                         description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
@@ -7623,18 +7623,18 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       charge_date:
                         description: 'Una fecha futura en la que se debe cobrar el pago. Si no se especifica, el pago se cobrará lo antes posible.'
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       submissions_count:
                         description: El número de veces que el pago ha sido enviado a la institución financiera.
                         type: number
                         example: 1
                       can_auto_retry_until:
                         description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
-                        example: '2022-08-31T00:00:00.000Z'
+                        example: '2022-08-31'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -7661,10 +7661,10 @@ paths:
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_status:
                         description: La última fecha en que se cambió el estado del pago.
-                        example: '2022-08-31T00:00:00.000Z'
+                        example: '2022-08-31'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -7734,18 +7734,18 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           deleted_at:
                             description: |
                               Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -7929,13 +7929,13 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                         title: Método de pago
                       gateway_identifier:
                         description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
@@ -8289,6 +8289,116 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+  '/v1/payments/{id}/actions/stop_auto_retrying':
+    post:
+      operationId: PaymentsStopAutoRetryingPayment
+      summary: Detener reintentos automáticos
+      description: 'Detener reintentos automáticos, impide que luego de un rechazo el pago continue realizando reintentos automáticos. Esta acción puede solicitarse en cualquier momento del ciclo del pago, es decir, incluso cuando el pago está enviado a la entidad financiera.'
+      parameters:
+        - name: id
+          in: path
+          description: |
+            [ID del Pago](#tag/Pagos).
+          required: true
+          schema:
+            type: string
+          example: PYdOz9bgVReV
+      responses:
+        '201':
+          description: Updated
+          content:
+            application/json:
+              example:
+                message: Stopped autoretries successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: No autorizado
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Unauthorized
+                    title: No autorizado
+      tags:
+        - Pagos
+      x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request POST \
+              --url https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying \
+              --header 'Authorization: Bearer sk_live_...'
+        - lang: Node + Request
+          source: |
+            const request = require('request');
+
+            const options = {
+              method: 'POST',
+              url: 'https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying',
+              headers: {Authorization: 'Bearer sk_live_...'}
+            };
+
+            request(options, function (error, response, body) {
+              if (error) throw new Error(error);
+
+              console.log(body);
+            });
+        - lang: Php + Http1
+          source: |-
+            <?php
+
+            $request = new HttpRequest();
+            $request->setUrl('https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying');
+            $request->setMethod(HTTP_METH_POST);
+
+            $request->setHeaders([
+              'Authorization' => 'Bearer sk_live_...'
+            ]);
+
+            try {
+              $response = $request->send();
+
+              echo $response->getBody();
+            } catch (HttpException $ex) {
+              echo $ex;
+            }
+        - lang: Python + Requests
+          source: |-
+            import requests
+
+            url = "https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying"
+
+            headers = {"Authorization": "Bearer sk_live_..."}
+
+            response = requests.request("POST", url, headers=headers)
+
+            print(response.text)
+        - lang: Java + Unirest
+          source: |-
+            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying")
+              .header("Authorization", "Bearer sk_live_...")
+              .asString();
+        - lang: Ruby + Native
+          source: |-
+            require 'uri'
+            require 'net/http'
+            require 'openssl'
+
+            url = URI("https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying")
+
+            http = Net::HTTP.new(url.host, url.port)
+            http.use_ssl = true
+            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+            request = Net::HTTP::Post.new(url)
+            request["Authorization"] = 'Bearer sk_live_...'
+
+            response = http.request(request)
+            puts response.read_body
   /v1/refunds:
     get:
       operationId: RefundsGetRefunds
@@ -8376,13 +8486,13 @@ paths:
                             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         updated_at:
                           description: |
                             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         metadata:
                           description: |
                             Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -8645,13 +8755,13 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       metadata:
                         description: |
                           Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -8870,13 +8980,13 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       metadata:
                         description: |
                           Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -9111,7 +9221,7 @@ paths:
                           Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       count:
                         type: number
                       created_at:
@@ -9119,7 +9229,7 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       id:
                         description: Identificador UUID del objeto.
                         type: string
@@ -9173,7 +9283,7 @@ paths:
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       active_subscriptions_count:
                         type: integer
                         format: int32
@@ -9214,7 +9324,7 @@ paths:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -9382,7 +9492,7 @@ paths:
                           Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       count:
                         type: number
                       created_at:
@@ -9390,7 +9500,7 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       id:
                         description: Identificador UUID del objeto.
                         type: string
@@ -9444,7 +9554,7 @@ paths:
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       active_subscriptions_count:
                         type: integer
                         format: int32
@@ -9485,7 +9595,7 @@ paths:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                         oneOf:
                           - type: 'null'
                           - type: string
@@ -9651,7 +9761,7 @@ paths:
                         start_date:
                           description: Una fecha futura en la que el primer pago de la suscripción debe ser recogido.
                           type: string
-                          example: '2022-08-04T00:00:00.000Z'
+                          example: '2022-08-04'
                         interval_unit:
                           description: The unit of time between customer charge dates.
                           type: string
@@ -9679,28 +9789,28 @@ paths:
                             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         updated_at:
                           description: |
                             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         first_date:
                           description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                           type: string
-                          example: '2022-08-04T00:00:00.000Z'
+                          example: '2022-08-04'
                         upcoming_dates:
                           description: Up to 5 upcoming payments charge dates.
                           type: array
                           items:
                             type: string
                           example:
-                            - '2022-09-04T00:00:00.000Z'
-                            - '2022-10-04T00:00:00.000Z'
-                            - '2022-11-04T00:00:00.000Z'
-                            - '2022-12-04T00:00:00.000Z'
-                            - '2023-01-04T00:00:00.000Z'
+                            - '2022-09-04'
+                            - '2022-10-04'
+                            - '2022-11-04'
+                            - '2022-12-04'
+                            - '2023-01-04'
                         customer:
                           description: Este objeto representa a un cliente de su organización.
                           type: object
@@ -9767,18 +9877,18 @@ paths:
                                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                             updated_at:
                               description: |
                                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                             deleted_at:
                               description: |
                                 Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                               oneOf:
                                 - type: 'null'
                                 - type: string
@@ -9946,13 +10056,13 @@ paths:
                                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                             updated_at:
                               description: |
                                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                               type: string
                               format: date-time
-                              example: '2022-02-12T02:19:22.000Z'
+                              example: '2022-02-11T23:19:22-03:00'
                           title: Método de pago
                         metadata:
                           description: |
@@ -10268,7 +10378,7 @@ paths:
                       start_date:
                         description: Una fecha futura en la que el primer pago de la suscripción debe ser recogido.
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       interval_unit:
                         description: The unit of time between customer charge dates.
                         type: string
@@ -10296,28 +10406,28 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       upcoming_dates:
                         description: Up to 5 upcoming payments charge dates.
                         type: array
                         items:
                           type: string
                         example:
-                          - '2022-09-04T00:00:00.000Z'
-                          - '2022-10-04T00:00:00.000Z'
-                          - '2022-11-04T00:00:00.000Z'
-                          - '2022-12-04T00:00:00.000Z'
-                          - '2023-01-04T00:00:00.000Z'
+                          - '2022-09-04'
+                          - '2022-10-04'
+                          - '2022-11-04'
+                          - '2022-12-04'
+                          - '2023-01-04'
                       customer:
                         description: Este objeto representa a un cliente de su organización.
                         type: object
@@ -10384,18 +10494,18 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           deleted_at:
                             description: |
                               Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -10563,13 +10673,13 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                         title: Método de pago
                       metadata:
                         description: |
@@ -10813,7 +10923,7 @@ paths:
                       start_date:
                         description: Una fecha futura en la que el primer pago de la suscripción debe ser recogido.
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       interval_unit:
                         description: The unit of time between customer charge dates.
                         type: string
@@ -10841,28 +10951,28 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       upcoming_dates:
                         description: Up to 5 upcoming payments charge dates.
                         type: array
                         items:
                           type: string
                         example:
-                          - '2022-09-04T00:00:00.000Z'
-                          - '2022-10-04T00:00:00.000Z'
-                          - '2022-11-04T00:00:00.000Z'
-                          - '2022-12-04T00:00:00.000Z'
-                          - '2023-01-04T00:00:00.000Z'
+                          - '2022-09-04'
+                          - '2022-10-04'
+                          - '2022-11-04'
+                          - '2022-12-04'
+                          - '2023-01-04'
                       customer:
                         description: Este objeto representa a un cliente de su organización.
                         type: object
@@ -10929,18 +11039,18 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           deleted_at:
                             description: |
                               Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -11108,13 +11218,13 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                         title: Método de pago
                       metadata:
                         description: |
@@ -11405,7 +11515,7 @@ paths:
                       start_date:
                         description: Una fecha futura en la que el primer pago de la suscripción debe ser recogido.
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       interval_unit:
                         description: The unit of time between customer charge dates.
                         type: string
@@ -11433,28 +11543,28 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       upcoming_dates:
                         description: Up to 5 upcoming payments charge dates.
                         type: array
                         items:
                           type: string
                         example:
-                          - '2022-09-04T00:00:00.000Z'
-                          - '2022-10-04T00:00:00.000Z'
-                          - '2022-11-04T00:00:00.000Z'
-                          - '2022-12-04T00:00:00.000Z'
-                          - '2023-01-04T00:00:00.000Z'
+                          - '2022-09-04'
+                          - '2022-10-04'
+                          - '2022-11-04'
+                          - '2022-12-04'
+                          - '2023-01-04'
                       customer:
                         description: Este objeto representa a un cliente de su organización.
                         type: object
@@ -11521,18 +11631,18 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           deleted_at:
                             description: |
                               Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -11700,13 +11810,13 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                         title: Método de pago
                       metadata:
                         description: |
@@ -11950,7 +12060,7 @@ paths:
                       start_date:
                         description: Una fecha futura en la que el primer pago de la suscripción debe ser recogido.
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       interval_unit:
                         description: The unit of time between customer charge dates.
                         type: string
@@ -11978,28 +12088,28 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       upcoming_dates:
                         description: Up to 5 upcoming payments charge dates.
                         type: array
                         items:
                           type: string
                         example:
-                          - '2022-09-04T00:00:00.000Z'
-                          - '2022-10-04T00:00:00.000Z'
-                          - '2022-11-04T00:00:00.000Z'
-                          - '2022-12-04T00:00:00.000Z'
-                          - '2023-01-04T00:00:00.000Z'
+                          - '2022-09-04'
+                          - '2022-10-04'
+                          - '2022-11-04'
+                          - '2022-12-04'
+                          - '2023-01-04'
                       customer:
                         description: Este objeto representa a un cliente de su organización.
                         type: object
@@ -12066,18 +12176,18 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           deleted_at:
                             description: |
                               Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -12245,13 +12355,13 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                         title: Método de pago
                       metadata:
                         description: |
@@ -12457,7 +12567,7 @@ paths:
                       start_date:
                         description: Una fecha futura en la que el primer pago de la suscripción debe ser recogido.
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       interval_unit:
                         description: The unit of time between customer charge dates.
                         type: string
@@ -12485,28 +12595,28 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       upcoming_dates:
                         description: Up to 5 upcoming payments charge dates.
                         type: array
                         items:
                           type: string
                         example:
-                          - '2022-09-04T00:00:00.000Z'
-                          - '2022-10-04T00:00:00.000Z'
-                          - '2022-11-04T00:00:00.000Z'
-                          - '2022-12-04T00:00:00.000Z'
-                          - '2023-01-04T00:00:00.000Z'
+                          - '2022-09-04'
+                          - '2022-10-04'
+                          - '2022-11-04'
+                          - '2022-12-04'
+                          - '2023-01-04'
                       customer:
                         description: Este objeto representa a un cliente de su organización.
                         type: object
@@ -12573,18 +12683,18 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           deleted_at:
                             description: |
                               Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -12752,13 +12862,13 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                         title: Método de pago
                       metadata:
                         description: |
@@ -12970,7 +13080,7 @@ paths:
                       start_date:
                         description: Una fecha futura en la que el primer pago de la suscripción debe ser recogido.
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       interval_unit:
                         description: The unit of time between customer charge dates.
                         type: string
@@ -12998,28 +13108,28 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
-                        example: '2022-08-04T00:00:00.000Z'
+                        example: '2022-08-04'
                       upcoming_dates:
                         description: Up to 5 upcoming payments charge dates.
                         type: array
                         items:
                           type: string
                         example:
-                          - '2022-09-04T00:00:00.000Z'
-                          - '2022-10-04T00:00:00.000Z'
-                          - '2022-11-04T00:00:00.000Z'
-                          - '2022-12-04T00:00:00.000Z'
-                          - '2023-01-04T00:00:00.000Z'
+                          - '2022-09-04'
+                          - '2022-10-04'
+                          - '2022-11-04'
+                          - '2022-12-04'
+                          - '2023-01-04'
                       customer:
                         description: Este objeto representa a un cliente de su organización.
                         type: object
@@ -13086,18 +13196,18 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           deleted_at:
                             description: |
                               Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                             oneOf:
                               - type: 'null'
                               - type: string
@@ -13265,13 +13375,13 @@ paths:
                               Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                           updated_at:
                             description: |
                               Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                             type: string
                             format: date-time
-                            example: '2022-02-12T02:19:22.000Z'
+                            example: '2022-02-11T23:19:22-03:00'
                         title: Método de pago
                       metadata:
                         description: |
@@ -13488,15 +13598,15 @@ paths:
                             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                         updated_at:
                           description: |
                             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                           type: string
                           format: date-time
-                          example: '2022-02-12T02:19:22.000Z'
+                          example: '2022-02-11T23:19:22-03:00'
                       example:
-                        created_at: '2022-02-12T02:19:22.000Z'
+                        created_at: '2022-02-11T23:19:22-03:00'
                         enabled: true
                         enabled_events:
                           - '*'
@@ -13504,7 +13614,7 @@ paths:
                         livemode: true
                         object: webhook
                         secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
-                        updated_at: '2022-02-12T02:19:22.000Z'
+                        updated_at: '2022-02-11T23:19:22-03:00'
                         url: 'https://site.com/webhook'
                   links:
                     description: Metadata de paginación
@@ -13742,7 +13852,7 @@ paths:
                       La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
                     type: object
                     example:
-                      created_at: '2022-02-12T02:19:22.000Z'
+                      created_at: '2022-02-11T23:19:22-03:00'
                       enabled: true
                       enabled_events:
                         - '*'
@@ -13750,7 +13860,7 @@ paths:
                       livemode: true
                       object: webhook
                       secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
-                      updated_at: '2022-02-12T02:19:22.000Z'
+                      updated_at: '2022-02-11T23:19:22-03:00'
                       url: 'https://site.com/webhook'
                     properties:
                       id:
@@ -13802,13 +13912,13 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                     title: Webhook
         '401':
           description: No autorizado
@@ -13959,7 +14069,7 @@ paths:
                       La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
                     type: object
                     example:
-                      created_at: '2022-02-12T02:19:22.000Z'
+                      created_at: '2022-02-11T23:19:22-03:00'
                       enabled: true
                       enabled_events:
                         - '*'
@@ -13967,7 +14077,7 @@ paths:
                       livemode: true
                       object: webhook
                       secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
-                      updated_at: '2022-02-12T02:19:22.000Z'
+                      updated_at: '2022-02-11T23:19:22-03:00'
                       url: 'https://site.com/webhook'
                     properties:
                       id:
@@ -14019,13 +14129,13 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                     title: Webhook
         '404':
           description: Recurso no encontrado
@@ -14152,7 +14262,7 @@ paths:
                       La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
                     type: object
                     example:
-                      created_at: '2022-02-12T02:19:22.000Z'
+                      created_at: '2022-02-11T23:19:22-03:00'
                       enabled: true
                       enabled_events:
                         - '*'
@@ -14160,7 +14270,7 @@ paths:
                       livemode: true
                       object: webhook
                       secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
-                      updated_at: '2022-02-12T02:19:22.000Z'
+                      updated_at: '2022-02-11T23:19:22-03:00'
                       url: 'https://site.com/webhook'
                     properties:
                       id:
@@ -14212,13 +14322,13 @@ paths:
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
-                        example: '2022-02-12T02:19:22.000Z'
+                        example: '2022-02-11T23:19:22-03:00'
                     title: Webhook
         '401':
           description: No authorizado
@@ -14510,18 +14620,18 @@ components:
         Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
       type: string
       format: date-time
-      example: '2022-02-12T02:19:22.000Z'
+      example: '2022-02-11T23:19:22-03:00'
     updated_at:
       description: |
         Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
       type: string
       format: date-time
-      example: '2022-02-12T02:19:22.000Z'
+      example: '2022-02-11T23:19:22-03:00'
     deleted_at:
       description: |
         Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
       format: date-time
-      example: '2022-02-12T02:19:22.000Z'
+      example: '2022-02-11T23:19:22-03:00'
       oneOf:
         - type: 'null'
         - type: string
@@ -14591,18 +14701,18 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         deleted_at:
           description: |
             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
           oneOf:
             - type: 'null'
             - type: string
@@ -14704,7 +14814,7 @@ components:
         Hora en que se entregó el evento. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
       type: string
       format: date-time
-      example: '2022-02-12T02:19:22.000Z'
+      example: '2022-02-11T23:19:22-03:00'
       nullable: true
     Event:
       description: Este objeto representa un evento en tu cuenta.
@@ -14724,7 +14834,7 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         data:
           type: object
           properties:
@@ -14738,7 +14848,7 @@ components:
             Hora en que se entregó el evento. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
           nullable: true
         livemode:
           description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
@@ -14801,24 +14911,24 @@ components:
         Hora en la que se canceló la importación. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
       type: string
       format: date-time
-      example: '2022-02-12T02:19:22.000Z'
+      example: '2022-02-11T23:19:22-03:00'
     invalid_at:
       description: |
         Hora en la que la importación se marcó como inválida. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
       type: string
       format: date-time
-      example: '2022-02-12T02:19:22.000Z'
+      example: '2022-02-11T23:19:22-03:00'
     processed_at:
       description: |
         Hora en la que la importación se marcó como procesada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
       type: string
       format: date-time
-      example: '2022-02-12T02:19:22.000Z'
+      example: '2022-02-11T23:19:22-03:00'
     ready_at:
       description: |
         Hora en la que la importación se marcó como lista. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.type: string
       format: date-time
-      example: '2022-02-12T02:19:22.000Z'
+      example: '2022-02-11T23:19:22-03:00'
     Import:
       description: Este objeto representa una importación de su cuenta.
       type: object
@@ -14835,24 +14945,24 @@ components:
             Hora en la que se canceló la importación. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         invalid_at:
           description: |
             Hora en la que la importación se marcó como inválida. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         processed_at:
           description: |
             Hora en la que la importación se marcó como procesada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         ready_at:
           description: |
             Hora en la que la importación se marcó como lista. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         invalid_rows_count:
           description: Cantidad de filas no válido
           type: number
@@ -14885,13 +14995,13 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
       title: Importación
     Link:
       description: Este objeto representa un Link de su organización.
@@ -14924,18 +15034,18 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         deleted_at:
           description: |
             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
           oneOf:
             - type: 'null'
             - type: string
@@ -15134,13 +15244,13 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
       title: Método de pago
     Mandate:
       description: Este objeto representa una adhesión de su organización.
@@ -15225,18 +15335,18 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             deleted_at:
               description: |
                 Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
               oneOf:
                 - type: 'null'
                 - type: string
@@ -15404,13 +15514,13 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
           title: Método de pago
         metadata:
           description: |
@@ -15430,18 +15540,18 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         deleted_at:
           description: |
             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
           oneOf:
             - type: 'null'
             - type: string
@@ -15546,18 +15656,18 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         charge_date:
           description: 'Una fecha futura en la que se debe cobrar el pago. Si no se especifica, el pago se cobrará lo antes posible.'
           type: string
-          example: '2022-08-04T00:00:00.000Z'
+          example: '2022-08-04'
         submissions_count:
           description: El número de veces que el pago ha sido enviado a la institución financiera.
           type: number
           example: 1
         can_auto_retry_until:
           description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
-          example: '2022-08-31T00:00:00.000Z'
+          example: '2022-08-31'
           oneOf:
             - type: 'null'
             - type: string
@@ -15584,10 +15694,10 @@ components:
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_status:
           description: La última fecha en que se cambió el estado del pago.
-          example: '2022-08-31T00:00:00.000Z'
+          example: '2022-08-31'
           oneOf:
             - type: 'null'
             - type: string
@@ -15657,18 +15767,18 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             deleted_at:
               description: |
                 Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
               oneOf:
                 - type: 'null'
                 - type: string
@@ -15852,13 +15962,13 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
           title: Método de pago
         gateway_identifier:
           description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
@@ -15940,13 +16050,13 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         metadata:
           description: |
             Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -15966,7 +16076,7 @@ components:
         Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
       type: string
       format: date-time
-      example: '2022-02-12T02:19:22.000Z'
+      example: '2022-02-11T23:19:22-03:00'
     uuid:
       description: Identificador UUID del objeto.
       type: string
@@ -15986,7 +16096,7 @@ components:
             Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         count:
           type: number
         created_at:
@@ -15994,7 +16104,7 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         id:
           description: Identificador UUID del objeto.
           type: string
@@ -16048,7 +16158,7 @@ components:
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         active_subscriptions_count:
           type: integer
           format: int32
@@ -16089,7 +16199,7 @@ components:
           description: |
             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
           oneOf:
             - type: 'null'
             - type: string
@@ -16144,7 +16254,7 @@ components:
         start_date:
           description: Una fecha futura en la que el primer pago de la suscripción debe ser recogido.
           type: string
-          example: '2022-08-04T00:00:00.000Z'
+          example: '2022-08-04'
         interval_unit:
           description: The unit of time between customer charge dates.
           type: string
@@ -16172,28 +16282,28 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         first_date:
           description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
           type: string
-          example: '2022-08-04T00:00:00.000Z'
+          example: '2022-08-04'
         upcoming_dates:
           description: Up to 5 upcoming payments charge dates.
           type: array
           items:
             type: string
           example:
-            - '2022-09-04T00:00:00.000Z'
-            - '2022-10-04T00:00:00.000Z'
-            - '2022-11-04T00:00:00.000Z'
-            - '2022-12-04T00:00:00.000Z'
-            - '2023-01-04T00:00:00.000Z'
+            - '2022-09-04'
+            - '2022-10-04'
+            - '2022-11-04'
+            - '2022-12-04'
+            - '2023-01-04'
         customer:
           description: Este objeto representa a un cliente de su organización.
           type: object
@@ -16260,18 +16370,18 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             deleted_at:
               description: |
                 Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
               oneOf:
                 - type: 'null'
                 - type: string
@@ -16439,13 +16549,13 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
           title: Método de pago
         metadata:
           description: |
@@ -16543,15 +16653,15 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
       example:
-        created_at: '2022-02-12T02:19:22.000Z'
+        created_at: '2022-02-11T23:19:22-03:00'
         enabled: true
         enabled_events:
           - '*'
@@ -16559,7 +16669,7 @@ components:
         livemode: true
         object: webhook
         secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
-        updated_at: '2022-02-12T02:19:22.000Z'
+        updated_at: '2022-02-11T23:19:22-03:00'
         url: 'https://site.com/webhook'
       title: Webhook
     validation-error:
@@ -16654,18 +16764,18 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         deleted_at:
           description: |
             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
           oneOf:
             - type: 'null'
             - type: string
@@ -16733,7 +16843,7 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         data:
           type: object
           properties:
@@ -16747,7 +16857,7 @@ components:
             Hora en que se entregó el evento. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
           nullable: true
         livemode:
           description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
@@ -16821,24 +16931,24 @@ components:
             Hora en la que se canceló la importación. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         invalid_at:
           description: |
             Hora en la que la importación se marcó como inválida. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         processed_at:
           description: |
             Hora en la que la importación se marcó como procesada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         ready_at:
           description: |
             Hora en la que la importación se marcó como lista. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         invalid_rows_count:
           description: Cantidad de filas no válido
           type: number
@@ -16871,13 +16981,13 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
       title: Importación
     link:
       description: Este objeto representa un Link de su organización.
@@ -16910,18 +17020,18 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         deleted_at:
           description: |
             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
           oneOf:
             - type: 'null'
             - type: string
@@ -17009,18 +17119,18 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             deleted_at:
               description: |
                 Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
               oneOf:
                 - type: 'null'
                 - type: string
@@ -17188,13 +17298,13 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
           title: Método de pago
         metadata:
           description: |
@@ -17214,18 +17324,18 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         deleted_at:
           description: |
             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
           oneOf:
             - type: 'null'
             - type: string
@@ -17314,18 +17424,18 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         charge_date:
           description: 'Una fecha futura en la que se debe cobrar el pago. Si no se especifica, el pago se cobrará lo antes posible.'
           type: string
-          example: '2022-08-04T00:00:00.000Z'
+          example: '2022-08-04'
         submissions_count:
           description: El número de veces que el pago ha sido enviado a la institución financiera.
           type: number
           example: 1
         can_auto_retry_until:
           description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
-          example: '2022-08-31T00:00:00.000Z'
+          example: '2022-08-31'
           oneOf:
             - type: 'null'
             - type: string
@@ -17352,10 +17462,10 @@ components:
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_status:
           description: La última fecha en que se cambió el estado del pago.
-          example: '2022-08-31T00:00:00.000Z'
+          example: '2022-08-31'
           oneOf:
             - type: 'null'
             - type: string
@@ -17425,18 +17535,18 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             deleted_at:
               description: |
                 Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
               oneOf:
                 - type: 'null'
                 - type: string
@@ -17620,13 +17730,13 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
           title: Método de pago
         gateway_identifier:
           description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
@@ -17770,13 +17880,13 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
       title: Método de pago
     refund:
       description: Este objeto representa una devolución de su organización.
@@ -17834,13 +17944,13 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         metadata:
           description: |
             Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -17870,7 +17980,7 @@ components:
             Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         count:
           type: number
         created_at:
@@ -17878,7 +17988,7 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         id:
           description: Identificador UUID del objeto.
           type: string
@@ -17932,7 +18042,7 @@ components:
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         active_subscriptions_count:
           type: integer
           format: int32
@@ -17973,7 +18083,7 @@ components:
           description: |
             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
           oneOf:
             - type: 'null'
             - type: string
@@ -18028,7 +18138,7 @@ components:
         start_date:
           description: Una fecha futura en la que el primer pago de la suscripción debe ser recogido.
           type: string
-          example: '2022-08-04T00:00:00.000Z'
+          example: '2022-08-04'
         interval_unit:
           description: The unit of time between customer charge dates.
           type: string
@@ -18056,28 +18166,28 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         first_date:
           description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
           type: string
-          example: '2022-08-04T00:00:00.000Z'
+          example: '2022-08-04'
         upcoming_dates:
           description: Up to 5 upcoming payments charge dates.
           type: array
           items:
             type: string
           example:
-            - '2022-09-04T00:00:00.000Z'
-            - '2022-10-04T00:00:00.000Z'
-            - '2022-11-04T00:00:00.000Z'
-            - '2022-12-04T00:00:00.000Z'
-            - '2023-01-04T00:00:00.000Z'
+            - '2022-09-04'
+            - '2022-10-04'
+            - '2022-11-04'
+            - '2022-12-04'
+            - '2023-01-04'
         customer:
           description: Este objeto representa a un cliente de su organización.
           type: object
@@ -18144,18 +18254,18 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             deleted_at:
               description: |
                 Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
               oneOf:
                 - type: 'null'
                 - type: string
@@ -18323,13 +18433,13 @@ components:
                 Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
             updated_at:
               description: |
                 Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
               type: string
               format: date-time
-              example: '2022-02-12T02:19:22.000Z'
+              example: '2022-02-11T23:19:22-03:00'
           title: Método de pago
         metadata:
           description: |
@@ -18427,15 +18537,15 @@ components:
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
-          example: '2022-02-12T02:19:22.000Z'
+          example: '2022-02-11T23:19:22-03:00'
       example:
-        created_at: '2022-02-12T02:19:22.000Z'
+        created_at: '2022-02-11T23:19:22-03:00'
         enabled: true
         enabled_events:
           - '*'
@@ -18443,7 +18553,7 @@ components:
         livemode: true
         object: webhook
         secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
-        updated_at: '2022-02-12T02:19:22.000Z'
+        updated_at: '2022-02-11T23:19:22-03:00'
         url: 'https://site.com/webhook'
       title: Webhook
     meta:
@@ -18508,8 +18618,8 @@ components:
         metadata:
           external_id: 0Qk3IJY5
         livemode: true
-        created_at: '2021-07-05T15:24:32.000Z'
-        updated_at: '2021-07-05T15:24:32.000Z'
+        created_at: '2021-07-05T12:24:32-03:00'
+        updated_at: '2021-07-05T12:24:32-03:00'
         deleted_at: null
         approved_payments_count: 13
         approved_payments_sum: 47900
@@ -18523,10 +18633,10 @@ components:
     event:
       summary: Ejemplo de Evento
       value:
-        created_at: '2022-02-05T04:42:13.000Z'
+        created_at: '2022-02-05T01:42:13-03:00'
         data:
           object:
-            created_at: '2022-02-05T04:42:13.000Z'
+            created_at: '2022-02-05T01:42:13-03:00'
             deleted_at: null
             email: john@doe.com
             gateway_identifier: 383473
@@ -18537,8 +18647,8 @@ components:
             metadata: null
             mobile_number: '5491154876503'
             name: John Doe
-            updated_at: '2022-02-05T04:42:13.000Z'
-        delivered_at: '2022-02-11T23:11:38.000Z'
+            updated_at: '2022-02-05T01:42:13-03:00'
+        delivered_at: '2022-02-11T20:11:38-03:00'
         id: EVaX3JagwR6x
         livemode: true
         object: event
@@ -18548,14 +18658,14 @@ components:
     export:
       summary: Ejemplo de Archivo
       value:
-        created_at: '2022-01-25T17:10:01.000Z'
+        created_at: '2022-01-25T14:10:01-03:00'
         created_from: manual
         filename: exports/payments_monthly-2022-01-25-LiB4e3h4C1CBlmGK.xlsx
         id: EXaxk4p1DkXd
         livemode: true
         status: ready
         type: payments_monthly
-        updated_at: '2022-01-26T18:36:57.000Z'
+        updated_at: '2022-01-26T15:36:57-03:00'
     gateway:
       summary: Ejemplo de Gateway
       value:
@@ -18570,34 +18680,34 @@ components:
         brand_list:
           - visa-debito
         livemode: true
-        created_at: '2021-07-05T15:24:32.000Z'
-        updated_at: '2021-07-05T15:24:32.000Z'
-        approved_at: '2021-07-05T15:24:32.000Z'
+        created_at: '2021-07-05T12:24:32-03:00'
+        updated_at: '2021-07-05T12:24:32-03:00'
+        approved_at: '2021-07-05T12:24:32-03:00'
         brands:
           visa-debito: true
     import:
       summary: Ejemplo de Import
       value:
         batch_job:
-          created_at: '2021-06-08T15:49:06.000Z'
+          created_at: '2021-06-08T12:49:06-03:00'
           failed_jobs: 0
-          finished_at: '2021-06-08T15:49:06.000Z'
+          finished_at: '2021-06-08T12:49:06-03:00'
           pending_jobs: 0
           progress: 100
           total_jobs: 2
         cancelled_at: null
-        created_at: '2021-06-08T12:49:04.000Z'
+        created_at: '2021-06-08T09:49:04-03:00'
         id: IMB1rRDqkM5X
         invalid_at: null
         invalid_rows_count: 0
         livemode: true
         original_filename: subscriptions-import-template.csv
-        processed_at: '2021-06-08T12:49:06.000Z'
-        ready_at: '2021-06-08T12:49:05.000Z'
+        processed_at: '2021-06-08T09:49:06-03:00'
+        ready_at: '2021-06-08T09:49:05-03:00'
         rows_count: 2
         status: processed
         type: subscriptions
-        updated_at: '2021-06-08T12:49:06.000Z'
+        updated_at: '2021-06-08T09:49:06-03:00'
         valid_rows_count: 2
     link:
       summary: Ejemplo de Link
@@ -18605,7 +18715,7 @@ components:
         body: hoiadsad ad sad
         brands: []
         button_text: null
-        created_at: '2022-02-02T05:06:22.000Z'
+        created_at: '2022-02-02T02:06:22.00-03:00'
         deleted_at: null
         enabled: true
         extra_fields: []
@@ -18642,7 +18752,7 @@ components:
         public_uri: 'https://tucuota.com/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2'
         success_url: null
         title: Test options
-        updated_at: '2022-02-02T05:06:22.000Z'
+        updated_at: '2022-02-02T02:06:22.00-03:00'
         user:
           country: AR
           currency: ARS
@@ -18654,9 +18764,9 @@ components:
     mandate:
       summary: Ejemplo de Adhesión
       value:
-        created_at: '2022-02-01T22:06:37.000Z'
+        created_at: '2022-02-01T19:06:37-03:00'
         customer:
-          created_at: '2022-02-05T04:42:13.000Z'
+          created_at: '2022-02-05T01:42:13-03:00'
           deleted_at: null
           email: john@doe.com
           gateway_identifier: 383473
@@ -18667,7 +18777,7 @@ components:
           metadata: null
           mobile_number: '5491154876503'
           name: John Doe
-          updated_at: '2022-02-05T04:42:13.000Z'
+          updated_at: '2022-02-05T01:42:13-03:00'
         deleted_at: null
         id: 3990a740-83ab-11ec-8651-cde6203c968e
         livemode: true
@@ -18686,15 +18796,15 @@ components:
             fingerprint: 0sZQikKp4lImAgIo
             funding: credit
             last_four_digits: '4242'
-          created_at: '2022-02-02T02:13:04.000Z'
+          created_at: '2022-02-01T23:13:04-03:00'
           id: PMBja4YZ2GDR
           livemode: true
           metadata: null
           object: payment_method
           type: card
-          updated_at: '2022-02-02T02:13:04.000Z'
+          updated_at: '2022-02-01T23:13:04-03:00'
         status: active
-        updated_at: '2022-02-01T22:06:37.000Z'
+        updated_at: '2022-02-01T19:06:37-03:00'
     payment:
       summary: Ejemplo de Pago
       value:
@@ -18711,15 +18821,15 @@ components:
         refundable: true
         amount_refundable: 2300
         livemode: true
-        created_at: '2022-08-03T15:24:33.000Z'
-        charge_date: '2022-08-03T00:00:00.000Z'
+        created_at: '2022-08-03T12:24:33-03:00'
+        charge_date: '2022-08-03'
         submissions_count: 1
         can_auto_retry_until: null
         auto_retries_max_attempts: null
-        effective_charged_date: '2022-08-05T00:00:00.000Z'
-        estimated_accreditation_date: '2022-08-19T00:00:00.000Z'
-        updated_at: '2022-08-03T15:24:33.000Z'
-        updated_status: '2022-08-05T00:00:00.000Z'
+        effective_charged_date: '2022-08-05'
+        estimated_accreditation_date: '2022-08-19'
+        updated_at: '2022-08-03T12:24:33-03:00'
+        updated_status: '2022-08-05'
         customer:
           id: CS3Z25Agp708
           object: customer
@@ -18732,8 +18842,8 @@ components:
           metadata:
             external_id: 0Qk3IJY5
           livemode: true
-          created_at: '2021-07-05T15:24:32.000Z'
-          updated_at: '2021-07-05T15:24:32.000Z'
+          created_at: '2021-07-05T12:24:32-03:00'
+          updated_at: '2021-07-05T12:24:32-03:00'
           deleted_at: null
         subscription: null
         subscription_payment_number: null
@@ -18750,13 +18860,13 @@ components:
             fingerprint: 0sZQikKp4lImAgIo
             funding: credit
             last_four_digits: '4242'
-          created_at: '2022-02-02T02:13:04.000Z'
+          created_at: '2022-02-01T23:13:04-03:00'
           id: PMBja4YZ2GDR
           livemode: true
           metadata: null
           object: payment_method
           type: card
-          updated_at: '2022-02-02T02:13:04.000Z'
+          updated_at: '2022-02-01T23:13:04-03:00'
         gateway_identifier: null
         metadata: null
         refunds: []
@@ -18774,13 +18884,13 @@ components:
           fingerprint: 0sZQikKp4lImAgIo
           funding: credit
           last_four_digits: '4242'
-        created_at: '2022-02-02T02:13:04.000Z'
+        created_at: '2022-02-01T23:13:04-03:00'
         id: PMBja4YZ2GDR
         livemode: true
         metadata: null
         object: payment_method
         type: card
-        updated_at: '2022-02-02T02:13:04.000Z'
+        updated_at: '2022-02-01T23:13:04-03:00'
     refund:
       summary: Ejemplo de Devolución
       value:
@@ -18791,8 +18901,8 @@ components:
         currency: ARS
         reason: error
         status: approved
-        created_at: '2022-02-05T15:24:33.000Z'
-        updated_at: '2022-02-05T15:24:33.000Z'
+        created_at: '2022-02-05T12:24:33-03:00'
+        updated_at: '2022-02-05T12:24:33-03:00'
         metadata: null
     session:
       summary: Ejemplo de Sesión
@@ -18801,7 +18911,7 @@ components:
         brands: []
         completed_at: null
         count: null
-        created_at: '2022-02-12T02:17:54.000Z'
+        created_at: '2022-02-11T23:17:54.00-03:00'
         customer_email: null
         customer_id: null
         customer_name: null
@@ -18824,7 +18934,7 @@ components:
         name_text: null
         object: session
         public_uri: 'https://tucuota.com/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81'
-        updated_at: '2022-02-12T02:17:55.000Z'
+        updated_at: '2022-02-11T23:17:55.00-03:00'
         user:
           country: AR
           currency: ARS
@@ -18843,21 +18953,21 @@ components:
         currency: ARS
         status: active
         count: null
-        start_date: '2021-07-01T00:00:00.000Z'
+        start_date: '2021-07-01'
         interval_unit: monthly
         interval: 1
         day_of_month: 1
         day_of_week: null
         livemode: true
-        created_at: '2021-07-01T15:24:32.000Z'
-        updated_at: '2021-07-01T15:24:32.000Z'
-        first_date: '2022-09-01T00:00:00.000Z'
+        created_at: '2021-07-01T12:24:32-03:00'
+        updated_at: '2021-07-01T12:24:32-03:00'
+        first_date: '2022-09-01'
         upcoming_dates:
-          - '2022-09-01T00:00:00.000Z'
-          - '2022-10-01T00:00:00.000Z'
-          - '2022-11-01T00:00:00.000Z'
-          - '2022-12-01T00:00:00.000Z'
-          - '2023-01-01T00:00:00.000Z'
+          - '2022-09-01'
+          - '2022-10-01'
+          - '2022-11-01'
+          - '2022-12-01'
+          - '2023-01-01'
         customer:
           id: CS3Z25Agp708
           object: customer
@@ -18870,8 +18980,8 @@ components:
           metadata:
             external_id: 0Qk3IJY5
           livemode: true
-          created_at: '2021-07-05T15:24:32.000Z'
-          updated_at: '2021-07-05T15:24:32.000Z'
+          created_at: '2021-07-05T12:24:32-03:00'
+          updated_at: '2021-07-05T12:24:32-03:00'
           deleted_at: null
         payment_method:
           bank: Visa
@@ -18885,13 +18995,13 @@ components:
             fingerprint: 0sZQikKp4lImAgIo
             funding: credit
             last_four_digits: '4242'
-          created_at: '2022-02-02T02:13:04.000Z'
+          created_at: '2022-02-01T23:13:04-03:00'
           id: PMBja4YZ2GDR
           livemode: true
           metadata: null
           object: payment_method
           type: card
-          updated_at: '2022-02-02T02:13:04.000Z'
+          updated_at: '2022-02-01T23:13:04-03:00'
         metadata: null
         payments_created: 14
         approved_payments_count: 9
@@ -18901,7 +19011,7 @@ components:
     webhook:
       summary: Ejemplo de Webhook
       value:
-        created_at: '2022-02-12T02:19:22.000Z'
+        created_at: '2022-02-11T23:19:22-03:00'
         enabled: true
         enabled_events:
           - '*'
@@ -18909,7 +19019,7 @@ components:
         livemode: true
         object: webhook
         secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
-        updated_at: '2022-02-12T02:19:22.000Z'
+        updated_at: '2022-02-11T23:19:22-03:00'
         url: 'https://site.com/tucuota_webhook'
   securitySchemes:
     PublishableKeyAuthentication:

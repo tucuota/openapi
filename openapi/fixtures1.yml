@@ -6,15 +6,15 @@ resources:
     gateway_identifier: 1723393503
     name: Andrés Bahena Tercero
     email: andres37@calvillo.info
-    identification_type: null
-    identification_number: null
-    mobile_number: '+5481934863501'
+    identification_type: 
+    identification_number: 
+    mobile_number: "+5481934863501"
     metadata:
       external_id: 0Qk3IJY5
     livemode: true
     created_at: '2021-07-05T12:24:32-03:00'
     updated_at: '2021-07-05T12:24:32-03:00'
-    deleted_at: null
+    deleted_at: 
     approved_payments_count: 13
     approved_payments_sum: 47900
     rejected_payments_count: 1
@@ -29,14 +29,14 @@ resources:
     data:
       object:
         created_at: '2022-02-05T01:42:13-03:00'
-        deleted_at: null
+        deleted_at: 
         email: john@doe.com
         gateway_identifier: 383473
         id: CSnlZxyY3jwr
-        identification_number: null
-        identification_type: null
+        identification_number: 
+        identification_type: 
         livemode: true
-        metadata: null
+        metadata: 
         mobile_number: '5491154876503'
         name: John Doe
         updated_at: '2022-02-05T01:42:13-03:00'
@@ -61,12 +61,12 @@ resources:
     object: gateway
     gatewaykind: visaD
     number: '111111'
-    username: null
-    number_bank_retries: null
+    username: 
+    number_bank_retries: 
     code_length: 5
     disabled: false
     brand_list:
-      - visa-debito
+    - visa-debito
     livemode: true
     created_at: '2021-07-05T12:24:32-03:00'
     updated_at: '2021-07-05T12:24:32-03:00'
@@ -81,10 +81,10 @@ resources:
       pending_jobs: 0
       progress: 100
       total_jobs: 2
-    cancelled_at: null
+    cancelled_at: 
     created_at: '2021-06-08T09:49:04-03:00'
     id: IMB1rRDqkM5X
-    invalid_at: null
+    invalid_at: 
     invalid_rows_count: 0
     livemode: true
     original_filename: subscriptions-import-template.csv
@@ -98,43 +98,43 @@ resources:
   link:
     body: hoiadsad ad sad
     brands: []
-    button_text: null
+    button_text: 
     created_at: '2022-02-02T02:06:22.00-03:00'
-    deleted_at: null
+    deleted_at: 
     enabled: true
     extra_fields: []
     extra_fields_customer: []
     id: b7fba990-83cc-11ec-8c7b-5b2fd150abb2
     kind: payment
     livemode: true
-    metadata: null
-    name_text: null
+    metadata: 
+    name_text: 
     object: link
     options:
-      - amount: '100'
-        count: null
-        description: mucho
-        editable_amount: false
-        editable_count: false
-        installments: 1
-        interval: '1'
-        interval_unit: monthly
-        max_installments: null
-        show_count: false
-        show_installments: false
-      - amount: '75'
-        count: null
-        description: poco
-        editable_amount: false
-        editable_count: false
-        installments: 1
-        interval: '1'
-        interval_unit: monthly
-        max_installments: null
-        show_count: false
-        show_installments: false
+    - amount: '100'
+      count: 
+      description: mucho
+      editable_amount: false
+      editable_count: false
+      installments: 1
+      interval: '1'
+      interval_unit: monthly
+      max_installments: 
+      show_count: false
+      show_installments: false
+    - amount: '75'
+      count: 
+      description: poco
+      editable_amount: false
+      editable_count: false
+      installments: 1
+      interval: '1'
+      interval_unit: monthly
+      max_installments: 
+      show_count: false
+      show_installments: false
     public_uri: https://tucuota.com/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2
-    success_url: null
+    success_url: 
     title: Test options
     updated_at: '2022-02-02T02:06:22.00-03:00'
     user:
@@ -142,26 +142,25 @@ resources:
       currency: ARS
       email: juandelperal@gmail.com
       organization_name: TuCuota
-      preference_color1: '#ffffff'
-      preference_color2: '#d10000'
-      preference_logo: >-
-        https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png
+      preference_color1: "#ffffff"
+      preference_color2: "#d10000"
+      preference_logo: https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png
   mandate:
     created_at: '2022-02-01T19:06:37-03:00'
     customer:
       created_at: '2022-02-05T01:42:13-03:00'
-      deleted_at: null
+      deleted_at: 
       email: john@doe.com
       gateway_identifier: 383473
       id: CSnlZxyY3jwr
-      identification_number: null
-      identification_type: null
+      identification_number: 
+      identification_type: 
       livemode: true
-      metadata: null
+      metadata: 
       mobile_number: '5491154876503'
       name: John Doe
       updated_at: '2022-02-05T01:42:13-03:00'
-    deleted_at: null
+    deleted_at: 
     id: 3990a740-83ab-11ec-8651-cde6203c968e
     livemode: true
     metadata:
@@ -174,15 +173,15 @@ resources:
         bank: Visa
         brand: visa-credito
         country: AR
-        expiration_month: null
-        expiration_year: null
+        expiration_month: 
+        expiration_year: 
         fingerprint: 0sZQikKp4lImAgIo
         funding: credit
         last_four_digits: '4242'
       created_at: '2022-02-01T23:13:04-03:00'
       id: PMBja4YZ2GDR
       livemode: true
-      metadata: null
+      metadata: 
       object: payment_method
       type: card
       updated_at: '2022-02-01T23:13:04-03:00'
@@ -205,8 +204,8 @@ resources:
     created_at: '2022-08-03T12:24:33-03:00'
     charge_date: '2022-08-03'
     submissions_count: 1
-    can_auto_retry_until: null
-    auto_retries_max_attempts: null
+    can_auto_retry_until: 
+    auto_retries_max_attempts: 
     effective_charged_date: '2022-08-05'
     estimated_accreditation_date: '2022-08-19'
     updated_at: '2022-08-03T12:24:33-03:00'
@@ -217,17 +216,17 @@ resources:
       gateway_identifier: 1723393503
       name: Andrés Bahena Tercero
       email: andres37@calvillo.info
-      identification_type: null
-      identification_number: null
-      mobile_number: '+5481934863501'
+      identification_type: 
+      identification_number: 
+      mobile_number: "+5481934863501"
       metadata:
         external_id: 0Qk3IJY5
       livemode: true
       created_at: '2021-07-05T12:24:32-03:00'
       updated_at: '2021-07-05T12:24:32-03:00'
-      deleted_at: null
-    subscription: null
-    subscription_payment_number: null
+      deleted_at: 
+    subscription: 
+    subscription_payment_number: 
     gateway: GW1L49J7ARW3
     payment_method:
       bank: Visa
@@ -236,20 +235,20 @@ resources:
         bank: Visa
         brand: visa-credito
         country: AR
-        expiration_month: null
-        expiration_year: null
+        expiration_month: 
+        expiration_year: 
         fingerprint: 0sZQikKp4lImAgIo
         funding: credit
         last_four_digits: '4242'
       created_at: '2022-02-01T23:13:04-03:00'
       id: PMBja4YZ2GDR
       livemode: true
-      metadata: null
+      metadata: 
       object: payment_method
       type: card
       updated_at: '2022-02-01T23:13:04-03:00'
-    gateway_identifier: null
-    metadata: null
+    gateway_identifier: 
+    metadata: 
     refunds: []
   payment_method:
     bank: Visa
@@ -258,15 +257,15 @@ resources:
       bank: Visa
       brand: visa-credito
       country: AR
-      expiration_month: null
-      expiration_year: null
+      expiration_month: 
+      expiration_year: 
       fingerprint: 0sZQikKp4lImAgIo
       funding: credit
       last_four_digits: '4242'
     created_at: '2022-02-01T23:13:04-03:00'
     id: PMBja4YZ2GDR
     livemode: true
-    metadata: null
+    metadata: 
     object: payment_method
     type: card
     updated_at: '2022-02-01T23:13:04-03:00'
@@ -280,19 +279,19 @@ resources:
     status: approved
     created_at: '2022-02-05T12:24:33-03:00'
     updated_at: '2022-02-05T12:24:33-03:00'
-    metadata: null
+    metadata: 
   session:
     amount: '100.00'
     brands: []
-    completed_at: null
-    count: null
+    completed_at: 
+    count: 
     created_at: '2022-02-11T23:17:54.00-03:00'
-    customer_email: null
-    customer_id: null
-    customer_name: null
-    day_of_month: null
-    day_of_week: null
-    deleted_at: null
+    customer_email: 
+    customer_id: 
+    customer_name: 
+    day_of_month: 
+    day_of_week: 
+    deleted_at: 
     description: mucho
     editable_amount: false
     editable_count: false
@@ -305,8 +304,8 @@ resources:
     kind: payment
     link_id: b7fba990-83cc-11ec-8c7b-5b2fd150abb2
     livemode: true
-    max_installments: null
-    name_text: null
+    max_installments: 
+    name_text: 
     object: session
     public_uri: https://tucuota.com/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81
     updated_at: '2022-02-11T23:17:55.00-03:00'
@@ -315,10 +314,9 @@ resources:
       currency: ARS
       email: juandelperal@gmail.com
       organization_name: TuCuota
-      preference_color1: '#ffffff'
-      preference_color2: '#d10000'
-      preference_logo: >-
-        https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png
+      preference_color1: "#ffffff"
+      preference_color2: "#d10000"
+      preference_logo: https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png
   subscription:
     id: SBmQ6j9NWxblNv
     object: subscription
@@ -326,37 +324,37 @@ resources:
     description: Cuota mensual
     currency: ARS
     status: active
-    count: null
+    count: 
     start_date: '2021-07-01'
     interval_unit: monthly
     interval: 1
     day_of_month: 1
-    day_of_week: null
+    day_of_week: 
     livemode: true
     created_at: '2021-07-01T12:24:32-03:00'
     updated_at: '2021-07-01T12:24:32-03:00'
     first_date: '2022-09-01'
     upcoming_dates:
-      - '2022-09-01'
-      - '2022-10-01'
-      - '2022-11-01'
-      - '2022-12-01'
-      - '2023-01-01'
+    - '2022-09-01'
+    - '2022-10-01'
+    - '2022-11-01'
+    - '2022-12-01'
+    - '2023-01-01'
     customer:
       id: CS3Z25Agp708
       object: customer
       gateway_identifier: 1723393503
       name: Andrés Bahena Tercero
       email: andres37@calvillo.info
-      identification_type: null
-      identification_number: null
-      mobile_number: '+5481934863501'
+      identification_type: 
+      identification_number: 
+      mobile_number: "+5481934863501"
       metadata:
         external_id: 0Qk3IJY5
       livemode: true
       created_at: '2021-07-05T12:24:32-03:00'
       updated_at: '2021-07-05T12:24:32-03:00'
-      deleted_at: null
+      deleted_at: 
     payment_method:
       bank: Visa
       brand: visa-credito
@@ -364,19 +362,19 @@ resources:
         bank: Visa
         brand: visa-credito
         country: AR
-        expiration_month: null
-        expiration_year: null
+        expiration_month: 
+        expiration_year: 
         fingerprint: 0sZQikKp4lImAgIo
         funding: credit
         last_four_digits: '4242'
       created_at: '2022-02-01T23:13:04-03:00'
       id: PMBja4YZ2GDR
       livemode: true
-      metadata: null
+      metadata: 
       object: payment_method
       type: card
       updated_at: '2022-02-01T23:13:04-03:00'
-    metadata: null
+    metadata: 
     payments_created: 14
     approved_payments_count: 9
     approved_payments_sum: 46800
@@ -386,7 +384,7 @@ resources:
     created_at: '2022-02-11T23:19:22-03:00'
     enabled: true
     enabled_events:
-      - '*'
+    - "*"
     id: WHq4VzyAzDgB
     livemode: true
     object: webhook
