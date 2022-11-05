@@ -10248,7 +10248,7 @@ paths:
                             - customer.updated
                             - payment.created
                         secret:
-                          description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/webhooks/signatures).'
+                          description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
                           type: string
                           example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                           maxLength: 5000
@@ -10482,7 +10482,7 @@ paths:
                           - customer.updated
                           - payment.created
                       secret:
-                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/webhooks/signatures).'
+                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
                         type: string
                         example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                         maxLength: 5000
@@ -10604,7 +10604,7 @@ paths:
                           - customer.updated
                           - payment.created
                       secret:
-                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/webhooks/signatures).'
+                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
                         type: string
                         example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                         maxLength: 5000
@@ -10724,7 +10724,7 @@ paths:
                           - customer.updated
                           - payment.created
                       secret:
-                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/webhooks/signatures).'
+                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
                         type: string
                         example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                         maxLength: 5000
@@ -12891,7 +12891,7 @@ components:
             - customer.updated
             - payment.created
         secret:
-          description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/webhooks/signatures).'
+          description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
           type: string
           example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
           maxLength: 5000
@@ -14775,7 +14775,7 @@ components:
             - customer.updated
             - payment.created
         secret:
-          description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/webhooks/signatures).'
+          description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
           type: string
           example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
           maxLength: 5000

@@ -13343,7 +13343,7 @@
                             ]
                           },
                           "secret": {
-                            "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/webhooks/signatures).",
+                            "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).",
                             "type": "string",
                             "example": "Rrdm41mW4x54uUS2A6QnHhm7hXwpuR",
                             "maxLength": 5000
@@ -13641,7 +13641,7 @@
                           ]
                         },
                         "secret": {
-                          "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/webhooks/signatures).",
+                          "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).",
                           "type": "string",
                           "example": "Rrdm41mW4x54uUS2A6QnHhm7hXwpuR",
                           "maxLength": 5000
@@ -13801,7 +13801,7 @@
                           ]
                         },
                         "secret": {
-                          "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/webhooks/signatures).",
+                          "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).",
                           "type": "string",
                           "example": "Rrdm41mW4x54uUS2A6QnHhm7hXwpuR",
                           "maxLength": 5000
@@ -13957,7 +13957,7 @@
                           ]
                         },
                         "secret": {
-                          "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/webhooks/signatures).",
+                          "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).",
                           "type": "string",
                           "example": "Rrdm41mW4x54uUS2A6QnHhm7hXwpuR",
                           "maxLength": 5000
@@ -16758,7 +16758,7 @@
             ]
           },
           "secret": {
-            "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/webhooks/signatures).",
+            "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).",
             "type": "string",
             "example": "Rrdm41mW4x54uUS2A6QnHhm7hXwpuR",
             "maxLength": 5000
@@ -19186,7 +19186,7 @@
             ]
           },
           "secret": {
-            "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/webhooks/signatures).",
+            "description": "The endpoint's secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).",
             "type": "string",
             "example": "Rrdm41mW4x54uUS2A6QnHhm7hXwpuR",
             "maxLength": 5000
