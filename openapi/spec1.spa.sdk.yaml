@@ -827,7 +827,7 @@ paths:
                         example: 0
                     title: Cliente
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -965,7 +965,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Customer ID.
+          description: |
+            [ID del Cliente](#tag/Clientes).
           required: true
           schema:
             type: string
@@ -1105,7 +1106,7 @@ paths:
                         example: 0
                     title: Cliente
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -1119,7 +1120,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
         '404':
-          description: Object not found
+          description: Recurso no encontrado
           content:
             application/json:
               schema:
@@ -1214,7 +1215,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Gateway ID.
+          description: |
+            [ID del Cliente](#tag/Clientes).
           required: true
           schema:
             type: string
@@ -1407,7 +1409,7 @@ paths:
                         example: 0
                     title: Cliente
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -1421,7 +1423,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
         '404':
-          description: Object not found
+          description: Recurso no encontrado
           content:
             application/json:
               schema:
@@ -1559,7 +1561,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Hash or external ID.
+          description: |
+            [ID del Cliente](#tag/Clientes).
           required: true
           schema:
             type: string
@@ -1572,7 +1575,7 @@ paths:
               example:
                 message: Archived successfully
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -1586,7 +1589,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
         '404':
-          description: Object not found
+          description: Recurso no encontrado
           content:
             application/json:
               schema:
@@ -1682,7 +1685,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Hash or external ID.
+          description: |
+            [ID del Cliente](#tag/Clientes).
           required: true
           schema:
             type: string
@@ -1695,7 +1699,7 @@ paths:
               example:
                 message: Restored successfully
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -1709,7 +1713,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
         '404':
-          description: Object not found
+          description: Recurso no encontrado
           content:
             application/json:
               schema:
@@ -1989,7 +1993,7 @@ paths:
                         example: 'https://api.tucuota.com/v1/customers'
                     title: Response Meta
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -2085,6 +2089,220 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+  '/v1/events/{id}':
+    get:
+      operationId: EventsGetEvent
+      summary: Obtener un evento
+      description: Obtener un evento.
+      parameters:
+        - name: id
+          in: path
+          description: |
+            [ID del Evento](#tag/Eventos).
+          required: true
+          schema:
+            type: string
+          example: EVaX3JagwR6x
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: Este objeto representa un evento en tu cuenta.
+                    type: object
+                    properties:
+                      id:
+                        description: Identificador único del objeto.
+                        type: string
+                        example: EVm3RnKn3knw
+                        readOnly: true
+                      object:
+                        type: string
+                        enum:
+                          - event
+                      created_at:
+                        description: |
+                          Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      data:
+                        type: object
+                        properties:
+                          object:
+                            description: Event object.
+                            type: object
+                        required:
+                          - object
+                      delivered_at:
+                        description: |
+                          Hora en que se entregó el evento. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                        nullable: true
+                      livemode:
+                        description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
+                        type: boolean
+                        example: true
+                      resource:
+                        description: Recurso relacionado con el evento.
+                        type: string
+                        example: customer
+                        enum:
+                          - customer
+                          - gateway
+                          - import
+                          - mandate
+                          - payment
+                          - payment_method
+                          - subscription
+                      resource_id:
+                        description: ID del recurso relacionado con el evento.
+                        type: string
+                        example: CS12312d1d1dl
+                      type:
+                        description: Tipo de evento.
+                        type: string
+                        example: customer.created
+                        enum:
+                          - customer.created
+                          - customer.disabled
+                          - customer.restored
+                          - customer.updated
+                          - gateway.created
+                          - gateway.disabled
+                          - gateway.enabled
+                          - gateway.updated
+                          - import.processed
+                          - mandate.created
+                          - mandate.restored
+                          - mandate.revoked
+                          - payment.cancelled
+                          - payment.created
+                          - payment.retrying
+                          - payment.updated
+                          - payment_method.automatically_updated
+                          - payment_method.created
+                          - payment_method.updated
+                          - refund.approved
+                          - refund.created
+                          - refund.failed
+                          - subscription.automatically_paused
+                          - subscription.cancelled
+                          - subscription.created
+                          - subscription.finished
+                          - subscription.paused
+                          - subscription.resumed
+                          - subscription.updated
+                          - user.updated_available_brands
+                    title: Evento
+        '401':
+          description: No authorizado
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: No autorizado
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Unauthorized
+                    title: No autorizado
+        '404':
+          description: Recurso no encontrado
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: Recurso no encontrado
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Record not found
+                    title: Not Found
+      tags:
+        - Eventos
+      x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request GET \
+              --url https://api.tucuota.com/v1/events/EVaX3JagwR6x \
+              --header 'Authorization: Bearer sk_live_...'
+        - lang: Node + Request
+          source: |
+            const request = require('request');
+
+            const options = {
+              method: 'GET',
+              url: 'https://api.tucuota.com/v1/events/EVaX3JagwR6x',
+              headers: {Authorization: 'Bearer sk_live_...'}
+            };
+
+            request(options, function (error, response, body) {
+              if (error) throw new Error(error);
+
+              console.log(body);
+            });
+        - lang: Php + Http1
+          source: |-
+            <?php
+
+            $request = new HttpRequest();
+            $request->setUrl('https://api.tucuota.com/v1/events/EVaX3JagwR6x');
+            $request->setMethod(HTTP_METH_GET);
+
+            $request->setHeaders([
+              'Authorization' => 'Bearer sk_live_...'
+            ]);
+
+            try {
+              $response = $request->send();
+
+              echo $response->getBody();
+            } catch (HttpException $ex) {
+              echo $ex;
+            }
+        - lang: Python + Requests
+          source: |-
+            import requests
+
+            url = "https://api.tucuota.com/v1/events/EVaX3JagwR6x"
+
+            headers = {"Authorization": "Bearer sk_live_..."}
+
+            response = requests.request("GET", url, headers=headers)
+
+            print(response.text)
+        - lang: Java + Unirest
+          source: |-
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/events/EVaX3JagwR6x")
+              .header("Authorization", "Bearer sk_live_...")
+              .asString();
+        - lang: Ruby + Native
+          source: |-
+            require 'uri'
+            require 'net/http'
+            require 'openssl'
+
+            url = URI("https://api.tucuota.com/v1/events/EVaX3JagwR6x")
+
+            http = Net::HTTP.new(url.host, url.port)
+            http.use_ssl = true
+            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+            request = Net::HTTP::Get.new(url)
+            request["Authorization"] = 'Bearer sk_live_...'
+
+            response = http.request(request)
+            puts response.read_body
   /v1/imports:
     get:
       operationId: GetImports
@@ -2158,7 +2376,7 @@ paths:
                   to: 2
                   total: 2
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -2389,7 +2607,7 @@ paths:
                         example: '2022-02-11T23:19:22-03:00'
                     title: Importación
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -2612,7 +2830,7 @@ paths:
                         example: '2022-02-11T23:19:22-03:00'
                     title: Importación
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -2626,7 +2844,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
         '404':
-          description: Object not found
+          description: Recurso no encontrado
           content:
             application/json:
               schema:
@@ -2753,7 +2971,7 @@ paths:
               example:
                 data: []
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -2988,7 +3206,7 @@ paths:
                 required:
                   - data
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -3148,7 +3366,7 @@ paths:
                           - type: string
                     title: Link
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -3304,7 +3522,7 @@ paths:
                           - type: string
                     title: Link
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -3938,7 +4156,7 @@ paths:
                 required:
                   - data
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -4093,7 +4311,7 @@ paths:
                     updated_at: '2020-06-03T11:05:11-03:00'
                     created_at: '2020-06-03T11:05:11-03:00'
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -4211,7 +4429,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID de la Adhesión
+          description: |
+            [ID de la Adhesión](#tag/Adhesiones).
           required: true
           schema:
             type: string
@@ -4633,12 +4852,13 @@ paths:
   '/v1/mandates/{id}/actions/revoke':
     post:
       operationId: MandatesRevokeMandate
-      summary: Revocar adhesión
+      summary: Revocar una adhesión
       description: Esta acción revocará la adhesión y también cancelará todos las suscripciones cancelables adjuntas al mismo `cliente` y al mismo `método de pago`.
       parameters:
         - name: id
           in: path
-          description: ID de la Adhesión
+          description: |
+            [ID de la Adhesión](#tag/Adhesiones).
           required: true
           schema:
             type: string
@@ -4743,7 +4963,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID de la Adhesión
+          description: |
+            [ID de la Adhesión](#tag/Adhesiones).
           required: true
           schema:
             type: string
@@ -5071,7 +5292,7 @@ paths:
                   to: 25
                   total: 34
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -6216,7 +6437,7 @@ paths:
                 required:
                   - data
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -6812,7 +7033,7 @@ paths:
                           - type: 'null'
                     title: Payment
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -7375,7 +7596,7 @@ paths:
                           - type: 'null'
                     title: Payment
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -8091,7 +8312,7 @@ paths:
               example:
                 message: Cancelled successfully
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -8311,7 +8532,7 @@ paths:
               example:
                 message: Stopped autoretries successfully
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -8556,7 +8777,7 @@ paths:
                 required:
                   - data
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -8777,7 +8998,7 @@ paths:
                           - type: 'null'
                     title: Devolución
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -10152,7 +10373,7 @@ paths:
                 required:
                   - data
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -11858,7 +12079,7 @@ paths:
                         readOnly: true
                     title: Suscripción
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -13666,7 +13887,7 @@ paths:
                 required:
                   - data
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:
@@ -14463,7 +14684,7 @@ paths:
         '201':
           description: OK
         '401':
-          description: Unauthorized
+          description: No authorizado
           content:
             application/json:
               schema:

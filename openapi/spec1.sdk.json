@@ -716,7 +716,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Customer ID.",
+            "description": "[Customer ID](#tag/Customers).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -991,7 +991,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Gateway ID.",
+            "description": "[Customer ID](#tag/Customers).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1364,7 +1364,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Hash or external ID.",
+            "description": "[Customer ID](#tag/Customers).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1468,7 +1468,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Hash or external ID.",
+            "description": "[Customer ID](#tag/Customers).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1853,6 +1853,216 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.tucuota.com/v1/events?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          }
+        ]
+      }
+    },
+    "/v1/events/{id}": {
+      "get": {
+        "operationId": "EventsGetEvent",
+        "summary": "Retrieve an event",
+        "description": "Retrieve an event.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "[Event ID](#tag/Events).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "EVaX3JagwR6x"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "This object represents an event of your account.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "Unique identifier for the object.",
+                          "type": "string",
+                          "example": "EVm3RnKn3knw",
+                          "readOnly": true
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "event"
+                          ]
+                        },
+                        "created_at": {
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "description": "Event object.",
+                              "type": "object"
+                            }
+                          },
+                          "required": [
+                            "object"
+                          ]
+                        },
+                        "delivered_at": {
+                          "description": "Time at which the event was delivered. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "nullable": true
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "resource": {
+                          "description": "Resource attached to the event.",
+                          "type": "string",
+                          "example": "customer",
+                          "enum": [
+                            "customer",
+                            "gateway",
+                            "import",
+                            "mandate",
+                            "payment",
+                            "payment_method",
+                            "subscription"
+                          ]
+                        },
+                        "resource_id": {
+                          "description": "ID for the resource attached to the event.",
+                          "type": "string",
+                          "example": "CS12312d1d1dl"
+                        },
+                        "type": {
+                          "description": "Event type.",
+                          "type": "string",
+                          "example": "customer.created",
+                          "enum": [
+                            "customer.created",
+                            "customer.disabled",
+                            "customer.restored",
+                            "customer.updated",
+                            "gateway.created",
+                            "gateway.disabled",
+                            "gateway.enabled",
+                            "gateway.updated",
+                            "import.processed",
+                            "mandate.created",
+                            "mandate.restored",
+                            "mandate.revoked",
+                            "payment.cancelled",
+                            "payment.created",
+                            "payment.retrying",
+                            "payment.updated",
+                            "payment_method.automatically_updated",
+                            "payment_method.created",
+                            "payment_method.updated",
+                            "refund.approved",
+                            "refund.created",
+                            "refund.failed",
+                            "subscription.automatically_paused",
+                            "subscription.cancelled",
+                            "subscription.created",
+                            "subscription.finished",
+                            "subscription.paused",
+                            "subscription.resumed",
+                            "subscription.updated",
+                            "user.updated_available_brands"
+                          ]
+                        }
+                      },
+                      "title": "Event"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "Unauthorized response",
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized"
+                        }
+                      },
+                      "title": "Unauthorized"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Object not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "Not Found response",
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Record not found"
+                        }
+                      },
+                      "title": "Not Found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Events"
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "Shell + Curl",
+            "source": "curl --request GET \\\n  --url https://api.tucuota.com/v1/events/EVaX3JagwR6x \\\n  --header 'Authorization: Bearer sk_live_...'"
+          },
+          {
+            "lang": "Node + Request",
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'GET',\n  url: 'https://api.tucuota.com/v1/events/EVaX3JagwR6x',\n  headers: {Authorization: 'Bearer sk_live_...'}\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+          },
+          {
+            "lang": "Php + Http1",
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.tucuota.com/v1/events/EVaX3JagwR6x');\n$request->setMethod(HTTP_METH_GET);\n\n$request->setHeaders([\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+          },
+          {
+            "lang": "Python + Requests",
+            "source": "import requests\n\nurl = \"https://api.tucuota.com/v1/events/EVaX3JagwR6x\"\n\nheaders = {\"Authorization\": \"Bearer sk_live_...\"}\n\nresponse = requests.request(\"GET\", url, headers=headers)\n\nprint(response.text)"
+          },
+          {
+            "lang": "Java + Unirest",
+            "source": "HttpResponse<String> response = Unirest.get(\"https://api.tucuota.com/v1/events/EVaX3JagwR6x\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .asString();"
+          },
+          {
+            "lang": "Ruby + Native",
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.tucuota.com/v1/events/EVaX3JagwR6x\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
           }
         ]
       }
@@ -3880,7 +4090,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Mandate ID.",
+            "description": "[Mandate ID](#tag/Mandates).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -4372,13 +4582,13 @@
     "/v1/mandates/{id}/actions/revoke": {
       "post": {
         "operationId": "MandatesRevokeMandate",
-        "summary": "Revoke mandate",
+        "summary": "Revoke a mandate",
         "description": "This action will revoke the mandate and also cancel all the cancellable subscriptions attached to the same `customer` and `payment method`.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "Mandate ID.",
+            "description": "[Mandate ID](#tag/Mandates).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -4453,7 +4663,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Mandate ID.",
+            "description": "[Mandate ID](#tag/Mandates).\n",
             "required": true,
             "schema": {
               "type": "string"

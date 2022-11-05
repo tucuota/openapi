@@ -612,7 +612,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -664,7 +664,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Customer ID.",
+            "description": "[ID del Cliente](#tag/Clientes).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -857,7 +857,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -879,7 +879,7 @@
             }
           },
           "404": {
-            "description": "Object not found",
+            "description": "Recurso no encontrado",
             "content": {
               "application/json": {
                 "schema": {
@@ -913,7 +913,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Gateway ID.",
+            "description": "[ID del Cliente](#tag/Clientes).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1186,7 +1186,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -1208,7 +1208,7 @@
             }
           },
           "404": {
-            "description": "Object not found",
+            "description": "Recurso no encontrado",
             "content": {
               "application/json": {
                 "schema": {
@@ -1260,7 +1260,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Hash or external ID.",
+            "description": "[ID del Cliente](#tag/Clientes).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1280,7 +1280,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -1302,7 +1302,7 @@
             }
           },
           "404": {
-            "description": "Object not found",
+            "description": "Recurso no encontrado",
             "content": {
               "application/json": {
                 "schema": {
@@ -1338,7 +1338,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Hash or external ID.",
+            "description": "[ID del Cliente](#tag/Clientes).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1358,7 +1358,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -1380,7 +1380,7 @@
             }
           },
           "404": {
-            "description": "Object not found",
+            "description": "Recurso no encontrado",
             "content": {
               "application/json": {
                 "schema": {
@@ -1648,7 +1648,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -1663,6 +1663,190 @@
                         }
                       },
                       "title": "No autorizado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Eventos"
+        ]
+      }
+    },
+    "/v1/events/{id}": {
+      "get": {
+        "operationId": "EventsGetEvent",
+        "summary": "Obtener un evento",
+        "description": "Obtener un evento.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "[ID del Evento](#tag/Eventos).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "EVaX3JagwR6x"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "Este objeto representa un evento en tu cuenta.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "Identificador único del objeto.",
+                          "type": "string",
+                          "example": "EVm3RnKn3knw",
+                          "readOnly": true
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "event"
+                          ]
+                        },
+                        "created_at": {
+                          "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "description": "Event object.",
+                              "type": "object"
+                            }
+                          },
+                          "required": [
+                            "object"
+                          ]
+                        },
+                        "delivered_at": {
+                          "description": "Hora en que se entregó el evento. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00",
+                          "nullable": true
+                        },
+                        "livemode": {
+                          "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "resource": {
+                          "description": "Recurso relacionado con el evento.",
+                          "type": "string",
+                          "example": "customer",
+                          "enum": [
+                            "customer",
+                            "gateway",
+                            "import",
+                            "mandate",
+                            "payment",
+                            "payment_method",
+                            "subscription"
+                          ]
+                        },
+                        "resource_id": {
+                          "description": "ID del recurso relacionado con el evento.",
+                          "type": "string",
+                          "example": "CS12312d1d1dl"
+                        },
+                        "type": {
+                          "description": "Tipo de evento.",
+                          "type": "string",
+                          "example": "customer.created",
+                          "enum": [
+                            "customer.created",
+                            "customer.disabled",
+                            "customer.restored",
+                            "customer.updated",
+                            "gateway.created",
+                            "gateway.disabled",
+                            "gateway.enabled",
+                            "gateway.updated",
+                            "import.processed",
+                            "mandate.created",
+                            "mandate.restored",
+                            "mandate.revoked",
+                            "payment.cancelled",
+                            "payment.created",
+                            "payment.retrying",
+                            "payment.updated",
+                            "payment_method.automatically_updated",
+                            "payment_method.created",
+                            "payment_method.updated",
+                            "refund.approved",
+                            "refund.created",
+                            "refund.failed",
+                            "subscription.automatically_paused",
+                            "subscription.cancelled",
+                            "subscription.created",
+                            "subscription.finished",
+                            "subscription.paused",
+                            "subscription.resumed",
+                            "subscription.updated",
+                            "user.updated_available_brands"
+                          ]
+                        }
+                      },
+                      "title": "Evento"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "No autorizado",
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized"
+                        }
+                      },
+                      "title": "No autorizado"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Recurso no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "Recurso no encontrado",
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Record not found"
+                        }
+                      },
+                      "title": "Not Found"
                     }
                   }
                 }
@@ -1772,7 +1956,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -1958,7 +2142,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -2116,7 +2300,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -2138,7 +2322,7 @@
             }
           },
           "404": {
-            "description": "Object not found",
+            "description": "Recurso no encontrado",
             "content": {
               "application/json": {
                 "schema": {
@@ -2220,7 +2404,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -2426,7 +2610,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -2529,7 +2713,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -2646,7 +2830,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -3303,7 +3487,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -3401,7 +3585,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -3438,7 +3622,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "ID de la Adhesión",
+            "description": "[ID de la Adhesión](#tag/Adhesiones).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -3904,13 +4088,13 @@
     "/v1/mandates/{id}/actions/revoke": {
       "post": {
         "operationId": "MandatesRevokeMandate",
-        "summary": "Revocar adhesión",
+        "summary": "Revocar una adhesión",
         "description": "Esta acción revocará la adhesión y también cancelará todos las suscripciones cancelables adjuntas al mismo `cliente` y al mismo `método de pago`.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID de la Adhesión",
+            "description": "[ID de la Adhesión](#tag/Adhesiones).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -3959,7 +4143,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "ID de la Adhesión",
+            "description": "[ID de la Adhesión](#tag/Adhesiones).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -4295,7 +4479,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -5501,7 +5685,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -6191,7 +6375,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -6819,7 +7003,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -7581,7 +7765,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -7693,7 +7877,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -7922,7 +8106,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -8105,7 +8289,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -9480,7 +9664,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -11353,7 +11537,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -13278,7 +13462,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {
@@ -13877,7 +14061,7 @@
             "description": "OK"
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "No authorizado",
             "content": {
               "application/json": {
                 "schema": {

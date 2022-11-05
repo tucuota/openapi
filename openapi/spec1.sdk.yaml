@@ -959,7 +959,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Customer ID.
+          description: |
+            [Customer ID](#tag/Customers).
           required: true
           schema:
             type: string
@@ -1205,7 +1206,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Gateway ID.
+          description: |
+            [Customer ID](#tag/Customers).
           required: true
           schema:
             type: string
@@ -1547,7 +1549,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Hash or external ID.
+          description: |
+            [Customer ID](#tag/Customers).
           required: true
           schema:
             type: string
@@ -1670,7 +1673,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Hash or external ID.
+          description: |
+            [Customer ID](#tag/Customers).
           required: true
           schema:
             type: string
@@ -2061,6 +2065,218 @@ paths:
             require 'openssl'
 
             url = URI("https://api.tucuota.com/v1/events?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+
+            http = Net::HTTP.new(url.host, url.port)
+            http.use_ssl = true
+            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+            request = Net::HTTP::Get.new(url)
+            request["Authorization"] = 'Bearer sk_live_...'
+
+            response = http.request(request)
+            puts response.read_body
+  '/v1/events/{id}':
+    get:
+      operationId: EventsGetEvent
+      summary: Retrieve an event
+      description: Retrieve an event.
+      parameters:
+        - name: id
+          in: path
+          description: |
+            [Event ID](#tag/Events).
+          required: true
+          schema:
+            type: string
+          example: EVaX3JagwR6x
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: This object represents an event of your account.
+                    type: object
+                    properties:
+                      id:
+                        description: Unique identifier for the object.
+                        type: string
+                        example: EVm3RnKn3knw
+                        readOnly: true
+                      object:
+                        type: string
+                        enum:
+                          - event
+                      created_at:
+                        description: 'Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      data:
+                        type: object
+                        properties:
+                          object:
+                            description: Event object.
+                            type: object
+                        required:
+                          - object
+                      delivered_at:
+                        description: 'Time at which the event was delivered. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                        nullable: true
+                      livemode:
+                        description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+                        type: boolean
+                        example: true
+                      resource:
+                        description: Resource attached to the event.
+                        type: string
+                        example: customer
+                        enum:
+                          - customer
+                          - gateway
+                          - import
+                          - mandate
+                          - payment
+                          - payment_method
+                          - subscription
+                      resource_id:
+                        description: ID for the resource attached to the event.
+                        type: string
+                        example: CS12312d1d1dl
+                      type:
+                        description: Event type.
+                        type: string
+                        example: customer.created
+                        enum:
+                          - customer.created
+                          - customer.disabled
+                          - customer.restored
+                          - customer.updated
+                          - gateway.created
+                          - gateway.disabled
+                          - gateway.enabled
+                          - gateway.updated
+                          - import.processed
+                          - mandate.created
+                          - mandate.restored
+                          - mandate.revoked
+                          - payment.cancelled
+                          - payment.created
+                          - payment.retrying
+                          - payment.updated
+                          - payment_method.automatically_updated
+                          - payment_method.created
+                          - payment_method.updated
+                          - refund.approved
+                          - refund.created
+                          - refund.failed
+                          - subscription.automatically_paused
+                          - subscription.cancelled
+                          - subscription.created
+                          - subscription.finished
+                          - subscription.paused
+                          - subscription.resumed
+                          - subscription.updated
+                          - user.updated_available_brands
+                    title: Event
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: Unauthorized response
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Unauthorized
+                    title: Unauthorized
+        '404':
+          description: Object not found
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    description: Not Found response
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Record not found
+                    title: Not Found
+      tags:
+        - Events
+      x-codeSamples:
+        - lang: Shell + Curl
+          source: |-
+            curl --request GET \
+              --url https://api.tucuota.com/v1/events/EVaX3JagwR6x \
+              --header 'Authorization: Bearer sk_live_...'
+        - lang: Node + Request
+          source: |
+            const request = require('request');
+
+            const options = {
+              method: 'GET',
+              url: 'https://api.tucuota.com/v1/events/EVaX3JagwR6x',
+              headers: {Authorization: 'Bearer sk_live_...'}
+            };
+
+            request(options, function (error, response, body) {
+              if (error) throw new Error(error);
+
+              console.log(body);
+            });
+        - lang: Php + Http1
+          source: |-
+            <?php
+
+            $request = new HttpRequest();
+            $request->setUrl('https://api.tucuota.com/v1/events/EVaX3JagwR6x');
+            $request->setMethod(HTTP_METH_GET);
+
+            $request->setHeaders([
+              'Authorization' => 'Bearer sk_live_...'
+            ]);
+
+            try {
+              $response = $request->send();
+
+              echo $response->getBody();
+            } catch (HttpException $ex) {
+              echo $ex;
+            }
+        - lang: Python + Requests
+          source: |-
+            import requests
+
+            url = "https://api.tucuota.com/v1/events/EVaX3JagwR6x"
+
+            headers = {"Authorization": "Bearer sk_live_..."}
+
+            response = requests.request("GET", url, headers=headers)
+
+            print(response.text)
+        - lang: Java + Unirest
+          source: |-
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/events/EVaX3JagwR6x")
+              .header("Authorization", "Bearer sk_live_...")
+              .asString();
+        - lang: Ruby + Native
+          source: |-
+            require 'uri'
+            require 'net/http'
+            require 'openssl'
+
+            url = URI("https://api.tucuota.com/v1/events/EVaX3JagwR6x")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -4165,7 +4381,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Mandate ID.
+          description: |
+            [Mandate ID](#tag/Mandates).
           required: true
           schema:
             type: string
@@ -4579,12 +4796,13 @@ paths:
   '/v1/mandates/{id}/actions/revoke':
     post:
       operationId: MandatesRevokeMandate
-      summary: Revoke mandate
+      summary: Revoke a mandate
       description: This action will revoke the mandate and also cancel all the cancellable subscriptions attached to the same `customer` and `payment method`.
       parameters:
         - name: id
           in: path
-          description: Mandate ID.
+          description: |
+            [Mandate ID](#tag/Mandates).
           required: true
           schema:
             type: string
@@ -4689,7 +4907,8 @@ paths:
       parameters:
         - name: id
           in: path
-          description: Mandate ID.
+          description: |
+            [Mandate ID](#tag/Mandates).
           required: true
           schema:
             type: string
