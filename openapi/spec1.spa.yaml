@@ -4506,8 +4506,10 @@ paths:
                   type: string
                   example: CSgaZlLaPMZO.
                 payment_method_id:
-                  description: 'El [token del método de pago](#tag/Metodos-de-Pago) para este pago.'
+                  description: |
+                    El [ID del Método de Pago](#tag/Metodos-de-Pago) para este pago.
                   type: string
+                  example: PMBja4YZ2GDR.
                 charge_date:
                   description: 'Una fecha futura en la que se debe cobrar el pago. Si no se especifica, el pago se cobrará lo antes posible.'
                   type: string
@@ -5503,8 +5505,10 @@ paths:
                   description: La nueva descripción del pago.
                   type: string
                 payment_method_id:
-                  description: El token de la tarjeta o cbu para el pago.
+                  description: |
+                    El [ID del Método de Pago](#tag/Metodos-de-Pago) para este pago.
                   type: string
+                  example: PMBja4YZ2GDR.
                 metadata:
                   description: |
                     Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -7441,8 +7445,8 @@ paths:
                   maxLength: 255
                 count:
                   description: |
-                    The total number of payments that should be taken by this subscription. If not specified the
-                    subscription will continue until you cancel it.
+                    El número total de pagos que debe realizar esta suscripción. Si no se especifíca, la
+                    suscripción continuará hasta que la canceles.
                   type: number
                 customer_id:
                   description: |
@@ -7451,9 +7455,10 @@ paths:
                   example: CSgaZlLaPMZO.
                 payment_method_id:
                   description: |
-                    The token of the card or cbu for each payment of the subscription. This field is required if
-                    payment_method_number is not given.
+                    [ID del Método de Pago](#tag/Metodos-de-Pago). Este campo es requerido si
+                    no utilizas `payment_method_number`.
                   type: string
+                  example: PMBja4YZ2GDR.
                 start_date:
                   description: 'A future date on which the first payment of the subscription should be collected. If not specified, the first payment will be collected as soon as possible.'
                   type: string
@@ -8398,19 +8403,20 @@ paths:
                   maxLength: 255
                 count:
                   description: |
-                    The total number of payments that should be taken by this subscription. If not specified the
-                    subscription will continue until you cancel it.
+                    El número total de pagos que debe realizar esta suscripción. Si no se especifíca, la
+                    suscripción continuará hasta que la canceles.
                   type: number
                 customer_id:
                   description: |
-                    [Customer ID](#tag/Customers).
+                    [ID de cliente](#tag/Clientes).
                   type: string
                   example: CSgaZlLaPMZO
                 payment_method_id:
                   description: |
-                    The token of the card or cbu for each payment of the subscription. This field is required if
-                    payment_method_number is not given.
+                    El [ID del Método de Pago](#tag/Metodos-de-Pago) para cada pago de la
+                    suscripción. Este campo es requerido si no utilizas `payment_method_number`.
                   type: string
+                  example: PMBja4YZ2GDR.
                 start_date:
                   description: 'A future date on which the first payment of the subscription should be collected. If not specified, the first payment will be collected as soon as possible.'
                   type: string

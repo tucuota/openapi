@@ -5735,8 +5735,9 @@
                     "example": "CSgaZlLaPMZO."
                   },
                   "payment_method_id": {
-                    "description": "The [token of the card or cbu](#tag/PaymentMethods) for this payment.",
-                    "type": "string"
+                    "description": "The [Payment Method ID](#tag/Payment-Methods) for this payment.\n",
+                    "type": "string",
+                    "example": "PMBja4YZ2GDR."
                   },
                   "charge_date": {
                     "description": "A future date on which the payment should be collected. If not specified, the payment will be collected as soon as possible.",
@@ -7096,8 +7097,9 @@
                     "type": "string"
                   },
                   "payment_method_id": {
-                    "description": "The token of the card or cbu for the payment.",
-                    "type": "string"
+                    "description": "The [Payment Method ID](#tag/Payment-Methods) for this payment.\n",
+                    "type": "string",
+                    "example": "PMBja4YZ2GDR."
                   },
                   "metadata": {
                     "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
@@ -9725,8 +9727,9 @@
                     "example": "CSgaZlLaPMZO."
                   },
                   "payment_method_id": {
-                    "description": "The token of the card or cbu for each payment of the subscription. This field is required if\npayment_method_number is not given.\n",
-                    "type": "string"
+                    "description": "[Payment Method ID](#tag/Payment-Methods). This field is required if\n`payment_method_number` is not given.\n",
+                    "type": "string",
+                    "example": "PMBja4YZ2GDR."
                   },
                   "start_date": {
                     "description": "A future date on which the first payment of the subscription should be collected. If not specified, the first payment will be collected as soon as possible.",
@@ -10963,8 +10966,9 @@
                     "example": "CSgaZlLaPMZO"
                   },
                   "payment_method_id": {
-                    "description": "The token of the card or cbu for each payment of the subscription. This field is required if\npayment_method_number is not given.\n",
-                    "type": "string"
+                    "description": "The [Payment Method ID](#tag/Payment-Methods) for each payment of the\nsubscription. This field is required if `payment_method_number` is not given.\n",
+                    "type": "string",
+                    "example": "PMBja4YZ2GDR."
                   },
                   "start_date": {
                     "description": "A future date on which the first payment of the subscription should be collected. If not specified, the first payment will be collected as soon as possible.",
