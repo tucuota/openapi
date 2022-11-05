@@ -2647,14 +2647,24 @@ paths:
                                   description: Expiration month.
                                   type: number
                                   example: 11
+                                  nullable: true
                                 expiration_year:
                                   description: Expiration year.
                                   type: number
                                   example: 2030
+                                  nullable: true
                                 fingerprint:
                                   description: Unique fingerprint for this credit card number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
+                                funding:
+                                  description: Type of funding of the Credit Card.
+                                  type: string
+                                  example: credit
+                                  enum:
+                                    - credit
+                                    - debit
+                                    - prepaid
                                 last_four_digits:
                                   description: Credit's card last four digits.
                                   type: string
@@ -2708,6 +2718,35 @@ paths:
                               type: string
                               format: date-time
                               example: '2022-02-11T23:19:22-03:00'
+                            bank:
+                              description: 'Bank. [Legacy]'
+                              type: string
+                            brand:
+                              description: 'Credit card''s brand. [Legacy]'
+                              type: string
+                              example: visa-credito
+                              enum:
+                                - amex
+                                - argencard
+                                - cabal
+                                - cabal-debito
+                                - cbu
+                                - cencosud
+                                - cmr-falabella
+                                - cordobesa
+                                - diners-club
+                                - discover
+                                - jcb
+                                - lider
+                                - maestro
+                                - mastercard
+                                - mastercard-debit
+                                - naranja
+                                - naranja-visa
+                                - nativa
+                                - visa-credito
+                                - visa-debito
+                                - favacard
                           title: Payment Method
                         metadata:
                           description: |
@@ -3103,14 +3142,24 @@ paths:
                                 description: Expiration month.
                                 type: number
                                 example: 11
+                                nullable: true
                               expiration_year:
                                 description: Expiration year.
                                 type: number
                                 example: 2030
+                                nullable: true
                               fingerprint:
                                 description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              funding:
+                                description: Type of funding of the Credit Card.
+                                type: string
+                                example: credit
+                                enum:
+                                  - credit
+                                  - debit
+                                  - prepaid
                               last_four_digits:
                                 description: Credit's card last four digits.
                                 type: string
@@ -3164,6 +3213,35 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                          bank:
+                            description: 'Bank. [Legacy]'
+                            type: string
+                          brand:
+                            description: 'Credit card''s brand. [Legacy]'
+                            type: string
+                            example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                         title: Payment Method
                       metadata:
                         description: |
@@ -3385,14 +3463,24 @@ paths:
                               description: Expiration month.
                               type: number
                               example: 11
+                              nullable: true
                             expiration_year:
                               description: Expiration year.
                               type: number
                               example: 2030
+                              nullable: true
                             fingerprint:
                               description: Unique fingerprint for this credit card number of your account.
                               type: string
                               example: 8712yh2uihiu1123sxas
+                            funding:
+                              description: Type of funding of the Credit Card.
+                              type: string
+                              example: credit
+                              enum:
+                                - credit
+                                - debit
+                                - prepaid
                             last_four_digits:
                               description: Credit's card last four digits.
                               type: string
@@ -3446,6 +3534,35 @@ paths:
                           type: string
                           format: date-time
                           example: '2022-02-11T23:19:22-03:00'
+                        bank:
+                          description: 'Bank. [Legacy]'
+                          type: string
+                        brand:
+                          description: 'Credit card''s brand. [Legacy]'
+                          type: string
+                          example: visa-credito
+                          enum:
+                            - amex
+                            - argencard
+                            - cabal
+                            - cabal-debito
+                            - cbu
+                            - cencosud
+                            - cmr-falabella
+                            - cordobesa
+                            - diners-club
+                            - discover
+                            - jcb
+                            - lider
+                            - maestro
+                            - mastercard
+                            - mastercard-debit
+                            - naranja
+                            - naranja-visa
+                            - nativa
+                            - visa-credito
+                            - visa-debito
+                            - favacard
                   links:
                     description: Pagination metadata
                     type: object
@@ -3547,8 +3664,13 @@ paths:
               type: object
               properties:
                 type:
+                  description: One of `card` or `cbu`.
                   type: string
+                  enum:
+                    - card
+                    - cbu
                 card:
+                  description: This object represents a credit card of your account.
                   type: object
                   properties:
                     number:
@@ -3560,12 +3682,30 @@ paths:
                     expiration_month:
                       description: Credit's card expiration month.
                       type: number
-              example:
-                type: card
-                card:
-                  number: '4242424242424242'
-                  expiration_year: 5
-                  expiration_month: 2027
+                  title: Credit Card
+                cbu:
+                  description: This object represents a CBU bak account of your account.
+                  type: object
+                  properties:
+                    number:
+                      description: Bank account number.
+                      type: string
+                  title: CBU
+            examples:
+              card:
+                summary: Store a Credit Card
+                value:
+                  type: card
+                  card:
+                    number: '4242424242424242'
+                    expiration_year: 5
+                    expiration_month: 2027
+              cbu:
+                summary: Store a CBU Bank account
+                value:
+                  type: cbu
+                  cbu:
+                    number: '0110022831266917230013'
         required: false
       responses:
         '201':
@@ -3636,14 +3776,24 @@ paths:
                             description: Expiration month.
                             type: number
                             example: 11
+                            nullable: true
                           expiration_year:
                             description: Expiration year.
                             type: number
                             example: 2030
+                            nullable: true
                           fingerprint:
                             description: Unique fingerprint for this credit card number of your account.
                             type: string
                             example: 8712yh2uihiu1123sxas
+                          funding:
+                            description: Type of funding of the Credit Card.
+                            type: string
+                            example: credit
+                            enum:
+                              - credit
+                              - debit
+                              - prepaid
                           last_four_digits:
                             description: Credit's card last four digits.
                             type: string
@@ -3697,7 +3847,77 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      bank:
+                        description: 'Bank. [Legacy]'
+                        type: string
+                      brand:
+                        description: 'Credit card''s brand. [Legacy]'
+                        type: string
+                        example: visa-credito
+                        enum:
+                          - amex
+                          - argencard
+                          - cabal
+                          - cabal-debito
+                          - cbu
+                          - cencosud
+                          - cmr-falabella
+                          - cordobesa
+                          - diners-club
+                          - discover
+                          - jcb
+                          - lider
+                          - maestro
+                          - mastercard
+                          - mastercard-debit
+                          - naranja
+                          - naranja-visa
+                          - nativa
+                          - visa-credito
+                          - visa-debito
+                          - favacard
                     title: Payment Method
+              examples:
+                card:
+                  summary: Credit Card
+                  value:
+                    data:
+                      bank: Visa
+                      brand: visa-credito
+                      card:
+                        bank: Visa
+                        brand: visa-credito
+                        country: AR
+                        expiration_month: null
+                        expiration_year: null
+                        fingerprint: 0sZQikKp4lImAgIo
+                        funding: credit
+                        last_four_digits: '4242'
+                      created_at: '2022-02-01T23:13:04-03:00'
+                      id: PMBja4YZ2GDR
+                      livemode: true
+                      metadata: null
+                      object: payment_method
+                      type: card
+                      updated_at: '2022-02-01T23:13:04-03:00'
+                cbu:
+                  summary: CBU Bank Account
+                  value:
+                    data:
+                      id: PMBKkz3wjEW9
+                      object: payment_method
+                      type: cbu
+                      cbu:
+                        last_four_digits: '0013'
+                        bank: Banco de la Nación Argentina
+                        country: AR
+                        fingerprint: jhA2lx68sNppN90k
+                      livemode: false
+                      metadata: null
+                      created_at: '2022-11-05T20:43:29-03:00'
+                      updated_at: '2022-11-05T20:43:29-03:00'
+                      brand: cbu
+                      bank: Banco de la Nación Argentina
         '401':
           description: Unauthorized
           content:
@@ -3799,14 +4019,24 @@ paths:
                             description: Expiration month.
                             type: number
                             example: 11
+                            nullable: true
                           expiration_year:
                             description: Expiration year.
                             type: number
                             example: 2030
+                            nullable: true
                           fingerprint:
                             description: Unique fingerprint for this credit card number of your account.
                             type: string
                             example: 8712yh2uihiu1123sxas
+                          funding:
+                            description: Type of funding of the Credit Card.
+                            type: string
+                            example: credit
+                            enum:
+                              - credit
+                              - debit
+                              - prepaid
                           last_four_digits:
                             description: Credit's card last four digits.
                             type: string
@@ -3860,6 +4090,35 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      bank:
+                        description: 'Bank. [Legacy]'
+                        type: string
+                      brand:
+                        description: 'Credit card''s brand. [Legacy]'
+                        type: string
+                        example: visa-credito
+                        enum:
+                          - amex
+                          - argencard
+                          - cabal
+                          - cabal-debito
+                          - cbu
+                          - cencosud
+                          - cmr-falabella
+                          - cordobesa
+                          - diners-club
+                          - discover
+                          - jcb
+                          - lider
+                          - maestro
+                          - mastercard
+                          - mastercard-debit
+                          - naranja
+                          - naranja-visa
+                          - nativa
+                          - visa-credito
+                          - visa-debito
+                          - favacard
                     title: Payment Method
         '401':
           description: Unauthorized
@@ -4265,14 +4524,24 @@ paths:
                                   description: Expiration month.
                                   type: number
                                   example: 11
+                                  nullable: true
                                 expiration_year:
                                   description: Expiration year.
                                   type: number
                                   example: 2030
+                                  nullable: true
                                 fingerprint:
                                   description: Unique fingerprint for this credit card number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
+                                funding:
+                                  description: Type of funding of the Credit Card.
+                                  type: string
+                                  example: credit
+                                  enum:
+                                    - credit
+                                    - debit
+                                    - prepaid
                                 last_four_digits:
                                   description: Credit's card last four digits.
                                   type: string
@@ -4326,6 +4595,35 @@ paths:
                               type: string
                               format: date-time
                               example: '2022-02-11T23:19:22-03:00'
+                            bank:
+                              description: 'Bank. [Legacy]'
+                              type: string
+                            brand:
+                              description: 'Credit card''s brand. [Legacy]'
+                              type: string
+                              example: visa-credito
+                              enum:
+                                - amex
+                                - argencard
+                                - cabal
+                                - cabal-debito
+                                - cbu
+                                - cencosud
+                                - cmr-falabella
+                                - cordobesa
+                                - diners-club
+                                - discover
+                                - jcb
+                                - lider
+                                - maestro
+                                - mastercard
+                                - mastercard-debit
+                                - naranja
+                                - naranja-visa
+                                - nativa
+                                - visa-credito
+                                - visa-debito
+                                - favacard
                           title: Payment Method
                         gateway_identifier:
                           description: The custom number you send to the gateway network. In most cases this value is null.
@@ -4816,14 +5114,24 @@ paths:
                                 description: Expiration month.
                                 type: number
                                 example: 11
+                                nullable: true
                               expiration_year:
                                 description: Expiration year.
                                 type: number
                                 example: 2030
+                                nullable: true
                               fingerprint:
                                 description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              funding:
+                                description: Type of funding of the Credit Card.
+                                type: string
+                                example: credit
+                                enum:
+                                  - credit
+                                  - debit
+                                  - prepaid
                               last_four_digits:
                                 description: Credit's card last four digits.
                                 type: string
@@ -4877,6 +5185,35 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                          bank:
+                            description: 'Bank. [Legacy]'
+                            type: string
+                          brand:
+                            description: 'Credit card''s brand. [Legacy]'
+                            type: string
+                            example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                         title: Payment Method
                       gateway_identifier:
                         description: The custom number you send to the gateway network. In most cases this value is null.
@@ -5269,14 +5606,24 @@ paths:
                                 description: Expiration month.
                                 type: number
                                 example: 11
+                                nullable: true
                               expiration_year:
                                 description: Expiration year.
                                 type: number
                                 example: 2030
+                                nullable: true
                               fingerprint:
                                 description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              funding:
+                                description: Type of funding of the Credit Card.
+                                type: string
+                                example: credit
+                                enum:
+                                  - credit
+                                  - debit
+                                  - prepaid
                               last_four_digits:
                                 description: Credit's card last four digits.
                                 type: string
@@ -5330,6 +5677,35 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                          bank:
+                            description: 'Bank. [Legacy]'
+                            type: string
+                          brand:
+                            description: 'Credit card''s brand. [Legacy]'
+                            type: string
+                            example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                         title: Payment Method
                       gateway_identifier:
                         description: The custom number you send to the gateway network. In most cases this value is null.
@@ -5778,14 +6154,24 @@ paths:
                                 description: Expiration month.
                                 type: number
                                 example: 11
+                                nullable: true
                               expiration_year:
                                 description: Expiration year.
                                 type: number
                                 example: 2030
+                                nullable: true
                               fingerprint:
                                 description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              funding:
+                                description: Type of funding of the Credit Card.
+                                type: string
+                                example: credit
+                                enum:
+                                  - credit
+                                  - debit
+                                  - prepaid
                               last_four_digits:
                                 description: Credit's card last four digits.
                                 type: string
@@ -5839,6 +6225,35 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                          bank:
+                            description: 'Bank. [Legacy]'
+                            type: string
+                          brand:
+                            description: 'Credit card''s brand. [Legacy]'
+                            type: string
+                            example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                         title: Payment Method
                       gateway_identifier:
                         description: The custom number you send to the gateway network. In most cases this value is null.
@@ -7151,14 +7566,24 @@ paths:
                                   description: Expiration month.
                                   type: number
                                   example: 11
+                                  nullable: true
                                 expiration_year:
                                   description: Expiration year.
                                   type: number
                                   example: 2030
+                                  nullable: true
                                 fingerprint:
                                   description: Unique fingerprint for this credit card number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
+                                funding:
+                                  description: Type of funding of the Credit Card.
+                                  type: string
+                                  example: credit
+                                  enum:
+                                    - credit
+                                    - debit
+                                    - prepaid
                                 last_four_digits:
                                   description: Credit's card last four digits.
                                   type: string
@@ -7212,6 +7637,35 @@ paths:
                               type: string
                               format: date-time
                               example: '2022-02-11T23:19:22-03:00'
+                            bank:
+                              description: 'Bank. [Legacy]'
+                              type: string
+                            brand:
+                              description: 'Credit card''s brand. [Legacy]'
+                              type: string
+                              example: visa-credito
+                              enum:
+                                - amex
+                                - argencard
+                                - cabal
+                                - cabal-debito
+                                - cbu
+                                - cencosud
+                                - cmr-falabella
+                                - cordobesa
+                                - diners-club
+                                - discover
+                                - jcb
+                                - lider
+                                - maestro
+                                - mastercard
+                                - mastercard-debit
+                                - naranja
+                                - naranja-visa
+                                - nativa
+                                - visa-credito
+                                - visa-debito
+                                - favacard
                           title: Payment Method
                         metadata:
                           description: |
@@ -7690,14 +8144,24 @@ paths:
                                 description: Expiration month.
                                 type: number
                                 example: 11
+                                nullable: true
                               expiration_year:
                                 description: Expiration year.
                                 type: number
                                 example: 2030
+                                nullable: true
                               fingerprint:
                                 description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              funding:
+                                description: Type of funding of the Credit Card.
+                                type: string
+                                example: credit
+                                enum:
+                                  - credit
+                                  - debit
+                                  - prepaid
                               last_four_digits:
                                 description: Credit's card last four digits.
                                 type: string
@@ -7751,6 +8215,35 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                          bank:
+                            description: 'Bank. [Legacy]'
+                            type: string
+                          brand:
+                            description: 'Credit card''s brand. [Legacy]'
+                            type: string
+                            example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                         title: Payment Method
                       metadata:
                         description: |
@@ -8121,14 +8614,24 @@ paths:
                                 description: Expiration month.
                                 type: number
                                 example: 11
+                                nullable: true
                               expiration_year:
                                 description: Expiration year.
                                 type: number
                                 example: 2030
+                                nullable: true
                               fingerprint:
                                 description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              funding:
+                                description: Type of funding of the Credit Card.
+                                type: string
+                                example: credit
+                                enum:
+                                  - credit
+                                  - debit
+                                  - prepaid
                               last_four_digits:
                                 description: Credit's card last four digits.
                                 type: string
@@ -8182,6 +8685,35 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                          bank:
+                            description: 'Bank. [Legacy]'
+                            type: string
+                          brand:
+                            description: 'Credit card''s brand. [Legacy]'
+                            type: string
+                            example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                         title: Payment Method
                       metadata:
                         description: |
@@ -8634,14 +9166,24 @@ paths:
                                 description: Expiration month.
                                 type: number
                                 example: 11
+                                nullable: true
                               expiration_year:
                                 description: Expiration year.
                                 type: number
                                 example: 2030
+                                nullable: true
                               fingerprint:
                                 description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              funding:
+                                description: Type of funding of the Credit Card.
+                                type: string
+                                example: credit
+                                enum:
+                                  - credit
+                                  - debit
+                                  - prepaid
                               last_four_digits:
                                 description: Credit's card last four digits.
                                 type: string
@@ -8695,6 +9237,35 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                          bank:
+                            description: 'Bank. [Legacy]'
+                            type: string
+                          brand:
+                            description: 'Credit card''s brand. [Legacy]'
+                            type: string
+                            example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                         title: Payment Method
                       metadata:
                         description: |
@@ -9065,14 +9636,24 @@ paths:
                                 description: Expiration month.
                                 type: number
                                 example: 11
+                                nullable: true
                               expiration_year:
                                 description: Expiration year.
                                 type: number
                                 example: 2030
+                                nullable: true
                               fingerprint:
                                 description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              funding:
+                                description: Type of funding of the Credit Card.
+                                type: string
+                                example: credit
+                                enum:
+                                  - credit
+                                  - debit
+                                  - prepaid
                               last_four_digits:
                                 description: Credit's card last four digits.
                                 type: string
@@ -9126,6 +9707,35 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                          bank:
+                            description: 'Bank. [Legacy]'
+                            type: string
+                          brand:
+                            description: 'Credit card''s brand. [Legacy]'
+                            type: string
+                            example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                         title: Payment Method
                       metadata:
                         description: |
@@ -9492,14 +10102,24 @@ paths:
                                 description: Expiration month.
                                 type: number
                                 example: 11
+                                nullable: true
                               expiration_year:
                                 description: Expiration year.
                                 type: number
                                 example: 2030
+                                nullable: true
                               fingerprint:
                                 description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              funding:
+                                description: Type of funding of the Credit Card.
+                                type: string
+                                example: credit
+                                enum:
+                                  - credit
+                                  - debit
+                                  - prepaid
                               last_four_digits:
                                 description: Credit's card last four digits.
                                 type: string
@@ -9553,6 +10173,35 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                          bank:
+                            description: 'Bank. [Legacy]'
+                            type: string
+                          brand:
+                            description: 'Credit card''s brand. [Legacy]'
+                            type: string
+                            example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                         title: Payment Method
                       metadata:
                         description: |
@@ -9925,14 +10574,24 @@ paths:
                                 description: Expiration month.
                                 type: number
                                 example: 11
+                                nullable: true
                               expiration_year:
                                 description: Expiration year.
                                 type: number
                                 example: 2030
+                                nullable: true
                               fingerprint:
                                 description: Unique fingerprint for this credit card number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              funding:
+                                description: Type of funding of the Credit Card.
+                                type: string
+                                example: credit
+                                enum:
+                                  - credit
+                                  - debit
+                                  - prepaid
                               last_four_digits:
                                 description: Credit's card last four digits.
                                 type: string
@@ -9986,6 +10645,35 @@ paths:
                             type: string
                             format: date-time
                             example: '2022-02-11T23:19:22-03:00'
+                          bank:
+                            description: 'Bank. [Legacy]'
+                            type: string
+                          brand:
+                            description: 'Credit card''s brand. [Legacy]'
+                            type: string
+                            example: visa-credito
+                            enum:
+                              - amex
+                              - argencard
+                              - cabal
+                              - cabal-debito
+                              - cbu
+                              - cencosud
+                              - cmr-falabella
+                              - cordobesa
+                              - diners-club
+                              - discover
+                              - jcb
+                              - lider
+                              - maestro
+                              - mastercard
+                              - mastercard-debit
+                              - naranja
+                              - naranja-visa
+                              - nativa
+                              - visa-credito
+                              - visa-debito
+                              - favacard
                         title: Payment Method
                       metadata:
                         description: |
@@ -11185,14 +11873,24 @@ components:
           description: Expiration month.
           type: number
           example: 11
+          nullable: true
         expiration_year:
           description: Expiration year.
           type: number
           example: 2030
+          nullable: true
         fingerprint:
           description: Unique fingerprint for this credit card number of your account.
           type: string
           example: 8712yh2uihiu1123sxas
+        funding:
+          description: Type of funding of the Credit Card.
+          type: string
+          example: credit
+          enum:
+            - credit
+            - debit
+            - prepaid
         last_four_digits:
           description: Credit's card last four digits.
           type: string
@@ -11281,14 +11979,24 @@ components:
               description: Expiration month.
               type: number
               example: 11
+              nullable: true
             expiration_year:
               description: Expiration year.
               type: number
               example: 2030
+              nullable: true
             fingerprint:
               description: Unique fingerprint for this credit card number of your account.
               type: string
               example: 8712yh2uihiu1123sxas
+            funding:
+              description: Type of funding of the Credit Card.
+              type: string
+              example: credit
+              enum:
+                - credit
+                - debit
+                - prepaid
             last_four_digits:
               description: Credit's card last four digits.
               type: string
@@ -11342,6 +12050,35 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
+        bank:
+          description: 'Bank. [Legacy]'
+          type: string
+        brand:
+          description: 'Credit card''s brand. [Legacy]'
+          type: string
+          example: visa-credito
+          enum:
+            - amex
+            - argencard
+            - cabal
+            - cabal-debito
+            - cbu
+            - cencosud
+            - cmr-falabella
+            - cordobesa
+            - diners-club
+            - discover
+            - jcb
+            - lider
+            - maestro
+            - mastercard
+            - mastercard-debit
+            - naranja
+            - naranja-visa
+            - nativa
+            - visa-credito
+            - visa-debito
+            - favacard
       title: Payment Method
     Mandate:
       description: This object represents a mandate of your organization.
@@ -11546,14 +12283,24 @@ components:
                   description: Expiration month.
                   type: number
                   example: 11
+                  nullable: true
                 expiration_year:
                   description: Expiration year.
                   type: number
                   example: 2030
+                  nullable: true
                 fingerprint:
                   description: Unique fingerprint for this credit card number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                funding:
+                  description: Type of funding of the Credit Card.
+                  type: string
+                  example: credit
+                  enum:
+                    - credit
+                    - debit
+                    - prepaid
                 last_four_digits:
                   description: Credit's card last four digits.
                   type: string
@@ -11607,6 +12354,35 @@ components:
               type: string
               format: date-time
               example: '2022-02-11T23:19:22-03:00'
+            bank:
+              description: 'Bank. [Legacy]'
+              type: string
+            brand:
+              description: 'Credit card''s brand. [Legacy]'
+              type: string
+              example: visa-credito
+              enum:
+                - amex
+                - argencard
+                - cabal
+                - cabal-debito
+                - cbu
+                - cencosud
+                - cmr-falabella
+                - cordobesa
+                - diners-club
+                - discover
+                - jcb
+                - lider
+                - maestro
+                - mastercard
+                - mastercard-debit
+                - naranja
+                - naranja-visa
+                - nativa
+                - visa-credito
+                - visa-debito
+                - favacard
           title: Payment Method
         metadata:
           description: |
@@ -11984,14 +12760,24 @@ components:
                   description: Expiration month.
                   type: number
                   example: 11
+                  nullable: true
                 expiration_year:
                   description: Expiration year.
                   type: number
                   example: 2030
+                  nullable: true
                 fingerprint:
                   description: Unique fingerprint for this credit card number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                funding:
+                  description: Type of funding of the Credit Card.
+                  type: string
+                  example: credit
+                  enum:
+                    - credit
+                    - debit
+                    - prepaid
                 last_four_digits:
                   description: Credit's card last four digits.
                   type: string
@@ -12045,6 +12831,35 @@ components:
               type: string
               format: date-time
               example: '2022-02-11T23:19:22-03:00'
+            bank:
+              description: 'Bank. [Legacy]'
+              type: string
+            brand:
+              description: 'Credit card''s brand. [Legacy]'
+              type: string
+              example: visa-credito
+              enum:
+                - amex
+                - argencard
+                - cabal
+                - cabal-debito
+                - cbu
+                - cencosud
+                - cmr-falabella
+                - cordobesa
+                - diners-club
+                - discover
+                - jcb
+                - lider
+                - maestro
+                - mastercard
+                - mastercard-debit
+                - naranja
+                - naranja-visa
+                - nativa
+                - visa-credito
+                - visa-debito
+                - favacard
           title: Payment Method
         gateway_identifier:
           description: The custom number you send to the gateway network. In most cases this value is null.
@@ -12557,14 +13372,24 @@ components:
                   description: Expiration month.
                   type: number
                   example: 11
+                  nullable: true
                 expiration_year:
                   description: Expiration year.
                   type: number
                   example: 2030
+                  nullable: true
                 fingerprint:
                   description: Unique fingerprint for this credit card number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                funding:
+                  description: Type of funding of the Credit Card.
+                  type: string
+                  example: credit
+                  enum:
+                    - credit
+                    - debit
+                    - prepaid
                 last_four_digits:
                   description: Credit's card last four digits.
                   type: string
@@ -12618,6 +13443,35 @@ components:
               type: string
               format: date-time
               example: '2022-02-11T23:19:22-03:00'
+            bank:
+              description: 'Bank. [Legacy]'
+              type: string
+            brand:
+              description: 'Credit card''s brand. [Legacy]'
+              type: string
+              example: visa-credito
+              enum:
+                - amex
+                - argencard
+                - cabal
+                - cabal-debito
+                - cbu
+                - cencosud
+                - cmr-falabella
+                - cordobesa
+                - diners-club
+                - discover
+                - jcb
+                - lider
+                - maestro
+                - mastercard
+                - mastercard-debit
+                - naranja
+                - naranja-visa
+                - nativa
+                - visa-credito
+                - visa-debito
+                - favacard
           title: Payment Method
         metadata:
           description: |
@@ -13286,14 +14140,24 @@ components:
                   description: Expiration month.
                   type: number
                   example: 11
+                  nullable: true
                 expiration_year:
                   description: Expiration year.
                   type: number
                   example: 2030
+                  nullable: true
                 fingerprint:
                   description: Unique fingerprint for this credit card number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                funding:
+                  description: Type of funding of the Credit Card.
+                  type: string
+                  example: credit
+                  enum:
+                    - credit
+                    - debit
+                    - prepaid
                 last_four_digits:
                   description: Credit's card last four digits.
                   type: string
@@ -13347,6 +14211,35 @@ components:
               type: string
               format: date-time
               example: '2022-02-11T23:19:22-03:00'
+            bank:
+              description: 'Bank. [Legacy]'
+              type: string
+            brand:
+              description: 'Credit card''s brand. [Legacy]'
+              type: string
+              example: visa-credito
+              enum:
+                - amex
+                - argencard
+                - cabal
+                - cabal-debito
+                - cbu
+                - cencosud
+                - cmr-falabella
+                - cordobesa
+                - diners-club
+                - discover
+                - jcb
+                - lider
+                - maestro
+                - mastercard
+                - mastercard-debit
+                - naranja
+                - naranja-visa
+                - nativa
+                - visa-credito
+                - visa-debito
+                - favacard
           title: Payment Method
         metadata:
           description: |
@@ -13708,14 +14601,24 @@ components:
                   description: Expiration month.
                   type: number
                   example: 11
+                  nullable: true
                 expiration_year:
                   description: Expiration year.
                   type: number
                   example: 2030
+                  nullable: true
                 fingerprint:
                   description: Unique fingerprint for this credit card number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                funding:
+                  description: Type of funding of the Credit Card.
+                  type: string
+                  example: credit
+                  enum:
+                    - credit
+                    - debit
+                    - prepaid
                 last_four_digits:
                   description: Credit's card last four digits.
                   type: string
@@ -13769,6 +14672,35 @@ components:
               type: string
               format: date-time
               example: '2022-02-11T23:19:22-03:00'
+            bank:
+              description: 'Bank. [Legacy]'
+              type: string
+            brand:
+              description: 'Credit card''s brand. [Legacy]'
+              type: string
+              example: visa-credito
+              enum:
+                - amex
+                - argencard
+                - cabal
+                - cabal-debito
+                - cbu
+                - cencosud
+                - cmr-falabella
+                - cordobesa
+                - diners-club
+                - discover
+                - jcb
+                - lider
+                - maestro
+                - mastercard
+                - mastercard-debit
+                - naranja
+                - naranja-visa
+                - nativa
+                - visa-credito
+                - visa-debito
+                - favacard
           title: Payment Method
         gateway_identifier:
           description: The custom number you send to the gateway network. In most cases this value is null.
@@ -13856,14 +14788,24 @@ components:
               description: Expiration month.
               type: number
               example: 11
+              nullable: true
             expiration_year:
               description: Expiration year.
               type: number
               example: 2030
+              nullable: true
             fingerprint:
               description: Unique fingerprint for this credit card number of your account.
               type: string
               example: 8712yh2uihiu1123sxas
+            funding:
+              description: Type of funding of the Credit Card.
+              type: string
+              example: credit
+              enum:
+                - credit
+                - debit
+                - prepaid
             last_four_digits:
               description: Credit's card last four digits.
               type: string
@@ -13917,6 +14859,35 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
+        bank:
+          description: 'Bank. [Legacy]'
+          type: string
+        brand:
+          description: 'Credit card''s brand. [Legacy]'
+          type: string
+          example: visa-credito
+          enum:
+            - amex
+            - argencard
+            - cabal
+            - cabal-debito
+            - cbu
+            - cencosud
+            - cmr-falabella
+            - cordobesa
+            - diners-club
+            - discover
+            - jcb
+            - lider
+            - maestro
+            - mastercard
+            - mastercard-debit
+            - naranja
+            - naranja-visa
+            - nativa
+            - visa-credito
+            - visa-debito
+            - favacard
       title: Payment Method
     refund:
       description: This object represents a refunds of your organization.
@@ -14396,14 +15367,24 @@ components:
                   description: Expiration month.
                   type: number
                   example: 11
+                  nullable: true
                 expiration_year:
                   description: Expiration year.
                   type: number
                   example: 2030
+                  nullable: true
                 fingerprint:
                   description: Unique fingerprint for this credit card number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                funding:
+                  description: Type of funding of the Credit Card.
+                  type: string
+                  example: credit
+                  enum:
+                    - credit
+                    - debit
+                    - prepaid
                 last_four_digits:
                   description: Credit's card last four digits.
                   type: string
@@ -14457,6 +15438,35 @@ components:
               type: string
               format: date-time
               example: '2022-02-11T23:19:22-03:00'
+            bank:
+              description: 'Bank. [Legacy]'
+              type: string
+            brand:
+              description: 'Credit card''s brand. [Legacy]'
+              type: string
+              example: visa-credito
+              enum:
+                - amex
+                - argencard
+                - cabal
+                - cabal-debito
+                - cbu
+                - cencosud
+                - cmr-falabella
+                - cordobesa
+                - diners-club
+                - discover
+                - jcb
+                - lider
+                - maestro
+                - mastercard
+                - mastercard-debit
+                - naranja
+                - naranja-visa
+                - nativa
+                - visa-credito
+                - visa-debito
+                - favacard
           title: Payment Method
         metadata:
           description: |

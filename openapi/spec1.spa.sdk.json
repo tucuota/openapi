@@ -3702,17 +3702,29 @@
                                   "expiration_month": {
                                     "description": "Mes de expiración.",
                                     "type": "number",
-                                    "example": 11
+                                    "example": 11,
+                                    "nullable": true
                                   },
                                   "expiration_year": {
                                     "description": "Año de expiración.",
                                     "type": "number",
-                                    "example": 2030
+                                    "example": 2030,
+                                    "nullable": true
                                   },
                                   "fingerprint": {
                                     "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "funding": {
+                                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                    "type": "string",
+                                    "example": "credit",
+                                    "enum": [
+                                      "credit",
+                                      "debit",
+                                      "prepaid"
+                                    ]
                                   },
                                   "last_four_digits": {
                                     "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -3783,6 +3795,38 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "bank": {
+                                "description": "Banco. [Legacy]",
+                                "type": "string"
+                              },
+                              "brand": {
+                                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                                "type": "string",
+                                "example": "visa-credito",
+                                "enum": [
+                                  "amex",
+                                  "argencard",
+                                  "cabal",
+                                  "cabal-debito",
+                                  "cbu",
+                                  "cencosud",
+                                  "cmr-falabella",
+                                  "cordobesa",
+                                  "diners-club",
+                                  "discover",
+                                  "jcb",
+                                  "lider",
+                                  "maestro",
+                                  "mastercard",
+                                  "mastercard-debit",
+                                  "naranja",
+                                  "naranja-visa",
+                                  "nativa",
+                                  "visa-credito",
+                                  "visa-debito",
+                                  "favacard"
+                                ]
                               }
                             },
                             "title": "Método de pago"
@@ -4368,17 +4412,29 @@
                                 "expiration_month": {
                                   "description": "Mes de expiración.",
                                   "type": "number",
-                                  "example": 11
+                                  "example": 11,
+                                  "nullable": true
                                 },
                                 "expiration_year": {
                                   "description": "Año de expiración.",
                                   "type": "number",
-                                  "example": 2030
+                                  "example": 2030,
+                                  "nullable": true
                                 },
                                 "fingerprint": {
                                   "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "funding": {
+                                  "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                  "type": "string",
+                                  "example": "credit",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid"
+                                  ]
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -4449,6 +4505,38 @@
                               "type": "string",
                               "format": "date-time",
                               "example": "2022-02-11T23:19:22-03:00"
+                            },
+                            "bank": {
+                              "description": "Banco. [Legacy]",
+                              "type": "string"
+                            },
+                            "brand": {
+                              "description": "Marca de la tarjeta de crédito. [Legacy]",
+                              "type": "string",
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             }
                           },
                           "title": "Método de pago"
@@ -4837,17 +4925,29 @@
                               "expiration_month": {
                                 "description": "Mes de expiración.",
                                 "type": "number",
-                                "example": 11
+                                "example": 11,
+                                "nullable": true
                               },
                               "expiration_year": {
                                 "description": "Año de expiración.",
                                 "type": "number",
-                                "example": 2030
+                                "example": 2030,
+                                "nullable": true
                               },
                               "fingerprint": {
                                 "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                 "type": "string",
                                 "example": "8712yh2uihiu1123sxas"
+                              },
+                              "funding": {
+                                "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                "type": "string",
+                                "example": "credit",
+                                "enum": [
+                                  "credit",
+                                  "debit",
+                                  "prepaid"
+                                ]
                               },
                               "last_four_digits": {
                                 "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -4918,6 +5018,38 @@
                             "type": "string",
                             "format": "date-time",
                             "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "bank": {
+                            "description": "Banco. [Legacy]",
+                            "type": "string"
+                          },
+                          "brand": {
+                            "description": "Marca de la tarjeta de crédito. [Legacy]",
+                            "type": "string",
+                            "example": "visa-credito",
+                            "enum": [
+                              "amex",
+                              "argencard",
+                              "cabal",
+                              "cabal-debito",
+                              "cbu",
+                              "cencosud",
+                              "cmr-falabella",
+                              "cordobesa",
+                              "diners-club",
+                              "discover",
+                              "jcb",
+                              "lider",
+                              "maestro",
+                              "mastercard",
+                              "mastercard-debit",
+                              "naranja",
+                              "naranja-visa",
+                              "nativa",
+                              "visa-credito",
+                              "visa-debito",
+                              "favacard"
+                            ]
                           }
                         }
                       }
@@ -5088,9 +5220,15 @@
                 "type": "object",
                 "properties": {
                   "type": {
-                    "type": "string"
+                    "description": "Uno de `card`, o `cbu`.",
+                    "type": "string",
+                    "enum": [
+                      "card",
+                      "cbu"
+                    ]
                   },
                   "card": {
+                    "description": "Este objeto representa una tarjeta de crédito de su cuenta.",
                     "type": "object",
                     "properties": {
                       "number": {
@@ -5105,15 +5243,41 @@
                         "description": "Mes de vencimiento de la tarjeta de crédito/débito.",
                         "type": "number"
                       }
+                    },
+                    "title": "Tarjeta de Crédito"
+                  },
+                  "cbu": {
+                    "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
+                    "type": "object",
+                    "properties": {
+                      "number": {
+                        "description": "CBU de la cuenta bancaria.",
+                        "type": "string"
+                      }
+                    },
+                    "title": "CBU"
+                  }
+                }
+              },
+              "examples": {
+                "card": {
+                  "summary": "Guardar una Tarjeta de Crédito",
+                  "value": {
+                    "type": "card",
+                    "card": {
+                      "number": "4242424242424242",
+                      "expiration_year": 5,
+                      "expiration_month": 2027
                     }
                   }
                 },
-                "example": {
-                  "type": "card",
-                  "card": {
-                    "number": "4242424242424242",
-                    "expiration_year": 5,
-                    "expiration_month": 2027
+                "cbu": {
+                  "summary": "Guardar una Cuenta Bancaria CBU",
+                  "value": {
+                    "type": "cbu",
+                    "cbu": {
+                      "number": "0110022831266917230013"
+                    }
                   }
                 }
               }
@@ -5198,17 +5362,29 @@
                             "expiration_month": {
                               "description": "Mes de expiración.",
                               "type": "number",
-                              "example": 11
+                              "example": 11,
+                              "nullable": true
                             },
                             "expiration_year": {
                               "description": "Año de expiración.",
                               "type": "number",
-                              "example": 2030
+                              "example": 2030,
+                              "nullable": true
                             },
                             "fingerprint": {
                               "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                               "type": "string",
                               "example": "8712yh2uihiu1123sxas"
+                            },
+                            "funding": {
+                              "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                              "type": "string",
+                              "example": "credit",
+                              "enum": [
+                                "credit",
+                                "debit",
+                                "prepaid"
+                              ]
                             },
                             "last_four_digits": {
                               "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -5279,9 +5455,91 @@
                           "type": "string",
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "bank": {
+                          "description": "Banco. [Legacy]",
+                          "type": "string"
+                        },
+                        "brand": {
+                          "description": "Marca de la tarjeta de crédito. [Legacy]",
+                          "type": "string",
+                          "example": "visa-credito",
+                          "enum": [
+                            "amex",
+                            "argencard",
+                            "cabal",
+                            "cabal-debito",
+                            "cbu",
+                            "cencosud",
+                            "cmr-falabella",
+                            "cordobesa",
+                            "diners-club",
+                            "discover",
+                            "jcb",
+                            "lider",
+                            "maestro",
+                            "mastercard",
+                            "mastercard-debit",
+                            "naranja",
+                            "naranja-visa",
+                            "nativa",
+                            "visa-credito",
+                            "visa-debito",
+                            "favacard"
+                          ]
                         }
                       },
                       "title": "Método de pago"
+                    }
+                  }
+                },
+                "examples": {
+                  "card": {
+                    "summary": "Tarjeta de Crédito",
+                    "value": {
+                      "data": {
+                        "bank": "Visa",
+                        "brand": "visa-credito",
+                        "card": {
+                          "bank": "Visa",
+                          "brand": "visa-credito",
+                          "country": "AR",
+                          "expiration_month": null,
+                          "expiration_year": null,
+                          "fingerprint": "0sZQikKp4lImAgIo",
+                          "funding": "credit",
+                          "last_four_digits": "4242"
+                        },
+                        "created_at": "2022-02-01T23:13:04-03:00",
+                        "id": "PMBja4YZ2GDR",
+                        "livemode": true,
+                        "metadata": null,
+                        "object": "payment_method",
+                        "type": "card",
+                        "updated_at": "2022-02-01T23:13:04-03:00"
+                      }
+                    }
+                  },
+                  "cbu": {
+                    "summary": "Cuenta Bancaria CBU",
+                    "value": {
+                      "data": {
+                        "id": "PMBKkz3wjEW9",
+                        "object": "payment_method",
+                        "type": "cbu",
+                        "cbu": {
+                          "last_four_digits": "0013",
+                          "bank": "Banco de la Nación Argentina",
+                          "country": "AR",
+                          "fingerprint": "jhA2lx68sNppN90k"
+                        },
+                        "livemode": false,
+                        "metadata": null,
+                        "created_at": "2022-11-05T20:43:29-03:00",
+                        "updated_at": "2022-11-05T20:43:29-03:00",
+                        "brand": "cbu",
+                        "bank": "Banco de la Nación Argentina"
+                      }
                     }
                   }
                 }
@@ -5325,27 +5583,27 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://api.tucuota.com/v1/payment_methods \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"card\",\"card\":{\"number\":\"4242424242424242\",\"expiration_year\":5,\"expiration_month\":2027}}'"
+            "source": "curl --request POST \\\n  --url https://api.tucuota.com/v1/payment_methods \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0},\"cbu\":{\"number\":\"string\"}}'"
           },
           {
             "lang": "Node + Request",
-            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.tucuota.com/v1/payment_methods',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    type: 'card',\n    card: {number: '4242424242424242', expiration_year: 5, expiration_month: 2027}\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.tucuota.com/v1/payment_methods',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    type: 'card',\n    card: {number: 'string', expiration_year: 0, expiration_month: 0},\n    cbu: {number: 'string'}\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
           },
           {
             "lang": "Php + Http1",
-            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.tucuota.com/v1/payment_methods');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"type\":\"card\",\"card\":{\"number\":\"4242424242424242\",\"expiration_year\":5,\"expiration_month\":2027}}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.tucuota.com/v1/payment_methods');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0},\"cbu\":{\"number\":\"string\"}}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
           },
           {
             "lang": "Python + Requests",
-            "source": "import requests\n\nurl = \"https://api.tucuota.com/v1/payment_methods\"\n\npayload = {\n    \"type\": \"card\",\n    \"card\": {\n        \"number\": \"4242424242424242\",\n        \"expiration_year\": 5,\n        \"expiration_month\": 2027\n    }\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
+            "source": "import requests\n\nurl = \"https://api.tucuota.com/v1/payment_methods\"\n\npayload = {\n    \"type\": \"card\",\n    \"card\": {\n        \"number\": \"string\",\n        \"expiration_year\": 0,\n        \"expiration_month\": 0\n    },\n    \"cbu\": {\"number\": \"string\"}\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
           },
           {
             "lang": "Java + Unirest",
-            "source": "HttpResponse<String> response = Unirest.post(\"https://api.tucuota.com/v1/payment_methods\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"4242424242424242\\\",\\\"expiration_year\\\":5,\\\"expiration_month\\\":2027}}\")\n  .asString();"
+            "source": "HttpResponse<String> response = Unirest.post(\"https://api.tucuota.com/v1/payment_methods\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\"}}\")\n  .asString();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.tucuota.com/v1/payment_methods\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"4242424242424242\\\",\\\"expiration_year\\\":5,\\\"expiration_month\\\":2027}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.tucuota.com/v1/payment_methods\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
         ]
       }
@@ -5444,17 +5702,29 @@
                             "expiration_month": {
                               "description": "Mes de expiración.",
                               "type": "number",
-                              "example": 11
+                              "example": 11,
+                              "nullable": true
                             },
                             "expiration_year": {
                               "description": "Año de expiración.",
                               "type": "number",
-                              "example": 2030
+                              "example": 2030,
+                              "nullable": true
                             },
                             "fingerprint": {
                               "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                               "type": "string",
                               "example": "8712yh2uihiu1123sxas"
+                            },
+                            "funding": {
+                              "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                              "type": "string",
+                              "example": "credit",
+                              "enum": [
+                                "credit",
+                                "debit",
+                                "prepaid"
+                              ]
                             },
                             "last_four_digits": {
                               "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -5525,6 +5795,38 @@
                           "type": "string",
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "bank": {
+                          "description": "Banco. [Legacy]",
+                          "type": "string"
+                        },
+                        "brand": {
+                          "description": "Marca de la tarjeta de crédito. [Legacy]",
+                          "type": "string",
+                          "example": "visa-credito",
+                          "enum": [
+                            "amex",
+                            "argencard",
+                            "cabal",
+                            "cabal-debito",
+                            "cbu",
+                            "cencosud",
+                            "cmr-falabella",
+                            "cordobesa",
+                            "diners-club",
+                            "discover",
+                            "jcb",
+                            "lider",
+                            "maestro",
+                            "mastercard",
+                            "mastercard-debit",
+                            "naranja",
+                            "naranja-visa",
+                            "nativa",
+                            "visa-credito",
+                            "visa-debito",
+                            "favacard"
+                          ]
                         }
                       },
                       "title": "Método de pago"
@@ -6116,17 +6418,29 @@
                                   "expiration_month": {
                                     "description": "Mes de expiración.",
                                     "type": "number",
-                                    "example": 11
+                                    "example": 11,
+                                    "nullable": true
                                   },
                                   "expiration_year": {
                                     "description": "Año de expiración.",
                                     "type": "number",
-                                    "example": 2030
+                                    "example": 2030,
+                                    "nullable": true
                                   },
                                   "fingerprint": {
                                     "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "funding": {
+                                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                    "type": "string",
+                                    "example": "credit",
+                                    "enum": [
+                                      "credit",
+                                      "debit",
+                                      "prepaid"
+                                    ]
                                   },
                                   "last_four_digits": {
                                     "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -6197,6 +6511,38 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "bank": {
+                                "description": "Banco. [Legacy]",
+                                "type": "string"
+                              },
+                              "brand": {
+                                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                                "type": "string",
+                                "example": "visa-credito",
+                                "enum": [
+                                  "amex",
+                                  "argencard",
+                                  "cabal",
+                                  "cabal-debito",
+                                  "cbu",
+                                  "cencosud",
+                                  "cmr-falabella",
+                                  "cordobesa",
+                                  "diners-club",
+                                  "discover",
+                                  "jcb",
+                                  "lider",
+                                  "maestro",
+                                  "mastercard",
+                                  "mastercard-debit",
+                                  "naranja",
+                                  "naranja-visa",
+                                  "nativa",
+                                  "visa-credito",
+                                  "visa-debito",
+                                  "favacard"
+                                ]
                               }
                             },
                             "title": "Método de pago"
@@ -6898,17 +7244,29 @@
                                 "expiration_month": {
                                   "description": "Mes de expiración.",
                                   "type": "number",
-                                  "example": 11
+                                  "example": 11,
+                                  "nullable": true
                                 },
                                 "expiration_year": {
                                   "description": "Año de expiración.",
                                   "type": "number",
-                                  "example": 2030
+                                  "example": 2030,
+                                  "nullable": true
                                 },
                                 "fingerprint": {
                                   "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "funding": {
+                                  "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                  "type": "string",
+                                  "example": "credit",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid"
+                                  ]
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -6979,6 +7337,38 @@
                               "type": "string",
                               "format": "date-time",
                               "example": "2022-02-11T23:19:22-03:00"
+                            },
+                            "bank": {
+                              "description": "Banco. [Legacy]",
+                              "type": "string"
+                            },
+                            "brand": {
+                              "description": "Marca de la tarjeta de crédito. [Legacy]",
+                              "type": "string",
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             }
                           },
                           "title": "Método de pago"
@@ -7552,17 +7942,29 @@
                                 "expiration_month": {
                                   "description": "Mes de expiración.",
                                   "type": "number",
-                                  "example": 11
+                                  "example": 11,
+                                  "nullable": true
                                 },
                                 "expiration_year": {
                                   "description": "Año de expiración.",
                                   "type": "number",
-                                  "example": 2030
+                                  "example": 2030,
+                                  "nullable": true
                                 },
                                 "fingerprint": {
                                   "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "funding": {
+                                  "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                  "type": "string",
+                                  "example": "credit",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid"
+                                  ]
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -7633,6 +8035,38 @@
                               "type": "string",
                               "format": "date-time",
                               "example": "2022-02-11T23:19:22-03:00"
+                            },
+                            "bank": {
+                              "description": "Banco. [Legacy]",
+                              "type": "string"
+                            },
+                            "brand": {
+                              "description": "Marca de la tarjeta de crédito. [Legacy]",
+                              "type": "string",
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             }
                           },
                           "title": "Método de pago"
@@ -8284,17 +8718,29 @@
                                 "expiration_month": {
                                   "description": "Mes de expiración.",
                                   "type": "number",
-                                  "example": 11
+                                  "example": 11,
+                                  "nullable": true
                                 },
                                 "expiration_year": {
                                   "description": "Año de expiración.",
                                   "type": "number",
-                                  "example": 2030
+                                  "example": 2030,
+                                  "nullable": true
                                 },
                                 "fingerprint": {
                                   "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "funding": {
+                                  "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                  "type": "string",
+                                  "example": "credit",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid"
+                                  ]
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -8365,6 +8811,38 @@
                               "type": "string",
                               "format": "date-time",
                               "example": "2022-02-11T23:19:22-03:00"
+                            },
+                            "bank": {
+                              "description": "Banco. [Legacy]",
+                              "type": "string"
+                            },
+                            "brand": {
+                              "description": "Marca de la tarjeta de crédito. [Legacy]",
+                              "type": "string",
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             }
                           },
                           "title": "Método de pago"
@@ -10396,17 +10874,29 @@
                                   "expiration_month": {
                                     "description": "Mes de expiración.",
                                     "type": "number",
-                                    "example": 11
+                                    "example": 11,
+                                    "nullable": true
                                   },
                                   "expiration_year": {
                                     "description": "Año de expiración.",
                                     "type": "number",
-                                    "example": 2030
+                                    "example": 2030,
+                                    "nullable": true
                                   },
                                   "fingerprint": {
                                     "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "funding": {
+                                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                    "type": "string",
+                                    "example": "credit",
+                                    "enum": [
+                                      "credit",
+                                      "debit",
+                                      "prepaid"
+                                    ]
                                   },
                                   "last_four_digits": {
                                     "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -10477,6 +10967,38 @@
                                 "type": "string",
                                 "format": "date-time",
                                 "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "bank": {
+                                "description": "Banco. [Legacy]",
+                                "type": "string"
+                              },
+                              "brand": {
+                                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                                "type": "string",
+                                "example": "visa-credito",
+                                "enum": [
+                                  "amex",
+                                  "argencard",
+                                  "cabal",
+                                  "cabal-debito",
+                                  "cbu",
+                                  "cencosud",
+                                  "cmr-falabella",
+                                  "cordobesa",
+                                  "diners-club",
+                                  "discover",
+                                  "jcb",
+                                  "lider",
+                                  "maestro",
+                                  "mastercard",
+                                  "mastercard-debit",
+                                  "naranja",
+                                  "naranja-visa",
+                                  "nativa",
+                                  "visa-credito",
+                                  "visa-debito",
+                                  "favacard"
+                                ]
                               }
                             },
                             "title": "Método de pago"
@@ -11123,17 +11645,29 @@
                                 "expiration_month": {
                                   "description": "Mes de expiración.",
                                   "type": "number",
-                                  "example": 11
+                                  "example": 11,
+                                  "nullable": true
                                 },
                                 "expiration_year": {
                                   "description": "Año de expiración.",
                                   "type": "number",
-                                  "example": 2030
+                                  "example": 2030,
+                                  "nullable": true
                                 },
                                 "fingerprint": {
                                   "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "funding": {
+                                  "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                  "type": "string",
+                                  "example": "credit",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid"
+                                  ]
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -11204,6 +11738,38 @@
                               "type": "string",
                               "format": "date-time",
                               "example": "2022-02-11T23:19:22-03:00"
+                            },
+                            "bank": {
+                              "description": "Banco. [Legacy]",
+                              "type": "string"
+                            },
+                            "brand": {
+                              "description": "Marca de la tarjeta de crédito. [Legacy]",
+                              "type": "string",
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             }
                           },
                           "title": "Método de pago"
@@ -11718,17 +12284,29 @@
                                 "expiration_month": {
                                   "description": "Mes de expiración.",
                                   "type": "number",
-                                  "example": 11
+                                  "example": 11,
+                                  "nullable": true
                                 },
                                 "expiration_year": {
                                   "description": "Año de expiración.",
                                   "type": "number",
-                                  "example": 2030
+                                  "example": 2030,
+                                  "nullable": true
                                 },
                                 "fingerprint": {
                                   "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "funding": {
+                                  "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                  "type": "string",
+                                  "example": "credit",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid"
+                                  ]
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -11799,6 +12377,38 @@
                               "type": "string",
                               "format": "date-time",
                               "example": "2022-02-11T23:19:22-03:00"
+                            },
+                            "bank": {
+                              "description": "Banco. [Legacy]",
+                              "type": "string"
+                            },
+                            "brand": {
+                              "description": "Marca de la tarjeta de crédito. [Legacy]",
+                              "type": "string",
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             }
                           },
                           "title": "Método de pago"
@@ -12414,17 +13024,29 @@
                                 "expiration_month": {
                                   "description": "Mes de expiración.",
                                   "type": "number",
-                                  "example": 11
+                                  "example": 11,
+                                  "nullable": true
                                 },
                                 "expiration_year": {
                                   "description": "Año de expiración.",
                                   "type": "number",
-                                  "example": 2030
+                                  "example": 2030,
+                                  "nullable": true
                                 },
                                 "fingerprint": {
                                   "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "funding": {
+                                  "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                  "type": "string",
+                                  "example": "credit",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid"
+                                  ]
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -12495,6 +13117,38 @@
                               "type": "string",
                               "format": "date-time",
                               "example": "2022-02-11T23:19:22-03:00"
+                            },
+                            "bank": {
+                              "description": "Banco. [Legacy]",
+                              "type": "string"
+                            },
+                            "brand": {
+                              "description": "Marca de la tarjeta de crédito. [Legacy]",
+                              "type": "string",
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             }
                           },
                           "title": "Método de pago"
@@ -13009,17 +13663,29 @@
                                 "expiration_month": {
                                   "description": "Mes de expiración.",
                                   "type": "number",
-                                  "example": 11
+                                  "example": 11,
+                                  "nullable": true
                                 },
                                 "expiration_year": {
                                   "description": "Año de expiración.",
                                   "type": "number",
-                                  "example": 2030
+                                  "example": 2030,
+                                  "nullable": true
                                 },
                                 "fingerprint": {
                                   "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "funding": {
+                                  "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                  "type": "string",
+                                  "example": "credit",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid"
+                                  ]
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -13090,6 +13756,38 @@
                               "type": "string",
                               "format": "date-time",
                               "example": "2022-02-11T23:19:22-03:00"
+                            },
+                            "bank": {
+                              "description": "Banco. [Legacy]",
+                              "type": "string"
+                            },
+                            "brand": {
+                              "description": "Marca de la tarjeta de crédito. [Legacy]",
+                              "type": "string",
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             }
                           },
                           "title": "Método de pago"
@@ -13599,17 +14297,29 @@
                                 "expiration_month": {
                                   "description": "Mes de expiración.",
                                   "type": "number",
-                                  "example": 11
+                                  "example": 11,
+                                  "nullable": true
                                 },
                                 "expiration_year": {
                                   "description": "Año de expiración.",
                                   "type": "number",
-                                  "example": 2030
+                                  "example": 2030,
+                                  "nullable": true
                                 },
                                 "fingerprint": {
                                   "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "funding": {
+                                  "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                  "type": "string",
+                                  "example": "credit",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid"
+                                  ]
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -13680,6 +14390,38 @@
                               "type": "string",
                               "format": "date-time",
                               "example": "2022-02-11T23:19:22-03:00"
+                            },
+                            "bank": {
+                              "description": "Banco. [Legacy]",
+                              "type": "string"
+                            },
+                            "brand": {
+                              "description": "Marca de la tarjeta de crédito. [Legacy]",
+                              "type": "string",
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             }
                           },
                           "title": "Método de pago"
@@ -14194,17 +14936,29 @@
                                 "expiration_month": {
                                   "description": "Mes de expiración.",
                                   "type": "number",
-                                  "example": 11
+                                  "example": 11,
+                                  "nullable": true
                                 },
                                 "expiration_year": {
                                   "description": "Año de expiración.",
                                   "type": "number",
-                                  "example": 2030
+                                  "example": 2030,
+                                  "nullable": true
                                 },
                                 "fingerprint": {
                                   "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "funding": {
+                                  "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                  "type": "string",
+                                  "example": "credit",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid"
+                                  ]
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -14275,6 +15029,38 @@
                               "type": "string",
                               "format": "date-time",
                               "example": "2022-02-11T23:19:22-03:00"
+                            },
+                            "bank": {
+                              "description": "Banco. [Legacy]",
+                              "type": "string"
+                            },
+                            "brand": {
+                              "description": "Marca de la tarjeta de crédito. [Legacy]",
+                              "type": "string",
+                              "example": "visa-credito",
+                              "enum": [
+                                "amex",
+                                "argencard",
+                                "cabal",
+                                "cabal-debito",
+                                "cbu",
+                                "cencosud",
+                                "cmr-falabella",
+                                "cordobesa",
+                                "diners-club",
+                                "discover",
+                                "jcb",
+                                "lider",
+                                "maestro",
+                                "mastercard",
+                                "mastercard-debit",
+                                "naranja",
+                                "naranja-visa",
+                                "nativa",
+                                "visa-credito",
+                                "visa-debito",
+                                "favacard"
+                              ]
                             }
                           },
                           "title": "Método de pago"
@@ -16016,17 +16802,29 @@
           "expiration_month": {
             "description": "Mes de expiración.",
             "type": "number",
-            "example": 11
+            "example": 11,
+            "nullable": true
           },
           "expiration_year": {
             "description": "Año de expiración.",
             "type": "number",
-            "example": 2030
+            "example": 2030,
+            "nullable": true
           },
           "fingerprint": {
             "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
             "type": "string",
             "example": "8712yh2uihiu1123sxas"
+          },
+          "funding": {
+            "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+            "type": "string",
+            "example": "credit",
+            "enum": [
+              "credit",
+              "debit",
+              "prepaid"
+            ]
           },
           "last_four_digits": {
             "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -16134,17 +16932,29 @@
               "expiration_month": {
                 "description": "Mes de expiración.",
                 "type": "number",
-                "example": 11
+                "example": 11,
+                "nullable": true
               },
               "expiration_year": {
                 "description": "Año de expiración.",
                 "type": "number",
-                "example": 2030
+                "example": 2030,
+                "nullable": true
               },
               "fingerprint": {
                 "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                 "type": "string",
                 "example": "8712yh2uihiu1123sxas"
+              },
+              "funding": {
+                "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                "type": "string",
+                "example": "credit",
+                "enum": [
+                  "credit",
+                  "debit",
+                  "prepaid"
+                ]
               },
               "last_four_digits": {
                 "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -16215,6 +17025,38 @@
             "type": "string",
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00"
+          },
+          "bank": {
+            "description": "Banco. [Legacy]",
+            "type": "string"
+          },
+          "brand": {
+            "description": "Marca de la tarjeta de crédito. [Legacy]",
+            "type": "string",
+            "example": "visa-credito",
+            "enum": [
+              "amex",
+              "argencard",
+              "cabal",
+              "cabal-debito",
+              "cbu",
+              "cencosud",
+              "cmr-falabella",
+              "cordobesa",
+              "diners-club",
+              "discover",
+              "jcb",
+              "lider",
+              "maestro",
+              "mastercard",
+              "mastercard-debit",
+              "naranja",
+              "naranja-visa",
+              "nativa",
+              "visa-credito",
+              "visa-debito",
+              "favacard"
+            ]
           }
         },
         "title": "Método de pago"
@@ -16482,17 +17324,29 @@
                   "expiration_month": {
                     "description": "Mes de expiración.",
                     "type": "number",
-                    "example": 11
+                    "example": 11,
+                    "nullable": true
                   },
                   "expiration_year": {
                     "description": "Año de expiración.",
                     "type": "number",
-                    "example": 2030
+                    "example": 2030,
+                    "nullable": true
                   },
                   "fingerprint": {
                     "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
+                  },
+                  "funding": {
+                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                    "type": "string",
+                    "example": "credit",
+                    "enum": [
+                      "credit",
+                      "debit",
+                      "prepaid"
+                    ]
                   },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -16563,6 +17417,38 @@
                 "type": "string",
                 "format": "date-time",
                 "example": "2022-02-11T23:19:22-03:00"
+              },
+              "bank": {
+                "description": "Banco. [Legacy]",
+                "type": "string"
+              },
+              "brand": {
+                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                "type": "string",
+                "example": "visa-credito",
+                "enum": [
+                  "amex",
+                  "argencard",
+                  "cabal",
+                  "cabal-debito",
+                  "cbu",
+                  "cencosud",
+                  "cmr-falabella",
+                  "cordobesa",
+                  "diners-club",
+                  "discover",
+                  "jcb",
+                  "lider",
+                  "maestro",
+                  "mastercard",
+                  "mastercard-debit",
+                  "naranja",
+                  "naranja-visa",
+                  "nativa",
+                  "visa-credito",
+                  "visa-debito",
+                  "favacard"
+                ]
               }
             },
             "title": "Método de pago"
@@ -17079,17 +17965,29 @@
                   "expiration_month": {
                     "description": "Mes de expiración.",
                     "type": "number",
-                    "example": 11
+                    "example": 11,
+                    "nullable": true
                   },
                   "expiration_year": {
                     "description": "Año de expiración.",
                     "type": "number",
-                    "example": 2030
+                    "example": 2030,
+                    "nullable": true
                   },
                   "fingerprint": {
                     "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
+                  },
+                  "funding": {
+                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                    "type": "string",
+                    "example": "credit",
+                    "enum": [
+                      "credit",
+                      "debit",
+                      "prepaid"
+                    ]
                   },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -17160,6 +18058,38 @@
                 "type": "string",
                 "format": "date-time",
                 "example": "2022-02-11T23:19:22-03:00"
+              },
+              "bank": {
+                "description": "Banco. [Legacy]",
+                "type": "string"
+              },
+              "brand": {
+                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                "type": "string",
+                "example": "visa-credito",
+                "enum": [
+                  "amex",
+                  "argencard",
+                  "cabal",
+                  "cabal-debito",
+                  "cbu",
+                  "cencosud",
+                  "cmr-falabella",
+                  "cordobesa",
+                  "diners-club",
+                  "discover",
+                  "jcb",
+                  "lider",
+                  "maestro",
+                  "mastercard",
+                  "mastercard-debit",
+                  "naranja",
+                  "naranja-visa",
+                  "nativa",
+                  "visa-credito",
+                  "visa-debito",
+                  "favacard"
+                ]
               }
             },
             "title": "Método de pago"
@@ -17836,17 +18766,29 @@
                   "expiration_month": {
                     "description": "Mes de expiración.",
                     "type": "number",
-                    "example": 11
+                    "example": 11,
+                    "nullable": true
                   },
                   "expiration_year": {
                     "description": "Año de expiración.",
                     "type": "number",
-                    "example": 2030
+                    "example": 2030,
+                    "nullable": true
                   },
                   "fingerprint": {
                     "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
+                  },
+                  "funding": {
+                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                    "type": "string",
+                    "example": "credit",
+                    "enum": [
+                      "credit",
+                      "debit",
+                      "prepaid"
+                    ]
                   },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -17917,6 +18859,38 @@
                 "type": "string",
                 "format": "date-time",
                 "example": "2022-02-11T23:19:22-03:00"
+              },
+              "bank": {
+                "description": "Banco. [Legacy]",
+                "type": "string"
+              },
+              "brand": {
+                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                "type": "string",
+                "example": "visa-credito",
+                "enum": [
+                  "amex",
+                  "argencard",
+                  "cabal",
+                  "cabal-debito",
+                  "cbu",
+                  "cencosud",
+                  "cmr-falabella",
+                  "cordobesa",
+                  "diners-club",
+                  "discover",
+                  "jcb",
+                  "lider",
+                  "maestro",
+                  "mastercard",
+                  "mastercard-debit",
+                  "naranja",
+                  "naranja-visa",
+                  "nativa",
+                  "visa-credito",
+                  "visa-debito",
+                  "favacard"
+                ]
               }
             },
             "title": "Método de pago"
@@ -18785,17 +19759,29 @@
                   "expiration_month": {
                     "description": "Mes de expiración.",
                     "type": "number",
-                    "example": 11
+                    "example": 11,
+                    "nullable": true
                   },
                   "expiration_year": {
                     "description": "Año de expiración.",
                     "type": "number",
-                    "example": 2030
+                    "example": 2030,
+                    "nullable": true
                   },
                   "fingerprint": {
                     "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
+                  },
+                  "funding": {
+                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                    "type": "string",
+                    "example": "credit",
+                    "enum": [
+                      "credit",
+                      "debit",
+                      "prepaid"
+                    ]
                   },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -18866,6 +19852,38 @@
                 "type": "string",
                 "format": "date-time",
                 "example": "2022-02-11T23:19:22-03:00"
+              },
+              "bank": {
+                "description": "Banco. [Legacy]",
+                "type": "string"
+              },
+              "brand": {
+                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                "type": "string",
+                "example": "visa-credito",
+                "enum": [
+                  "amex",
+                  "argencard",
+                  "cabal",
+                  "cabal-debito",
+                  "cbu",
+                  "cencosud",
+                  "cmr-falabella",
+                  "cordobesa",
+                  "diners-club",
+                  "discover",
+                  "jcb",
+                  "lider",
+                  "maestro",
+                  "mastercard",
+                  "mastercard-debit",
+                  "naranja",
+                  "naranja-visa",
+                  "nativa",
+                  "visa-credito",
+                  "visa-debito",
+                  "favacard"
+                ]
               }
             },
             "title": "Método de pago"
@@ -19363,17 +20381,29 @@
                   "expiration_month": {
                     "description": "Mes de expiración.",
                     "type": "number",
-                    "example": 11
+                    "example": 11,
+                    "nullable": true
                   },
                   "expiration_year": {
                     "description": "Año de expiración.",
                     "type": "number",
-                    "example": 2030
+                    "example": 2030,
+                    "nullable": true
                   },
                   "fingerprint": {
                     "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
+                  },
+                  "funding": {
+                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                    "type": "string",
+                    "example": "credit",
+                    "enum": [
+                      "credit",
+                      "debit",
+                      "prepaid"
+                    ]
                   },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -19444,6 +20474,38 @@
                 "type": "string",
                 "format": "date-time",
                 "example": "2022-02-11T23:19:22-03:00"
+              },
+              "bank": {
+                "description": "Banco. [Legacy]",
+                "type": "string"
+              },
+              "brand": {
+                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                "type": "string",
+                "example": "visa-credito",
+                "enum": [
+                  "amex",
+                  "argencard",
+                  "cabal",
+                  "cabal-debito",
+                  "cbu",
+                  "cencosud",
+                  "cmr-falabella",
+                  "cordobesa",
+                  "diners-club",
+                  "discover",
+                  "jcb",
+                  "lider",
+                  "maestro",
+                  "mastercard",
+                  "mastercard-debit",
+                  "naranja",
+                  "naranja-visa",
+                  "nativa",
+                  "visa-credito",
+                  "visa-debito",
+                  "favacard"
+                ]
               }
             },
             "title": "Método de pago"
@@ -19555,17 +20617,29 @@
               "expiration_month": {
                 "description": "Mes de expiración.",
                 "type": "number",
-                "example": 11
+                "example": 11,
+                "nullable": true
               },
               "expiration_year": {
                 "description": "Año de expiración.",
                 "type": "number",
-                "example": 2030
+                "example": 2030,
+                "nullable": true
               },
               "fingerprint": {
                 "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                 "type": "string",
                 "example": "8712yh2uihiu1123sxas"
+              },
+              "funding": {
+                "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                "type": "string",
+                "example": "credit",
+                "enum": [
+                  "credit",
+                  "debit",
+                  "prepaid"
+                ]
               },
               "last_four_digits": {
                 "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -19636,6 +20710,38 @@
             "type": "string",
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00"
+          },
+          "bank": {
+            "description": "Banco. [Legacy]",
+            "type": "string"
+          },
+          "brand": {
+            "description": "Marca de la tarjeta de crédito. [Legacy]",
+            "type": "string",
+            "example": "visa-credito",
+            "enum": [
+              "amex",
+              "argencard",
+              "cabal",
+              "cabal-debito",
+              "cbu",
+              "cencosud",
+              "cmr-falabella",
+              "cordobesa",
+              "diners-club",
+              "discover",
+              "jcb",
+              "lider",
+              "maestro",
+              "mastercard",
+              "mastercard-debit",
+              "naranja",
+              "naranja-visa",
+              "nativa",
+              "visa-credito",
+              "visa-debito",
+              "favacard"
+            ]
           }
         },
         "title": "Método de pago"
@@ -20264,17 +21370,29 @@
                   "expiration_month": {
                     "description": "Mes de expiración.",
                     "type": "number",
-                    "example": 11
+                    "example": 11,
+                    "nullable": true
                   },
                   "expiration_year": {
                     "description": "Año de expiración.",
                     "type": "number",
-                    "example": 2030
+                    "example": 2030,
+                    "nullable": true
                   },
                   "fingerprint": {
                     "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
+                  },
+                  "funding": {
+                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                    "type": "string",
+                    "example": "credit",
+                    "enum": [
+                      "credit",
+                      "debit",
+                      "prepaid"
+                    ]
                   },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
@@ -20345,6 +21463,38 @@
                 "type": "string",
                 "format": "date-time",
                 "example": "2022-02-11T23:19:22-03:00"
+              },
+              "bank": {
+                "description": "Banco. [Legacy]",
+                "type": "string"
+              },
+              "brand": {
+                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                "type": "string",
+                "example": "visa-credito",
+                "enum": [
+                  "amex",
+                  "argencard",
+                  "cabal",
+                  "cabal-debito",
+                  "cbu",
+                  "cencosud",
+                  "cmr-falabella",
+                  "cordobesa",
+                  "diners-club",
+                  "discover",
+                  "jcb",
+                  "lider",
+                  "maestro",
+                  "mastercard",
+                  "mastercard-debit",
+                  "naranja",
+                  "naranja-visa",
+                  "nativa",
+                  "visa-credito",
+                  "visa-debito",
+                  "favacard"
+                ]
               }
             },
             "title": "Método de pago"
