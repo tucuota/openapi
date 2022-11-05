@@ -13543,7 +13543,7 @@ paths:
                     items:
                       title: Webhook
                       description: |-
-                        Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para
+                        Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
                         obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
 
                         La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
@@ -13846,7 +13846,7 @@ paths:
                 properties:
                   data:
                     description: |-
-                      Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para
+                      Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
                       obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
 
                       La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
@@ -14063,7 +14063,7 @@ paths:
                 properties:
                   data:
                     description: |-
-                      Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para
+                      Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
                       obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
 
                       La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
@@ -14256,7 +14256,7 @@ paths:
                 properties:
                   data:
                     description: |-
-                      Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para
+                      Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
                       obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
 
                       La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
@@ -16598,7 +16598,7 @@ components:
       title: Suscripción
     Webhook:
       description: |-
-        Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para
+        Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
         obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
 
         La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
@@ -18482,7 +18482,7 @@ components:
       title: Suscripción
     webhook:
       description: |-
-        Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para
+        Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
         obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
 
         La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.

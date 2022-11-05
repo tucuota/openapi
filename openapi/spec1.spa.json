@@ -13121,7 +13121,7 @@
                       "type": "array",
                       "items": {
                         "title": "Webhook",
-                        "description": "Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
+                        "description": "Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
                         "type": "object",
                         "properties": {
                           "id": {
@@ -13406,7 +13406,7 @@
                 "schema": {
                   "properties": {
                     "data": {
-                      "description": "Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
+                      "description": "Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
                       "type": "object",
                       "example": {
                         "created_at": "2022-02-11T23:19:22-03:00",
@@ -13566,7 +13566,7 @@
                 "schema": {
                   "properties": {
                     "data": {
-                      "description": "Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
+                      "description": "Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
                       "type": "object",
                       "example": {
                         "created_at": "2022-02-11T23:19:22-03:00",
@@ -13722,7 +13722,7 @@
                 "schema": {
                   "properties": {
                     "data": {
-                      "description": "Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
+                      "description": "Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
                       "type": "object",
                       "example": {
                         "created_at": "2022-02-11T23:19:22-03:00",
@@ -16536,7 +16536,7 @@
         "title": "Suscripción"
       },
       "Webhook": {
-        "description": "Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
+        "description": "Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
         "type": "object",
         "properties": {
           "id": {
@@ -18964,7 +18964,7 @@
         "title": "Suscripción"
       },
       "webhook": {
-        "description": "Puede configurar tus [webhooks] (https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
+        "description": "Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
         "type": "object",
         "properties": {
           "id": {
