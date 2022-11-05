@@ -4089,7 +4089,7 @@
       "post": {
         "operationId": "MandatesRevokeMandate",
         "summary": "Revocar una adhesión",
-        "description": "Esta acción revocará la adhesión y también cancelará todos las suscripciones cancelables adjuntas al mismo `cliente` y al mismo `método de pago`.",
+        "description": "Esta acción revocará la adhesión y también cancelará todos las suscripciones cancelables adjuntas al mismo `customer` y al mismo `payment_method`.",
         "parameters": [
           {
             "name": "id",
