@@ -49,7 +49,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Número de registros a devolver.",
+            "description": "Especifica el número máximo de ítems a ser Especifica el número máximo de ítems a ser retornados.",
             "required": false,
             "schema": {
               "type": "number"
@@ -3421,7 +3421,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Número de registros a devolver.",
+            "description": "Especifica el número máximo de ítems a ser Especifica el número máximo de ítems a ser retornados.",
             "schema": {
               "type": "number"
             },
@@ -5931,7 +5931,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Cantidad de registros a devolver.",
+            "description": "Especifica el número máximo de ítems a ser Especifica el número máximo de ítems a ser retornados.",
             "required": false,
             "schema": {
               "type": "number"

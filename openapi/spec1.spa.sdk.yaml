@@ -342,7 +342,7 @@ paths:
           example: 1
         - name: limit
           in: query
-          description: Número de registros a devolver.
+          description: Especifica el número máximo de ítems a ser Especifica el número máximo de ítems a ser retornados.
           required: false
           schema:
             type: number
@@ -3788,7 +3788,7 @@ paths:
           example: '10'
         - name: limit
           in: query
-          description: Número de registros a devolver.
+          description: Especifica el número máximo de ítems a ser Especifica el número máximo de ítems a ser retornados.
           schema:
             type: number
           example: '1'
@@ -6197,7 +6197,7 @@ paths:
           example: '10'
         - name: limit
           in: query
-          description: Cantidad de registros a devolver.
+          description: Especifica el número máximo de ítems a ser Especifica el número máximo de ítems a ser retornados.
           required: false
           schema:
             type: number
