@@ -2316,7 +2316,9 @@ paths:
           example: foo@bar.com
         - name: status
           in: query
-          description: 'Allowed values (`pending`, `ready`, `invalid`, `cancelled`, `processing`, `processed`).'
+          description: |
+            Allowed values: `pending`, `ready`, `invalid`, `cancelled`,
+            `processing`, `processed`.
           required: false
           schema:
             type: string
