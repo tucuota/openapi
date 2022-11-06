@@ -10258,7 +10258,7 @@
                     "type": "string"
                   },
                   "interval_unit": {
-                    "description": "The unit of time between customer charge dates. One of weekly, monthly or yearly. Example monthly",
+                    "description": "The unit of time between customer charge dates. One of `weekly`,\n`monthly` or `yearly`. Example `monthly`.\n",
                     "type": "string"
                   },
                   "interval": {

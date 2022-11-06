@@ -10859,7 +10859,9 @@ paths:
                   description: 'A future date on which the first payment of the subscription should be collected. If not specified, the first payment will be collected as soon as possible.'
                   type: string
                 interval_unit:
-                  description: 'The unit of time between customer charge dates. One of weekly, monthly or yearly. Example monthly'
+                  description: |
+                    The unit of time between customer charge dates. One of `weekly`,
+                    `monthly` or `yearly`. Example `monthly`.
                   type: string
                 interval:
                   description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1. Example 1'

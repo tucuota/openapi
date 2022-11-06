@@ -49,7 +49,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Especifica el número máximo de ítems a ser Especifica el número máximo de ítems a ser retornados.",
+            "description": "Especifica el número máximo de ítems a ser retornados.",
             "required": false,
             "schema": {
               "type": "number"
@@ -3421,7 +3421,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Especifica el número máximo de ítems a ser Especifica el número máximo de ítems a ser retornados.",
+            "description": "Especifica el número máximo de ítems a ser retornados.",
             "schema": {
               "type": "number"
             },
@@ -5931,7 +5931,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "Especifica el número máximo de ítems a ser Especifica el número máximo de ítems a ser retornados.",
+            "description": "Especifica el número máximo de ítems a ser retornados.",
             "required": false,
             "schema": {
               "type": "number"
@@ -11220,7 +11220,7 @@
                     "type": "string"
                   },
                   "interval_unit": {
-                    "description": "The unit of time between customer charge dates. One of weekly, monthly or yearly. Example monthly",
+                    "description": "La unidad de tiempo entre las fechas de pago del cliente. Uno\nde: `weekly`, `monthly` or `yearly`. Ejemplo `monthly`.\n",
                     "type": "string"
                   },
                   "interval": {
