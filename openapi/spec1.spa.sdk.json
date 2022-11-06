@@ -7473,8 +7473,8 @@
     "/v1/payments/{id}": {
       "get": {
         "operationId": "PaymentsGetPayment",
-        "summary": "Devolver un pago",
-        "description": "Devolver un pago.",
+        "summary": "Obtener un pago",
+        "description": "Obtener un pago.",
         "parameters": [
           {
             "name": "id",
@@ -10237,8 +10237,8 @@
     "/v1/sessions/{id}": {
       "get": {
         "operationId": "SessionsGetSession",
-        "summary": "Devolver una sesión",
-        "description": "Devolver una sesión.",
+        "summary": "Obtener una sesión",
+        "description": "Obtener una sesión.",
         "parameters": [
           {
             "name": "id",
