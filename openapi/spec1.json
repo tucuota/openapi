@@ -20929,13 +20929,13 @@
         "type": "apiKey",
         "in": "query",
         "name": "key",
-        "description": "Authentication using the [publishable key](#section/Authentication). You should send the [Publishable API](#section/Authentication) key in the `key` field of your JSON payload."
+        "description": "Authentication using the [publishable key](#section/Authentication). You should send the [Publishable API](#section/Authentication) key in the `key` field of your JSON payload. For Javascript flows.\n"
       },
       "SecretKeyAuthentication": {
         "bearerFormat": "auth-scheme",
-        "description": "Bearer HTTP authentication. Allowed headers-- Authorization: Bearer <api_key>",
         "scheme": "bearer",
-        "type": "http"
+        "type": "http",
+        "description": "Authentication using the [secret key](#section/Authentication). You should send the [Secret API](#section/Authentication) key in the `Authorization` header using the [Bearer](https://tools.ietf.org/html/rfc6750#section-2.1) authentication scheme.\n"
       }
     }
   },

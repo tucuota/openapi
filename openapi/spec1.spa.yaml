@@ -16301,12 +16301,14 @@ components:
       type: apiKey
       in: query
       name: key
-      description: 'Autenticación usando la [clave pública](#section/Autenticacion). Debes mandar [la clave pública](#section/Autenticacion) en el campo `key`.'
+      description: |
+        Autenticación usando la [clave pública](#section/Autenticacion). Debes enviar [la clave pública](#section/Autenticacion) en el campo `key`. Para utilizar en el Browser.
     SecretKeyAuthentication:
       bearerFormat: auth-scheme
-      description: 'Bearer HTTP authentication. Headers permitidos-- Authorization: Bearer <api_key>'
       scheme: bearer
       type: http
+      description: |
+        Autenticación usando la [clave secreta](#section/Autenticacion). Debes enviar [la clave secreta](#section/Autenticacion) en el header `Authorization` (usando el esquema [Bearer](https://tools.ietf.org/html/rfc6750#section-2.1)).
 tags:
   - name: Clientes
     description: |
