@@ -120,11 +120,9 @@ info:
     Do not store any sensitive information (bank account numbers, card details, etc.) as metadata.
     # Pagination
 
-    This API uses the [Link header - RFC 5988](http://tools.ietf.org/html/rfc5988#page-6) to include pagination details.
+    All top-level API resources have support for bulk fetches via "list" API methods. For instance, you can [list payments](#tag/Payments/operation/PaymentsGetPayments), [list customers](#tag/Customers/operation/CustomersGetCustomers), and [list subscriptions](#tag/Subscriptions/operation/SubscriptionsGetSubscriptions). These list API methods share a common structure, taking at least these three parameters: `limit`, `starting_after`, and `ending_before`.
 
-    An example of a Link header is described in [GitHub documentation](https://developer.github.com/guides/traversing-with-pagination/).
-
-    By default, each page contains `25` elements. It can be requested up to `100` elements per page by adding the `limit` parameter. For example adding `?limit=100&page=2` will return the second page of `100` elements.
+    The response of a list API method represents a single page in a reverse chronological stream of objects. If you do not specify `starting_after` or `ending_before`, you will receive the first page of this stream, containing the newest objects. You can specify `starting_after` equal to the object ID value of an item to retrieve the page of older objects occurring immediately after the named object in the reverse chronological stream. Similarly, you can specify `ending_before` to receive a page of newer objects occurring immediately before the named object in the stream. Objects in a page always appear in reverse chronological order. Only one of `starting_after` or `ending_before` may be used.
     # Request IDs
 
     Each API request has an associated request identifier. You can find this value in the response headers, under `Request-Id`. You can also find request identifiers in the URLs of individual request logs in your [Dashboard](https://dashboard.tucuota.com/developer/logs).

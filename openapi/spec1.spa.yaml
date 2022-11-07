@@ -120,11 +120,9 @@ info:
     No almacene información confidencial (números de cuentas bancarias, detalles de tarjetas, etc.) como metadata.
     # Paginación
 
-    This API uses the [Link header - RFC 5988](http://tools.ietf.org/html/rfc5988#page-6) to include pagination details.
+    Todos los recursos de la API pueden listarse a través de métodos de la API. Por ejemplo, puede [obtener pagos](#tag/Payments/operation/PaymentsGetPayments), [obtener clientes](#tag/Customers/operation/CustomersGetCustomers) y [obtener suscripciones](#tag/Subscriptions/operation/SubscriptionsGetSubscriptions). Estos métodos API de lista comparten una estructura común, tomando al menos estos tres parámetros: `limit`, `starting_after` y `ending_before`.
 
-    An example of a Link header is described in [GitHub documentation](https://developer.github.com/guides/traversing-with-pagination/).
-
-    By default, each page contains `25` elements. It can be requested up to `100` elements per page by adding the `limit` parameter. For example adding `?limit=100&page=2` will return the second page of `100` elements.
+    La respuesta de un método API de lista representa una sola página en un orden cronológico inverso. Si no especificas `starting_after` o `ending_before`, recibirás la primera página de este objecto, que contiene los objetos más nuevos. Puede especificar un ID en el campo `starting_after` para obtener la página de objetos más antiguos que aparecen inmediatamente después del objeto en cuestión. De manera similar, puedes especificar `ending_before` para recibir una página de objetos más nuevos que ocurren inmediatamente antes del objeto en cuestión. Los objetos de una página siempre aparecen en orden cronológico inverso. Solo se puede usar `starting_after` o `ending_before`.
     # IDs de Request
 
     Cada request a la API tiene un identificador de request asociado. Puede encontrar este valor en el header `Request-Id`. También puede encontrar estos IDs en logs de requests en su [Panel](https://dashboard.tucuota.com/developer/logs).
