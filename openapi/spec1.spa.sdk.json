@@ -54,19 +54,19 @@
               "type": "object",
               "properties": {
                 "gt": {
-                  "description": "Minimum value to filter by (exclusive)",
+                  "description": "Mínimo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "gte": {
-                  "description": "Minimum value to filter by (inclusive)",
+                  "description": "Mínimo valor para filtrar (inclusivo)",
                   "type": "integer"
                 },
                 "lt": {
-                  "description": "Maximum value to filter by (exclusive)",
+                  "description": "Máximo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "lte": {
-                  "description": "Maximum value to filter by (inclusive)",
+                  "description": "Máximo valor para filtrar (inclusivo)",
                   "type": "integer"
                 }
               },
@@ -1476,19 +1476,19 @@
               "type": "object",
               "properties": {
                 "gt": {
-                  "description": "Minimum value to filter by (exclusive)",
+                  "description": "Mínimo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "gte": {
-                  "description": "Minimum value to filter by (inclusive)",
+                  "description": "Mínimo valor para filtrar (inclusivo)",
                   "type": "integer"
                 },
                 "lt": {
-                  "description": "Maximum value to filter by (exclusive)",
+                  "description": "Máximo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "lte": {
-                  "description": "Maximum value to filter by (inclusive)",
+                  "description": "Máximo valor para filtrar (inclusivo)",
                   "type": "integer"
                 }
               },
@@ -2034,19 +2034,19 @@
               "type": "object",
               "properties": {
                 "gt": {
-                  "description": "Minimum value to filter by (exclusive)",
+                  "description": "Mínimo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "gte": {
-                  "description": "Minimum value to filter by (inclusive)",
+                  "description": "Mínimo valor para filtrar (inclusivo)",
                   "type": "integer"
                 },
                 "lt": {
-                  "description": "Maximum value to filter by (exclusive)",
+                  "description": "Máximo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "lte": {
-                  "description": "Maximum value to filter by (inclusive)",
+                  "description": "Máximo valor para filtrar (inclusivo)",
                   "type": "integer"
                 }
               },
@@ -2640,19 +2640,19 @@
               "type": "object",
               "properties": {
                 "gt": {
-                  "description": "Minimum value to filter by (exclusive)",
+                  "description": "Mínimo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "gte": {
-                  "description": "Minimum value to filter by (inclusive)",
+                  "description": "Mínimo valor para filtrar (inclusivo)",
                   "type": "integer"
                 },
                 "lt": {
-                  "description": "Maximum value to filter by (exclusive)",
+                  "description": "Máximo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "lte": {
-                  "description": "Maximum value to filter by (inclusive)",
+                  "description": "Máximo valor para filtrar (inclusivo)",
                   "type": "integer"
                 }
               },
@@ -2782,19 +2782,19 @@
               "type": "object",
               "properties": {
                 "gt": {
-                  "description": "Minimum value to filter by (exclusive)",
+                  "description": "Mínimo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "gte": {
-                  "description": "Minimum value to filter by (inclusive)",
+                  "description": "Mínimo valor para filtrar (inclusivo)",
                   "type": "integer"
                 },
                 "lt": {
-                  "description": "Maximum value to filter by (exclusive)",
+                  "description": "Máximo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "lte": {
-                  "description": "Maximum value to filter by (inclusive)",
+                  "description": "Máximo valor para filtrar (inclusivo)",
                   "type": "integer"
                 }
               },
@@ -3491,19 +3491,19 @@
               "type": "object",
               "properties": {
                 "gt": {
-                  "description": "Minimum value to filter by (exclusive)",
+                  "description": "Mínimo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "gte": {
-                  "description": "Minimum value to filter by (inclusive)",
+                  "description": "Mínimo valor para filtrar (inclusivo)",
                   "type": "integer"
                 },
                 "lt": {
-                  "description": "Maximum value to filter by (exclusive)",
+                  "description": "Máximo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "lte": {
-                  "description": "Maximum value to filter by (inclusive)",
+                  "description": "Máximo valor para filtrar (inclusivo)",
                   "type": "integer"
                 }
               },
@@ -5926,19 +5926,19 @@
               "type": "object",
               "properties": {
                 "gt": {
-                  "description": "Minimum value to filter by (exclusive)",
+                  "description": "Mínimo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "gte": {
-                  "description": "Minimum value to filter by (inclusive)",
+                  "description": "Mínimo valor para filtrar (inclusivo)",
                   "type": "integer"
                 },
                 "lt": {
-                  "description": "Maximum value to filter by (exclusive)",
+                  "description": "Máximo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "lte": {
-                  "description": "Maximum value to filter by (inclusive)",
+                  "description": "Máximo valor para filtrar (inclusivo)",
                   "type": "integer"
                 }
               },
@@ -8992,19 +8992,19 @@
               "type": "object",
               "properties": {
                 "gt": {
-                  "description": "Minimum value to filter by (exclusive)",
+                  "description": "Mínimo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "gte": {
-                  "description": "Minimum value to filter by (inclusive)",
+                  "description": "Mínimo valor para filtrar (inclusivo)",
                   "type": "integer"
                 },
                 "lt": {
-                  "description": "Maximum value to filter by (exclusive)",
+                  "description": "Máximo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "lte": {
-                  "description": "Maximum value to filter by (inclusive)",
+                  "description": "Máximo valor para filtrar (inclusivo)",
                   "type": "integer"
                 }
               },
@@ -10242,19 +10242,19 @@
               "type": "object",
               "properties": {
                 "gt": {
-                  "description": "Minimum value to filter by (exclusive)",
+                  "description": "Mínimo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "gte": {
-                  "description": "Minimum value to filter by (inclusive)",
+                  "description": "Mínimo valor para filtrar (inclusivo)",
                   "type": "integer"
                 },
                 "lt": {
-                  "description": "Maximum value to filter by (exclusive)",
+                  "description": "Máximo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "lte": {
-                  "description": "Maximum value to filter by (inclusive)",
+                  "description": "Máximo valor para filtrar (inclusivo)",
                   "type": "integer"
                 }
               },
@@ -14388,19 +14388,19 @@
               "type": "object",
               "properties": {
                 "gt": {
-                  "description": "Minimum value to filter by (exclusive)",
+                  "description": "Mínimo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "gte": {
-                  "description": "Minimum value to filter by (inclusive)",
+                  "description": "Mínimo valor para filtrar (inclusivo)",
                   "type": "integer"
                 },
                 "lt": {
-                  "description": "Maximum value to filter by (exclusive)",
+                  "description": "Máximo valor para filtrar (exclusivo)",
                   "type": "integer"
                 },
                 "lte": {
-                  "description": "Maximum value to filter by (inclusive)",
+                  "description": "Máximo valor para filtrar (inclusivo)",
                   "type": "integer"
                 }
               },
@@ -15362,19 +15362,19 @@
           "type": "object",
           "properties": {
             "gt": {
-              "description": "Minimum value to filter by (exclusive)",
+              "description": "Mínimo valor para filtrar (exclusivo)",
               "type": "integer"
             },
             "gte": {
-              "description": "Minimum value to filter by (inclusive)",
+              "description": "Mínimo valor para filtrar (inclusivo)",
               "type": "integer"
             },
             "lt": {
-              "description": "Maximum value to filter by (exclusive)",
+              "description": "Máximo valor para filtrar (exclusivo)",
               "type": "integer"
             },
             "lte": {
-              "description": "Maximum value to filter by (inclusive)",
+              "description": "Máximo valor para filtrar (inclusivo)",
               "type": "integer"
             }
           },
