@@ -78,7 +78,7 @@
           {
             "name": "ending_before",
             "in": "query",
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
             "required": false,
             "schema": {
               "type": "string"
@@ -98,7 +98,7 @@
           {
             "name": "starting_after",
             "in": "query",
-            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1293,7 +1293,7 @@
           {
             "name": "ending_before",
             "in": "query",
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1313,7 +1313,7 @@
           {
             "name": "starting_after",
             "in": "query",
-            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1799,7 +1799,7 @@
           {
             "name": "ending_before",
             "in": "query",
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1819,7 +1819,7 @@
           {
             "name": "starting_after",
             "in": "query",
-            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2327,7 +2327,7 @@
           {
             "name": "ending_before",
             "in": "query",
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2347,7 +2347,7 @@
           {
             "name": "starting_after",
             "in": "query",
-            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2443,7 +2443,7 @@
           {
             "name": "ending_before",
             "in": "query",
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2463,7 +2463,7 @@
           {
             "name": "starting_after",
             "in": "query",
-            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
             "required": false,
             "schema": {
               "type": "string"
@@ -3048,7 +3048,7 @@
           {
             "name": "ending_before",
             "in": "query",
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
             "required": false,
             "schema": {
               "type": "string"
@@ -3068,7 +3068,7 @@
           {
             "name": "starting_after",
             "in": "query",
-            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
             "required": false,
             "schema": {
               "type": "string"
@@ -5275,7 +5275,7 @@
           {
             "name": "ending_before",
             "in": "query",
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
             "required": false,
             "schema": {
               "type": "string"
@@ -5295,7 +5295,7 @@
           {
             "name": "starting_after",
             "in": "query",
-            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
             "required": false,
             "schema": {
               "type": "string"
@@ -8159,7 +8159,7 @@
           {
             "name": "ending_before",
             "in": "query",
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
             "required": false,
             "schema": {
               "type": "string"
@@ -8179,7 +8179,7 @@
           {
             "name": "starting_after",
             "in": "query",
-            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
             "required": false,
             "schema": {
               "type": "string"
@@ -9279,7 +9279,7 @@
           {
             "name": "ending_before",
             "in": "query",
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
             "required": false,
             "schema": {
               "type": "string"
@@ -9299,7 +9299,7 @@
           {
             "name": "starting_after",
             "in": "query",
-            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
             "required": false,
             "schema": {
               "type": "string"
@@ -13243,7 +13243,7 @@
           {
             "name": "ending_before",
             "in": "query",
-            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
             "required": false,
             "schema": {
               "type": "string"
@@ -13263,7 +13263,7 @@
           {
             "name": "starting_after",
             "in": "query",
-            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
             "required": false,
             "schema": {
               "type": "string"
@@ -14085,7 +14085,7 @@
       },
       "ending_before": {
         "name": "ending_before",
-        "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+        "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
         "in": "query",
         "required": false,
         "schema": {
@@ -14105,7 +14105,7 @@
       },
       "starting_after": {
         "name": "starting_after",
-        "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+        "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
         "in": "query",
         "required": false,
         "schema": {
