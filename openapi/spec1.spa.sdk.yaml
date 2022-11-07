@@ -333,20 +333,55 @@ paths:
       summary: Obtener todos los clientes
       description: 'Por defecto, los clientes más nuevos serán los primeros en la lista.'
       parameters:
-        - name: page
+        - name: all
           in: query
-          description: Cursor value to paginate response.
+          description: Incluye clientes archivados.
           required: false
           schema:
-            type: number
-          example: 1
+            type: boolean
+        - name: created_at
+          in: query
+          description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
         - name: limit
           in: query
-          description: Especifica el número máximo de ítems a ser retornados.
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
           required: false
           schema:
-            type: number
+            type: integer
           example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -439,51 +474,6 @@ paths:
                           oneOf:
                             - type: 'null'
                             - type: string
-                        active_subscriptions_count:
-                          description: Cantidad de suscripciones activas
-                          type: integer
-                          format: int32
-                          example: 0
-                        active_subscriptions_sum:
-                          description: Monto de las Suscripciones activas
-                          type: integer
-                          format: int32
-                          example: 0
-                        approved_payments_count:
-                          description: Cantidad de pagos aprobados
-                          type: integer
-                          format: int32
-                          example: 0
-                        approved_payments_sum:
-                          description: Suma de pagos aprobados
-                          type: integer
-                          format: int32
-                          example: 0
-                        cancelled_subscriptions_count:
-                          description: Cantidad de suscripciones canceladas
-                          type: integer
-                          format: int32
-                          example: 0
-                        paused_subscriptions_count:
-                          description: Cantidad de suscripciones en pausa
-                          type: integer
-                          format: int32
-                          example: 0
-                        rejected_payments_count:
-                          description: Cantidad de pagos rechazados
-                          type: integer
-                          format: int32
-                          example: 0
-                        rejected_payments_sum:
-                          description: Suma de pagos rechazados
-                          type: integer
-                          format: int32
-                          example: 0
-                        finished_subscriptions_count:
-                          description: Cantidad de suscripciones finalizadas
-                          type: integer
-                          format: int32
-                          example: 0
                   links:
                     description: Metadata de paginación
                     type: object
@@ -509,24 +499,12 @@ paths:
                     description: Metadata de paginación
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -553,7 +531,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/customers?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE' \
+              --url 'https://api.tucuota.com/v1/customers?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -562,7 +540,13 @@ paths:
             const options = {
               method: 'GET',
               url: 'https://api.tucuota.com/v1/customers',
-              qs: {page: 'SOME_NUMBER_VALUE', limit: 'SOME_NUMBER_VALUE'},
+              qs: {
+                all: 'SOME_BOOLEAN_VALUE',
+                created_at: 'SOME_OBJECT_VALUE',
+                ending_before: 'SOME_STRING_VALUE',
+                limit: 'SOME_INTEGER_VALUE',
+                starting_after: 'SOME_STRING_VALUE'
+              },
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -580,8 +564,11 @@ paths:
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
-              'page' => 'SOME_NUMBER_VALUE',
-              'limit' => 'SOME_NUMBER_VALUE'
+              'all' => 'SOME_BOOLEAN_VALUE',
+              'created_at' => 'SOME_OBJECT_VALUE',
+              'ending_before' => 'SOME_STRING_VALUE',
+              'limit' => 'SOME_INTEGER_VALUE',
+              'starting_after' => 'SOME_STRING_VALUE'
             ]);
 
             $request->setHeaders([
@@ -601,7 +588,7 @@ paths:
 
             url = "https://api.tucuota.com/v1/customers"
 
-            querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_NUMBER_VALUE"}
+            querystring = {"all":"SOME_BOOLEAN_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -610,7 +597,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/customers?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/customers?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -619,7 +606,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/customers?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+            url = URI("https://api.tucuota.com/v1/customers?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -780,51 +767,6 @@ paths:
                         oneOf:
                           - type: 'null'
                           - type: string
-                      active_subscriptions_count:
-                        description: Cantidad de suscripciones activas
-                        type: integer
-                        format: int32
-                        example: 0
-                      active_subscriptions_sum:
-                        description: Monto de las Suscripciones activas
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_count:
-                        description: Cantidad de pagos aprobados
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_sum:
-                        description: Suma de pagos aprobados
-                        type: integer
-                        format: int32
-                        example: 0
-                      cancelled_subscriptions_count:
-                        description: Cantidad de suscripciones canceladas
-                        type: integer
-                        format: int32
-                        example: 0
-                      paused_subscriptions_count:
-                        description: Cantidad de suscripciones en pausa
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_count:
-                        description: Cantidad de pagos rechazados
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_sum:
-                        description: Suma de pagos rechazados
-                        type: integer
-                        format: int32
-                        example: 0
-                      finished_subscriptions_count:
-                        description: Cantidad de suscripciones finalizadas
-                        type: integer
-                        format: int32
-                        example: 0
                     title: Cliente
         '401':
           description: No authorizado
@@ -1059,51 +1001,6 @@ paths:
                         oneOf:
                           - type: 'null'
                           - type: string
-                      active_subscriptions_count:
-                        description: Cantidad de suscripciones activas
-                        type: integer
-                        format: int32
-                        example: 0
-                      active_subscriptions_sum:
-                        description: Monto de las Suscripciones activas
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_count:
-                        description: Cantidad de pagos aprobados
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_sum:
-                        description: Suma de pagos aprobados
-                        type: integer
-                        format: int32
-                        example: 0
-                      cancelled_subscriptions_count:
-                        description: Cantidad de suscripciones canceladas
-                        type: integer
-                        format: int32
-                        example: 0
-                      paused_subscriptions_count:
-                        description: Cantidad de suscripciones en pausa
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_count:
-                        description: Cantidad de pagos rechazados
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_sum:
-                        description: Suma de pagos rechazados
-                        type: integer
-                        format: int32
-                        example: 0
-                      finished_subscriptions_count:
-                        description: Cantidad de suscripciones finalizadas
-                        type: integer
-                        format: int32
-                        example: 0
                     title: Cliente
         '401':
           description: No authorizado
@@ -1362,51 +1259,6 @@ paths:
                         oneOf:
                           - type: 'null'
                           - type: string
-                      active_subscriptions_count:
-                        description: Cantidad de suscripciones activas
-                        type: integer
-                        format: int32
-                        example: 0
-                      active_subscriptions_sum:
-                        description: Monto de las Suscripciones activas
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_count:
-                        description: Cantidad de pagos aprobados
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_sum:
-                        description: Suma de pagos aprobados
-                        type: integer
-                        format: int32
-                        example: 0
-                      cancelled_subscriptions_count:
-                        description: Cantidad de suscripciones canceladas
-                        type: integer
-                        format: int32
-                        example: 0
-                      paused_subscriptions_count:
-                        description: Cantidad de suscripciones en pausa
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_count:
-                        description: Cantidad de pagos rechazados
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_sum:
-                        description: Suma de pagos rechazados
-                        type: integer
-                        format: int32
-                        example: 0
-                      finished_subscriptions_count:
-                        description: Cantidad de suscripciones finalizadas
-                        type: integer
-                        format: int32
-                        example: 0
                     title: Cliente
         '401':
           description: No authorizado
@@ -1807,20 +1659,70 @@ paths:
       summary: Obtener eventos
       description: Obtener una lista páginada por cursor de tus eventos.
       parameters:
-        - name: page
+        - name: delivery_success
           in: query
-          description: Cursor value to paginate response.
+          description: 'Filtre los eventos según si todos los webhooks se entregaron correctamente. Si es falso, se muestran eventos que aún están pendientes o cuyos intentos intentos de entrega hayan fallado.'
           required: false
           schema:
-            type: number
-          example: 10
+            type: boolean
+        - name: related_object
+          in: query
+          description: Filtra eventos para un objeto en particular. Puede recibir cualquier ID de cualquier objecto.
+          required: false
+          schema:
+            type: string
+            maxLength: 255
+          example: CS9PL8eeo8aB
+        - name: type
+          in: query
+          description: Puede contener un nombre de evento específico o un grupo de eventos utilizando `*` como comodín. La lista se filtrará para incluir solo eventos con que coincidan.
+          required: false
+          schema:
+            type: string
+            maxLength: 255
+        - name: created_at
+          in: query
+          description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
         - name: limit
           in: query
-          description: Number of records to return.
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
           required: false
           schema:
-            type: number
-          example: 1
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -1850,6 +1752,14 @@ paths:
                     resource: customer
                     resource_id: CSnlZxyY3jwr
                     type: customer.created
+                links:
+                  first: null
+                  last: null
+                  next: 'https://api.tucuota.com/v1/events?starting_after=EVaX3JagwR6x'
+                meta:
+                  path: 'https://api.tucuota.com/v1/events'
+                  per_page: 25
+                  total: 34
               schema:
                 type: object
                 properties:
@@ -1970,24 +1880,12 @@ paths:
                     description: Metadata de paginación
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -2012,7 +1910,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/events?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE' \
+              --url 'https://api.tucuota.com/v1/events?delivery_success=SOME_BOOLEAN_VALUE&related_object=SOME_STRING_VALUE&type=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -2021,7 +1919,15 @@ paths:
             const options = {
               method: 'GET',
               url: 'https://api.tucuota.com/v1/events',
-              qs: {page: 'SOME_NUMBER_VALUE', limit: 'SOME_NUMBER_VALUE'},
+              qs: {
+                delivery_success: 'SOME_BOOLEAN_VALUE',
+                related_object: 'SOME_STRING_VALUE',
+                type: 'SOME_STRING_VALUE',
+                created_at: 'SOME_OBJECT_VALUE',
+                ending_before: 'SOME_STRING_VALUE',
+                limit: 'SOME_INTEGER_VALUE',
+                starting_after: 'SOME_STRING_VALUE'
+              },
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -2039,8 +1945,13 @@ paths:
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
-              'page' => 'SOME_NUMBER_VALUE',
-              'limit' => 'SOME_NUMBER_VALUE'
+              'delivery_success' => 'SOME_BOOLEAN_VALUE',
+              'related_object' => 'SOME_STRING_VALUE',
+              'type' => 'SOME_STRING_VALUE',
+              'created_at' => 'SOME_OBJECT_VALUE',
+              'ending_before' => 'SOME_STRING_VALUE',
+              'limit' => 'SOME_INTEGER_VALUE',
+              'starting_after' => 'SOME_STRING_VALUE'
             ]);
 
             $request->setHeaders([
@@ -2060,7 +1971,7 @@ paths:
 
             url = "https://api.tucuota.com/v1/events"
 
-            querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_NUMBER_VALUE"}
+            querystring = {"delivery_success":"SOME_BOOLEAN_VALUE","related_object":"SOME_STRING_VALUE","type":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -2069,7 +1980,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/events?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/events?delivery_success=SOME_BOOLEAN_VALUE&related_object=SOME_STRING_VALUE&type=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -2078,7 +1989,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/events?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+            url = URI("https://api.tucuota.com/v1/events?delivery_success=SOME_BOOLEAN_VALUE&related_object=SOME_STRING_VALUE&type=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -2309,20 +2220,6 @@ paths:
       summary: Listado de Importaciones
       description: Obtener una lista de todas sus importaciones.
       parameters:
-        - name: page
-          in: query
-          description: Cursor value to paginate response.
-          required: false
-          schema:
-            type: number
-          example: '10'
-        - name: limit
-          in: query
-          description: Number of records to return.
-          required: false
-          schema:
-            type: number
-          example: '1'
         - name: search
           in: query
           description: Search.
@@ -2339,6 +2236,49 @@ paths:
           schema:
             type: string
           example: ready
+        - name: created_at
+          in: query
+          description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -2397,7 +2337,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/imports?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&search=SOME_STRING_VALUE&status=SOME_STRING_VALUE' \
+              --url 'https://api.tucuota.com/v1/imports?search=SOME_STRING_VALUE&status=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -2407,10 +2347,12 @@ paths:
               method: 'GET',
               url: 'https://api.tucuota.com/v1/imports',
               qs: {
-                page: 'SOME_NUMBER_VALUE',
-                limit: 'SOME_NUMBER_VALUE',
                 search: 'SOME_STRING_VALUE',
-                status: 'SOME_STRING_VALUE'
+                status: 'SOME_STRING_VALUE',
+                created_at: 'SOME_OBJECT_VALUE',
+                ending_before: 'SOME_STRING_VALUE',
+                limit: 'SOME_INTEGER_VALUE',
+                starting_after: 'SOME_STRING_VALUE'
               },
               headers: {Authorization: 'Bearer sk_live_...'}
             };
@@ -2429,10 +2371,12 @@ paths:
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
-              'page' => 'SOME_NUMBER_VALUE',
-              'limit' => 'SOME_NUMBER_VALUE',
               'search' => 'SOME_STRING_VALUE',
-              'status' => 'SOME_STRING_VALUE'
+              'status' => 'SOME_STRING_VALUE',
+              'created_at' => 'SOME_OBJECT_VALUE',
+              'ending_before' => 'SOME_STRING_VALUE',
+              'limit' => 'SOME_INTEGER_VALUE',
+              'starting_after' => 'SOME_STRING_VALUE'
             ]);
 
             $request->setHeaders([
@@ -2452,7 +2396,7 @@ paths:
 
             url = "https://api.tucuota.com/v1/imports"
 
-            querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_NUMBER_VALUE","search":"SOME_STRING_VALUE","status":"SOME_STRING_VALUE"}
+            querystring = {"search":"SOME_STRING_VALUE","status":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -2461,7 +2405,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/imports?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&search=SOME_STRING_VALUE&status=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/imports?search=SOME_STRING_VALUE&status=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -2470,7 +2414,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/imports?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&search=SOME_STRING_VALUE&status=SOME_STRING_VALUE")
+            url = URI("https://api.tucuota.com/v1/imports?search=SOME_STRING_VALUE&status=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -2947,24 +2891,55 @@ paths:
           schema:
             type: string
           example: IMKd7zlGJAna
-        - name: page
-          in: query
-          description: Cursor value to paginate response.
-          schema:
-            type: number
-          example: 1
-        - name: limit
-          in: query
-          description: Number of records to return.
-          schema:
-            type: number
-          example: 20
         - name: filter
           in: query
           description: |
             **Validation**. _Example: valid_. Allows values: valid, invalid.
           schema:
             type: string
+        - name: created_at
+          in: query
+          description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -2992,7 +2967,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&filter=SOME_STRING_VALUE' \
+              --url 'https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows?filter=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -3002,9 +2977,11 @@ paths:
               method: 'GET',
               url: 'https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows',
               qs: {
-                page: 'SOME_NUMBER_VALUE',
-                limit: 'SOME_NUMBER_VALUE',
-                filter: 'SOME_STRING_VALUE'
+                filter: 'SOME_STRING_VALUE',
+                created_at: 'SOME_OBJECT_VALUE',
+                ending_before: 'SOME_STRING_VALUE',
+                limit: 'SOME_INTEGER_VALUE',
+                starting_after: 'SOME_STRING_VALUE'
               },
               headers: {Authorization: 'Bearer sk_live_...'}
             };
@@ -3023,9 +3000,11 @@ paths:
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
-              'page' => 'SOME_NUMBER_VALUE',
-              'limit' => 'SOME_NUMBER_VALUE',
-              'filter' => 'SOME_STRING_VALUE'
+              'filter' => 'SOME_STRING_VALUE',
+              'created_at' => 'SOME_OBJECT_VALUE',
+              'ending_before' => 'SOME_STRING_VALUE',
+              'limit' => 'SOME_INTEGER_VALUE',
+              'starting_after' => 'SOME_STRING_VALUE'
             ]);
 
             $request->setHeaders([
@@ -3045,7 +3024,7 @@ paths:
 
             url = "https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows"
 
-            querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_NUMBER_VALUE","filter":"SOME_STRING_VALUE"}
+            querystring = {"filter":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -3054,7 +3033,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&filter=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows?filter=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -3063,7 +3042,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&filter=SOME_STRING_VALUE")
+            url = URI("https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows?filter=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -3080,20 +3059,6 @@ paths:
       summary: Listado de Links
       description: Obtener una lista con todos sus Links.
       parameters:
-        - name: page
-          in: query
-          description: Cursor value to paginate response.
-          required: false
-          schema:
-            type: number
-          example: '10'
-        - name: limit
-          in: query
-          description: Number of records to return.
-          required: false
-          schema:
-            type: number
-          example: '1'
         - name: search
           in: query
           description: Search.
@@ -3101,6 +3066,49 @@ paths:
           schema:
             type: string
           example: foo@bar.com
+        - name: created_at
+          in: query
+          description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -3119,8 +3127,11 @@ paths:
                         id:
                           description: Identificador único del objeto.
                           type: string
-                          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                           readOnly: true
+                        uuid:
+                          description: 'Identificador UUID del objeto. [Legacy]'
+                          type: string
+                          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         livemode:
                           description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
                           type: boolean
@@ -3183,24 +3194,12 @@ paths:
                     description: Metadata de paginación
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -3227,7 +3226,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/links?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&search=SOME_STRING_VALUE' \
+              --url 'https://api.tucuota.com/v1/links?search=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -3237,9 +3236,11 @@ paths:
               method: 'GET',
               url: 'https://api.tucuota.com/v1/links',
               qs: {
-                page: 'SOME_NUMBER_VALUE',
-                limit: 'SOME_NUMBER_VALUE',
-                search: 'SOME_STRING_VALUE'
+                search: 'SOME_STRING_VALUE',
+                created_at: 'SOME_OBJECT_VALUE',
+                ending_before: 'SOME_STRING_VALUE',
+                limit: 'SOME_INTEGER_VALUE',
+                starting_after: 'SOME_STRING_VALUE'
               },
               headers: {Authorization: 'Bearer sk_live_...'}
             };
@@ -3258,9 +3259,11 @@ paths:
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
-              'page' => 'SOME_NUMBER_VALUE',
-              'limit' => 'SOME_NUMBER_VALUE',
-              'search' => 'SOME_STRING_VALUE'
+              'search' => 'SOME_STRING_VALUE',
+              'created_at' => 'SOME_OBJECT_VALUE',
+              'ending_before' => 'SOME_STRING_VALUE',
+              'limit' => 'SOME_INTEGER_VALUE',
+              'starting_after' => 'SOME_STRING_VALUE'
             ]);
 
             $request->setHeaders([
@@ -3280,7 +3283,7 @@ paths:
 
             url = "https://api.tucuota.com/v1/links"
 
-            querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_NUMBER_VALUE","search":"SOME_STRING_VALUE"}
+            querystring = {"search":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -3289,7 +3292,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/links?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&search=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/links?search=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -3298,7 +3301,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/links?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&search=SOME_STRING_VALUE")
+            url = URI("https://api.tucuota.com/v1/links?search=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -3327,8 +3330,11 @@ paths:
                       id:
                         description: Identificador único del objeto.
                         type: string
-                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         readOnly: true
+                      uuid:
+                        description: 'Identificador UUID del objeto. [Legacy]'
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       livemode:
                         description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
                         type: boolean
@@ -3468,7 +3474,7 @@ paths:
           required: true
           schema:
             type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
+          example: LKLj0JV8xzdMoRk549
       responses:
         '200':
           description: OK
@@ -3483,8 +3489,11 @@ paths:
                       id:
                         description: Identificador único del objeto.
                         type: string
-                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         readOnly: true
+                      uuid:
+                        description: 'Identificador UUID del objeto. [Legacy]'
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       livemode:
                         description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
                         type: boolean
@@ -3543,7 +3552,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc \
+              --url https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549 \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -3551,7 +3560,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc',
+              url: 'https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -3565,7 +3574,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc');
+            $request->setUrl('https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -3583,7 +3592,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc"
+            url = "https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -3592,7 +3601,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -3601,7 +3610,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc")
+            url = URI("https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -3623,7 +3632,7 @@ paths:
           required: true
           schema:
             type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
+          example: LKLj0JV8xzdMoRk549
       responses:
         '200':
           description: OK
@@ -3638,8 +3647,11 @@ paths:
                       id:
                         description: Identificador único del objeto.
                         type: string
-                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         readOnly: true
+                      uuid:
+                        description: 'Identificador UUID del objeto. [Legacy]'
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       livemode:
                         description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
                         type: boolean
@@ -3707,7 +3719,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request PUT \
-              --url https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc \
+              --url https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549 \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -3715,7 +3727,7 @@ paths:
 
             const options = {
               method: 'PUT',
-              url: 'https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc',
+              url: 'https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -3729,7 +3741,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc');
+            $request->setUrl('https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549');
             $request->setMethod(HTTP_METH_PUT);
 
             $request->setHeaders([
@@ -3747,7 +3759,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc"
+            url = "https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -3756,7 +3768,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.put("https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc")
+            HttpResponse<String> response = Unirest.put("https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -3765,7 +3777,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/links/43751655-7580-4bd7-8bad-3c54ed1c4abc")
+            url = URI("https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -3782,18 +3794,63 @@ paths:
       summary: Obtener todos las adhesiones
       description: 'Por defecto, las adhesiones más nuevas serán los primeras en la lista.'
       parameters:
-        - name: page
+        - name: all
           in: query
-          description: Cursor value to paginate response.
+          description: Incluye adhesiones archivadas.
+          required: false
           schema:
-            type: number
-          example: '10'
+            type: boolean
+        - name: customer_id
+          in: query
+          description: |
+            [ID del Cliente](#tag/Clientes).
+          required: true
+          schema:
+            type: string
+          example: CS9PL8eeo8aB
+        - name: created_at
+          in: query
+          description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
         - name: limit
           in: query
-          description: Especifica el número máximo de ítems a ser retornados.
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
+          required: false
           schema:
-            type: number
-          example: '1'
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -3812,8 +3869,11 @@ paths:
                         id:
                           description: Identificador único del objeto.
                           type: string
-                          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                           readOnly: true
+                        uuid:
+                          description: 'Identificador UUID del objeto. [Legacy]'
+                          type: string
+                          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         object:
                           type: string
                           enum:
@@ -3903,51 +3963,6 @@ paths:
                               oneOf:
                                 - type: 'null'
                                 - type: string
-                            active_subscriptions_count:
-                              description: Cantidad de suscripciones activas
-                              type: integer
-                              format: int32
-                              example: 0
-                            active_subscriptions_sum:
-                              description: Monto de las Suscripciones activas
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_count:
-                              description: Cantidad de pagos aprobados
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_sum:
-                              description: Suma de pagos aprobados
-                              type: integer
-                              format: int32
-                              example: 0
-                            cancelled_subscriptions_count:
-                              description: Cantidad de suscripciones canceladas
-                              type: integer
-                              format: int32
-                              example: 0
-                            paused_subscriptions_count:
-                              description: Cantidad de suscripciones en pausa
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_count:
-                              description: Cantidad de pagos rechazados
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_sum:
-                              description: Suma de pagos rechazados
-                              type: integer
-                              format: int32
-                              example: 0
-                            finished_subscriptions_count:
-                              description: Cantidad de suscripciones finalizadas
-                              type: integer
-                              format: int32
-                              example: 0
                           title: Cliente
                         payment_method:
                           description: Este objeto representa un Método de Pago de su cuenta.
@@ -4172,24 +4187,12 @@ paths:
                     description: Metadata de paginación
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -4216,7 +4219,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/mandates?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE' \
+              --url 'https://api.tucuota.com/v1/mandates?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -4225,7 +4228,14 @@ paths:
             const options = {
               method: 'GET',
               url: 'https://api.tucuota.com/v1/mandates',
-              qs: {page: 'SOME_NUMBER_VALUE', limit: 'SOME_NUMBER_VALUE'},
+              qs: {
+                all: 'SOME_BOOLEAN_VALUE',
+                customer_id: 'SOME_STRING_VALUE',
+                created_at: 'SOME_OBJECT_VALUE',
+                ending_before: 'SOME_STRING_VALUE',
+                limit: 'SOME_INTEGER_VALUE',
+                starting_after: 'SOME_STRING_VALUE'
+              },
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -4243,8 +4253,12 @@ paths:
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
-              'page' => 'SOME_NUMBER_VALUE',
-              'limit' => 'SOME_NUMBER_VALUE'
+              'all' => 'SOME_BOOLEAN_VALUE',
+              'customer_id' => 'SOME_STRING_VALUE',
+              'created_at' => 'SOME_OBJECT_VALUE',
+              'ending_before' => 'SOME_STRING_VALUE',
+              'limit' => 'SOME_INTEGER_VALUE',
+              'starting_after' => 'SOME_STRING_VALUE'
             ]);
 
             $request->setHeaders([
@@ -4264,7 +4278,7 @@ paths:
 
             url = "https://api.tucuota.com/v1/mandates"
 
-            querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_NUMBER_VALUE"}
+            querystring = {"all":"SOME_BOOLEAN_VALUE","customer_id":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -4273,7 +4287,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/mandates?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/mandates?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -4282,7 +4296,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/mandates?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+            url = URI("https://api.tucuota.com/v1/mandates?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -4475,7 +4489,7 @@ paths:
           required: true
           schema:
             type: string
-          example: 85641980-8a28-11ea-a926-d51efa41533d
+          example: MA9aQOWen2kZe6qypB
       responses:
         '200':
           description: OK
@@ -4490,8 +4504,11 @@ paths:
                       id:
                         description: Identificador único del objeto.
                         type: string
-                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         readOnly: true
+                      uuid:
+                        description: 'Identificador UUID del objeto. [Legacy]'
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       object:
                         type: string
                         enum:
@@ -4581,51 +4598,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Cantidad de suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Monto de las Suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Cantidad de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Suma de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cantidad de suscripciones canceladas
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Cantidad de suscripciones en pausa
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Cantidad de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Suma de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Cantidad de suscripciones finalizadas
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Cliente
                       payment_method:
                         description: Este objeto representa un Método de Pago de su cuenta.
@@ -4860,7 +4832,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d \
+              --url https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -4868,7 +4840,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d',
+              url: 'https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -4882,7 +4854,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d');
+            $request->setUrl('https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -4900,7 +4872,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d"
+            url = "https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -4909,7 +4881,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -4918,7 +4890,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d")
+            url = URI("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -4942,7 +4914,7 @@ paths:
           required: true
           schema:
             type: string
-          example: 85641980-8a28-11ea-a926-d51efa41533d
+          example: MA9aQOWen2kZe6qypB
       responses:
         '202':
           description: Adhesión revocada
@@ -4966,7 +4938,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/revoke \
+              --url https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -4974,7 +4946,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/revoke',
+              url: 'https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -4988,7 +4960,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/revoke');
+            $request->setUrl('https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -5006,7 +4978,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/revoke"
+            url = "https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -5015,7 +4987,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/revoke")
+            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -5024,7 +4996,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/revoke")
+            url = URI("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -5048,7 +5020,7 @@ paths:
           required: true
           schema:
             type: string
-          example: 85641980-8a28-11ea-a926-d51efa41533d
+          example: MA9aQOWen2kZe6qypB
       responses:
         '202':
           description: Adhesión restaurada
@@ -5072,7 +5044,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/restore \
+              --url https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -5080,7 +5052,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/restore',
+              url: 'https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -5094,7 +5066,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/restore');
+            $request->setUrl('https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -5112,7 +5084,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/restore"
+            url = "https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -5121,7 +5093,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/restore")
+            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -5130,7 +5102,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/mandates/85641980-8a28-11ea-a926-d51efa41533d/actions/restore")
+            url = URI("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -5156,10 +5128,10 @@ paths:
           example: 1
         - name: limit
           in: query
-          description: Number of records to return.
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
           required: false
           schema:
-            type: number
+            type: integer
           example: 20
       responses:
         '200':
@@ -5361,24 +5333,12 @@ paths:
                     description: Metadata de paginación
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -5399,16 +5359,12 @@ paths:
                     object: payment_method
                     updated_at: '2019-05-23T20:30:01-03:00'
                 links:
-                  first: 'https://api.tucuota.com/v1/payment_methods?page=1'
-                  last: 'https://api.tucuota.com/v1/payment_methods?page=2'
-                  next: 'https://api.tucuota.com/v1/payment_methods?page=2'
+                  first: null
+                  last: null
+                  next: 'https://api.tucuota.com/v1/payment_methods?starting_after=PMVdYaYwkqOw'
                 meta:
-                  current_page: 1
-                  from: 1
-                  last_page: 2
                   path: 'https://api.tucuota.com/v1/payment_methods'
                   per_page: 25
-                  to: 25
                   total: 34
         '401':
           description: No authorizado
@@ -5430,7 +5386,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE' \
+              --url 'https://api.tucuota.com/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_INTEGER_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -5439,7 +5395,7 @@ paths:
             const options = {
               method: 'GET',
               url: 'https://api.tucuota.com/v1/payment_methods',
-              qs: {page: 'SOME_NUMBER_VALUE', limit: 'SOME_NUMBER_VALUE'},
+              qs: {page: 'SOME_NUMBER_VALUE', limit: 'SOME_INTEGER_VALUE'},
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -5458,7 +5414,7 @@ paths:
 
             $request->setQueryData([
               'page' => 'SOME_NUMBER_VALUE',
-              'limit' => 'SOME_NUMBER_VALUE'
+              'limit' => 'SOME_INTEGER_VALUE'
             ]);
 
             $request->setHeaders([
@@ -5478,7 +5434,7 @@ paths:
 
             url = "https://api.tucuota.com/v1/payment_methods"
 
-            querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_NUMBER_VALUE"}
+            querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_INTEGER_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -5487,7 +5443,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_INTEGER_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -5496,7 +5452,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+            url = URI("https://api.tucuota.com/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_INTEGER_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -6190,20 +6146,6 @@ paths:
       summary: Obtener pagos
       description: 'Obtener pagos en order cronológico, los más nuevos aparecerán primero.'
       parameters:
-        - name: page
-          in: query
-          description: Cursor value to paginate response.
-          required: false
-          schema:
-            type: number
-          example: '10'
-        - name: limit
-          in: query
-          description: Especifica el número máximo de ítems a ser retornados.
-          required: false
-          schema:
-            type: number
-          example: '1'
         - name: customer_id
           in: query
           description: Mostrar solo los métodos de pago de un cliente determinado.
@@ -6218,6 +6160,49 @@ paths:
           schema:
             type: string
           example: SBmX1MrZ77Mwq3
+        - name: created_at
+          in: query
+          description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -6439,51 +6424,6 @@ paths:
                               oneOf:
                                 - type: 'null'
                                 - type: string
-                            active_subscriptions_count:
-                              description: Cantidad de suscripciones activas
-                              type: integer
-                              format: int32
-                              example: 0
-                            active_subscriptions_sum:
-                              description: Monto de las Suscripciones activas
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_count:
-                              description: Cantidad de pagos aprobados
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_sum:
-                              description: Suma de pagos aprobados
-                              type: integer
-                              format: int32
-                              example: 0
-                            cancelled_subscriptions_count:
-                              description: Cantidad de suscripciones canceladas
-                              type: integer
-                              format: int32
-                              example: 0
-                            paused_subscriptions_count:
-                              description: Cantidad de suscripciones en pausa
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_count:
-                              description: Cantidad de pagos rechazados
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_sum:
-                              description: Suma de pagos rechazados
-                              type: integer
-                              format: int32
-                              example: 0
-                            finished_subscriptions_count:
-                              description: Cantidad de suscripciones finalizadas
-                              type: integer
-                              format: int32
-                              example: 0
                           title: Cliente
                         subscription:
                           description: 'La [Suscripción](#tag/Suscripciones) asociada con el pago si existe.'
@@ -6714,24 +6654,12 @@ paths:
                     description: Metadata de paginación
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -6758,7 +6686,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/payments?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE' \
+              --url 'https://api.tucuota.com/v1/payments?customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -6768,10 +6696,12 @@ paths:
               method: 'GET',
               url: 'https://api.tucuota.com/v1/payments',
               qs: {
-                page: 'SOME_NUMBER_VALUE',
-                limit: 'SOME_NUMBER_VALUE',
                 customer_id: 'SOME_STRING_VALUE',
-                subscription_id: 'SOME_STRING_VALUE'
+                subscription_id: 'SOME_STRING_VALUE',
+                created_at: 'SOME_OBJECT_VALUE',
+                ending_before: 'SOME_STRING_VALUE',
+                limit: 'SOME_INTEGER_VALUE',
+                starting_after: 'SOME_STRING_VALUE'
               },
               headers: {Authorization: 'Bearer sk_live_...'}
             };
@@ -6790,10 +6720,12 @@ paths:
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
-              'page' => 'SOME_NUMBER_VALUE',
-              'limit' => 'SOME_NUMBER_VALUE',
               'customer_id' => 'SOME_STRING_VALUE',
-              'subscription_id' => 'SOME_STRING_VALUE'
+              'subscription_id' => 'SOME_STRING_VALUE',
+              'created_at' => 'SOME_OBJECT_VALUE',
+              'ending_before' => 'SOME_STRING_VALUE',
+              'limit' => 'SOME_INTEGER_VALUE',
+              'starting_after' => 'SOME_STRING_VALUE'
             ]);
 
             $request->setHeaders([
@@ -6813,7 +6745,7 @@ paths:
 
             url = "https://api.tucuota.com/v1/payments"
 
-            querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_NUMBER_VALUE","customer_id":"SOME_STRING_VALUE","subscription_id":"SOME_STRING_VALUE"}
+            querystring = {"customer_id":"SOME_STRING_VALUE","subscription_id":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -6822,7 +6754,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/payments?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/payments?customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -6831,7 +6763,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payments?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE&customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE")
+            url = URI("https://api.tucuota.com/v1/payments?customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -7124,51 +7056,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Cantidad de suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Monto de las Suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Cantidad de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Suma de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cantidad de suscripciones canceladas
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Cantidad de suscripciones en pausa
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Cantidad de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Suma de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Cantidad de suscripciones finalizadas
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Cliente
                       subscription:
                         description: 'La [Suscripción](#tag/Suscripciones) asociada con el pago si existe.'
@@ -7726,51 +7613,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Cantidad de suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Monto de las Suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Cantidad de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Suma de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cantidad de suscripciones canceladas
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Cantidad de suscripciones en pausa
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Cantidad de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Suma de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Cantidad de suscripciones finalizadas
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Cliente
                       subscription:
                         description: 'La [Suscripción](#tag/Suscripciones) asociada con el pago si existe.'
@@ -8354,51 +8196,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Cantidad de suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Monto de las Suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Cantidad de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Suma de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cantidad de suscripciones canceladas
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Cantidad de suscripciones en pausa
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Cantidad de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Suma de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Cantidad de suscripciones finalizadas
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Cliente
                       subscription:
                         description: 'La [Suscripción](#tag/Suscripciones) asociada con el pago si existe.'
@@ -9049,20 +8846,49 @@ paths:
       summary: Mostrar todas las devoluciones
       description: Esta lista muestras las devoluciones ordenadas por fecha de creación.
       parameters:
-        - name: page
+        - name: created_at
           in: query
-          description: Cursor value to paginate response.
+          description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
           required: false
           schema:
-            type: number
-          example: 1
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
         - name: limit
           in: query
-          description: Number of records to return.
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
           required: false
           schema:
-            type: number
+            type: integer
           example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -9175,24 +9001,12 @@ paths:
                     description: Metadata de paginación
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -9219,7 +9033,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/refunds?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE' \
+              --url 'https://api.tucuota.com/v1/refunds?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -9228,7 +9042,12 @@ paths:
             const options = {
               method: 'GET',
               url: 'https://api.tucuota.com/v1/refunds',
-              qs: {page: 'SOME_NUMBER_VALUE', limit: 'SOME_NUMBER_VALUE'},
+              qs: {
+                created_at: 'SOME_OBJECT_VALUE',
+                ending_before: 'SOME_STRING_VALUE',
+                limit: 'SOME_INTEGER_VALUE',
+                starting_after: 'SOME_STRING_VALUE'
+              },
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -9246,8 +9065,10 @@ paths:
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
-              'page' => 'SOME_NUMBER_VALUE',
-              'limit' => 'SOME_NUMBER_VALUE'
+              'created_at' => 'SOME_OBJECT_VALUE',
+              'ending_before' => 'SOME_STRING_VALUE',
+              'limit' => 'SOME_INTEGER_VALUE',
+              'starting_after' => 'SOME_STRING_VALUE'
             ]);
 
             $request->setHeaders([
@@ -9267,7 +9088,7 @@ paths:
 
             url = "https://api.tucuota.com/v1/refunds"
 
-            querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_NUMBER_VALUE"}
+            querystring = {"created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -9276,7 +9097,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/refunds?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/refunds?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -9285,7 +9106,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/refunds?page=SOME_NUMBER_VALUE&limit=SOME_NUMBER_VALUE")
+            url = URI("https://api.tucuota.com/v1/refunds?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -9875,7 +9696,11 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       id:
-                        description: Identificador UUID del objeto.
+                        description: Identificador único del objeto.
+                        type: string
+                        readOnly: true
+                      uuid:
+                        description: 'Identificador UUID del objeto. [Legacy]'
                         type: string
                         example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       name:
@@ -9928,42 +9753,6 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
-                      active_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      active_subscriptions_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      cancelled_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      paused_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      finished_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
                       deleted_at:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
@@ -10109,11 +9898,11 @@ paths:
         - name: id
           in: path
           description: |
-            [UUID de la Sesión](#tag/Sesiones).
+            [ID de la Sesión](#tag/Sesiones).
           required: true
           schema:
             type: string
-          example: 58fa2240-d996-11e9-a698-09ff9b98c35f
+          example: SSnO8b9w7B51VE0B5m
       responses:
         '201':
           description: OK
@@ -10146,7 +9935,11 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       id:
-                        description: Identificador UUID del objeto.
+                        description: Identificador único del objeto.
+                        type: string
+                        readOnly: true
+                      uuid:
+                        description: 'Identificador UUID del objeto. [Legacy]'
                         type: string
                         example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       name:
@@ -10199,42 +9992,6 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
-                      active_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      active_subscriptions_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      cancelled_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      paused_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      finished_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
                       deleted_at:
                         description: |
                           Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
@@ -10270,7 +10027,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/sessions/58fa2240-d996-11e9-a698-09ff9b98c35f \
+              --url https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -10278,7 +10035,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/sessions/58fa2240-d996-11e9-a698-09ff9b98c35f',
+              url: 'https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -10292,7 +10049,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/sessions/58fa2240-d996-11e9-a698-09ff9b98c35f');
+            $request->setUrl('https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -10310,7 +10067,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/sessions/58fa2240-d996-11e9-a698-09ff9b98c35f"
+            url = "https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -10319,7 +10076,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/sessions/58fa2240-d996-11e9-a698-09ff9b98c35f")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -10328,7 +10085,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/sessions/58fa2240-d996-11e9-a698-09ff9b98c35f")
+            url = URI("https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -10344,6 +10101,50 @@ paths:
       operationId: SubscriptionsGetSubscriptions
       summary: Obtener todas las suscripciones
       description: 'Por defecto, las suscripciones más nuevas serán las primeras en la lista.'
+      parameters:
+        - name: created_at
+          in: query
+          description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -10536,51 +10337,6 @@ paths:
                               oneOf:
                                 - type: 'null'
                                 - type: string
-                            active_subscriptions_count:
-                              description: Cantidad de suscripciones activas
-                              type: integer
-                              format: int32
-                              example: 0
-                            active_subscriptions_sum:
-                              description: Monto de las Suscripciones activas
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_count:
-                              description: Cantidad de pagos aprobados
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_sum:
-                              description: Suma de pagos aprobados
-                              type: integer
-                              format: int32
-                              example: 0
-                            cancelled_subscriptions_count:
-                              description: Cantidad de suscripciones canceladas
-                              type: integer
-                              format: int32
-                              example: 0
-                            paused_subscriptions_count:
-                              description: Cantidad de suscripciones en pausa
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_count:
-                              description: Cantidad de pagos rechazados
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_sum:
-                              description: Suma de pagos rechazados
-                              type: integer
-                              format: int32
-                              example: 0
-                            finished_subscriptions_count:
-                              description: Cantidad de suscripciones finalizadas
-                              type: integer
-                              format: int32
-                              example: 0
                           title: Cliente
                         payment_method:
                           description: Este objeto representa un Método de Pago de su cuenta.
@@ -10760,31 +10516,6 @@ paths:
                                 type: string
                               type: object
                             - type: 'null'
-                        payments_created:
-                          description: Number of subscription's payments created
-                          type: number
-                          example: 14
-                          readOnly: true
-                        approved_payments_sum:
-                          description: Sum of subscription's approved payments
-                          type: number
-                          example: 9
-                          readOnly: true
-                        approved_payments_count:
-                          description: Count of subscription's approved payments
-                          type: number
-                          example: 46800
-                          readOnly: true
-                        rejected_payments_sum:
-                          description: Sum of subscription's rejected payments
-                          type: number
-                          example: 1
-                          readOnly: true
-                        rejected_payments_count:
-                          description: Count of subscription's rejected payments
-                          type: number
-                          example: 5200
-                          readOnly: true
                   links:
                     description: Metadata de paginación
                     type: object
@@ -10810,24 +10541,12 @@ paths:
                     description: Metadata de paginación
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -10854,7 +10573,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/subscriptions \
+              --url 'https://api.tucuota.com/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -10863,6 +10582,12 @@ paths:
             const options = {
               method: 'GET',
               url: 'https://api.tucuota.com/v1/subscriptions',
+              qs: {
+                created_at: 'SOME_OBJECT_VALUE',
+                ending_before: 'SOME_STRING_VALUE',
+                limit: 'SOME_INTEGER_VALUE',
+                starting_after: 'SOME_STRING_VALUE'
+              },
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -10878,6 +10603,13 @@ paths:
             $request = new HttpRequest();
             $request->setUrl('https://api.tucuota.com/v1/subscriptions');
             $request->setMethod(HTTP_METH_GET);
+
+            $request->setQueryData([
+              'created_at' => 'SOME_OBJECT_VALUE',
+              'ending_before' => 'SOME_STRING_VALUE',
+              'limit' => 'SOME_INTEGER_VALUE',
+              'starting_after' => 'SOME_STRING_VALUE'
+            ]);
 
             $request->setHeaders([
               'Authorization' => 'Bearer sk_live_...'
@@ -10896,14 +10628,16 @@ paths:
 
             url = "https://api.tucuota.com/v1/subscriptions"
 
+            querystring = {"created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
+
             headers = {"Authorization": "Bearer sk_live_..."}
 
-            response = requests.request("GET", url, headers=headers)
+            response = requests.request("GET", url, headers=headers, params=querystring)
 
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/subscriptions")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -10912,7 +10646,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/subscriptions")
+            url = URI("https://api.tucuota.com/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -11195,51 +10929,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Cantidad de suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Monto de las Suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Cantidad de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Suma de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cantidad de suscripciones canceladas
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Cantidad de suscripciones en pausa
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Cantidad de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Suma de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Cantidad de suscripciones finalizadas
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Cliente
                       payment_method:
                         description: Este objeto representa un Método de Pago de su cuenta.
@@ -11419,31 +11108,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Suscripción
         '401':
           description: No Autorizado
@@ -11779,51 +11443,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Cantidad de suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Monto de las Suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Cantidad de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Suma de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cantidad de suscripciones canceladas
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Cantidad de suscripciones en pausa
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Cantidad de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Suma de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Cantidad de suscripciones finalizadas
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Cliente
                       payment_method:
                         description: Este objeto representa un Método de Pago de su cuenta.
@@ -12003,31 +11622,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Suscripción
         '401':
           description: No Autorizado
@@ -12411,51 +12005,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Cantidad de suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Monto de las Suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Cantidad de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Suma de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cantidad de suscripciones canceladas
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Cantidad de suscripciones en pausa
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Cantidad de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Suma de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Cantidad de suscripciones finalizadas
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Cliente
                       payment_method:
                         description: Este objeto representa un Método de Pago de su cuenta.
@@ -12635,31 +12184,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Suscripción
         '401':
           description: No authorizado
@@ -12995,51 +12519,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Cantidad de suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Monto de las Suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Cantidad de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Suma de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cantidad de suscripciones canceladas
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Cantidad de suscripciones en pausa
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Cantidad de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Suma de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Cantidad de suscripciones finalizadas
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Cliente
                       payment_method:
                         description: Este objeto representa un Método de Pago de su cuenta.
@@ -13219,31 +12698,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Suscripción
         '401':
           description: No autorizado
@@ -13541,51 +12995,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Cantidad de suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Monto de las Suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Cantidad de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Suma de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cantidad de suscripciones canceladas
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Cantidad de suscripciones en pausa
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Cantidad de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Suma de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Cantidad de suscripciones finalizadas
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Cliente
                       payment_method:
                         description: Este objeto representa un Método de Pago de su cuenta.
@@ -13765,31 +13174,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Suscripción
         '401':
           description: No autorizado
@@ -14093,51 +13477,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Cantidad de suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Monto de las Suscripciones activas
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Cantidad de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Suma de pagos aprobados
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cantidad de suscripciones canceladas
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Cantidad de suscripciones en pausa
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Cantidad de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Suma de pagos rechazados
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Cantidad de suscripciones finalizadas
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Cliente
                       payment_method:
                         description: Este objeto representa un Método de Pago de su cuenta.
@@ -14317,31 +13656,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Suscripción
         '401':
           description: No Autorizado
@@ -14444,13 +13758,49 @@ paths:
       summary: Obtener todos los webhooks
       description: Obtener una lista con tus webhooks.
       parameters:
-        - name: page
+        - name: created_at
           in: query
-          description: Cursor value to paginate response.
+          description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
           required: false
           schema:
-            type: number
-          example: '10'
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -14562,24 +13912,12 @@ paths:
                     description: Metadata de paginación
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -14606,7 +13944,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/webhooks?page=SOME_NUMBER_VALUE' \
+              --url 'https://api.tucuota.com/v1/webhooks?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -14615,7 +13953,12 @@ paths:
             const options = {
               method: 'GET',
               url: 'https://api.tucuota.com/v1/webhooks',
-              qs: {page: 'SOME_NUMBER_VALUE'},
+              qs: {
+                created_at: 'SOME_OBJECT_VALUE',
+                ending_before: 'SOME_STRING_VALUE',
+                limit: 'SOME_INTEGER_VALUE',
+                starting_after: 'SOME_STRING_VALUE'
+              },
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -14633,7 +13976,10 @@ paths:
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
-              'page' => 'SOME_NUMBER_VALUE'
+              'created_at' => 'SOME_OBJECT_VALUE',
+              'ending_before' => 'SOME_STRING_VALUE',
+              'limit' => 'SOME_INTEGER_VALUE',
+              'starting_after' => 'SOME_STRING_VALUE'
             ]);
 
             $request->setHeaders([
@@ -14653,7 +13999,7 @@ paths:
 
             url = "https://api.tucuota.com/v1/webhooks"
 
-            querystring = {"page":"SOME_NUMBER_VALUE"}
+            querystring = {"created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -14662,7 +14008,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/webhooks?page=SOME_NUMBER_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/webhooks?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -14671,7 +14017,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/webhooks?page=SOME_NUMBER_VALUE")
+            url = URI("https://api.tucuota.com/v1/webhooks?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -15473,6 +14819,54 @@ paths:
             response = http.request(request)
             puts response.read_body
 components:
+  parameters:
+    created_at:
+      description: 'Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.'
+      explode: true
+      in: query
+      name: created_at
+      required: false
+      schema:
+        type: object
+        properties:
+          gt:
+            description: Minimum value to filter by (exclusive)
+            type: integer
+          gte:
+            description: Minimum value to filter by (inclusive)
+            type: integer
+          lt:
+            description: Maximum value to filter by (exclusive)
+            type: integer
+          lte:
+            description: Maximum value to filter by (inclusive)
+            type: integer
+        title: range_query_specs
+      style: deepObject
+    ending_before:
+      name: ending_before
+      description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+      in: query
+      required: false
+      schema:
+        type: string
+      style: form
+    limit:
+      name: limit
+      in: query
+      description: 'Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.'
+      required: false
+      schema:
+        type: integer
+      example: 20
+    starting_after:
+      name: starting_after
+      description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+      in: query
+      required: false
+      schema:
+        type: string
+      style: form
   schemas:
     '401':
       description: No autorizado
@@ -15637,51 +15031,6 @@ components:
           oneOf:
             - type: 'null'
             - type: string
-        active_subscriptions_count:
-          description: Cantidad de suscripciones activas
-          type: integer
-          format: int32
-          example: 0
-        active_subscriptions_sum:
-          description: Monto de las Suscripciones activas
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_count:
-          description: Cantidad de pagos aprobados
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_sum:
-          description: Suma de pagos aprobados
-          type: integer
-          format: int32
-          example: 0
-        cancelled_subscriptions_count:
-          description: Cantidad de suscripciones canceladas
-          type: integer
-          format: int32
-          example: 0
-        paused_subscriptions_count:
-          description: Cantidad de suscripciones en pausa
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_count:
-          description: Cantidad de pagos rechazados
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_sum:
-          description: Suma de pagos rechazados
-          type: integer
-          format: int32
-          example: 0
-        finished_subscriptions_count:
-          description: Cantidad de suscripciones finalizadas
-          type: integer
-          format: int32
-          example: 0
       title: Cliente
     Links:
       description: Metadata de paginación
@@ -15708,24 +15057,12 @@ components:
       description: Metadata de paginación
       type: object
       properties:
-        current_page:
-          type: number
-          example: 1
-        from:
-          type: number
-          example: 1
-        last_page:
-          type: number
-          example: 1
         per_page:
           type: number
           example: 25
-        to:
-          type: number
-          example: 1
         total:
           type: number
-          example: 2
+          example: 2500
         path:
           type: string
           example: 'https://api.tucuota.com/v1/customers'
@@ -15924,6 +15261,10 @@ components:
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
       title: Importación
+    uuid:
+      description: 'Identificador UUID del objeto. [Legacy]'
+      type: string
+      example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
     Link:
       description: Este objeto representa un Link de su organización.
       type: object
@@ -15931,8 +15272,11 @@ components:
         id:
           description: Identificador único del objeto.
           type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           readOnly: true
+        uuid:
+          description: 'Identificador UUID del objeto. [Legacy]'
+          type: string
+          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         livemode:
           description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
           type: boolean
@@ -16229,8 +15573,11 @@ components:
         id:
           description: Identificador único del objeto.
           type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           readOnly: true
+        uuid:
+          description: 'Identificador UUID del objeto. [Legacy]'
+          type: string
+          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         object:
           type: string
           enum:
@@ -16320,51 +15667,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Cantidad de suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Monto de las Suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Cantidad de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Suma de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cantidad de suscripciones canceladas
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Cantidad de suscripciones en pausa
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Cantidad de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Suma de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Cantidad de suscripciones finalizadas
-              type: integer
-              format: int32
-              example: 0
           title: Cliente
         payment_method:
           description: Este objeto representa un Método de Pago de su cuenta.
@@ -16791,51 +16093,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Cantidad de suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Monto de las Suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Cantidad de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Suma de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cantidad de suscripciones canceladas
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Cantidad de suscripciones en pausa
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Cantidad de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Suma de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Cantidad de suscripciones finalizadas
-              type: integer
-              format: int32
-              example: 0
           title: Cliente
         subscription:
           description: 'La [Suscripción](#tag/Suscripciones) asociada con el pago si existe.'
@@ -17125,10 +16382,6 @@ components:
       type: string
       format: date-time
       example: '2022-02-11T23:19:22-03:00'
-    uuid:
-      description: Identificador UUID del objeto.
-      type: string
-      example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
     Session:
       description: Este objeto representa una Sesión de su organización.
       type: object
@@ -17154,7 +16407,11 @@ components:
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
         id:
-          description: Identificador UUID del objeto.
+          description: Identificador único del objeto.
+          type: string
+          readOnly: true
+        uuid:
+          description: 'Identificador UUID del objeto. [Legacy]'
           type: string
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         name:
@@ -17207,42 +16464,6 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
-        active_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        active_subscriptions_sum:
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_count:
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_sum:
-          type: integer
-          format: int32
-          example: 0
-        cancelled_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        paused_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_count:
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_sum:
-          type: integer
-          format: int32
-          example: 0
-        finished_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
         deleted_at:
           description: |
             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
@@ -17433,51 +16654,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Cantidad de suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Monto de las Suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Cantidad de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Suma de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cantidad de suscripciones canceladas
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Cantidad de suscripciones en pausa
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Cantidad de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Suma de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Cantidad de suscripciones finalizadas
-              type: integer
-              format: int32
-              example: 0
           title: Cliente
         payment_method:
           description: Este objeto representa un Método de Pago de su cuenta.
@@ -17657,31 +16833,6 @@ components:
                 type: string
               type: object
             - type: 'null'
-        payments_created:
-          description: Number of subscription's payments created
-          type: number
-          example: 14
-          readOnly: true
-        approved_payments_sum:
-          description: Sum of subscription's approved payments
-          type: number
-          example: 9
-          readOnly: true
-        approved_payments_count:
-          description: Count of subscription's approved payments
-          type: number
-          example: 46800
-          readOnly: true
-        rejected_payments_sum:
-          description: Sum of subscription's rejected payments
-          type: number
-          example: 1
-          readOnly: true
-        rejected_payments_count:
-          description: Count of subscription's rejected payments
-          type: number
-          example: 5200
-          readOnly: true
       title: Suscripción
     Webhook:
       description: |-
@@ -17866,51 +17017,6 @@ components:
           oneOf:
             - type: 'null'
             - type: string
-        active_subscriptions_count:
-          description: Cantidad de suscripciones activas
-          type: integer
-          format: int32
-          example: 0
-        active_subscriptions_sum:
-          description: Monto de las Suscripciones activas
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_count:
-          description: Cantidad de pagos aprobados
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_sum:
-          description: Suma de pagos aprobados
-          type: integer
-          format: int32
-          example: 0
-        cancelled_subscriptions_count:
-          description: Cantidad de suscripciones canceladas
-          type: integer
-          format: int32
-          example: 0
-        paused_subscriptions_count:
-          description: Cantidad de suscripciones en pausa
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_count:
-          description: Cantidad de pagos rechazados
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_sum:
-          description: Suma de pagos rechazados
-          type: integer
-          format: int32
-          example: 0
-        finished_subscriptions_count:
-          description: Cantidad de suscripciones finalizadas
-          type: integer
-          format: int32
-          example: 0
       title: Cliente
     event:
       description: Este objeto representa un evento en tu cuenta.
@@ -18083,8 +17189,11 @@ components:
         id:
           description: Identificador único del objeto.
           type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           readOnly: true
+        uuid:
+          description: 'Identificador UUID del objeto. [Legacy]'
+          type: string
+          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         livemode:
           description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
           type: boolean
@@ -18130,8 +17239,11 @@ components:
         id:
           description: Identificador único del objeto.
           type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           readOnly: true
+        uuid:
+          description: 'Identificador UUID del objeto. [Legacy]'
+          type: string
+          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         object:
           type: string
           enum:
@@ -18221,51 +17333,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Cantidad de suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Monto de las Suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Cantidad de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Suma de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cantidad de suscripciones canceladas
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Cantidad de suscripciones en pausa
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Cantidad de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Suma de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Cantidad de suscripciones finalizadas
-              type: integer
-              format: int32
-              example: 0
           title: Cliente
         payment_method:
           description: Este objeto representa un Método de Pago de su cuenta.
@@ -18676,51 +17743,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Cantidad de suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Monto de las Suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Cantidad de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Suma de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cantidad de suscripciones canceladas
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Cantidad de suscripciones en pausa
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Cantidad de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Suma de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Cantidad de suscripciones finalizadas
-              type: integer
-              format: int32
-              example: 0
           title: Cliente
         subscription:
           description: 'La [Suscripción](#tag/Suscripciones) asociada con el pago si existe.'
@@ -19194,7 +18216,11 @@ components:
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
         id:
-          description: Identificador UUID del objeto.
+          description: Identificador único del objeto.
+          type: string
+          readOnly: true
+        uuid:
+          description: 'Identificador UUID del objeto. [Legacy]'
           type: string
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         name:
@@ -19247,42 +18273,6 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
-        active_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        active_subscriptions_sum:
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_count:
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_sum:
-          type: integer
-          format: int32
-          example: 0
-        cancelled_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        paused_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_count:
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_sum:
-          type: integer
-          format: int32
-          example: 0
-        finished_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
         deleted_at:
           description: |
             Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
@@ -19473,51 +18463,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Cantidad de suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Monto de las Suscripciones activas
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Cantidad de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Suma de pagos aprobados
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cantidad de suscripciones canceladas
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Cantidad de suscripciones en pausa
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Cantidad de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Suma de pagos rechazados
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Cantidad de suscripciones finalizadas
-              type: integer
-              format: int32
-              example: 0
           title: Cliente
         payment_method:
           description: Este objeto representa un Método de Pago de su cuenta.
@@ -19697,31 +18642,6 @@ components:
                 type: string
               type: object
             - type: 'null'
-        payments_created:
-          description: Number of subscription's payments created
-          type: number
-          example: 14
-          readOnly: true
-        approved_payments_sum:
-          description: Sum of subscription's approved payments
-          type: number
-          example: 9
-          readOnly: true
-        approved_payments_count:
-          description: Count of subscription's approved payments
-          type: number
-          example: 46800
-          readOnly: true
-        rejected_payments_sum:
-          description: Sum of subscription's rejected payments
-          type: number
-          example: 1
-          readOnly: true
-        rejected_payments_count:
-          description: Count of subscription's rejected payments
-          type: number
-          example: 5200
-          readOnly: true
       title: Suscripción
     webhook:
       description: |-
@@ -19803,24 +18723,12 @@ components:
       description: Metadata de paginación
       type: object
       properties:
-        current_page:
-          type: number
-          example: 1
-        from:
-          type: number
-          example: 1
-        last_page:
-          type: number
-          example: 1
         per_page:
           type: number
           example: 25
-        to:
-          type: number
-          example: 1
         total:
           type: number
-          example: 2
+          example: 2500
         path:
           type: string
           example: 'https://api.tucuota.com/v1/customers'
@@ -19864,15 +18772,6 @@ components:
         created_at: '2021-07-05T12:24:32-03:00'
         updated_at: '2021-07-05T12:24:32-03:00'
         deleted_at: null
-        approved_payments_count: 13
-        approved_payments_sum: 47900
-        rejected_payments_count: 1
-        rejected_payments_sum: 3500
-        active_subscriptions_count: 1
-        active_subscriptions_sum: 3500
-        paused_subscriptions_count: 0
-        cancelled_subscriptions_count: 0
-        finished_subscriptions_count: 0
     event:
       summary: Ejemplo de Evento
       value:
@@ -19963,7 +18862,8 @@ components:
         enabled: true
         extra_fields: []
         extra_fields_customer: []
-        id: b7fba990-83cc-11ec-8c7b-5b2fd150abb2
+        id: LKLj0JV8xzdMoRk549
+        uuid: b7fba990-83cc-11ec-8c7b-5b2fd150abb2
         kind: payment
         livemode: true
         metadata: null
@@ -20022,7 +18922,8 @@ components:
           name: John Doe
           updated_at: '2022-02-05T01:42:13-03:00'
         deleted_at: null
-        id: 3990a740-83ab-11ec-8651-cde6203c968e
+        id: MA9aQOWen2kZe6qypB
+        uuid: 3990a740-83ab-11ec-8651-cde6203c968e
         livemode: true
         metadata:
           dni: '1231232131'
@@ -20166,7 +19067,8 @@ components:
         editable_count: false
         extra_fields: []
         extra_fields_customer: []
-        id: d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81
+        id: SSnO8b9w7B51VE0B5m
+        uuid: d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81
         installments: 1
         interval: 1
         interval_unit: monthly
@@ -20246,11 +19148,6 @@ components:
           type: card
           updated_at: '2022-02-01T23:13:04-03:00'
         metadata: null
-        payments_created: 14
-        approved_payments_count: 9
-        approved_payments_sum: 46800
-        rejected_payments_count: 1
-        rejected_payments_sum: 5200
     webhook:
       summary: Ejemplo de Webhook
       value:

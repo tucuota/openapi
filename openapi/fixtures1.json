@@ -15,16 +15,7 @@
       "livemode": true,
       "created_at": "2021-07-05T12:24:32-03:00",
       "updated_at": "2021-07-05T12:24:32-03:00",
-      "deleted_at": null,
-      "approved_payments_count": 13,
-      "approved_payments_sum": 47900,
-      "rejected_payments_count": 1,
-      "rejected_payments_sum": 3500,
-      "active_subscriptions_count": 1,
-      "active_subscriptions_sum": 3500,
-      "paused_subscriptions_count": 0,
-      "cancelled_subscriptions_count": 0,
-      "finished_subscriptions_count": 0
+      "deleted_at": null
     },
     "event": {
       "created_at": "2022-02-05T01:42:13-03:00",
@@ -115,7 +106,8 @@
       "enabled": true,
       "extra_fields": [],
       "extra_fields_customer": [],
-      "id": "b7fba990-83cc-11ec-8c7b-5b2fd150abb2",
+      "id": "LKLj0JV8xzdMoRk549",
+      "uuid": "b7fba990-83cc-11ec-8c7b-5b2fd150abb2",
       "kind": "payment",
       "livemode": true,
       "metadata": null,
@@ -180,7 +172,8 @@
         "updated_at": "2022-02-05T01:42:13-03:00"
       },
       "deleted_at": null,
-      "id": "3990a740-83ab-11ec-8651-cde6203c968e",
+      "id": "MA9aQOWen2kZe6qypB",
+      "uuid": "3990a740-83ab-11ec-8651-cde6203c968e",
       "livemode": true,
       "metadata": {
         "dni": "1231232131"
@@ -328,7 +321,8 @@
       "editable_count": false,
       "extra_fields": [],
       "extra_fields_customer": [],
-      "id": "d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81",
+      "id": "SSnO8b9w7B51VE0B5m",
+      "uuid": "d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81",
       "installments": 1,
       "interval": 1,
       "interval_unit": "monthly",
@@ -412,12 +406,7 @@
         "type": "card",
         "updated_at": "2022-02-01T23:13:04-03:00"
       },
-      "metadata": null,
-      "payments_created": 14,
-      "approved_payments_count": 9,
-      "approved_payments_sum": 46800,
-      "rejected_payments_count": 1,
-      "rejected_payments_sum": 5200
+      "metadata": null
     },
     "webhook": {
       "created_at": "2022-02-11T23:19:22-03:00",

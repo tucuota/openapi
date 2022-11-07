@@ -333,20 +333,55 @@ paths:
       summary: List all customers
       description: By default newest customers will be first on the list.
       parameters:
-        - name: page
+        - name: all
           in: query
-          description: Cursor value to paginate response.
+          description: Include archived records.
           required: false
           schema:
-            type: number
-          example: 1
+            type: boolean
+        - name: created_at
+          in: query
+          description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
         - name: limit
           in: query
-          description: Number of records to return.
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
           required: false
           schema:
-            type: number
+            type: integer
           example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -436,51 +471,6 @@ paths:
                           oneOf:
                             - type: 'null'
                             - type: string
-                        active_subscriptions_count:
-                          description: Active Subscriptions Count
-                          type: integer
-                          format: int32
-                          example: 0
-                        active_subscriptions_sum:
-                          description: Active Subscriptions Sum
-                          type: integer
-                          format: int32
-                          example: 0
-                        approved_payments_count:
-                          description: Approved Payments Count
-                          type: integer
-                          format: int32
-                          example: 0
-                        approved_payments_sum:
-                          description: Approved Payments Sum
-                          type: integer
-                          format: int32
-                          example: 0
-                        cancelled_subscriptions_count:
-                          description: Cancelled Subscriptions Count
-                          type: integer
-                          format: int32
-                          example: 0
-                        paused_subscriptions_count:
-                          description: Paused Subscriptions Count
-                          type: integer
-                          format: int32
-                          example: 0
-                        rejected_payments_count:
-                          description: Rejected Payments Count
-                          type: integer
-                          format: int32
-                          example: 0
-                        rejected_payments_sum:
-                          description: Rejected Payments Sum
-                          type: integer
-                          format: int32
-                          example: 0
-                        finished_subscriptions_count:
-                          description: Finished Subscriptions Count
-                          type: integer
-                          format: int32
-                          example: 0
                   links:
                     description: Pagination metadata
                     type: object
@@ -506,24 +496,12 @@ paths:
                     description: Pagination metadata
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -693,51 +671,6 @@ paths:
                         oneOf:
                           - type: 'null'
                           - type: string
-                      active_subscriptions_count:
-                        description: Active Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      active_subscriptions_sum:
-                        description: Active Subscriptions Sum
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_count:
-                        description: Approved Payments Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_sum:
-                        description: Approved Payments Sum
-                        type: integer
-                        format: int32
-                        example: 0
-                      cancelled_subscriptions_count:
-                        description: Cancelled Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      paused_subscriptions_count:
-                        description: Paused Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_count:
-                        description: Rejected Payments Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_sum:
-                        description: Rejected Payments Sum
-                        type: integer
-                        format: int32
-                        example: 0
-                      finished_subscriptions_count:
-                        description: Finished Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
                     title: Customer
         '401':
           description: Unauthorized
@@ -864,51 +797,6 @@ paths:
                         oneOf:
                           - type: 'null'
                           - type: string
-                      active_subscriptions_count:
-                        description: Active Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      active_subscriptions_sum:
-                        description: Active Subscriptions Sum
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_count:
-                        description: Approved Payments Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_sum:
-                        description: Approved Payments Sum
-                        type: integer
-                        format: int32
-                        example: 0
-                      cancelled_subscriptions_count:
-                        description: Cancelled Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      paused_subscriptions_count:
-                        description: Paused Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_count:
-                        description: Rejected Payments Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_sum:
-                        description: Rejected Payments Sum
-                        type: integer
-                        format: int32
-                        example: 0
-                      finished_subscriptions_count:
-                        description: Finished Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
                     title: Customer
         '401':
           description: Unauthorized
@@ -1091,51 +979,6 @@ paths:
                         oneOf:
                           - type: 'null'
                           - type: string
-                      active_subscriptions_count:
-                        description: Active Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      active_subscriptions_sum:
-                        description: Active Subscriptions Sum
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_count:
-                        description: Approved Payments Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_sum:
-                        description: Approved Payments Sum
-                        type: integer
-                        format: int32
-                        example: 0
-                      cancelled_subscriptions_count:
-                        description: Cancelled Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      paused_subscriptions_count:
-                        description: Paused Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_count:
-                        description: Rejected Payments Count
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_sum:
-                        description: Rejected Payments Sum
-                        type: integer
-                        format: int32
-                        example: 0
-                      finished_subscriptions_count:
-                        description: Finished Subscriptions Count
-                        type: integer
-                        format: int32
-                        example: 0
                     title: Customer
         '401':
           description: Unauthorized
@@ -1285,20 +1128,70 @@ paths:
       summary: List events
       description: Returns a cursor-paginated list of your events.
       parameters:
-        - name: page
+        - name: delivery_success
           in: query
-          description: Cursor value to paginate response.
+          description: 'Filter events by whether all webhooks were successfully delivered. If false, events which are still pending or have failed all delivery attempts to a webhook endpoint will be returned.'
           required: false
           schema:
-            type: number
-          example: 10
+            type: boolean
+        - name: related_object
+          in: query
+          description: Filters events for a single object. Can receive any ID.
+          required: false
+          schema:
+            type: string
+            maxLength: 255
+          example: CS9PL8eeo8aB
+        - name: type
+          in: query
+          description: 'A string containing a specific event name, or group of events using `*` as a wildcard. The list will be filtered to include only events with a matching event property.'
+          required: false
+          schema:
+            type: string
+            maxLength: 255
+        - name: created_at
+          in: query
+          description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
         - name: limit
           in: query
-          description: Number of records to return.
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
           required: false
           schema:
-            type: number
-          example: 1
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -1328,6 +1221,14 @@ paths:
                     resource: customer
                     resource_id: CSnlZxyY3jwr
                     type: customer.created
+                links:
+                  first: null
+                  last: null
+                  next: 'https://api.tucuota.com/v1/events?starting_after=EVaX3JagwR6x'
+                meta:
+                  path: 'https://api.tucuota.com/v1/events'
+                  per_page: 25
+                  total: 34
               schema:
                 type: object
                 properties:
@@ -1446,24 +1347,12 @@ paths:
                     description: Pagination metadata
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -1629,20 +1518,6 @@ paths:
       summary: List Imports
       description: Returns a list of all your imports.
       parameters:
-        - name: page
-          in: query
-          description: Cursor value to paginate response.
-          required: false
-          schema:
-            type: number
-          example: '10'
-        - name: limit
-          in: query
-          description: Number of records to return.
-          required: false
-          schema:
-            type: number
-          example: '1'
         - name: search
           in: query
           description: Search.
@@ -1659,6 +1534,49 @@ paths:
           schema:
             type: string
           example: ready
+        - name: created_at
+          in: query
+          description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -1991,24 +1909,55 @@ paths:
           schema:
             type: string
           example: IMKd7zlGJAna
-        - name: page
-          in: query
-          description: Cursor value to paginate response.
-          schema:
-            type: number
-          example: 1
-        - name: limit
-          in: query
-          description: Number of records to return.
-          schema:
-            type: number
-          example: 20
         - name: filter
           in: query
           description: |
             **Validation**. _Example: valid_. Allows values: valid, invalid.
           schema:
             type: string
+        - name: created_at
+          in: query
+          description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -2038,20 +1987,6 @@ paths:
       summary: List links
       description: Returns a list of all your links.
       parameters:
-        - name: page
-          in: query
-          description: Cursor value to paginate response.
-          required: false
-          schema:
-            type: number
-          example: '10'
-        - name: limit
-          in: query
-          description: Number of records to return.
-          required: false
-          schema:
-            type: number
-          example: '1'
         - name: search
           in: query
           description: Search.
@@ -2059,6 +1994,49 @@ paths:
           schema:
             type: string
           example: foo@bar.com
+        - name: created_at
+          in: query
+          description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -2077,8 +2055,11 @@ paths:
                         id:
                           description: Unique identifier for the object.
                           type: string
-                          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                           readOnly: true
+                        uuid:
+                          description: 'UUID identifier for the object. [Legacy]'
+                          type: string
+                          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         livemode:
                           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                           type: boolean
@@ -2138,24 +2119,12 @@ paths:
                     description: Pagination metadata
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -2196,8 +2165,11 @@ paths:
                       id:
                         description: Unique identifier for the object.
                         type: string
-                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         readOnly: true
+                      uuid:
+                        description: 'UUID identifier for the object. [Legacy]'
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
@@ -2261,7 +2233,7 @@ paths:
           required: true
           schema:
             type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
+          example: LKLj0JV8xzdMoRk549
       responses:
         '200':
           description: OK
@@ -2276,8 +2248,11 @@ paths:
                       id:
                         description: Unique identifier for the object.
                         type: string
-                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         readOnly: true
+                      uuid:
+                        description: 'UUID identifier for the object. [Legacy]'
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
@@ -2340,7 +2315,7 @@ paths:
           required: true
           schema:
             type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
+          example: LKLj0JV8xzdMoRk549
       responses:
         '200':
           description: OK
@@ -2355,8 +2330,11 @@ paths:
                       id:
                         description: Unique identifier for the object.
                         type: string
-                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         readOnly: true
+                      uuid:
+                        description: 'UUID identifier for the object. [Legacy]'
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
@@ -2423,18 +2401,63 @@ paths:
       summary: List all mandates
       description: By default newest mandates will be first on the list.
       parameters:
-        - name: page
+        - name: all
           in: query
-          description: Cursor value to paginate response.
+          description: Include archived mandates.
+          required: false
           schema:
-            type: number
-          example: '10'
+            type: boolean
+        - name: customer_id
+          in: query
+          description: |
+            [Customer ID](#tag/Customers).
+          required: true
+          schema:
+            type: string
+          example: CS9PL8eeo8aB
+        - name: created_at
+          in: query
+          description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
         - name: limit
           in: query
-          description: Number of records to return.
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
+          required: false
           schema:
-            type: number
-          example: '1'
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -2453,8 +2476,11 @@ paths:
                         id:
                           description: Unique identifier for the object.
                           type: string
-                          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                           readOnly: true
+                        uuid:
+                          description: 'UUID identifier for the object. [Legacy]'
+                          type: string
+                          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         object:
                           type: string
                           enum:
@@ -2541,51 +2567,6 @@ paths:
                               oneOf:
                                 - type: 'null'
                                 - type: string
-                            active_subscriptions_count:
-                              description: Active Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            active_subscriptions_sum:
-                              description: Active Subscriptions Sum
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_count:
-                              description: Approved Payments Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_sum:
-                              description: Approved Payments Sum
-                              type: integer
-                              format: int32
-                              example: 0
-                            cancelled_subscriptions_count:
-                              description: Cancelled Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            paused_subscriptions_count:
-                              description: Paused Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_count:
-                              description: Rejected Payments Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_sum:
-                              description: Rejected Payments Sum
-                              type: integer
-                              format: int32
-                              example: 0
-                            finished_subscriptions_count:
-                              description: Finished Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
                           title: Customer
                         payment_method:
                           description: This object represents a payment method of your account.
@@ -2805,24 +2786,12 @@ paths:
                     description: Pagination metadata
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -2933,7 +2902,7 @@ paths:
           required: true
           schema:
             type: string
-          example: 85641980-8a28-11ea-a926-d51efa41533d
+          example: MA9aQOWen2kZe6qypB
       responses:
         '200':
           description: OK
@@ -2948,8 +2917,11 @@ paths:
                       id:
                         description: Unique identifier for the object.
                         type: string
-                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                         readOnly: true
+                      uuid:
+                        description: 'UUID identifier for the object. [Legacy]'
+                        type: string
+                        example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       object:
                         type: string
                         enum:
@@ -3036,51 +3008,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Active Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Active Subscriptions Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Approved Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Approved Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cancelled Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Paused Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Rejected Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Rejected Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Finished Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Customer
                       payment_method:
                         description: This object represents a payment method of your account.
@@ -3319,7 +3246,7 @@ paths:
           required: true
           schema:
             type: string
-          example: 85641980-8a28-11ea-a926-d51efa41533d
+          example: MA9aQOWen2kZe6qypB
       responses:
         '202':
           description: Mandate revoked
@@ -3352,7 +3279,7 @@ paths:
           required: true
           schema:
             type: string
-          example: 85641980-8a28-11ea-a926-d51efa41533d
+          example: MA9aQOWen2kZe6qypB
       responses:
         '202':
           description: Mandate restored
@@ -3387,10 +3314,10 @@ paths:
           example: 1
         - name: limit
           in: query
-          description: Number of records to return.
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
           required: false
           schema:
-            type: number
+            type: integer
           example: 20
       responses:
         '200':
@@ -3590,24 +3517,12 @@ paths:
                     description: Pagination metadata
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -3628,16 +3543,12 @@ paths:
                     object: payment_method
                     updated_at: '2019-05-23T20:30:01-03:00'
                 links:
-                  first: 'https://api.tucuota.com/v1/payment_methods?page=1'
-                  last: 'https://api.tucuota.com/v1/payment_methods?page=2'
-                  next: 'https://api.tucuota.com/v1/payment_methods?page=2'
+                  first: null
+                  last: null
+                  next: 'https://api.tucuota.com/v1/payment_methods?starting_after=PMVdYaYwkqOw'
                 meta:
-                  current_page: 1
-                  from: 1
-                  last_page: 2
                   path: 'https://api.tucuota.com/v1/payment_methods'
                   per_page: 25
-                  to: 25
                   total: 34
         '401':
           description: Unauthorized
@@ -4158,20 +4069,6 @@ paths:
       summary: List payments
       description: Newest payments will be first on the list.
       parameters:
-        - name: page
-          in: query
-          description: Cursor value to paginate response.
-          required: false
-          schema:
-            type: number
-          example: '10'
-        - name: limit
-          in: query
-          description: Number of records to return.
-          required: false
-          schema:
-            type: number
-          example: '1'
         - name: customer_id
           in: query
           description: Show only payment methods from a given customer.
@@ -4186,6 +4083,49 @@ paths:
           schema:
             type: string
           example: SBmX1MrZ77Mwq3
+        - name: created_at
+          in: query
+          description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -4402,51 +4342,6 @@ paths:
                               oneOf:
                                 - type: 'null'
                                 - type: string
-                            active_subscriptions_count:
-                              description: Active Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            active_subscriptions_sum:
-                              description: Active Subscriptions Sum
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_count:
-                              description: Approved Payments Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_sum:
-                              description: Approved Payments Sum
-                              type: integer
-                              format: int32
-                              example: 0
-                            cancelled_subscriptions_count:
-                              description: Cancelled Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            paused_subscriptions_count:
-                              description: Paused Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_count:
-                              description: Rejected Payments Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_sum:
-                              description: Rejected Payments Sum
-                              type: integer
-                              format: int32
-                              example: 0
-                            finished_subscriptions_count:
-                              description: Finished Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
                           title: Customer
                         subscription:
                           description: 'The [Subscription](#tag/Subscriptions) associated with the payment if existent.'
@@ -4675,24 +4570,12 @@ paths:
                     description: Pagination metadata
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -4992,51 +4875,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Active Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Active Subscriptions Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Approved Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Approved Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cancelled Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Paused Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Rejected Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Rejected Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Finished Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Customer
                       subscription:
                         description: 'The [Subscription](#tag/Subscriptions) associated with the payment if existent.'
@@ -5484,51 +5322,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Active Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Active Subscriptions Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Approved Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Approved Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cancelled Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Paused Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Rejected Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Rejected Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Finished Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Customer
                       subscription:
                         description: 'The [Subscription](#tag/Subscriptions) associated with the payment if existent.'
@@ -6032,51 +5825,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Active Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Active Subscriptions Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Approved Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Approved Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cancelled Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Paused Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Rejected Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Rejected Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Finished Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Customer
                       subscription:
                         description: 'The [Subscription](#tag/Subscriptions) associated with the payment if existent.'
@@ -6415,20 +6163,49 @@ paths:
       summary: List all refunds
       description: By default newest refunds will be first on the list.
       parameters:
-        - name: page
+        - name: created_at
           in: query
-          description: Cursor value to paginate response.
+          description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
           required: false
           schema:
-            type: number
-          example: 1
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
         - name: limit
           in: query
-          description: Number of records to return.
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
           required: false
           schema:
-            type: number
+            type: integer
           example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -6539,24 +6316,12 @@ paths:
                     description: Pagination metadata
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -6984,7 +6749,11 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       id:
-                        description: UUID identifier for the object.
+                        description: Unique identifier for the object.
+                        type: string
+                        readOnly: true
+                      uuid:
+                        description: 'UUID identifier for the object. [Legacy]'
                         type: string
                         example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       name:
@@ -7036,42 +6805,6 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
-                      active_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      active_subscriptions_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      cancelled_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      paused_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      finished_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
                       deleted_at:
                         description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
                         format: date-time
@@ -7115,11 +6848,11 @@ paths:
         - name: id
           in: path
           description: |
-            [Session UUID](#tag/Sessions).
+            [Session ID](#tag/Sessions).
           required: true
           schema:
             type: string
-          example: 58fa2240-d996-11e9-a698-09ff9b98c35f
+          example: SSnO8b9w7B51VE0B5m
       responses:
         '201':
           description: OK
@@ -7150,7 +6883,11 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       id:
-                        description: UUID identifier for the object.
+                        description: Unique identifier for the object.
+                        type: string
+                        readOnly: true
+                      uuid:
+                        description: 'UUID identifier for the object. [Legacy]'
                         type: string
                         example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
                       name:
@@ -7202,42 +6939,6 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
-                      active_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      active_subscriptions_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      approved_payments_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      cancelled_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      paused_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_count:
-                        type: integer
-                        format: int32
-                        example: 0
-                      rejected_payments_sum:
-                        type: integer
-                        format: int32
-                        example: 0
-                      finished_subscriptions_count:
-                        type: integer
-                        format: int32
-                        example: 0
                       deleted_at:
                         description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
                         format: date-time
@@ -7273,6 +6974,50 @@ paths:
       operationId: SubscriptionsGetSubscriptions
       summary: List all subscriptions
       description: By default newest subscriptions will be first on the list.
+      parameters:
+        - name: created_at
+          in: query
+          description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
+          required: false
+          schema:
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -7460,51 +7205,6 @@ paths:
                               oneOf:
                                 - type: 'null'
                                 - type: string
-                            active_subscriptions_count:
-                              description: Active Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            active_subscriptions_sum:
-                              description: Active Subscriptions Sum
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_count:
-                              description: Approved Payments Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            approved_payments_sum:
-                              description: Approved Payments Sum
-                              type: integer
-                              format: int32
-                              example: 0
-                            cancelled_subscriptions_count:
-                              description: Cancelled Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            paused_subscriptions_count:
-                              description: Paused Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_count:
-                              description: Rejected Payments Count
-                              type: integer
-                              format: int32
-                              example: 0
-                            rejected_payments_sum:
-                              description: Rejected Payments Sum
-                              type: integer
-                              format: int32
-                              example: 0
-                            finished_subscriptions_count:
-                              description: Finished Subscriptions Count
-                              type: integer
-                              format: int32
-                              example: 0
                           title: Customer
                         payment_method:
                           description: This object represents a payment method of your account.
@@ -7682,31 +7382,6 @@ paths:
                                 type: string
                               type: object
                             - type: 'null'
-                        payments_created:
-                          description: Number of subscription's payments created
-                          type: number
-                          example: 14
-                          readOnly: true
-                        approved_payments_sum:
-                          description: Sum of subscription's approved payments
-                          type: number
-                          example: 9
-                          readOnly: true
-                        approved_payments_count:
-                          description: Count of subscription's approved payments
-                          type: number
-                          example: 46800
-                          readOnly: true
-                        rejected_payments_sum:
-                          description: Sum of subscription's rejected payments
-                          type: number
-                          example: 1
-                          readOnly: true
-                        rejected_payments_count:
-                          description: Count of subscription's rejected payments
-                          type: number
-                          example: 5200
-                          readOnly: true
                   links:
                     description: Pagination metadata
                     type: object
@@ -7732,24 +7407,12 @@ paths:
                     description: Pagination metadata
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -8040,51 +7703,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Active Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Active Subscriptions Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Approved Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Approved Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cancelled Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Paused Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Rejected Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Rejected Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Finished Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Customer
                       payment_method:
                         description: This object represents a payment method of your account.
@@ -8262,31 +7880,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Subscription
         '401':
           description: Unauthorized
@@ -8510,51 +8103,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Active Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Active Subscriptions Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Approved Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Approved Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cancelled Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Paused Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Rejected Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Rejected Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Finished Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Customer
                       payment_method:
                         description: This object represents a payment method of your account.
@@ -8732,31 +8280,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Subscription
         '401':
           description: Unauthorized
@@ -9062,51 +8585,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Active Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Active Subscriptions Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Approved Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Approved Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cancelled Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Paused Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Rejected Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Rejected Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Finished Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Customer
                       payment_method:
                         description: This object represents a payment method of your account.
@@ -9284,31 +8762,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Subscription
         '401':
           description: Unauthorized
@@ -9532,51 +8985,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Active Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Active Subscriptions Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Approved Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Approved Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cancelled Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Paused Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Rejected Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Rejected Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Finished Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Customer
                       payment_method:
                         description: This object represents a payment method of your account.
@@ -9754,31 +9162,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Subscription
         '401':
           description: Unauthorized
@@ -9998,51 +9381,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Active Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Active Subscriptions Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Approved Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Approved Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cancelled Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Paused Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Rejected Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Rejected Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Finished Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Customer
                       payment_method:
                         description: This object represents a payment method of your account.
@@ -10220,31 +9558,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Subscription
         '401':
           description: Unauthorized
@@ -10470,51 +9783,6 @@ paths:
                             oneOf:
                               - type: 'null'
                               - type: string
-                          active_subscriptions_count:
-                            description: Active Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          active_subscriptions_sum:
-                            description: Active Subscriptions Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_count:
-                            description: Approved Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          approved_payments_sum:
-                            description: Approved Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          cancelled_subscriptions_count:
-                            description: Cancelled Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          paused_subscriptions_count:
-                            description: Paused Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_count:
-                            description: Rejected Payments Count
-                            type: integer
-                            format: int32
-                            example: 0
-                          rejected_payments_sum:
-                            description: Rejected Payments Sum
-                            type: integer
-                            format: int32
-                            example: 0
-                          finished_subscriptions_count:
-                            description: Finished Subscriptions Count
-                            type: integer
-                            format: int32
-                            example: 0
                         title: Customer
                       payment_method:
                         description: This object represents a payment method of your account.
@@ -10692,31 +9960,6 @@ paths:
                               type: string
                             type: object
                           - type: 'null'
-                      payments_created:
-                        description: Number of subscription's payments created
-                        type: number
-                        example: 14
-                        readOnly: true
-                      approved_payments_sum:
-                        description: Sum of subscription's approved payments
-                        type: number
-                        example: 9
-                        readOnly: true
-                      approved_payments_count:
-                        description: Count of subscription's approved payments
-                        type: number
-                        example: 46800
-                        readOnly: true
-                      rejected_payments_sum:
-                        description: Sum of subscription's rejected payments
-                        type: number
-                        example: 1
-                        readOnly: true
-                      rejected_payments_count:
-                        description: Count of subscription's rejected payments
-                        type: number
-                        example: 5200
-                        readOnly: true
                     title: Subscription
         '401':
           description: Unauthorized
@@ -10746,13 +9989,49 @@ paths:
       summary: List all webhooks
       description: Returns a list of your webhooks.
       parameters:
-        - name: page
+        - name: created_at
           in: query
-          description: Cursor value to paginate response.
+          description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
           required: false
           schema:
-            type: number
-          example: '10'
+            type: object
+            properties:
+              gt:
+                description: Minimum value to filter by (exclusive)
+                type: integer
+              gte:
+                description: Minimum value to filter by (inclusive)
+                type: integer
+              lt:
+                description: Maximum value to filter by (exclusive)
+                type: integer
+              lte:
+                description: Maximum value to filter by (inclusive)
+                type: integer
+            title: range_query_specs
+          explode: true
+          style: deepObject
+        - name: ending_before
+          in: query
+          description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
+        - name: limit
+          in: query
+          description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
+          required: false
+          schema:
+            type: integer
+          example: 20
+        - name: starting_after
+          in: query
+          description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+          required: false
+          schema:
+            type: string
+          style: form
       responses:
         '200':
           description: OK
@@ -10863,24 +10142,12 @@ paths:
                     description: Pagination metadata
                     type: object
                     properties:
-                      current_page:
-                        type: number
-                        example: 1
-                      from:
-                        type: number
-                        example: 1
-                      last_page:
-                        type: number
-                        example: 1
                       per_page:
                         type: number
                         example: 25
-                      to:
-                        type: number
-                        example: 1
                       total:
                         type: number
-                        example: 2
+                        example: 2500
                       path:
                         type: string
                         example: 'https://api.tucuota.com/v1/customers'
@@ -11359,6 +10626,54 @@ paths:
       tags:
         - Webhooks
 components:
+  parameters:
+    created_at:
+      description: 'A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.'
+      explode: true
+      in: query
+      name: created_at
+      required: false
+      schema:
+        type: object
+        properties:
+          gt:
+            description: Minimum value to filter by (exclusive)
+            type: integer
+          gte:
+            description: Minimum value to filter by (inclusive)
+            type: integer
+          lt:
+            description: Maximum value to filter by (exclusive)
+            type: integer
+          lte:
+            description: Maximum value to filter by (inclusive)
+            type: integer
+        title: range_query_specs
+      style: deepObject
+    ending_before:
+      name: ending_before
+      description: 'A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.'
+      in: query
+      required: false
+      schema:
+        type: string
+      style: form
+    limit:
+      name: limit
+      in: query
+      description: 'A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.'
+      required: false
+      schema:
+        type: integer
+      example: 20
+    starting_after:
+      name: starting_after
+      description: 'A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.'
+      in: query
+      required: false
+      schema:
+        type: string
+      style: form
   schemas:
     '401':
       description: Unauthorized response
@@ -11517,51 +10832,6 @@ components:
           oneOf:
             - type: 'null'
             - type: string
-        active_subscriptions_count:
-          description: Active Subscriptions Count
-          type: integer
-          format: int32
-          example: 0
-        active_subscriptions_sum:
-          description: Active Subscriptions Sum
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_count:
-          description: Approved Payments Count
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_sum:
-          description: Approved Payments Sum
-          type: integer
-          format: int32
-          example: 0
-        cancelled_subscriptions_count:
-          description: Cancelled Subscriptions Count
-          type: integer
-          format: int32
-          example: 0
-        paused_subscriptions_count:
-          description: Paused Subscriptions Count
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_count:
-          description: Rejected Payments Count
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_sum:
-          description: Rejected Payments Sum
-          type: integer
-          format: int32
-          example: 0
-        finished_subscriptions_count:
-          description: Finished Subscriptions Count
-          type: integer
-          format: int32
-          example: 0
       title: Customer
     Links:
       description: Pagination metadata
@@ -11588,24 +10858,12 @@ components:
       description: Pagination metadata
       type: object
       properties:
-        current_page:
-          type: number
-          example: 1
-        from:
-          type: number
-          example: 1
-        last_page:
-          type: number
-          example: 1
         per_page:
           type: number
           example: 25
-        to:
-          type: number
-          example: 1
         total:
           type: number
-          example: 2
+          example: 2500
         path:
           type: string
           example: 'https://api.tucuota.com/v1/customers'
@@ -11791,6 +11049,10 @@ components:
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
       title: Import
+    uuid:
+      description: 'UUID identifier for the object. [Legacy]'
+      type: string
+      example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
     Link:
       description: This object represents a public link of your organization.
       type: object
@@ -11798,8 +11060,11 @@ components:
         id:
           description: Unique identifier for the object.
           type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           readOnly: true
+        uuid:
+          description: 'UUID identifier for the object. [Legacy]'
+          type: string
+          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         livemode:
           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
           type: boolean
@@ -12091,8 +11356,11 @@ components:
         id:
           description: Unique identifier for the object.
           type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           readOnly: true
+        uuid:
+          description: 'UUID identifier for the object. [Legacy]'
+          type: string
+          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         object:
           type: string
           enum:
@@ -12179,51 +11447,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Active Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Active Subscriptions Sum
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Approved Payments Count
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Approved Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cancelled Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Paused Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Rejected Payments Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Rejected Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Finished Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
           title: Customer
         payment_method:
           description: This object represents a payment method of your account.
@@ -12640,51 +11863,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Active Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Active Subscriptions Sum
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Approved Payments Count
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Approved Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cancelled Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Paused Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Rejected Payments Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Rejected Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Finished Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
           title: Customer
         subscription:
           description: 'The [Subscription](#tag/Subscriptions) associated with the payment if existent.'
@@ -12969,10 +12147,6 @@ components:
       type: string
       format: date-time
       example: '2022-02-11T23:19:22-03:00'
-    uuid:
-      description: UUID identifier for the object.
-      type: string
-      example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
     Session:
       description: This object represents a Session of your organization.
       type: object
@@ -12996,7 +12170,11 @@ components:
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
         id:
-          description: UUID identifier for the object.
+          description: Unique identifier for the object.
+          type: string
+          readOnly: true
+        uuid:
+          description: 'UUID identifier for the object. [Legacy]'
           type: string
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         name:
@@ -13048,42 +12226,6 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
-        active_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        active_subscriptions_sum:
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_count:
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_sum:
-          type: integer
-          format: int32
-          example: 0
-        cancelled_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        paused_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_count:
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_sum:
-          type: integer
-          format: int32
-          example: 0
-        finished_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
         deleted_at:
           description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
           format: date-time
@@ -13268,51 +12410,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Active Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Active Subscriptions Sum
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Approved Payments Count
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Approved Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cancelled Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Paused Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Rejected Payments Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Rejected Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Finished Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
           title: Customer
         payment_method:
           description: This object represents a payment method of your account.
@@ -13490,31 +12587,6 @@ components:
                 type: string
               type: object
             - type: 'null'
-        payments_created:
-          description: Number of subscription's payments created
-          type: number
-          example: 14
-          readOnly: true
-        approved_payments_sum:
-          description: Sum of subscription's approved payments
-          type: number
-          example: 9
-          readOnly: true
-        approved_payments_count:
-          description: Count of subscription's approved payments
-          type: number
-          example: 46800
-          readOnly: true
-        rejected_payments_sum:
-          description: Sum of subscription's rejected payments
-          type: number
-          example: 1
-          readOnly: true
-        rejected_payments_count:
-          description: Count of subscription's rejected payments
-          type: number
-          example: 5200
-          readOnly: true
       title: Subscription
     Webhook:
       description: |-
@@ -13695,51 +12767,6 @@ components:
           oneOf:
             - type: 'null'
             - type: string
-        active_subscriptions_count:
-          description: Active Subscriptions Count
-          type: integer
-          format: int32
-          example: 0
-        active_subscriptions_sum:
-          description: Active Subscriptions Sum
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_count:
-          description: Approved Payments Count
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_sum:
-          description: Approved Payments Sum
-          type: integer
-          format: int32
-          example: 0
-        cancelled_subscriptions_count:
-          description: Cancelled Subscriptions Count
-          type: integer
-          format: int32
-          example: 0
-        paused_subscriptions_count:
-          description: Paused Subscriptions Count
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_count:
-          description: Rejected Payments Count
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_sum:
-          description: Rejected Payments Sum
-          type: integer
-          format: int32
-          example: 0
-        finished_subscriptions_count:
-          description: Finished Subscriptions Count
-          type: integer
-          format: int32
-          example: 0
       title: Customer
     event:
       description: This object represents an event of your account.
@@ -13904,8 +12931,11 @@ components:
         id:
           description: Unique identifier for the object.
           type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           readOnly: true
+        uuid:
+          description: 'UUID identifier for the object. [Legacy]'
+          type: string
+          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         livemode:
           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
           type: boolean
@@ -13948,8 +12978,11 @@ components:
         id:
           description: Unique identifier for the object.
           type: string
-          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
           readOnly: true
+        uuid:
+          description: 'UUID identifier for the object. [Legacy]'
+          type: string
+          example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         object:
           type: string
           enum:
@@ -14036,51 +13069,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Active Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Active Subscriptions Sum
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Approved Payments Count
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Approved Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cancelled Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Paused Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Rejected Payments Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Rejected Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Finished Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
           title: Customer
         payment_method:
           description: This object represents a payment method of your account.
@@ -14481,51 +13469,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Active Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Active Subscriptions Sum
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Approved Payments Count
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Approved Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cancelled Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Paused Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Rejected Payments Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Rejected Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Finished Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
           title: Customer
         subscription:
           description: 'The [Subscription](#tag/Subscriptions) associated with the payment if existent.'
@@ -14991,7 +13934,11 @@ components:
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
         id:
-          description: UUID identifier for the object.
+          description: Unique identifier for the object.
+          type: string
+          readOnly: true
+        uuid:
+          description: 'UUID identifier for the object. [Legacy]'
           type: string
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
         name:
@@ -15043,42 +13990,6 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
-        active_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        active_subscriptions_sum:
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_count:
-          type: integer
-          format: int32
-          example: 0
-        approved_payments_sum:
-          type: integer
-          format: int32
-          example: 0
-        cancelled_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        paused_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_count:
-          type: integer
-          format: int32
-          example: 0
-        rejected_payments_sum:
-          type: integer
-          format: int32
-          example: 0
-        finished_subscriptions_count:
-          type: integer
-          format: int32
-          example: 0
         deleted_at:
           description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
           format: date-time
@@ -15263,51 +14174,6 @@ components:
               oneOf:
                 - type: 'null'
                 - type: string
-            active_subscriptions_count:
-              description: Active Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            active_subscriptions_sum:
-              description: Active Subscriptions Sum
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_count:
-              description: Approved Payments Count
-              type: integer
-              format: int32
-              example: 0
-            approved_payments_sum:
-              description: Approved Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            cancelled_subscriptions_count:
-              description: Cancelled Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            paused_subscriptions_count:
-              description: Paused Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_count:
-              description: Rejected Payments Count
-              type: integer
-              format: int32
-              example: 0
-            rejected_payments_sum:
-              description: Rejected Payments Sum
-              type: integer
-              format: int32
-              example: 0
-            finished_subscriptions_count:
-              description: Finished Subscriptions Count
-              type: integer
-              format: int32
-              example: 0
           title: Customer
         payment_method:
           description: This object represents a payment method of your account.
@@ -15485,31 +14351,6 @@ components:
                 type: string
               type: object
             - type: 'null'
-        payments_created:
-          description: Number of subscription's payments created
-          type: number
-          example: 14
-          readOnly: true
-        approved_payments_sum:
-          description: Sum of subscription's approved payments
-          type: number
-          example: 9
-          readOnly: true
-        approved_payments_count:
-          description: Count of subscription's approved payments
-          type: number
-          example: 46800
-          readOnly: true
-        rejected_payments_sum:
-          description: Sum of subscription's rejected payments
-          type: number
-          example: 1
-          readOnly: true
-        rejected_payments_count:
-          description: Count of subscription's rejected payments
-          type: number
-          example: 5200
-          readOnly: true
       title: Subscription
     webhook:
       description: |-
@@ -15590,24 +14431,12 @@ components:
       description: Pagination metadata
       type: object
       properties:
-        current_page:
-          type: number
-          example: 1
-        from:
-          type: number
-          example: 1
-        last_page:
-          type: number
-          example: 1
         per_page:
           type: number
           example: 25
-        to:
-          type: number
-          example: 1
         total:
           type: number
-          example: 2
+          example: 2500
         path:
           type: string
           example: 'https://api.tucuota.com/v1/customers'
@@ -15651,15 +14480,6 @@ components:
         created_at: '2021-07-05T12:24:32-03:00'
         updated_at: '2021-07-05T12:24:32-03:00'
         deleted_at: null
-        approved_payments_count: 13
-        approved_payments_sum: 47900
-        rejected_payments_count: 1
-        rejected_payments_sum: 3500
-        active_subscriptions_count: 1
-        active_subscriptions_sum: 3500
-        paused_subscriptions_count: 0
-        cancelled_subscriptions_count: 0
-        finished_subscriptions_count: 0
     event:
       summary: Sample Event
       value:
@@ -15750,7 +14570,8 @@ components:
         enabled: true
         extra_fields: []
         extra_fields_customer: []
-        id: b7fba990-83cc-11ec-8c7b-5b2fd150abb2
+        id: LKLj0JV8xzdMoRk549
+        uuid: b7fba990-83cc-11ec-8c7b-5b2fd150abb2
         kind: payment
         livemode: true
         metadata: null
@@ -15809,7 +14630,8 @@ components:
           name: John Doe
           updated_at: '2022-02-05T01:42:13-03:00'
         deleted_at: null
-        id: 3990a740-83ab-11ec-8651-cde6203c968e
+        id: MA9aQOWen2kZe6qypB
+        uuid: 3990a740-83ab-11ec-8651-cde6203c968e
         livemode: true
         metadata:
           dni: '1231232131'
@@ -15953,7 +14775,8 @@ components:
         editable_count: false
         extra_fields: []
         extra_fields_customer: []
-        id: d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81
+        id: SSnO8b9w7B51VE0B5m
+        uuid: d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81
         installments: 1
         interval: 1
         interval_unit: monthly
@@ -16033,11 +14856,6 @@ components:
           type: card
           updated_at: '2022-02-01T23:13:04-03:00'
         metadata: null
-        payments_created: 14
-        approved_payments_count: 9
-        approved_payments_sum: 46800
-        rejected_payments_count: 1
-        rejected_payments_sum: 5200
     webhook:
       summary: Sample Webhook
       value:
