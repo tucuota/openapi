@@ -285,6 +285,38 @@
                   "required": [
                     "data"
                   ]
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "CS3Z25Agp708",
+                      "object": "customer",
+                      "gateway_identifier": 1723393503,
+                      "name": "Andrés Bahena Tercero",
+                      "email": "andres37@calvillo.info",
+                      "identification_type": null,
+                      "identification_number": null,
+                      "mobile_number": "+5481934863501",
+                      "metadata": {
+                        "external_id": "0Qk3IJY5"
+                      },
+                      "livemode": true,
+                      "created_at": "2021-07-05T12:24:32-03:00",
+                      "updated_at": "2021-07-05T12:24:32-03:00",
+                      "deleted_at": null
+                    }
+                  ],
+                  "links": {
+                    "first": null,
+                    "last": null,
+                    "next": "https://api.tucuota.com/v1/customers?starting_after=CS3Z25Agp708",
+                    "prev": null
+                  },
+                  "meta": {
+                    "per_page": 25,
+                    "total": 2500,
+                    "path": "https://api.tucuota.com/v1/customers"
+                  }
                 }
               }
             }
@@ -557,6 +589,25 @@
                       },
                       "title": "Cliente"
                     }
+                  }
+                },
+                "example": {
+                  "data": {
+                    "id": "CS3Z25Agp708",
+                    "object": "customer",
+                    "gateway_identifier": 1234,
+                    "name": "Pedro Lombardo",
+                    "email": "pedrolombardo@email.com",
+                    "identification_type": "DNI",
+                    "identification_number": "237767265",
+                    "mobile_number": null,
+                    "metadata": {
+                      "some": "value"
+                    },
+                    "livemode": true,
+                    "created_at": "2021-07-05T12:24:32-03:00",
+                    "updated_at": "2021-07-05T12:24:32-03:00",
+                    "deleted_at": null
                   }
                 }
               }
