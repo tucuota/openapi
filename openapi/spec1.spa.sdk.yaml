@@ -120,7 +120,7 @@ info:
     No almacene información confidencial (números de cuentas bancarias, detalles de tarjetas, etc.) como metadata.
     # Paginación
 
-    Todos los recursos de la API pueden listarse a través de métodos de la API. Por ejemplo, puede [obtener pagos](#tag/Payments/operation/PaymentsGetPayments), [obtener clientes](#tag/Customers/operation/CustomersGetCustomers) y [obtener suscripciones](#tag/Subscriptions/operation/SubscriptionsGetSubscriptions). Estos métodos API de lista comparten una estructura común, tomando al menos estos tres parámetros: `limit`, `starting_after` y `ending_before`.
+    Todos los recursos de la API pueden listarse a través de métodos de la API. Por ejemplo, puede [obtener pagos](#tag/Pagos/operation/PaymentsGetPayments), [obtener clientes](#tag/Clientes/operation/CustomersGetCustomers) y [obtener suscripciones](#tag/Suscripciones/operation/SubscriptionsGetSubscriptions). Estos métodos API de lista comparten una estructura común, tomando al menos estos tres parámetros: `limit`, `starting_after` y `ending_before`.
 
     La respuesta de un método API de lista representa una sola página en un orden cronológico inverso. Si no especificas `starting_after` o `ending_before`, recibirás la primera página de este objecto, que contiene los objetos más nuevos. Puede especificar un ID en el campo `starting_after` para obtener la página de objetos más antiguos que aparecen inmediatamente después del objeto en cuestión. De manera similar, puedes especificar `ending_before` para recibir una página de objetos más nuevos que ocurren inmediatamente antes del objeto en cuestión. Los objetos de una página siempre aparecen en orden cronológico inverso. Solo se puede usar `starting_after` o `ending_before`.
     # IDs de Request
