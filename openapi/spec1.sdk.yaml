@@ -396,7 +396,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: Unique identifier for the Customer.
                           type: string
                           example: CSljikas98
                           readOnly: true
@@ -711,7 +711,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Customer.
                         type: string
                         example: CSljikas98
                         readOnly: true
@@ -958,7 +958,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Customer.
                         type: string
                         example: CSljikas98
                         readOnly: true
@@ -1213,7 +1213,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Customer.
                         type: string
                         example: CSljikas98
                         readOnly: true
@@ -1798,7 +1798,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: Unique identifier for the Event.
                           type: string
                           example: EVm3RnKn3knw
                           readOnly: true
@@ -2051,7 +2051,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Event.
                         type: string
                         example: EVm3RnKn3knw
                         readOnly: true
@@ -2506,7 +2506,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Import.
                         type: string
                         example: IM129038120h
                         readOnly: true
@@ -2723,7 +2723,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Import.
                         type: string
                         example: IM129038120h
                         readOnly: true
@@ -3866,8 +3866,9 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: Unique identifier for the Mandate.
                           type: string
+                          example: MAmQ6j9NWxblNv
                           readOnly: true
                         uuid:
                           description: 'UUID identifier for the object. [Legacy]'
@@ -3886,7 +3887,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: Unique identifier for the Customer.
                               type: string
                               example: CSljikas98
                               readOnly: true
@@ -4493,8 +4494,9 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Mandate.
                         type: string
+                        example: MAmQ6j9NWxblNv
                         readOnly: true
                       uuid:
                         description: 'UUID identifier for the object. [Legacy]'
@@ -4513,7 +4515,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: Unique identifier for the Customer.
                             type: string
                             example: CSljikas98
                             readOnly: true
@@ -6196,7 +6198,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: Unique identifier for the Payment.
                           type: string
                           example: PYljikas9Fa8
                           readOnly: true
@@ -6323,7 +6325,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: Unique identifier for the Customer.
                               type: string
                               example: CSljikas98
                               readOnly: true
@@ -6821,7 +6823,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Payment.
                         type: string
                         example: PYljikas9Fa8
                         readOnly: true
@@ -6948,7 +6950,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: Unique identifier for the Customer.
                             type: string
                             example: CSljikas98
                             readOnly: true
@@ -7371,7 +7373,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Payment.
                         type: string
                         example: PYljikas9Fa8
                         readOnly: true
@@ -7498,7 +7500,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: Unique identifier for the Customer.
                             type: string
                             example: CSljikas98
                             readOnly: true
@@ -7947,7 +7949,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Payment.
                         type: string
                         example: PYljikas9Fa8
                         readOnly: true
@@ -8074,7 +8076,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: Unique identifier for the Customer.
                             type: string
                             example: CSljikas98
                             readOnly: true
@@ -8854,7 +8856,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: Unique identifier for the Refund.
                           type: string
                           example: RFljikas9Fa8
                           readOnly: true
@@ -9115,7 +9117,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Refund.
                         type: string
                         example: RFljikas9Fa8
                         readOnly: true
@@ -9338,7 +9340,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Refund.
                         type: string
                         example: RFljikas9Fa8
                         readOnly: true
@@ -9643,8 +9645,9 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Session.
                         type: string
+                        example: SSmQ6j9NWxblNv
                         readOnly: true
                       uuid:
                         description: 'UUID identifier for the object. [Legacy]'
@@ -9878,8 +9881,9 @@ paths:
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Session.
                         type: string
+                        example: SSmQ6j9NWxblNv
                         readOnly: true
                       uuid:
                         description: 'UUID identifier for the object. [Legacy]'
@@ -10102,7 +10106,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: Unique identifier for the Subscription.
                           type: string
                           example: SBmQ6j9NWxblNv
                           readOnly: true
@@ -10157,14 +10161,14 @@ paths:
                             - monthly
                             - yearly
                         interval:
-                          description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
+                          description: 'Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
                           type: number
                           example: 1
                         day_of_month:
-                          description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+                          description: 'Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.'
                           type: number
                         day_of_week:
-                          description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                          description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
                           type: number
                         livemode:
                           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -10200,7 +10204,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: Unique identifier for the Customer.
                               type: string
                               example: CSljikas98
                               readOnly: true
@@ -10688,7 +10692,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Subscription.
                         type: string
                         example: SBmQ6j9NWxblNv
                         readOnly: true
@@ -10743,14 +10747,14 @@ paths:
                           - monthly
                           - yearly
                       interval:
-                        description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
+                        description: 'Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
                         type: number
                         example: 1
                       day_of_month:
-                        description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+                        description: 'Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.'
                         type: number
                       day_of_week:
-                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
                         type: number
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -10786,7 +10790,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: Unique identifier for the Customer.
                             type: string
                             example: CSljikas98
                             readOnly: true
@@ -11195,7 +11199,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Subscription.
                         type: string
                         example: SBmQ6j9NWxblNv
                         readOnly: true
@@ -11250,14 +11254,14 @@ paths:
                           - monthly
                           - yearly
                       interval:
-                        description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
+                        description: 'Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
                         type: number
                         example: 1
                       day_of_month:
-                        description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+                        description: 'Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.'
                         type: number
                       day_of_week:
-                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
                         type: number
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -11293,7 +11297,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: Unique identifier for the Customer.
                             type: string
                             example: CSljikas98
                             readOnly: true
@@ -11750,7 +11754,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Subscription.
                         type: string
                         example: SBmQ6j9NWxblNv
                         readOnly: true
@@ -11805,14 +11809,14 @@ paths:
                           - monthly
                           - yearly
                       interval:
-                        description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
+                        description: 'Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
                         type: number
                         example: 1
                       day_of_month:
-                        description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+                        description: 'Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.'
                         type: number
                       day_of_week:
-                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
                         type: number
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -11848,7 +11852,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: Unique identifier for the Customer.
                             type: string
                             example: CSljikas98
                             readOnly: true
@@ -12257,7 +12261,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Subscription.
                         type: string
                         example: SBmQ6j9NWxblNv
                         readOnly: true
@@ -12312,14 +12316,14 @@ paths:
                           - monthly
                           - yearly
                       interval:
-                        description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
+                        description: 'Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
                         type: number
                         example: 1
                       day_of_month:
-                        description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+                        description: 'Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.'
                         type: number
                       day_of_week:
-                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
                         type: number
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -12355,7 +12359,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: Unique identifier for the Customer.
                             type: string
                             example: CSljikas98
                             readOnly: true
@@ -12726,7 +12730,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Subscription.
                         type: string
                         example: SBmQ6j9NWxblNv
                         readOnly: true
@@ -12781,14 +12785,14 @@ paths:
                           - monthly
                           - yearly
                       interval:
-                        description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
+                        description: 'Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
                         type: number
                         example: 1
                       day_of_month:
-                        description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+                        description: 'Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.'
                         type: number
                       day_of_week:
-                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
                         type: number
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -12824,7 +12828,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: Unique identifier for the Customer.
                             type: string
                             example: CSljikas98
                             readOnly: true
@@ -13201,7 +13205,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: Unique identifier for the Subscription.
                         type: string
                         example: SBmQ6j9NWxblNv
                         readOnly: true
@@ -13256,14 +13260,14 @@ paths:
                           - monthly
                           - yearly
                       interval:
-                        description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
+                        description: 'Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
                         type: number
                         example: 1
                       day_of_month:
-                        description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+                        description: 'Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.'
                         type: number
                       day_of_week:
-                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                        description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
                         type: number
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -13299,7 +13303,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: Unique identifier for the Customer.
                             type: string
                             example: CSljikas98
                             readOnly: true
@@ -14773,10 +14777,6 @@ components:
           type: string
           example: Record not found
       title: Not Found
-    id:
-      description: Unique identifier for the object.
-      type: string
-      readOnly: true
     name:
       description: The customer's full name or business name.
       type: string
@@ -14841,7 +14841,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Customer.
           type: string
           example: CSljikas98
           readOnly: true
@@ -14961,7 +14961,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Event.
           type: string
           example: EVm3RnKn3knw
           readOnly: true
@@ -15068,7 +15068,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Import.
           type: string
           example: IM129038120h
           readOnly: true
@@ -15131,6 +15131,10 @@ components:
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
       title: Import
+    id:
+      description: Unique identifier for the object.
+      type: string
+      readOnly: true
     uuid:
       description: 'UUID identifier for the object. [Legacy]'
       type: string
@@ -15436,8 +15440,9 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Mandate.
           type: string
+          example: MAmQ6j9NWxblNv
           readOnly: true
         uuid:
           description: 'UUID identifier for the object. [Legacy]'
@@ -15456,7 +15461,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: Unique identifier for the Customer.
               type: string
               example: CSljikas98
               readOnly: true
@@ -15745,7 +15750,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Payment.
           type: string
           example: PYljikas9Fa8
           readOnly: true
@@ -15872,7 +15877,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: Unique identifier for the Customer.
               type: string
               example: CSljikas98
               readOnly: true
@@ -16154,7 +16159,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Refund.
           type: string
           example: RFljikas9Fa8
           readOnly: true
@@ -16252,8 +16257,9 @@ components:
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Session.
           type: string
+          example: SSmQ6j9NWxblNv
           readOnly: true
         uuid:
           description: 'UUID identifier for the object. [Legacy]'
@@ -16321,7 +16327,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Subscription.
           type: string
           example: SBmQ6j9NWxblNv
           readOnly: true
@@ -16376,14 +16382,14 @@ components:
             - monthly
             - yearly
         interval:
-          description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
+          description: 'Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
           type: number
           example: 1
         day_of_month:
-          description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+          description: 'Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.'
           type: number
         day_of_week:
-          description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+          description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
           type: number
         livemode:
           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -16419,7 +16425,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: Unique identifier for the Customer.
               type: string
               example: CSljikas98
               readOnly: true
@@ -16776,7 +16782,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Customer.
           type: string
           example: CSljikas98
           readOnly: true
@@ -16855,7 +16861,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Event.
           type: string
           example: EVm3RnKn3knw
           readOnly: true
@@ -16943,7 +16949,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Import.
           type: string
           example: IM129038120h
           readOnly: true
@@ -17058,8 +17064,9 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Mandate.
           type: string
+          example: MAmQ6j9NWxblNv
           readOnly: true
         uuid:
           description: 'UUID identifier for the object. [Legacy]'
@@ -17078,7 +17085,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: Unique identifier for the Customer.
               type: string
               example: CSljikas98
               readOnly: true
@@ -17351,7 +17358,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Payment.
           type: string
           example: PYljikas9Fa8
           readOnly: true
@@ -17478,7 +17485,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: Unique identifier for the Customer.
               type: string
               example: CSljikas98
               readOnly: true
@@ -17923,7 +17930,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Refund.
           type: string
           example: RFljikas9Fa8
           readOnly: true
@@ -18016,8 +18023,9 @@ components:
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Session.
           type: string
+          example: SSmQ6j9NWxblNv
           readOnly: true
         uuid:
           description: 'UUID identifier for the object. [Legacy]'
@@ -18085,7 +18093,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: Unique identifier for the Subscription.
           type: string
           example: SBmQ6j9NWxblNv
           readOnly: true
@@ -18140,14 +18148,14 @@ components:
             - monthly
             - yearly
         interval:
-          description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
+          description: 'Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
           type: number
           example: 1
         day_of_month:
-          description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+          description: 'Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.'
           type: number
         day_of_week:
-          description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+          description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
           type: number
         livemode:
           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
@@ -18183,7 +18191,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: Unique identifier for the Customer.
               type: string
               example: CSljikas98
               readOnly: true

@@ -122,7 +122,7 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "description": "Identificador único del objeto.",
+                            "description": "Identificador único del Cliente.",
                             "type": "string",
                             "example": "CSljikas98",
                             "readOnly": true
@@ -450,7 +450,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único del Cliente.",
                           "type": "string",
                           "example": "CSljikas98",
                           "readOnly": true
@@ -660,7 +660,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único del Cliente.",
                           "type": "string",
                           "example": "CSljikas98",
                           "readOnly": true
@@ -935,7 +935,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único del Cliente.",
                           "type": "string",
                           "example": "CSljikas98",
                           "readOnly": true
@@ -1428,7 +1428,7 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "description": "Identificador único del objeto.",
+                            "description": "Identificador único del Evento.",
                             "type": "string",
                             "example": "EVm3RnKn3knw",
                             "readOnly": true
@@ -1636,7 +1636,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único del Evento.",
                           "type": "string",
                           "example": "EVm3RnKn3knw",
                           "readOnly": true
@@ -2028,7 +2028,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Importación.",
                           "type": "string",
                           "example": "IM129038120h",
                           "readOnly": true
@@ -2186,7 +2186,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Importación.",
                           "type": "string",
                           "example": "IM129038120h",
                           "readOnly": true
@@ -3143,8 +3143,9 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "description": "Identificador único del objeto.",
+                            "description": "Identificador único de la Adhesión.",
                             "type": "string",
+                            "example": "MAmQ6j9NWxblNv",
                             "readOnly": true
                           },
                           "uuid": {
@@ -3168,7 +3169,7 @@
                             "type": "object",
                             "properties": {
                               "id": {
-                                "description": "Identificador único del objeto.",
+                                "description": "Identificador único del Cliente.",
                                 "type": "string",
                                 "example": "CSljikas98",
                                 "readOnly": true
@@ -3735,8 +3736,9 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Adhesión.",
                           "type": "string",
+                          "example": "MAmQ6j9NWxblNv",
                           "readOnly": true
                         },
                         "uuid": {
@@ -3760,7 +3762,7 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "description": "Identificador único del objeto.",
+                              "description": "Identificador único del Cliente.",
                               "type": "string",
                               "example": "CSljikas98",
                               "readOnly": true
@@ -5370,7 +5372,7 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "description": "Identificador único del objeto.",
+                            "description": "Identificador único del Pago.",
                             "type": "string",
                             "example": "PYljikas9Fa8",
                             "readOnly": true
@@ -5547,7 +5549,7 @@
                             "type": "object",
                             "properties": {
                               "id": {
-                                "description": "Identificador único del objeto.",
+                                "description": "Identificador único del Cliente.",
                                 "type": "string",
                                 "example": "CSljikas98",
                                 "readOnly": true
@@ -6100,7 +6102,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único del Pago.",
                           "type": "string",
                           "example": "PYljikas9Fa8",
                           "readOnly": true
@@ -6277,7 +6279,7 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "description": "Identificador único del objeto.",
+                              "description": "Identificador único del Cliente.",
                               "type": "string",
                               "example": "CSljikas98",
                               "readOnly": true
@@ -6718,7 +6720,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único del Pago.",
                           "type": "string",
                           "example": "PYljikas9Fa8",
                           "readOnly": true
@@ -6895,7 +6897,7 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "description": "Identificador único del objeto.",
+                              "description": "Identificador único del Cliente.",
                               "type": "string",
                               "example": "CSljikas98",
                               "readOnly": true
@@ -7414,7 +7416,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único del Pago.",
                           "type": "string",
                           "example": "PYljikas9Fa8",
                           "readOnly": true
@@ -7591,7 +7593,7 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "description": "Identificador único del objeto.",
+                              "description": "Identificador único del Cliente.",
                               "type": "string",
                               "example": "CSljikas98",
                               "readOnly": true
@@ -8254,7 +8256,7 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "description": "Identificador único del objeto.",
+                            "description": "Identificador único de la Devolución.",
                             "type": "string",
                             "example": "RFljikas9Fa8",
                             "readOnly": true
@@ -8486,7 +8488,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Devolución.",
                           "type": "string",
                           "example": "RFljikas9Fa8",
                           "readOnly": true
@@ -8652,7 +8654,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Devolución.",
                           "type": "string",
                           "example": "RFljikas9Fa8",
                           "readOnly": true
@@ -8945,8 +8947,9 @@
                           "example": "2022-02-11T23:19:22-03:00"
                         },
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Sesión.",
                           "type": "string",
+                          "example": "SSmQ6j9NWxblNv",
                           "readOnly": true
                         },
                         "uuid": {
@@ -9147,8 +9150,9 @@
                           "example": "2022-02-11T23:19:22-03:00"
                         },
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Sesión.",
                           "type": "string",
+                          "example": "SSmQ6j9NWxblNv",
                           "readOnly": true
                         },
                         "uuid": {
@@ -9374,7 +9378,7 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "description": "Identificador único del objeto.",
+                            "description": "Identificador único de la Suscripción.",
                             "type": "string",
                             "example": "SBmQ6j9NWxblNv",
                             "readOnly": true
@@ -9431,7 +9435,7 @@
                             "example": "2022-08-04"
                           },
                           "interval_unit": {
-                            "description": "The unit of time between customer charge dates.",
+                            "description": "La unidad de tiempo entre las fechas de pago del cliente.",
                             "type": "string",
                             "example": "monthly",
                             "enum": [
@@ -9441,16 +9445,16 @@
                             ]
                           },
                           "interval": {
-                            "description": "Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+                            "description": "Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.",
                             "type": "number",
                             "example": 1
                           },
                           "day_of_month": {
-                            "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                            "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
                             "type": "number"
                           },
                           "day_of_week": {
-                            "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.",
+                            "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
                             "type": "number"
                           },
                           "livemode": {
@@ -9471,12 +9475,12 @@
                             "example": "2022-02-11T23:19:22-03:00"
                           },
                           "first_date": {
-                            "description": "The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.",
+                            "description": "La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.",
                             "type": "string",
                             "example": "2022-08-04"
                           },
                           "upcoming_dates": {
-                            "description": "Up to 5 upcoming payments charge dates.",
+                            "description": "Próximas 5 fechas de pago.",
                             "type": "array",
                             "items": {
                               "type": "string"
@@ -9494,7 +9498,7 @@
                             "type": "object",
                             "properties": {
                               "id": {
-                                "description": "Identificador único del objeto.",
+                                "description": "Identificador único del Cliente.",
                                 "type": "string",
                                 "example": "CSljikas98",
                                 "readOnly": true
@@ -10019,7 +10023,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Suscripción.",
                           "type": "string",
                           "example": "SBmQ6j9NWxblNv",
                           "readOnly": true
@@ -10076,7 +10080,7 @@
                           "example": "2022-08-04"
                         },
                         "interval_unit": {
-                          "description": "The unit of time between customer charge dates.",
+                          "description": "La unidad de tiempo entre las fechas de pago del cliente.",
                           "type": "string",
                           "example": "monthly",
                           "enum": [
@@ -10086,16 +10090,16 @@
                           ]
                         },
                         "interval": {
-                          "description": "Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+                          "description": "Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.",
                           "type": "number",
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
                           "type": "number"
                         },
                         "day_of_week": {
-                          "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.",
+                          "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
                           "type": "number"
                         },
                         "livemode": {
@@ -10116,12 +10120,12 @@
                           "example": "2022-02-11T23:19:22-03:00"
                         },
                         "first_date": {
-                          "description": "The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.",
+                          "description": "La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.",
                           "type": "string",
                           "example": "2022-08-04"
                         },
                         "upcoming_dates": {
-                          "description": "Up to 5 upcoming payments charge dates.",
+                          "description": "Próximas 5 fechas de pago.",
                           "type": "array",
                           "items": {
                             "type": "string"
@@ -10139,7 +10143,7 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "description": "Identificador único del objeto.",
+                              "description": "Identificador único del Cliente.",
                               "type": "string",
                               "example": "CSljikas98",
                               "readOnly": true
@@ -10548,7 +10552,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Suscripción.",
                           "type": "string",
                           "example": "SBmQ6j9NWxblNv",
                           "readOnly": true
@@ -10605,7 +10609,7 @@
                           "example": "2022-08-04"
                         },
                         "interval_unit": {
-                          "description": "The unit of time between customer charge dates.",
+                          "description": "La unidad de tiempo entre las fechas de pago del cliente.",
                           "type": "string",
                           "example": "monthly",
                           "enum": [
@@ -10615,16 +10619,16 @@
                           ]
                         },
                         "interval": {
-                          "description": "Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+                          "description": "Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.",
                           "type": "number",
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
                           "type": "number"
                         },
                         "day_of_week": {
-                          "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.",
+                          "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
                           "type": "number"
                         },
                         "livemode": {
@@ -10645,12 +10649,12 @@
                           "example": "2022-02-11T23:19:22-03:00"
                         },
                         "first_date": {
-                          "description": "The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.",
+                          "description": "La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.",
                           "type": "string",
                           "example": "2022-08-04"
                         },
                         "upcoming_dates": {
-                          "description": "Up to 5 upcoming payments charge dates.",
+                          "description": "Próximas 5 fechas de pago.",
                           "type": "array",
                           "items": {
                             "type": "string"
@@ -10668,7 +10672,7 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "description": "Identificador único del objeto.",
+                              "description": "Identificador único del Cliente.",
                               "type": "string",
                               "example": "CSljikas98",
                               "readOnly": true
@@ -11178,7 +11182,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Suscripción.",
                           "type": "string",
                           "example": "SBmQ6j9NWxblNv",
                           "readOnly": true
@@ -11235,7 +11239,7 @@
                           "example": "2022-08-04"
                         },
                         "interval_unit": {
-                          "description": "The unit of time between customer charge dates.",
+                          "description": "La unidad de tiempo entre las fechas de pago del cliente.",
                           "type": "string",
                           "example": "monthly",
                           "enum": [
@@ -11245,16 +11249,16 @@
                           ]
                         },
                         "interval": {
-                          "description": "Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+                          "description": "Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.",
                           "type": "number",
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
                           "type": "number"
                         },
                         "day_of_week": {
-                          "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.",
+                          "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
                           "type": "number"
                         },
                         "livemode": {
@@ -11275,12 +11279,12 @@
                           "example": "2022-02-11T23:19:22-03:00"
                         },
                         "first_date": {
-                          "description": "The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.",
+                          "description": "La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.",
                           "type": "string",
                           "example": "2022-08-04"
                         },
                         "upcoming_dates": {
-                          "description": "Up to 5 upcoming payments charge dates.",
+                          "description": "Próximas 5 fechas de pago.",
                           "type": "array",
                           "items": {
                             "type": "string"
@@ -11298,7 +11302,7 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "description": "Identificador único del objeto.",
+                              "description": "Identificador único del Cliente.",
                               "type": "string",
                               "example": "CSljikas98",
                               "readOnly": true
@@ -11707,7 +11711,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Suscripción.",
                           "type": "string",
                           "example": "SBmQ6j9NWxblNv",
                           "readOnly": true
@@ -11764,7 +11768,7 @@
                           "example": "2022-08-04"
                         },
                         "interval_unit": {
-                          "description": "The unit of time between customer charge dates.",
+                          "description": "La unidad de tiempo entre las fechas de pago del cliente.",
                           "type": "string",
                           "example": "monthly",
                           "enum": [
@@ -11774,16 +11778,16 @@
                           ]
                         },
                         "interval": {
-                          "description": "Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+                          "description": "Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.",
                           "type": "number",
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
                           "type": "number"
                         },
                         "day_of_week": {
-                          "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.",
+                          "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
                           "type": "number"
                         },
                         "livemode": {
@@ -11804,12 +11808,12 @@
                           "example": "2022-02-11T23:19:22-03:00"
                         },
                         "first_date": {
-                          "description": "The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.",
+                          "description": "La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.",
                           "type": "string",
                           "example": "2022-08-04"
                         },
                         "upcoming_dates": {
-                          "description": "Up to 5 upcoming payments charge dates.",
+                          "description": "Próximas 5 fechas de pago.",
                           "type": "array",
                           "items": {
                             "type": "string"
@@ -11827,7 +11831,7 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "description": "Identificador único del objeto.",
+                              "description": "Identificador único del Cliente.",
                               "type": "string",
                               "example": "CSljikas98",
                               "readOnly": true
@@ -12231,7 +12235,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Suscripción.",
                           "type": "string",
                           "example": "SBmQ6j9NWxblNv",
                           "readOnly": true
@@ -12288,7 +12292,7 @@
                           "example": "2022-08-04"
                         },
                         "interval_unit": {
-                          "description": "The unit of time between customer charge dates.",
+                          "description": "La unidad de tiempo entre las fechas de pago del cliente.",
                           "type": "string",
                           "example": "monthly",
                           "enum": [
@@ -12298,16 +12302,16 @@
                           ]
                         },
                         "interval": {
-                          "description": "Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+                          "description": "Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.",
                           "type": "number",
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
                           "type": "number"
                         },
                         "day_of_week": {
-                          "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.",
+                          "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
                           "type": "number"
                         },
                         "livemode": {
@@ -12328,12 +12332,12 @@
                           "example": "2022-02-11T23:19:22-03:00"
                         },
                         "first_date": {
-                          "description": "The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.",
+                          "description": "La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.",
                           "type": "string",
                           "example": "2022-08-04"
                         },
                         "upcoming_dates": {
-                          "description": "Up to 5 upcoming payments charge dates.",
+                          "description": "Próximas 5 fechas de pago.",
                           "type": "array",
                           "items": {
                             "type": "string"
@@ -12351,7 +12355,7 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "description": "Identificador único del objeto.",
+                              "description": "Identificador único del Cliente.",
                               "type": "string",
                               "example": "CSljikas98",
                               "readOnly": true
@@ -12760,7 +12764,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "description": "Identificador único del objeto.",
+                          "description": "Identificador único de la Suscripción.",
                           "type": "string",
                           "example": "SBmQ6j9NWxblNv",
                           "readOnly": true
@@ -12817,7 +12821,7 @@
                           "example": "2022-08-04"
                         },
                         "interval_unit": {
-                          "description": "The unit of time between customer charge dates.",
+                          "description": "La unidad de tiempo entre las fechas de pago del cliente.",
                           "type": "string",
                           "example": "monthly",
                           "enum": [
@@ -12827,16 +12831,16 @@
                           ]
                         },
                         "interval": {
-                          "description": "Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+                          "description": "Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.",
                           "type": "number",
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
                           "type": "number"
                         },
                         "day_of_week": {
-                          "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.",
+                          "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
                           "type": "number"
                         },
                         "livemode": {
@@ -12857,12 +12861,12 @@
                           "example": "2022-02-11T23:19:22-03:00"
                         },
                         "first_date": {
-                          "description": "The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.",
+                          "description": "La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.",
                           "type": "string",
                           "example": "2022-08-04"
                         },
                         "upcoming_dates": {
-                          "description": "Up to 5 upcoming payments charge dates.",
+                          "description": "Próximas 5 fechas de pago.",
                           "type": "array",
                           "items": {
                             "type": "string"
@@ -12880,7 +12884,7 @@
                           "type": "object",
                           "properties": {
                             "id": {
-                              "description": "Identificador único del objeto.",
+                              "description": "Identificador único del Cliente.",
                               "type": "string",
                               "example": "CSljikas98",
                               "readOnly": true
@@ -14188,11 +14192,6 @@
         },
         "title": "Not Found"
       },
-      "id": {
-        "description": "Identificador único del objeto.",
-        "type": "string",
-        "readOnly": true
-      },
       "name": {
         "description": "El nombre completo del cliente.",
         "type": "string",
@@ -14285,7 +14284,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único del Cliente.",
             "type": "string",
             "example": "CSljikas98",
             "readOnly": true
@@ -14456,7 +14455,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único del Evento.",
             "type": "string",
             "example": "EVm3RnKn3knw",
             "readOnly": true
@@ -14584,7 +14583,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único de la Importación.",
             "type": "string",
             "example": "IM129038120h",
             "readOnly": true
@@ -14663,6 +14662,11 @@
           }
         },
         "title": "Importación"
+      },
+      "id": {
+        "description": "Identificador único del objeto.",
+        "type": "string",
+        "readOnly": true
       },
       "uuid": {
         "description": "Identificador UUID del objeto. [Legacy]",
@@ -15042,8 +15046,9 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único de la Adhesión.",
             "type": "string",
+            "example": "MAmQ6j9NWxblNv",
             "readOnly": true
           },
           "uuid": {
@@ -15067,7 +15072,7 @@
             "type": "object",
             "properties": {
               "id": {
-                "description": "Identificador único del objeto.",
+                "description": "Identificador único del Cliente.",
                 "type": "string",
                 "example": "CSljikas98",
                 "readOnly": true
@@ -15448,7 +15453,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único del Pago.",
             "type": "string",
             "example": "PYljikas9Fa8",
             "readOnly": true
@@ -15625,7 +15630,7 @@
             "type": "object",
             "properties": {
               "id": {
-                "description": "Identificador único del objeto.",
+                "description": "Identificador único del Cliente.",
                 "type": "string",
                 "example": "CSljikas98",
                 "readOnly": true
@@ -16008,7 +16013,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único de la Devolución.",
             "type": "string",
             "example": "RFljikas9Fa8",
             "readOnly": true
@@ -16130,8 +16135,9 @@
             "example": "2022-02-11T23:19:22-03:00"
           },
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único de la Sesión.",
             "type": "string",
+            "example": "SSmQ6j9NWxblNv",
             "readOnly": true
           },
           "uuid": {
@@ -16236,7 +16242,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único de la Suscripción.",
             "type": "string",
             "example": "SBmQ6j9NWxblNv",
             "readOnly": true
@@ -16293,7 +16299,7 @@
             "example": "2022-08-04"
           },
           "interval_unit": {
-            "description": "The unit of time between customer charge dates.",
+            "description": "La unidad de tiempo entre las fechas de pago del cliente.",
             "type": "string",
             "example": "monthly",
             "enum": [
@@ -16303,16 +16309,16 @@
             ]
           },
           "interval": {
-            "description": "Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+            "description": "Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.",
             "type": "number",
             "example": 1
           },
           "day_of_month": {
-            "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+            "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
             "type": "number"
           },
           "day_of_week": {
-            "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.",
+            "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
             "type": "number"
           },
           "livemode": {
@@ -16333,12 +16339,12 @@
             "example": "2022-02-11T23:19:22-03:00"
           },
           "first_date": {
-            "description": "The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.",
+            "description": "La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.",
             "type": "string",
             "example": "2022-08-04"
           },
           "upcoming_dates": {
-            "description": "Up to 5 upcoming payments charge dates.",
+            "description": "Próximas 5 fechas de pago.",
             "type": "array",
             "items": {
               "type": "string"
@@ -16356,7 +16362,7 @@
             "type": "object",
             "properties": {
               "id": {
-                "description": "Identificador único del objeto.",
+                "description": "Identificador único del Cliente.",
                 "type": "string",
                 "example": "CSljikas98",
                 "readOnly": true
@@ -16822,7 +16828,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único del Cliente.",
             "type": "string",
             "example": "CSljikas98",
             "readOnly": true
@@ -16940,7 +16946,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único del Evento.",
             "type": "string",
             "example": "EVm3RnKn3knw",
             "readOnly": true
@@ -17045,7 +17051,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único de la Importación.",
             "type": "string",
             "example": "IM129038120h",
             "readOnly": true
@@ -17194,8 +17200,9 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único de la Adhesión.",
             "type": "string",
+            "example": "MAmQ6j9NWxblNv",
             "readOnly": true
           },
           "uuid": {
@@ -17219,7 +17226,7 @@
             "type": "object",
             "properties": {
               "id": {
-                "description": "Identificador único del objeto.",
+                "description": "Identificador único del Cliente.",
                 "type": "string",
                 "example": "CSljikas98",
                 "readOnly": true
@@ -17581,7 +17588,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único del Pago.",
             "type": "string",
             "example": "PYljikas9Fa8",
             "readOnly": true
@@ -17758,7 +17765,7 @@
             "type": "object",
             "properties": {
               "id": {
-                "description": "Identificador único del objeto.",
+                "description": "Identificador único del Cliente.",
                 "type": "string",
                 "example": "CSljikas98",
                 "readOnly": true
@@ -18340,7 +18347,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único de la Devolución.",
             "type": "string",
             "example": "RFljikas9Fa8",
             "readOnly": true
@@ -18456,8 +18463,9 @@
             "example": "2022-02-11T23:19:22-03:00"
           },
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único de la Sesión.",
             "type": "string",
+            "example": "SSmQ6j9NWxblNv",
             "readOnly": true
           },
           "uuid": {
@@ -18562,7 +18570,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identificador único del objeto.",
+            "description": "Identificador único de la Suscripción.",
             "type": "string",
             "example": "SBmQ6j9NWxblNv",
             "readOnly": true
@@ -18619,7 +18627,7 @@
             "example": "2022-08-04"
           },
           "interval_unit": {
-            "description": "The unit of time between customer charge dates.",
+            "description": "La unidad de tiempo entre las fechas de pago del cliente.",
             "type": "string",
             "example": "monthly",
             "enum": [
@@ -18629,16 +18637,16 @@
             ]
           },
           "interval": {
-            "description": "Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+            "description": "Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.",
             "type": "number",
             "example": 1
           },
           "day_of_month": {
-            "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+            "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
             "type": "number"
           },
           "day_of_week": {
-            "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.",
+            "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
             "type": "number"
           },
           "livemode": {
@@ -18659,12 +18667,12 @@
             "example": "2022-02-11T23:19:22-03:00"
           },
           "first_date": {
-            "description": "The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.",
+            "description": "La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.",
             "type": "string",
             "example": "2022-08-04"
           },
           "upcoming_dates": {
-            "description": "Up to 5 upcoming payments charge dates.",
+            "description": "Próximas 5 fechas de pago.",
             "type": "array",
             "items": {
               "type": "string"
@@ -18682,7 +18690,7 @@
             "type": "object",
             "properties": {
               "id": {
-                "description": "Identificador único del objeto.",
+                "description": "Identificador único del Cliente.",
                 "type": "string",
                 "example": "CSljikas98",
                 "readOnly": true
