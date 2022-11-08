@@ -7,7 +7,7 @@ info:
   description: |
     # Introducción
 
-    TuCuota tiene una API REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+    TuCuota tiene una API REST. Nuestra API tiene direcciones URL predecibles orientadas a los recursos, acepta solicitudes JSON, devuelve respuestas JSON y utiliza códigos de respuesta, autenticación y verbos HTTP estándar.
 
     Las URLs de la API de TuCuota API son:
 
