@@ -1701,7 +1701,7 @@ paths:
         - name: q
           in: query
           description: |
-            Puede usar [la sintáxis de búsqueda](#a).
+            Puede usar [la sintáxis de búsqueda](https://tucuota.com/docs/blog/2022/11/04/Nuevo-y-mejorado-sistema-de-busquedas).
           required: true
           schema:
             type: string
@@ -5453,7 +5453,7 @@ paths:
         - name: q
           in: query
           description: |
-            Puede usar [la sintáxis de búsqueda](#a).
+            Puede usar [la sintáxis de búsqueda](https://tucuota.com/docs/blog/2022/11/04/Nuevo-y-mejorado-sistema-de-busquedas).
           required: true
           schema:
             type: string
@@ -7012,7 +7012,7 @@ paths:
         - name: q
           in: query
           description: |
-            Puede usar [la sintáxis de búsqueda](#a).
+            Puede usar [la sintáxis de búsqueda](https://tucuota.com/docs/blog/2022/11/04/Nuevo-y-mejorado-sistema-de-busquedas).
           required: true
           schema:
             type: string
@@ -10077,7 +10077,7 @@ paths:
         - name: q
           in: query
           description: |
-            Puede usar [la sintáxis de búsqueda](#a).
+            Puede usar [la sintáxis de búsqueda](https://tucuota.com/docs/blog/2022/11/04/Nuevo-y-mejorado-sistema-de-busquedas).
           required: true
           schema:
             type: string
@@ -15665,7 +15665,7 @@ paths:
         - name: q
           in: query
           description: |
-            Puede usar [la sintáxis de búsqueda](#a).
+            Puede usar [la sintáxis de búsqueda](https://tucuota.com/docs/blog/2022/11/04/Nuevo-y-mejorado-sistema-de-busquedas).
           required: true
           schema:
             type: string

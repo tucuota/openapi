@@ -1689,7 +1689,7 @@ paths:
         - name: q
           in: query
           description: |
-            The search query string. See [search query language](#a) and the list of supported query fields for charges.
+            The search query string. See [search query language](https://tucuota.com/docs/blog/2022/11/04/Nuevo-y-mejorado-sistema-de-busquedas) and the list of supported query fields for charges.
           required: true
           schema:
             type: string
@@ -5394,7 +5394,7 @@ paths:
         - name: q
           in: query
           description: |
-            The search query string. See [search query language](#a) and the list of supported query fields for charges.
+            The search query string. See [search query language](https://tucuota.com/docs/blog/2022/11/04/Nuevo-y-mejorado-sistema-de-busquedas) and the list of supported query fields for charges.
           required: true
           schema:
             type: string
@@ -6939,7 +6939,7 @@ paths:
         - name: q
           in: query
           description: |
-            The search query string. See [search query language](#a) and the list of supported query fields for charges.
+            The search query string. See [search query language](https://tucuota.com/docs/blog/2022/11/04/Nuevo-y-mejorado-sistema-de-busquedas) and the list of supported query fields for charges.
           required: true
           schema:
             type: string
@@ -9974,7 +9974,7 @@ paths:
         - name: q
           in: query
           description: |
-            The search query string. See [search query language](#a) and the list of supported query fields for charges.
+            The search query string. See [search query language](https://tucuota.com/docs/blog/2022/11/04/Nuevo-y-mejorado-sistema-de-busquedas) and the list of supported query fields for charges.
           required: true
           schema:
             type: string
@@ -15499,7 +15499,7 @@ paths:
         - name: q
           in: query
           description: |
-            The search query string. See [search query language](#a) and the list of supported query fields for charges.
+            The search query string. See [search query language](https://tucuota.com/docs/blog/2022/11/04/Nuevo-y-mejorado-sistema-de-busquedas) and the list of supported query fields for charges.
           required: true
           schema:
             type: string
