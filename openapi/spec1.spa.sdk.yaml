@@ -15659,8 +15659,8 @@ paths:
   /v1/subscriptions/search:
     get:
       operationId: SubscriptionsSearch
-      summary: Buscar suscriptiones
-      description: Buscar suscriptiones.
+      summary: Buscar suscripciones
+      description: Buscar suscripciones.
       parameters:
         - name: q
           in: query
