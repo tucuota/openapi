@@ -236,7 +236,7 @@
                       }
                     },
                     "links": {
-                      "description": "Metadata de paginación",
+                      "description": "Links de paginación",
                       "type": "object",
                       "properties": {
                         "first": {
@@ -1275,6 +1275,283 @@
         ]
       }
     },
+    "/v1/customers/search": {
+      "get": {
+        "operationId": "CustomersSearch",
+        "summary": "Buscar clientes",
+        "description": "Buscar clientes.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Puede usar [la sintáxis de búsqueda](#a).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "john doe"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 20
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Un cursor para la paginación en varias páginas de resultados. No incluya este parámetro en la primera llamada. Utilice el valor de `next_page` devuelto en una respuesta anterior para solicitar resultados posteriores.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "john doe"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "title": "Cliente",
+                        "description": "Este objeto representa a un cliente de su organización.",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "Identificador único del Cliente.",
+                            "type": "string",
+                            "example": "CSljikas98",
+                            "readOnly": true
+                          },
+                          "name": {
+                            "description": "El nombre completo del cliente.",
+                            "type": "string",
+                            "example": "Jorgelina Castro"
+                          },
+                          "email": {
+                            "description": "El email del cliente.",
+                            "type": "string",
+                            "example": "mail@example.com"
+                          },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "customer"
+                            ]
+                          },
+                          "livemode": {
+                            "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "metadata": {
+                            "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                            "example": {
+                              "some": "metadata"
+                            },
+                            "anyOf": [
+                              {
+                                "additionalProperties": {
+                                  "type": "string"
+                                },
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "mobile_number": {
+                            "description": "Número de teléfono válido del cliente (con código de área).",
+                            "example": "5491164531234",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          "gateway_identifier": {
+                            "description": "La referencia del cliente en los extractos bancarios.",
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 383473
+                          },
+                          "identification_number": {
+                            "description": "Número del Documento del cliente.",
+                            "example": "15.555.324",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          "identification_type": {
+                            "description": "Tipo de Documento del cliente.",
+                            "example": "DNI",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          "created_at": {
+                            "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "updated_at": {
+                            "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "deleted_at": {
+                            "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "links": {
+                      "description": "Links de paginación",
+                      "type": "object",
+                      "properties": {
+                        "first": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        }
+                      },
+                      "title": "Metadata de Respuesta"
+                    },
+                    "meta": {
+                      "description": "Metadata de paginación",
+                      "type": "object",
+                      "properties": {
+                        "per_page": {
+                          "type": "number",
+                          "example": 25
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 2500
+                        },
+                        "path": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers"
+                        }
+                      },
+                      "title": "Response Meta"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "CS3Z25Agp708",
+                      "object": "customer",
+                      "gateway_identifier": 1723393503,
+                      "name": "Andrés Bahena Tercero",
+                      "email": "andres37@calvillo.info",
+                      "identification_type": null,
+                      "identification_number": null,
+                      "mobile_number": "+5481934863501",
+                      "metadata": {
+                        "external_id": "0Qk3IJY5"
+                      },
+                      "livemode": true,
+                      "created_at": "2021-07-05T12:24:32-03:00",
+                      "updated_at": "2021-07-05T12:24:32-03:00",
+                      "deleted_at": null
+                    }
+                  ],
+                  "links": {
+                    "prev": "https://api.tucuota.com/customers/search?q=john%20doe&page=1",
+                    "next": "https://api.tucuota.com/customers/search?q=john%20doe&page=3"
+                  },
+                  "meta": {
+                    "per_page": 25,
+                    "total": 2500
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "No autorizado",
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized"
+                        }
+                      },
+                      "title": "No autorizado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Clientes"
+        ]
+      }
+    },
     "/v1/events": {
       "get": {
         "operationId": "GetEvents",
@@ -1529,7 +1806,7 @@
                       }
                     },
                     "links": {
-                      "description": "Metadata de paginación",
+                      "description": "Links de paginación",
                       "type": "object",
                       "properties": {
                         "first": {
@@ -2598,7 +2875,7 @@
                       }
                     },
                     "links": {
-                      "description": "Metadata de paginación",
+                      "description": "Links de paginación",
                       "type": "object",
                       "properties": {
                         "first": {
@@ -3148,6 +3425,14 @@
                             "example": "MAmQ6j9NWxblNv",
                             "readOnly": true
                           },
+                          "status": {
+                            "description": "Estado.",
+                            "type": "string",
+                            "enum": [
+                              "active",
+                              "revoked"
+                            ]
+                          },
                           "uuid": {
                             "description": "Identificador UUID del objeto. [Legacy]",
                             "type": "string",
@@ -3527,7 +3812,7 @@
                       }
                     },
                     "links": {
-                      "description": "Metadata de paginación",
+                      "description": "Links de paginación",
                       "type": "object",
                       "properties": {
                         "first": {
@@ -3740,6 +4025,14 @@
                           "type": "string",
                           "example": "MAmQ6j9NWxblNv",
                           "readOnly": true
+                        },
+                        "status": {
+                          "description": "Estado.",
+                          "type": "string",
+                          "enum": [
+                            "active",
+                            "revoked"
+                          ]
                         },
                         "uuid": {
                           "description": "Identificador UUID del objeto. [Legacy]",
@@ -4272,9 +4565,595 @@
         ]
       }
     },
+    "/v1/mandates/search": {
+      "get": {
+        "operationId": "MandatesSearch",
+        "summary": "Buscar adhesiones",
+        "description": "Buscar adhesiones.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Puede usar [la sintáxis de búsqueda](#a).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "john doe"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 20
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Un cursor para la paginación en varias páginas de resultados. No incluya este parámetro en la primera llamada. Utilice el valor de `next_page` devuelto en una respuesta anterior para solicitar resultados posteriores.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "john doe"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "title": "Adhesión",
+                        "description": "Este objeto representa una adhesión de su organización.",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "Identificador único de la Adhesión.",
+                            "type": "string",
+                            "example": "MAmQ6j9NWxblNv",
+                            "readOnly": true
+                          },
+                          "status": {
+                            "description": "Estado.",
+                            "type": "string",
+                            "enum": [
+                              "active",
+                              "revoked"
+                            ]
+                          },
+                          "uuid": {
+                            "description": "Identificador UUID del objeto. [Legacy]",
+                            "type": "string",
+                            "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
+                          },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "mandate"
+                            ]
+                          },
+                          "livemode": {
+                            "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "customer": {
+                            "description": "Este objeto representa a un cliente de su organización.",
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "description": "Identificador único del Cliente.",
+                                "type": "string",
+                                "example": "CSljikas98",
+                                "readOnly": true
+                              },
+                              "name": {
+                                "description": "El nombre completo del cliente.",
+                                "type": "string",
+                                "example": "Jorgelina Castro"
+                              },
+                              "email": {
+                                "description": "El email del cliente.",
+                                "type": "string",
+                                "example": "mail@example.com"
+                              },
+                              "object": {
+                                "type": "string",
+                                "enum": [
+                                  "customer"
+                                ]
+                              },
+                              "livemode": {
+                                "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "metadata": {
+                                "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                                "example": {
+                                  "some": "metadata"
+                                },
+                                "anyOf": [
+                                  {
+                                    "additionalProperties": {
+                                      "type": "string"
+                                    },
+                                    "type": "object"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "mobile_number": {
+                                "description": "Número de teléfono válido del cliente (con código de área).",
+                                "example": "5491164531234",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "gateway_identifier": {
+                                "description": "La referencia del cliente en los extractos bancarios.",
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 383473
+                              },
+                              "identification_number": {
+                                "description": "Número del Documento del cliente.",
+                                "example": "15.555.324",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "identification_type": {
+                                "description": "Tipo de Documento del cliente.",
+                                "example": "DNI",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "created_at": {
+                                "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "updated_at": {
+                                "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "deleted_at": {
+                                "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              }
+                            },
+                            "title": "Cliente"
+                          },
+                          "payment_method": {
+                            "description": "Este objeto representa un Método de Pago de su cuenta.",
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "description": "Identificador único del objeto.",
+                                "type": "string",
+                                "example": "PMyma6Ql8Wo9",
+                                "readOnly": true
+                              },
+                              "object": {
+                                "type": "string",
+                                "enum": [
+                                  "payment_method"
+                                ]
+                              },
+                              "type": {
+                                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                                "type": "string",
+                                "example": "card",
+                                "enum": [
+                                  "card",
+                                  "cbu"
+                                ]
+                              },
+                              "card": {
+                                "description": "Este objeto representa una tarjeta de crédito de su cuenta.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco o entidad financiera de la tarjeta de crédito.",
+                                    "type": "string",
+                                    "example": "Banco Santander Río"
+                                  },
+                                  "brand": {
+                                    "description": "Marca de la tarjeta de crédito.",
+                                    "type": "string",
+                                    "example": "visa-credito",
+                                    "enum": [
+                                      "amex",
+                                      "argencard",
+                                      "cabal",
+                                      "cabal-debito",
+                                      "cbu",
+                                      "cencosud",
+                                      "cmr-falabella",
+                                      "cordobesa",
+                                      "diners-club",
+                                      "discover",
+                                      "jcb",
+                                      "lider",
+                                      "maestro",
+                                      "mastercard",
+                                      "mastercard-debit",
+                                      "naranja",
+                                      "naranja-visa",
+                                      "nativa",
+                                      "visa-credito",
+                                      "visa-debito",
+                                      "favacard"
+                                    ]
+                                  },
+                                  "country": {
+                                    "description": "Tarjeta de crédito [código de país ISO_3166-1_alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
+                                    "type": "string",
+                                    "example": "AR"
+                                  },
+                                  "expiration_month": {
+                                    "description": "Mes de expiración.",
+                                    "type": "number",
+                                    "example": 11,
+                                    "nullable": true
+                                  },
+                                  "expiration_year": {
+                                    "description": "Año de expiración.",
+                                    "type": "number",
+                                    "example": 2030,
+                                    "nullable": true
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "funding": {
+                                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                    "type": "string",
+                                    "example": "credit",
+                                    "enum": [
+                                      "credit",
+                                      "debit",
+                                      "prepaid"
+                                    ]
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  }
+                                },
+                                "title": "Tarjeta de Crédito"
+                              },
+                              "cbu": {
+                                "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "País de la cuenta bancaria.",
+                                    "type": "string",
+                                    "enum": [
+                                      "AR"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  }
+                                },
+                                "title": "CBU"
+                              },
+                              "livemode": {
+                                "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "metadata": {
+                                "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                                "example": {
+                                  "some": "metadata"
+                                },
+                                "anyOf": [
+                                  {
+                                    "additionalProperties": {
+                                      "type": "string"
+                                    },
+                                    "type": "object"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "created_at": {
+                                "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "updated_at": {
+                                "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "bank": {
+                                "description": "Banco. [Legacy]",
+                                "type": "string"
+                              },
+                              "brand": {
+                                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                                "type": "string",
+                                "example": "visa-credito",
+                                "enum": [
+                                  "amex",
+                                  "argencard",
+                                  "cabal",
+                                  "cabal-debito",
+                                  "cbu",
+                                  "cencosud",
+                                  "cmr-falabella",
+                                  "cordobesa",
+                                  "diners-club",
+                                  "discover",
+                                  "jcb",
+                                  "lider",
+                                  "maestro",
+                                  "mastercard",
+                                  "mastercard-debit",
+                                  "naranja",
+                                  "naranja-visa",
+                                  "nativa",
+                                  "visa-credito",
+                                  "visa-debito",
+                                  "favacard"
+                                ]
+                              }
+                            },
+                            "title": "Método de pago"
+                          },
+                          "metadata": {
+                            "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                            "example": {
+                              "some": "metadata"
+                            },
+                            "anyOf": [
+                              {
+                                "additionalProperties": {
+                                  "type": "string"
+                                },
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "created_at": {
+                            "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "updated_at": {
+                            "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "deleted_at": {
+                            "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "links": {
+                      "description": "Links de paginación",
+                      "type": "object",
+                      "properties": {
+                        "first": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        }
+                      },
+                      "title": "Metadata de Respuesta"
+                    },
+                    "meta": {
+                      "description": "Metadata de paginación",
+                      "type": "object",
+                      "properties": {
+                        "per_page": {
+                          "type": "number",
+                          "example": 25
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 2500
+                        },
+                        "path": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers"
+                        }
+                      },
+                      "title": "Response Meta"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "example": {
+                  "data": [
+                    {
+                      "created_at": "2022-02-01T19:06:37-03:00",
+                      "customer": {
+                        "created_at": "2022-02-05T01:42:13-03:00",
+                        "deleted_at": null,
+                        "email": "john@doe.com",
+                        "gateway_identifier": 383473,
+                        "id": "CSnlZxyY3jwr",
+                        "identification_number": null,
+                        "identification_type": null,
+                        "livemode": true,
+                        "metadata": null,
+                        "mobile_number": "5491154876503",
+                        "name": "John Doe",
+                        "updated_at": "2022-02-05T01:42:13-03:00"
+                      },
+                      "deleted_at": null,
+                      "id": "MA9aQOWen2kZe6qypB",
+                      "uuid": "3990a740-83ab-11ec-8651-cde6203c968e",
+                      "livemode": true,
+                      "metadata": {
+                        "dni": "1231232131"
+                      },
+                      "object": "mandate",
+                      "payment_method": {
+                        "bank": "Visa",
+                        "brand": "visa-credito",
+                        "card": {
+                          "bank": "Visa",
+                          "brand": "visa-credito",
+                          "country": "AR",
+                          "expiration_month": null,
+                          "expiration_year": null,
+                          "fingerprint": "0sZQikKp4lImAgIo",
+                          "funding": "credit",
+                          "last_four_digits": "4242"
+                        },
+                        "created_at": "2022-02-01T23:13:04-03:00",
+                        "id": "PMBja4YZ2GDR",
+                        "livemode": true,
+                        "metadata": null,
+                        "object": "payment_method",
+                        "type": "card",
+                        "updated_at": "2022-02-01T23:13:04-03:00"
+                      },
+                      "status": "active",
+                      "updated_at": "2022-02-01T19:06:37-03:00"
+                    }
+                  ],
+                  "links": {
+                    "prev": "https://api.tucuota.com/mandates/search?q=john%20doe&page=1",
+                    "next": "https://api.tucuota.com/mandates/search?q=john%20doe&page=3"
+                  },
+                  "meta": {
+                    "per_page": 25,
+                    "total": 2500
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "No autorizado",
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized"
+                        }
+                      },
+                      "title": "No autorizado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Clientes"
+        ]
+      }
+    },
     "/v1/payment_methods": {
       "get": {
-        "operationId": "PaymentsMethodsGetPaymentMethods",
+        "operationId": "PaymentMethodsGetPaymentMethods",
         "summary": "Obtener todos los métodos de pago",
         "description": "Obtener una lista de métodos de pago.",
         "parameters": [
@@ -4510,7 +5389,7 @@
                       }
                     },
                     "links": {
-                      "description": "Metadata de paginación",
+                      "description": "Links de paginación",
                       "type": "object",
                       "properties": {
                         "first": {
@@ -4619,7 +5498,7 @@
         ]
       },
       "post": {
-        "operationId": "PaymentsMethodsCreatePaymentMethod",
+        "operationId": "PaymentMethodsCreatePaymentMethod",
         "summary": "Crear un método de pago",
         "description": "Crear un método de pago",
         "requestBody": {
@@ -5257,6 +6136,368 @@
                         }
                       },
                       "title": "Not Found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Métodos de Pago"
+        ]
+      }
+    },
+    "/v1/payment_methods/search": {
+      "get": {
+        "operationId": "PaymentMethodsSearch",
+        "summary": "Buscar métodos de pago",
+        "description": "Buscar métodos de pago.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Puede usar [la sintáxis de búsqueda](#a).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "john doe"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 20
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Un cursor para la paginación en varias páginas de resultados. No incluya este parámetro en la primera llamada. Utilice el valor de `next_page` devuelto en una respuesta anterior para solicitar resultados posteriores.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "john doe"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "title": "Método de pago",
+                        "description": "Este objeto representa un Método de Pago de su cuenta.",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "Identificador único del objeto.",
+                            "type": "string",
+                            "example": "PMyma6Ql8Wo9",
+                            "readOnly": true
+                          },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "payment_method"
+                            ]
+                          },
+                          "type": {
+                            "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                            "type": "string",
+                            "example": "card",
+                            "enum": [
+                              "card",
+                              "cbu"
+                            ]
+                          },
+                          "card": {
+                            "description": "Este objeto representa una tarjeta de crédito de su cuenta.",
+                            "type": "object",
+                            "properties": {
+                              "bank": {
+                                "description": "Banco o entidad financiera de la tarjeta de crédito.",
+                                "type": "string",
+                                "example": "Banco Santander Río"
+                              },
+                              "brand": {
+                                "description": "Marca de la tarjeta de crédito.",
+                                "type": "string",
+                                "example": "visa-credito",
+                                "enum": [
+                                  "amex",
+                                  "argencard",
+                                  "cabal",
+                                  "cabal-debito",
+                                  "cbu",
+                                  "cencosud",
+                                  "cmr-falabella",
+                                  "cordobesa",
+                                  "diners-club",
+                                  "discover",
+                                  "jcb",
+                                  "lider",
+                                  "maestro",
+                                  "mastercard",
+                                  "mastercard-debit",
+                                  "naranja",
+                                  "naranja-visa",
+                                  "nativa",
+                                  "visa-credito",
+                                  "visa-debito",
+                                  "favacard"
+                                ]
+                              },
+                              "country": {
+                                "description": "Tarjeta de crédito [código de país ISO_3166-1_alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
+                                "type": "string",
+                                "example": "AR"
+                              },
+                              "expiration_month": {
+                                "description": "Mes de expiración.",
+                                "type": "number",
+                                "example": 11,
+                                "nullable": true
+                              },
+                              "expiration_year": {
+                                "description": "Año de expiración.",
+                                "type": "number",
+                                "example": 2030,
+                                "nullable": true
+                              },
+                              "fingerprint": {
+                                "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
+                                "type": "string",
+                                "example": "8712yh2uihiu1123sxas"
+                              },
+                              "funding": {
+                                "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                "type": "string",
+                                "example": "credit",
+                                "enum": [
+                                  "credit",
+                                  "debit",
+                                  "prepaid"
+                                ]
+                              },
+                              "last_four_digits": {
+                                "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
+                                "type": "string",
+                                "example": "9876"
+                              }
+                            },
+                            "title": "Tarjeta de Crédito"
+                          },
+                          "cbu": {
+                            "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
+                            "type": "object",
+                            "properties": {
+                              "bank": {
+                                "description": "Banco.",
+                                "type": "string"
+                              },
+                              "country": {
+                                "description": "País de la cuenta bancaria.",
+                                "type": "string",
+                                "enum": [
+                                  "AR"
+                                ]
+                              },
+                              "fingerprint": {
+                                "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                "type": "string",
+                                "example": "8712yh2uihiu1123sxas"
+                              },
+                              "last_four_digits": {
+                                "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                "type": "string",
+                                "example": "9876"
+                              }
+                            },
+                            "title": "CBU"
+                          },
+                          "livemode": {
+                            "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "metadata": {
+                            "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                            "example": {
+                              "some": "metadata"
+                            },
+                            "anyOf": [
+                              {
+                                "additionalProperties": {
+                                  "type": "string"
+                                },
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "created_at": {
+                            "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "updated_at": {
+                            "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "bank": {
+                            "description": "Banco. [Legacy]",
+                            "type": "string"
+                          },
+                          "brand": {
+                            "description": "Marca de la tarjeta de crédito. [Legacy]",
+                            "type": "string",
+                            "example": "visa-credito",
+                            "enum": [
+                              "amex",
+                              "argencard",
+                              "cabal",
+                              "cabal-debito",
+                              "cbu",
+                              "cencosud",
+                              "cmr-falabella",
+                              "cordobesa",
+                              "diners-club",
+                              "discover",
+                              "jcb",
+                              "lider",
+                              "maestro",
+                              "mastercard",
+                              "mastercard-debit",
+                              "naranja",
+                              "naranja-visa",
+                              "nativa",
+                              "visa-credito",
+                              "visa-debito",
+                              "favacard"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "links": {
+                      "description": "Links de paginación",
+                      "type": "object",
+                      "properties": {
+                        "first": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        }
+                      },
+                      "title": "Metadata de Respuesta"
+                    },
+                    "meta": {
+                      "description": "Metadata de paginación",
+                      "type": "object",
+                      "properties": {
+                        "per_page": {
+                          "type": "number",
+                          "example": 25
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 2500
+                        },
+                        "path": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers"
+                        }
+                      },
+                      "title": "Response Meta"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "example": {
+                  "data": [
+                    {
+                      "bank": "Visa",
+                      "brand": "visa-credito",
+                      "card": {
+                        "bank": "Visa",
+                        "brand": "visa-credito",
+                        "country": "AR",
+                        "expiration_month": null,
+                        "expiration_year": null,
+                        "fingerprint": "0sZQikKp4lImAgIo",
+                        "funding": "credit",
+                        "last_four_digits": "4242"
+                      },
+                      "created_at": "2022-02-01T23:13:04-03:00",
+                      "id": "PMBja4YZ2GDR",
+                      "livemode": true,
+                      "metadata": null,
+                      "object": "payment_method",
+                      "type": "card",
+                      "updated_at": "2022-02-01T23:13:04-03:00"
+                    }
+                  ],
+                  "links": {
+                    "next": "https://api.tucuota.com/payment_methods/search?q=john%20doe&page=3",
+                    "prev": "https://api.tucuota.com/payment_methods/search?q=john%20doe&page=1"
+                  },
+                  "meta": {
+                    "per_page": 25,
+                    "total": 2500
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "No autorizado",
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized"
+                        }
+                      },
+                      "title": "No autorizado"
                     }
                   }
                 }
@@ -5928,7 +7169,7 @@
                       }
                     },
                     "links": {
-                      "description": "Metadata de paginación",
+                      "description": "Links de paginación",
                       "type": "object",
                       "properties": {
                         "first": {
@@ -8173,6 +9414,776 @@
         ]
       }
     },
+    "/v1/payments/search": {
+      "get": {
+        "operationId": "PaymentsSearch",
+        "summary": "Buscar pagos",
+        "description": "Buscar pagos.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Puede usar [la sintáxis de búsqueda](#a).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "john doe"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 20
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Un cursor para la paginación en varias páginas de resultados. No incluya este parámetro en la primera llamada. Utilice el valor de `next_page` devuelto en una respuesta anterior para solicitar resultados posteriores.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "john doe"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "title": "Payment",
+                        "description": "Este objeto representa un pago de su organización.",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "Identificador único del Pago.",
+                            "type": "string",
+                            "example": "PYljikas9Fa8",
+                            "readOnly": true
+                          },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "payment"
+                            ]
+                          },
+                          "amount": {
+                            "description": "Monto del pago",
+                            "type": "number",
+                            "example": 12.5
+                          },
+                          "amount_refunded": {
+                            "description": "Payment amount refunded.",
+                            "type": "number",
+                            "example": 0
+                          },
+                          "currency": {
+                            "description": "Moneda de la transacción usando códigos [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217). Los valores predeterminados son los predeterminados de la cuenta.",
+                            "type": "string",
+                            "example": "ARS",
+                            "enum": [
+                              "ARS",
+                              "BRL",
+                              "CLP",
+                              "COP",
+                              "MXN",
+                              "USB",
+                              "USD"
+                            ]
+                          },
+                          "description": {
+                            "description": "Descripción del pago",
+                            "type": "string",
+                            "example": "Ajuste por deuda pasada"
+                          },
+                          "status": {
+                            "description": "Estado del pago",
+                            "type": "string",
+                            "example": "rejected",
+                            "enum": [
+                              "pending_submission",
+                              "cancelled",
+                              "submitted",
+                              "failed",
+                              "will_retry",
+                              "approved",
+                              "rejected",
+                              "chargeback",
+                              "refunded",
+                              "partially_refunded"
+                            ]
+                          },
+                          "response_message": {
+                            "description": "Respuesta detallada de la institución financiera",
+                            "type": "string",
+                            "example": "Falta de fondos"
+                          },
+                          "paid": {
+                            "description": "El pago se ha cobrado con éxito.",
+                            "type": "boolean",
+                            "example": false,
+                            "readOnly": true
+                          },
+                          "retryable": {
+                            "description": "Se puede volver a intentar el pago.",
+                            "type": "boolean",
+                            "example": true,
+                            "readOnly": true
+                          },
+                          "refundable": {
+                            "description": "El pago puede ser reembolsado.",
+                            "type": "boolean",
+                            "example": false,
+                            "readOnly": true
+                          },
+                          "amount_refundable": {
+                            "description": "El monto del pago que se puede reembolsar.",
+                            "type": "number",
+                            "example": 0
+                          },
+                          "livemode": {
+                            "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "created_at": {
+                            "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "charge_date": {
+                            "description": "Una fecha futura en la que se debe cobrar el pago. Si no se especifica, el pago se cobrará lo antes posible.",
+                            "type": "string",
+                            "example": "2022-08-04"
+                          },
+                          "submissions_count": {
+                            "description": "El número de veces que el pago ha sido enviado a la institución financiera.",
+                            "type": "number",
+                            "example": 1
+                          },
+                          "can_auto_retry_until": {
+                            "description": "La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite",
+                            "example": "2022-08-31",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          "auto_retries_max_attempts": {
+                            "description": "El número máximo de veces que se puede volver a intentar el pago automáticamente.",
+                            "example": null,
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ]
+                          },
+                          "effective_charged_date": {
+                            "description": "La fecha en que se cobrará el pago.",
+                            "example": null,
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          "estimated_accreditation_date": {
+                            "description": "La fecha estimada en la que la entidad financiera enviará el monto a cobrar a tu cuenta.",
+                            "example": null,
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          "updated_at": {
+                            "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "updated_status": {
+                            "description": "La última fecha en que se cambió el estado del pago.",
+                            "example": "2022-08-31",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          "customer": {
+                            "description": "Este objeto representa a un cliente de su organización.",
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "description": "Identificador único del Cliente.",
+                                "type": "string",
+                                "example": "CSljikas98",
+                                "readOnly": true
+                              },
+                              "name": {
+                                "description": "El nombre completo del cliente.",
+                                "type": "string",
+                                "example": "Jorgelina Castro"
+                              },
+                              "email": {
+                                "description": "El email del cliente.",
+                                "type": "string",
+                                "example": "mail@example.com"
+                              },
+                              "object": {
+                                "type": "string",
+                                "enum": [
+                                  "customer"
+                                ]
+                              },
+                              "livemode": {
+                                "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "metadata": {
+                                "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                                "example": {
+                                  "some": "metadata"
+                                },
+                                "anyOf": [
+                                  {
+                                    "additionalProperties": {
+                                      "type": "string"
+                                    },
+                                    "type": "object"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "mobile_number": {
+                                "description": "Número de teléfono válido del cliente (con código de área).",
+                                "example": "5491164531234",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "gateway_identifier": {
+                                "description": "La referencia del cliente en los extractos bancarios.",
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 383473
+                              },
+                              "identification_number": {
+                                "description": "Número del Documento del cliente.",
+                                "example": "15.555.324",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "identification_type": {
+                                "description": "Tipo de Documento del cliente.",
+                                "example": "DNI",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "created_at": {
+                                "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "updated_at": {
+                                "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "deleted_at": {
+                                "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              }
+                            },
+                            "title": "Cliente"
+                          },
+                          "subscription": {
+                            "description": "La [Suscripción](#tag/Suscripciones) asociada con el pago si existe.",
+                            "example": "SBmX1MrZ77Mwq3",
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          "subscription_payment_number": {
+                            "description": "El número de pago de la Suscripción asociada, si existiera.",
+                            "example": null,
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ]
+                          },
+                          "gateway": {
+                            "description": "El [Gateway](#tag/Gateways) asociada con el pago.",
+                            "type": "string",
+                            "example": "GW1L49J7ARW3"
+                          },
+                          "payment_method": {
+                            "description": "Este objeto representa un Método de Pago de su cuenta.",
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "description": "Identificador único del objeto.",
+                                "type": "string",
+                                "example": "PMyma6Ql8Wo9",
+                                "readOnly": true
+                              },
+                              "object": {
+                                "type": "string",
+                                "enum": [
+                                  "payment_method"
+                                ]
+                              },
+                              "type": {
+                                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                                "type": "string",
+                                "example": "card",
+                                "enum": [
+                                  "card",
+                                  "cbu"
+                                ]
+                              },
+                              "card": {
+                                "description": "Este objeto representa una tarjeta de crédito de su cuenta.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco o entidad financiera de la tarjeta de crédito.",
+                                    "type": "string",
+                                    "example": "Banco Santander Río"
+                                  },
+                                  "brand": {
+                                    "description": "Marca de la tarjeta de crédito.",
+                                    "type": "string",
+                                    "example": "visa-credito",
+                                    "enum": [
+                                      "amex",
+                                      "argencard",
+                                      "cabal",
+                                      "cabal-debito",
+                                      "cbu",
+                                      "cencosud",
+                                      "cmr-falabella",
+                                      "cordobesa",
+                                      "diners-club",
+                                      "discover",
+                                      "jcb",
+                                      "lider",
+                                      "maestro",
+                                      "mastercard",
+                                      "mastercard-debit",
+                                      "naranja",
+                                      "naranja-visa",
+                                      "nativa",
+                                      "visa-credito",
+                                      "visa-debito",
+                                      "favacard"
+                                    ]
+                                  },
+                                  "country": {
+                                    "description": "Tarjeta de crédito [código de país ISO_3166-1_alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
+                                    "type": "string",
+                                    "example": "AR"
+                                  },
+                                  "expiration_month": {
+                                    "description": "Mes de expiración.",
+                                    "type": "number",
+                                    "example": 11,
+                                    "nullable": true
+                                  },
+                                  "expiration_year": {
+                                    "description": "Año de expiración.",
+                                    "type": "number",
+                                    "example": 2030,
+                                    "nullable": true
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "funding": {
+                                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                    "type": "string",
+                                    "example": "credit",
+                                    "enum": [
+                                      "credit",
+                                      "debit",
+                                      "prepaid"
+                                    ]
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  }
+                                },
+                                "title": "Tarjeta de Crédito"
+                              },
+                              "cbu": {
+                                "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "País de la cuenta bancaria.",
+                                    "type": "string",
+                                    "enum": [
+                                      "AR"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  }
+                                },
+                                "title": "CBU"
+                              },
+                              "livemode": {
+                                "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "metadata": {
+                                "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                                "example": {
+                                  "some": "metadata"
+                                },
+                                "anyOf": [
+                                  {
+                                    "additionalProperties": {
+                                      "type": "string"
+                                    },
+                                    "type": "object"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "created_at": {
+                                "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "updated_at": {
+                                "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "bank": {
+                                "description": "Banco. [Legacy]",
+                                "type": "string"
+                              },
+                              "brand": {
+                                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                                "type": "string",
+                                "example": "visa-credito",
+                                "enum": [
+                                  "amex",
+                                  "argencard",
+                                  "cabal",
+                                  "cabal-debito",
+                                  "cbu",
+                                  "cencosud",
+                                  "cmr-falabella",
+                                  "cordobesa",
+                                  "diners-club",
+                                  "discover",
+                                  "jcb",
+                                  "lider",
+                                  "maestro",
+                                  "mastercard",
+                                  "mastercard-debit",
+                                  "naranja",
+                                  "naranja-visa",
+                                  "nativa",
+                                  "visa-credito",
+                                  "visa-debito",
+                                  "favacard"
+                                ]
+                              }
+                            },
+                            "title": "Método de pago"
+                          },
+                          "gateway_identifier": {
+                            "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
+                            "example": null,
+                            "oneOf": [
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ]
+                          },
+                          "refunds": {
+                            "description": "Reembolsos asociados con este pago.",
+                            "type": "array",
+                            "example": []
+                          },
+                          "metadata": {
+                            "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                            "example": {
+                              "some": "metadata"
+                            },
+                            "anyOf": [
+                              {
+                                "additionalProperties": {
+                                  "type": "string"
+                                },
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "links": {
+                      "description": "Links de paginación",
+                      "type": "object",
+                      "properties": {
+                        "first": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        }
+                      },
+                      "title": "Metadata de Respuesta"
+                    },
+                    "meta": {
+                      "description": "Metadata de paginación",
+                      "type": "object",
+                      "properties": {
+                        "per_page": {
+                          "type": "number",
+                          "example": 25
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 2500
+                        },
+                        "path": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers"
+                        }
+                      },
+                      "title": "Response Meta"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "PY9J8YYdylz6",
+                      "object": "payment",
+                      "amount": 2300,
+                      "amount_refunded": 0,
+                      "currency": "ARS",
+                      "description": "Ajuste por deuda pasada",
+                      "status": "approved",
+                      "response_message": "Transacción aceptada",
+                      "paid": true,
+                      "retryable": false,
+                      "refundable": true,
+                      "amount_refundable": 2300,
+                      "livemode": true,
+                      "created_at": "2022-08-03T12:24:33-03:00",
+                      "charge_date": "2022-08-03",
+                      "submissions_count": 1,
+                      "can_auto_retry_until": null,
+                      "auto_retries_max_attempts": null,
+                      "effective_charged_date": "2022-08-05",
+                      "estimated_accreditation_date": "2022-08-19",
+                      "updated_at": "2022-08-03T12:24:33-03:00",
+                      "updated_status": "2022-08-05",
+                      "customer": {
+                        "id": "CS3Z25Agp708",
+                        "object": "customer",
+                        "gateway_identifier": 1723393503,
+                        "name": "Andrés Bahena Tercero",
+                        "email": "andres37@calvillo.info",
+                        "identification_type": null,
+                        "identification_number": null,
+                        "mobile_number": "+5481934863501",
+                        "metadata": {
+                          "external_id": "0Qk3IJY5"
+                        },
+                        "livemode": true,
+                        "created_at": "2021-07-05T12:24:32-03:00",
+                        "updated_at": "2021-07-05T12:24:32-03:00",
+                        "deleted_at": null
+                      },
+                      "subscription": null,
+                      "subscription_payment_number": null,
+                      "gateway": "GW1L49J7ARW3",
+                      "payment_method": {
+                        "bank": "Visa",
+                        "brand": "visa-credito",
+                        "card": {
+                          "bank": "Visa",
+                          "brand": "visa-credito",
+                          "country": "AR",
+                          "expiration_month": null,
+                          "expiration_year": null,
+                          "fingerprint": "0sZQikKp4lImAgIo",
+                          "funding": "credit",
+                          "last_four_digits": "4242"
+                        },
+                        "created_at": "2022-02-01T23:13:04-03:00",
+                        "id": "PMBja4YZ2GDR",
+                        "livemode": true,
+                        "metadata": null,
+                        "object": "payment_method",
+                        "type": "card",
+                        "updated_at": "2022-02-01T23:13:04-03:00"
+                      },
+                      "gateway_identifier": null,
+                      "metadata": null,
+                      "refunds": []
+                    }
+                  ],
+                  "links": {
+                    "prev": "https://api.tucuota.com/payments/search?q=john%20doe&page=1",
+                    "next": "https://api.tucuota.com/payments/search?q=john%20doe&page=3"
+                  },
+                  "meta": {
+                    "per_page": 25,
+                    "total": 2500
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "No autorizado",
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized"
+                        }
+                      },
+                      "title": "No autorizado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Pagos"
+        ]
+      }
+    },
     "/v1/refunds": {
       "get": {
         "operationId": "RefundsGetRefunds",
@@ -8345,7 +10356,7 @@
                       }
                     },
                     "links": {
-                      "description": "Metadata de paginación",
+                      "description": "Links de paginación",
                       "type": "object",
                       "properties": {
                         "first": {
@@ -9427,7 +11438,8 @@
                           "count": {
                             "description": "El número total de pagos que debe realizar esta suscripción.\n",
                             "type": "number",
-                            "example": 12
+                            "example": 12,
+                            "nullable": true
                           },
                           "start_date": {
                             "description": "Una fecha futura en la que el primer pago de la suscripción debe ser recogido.",
@@ -9455,7 +11467,8 @@
                           },
                           "day_of_week": {
                             "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
-                            "type": "number"
+                            "type": "number",
+                            "nullable": true
                           },
                           "livemode": {
                             "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -9831,7 +11844,7 @@
                       }
                     },
                     "links": {
-                      "description": "Metadata de paginación",
+                      "description": "Links de paginación",
                       "type": "object",
                       "properties": {
                         "first": {
@@ -10072,7 +12085,8 @@
                         "count": {
                           "description": "El número total de pagos que debe realizar esta suscripción.\n",
                           "type": "number",
-                          "example": 12
+                          "example": 12,
+                          "nullable": true
                         },
                         "start_date": {
                           "description": "Una fecha futura en la que el primer pago de la suscripción debe ser recogido.",
@@ -10100,7 +12114,8 @@
                         },
                         "day_of_week": {
                           "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
-                          "type": "number"
+                          "type": "number",
+                          "nullable": true
                         },
                         "livemode": {
                           "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -10601,7 +12616,8 @@
                         "count": {
                           "description": "El número total de pagos que debe realizar esta suscripción.\n",
                           "type": "number",
-                          "example": 12
+                          "example": 12,
+                          "nullable": true
                         },
                         "start_date": {
                           "description": "Una fecha futura en la que el primer pago de la suscripción debe ser recogido.",
@@ -10629,7 +12645,8 @@
                         },
                         "day_of_week": {
                           "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
-                          "type": "number"
+                          "type": "number",
+                          "nullable": true
                         },
                         "livemode": {
                           "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -11231,7 +13248,8 @@
                         "count": {
                           "description": "El número total de pagos que debe realizar esta suscripción.\n",
                           "type": "number",
-                          "example": 12
+                          "example": 12,
+                          "nullable": true
                         },
                         "start_date": {
                           "description": "Una fecha futura en la que el primer pago de la suscripción debe ser recogido.",
@@ -11259,7 +13277,8 @@
                         },
                         "day_of_week": {
                           "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
-                          "type": "number"
+                          "type": "number",
+                          "nullable": true
                         },
                         "livemode": {
                           "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -11760,7 +13779,8 @@
                         "count": {
                           "description": "El número total de pagos que debe realizar esta suscripción.\n",
                           "type": "number",
-                          "example": 12
+                          "example": 12,
+                          "nullable": true
                         },
                         "start_date": {
                           "description": "Una fecha futura en la que el primer pago de la suscripción debe ser recogido.",
@@ -11788,7 +13808,8 @@
                         },
                         "day_of_week": {
                           "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
-                          "type": "number"
+                          "type": "number",
+                          "nullable": true
                         },
                         "livemode": {
                           "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -12284,7 +14305,8 @@
                         "count": {
                           "description": "El número total de pagos que debe realizar esta suscripción.\n",
                           "type": "number",
-                          "example": 12
+                          "example": 12,
+                          "nullable": true
                         },
                         "start_date": {
                           "description": "Una fecha futura en la que el primer pago de la suscripción debe ser recogido.",
@@ -12312,7 +14334,8 @@
                         },
                         "day_of_week": {
                           "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
-                          "type": "number"
+                          "type": "number",
+                          "nullable": true
                         },
                         "livemode": {
                           "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -12813,7 +14836,8 @@
                         "count": {
                           "description": "El número total de pagos que debe realizar esta suscripción.\n",
                           "type": "number",
-                          "example": 12
+                          "example": 12,
+                          "nullable": true
                         },
                         "start_date": {
                           "description": "Una fecha futura en la que el primer pago de la suscripción debe ser recogido.",
@@ -12841,7 +14865,8 @@
                         },
                         "day_of_week": {
                           "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
-                          "type": "number"
+                          "type": "number",
+                          "nullable": true
                         },
                         "livemode": {
                           "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -13259,6 +15284,671 @@
         ]
       }
     },
+    "/v1/subscriptions/search": {
+      "get": {
+        "operationId": "SubscriptionsSearch",
+        "summary": "Buscar suscriptiones",
+        "description": "Buscar suscriptiones.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Puede usar [la sintáxis de búsqueda](#a).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "john doe"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 20
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Un cursor para la paginación en varias páginas de resultados. No incluya este parámetro en la primera llamada. Utilice el valor de `next_page` devuelto en una respuesta anterior para solicitar resultados posteriores.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "john doe"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "title": "Suscripción",
+                        "description": "Este objeto representa una Suscripción de su organización.",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "Identificador único de la Suscripción.",
+                            "type": "string",
+                            "example": "SBmQ6j9NWxblNv",
+                            "readOnly": true
+                          },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "subscription"
+                            ]
+                          },
+                          "amount": {
+                            "description": "Monto de la suscripción",
+                            "type": "number",
+                            "example": 12.5
+                          },
+                          "description": {
+                            "description": "Descripción de la suscripción",
+                            "type": "string",
+                            "example": "Ajuste por deuda pasada"
+                          },
+                          "currency": {
+                            "description": "Moneda de la transacción usando códigos [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217). Los valores predeterminados son los predeterminados de la cuenta.",
+                            "type": "string",
+                            "example": "ARS",
+                            "enum": [
+                              "ARS",
+                              "BRL",
+                              "CLP",
+                              "COP",
+                              "MXN",
+                              "USB",
+                              "USD"
+                            ]
+                          },
+                          "status": {
+                            "description": "Estado de la suscripción",
+                            "type": "string",
+                            "example": "active",
+                            "enum": [
+                              "active",
+                              "paused",
+                              "cancelled",
+                              "finished"
+                            ]
+                          },
+                          "count": {
+                            "description": "El número total de pagos que debe realizar esta suscripción.\n",
+                            "type": "number",
+                            "example": 12,
+                            "nullable": true
+                          },
+                          "start_date": {
+                            "description": "Una fecha futura en la que el primer pago de la suscripción debe ser recogido.",
+                            "type": "string",
+                            "example": "2022-08-04"
+                          },
+                          "interval_unit": {
+                            "description": "La unidad de tiempo entre las fechas de pago del cliente.",
+                            "type": "string",
+                            "example": "monthly",
+                            "enum": [
+                              "weekly",
+                              "monthly",
+                              "yearly"
+                            ]
+                          },
+                          "interval": {
+                            "description": "Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.",
+                            "type": "number",
+                            "example": 1
+                          },
+                          "day_of_month": {
+                            "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+                            "type": "number"
+                          },
+                          "day_of_week": {
+                            "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "livemode": {
+                            "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "created_at": {
+                            "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "updated_at": {
+                            "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "first_date": {
+                            "description": "La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.",
+                            "type": "string",
+                            "example": "2022-08-04"
+                          },
+                          "upcoming_dates": {
+                            "description": "Próximas 5 fechas de pago.",
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "example": [
+                              "2022-09-04",
+                              "2022-10-04",
+                              "2022-11-04",
+                              "2022-12-04",
+                              "2023-01-04"
+                            ]
+                          },
+                          "customer": {
+                            "description": "Este objeto representa a un cliente de su organización.",
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "description": "Identificador único del Cliente.",
+                                "type": "string",
+                                "example": "CSljikas98",
+                                "readOnly": true
+                              },
+                              "name": {
+                                "description": "El nombre completo del cliente.",
+                                "type": "string",
+                                "example": "Jorgelina Castro"
+                              },
+                              "email": {
+                                "description": "El email del cliente.",
+                                "type": "string",
+                                "example": "mail@example.com"
+                              },
+                              "object": {
+                                "type": "string",
+                                "enum": [
+                                  "customer"
+                                ]
+                              },
+                              "livemode": {
+                                "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "metadata": {
+                                "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                                "example": {
+                                  "some": "metadata"
+                                },
+                                "anyOf": [
+                                  {
+                                    "additionalProperties": {
+                                      "type": "string"
+                                    },
+                                    "type": "object"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "mobile_number": {
+                                "description": "Número de teléfono válido del cliente (con código de área).",
+                                "example": "5491164531234",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "gateway_identifier": {
+                                "description": "La referencia del cliente en los extractos bancarios.",
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 383473
+                              },
+                              "identification_number": {
+                                "description": "Número del Documento del cliente.",
+                                "example": "15.555.324",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "identification_type": {
+                                "description": "Tipo de Documento del cliente.",
+                                "example": "DNI",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "created_at": {
+                                "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "updated_at": {
+                                "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "deleted_at": {
+                                "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00",
+                                "oneOf": [
+                                  {
+                                    "type": "null"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              }
+                            },
+                            "title": "Cliente"
+                          },
+                          "payment_method": {
+                            "description": "Este objeto representa un Método de Pago de su cuenta.",
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "description": "Identificador único del objeto.",
+                                "type": "string",
+                                "example": "PMyma6Ql8Wo9",
+                                "readOnly": true
+                              },
+                              "object": {
+                                "type": "string",
+                                "enum": [
+                                  "payment_method"
+                                ]
+                              },
+                              "type": {
+                                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                                "type": "string",
+                                "example": "card",
+                                "enum": [
+                                  "card",
+                                  "cbu"
+                                ]
+                              },
+                              "card": {
+                                "description": "Este objeto representa una tarjeta de crédito de su cuenta.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco o entidad financiera de la tarjeta de crédito.",
+                                    "type": "string",
+                                    "example": "Banco Santander Río"
+                                  },
+                                  "brand": {
+                                    "description": "Marca de la tarjeta de crédito.",
+                                    "type": "string",
+                                    "example": "visa-credito",
+                                    "enum": [
+                                      "amex",
+                                      "argencard",
+                                      "cabal",
+                                      "cabal-debito",
+                                      "cbu",
+                                      "cencosud",
+                                      "cmr-falabella",
+                                      "cordobesa",
+                                      "diners-club",
+                                      "discover",
+                                      "jcb",
+                                      "lider",
+                                      "maestro",
+                                      "mastercard",
+                                      "mastercard-debit",
+                                      "naranja",
+                                      "naranja-visa",
+                                      "nativa",
+                                      "visa-credito",
+                                      "visa-debito",
+                                      "favacard"
+                                    ]
+                                  },
+                                  "country": {
+                                    "description": "Tarjeta de crédito [código de país ISO_3166-1_alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).",
+                                    "type": "string",
+                                    "example": "AR"
+                                  },
+                                  "expiration_month": {
+                                    "description": "Mes de expiración.",
+                                    "type": "number",
+                                    "example": 11,
+                                    "nullable": true
+                                  },
+                                  "expiration_year": {
+                                    "description": "Año de expiración.",
+                                    "type": "number",
+                                    "example": 2030,
+                                    "nullable": true
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de tarjeta de crédito de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "funding": {
+                                    "description": "Define si la tarjeta es de débito, crédito o prepaga.",
+                                    "type": "string",
+                                    "example": "credit",
+                                    "enum": [
+                                      "credit",
+                                      "debit",
+                                      "prepaid"
+                                    ]
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la tarjeta de crédito.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  }
+                                },
+                                "title": "Tarjeta de Crédito"
+                              },
+                              "cbu": {
+                                "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "País de la cuenta bancaria.",
+                                    "type": "string",
+                                    "enum": [
+                                      "AR"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  }
+                                },
+                                "title": "CBU"
+                              },
+                              "livemode": {
+                                "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "metadata": {
+                                "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                                "example": {
+                                  "some": "metadata"
+                                },
+                                "anyOf": [
+                                  {
+                                    "additionalProperties": {
+                                      "type": "string"
+                                    },
+                                    "type": "object"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "created_at": {
+                                "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "updated_at": {
+                                "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2022-02-11T23:19:22-03:00"
+                              },
+                              "bank": {
+                                "description": "Banco. [Legacy]",
+                                "type": "string"
+                              },
+                              "brand": {
+                                "description": "Marca de la tarjeta de crédito. [Legacy]",
+                                "type": "string",
+                                "example": "visa-credito",
+                                "enum": [
+                                  "amex",
+                                  "argencard",
+                                  "cabal",
+                                  "cabal-debito",
+                                  "cbu",
+                                  "cencosud",
+                                  "cmr-falabella",
+                                  "cordobesa",
+                                  "diners-club",
+                                  "discover",
+                                  "jcb",
+                                  "lider",
+                                  "maestro",
+                                  "mastercard",
+                                  "mastercard-debit",
+                                  "naranja",
+                                  "naranja-visa",
+                                  "nativa",
+                                  "visa-credito",
+                                  "visa-debito",
+                                  "favacard"
+                                ]
+                              }
+                            },
+                            "title": "Método de pago"
+                          },
+                          "metadata": {
+                            "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                            "example": {
+                              "some": "metadata"
+                            },
+                            "anyOf": [
+                              {
+                                "additionalProperties": {
+                                  "type": "string"
+                                },
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "links": {
+                      "description": "Links de paginación",
+                      "type": "object",
+                      "properties": {
+                        "first": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers",
+                          "nullable": true
+                        }
+                      },
+                      "title": "Metadata de Respuesta"
+                    },
+                    "meta": {
+                      "description": "Metadata de paginación",
+                      "type": "object",
+                      "properties": {
+                        "per_page": {
+                          "type": "number",
+                          "example": 25
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 2500
+                        },
+                        "path": {
+                          "type": "string",
+                          "example": "https://api.tucuota.com/v1/customers"
+                        }
+                      },
+                      "title": "Response Meta"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "SBmQ6j9NWxblNv",
+                      "object": "subscription",
+                      "amount": 5200,
+                      "description": "Cuota mensual",
+                      "currency": "ARS",
+                      "status": "active",
+                      "count": null,
+                      "start_date": "2021-07-01",
+                      "interval_unit": "monthly",
+                      "interval": 1,
+                      "day_of_month": 1,
+                      "day_of_week": null,
+                      "livemode": true,
+                      "created_at": "2021-07-01T12:24:32-03:00",
+                      "updated_at": "2021-07-01T12:24:32-03:00",
+                      "first_date": "2022-09-01",
+                      "upcoming_dates": [
+                        "2022-09-01",
+                        "2022-10-01",
+                        "2022-11-01",
+                        "2022-12-01",
+                        "2023-01-01"
+                      ],
+                      "customer": {
+                        "id": "CS3Z25Agp708",
+                        "object": "customer",
+                        "gateway_identifier": 1723393503,
+                        "name": "Andrés Bahena Tercero",
+                        "email": "andres37@calvillo.info",
+                        "identification_type": null,
+                        "identification_number": null,
+                        "mobile_number": "+5481934863501",
+                        "metadata": {
+                          "external_id": "0Qk3IJY5"
+                        },
+                        "livemode": true,
+                        "created_at": "2021-07-05T12:24:32-03:00",
+                        "updated_at": "2021-07-05T12:24:32-03:00",
+                        "deleted_at": null
+                      },
+                      "payment_method": {
+                        "bank": "Visa",
+                        "brand": "visa-credito",
+                        "card": {
+                          "bank": "Visa",
+                          "brand": "visa-credito",
+                          "country": "AR",
+                          "expiration_month": null,
+                          "expiration_year": null,
+                          "fingerprint": "0sZQikKp4lImAgIo",
+                          "funding": "credit",
+                          "last_four_digits": "4242"
+                        },
+                        "created_at": "2022-02-01T23:13:04-03:00",
+                        "id": "PMBja4YZ2GDR",
+                        "livemode": true,
+                        "metadata": null,
+                        "object": "payment_method",
+                        "type": "card",
+                        "updated_at": "2022-02-01T23:13:04-03:00"
+                      },
+                      "metadata": null
+                    }
+                  ],
+                  "links": {
+                    "prev": "https://api.tucuota.com/subscriptions/search?q=john%20doe&page=1",
+                    "next": "https://api.tucuota.com/subscriptions/search?q=john%20doe&page=3"
+                  },
+                  "meta": {
+                    "per_page": 25,
+                    "total": 2500
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "description": "No autorizado",
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized"
+                        }
+                      },
+                      "title": "No autorizado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Suscriptions"
+        ]
+      }
+    },
     "/v1/webhooks": {
       "get": {
         "operationId": "WebhooksGetWebhooks",
@@ -13425,7 +16115,7 @@
                       }
                     },
                     "links": {
-                      "description": "Metadata de paginación",
+                      "description": "Links de paginación",
                       "type": "object",
                       "properties": {
                         "first": {
@@ -14398,7 +17088,7 @@
         "title": "Cliente"
       },
       "Links": {
-        "description": "Metadata de paginación",
+        "description": "Links de paginación",
         "type": "object",
         "properties": {
           "first": {
@@ -15050,6 +17740,14 @@
             "type": "string",
             "example": "MAmQ6j9NWxblNv",
             "readOnly": true
+          },
+          "status": {
+            "description": "Estado.",
+            "type": "string",
+            "enum": [
+              "active",
+              "revoked"
+            ]
           },
           "uuid": {
             "description": "Identificador UUID del objeto. [Legacy]",
@@ -16291,7 +18989,8 @@
           "count": {
             "description": "El número total de pagos que debe realizar esta suscripción.\n",
             "type": "number",
-            "example": 12
+            "example": 12,
+            "nullable": true
           },
           "start_date": {
             "description": "Una fecha futura en la que el primer pago de la suscripción debe ser recogido.",
@@ -16319,7 +19018,8 @@
           },
           "day_of_week": {
             "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
-            "type": "number"
+            "type": "number",
+            "nullable": true
           },
           "livemode": {
             "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -17204,6 +19904,14 @@
             "type": "string",
             "example": "MAmQ6j9NWxblNv",
             "readOnly": true
+          },
+          "status": {
+            "description": "Estado.",
+            "type": "string",
+            "enum": [
+              "active",
+              "revoked"
+            ]
           },
           "uuid": {
             "description": "Identificador UUID del objeto. [Legacy]",
@@ -18619,7 +21327,8 @@
           "count": {
             "description": "El número total de pagos que debe realizar esta suscripción.\n",
             "type": "number",
-            "example": 12
+            "example": 12,
+            "nullable": true
           },
           "start_date": {
             "description": "Una fecha futura en la que el primer pago de la suscripción debe ser recogido.",
@@ -18647,7 +21356,8 @@
           },
           "day_of_week": {
             "description": "Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.",
-            "type": "number"
+            "type": "number",
+            "nullable": true
           },
           "livemode": {
             "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -19129,7 +21839,7 @@
         "title": "Response Meta"
       },
       "links": {
-        "description": "Metadata de paginación",
+        "description": "Links de paginación",
         "type": "object",
         "properties": {
           "first": {
