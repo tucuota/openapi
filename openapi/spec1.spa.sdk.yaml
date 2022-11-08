@@ -5893,7 +5893,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
       tags:
-        - Clientes
+        - Adhesiones
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -16175,7 +16175,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
       tags:
-        - Suscriptions
+        - Suscripciones
       x-codeSamples:
         - lang: Shell + Curl
           source: |-

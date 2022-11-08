@@ -4053,7 +4053,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
       tags:
-        - Clientes
+        - Adhesiones
   /v1/payment_methods:
     get:
       operationId: PaymentMethodsGetPaymentMethods
@@ -12224,7 +12224,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
       tags:
-        - Suscriptions
+        - Suscripciones
   /v1/webhooks:
     get:
       operationId: WebhooksGetWebhooks

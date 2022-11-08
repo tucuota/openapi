@@ -5719,7 +5719,7 @@
           }
         },
         "tags": [
-          "Clientes"
+          "Adhesiones"
         ],
         "x-codeSamples": [
           {
@@ -17167,7 +17167,7 @@
           }
         },
         "tags": [
-          "Suscriptions"
+          "Suscripciones"
         ],
         "x-codeSamples": [
           {
