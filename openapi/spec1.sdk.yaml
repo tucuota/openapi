@@ -12013,6 +12013,12 @@ paths:
                           type: string
                           format: date-time
                           example: '2022-02-11T23:19:22-03:00'
+                        auto_retries_max_attempts:
+                          description: The maximum number of times the payments from this subscription could be automatically retried.
+                          example: null
+                          oneOf:
+                            - type: 'null'
+                            - type: number
                         first_date:
                           description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                           type: string
@@ -12472,14 +12478,20 @@ paths:
                     `monthly` or `yearly`. Example `monthly`.
                   type: string
                 interval:
-                  description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1. Example 1'
+                  description: 'Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.'
                   type: number
                 day_of_month:
-                  description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+                  description: 'Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.'
                   type: number
                 day_of_week:
-                  description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                  description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
                   type: number
+                auto_retries_max_attempts:
+                  description: The maximum number of times the payments from this subscription could be automatically retried.
+                  example: null
+                  oneOf:
+                    - type: 'null'
+                    - type: number
                 metadata:
                   description: |
                     Set of [key-value pairs](#section/Metadata) that you can attach
@@ -12601,6 +12613,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: The maximum number of times the payments from this subscription could be automatically retried.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
@@ -13110,6 +13128,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: The maximum number of times the payments from this subscription could be automatically retried.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
@@ -13544,8 +13568,14 @@ paths:
                   description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
                   type: number
                 day_of_week:
-                  description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                  description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.'
                   type: number
+                auto_retries_max_attempts:
+                  description: The maximum number of times the payments from this subscription could be automatically retried.
+                  example: null
+                  oneOf:
+                    - type: 'null'
+                    - type: number
                 metadata:
                   description: |
                     Set of [key-value pairs](#section/Metadata) that you can attach
@@ -13667,6 +13697,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: The maximum number of times the payments from this subscription could be automatically retried.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
@@ -14176,6 +14212,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: The maximum number of times the payments from this subscription could be automatically retried.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
@@ -14647,6 +14689,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: The maximum number of times the payments from this subscription could be automatically retried.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
@@ -15124,6 +15172,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: The maximum number of times the payments from this subscription could be automatically retried.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                         type: string
@@ -15615,6 +15669,12 @@ paths:
                           type: string
                           format: date-time
                           example: '2022-02-11T23:19:22-03:00'
+                        auto_retries_max_attempts:
+                          description: The maximum number of times the payments from this subscription could be automatically retried.
+                          example: null
+                          oneOf:
+                            - type: 'null'
+                            - type: number
                         first_date:
                           description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
                           type: string
@@ -18849,6 +18909,12 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
+        auto_retries_max_attempts:
+          description: The maximum number of times the payments from this subscription could be automatically retried.
+          example: null
+          oneOf:
+            - type: 'null'
+            - type: number
         first_date:
           description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
           type: string
@@ -20623,6 +20689,12 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
+        auto_retries_max_attempts:
+          description: The maximum number of times the payments from this subscription could be automatically retried.
+          example: null
+          oneOf:
+            - type: 'null'
+            - type: number
         first_date:
           description: 'The date on which the first payment should be charged. When left blank and month or day_of_month are provided, this will be set to the date of the first payment. If created without month or day_of_month this will be set as soon as possible.'
           type: string

@@ -12133,6 +12133,12 @@ paths:
                           type: string
                           format: date-time
                           example: '2022-02-11T23:19:22-03:00'
+                        auto_retries_max_attempts:
+                          description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+                          example: null
+                          oneOf:
+                            - type: 'null'
+                            - type: number
                         first_date:
                           description: 'La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.'
                           type: string
@@ -12588,7 +12594,7 @@ paths:
                   type: string
                   example: PMBja4YZ2GDR.
                 start_date:
-                  description: 'A future date on which the first payment of the subscription should be collected. If not specified, the first payment will be collected as soon as possible.'
+                  description: 'Una fecha futura en la que el primer pago de la suscripción debe ser recogido. Si no se especifica, el primer pago se realizará lo antes posible.'
                   type: string
                 interval_unit:
                   description: |
@@ -12596,14 +12602,20 @@ paths:
                     de: `weekly`, `monthly` or `yearly`. Ejemplo `monthly`.
                   type: string
                 interval:
-                  description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1. Example 1'
+                  description: 'Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.'
                   type: number
                 day_of_month:
-                  description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+                  description: 'Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.'
                   type: number
                 day_of_week:
-                  description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                  description: 'Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.'
                   type: number
+                auto_retries_max_attempts:
+                  description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+                  example: null
+                  oneOf:
+                    - type: 'null'
+                    - type: number
                 metadata:
                   description: |
                     Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -12727,6 +12739,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.'
                         type: string
@@ -13243,6 +13261,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.'
                         type: string
@@ -13682,8 +13706,14 @@ paths:
                   description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
                   type: number
                 day_of_week:
-                  description: 'Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if interval_unit is set to weekly.'
+                  description: 'Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.'
                   type: number
+                auto_retries_max_attempts:
+                  description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+                  example: null
+                  oneOf:
+                    - type: 'null'
+                    - type: number
                 metadata:
                   description: |
                     Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -13807,6 +13837,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.'
                         type: string
@@ -14323,6 +14359,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.'
                         type: string
@@ -14801,6 +14843,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.'
                         type: string
@@ -15285,6 +15333,12 @@ paths:
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      auto_retries_max_attempts:
+                        description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+                        example: null
+                        oneOf:
+                          - type: 'null'
+                          - type: number
                       first_date:
                         description: 'La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.'
                         type: string
@@ -15783,6 +15837,12 @@ paths:
                           type: string
                           format: date-time
                           example: '2022-02-11T23:19:22-03:00'
+                        auto_retries_max_attempts:
+                          description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+                          example: null
+                          oneOf:
+                            - type: 'null'
+                            - type: number
                         first_date:
                           description: 'La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.'
                           type: string
@@ -19074,6 +19134,12 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
+        auto_retries_max_attempts:
+          description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+          example: null
+          oneOf:
+            - type: 'null'
+            - type: number
         first_date:
           description: 'La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.'
           type: string
@@ -20893,6 +20959,12 @@ components:
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
+        auto_retries_max_attempts:
+          description: La cantidad máxima de veces que se pueden volver a intentar automáticamente los pagos de esta suscripción.
+          example: null
+          oneOf:
+            - type: 'null'
+            - type: number
         first_date:
           description: 'La fecha en la que debe realizarse el primer pago. Cuando se deja en blanco y se proporciona el mes o el día del mes, se establecerá como fecha del primer pago. Si se crea sin este dato, se cobrará lo antes posible.'
           type: string
