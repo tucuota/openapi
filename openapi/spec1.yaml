@@ -4299,8 +4299,8 @@ paths:
                   type: card
                   card:
                     number: '4242424242424242'
-                    expiration_year: 5
-                    expiration_month: 2027
+                    expiration_year: 2032
+                    expiration_month: 5
               cbu:
                 summary: Store a CBU Bank account
                 value:
