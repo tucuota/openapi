@@ -29,7 +29,7 @@ info:
 
     ### Crear una clave API
 
-    Para crear nuevas claves API, visite la [sección de desarrolladores](https:///dashboard.tucuota.com/developers) de nuestro sitio.
+    Para crear nuevas claves API, visite la [sección de desarrolladores](https:///tucuota.com/dashboard/developers) de nuestro sitio.
 
     Para cada entorno (producción y sandbox), encontrará dos tipos de claves de API:
 
@@ -125,7 +125,7 @@ info:
     La respuesta de un método API de lista representa una sola página en un orden cronológico inverso. Si no especificas `starting_after` o `ending_before`, recibirás la primera página de este objecto, que contiene los objetos más nuevos. Puede especificar un ID en el campo `starting_after` para obtener la página de objetos más antiguos que aparecen inmediatamente después del objeto en cuestión. De manera similar, puedes especificar `ending_before` para recibir una página de objetos más nuevos que ocurren inmediatamente antes del objeto en cuestión. Los objetos de una página siempre aparecen en orden cronológico inverso. Solo se puede usar `starting_after` o `ending_before`.
     # IDs de Request
 
-    Cada request a la API tiene un identificador de request asociado. Puede encontrar este valor en el header `Request-Id`. También puede encontrar estos IDs en logs de requests en su [Panel](https://dashboard.tucuota.com/developer/logs).
+    Cada request a la API tiene un identificador de request asociado. Puede encontrar este valor en el header `Request-Id`. También puede encontrar estos IDs en logs de requests en su [Panel](https://tucuota.com/dashboard/logs).
     # Convenciones
 
     ### Notational Conventions
