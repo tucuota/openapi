@@ -29,7 +29,7 @@ info:
 
     ### Get an API key
 
-    To create new API keys, please visit the [developers section](https:///tucuota.com/dashboard/developers) of our site.
+    To create new API keys, please visit the [developers section](https://tucuota.com/dashboard/developers) of our site.
 
     For each environment (live and test) yo'll find two types of API Keys:
 
@@ -125,7 +125,7 @@ info:
     The response of a list API method represents a single page in a reverse chronological stream of objects. If you do not specify `starting_after` or `ending_before`, you will receive the first page of this stream, containing the newest objects. You can specify `starting_after` equal to the object ID value of an item to retrieve the page of older objects occurring immediately after the named object in the reverse chronological stream. Similarly, you can specify `ending_before` to receive a page of newer objects occurring immediately before the named object in the stream. Objects in a page always appear in reverse chronological order. Only one of `starting_after` or `ending_before` may be used.
     # Request IDs
 
-    Each API request has an associated request identifier. You can find this value in the response headers, under `Request-Id`. You can also find request identifiers in the URLs of individual request logs in your [Dashboard](https://tucuota.com/dashboard/slogs).
+    Each API request has an associated request identifier. You can find this value in the response headers, under `Request-Id`. You can also find request identifiers in the URLs of individual request logs in your [Dashboard](https://tucuota.com/dashboard/logs).
     # Conventions
 
     ### Notational Conventions
