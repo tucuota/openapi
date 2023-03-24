@@ -24,7 +24,7 @@
           "created_at": "2022-02-05T01:42:13-03:00",
           "deleted_at": null,
           "email": "john@doe.com",
-          "gateway_identifier": 383473,
+          "gateway_identifier": "383473",
           "id": "CSnlZxyY3jwr",
           "identification_number": null,
           "identification_type": null,
@@ -54,24 +54,31 @@
       "updated_at": "2022-01-26T15:36:57-03:00"
     },
     "gateway": {
-      "id": "GWRqj9QPKlMk",
-      "object": "gateway",
-      "gatewaykind": "visaD",
-      "number": "111111",
-      "username": null,
-      "number_bank_retries": null,
-      "code_length": 5,
+      "approved_at": "2023-02-14T11:41:40-03:00",
+      "code_length": null,
+      "created_at": "2023-01-31T16:18:31-03:00",
       "disabled": false,
-      "brand_list": [
-        "visa-debito"
-      ],
-      "livemode": true,
-      "created_at": "2021-07-05T12:24:32-03:00",
-      "updated_at": "2021-07-05T12:24:32-03:00",
-      "approved_at": "2021-07-05T12:24:32-03:00",
-      "brands": {
-        "visa-debito": true
-      }
+      "id": "GWM8DK6VKoG3",
+      "livemode": false,
+      "number": "1203764444",
+      "number_bank_retries": null,
+      "object": "gateway",
+      "provider": "mercado-pago-argentina",
+      "supported_payment_methods": {
+        "card": {
+          "networks": [
+            "diners",
+            "jcb",
+            "mastercard",
+            "visa"
+          ],
+          "required_fields": [
+            "security_code"
+          ]
+        }
+      },
+      "updated_at": "2023-02-01T16:36:06-03:00",
+      "username": "user@name.com"
     },
     "import": {
       "batch_job": {
@@ -161,7 +168,7 @@
         "created_at": "2022-02-05T01:42:13-03:00",
         "deleted_at": null,
         "email": "john@doe.com",
-        "gateway_identifier": 383473,
+        "gateway_identifier": "383473",
         "id": "CSnlZxyY3jwr",
         "identification_number": null,
         "identification_type": null,
@@ -180,17 +187,22 @@
       },
       "object": "mandate",
       "payment_method": {
-        "bank": "Visa",
-        "brand": "visa-credito",
         "card": {
-          "bank": "Visa",
-          "brand": "visa-credito",
+          "name": "Visa",
+          "network": "visa",
+          "issuer": null,
           "country": "AR",
           "expiration_month": null,
           "expiration_year": null,
           "fingerprint": "0sZQikKp4lImAgIo",
           "funding": "credit",
-          "last_four_digits": "4242"
+          "last_four_digits": "4242",
+          "providers": {
+            "available": [
+              "fiserv-argentina"
+            ],
+            "preferred": "fiserv-argentina"
+          }
         },
         "created_at": "2022-02-01T23:13:04-03:00",
         "id": "PMBja4YZ2GDR",
@@ -229,7 +241,7 @@
       "customer": {
         "id": "CS3Z25Agp708",
         "object": "customer",
-        "gateway_identifier": 1723393503,
+        "gateway_identifier": "1723393503",
         "name": "Andrés Bahena Tercero",
         "email": "andres37@calvillo.info",
         "identification_type": null,
@@ -247,17 +259,22 @@
       "subscription_payment_number": null,
       "gateway": "GW1L49J7ARW3",
       "payment_method": {
-        "bank": "Visa",
-        "brand": "visa-credito",
         "card": {
-          "bank": "Visa",
-          "brand": "visa-credito",
+          "name": "Visa",
+          "network": "visa",
+          "issuer": null,
           "country": "AR",
           "expiration_month": null,
           "expiration_year": null,
           "fingerprint": "0sZQikKp4lImAgIo",
           "funding": "credit",
-          "last_four_digits": "4242"
+          "last_four_digits": "4242",
+          "providers": {
+            "available": [
+              "fiserv-argentina"
+            ],
+            "preferred": "fiserv-argentina"
+          }
         },
         "created_at": "2022-02-01T23:13:04-03:00",
         "id": "PMBja4YZ2GDR",
@@ -272,17 +289,22 @@
       "refunds": []
     },
     "payment_method": {
-      "bank": "Visa",
-      "brand": "visa-credito",
       "card": {
-        "bank": "Visa",
-        "brand": "visa-credito",
+        "name": "Visa",
+        "network": "visa",
+        "issuer": null,
         "country": "AR",
         "expiration_month": null,
         "expiration_year": null,
         "fingerprint": "0sZQikKp4lImAgIo",
         "funding": "credit",
-        "last_four_digits": "4242"
+        "last_four_digits": "4242",
+        "providers": {
+          "available": [
+            "fiserv-argentina"
+          ],
+          "preferred": "fiserv-argentina"
+        }
       },
       "created_at": "2022-02-01T23:13:04-03:00",
       "id": "PMBja4YZ2GDR",
@@ -356,7 +378,7 @@
       "interval_unit": "monthly",
       "interval": 1,
       "day_of_month": 1,
-      "day_of_week": null,
+      "day_of_week": 1,
       "livemode": true,
       "created_at": "2021-07-01T12:24:32-03:00",
       "updated_at": "2021-07-01T12:24:32-03:00",
@@ -371,7 +393,7 @@
       "customer": {
         "id": "CS3Z25Agp708",
         "object": "customer",
-        "gateway_identifier": 1723393503,
+        "gateway_identifier": "1723393503",
         "name": "Andrés Bahena Tercero",
         "email": "andres37@calvillo.info",
         "identification_type": null,
@@ -386,17 +408,22 @@
         "deleted_at": null
       },
       "payment_method": {
-        "bank": "Visa",
-        "brand": "visa-credito",
         "card": {
-          "bank": "Visa",
-          "brand": "visa-credito",
+          "name": "Visa",
+          "network": "visa",
+          "issuer": null,
           "country": "AR",
           "expiration_month": null,
           "expiration_year": null,
           "fingerprint": "0sZQikKp4lImAgIo",
           "funding": "credit",
-          "last_four_digits": "4242"
+          "last_four_digits": "4242",
+          "providers": {
+            "available": [
+              "fiserv-argentina"
+            ],
+            "preferred": "fiserv-argentina"
+          }
         },
         "created_at": "2022-02-01T23:13:04-03:00",
         "id": "PMBja4YZ2GDR",
