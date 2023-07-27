@@ -4997,6 +4997,9 @@ paths:
                                   description: Unique fingerprint for this bank account number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Enhanced bank account identification.
+                                  type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
                                   type: string
@@ -5643,6 +5646,9 @@ paths:
                                 description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Enhanced bank account identification.
+                                type: object
                               last_four_digits:
                                 description: Bank account last four digits.
                                 type: string
@@ -6289,6 +6295,9 @@ paths:
                                   description: Unique fingerprint for this bank account number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Enhanced bank account identification.
+                                  type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
                                   type: string
@@ -6698,6 +6707,9 @@ paths:
                               description: Unique fingerprint for this bank account number of your account.
                               type: string
                               example: 8712yh2uihiu1123sxas
+                            identification:
+                              description: Enhanced bank account identification.
+                              type: object
                             last_four_digits:
                               description: Bank account last four digits.
                               type: string
@@ -6948,6 +6960,12 @@ paths:
                     number:
                       description: Bank account number.
                       type: string
+                    alias:
+                      description: 'Bank account alias. Available upon request, contact Support.'
+                      type: string
+                    identification:
+                      description: 'Enhanced bank account identification. Available upon request, contact Support.'
+                      type: boolean
                   title: CBU
             examples:
               card:
@@ -6964,6 +6982,19 @@ paths:
                   type: cbu
                   cbu:
                     number: '0110022831266917230013'
+              cbu-alias:
+                summary: Store a Bank account using Alias
+                value:
+                  type: cbu
+                  cbu:
+                    alias: casa.carroza.perro
+              cbu-enhanced:
+                summary: Store a Bank account using Enhanced Identification.
+                value:
+                  type: cbu
+                  cbu:
+                    number: '0110022831266917230013'
+                    identification: true
         required: false
       responses:
         '201':
@@ -7079,6 +7110,9 @@ paths:
                             description: Unique fingerprint for this bank account number of your account.
                             type: string
                             example: 8712yh2uihiu1123sxas
+                          identification:
+                            description: Enhanced bank account identification.
+                            type: object
                           last_four_digits:
                             description: Bank account last four digits.
                             type: string
@@ -7170,6 +7204,47 @@ paths:
                       object: payment_method
                       type: cbu
                       updated_at: '2022-11-05T20:43:29-03:00'
+                cbu-enhanced:
+                  summary: CBU Bank Account with Enhanced Identification
+                  value:
+                    data:
+                      cbu:
+                        bank: Banco de la Nación Argentina
+                        country: AR
+                        fingerprint: jhA2lx68sNppN90k
+                        identification:
+                          account_routing:
+                            address: '******************0025'
+                            scheme: CBU
+                          bank_routing:
+                            address: BANCO INDUSTRIAL S.A.
+                            code: '322'
+                            scheme: NAME
+                          currency: ARS
+                          is_active: true
+                          label: BOCHA.ASTRO.NUEZ
+                          owners:
+                            - display_name: 'Diaz, Bruno'
+                              id: '20223385072'
+                              id_type: CUIT
+                              is_physical_person: true
+                            - display_name: 'Parker, Peter'
+                              id: '20313380002'
+                              id_type: CUIT
+                              is_physical_person: true
+                          type: CC
+                        last_four_digits: '0013'
+                        providers:
+                          available:
+                            - cbu-galicia
+                          preferred: cbu-galicia
+                      created_at: '2022-11-05T20:43:29-03:00'
+                      id: PMBKkz3wjEW9
+                      livemode: false
+                      metadata: null
+                      object: payment_method
+                      type: cbu
+                      updated_at: '2022-11-05T20:43:29-03:00'
         '401':
           description: Unauthorized
           content:
@@ -7212,7 +7287,7 @@ paths:
               --url https://api.tucuota.com/v1/payment_methods \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
-              --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0},"cbu":{"number":"string"}}'
+              --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0},"cbu":{"number":"string","alias":"string","identification":true}}'
         - lang: Node + Request
           source: |
             const request = require('request');
@@ -7227,7 +7302,7 @@ paths:
               body: {
                 type: 'card',
                 card: {number: 'string', expiration_year: 0, expiration_month: 0},
-                cbu: {number: 'string'}
+                cbu: {number: 'string', alias: 'string', identification: true}
               },
               json: true
             };
@@ -7250,7 +7325,7 @@ paths:
               'Authorization' => 'Bearer sk_live_...'
             ]);
 
-            $request->setBody('{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0},"cbu":{"number":"string"}}');
+            $request->setBody('{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0},"cbu":{"number":"string","alias":"string","identification":true}}');
 
             try {
               $response = $request->send();
@@ -7272,7 +7347,11 @@ paths:
                     "expiration_year": 0,
                     "expiration_month": 0
                 },
-                "cbu": {"number": "string"}
+                "cbu": {
+                    "number": "string",
+                    "alias": "string",
+                    "identification": True
+                }
             }
             headers = {
                 "content-type": "application/json",
@@ -7287,7 +7366,7 @@ paths:
             HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/payment_methods")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
-              .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0},\"cbu\":{\"number\":\"string\"}}")
+              .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true}}")
               .asString();
         - lang: Ruby + Native
           source: |-
@@ -7304,7 +7383,7 @@ paths:
             request = Net::HTTP::Post.new(url)
             request["content-type"] = 'application/json'
             request["Authorization"] = 'Bearer sk_live_...'
-            request.body = "{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0},\"cbu\":{\"number\":\"string\"}}"
+            request.body = "{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true}}"
 
             response = http.request(request)
             puts response.read_body
@@ -7435,6 +7514,9 @@ paths:
                             description: Unique fingerprint for this bank account number of your account.
                             type: string
                             example: 8712yh2uihiu1123sxas
+                          identification:
+                            description: Enhanced bank account identification.
+                            type: object
                           last_four_digits:
                             description: Bank account last four digits.
                             type: string
@@ -7730,6 +7812,9 @@ paths:
                               description: Unique fingerprint for this bank account number of your account.
                               type: string
                               example: 8712yh2uihiu1123sxas
+                            identification:
+                              description: Enhanced bank account identification.
+                              type: object
                             last_four_digits:
                               description: Bank account last four digits.
                               type: string
@@ -8351,6 +8436,9 @@ paths:
                                   description: Unique fingerprint for this bank account number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Enhanced bank account identification.
+                                  type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
                                   type: string
@@ -8975,6 +9063,9 @@ paths:
                                 description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Enhanced bank account identification.
+                                type: object
                               last_four_digits:
                                 description: Bank account last four digits.
                                 type: string
@@ -9516,6 +9607,9 @@ paths:
                                 description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Enhanced bank account identification.
+                                type: object
                               last_four_digits:
                                 description: Bank account last four digits.
                                 type: string
@@ -10083,6 +10177,9 @@ paths:
                                 description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Enhanced bank account identification.
+                                type: object
                               last_four_digits:
                                 description: Bank account last four digits.
                                 type: string
@@ -10961,6 +11058,9 @@ paths:
                                   description: Unique fingerprint for this bank account number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Enhanced bank account identification.
+                                  type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
                                   type: string
@@ -12861,6 +12961,9 @@ paths:
                                   description: Unique fingerprint for this bank account number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Enhanced bank account identification.
+                                  type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
                                   type: string
@@ -13460,6 +13563,9 @@ paths:
                                 description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Enhanced bank account identification.
+                                type: object
                               last_four_digits:
                                 description: Bank account last four digits.
                                 type: string
@@ -14031,6 +14137,9 @@ paths:
                                 description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Enhanced bank account identification.
+                                type: object
                               last_four_digits:
                                 description: Bank account last four digits.
                                 type: string
@@ -14656,6 +14765,9 @@ paths:
                                 description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Enhanced bank account identification.
+                                type: object
                               last_four_digits:
                                 description: Bank account last four digits.
                                 type: string
@@ -15162,6 +15274,9 @@ paths:
                                 description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Enhanced bank account identification.
+                                type: object
                               last_four_digits:
                                 description: Bank account last four digits.
                                 type: string
@@ -15630,6 +15745,9 @@ paths:
                                 description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Enhanced bank account identification.
+                                type: object
                               last_four_digits:
                                 description: Bank account last four digits.
                                 type: string
@@ -16104,6 +16222,9 @@ paths:
                                 description: Unique fingerprint for this bank account number of your account.
                                 type: string
                                 example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Enhanced bank account identification.
+                                type: object
                               last_four_digits:
                                 description: Bank account last four digits.
                                 type: string
@@ -16596,6 +16717,9 @@ paths:
                                   description: Unique fingerprint for this bank account number of your account.
                                   type: string
                                   example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Enhanced bank account identification.
+                                  type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
                                   type: string
@@ -18720,6 +18844,9 @@ components:
           description: Unique fingerprint for this bank account number of your account.
           type: string
           example: 8712yh2uihiu1123sxas
+        identification:
+          description: Enhanced bank account identification.
+          type: object
         last_four_digits:
           description: Bank account last four digits.
           type: string
@@ -18844,6 +18971,9 @@ components:
               description: Unique fingerprint for this bank account number of your account.
               type: string
               example: 8712yh2uihiu1123sxas
+            identification:
+              description: Enhanced bank account identification.
+              type: object
             last_four_digits:
               description: Bank account last four digits.
               type: string
@@ -19104,6 +19234,9 @@ components:
                   description: Unique fingerprint for this bank account number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Enhanced bank account identification.
+                  type: object
                 last_four_digits:
                   description: Bank account last four digits.
                   type: string
@@ -19527,6 +19660,9 @@ components:
                   description: Unique fingerprint for this bank account number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Enhanced bank account identification.
+                  type: object
                 last_four_digits:
                   description: Bank account last four digits.
                   type: string
@@ -20060,6 +20196,9 @@ components:
                   description: Unique fingerprint for this bank account number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Enhanced bank account identification.
+                  type: object
                 last_four_digits:
                   description: Bank account last four digits.
                   type: string
@@ -20837,6 +20976,9 @@ components:
                   description: Unique fingerprint for this bank account number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Enhanced bank account identification.
+                  type: object
                 last_four_digits:
                   description: Bank account last four digits.
                   type: string
@@ -21244,6 +21386,9 @@ components:
                   description: Unique fingerprint for this bank account number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Enhanced bank account identification.
+                  type: object
                 last_four_digits:
                   description: Bank account last four digits.
                   type: string
@@ -21420,6 +21565,9 @@ components:
               description: Unique fingerprint for this bank account number of your account.
               type: string
               example: 8712yh2uihiu1123sxas
+            identification:
+              description: Enhanced bank account identification.
+              type: object
             last_four_digits:
               description: Bank account last four digits.
               type: string
@@ -21924,6 +22072,9 @@ components:
                   description: Unique fingerprint for this bank account number of your account.
                   type: string
                   example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Enhanced bank account identification.
+                  type: object
                 last_four_digits:
                   description: Bank account last four digits.
                   type: string
