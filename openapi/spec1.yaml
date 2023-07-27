@@ -18014,7 +18014,7 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/event" exampleRef="#/components/examples/event" showReadOnly={true} showWriteOnly={true} />
   - name: Gateways
     description: |
-      A gateway is an object
+      A gateway is a institution that authorizes and facilitates payments. It can be a payment processor, a bank, or a card network. In TuCuota, the gateway object represents the specific configuration and credentials that your company uses to access each service.
 
       <SchemaDefinition schemaRef="#/components/schemas/gateway" exampleRef="#/components/examples/gateway" showReadOnly={true} showWriteOnly={true} />
   - name: Imports

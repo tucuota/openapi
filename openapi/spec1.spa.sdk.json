@@ -25432,7 +25432,7 @@
     },
     {
       "name": "Gateways",
-      "description": "Un Gateway es un objeto\n\n<SchemaDefinition schemaRef=\"#/components/schemas/gateway\" exampleRef=\"#/components/examples/gateway\" showReadOnly={true} showWriteOnly={true} />\n"
+      "description": "Un gateway es una institución que autoriza y facilita los pagos. Puede ser un procesador de pagos, un banco o una red de tarjetas. En TuCuota, el objeto gateway representa la configuración específica y las credenciales que tu empresa utiliza para acceder a cada servicio.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/gateway\" exampleRef=\"#/components/examples/gateway\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Importaciones",
