@@ -17406,7 +17406,6 @@ paths:
                       - refund.approved
                       - refund.created
                       - refund.failed
-                      - resource.action
                       - subscription.automatically_paused
                       - subscription.cancelled
                       - subscription.created
