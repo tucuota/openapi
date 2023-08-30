@@ -247,13 +247,22 @@ info:
 
     ### Tipos de eventos de Webhooks
 
+    - `checkout.session.async_payment_failed`
+    - `checkout.session.async_payment_succeeded`
+    - `checkout.session.completed`
+    - `checkout.session.expired`
     - `customer.created`
     - `customer.disabled`
     - `customer.restored`
     - `customer.updated`
     - `gateway.created`
     - `gateway.disabled`
+    - `gateway.enabled`
     - `gateway.updated`
+    - `import.processed`
+    - `mandate.created`
+    - `mandate.restored`
+    - `mandate.revoked`
     - `payment.cancelled`
     - `payment.created`
     - `payment.retrying`
@@ -261,6 +270,10 @@ info:
     - `payment_method.automatically_updated`
     - `payment_method.created`
     - `payment_method.updated`
+    - `refund.approved`
+    - `refund.created`
+    - `refund.failed`
+    - `subscription.automatically_paused`
     - `subscription.cancelled`
     - `subscription.created`
     - `subscription.finished`
@@ -1571,6 +1584,10 @@ paths:
                           type: string
                           example: customer.created
                           enum:
+                            - checkout.session.async_payment_failed
+                            - checkout.session.async_payment_succeeded
+                            - checkout.session.completed
+                            - checkout.session.expired
                             - customer.created
                             - customer.disabled
                             - customer.restored
@@ -1740,6 +1757,10 @@ paths:
                         type: string
                         example: customer.created
                         enum:
+                          - checkout.session.async_payment_failed
+                          - checkout.session.async_payment_succeeded
+                          - checkout.session.completed
+                          - checkout.session.expired
                           - customer.created
                           - customer.disabled
                           - customer.restored
@@ -13018,7 +13039,7 @@ paths:
                           type: boolean
                         enabled_events:
                           description: |
-                            Uno de: `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
+                            Uno de: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
                           type: array
                           items:
                             type: string
@@ -13152,6 +13173,10 @@ paths:
                   items:
                     enum:
                       - '*'
+                      - checkout.session.async_payment_failed
+                      - checkout.session.async_payment_succeeded
+                      - checkout.session.completed
+                      - checkout.session.expired
                       - customer.created
                       - customer.disabled
                       - customer.restored
@@ -13174,6 +13199,7 @@ paths:
                       - refund.approved
                       - refund.created
                       - refund.failed
+                      - resource.action
                       - subscription.automatically_paused
                       - subscription.cancelled
                       - subscription.created
@@ -13248,7 +13274,7 @@ paths:
                         type: boolean
                       enabled_events:
                         description: |
-                          Uno de: `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
+                          Uno de: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
                         type: array
                         items:
                           type: string
@@ -13370,7 +13396,7 @@ paths:
                         type: boolean
                       enabled_events:
                         description: |
-                          Uno de: `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
+                          Uno de: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
                         type: array
                         items:
                           type: string
@@ -13490,7 +13516,7 @@ paths:
                         type: boolean
                       enabled_events:
                         description: |
-                          Uno de: `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
+                          Uno de: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
                         type: array
                         items:
                           type: string
@@ -13908,6 +13934,10 @@ components:
           type: string
           example: customer.created
           enum:
+            - checkout.session.async_payment_failed
+            - checkout.session.async_payment_succeeded
+            - checkout.session.completed
+            - checkout.session.expired
             - customer.created
             - customer.disabled
             - customer.restored
@@ -15857,7 +15887,7 @@ components:
           type: boolean
         enabled_events:
           description: |
-            Uno de: `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
+            Uno de: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
           type: array
           items:
             type: string
@@ -16075,6 +16105,10 @@ components:
           type: string
           example: customer.created
           enum:
+            - checkout.session.async_payment_failed
+            - checkout.session.async_payment_succeeded
+            - checkout.session.completed
+            - checkout.session.expired
             - customer.created
             - customer.disabled
             - customer.restored
@@ -17770,7 +17804,7 @@ components:
           type: boolean
         enabled_events:
           description: |
-            Uno de: `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
+            Uno de: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.
           type: array
           items:
             type: string
