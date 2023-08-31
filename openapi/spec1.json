@@ -391,6 +391,7 @@
         "summary": "Create a customer",
         "description": "Create a customer.",
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -474,8 +475,7 @@
                 "additionalProperties": false
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "201": {
@@ -915,6 +915,7 @@
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -992,8 +993,7 @@
                 "additionalProperties": false
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -2930,6 +2930,7 @@
         "summary": "Create a import",
         "description": "Create a import.",
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -2977,8 +2978,7 @@
                 "additionalProperties": false
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "201": {
@@ -4785,6 +4785,7 @@
         "summary": "Create a mandate",
         "description": "Create a mandate.",
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -4807,8 +4808,7 @@
                 }
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "201": {
@@ -6470,6 +6470,7 @@
         "summary": "Create a payment method",
         "description": "Create a payment method",
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -6498,6 +6499,10 @@
                       "expiration_month": {
                         "description": "Credit's card expiration month.",
                         "type": "number"
+                      },
+                      "security_code": {
+                        "description": "Card security code. It is highly recommended to always include this value.",
+                        "type": "string"
                       }
                     },
                     "title": "Credit Card"
@@ -6523,7 +6528,8 @@
                     "card": {
                       "number": "4242424242424242",
                       "expiration_year": 2032,
-                      "expiration_month": 5
+                      "expiration_month": 5,
+                      "security_code": "123"
                     }
                   }
                 },
@@ -6538,8 +6544,7 @@
                 }
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "201": {
@@ -8296,6 +8301,7 @@
         "summary": "Create a payment",
         "description": "Create a payment.",
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -8363,8 +8369,7 @@
                 ]
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "201": {
@@ -9624,6 +9629,7 @@
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -9672,8 +9678,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -11867,6 +11872,7 @@
         "summary": "Create a sesssion",
         "description": "Create a session",
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -11966,8 +11972,7 @@
                 }
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "201": {
@@ -13016,6 +13021,7 @@
         "summary": "Create a subscription",
         "description": "Create a subscription",
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "encoding": {
@@ -13113,8 +13119,7 @@
                 ]
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "201": {
@@ -14299,6 +14304,7 @@
           }
         ],
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "encoding": {
@@ -14396,8 +14402,7 @@
                 ]
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "200": {
@@ -17646,6 +17651,7 @@
         "summary": "Create a webhook",
         "description": "Create a webhook.",
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -17729,8 +17735,7 @@
                 ]
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "201": {
@@ -18031,6 +18036,7 @@
           }
         ],
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -18045,8 +18051,7 @@
                 }
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "200": {

@@ -417,6 +417,7 @@
         "summary": "Crear un cliente",
         "description": "Crear un cliente.",
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -500,8 +501,7 @@
                 "additionalProperties": false
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "201": {
@@ -993,6 +993,7 @@
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -1070,8 +1071,7 @@
                 "additionalProperties": false
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3216,6 +3216,7 @@
         "summary": "Crear una importación",
         "description": "Crear una importación.",
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -3263,8 +3264,7 @@
                 "additionalProperties": false
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "201": {
@@ -5279,6 +5279,7 @@
         "summary": "Crear una adhesión",
         "description": "Crear una adhesión.",
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -5301,8 +5302,7 @@
                 }
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "201": {
@@ -7120,6 +7120,7 @@
         "summary": "Crear un método de pago",
         "description": "Crear un método de pago",
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -7148,6 +7149,10 @@
                       "expiration_month": {
                         "description": "Mes de vencimiento de la tarjeta de crédito/débito.",
                         "type": "number"
+                      },
+                      "security_code": {
+                        "description": "Código de seguridad de la tarjeta. Es recomendable incluir siempre este valor.",
+                        "type": "string"
                       }
                     },
                     "title": "Tarjeta de Crédito"
@@ -7173,7 +7178,8 @@
                     "card": {
                       "number": "4242424242424242",
                       "expiration_year": 2032,
-                      "expiration_month": 5
+                      "expiration_month": 5,
+                      "security_code": "123"
                     }
                   }
                 },
@@ -7188,8 +7194,7 @@
                 }
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "201": {
@@ -7521,27 +7526,27 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://api.tucuota.com/v1/payment_methods \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0},\"cbu\":{\"number\":\"string\"}}'"
+            "source": "curl --request POST \\\n  --url https://api.tucuota.com/v1/payment_methods \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\"}}'"
           },
           {
             "lang": "Node + Request",
-            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.tucuota.com/v1/payment_methods',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    type: 'card',\n    card: {number: 'string', expiration_year: 0, expiration_month: 0},\n    cbu: {number: 'string'}\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.tucuota.com/v1/payment_methods',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    type: 'card',\n    card: {\n      number: 'string',\n      expiration_year: 0,\n      expiration_month: 0,\n      security_code: 'string'\n    },\n    cbu: {number: 'string'}\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
           },
           {
             "lang": "Php + Http1",
-            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.tucuota.com/v1/payment_methods');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0},\"cbu\":{\"number\":\"string\"}}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.tucuota.com/v1/payment_methods');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\"}}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
           },
           {
             "lang": "Python + Requests",
-            "source": "import requests\n\nurl = \"https://api.tucuota.com/v1/payment_methods\"\n\npayload = {\n    \"type\": \"card\",\n    \"card\": {\n        \"number\": \"string\",\n        \"expiration_year\": 0,\n        \"expiration_month\": 0\n    },\n    \"cbu\": {\"number\": \"string\"}\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
+            "source": "import requests\n\nurl = \"https://api.tucuota.com/v1/payment_methods\"\n\npayload = {\n    \"type\": \"card\",\n    \"card\": {\n        \"number\": \"string\",\n        \"expiration_year\": 0,\n        \"expiration_month\": 0,\n        \"security_code\": \"string\"\n    },\n    \"cbu\": {\"number\": \"string\"}\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
           },
           {
             "lang": "Java + Unirest",
-            "source": "HttpResponse<String> response = Unirest.post(\"https://api.tucuota.com/v1/payment_methods\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\"}}\")\n  .asString();"
+            "source": "HttpResponse<String> response = Unirest.post(\"https://api.tucuota.com/v1/payment_methods\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\"}}\")\n  .asString();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.tucuota.com/v1/payment_methods\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.tucuota.com/v1/payment_methods\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
         ]
       }
@@ -9050,6 +9055,7 @@
         "summary": "Crear un pago",
         "description": "Crear un pago.",
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -9117,8 +9123,7 @@
                 ]
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "201": {
@@ -10430,6 +10435,7 @@
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -10478,8 +10484,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -12881,6 +12886,7 @@
         "summary": "Crear una sesión",
         "description": "Crear una sesión",
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -12980,8 +12986,7 @@
                 }
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "201": {
@@ -14108,6 +14113,7 @@
         "summary": "Crear una suscripción",
         "description": "Crear una suscripción",
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "encoding": {
@@ -14205,8 +14211,7 @@
                 ]
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "201": {
@@ -15443,6 +15448,7 @@
           }
         ],
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "encoding": {
@@ -15540,8 +15546,7 @@
                 ]
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "200": {
@@ -18946,6 +18951,7 @@
         "summary": "Crear un webhook",
         "description": "Crear un webhook.",
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -19029,8 +19035,7 @@
                 ]
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "201": {
@@ -19383,6 +19388,7 @@
           }
         ],
         "requestBody": {
+          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -19397,8 +19403,7 @@
                 }
               }
             }
-          },
-          "required": false
+          }
         },
         "responses": {
           "200": {

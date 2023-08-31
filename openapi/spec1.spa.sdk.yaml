@@ -689,6 +689,7 @@ paths:
       summary: Crear un cliente
       description: Crear un cliente.
       requestBody:
+        required: true
         content:
           application/json:
             encoding:
@@ -748,7 +749,6 @@ paths:
                   example:
                     some: metadata
               additionalProperties: false
-        required: true
       responses:
         '201':
           description: OK
@@ -1239,6 +1239,7 @@ paths:
             type: string
           example: CS9PL8eeo8aB
       requestBody:
+        required: true
         content:
           application/json:
             encoding:
@@ -1293,7 +1294,6 @@ paths:
                   example:
                     some: metadata
               additionalProperties: false
-        required: true
       responses:
         '200':
           description: OK
@@ -3397,6 +3397,7 @@ paths:
       summary: Crear una importación
       description: Crear una importación.
       requestBody:
+        required: true
         content:
           application/json:
             encoding:
@@ -3435,7 +3436,6 @@ paths:
                   example:
                     some: metadata
               additionalProperties: false
-        required: true
       responses:
         '201':
           description: OK
@@ -5446,6 +5446,7 @@ paths:
       summary: Crear una adhesión
       description: Crear una adhesión.
       requestBody:
+        required: false
         content:
           application/json:
             schema:
@@ -5464,7 +5465,6 @@ paths:
               example:
                 customer_id: CS3oDRqz9wzB
                 payment_method_id: PMBja4YZ2GDR
-        required: false
       responses:
         '201':
           description: OK
@@ -7192,6 +7192,7 @@ paths:
       summary: Crear un método de pago
       description: Crear un método de pago
       requestBody:
+        required: false
         content:
           application/json:
             schema:
@@ -7216,6 +7217,9 @@ paths:
                     expiration_month:
                       description: Mes de vencimiento de la tarjeta de crédito/débito.
                       type: number
+                    security_code:
+                      description: Código de seguridad de la tarjeta. Es recomendable incluir siempre este valor.
+                      type: string
                   title: Tarjeta de Crédito
                 cbu:
                   description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
@@ -7234,13 +7238,13 @@ paths:
                     number: '4242424242424242'
                     expiration_year: 2032
                     expiration_month: 5
+                    security_code: '123'
               cbu:
                 summary: Guardar una Cuenta Bancaria CBU
                 value:
                   type: cbu
                   cbu:
                     number: '0110022831266917230013'
-        required: false
       responses:
         '201':
           description: Método de Pago creado
@@ -7491,7 +7495,7 @@ paths:
               --url https://api.tucuota.com/v1/payment_methods \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
-              --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0},"cbu":{"number":"string"}}'
+              --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string"}}'
         - lang: Node + Request
           source: |
             const request = require('request');
@@ -7505,7 +7509,12 @@ paths:
               },
               body: {
                 type: 'card',
-                card: {number: 'string', expiration_year: 0, expiration_month: 0},
+                card: {
+                  number: 'string',
+                  expiration_year: 0,
+                  expiration_month: 0,
+                  security_code: 'string'
+                },
                 cbu: {number: 'string'}
               },
               json: true
@@ -7529,7 +7538,7 @@ paths:
               'Authorization' => 'Bearer sk_live_...'
             ]);
 
-            $request->setBody('{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0},"cbu":{"number":"string"}}');
+            $request->setBody('{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string"}}');
 
             try {
               $response = $request->send();
@@ -7549,7 +7558,8 @@ paths:
                 "card": {
                     "number": "string",
                     "expiration_year": 0,
-                    "expiration_month": 0
+                    "expiration_month": 0,
+                    "security_code": "string"
                 },
                 "cbu": {"number": "string"}
             }
@@ -7566,7 +7576,7 @@ paths:
             HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/payment_methods")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
-              .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0},\"cbu\":{\"number\":\"string\"}}")
+              .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\"}}")
               .asString();
         - lang: Ruby + Native
           source: |-
@@ -7583,7 +7593,7 @@ paths:
             request = Net::HTTP::Post.new(url)
             request["content-type"] = 'application/json'
             request["Authorization"] = 'Bearer sk_live_...'
-            request.body = "{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0},\"cbu\":{\"number\":\"string\"}}"
+            request.body = "{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\"}}"
 
             response = http.request(request)
             puts response.read_body
@@ -8895,6 +8905,7 @@ paths:
       summary: Crear un pago
       description: Crear un pago.
       requestBody:
+        required: false
         content:
           application/json:
             schema:
@@ -8952,7 +8963,6 @@ paths:
                 - description
                 - customer_id
                 - payment_method_id
-        required: false
       responses:
         '201':
           description: OK
@@ -10060,6 +10070,7 @@ paths:
             type: string
           example: PYdOz9bgVReV
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -10100,7 +10111,6 @@ paths:
                     some: metadata
               example:
                 description: New payment title
-        required: true
       responses:
         '200':
           description: Pago actualizado
@@ -12390,6 +12400,7 @@ paths:
       summary: Crear una sesión
       description: Crear una sesión
       requestBody:
+        required: false
         content:
           application/json:
             schema:
@@ -12476,7 +12487,6 @@ paths:
                 success_url: 'http://example.com/success'
                 amount: '200.50'
                 description: Summer school
-        required: false
       responses:
         '201':
           description: OK
@@ -13510,6 +13520,7 @@ paths:
       summary: Crear una suscripción
       description: Crear una suscripción
       requestBody:
+        required: false
         content:
           application/json:
             encoding:
@@ -13592,7 +13603,6 @@ paths:
                 - description
                 - interval
                 - interval_unit
-        required: false
       responses:
         '201':
           description: OK
@@ -14686,6 +14696,7 @@ paths:
             type: string
           example: SBmX1MrZ77Mwq3
       requestBody:
+        required: false
         content:
           application/json:
             encoding:
@@ -14767,7 +14778,6 @@ paths:
                 - description
                 - interval
                 - interval_unit
-        required: false
       responses:
         '200':
           description: Subscription updated successfuly.
@@ -17759,6 +17769,7 @@ paths:
       summary: Crear un webhook
       description: Crear un webhook.
       requestBody:
+        required: true
         content:
           application/json:
             encoding:
@@ -17831,7 +17842,6 @@ paths:
               additionalProperties: false
               required:
                 - url
-        required: true
       responses:
         '201':
           description: OK
@@ -18232,6 +18242,7 @@ paths:
             type: string
           example: WHq4VzyAzDgB
       requestBody:
+        required: false
         content:
           application/json:
             schema:
@@ -18241,7 +18252,6 @@ paths:
                   type: string
               example:
                 url: 'http://somesite.com'
-        required: false
       responses:
         '200':
           description: OK
