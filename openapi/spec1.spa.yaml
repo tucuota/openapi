@@ -6741,6 +6741,10 @@ paths:
                             - 'null'
                             - string
                           example: null
+                        binary_mode:
+                          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                          type: boolean
+                          example: false
                         refunds:
                           description: Reembolsos asociados con este pago.
                           type: array
@@ -7343,6 +7347,10 @@ paths:
                           - 'null'
                           - string
                         example: null
+                      binary_mode:
+                        description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                        type: boolean
+                        example: false
                       refunds:
                         description: Reembolsos asociados con este pago.
                         type: array
@@ -7839,6 +7847,10 @@ paths:
                           - 'null'
                           - string
                         example: null
+                      binary_mode:
+                        description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                        type: boolean
+                        example: false
                       refunds:
                         description: Reembolsos asociados con este pago.
                         type: array
@@ -8397,6 +8409,10 @@ paths:
                           - 'null'
                           - string
                         example: null
+                      binary_mode:
+                        description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                        type: boolean
+                        example: false
                       refunds:
                         description: Reembolsos asociados con este pago.
                         type: array
@@ -9023,6 +9039,10 @@ paths:
                             - 'null'
                             - string
                           example: null
+                        binary_mode:
+                          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                          type: boolean
+                          example: false
                         refunds:
                           description: Reembolsos asociados con este pago.
                           type: array
@@ -9732,6 +9752,12 @@ paths:
                   description: |
                     Email de su cliente. Puede completarlo o pedirle al cliente que complete este campo en el proceso de pago.
                   type: string
+                customer_gateway_identifier:
+                  description: La referencia del cliente en los extractos bancarios.
+                  type:
+                    - 'null'
+                    - string
+                  example: '383473'
                 editable_amount:
                   description: 'Permita que el cliente establezca la cantidad de pagos, útil para donaciones.'
                   type: boolean
@@ -9757,6 +9783,12 @@ paths:
                 day_of_week:
                   description: 'Solo para suscripciones, el número del día de la semana, del 0 (domingo) al 6 (sábado). Úselo solo si necesita que la suscripción comience en una fecha específica. En la mayoría de los casos este debe ser nulo, por lo que TuCuota utilizará la fecha del momento en que el usuario completa el checkout.'
                   type: integer
+                payment_gateway_identifier:
+                  description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
+                  type:
+                    - 'null'
+                    - string
+                  example: null
                 metadata:
                   description: |
                     Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -9803,26 +9835,6 @@ paths:
                     description: Este objeto representa una Sesión de su organización.
                     type: object
                     properties:
-                      amount:
-                        description: Monto a cobrar.
-                        type: number
-                        example: 12.5
-                      brands:
-                        type: array
-                      completed_at:
-                        description: |
-                          Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
-                        type: string
-                        format: date-time
-                        example: '2022-02-11T23:19:22-03:00'
-                      count:
-                        type: number
-                      created_at:
-                        description: |
-                          Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
-                        type: string
-                        format: date-time
-                        example: '2022-02-11T23:19:22-03:00'
                       id:
                         description: Identificador único de la Sesión.
                         type: string
@@ -9832,63 +9844,91 @@ paths:
                         description: 'Identificador UUID del objeto. [Legacy]'
                         type: string
                         example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
-                      name:
+                      object:
+                        type: string
+                        enum:
+                          - session
+                      description:
+                        description: Descripción de la sesión
+                        type: string
+                        example: Ajuste por deuda pasada
+                      amount:
+                        description: Monto a cobrar.
+                        type: number
+                        example: 12.5
+                      kind:
+                        type: string
+                        enum:
+                          - mandate
+                          - payment
+                          - subscription
+                      customer_id:
+                        description: Identificador único del Cliente.
+                        type: string
+                        example: CSljikas98
+                        readOnly: true
+                      customer_name:
                         description: El nombre completo del cliente.
                         type:
                           - 'null'
                           - string
                         example: Jorgelina Castro
-                      email:
+                      customer_email:
                         description: El email del cliente.
                         type:
                           - 'null'
                           - string
                         example: mail@example.com
-                      livemode:
-                        description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
+                      customer_gateway_identifier:
+                        description: La referencia del cliente en los extractos bancarios.
+                        type:
+                          - 'null'
+                          - string
+                        example: '383473'
+                      editable_amount:
+                        description: 'Permita que el cliente establezca la cantidad de pagos, útil para donaciones.'
                         type: boolean
-                        example: true
-                      metadata:
-                        description: |
-                          Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
-                          a un objeto. Esto puede ser útil para almacenar información
-                          sobre el objeto en un formato estructurado.
-                          Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
-                        type:
-                          - object
-                          - 'null'
-                        example:
-                          some: metadata
-                        additionalProperties:
-                          maxLength: 500
-                          type:
-                            - string
-                            - 'null'
-                            - number
-                            - boolean
-                        properties: {}
-                      mobile_number:
-                        type:
-                          - 'null'
-                          - string
-                        example: '5491164531234'
-                      gateway_identifier:
+                      installments:
+                        description: 'Solo para pagos, cantidad de pagos en los que se fraccionará el monto.'
                         type: integer
-                        format: int32
-                        example: 383473
-                      identification_number:
-                        type:
-                          - 'null'
-                          - string
-                        example: 15.555.324
-                      identification_type:
-                        type:
-                          - 'null'
-                          - string
-                        example: DNI
+                      max_installments:
+                        description: 'Solo para pagos, permite que el cliente elija en cuántas cuotas puede fraccionar el pago.'
+                        type: integer
+                      interval_unit:
+                        description: |
+                          Sólo para suscripciones. La unidad de tiempo entre las fechas de pago del cliente. Uno
+                          de: `weekly`, `monthly` or `yearly`. Ejemplo `monthly`.
+                        type: string
+                      interval:
+                        description: 'Sólo para suscripciones. Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.'
+                        type: number
+                      day_of_month:
+                        description: 'Sólo para suscripciones. Día del mes, del 1 al 28. Este campo es requerido si `interval_unit` es `monthly`. El default es 1.'
+                        type: number
+                      day_of_week:
+                        description: 'Sólo para suscripciones. Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.'
+                        type: number
+                      count:
+                        type: number
+                      editable_count:
+                        type: boolean
+                      name_text:
+                        type: string
+                      created_at:
+                        description: |
+                          Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      completed_at:
+                        description: |
+                          Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
@@ -9900,6 +9940,31 @@ paths:
                           - string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      livemode:
+                        description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
+                        type: boolean
+                        example: true
+                      binary_mode:
+                        description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                        type: boolean
+                        example: false
+                      payment_gateway_identifier:
+                        description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
+                        type:
+                          - 'null'
+                          - string
+                        example: null
+                      public_uri:
+                        description: La URL de la sesión de Checkout. Redirige a tus usuario a esta URL para completar el checkout.
+                        type: string
+                        readOnly: true
+                      success_url:
+                        description: La URL al que se redirigirá a su cliente después de completar el pago.
+                        type: string
+                      link_id:
+                        description: Link ID.
+                        type: string
+                        example: LKLj0JV8xzdMoRk549
                     title: Sesión
         '401':
           description: No autorizado
@@ -9952,26 +10017,6 @@ paths:
                     description: Este objeto representa una Sesión de su organización.
                     type: object
                     properties:
-                      amount:
-                        description: Monto a cobrar.
-                        type: number
-                        example: 12.5
-                      brands:
-                        type: array
-                      completed_at:
-                        description: |
-                          Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
-                        type: string
-                        format: date-time
-                        example: '2022-02-11T23:19:22-03:00'
-                      count:
-                        type: number
-                      created_at:
-                        description: |
-                          Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
-                        type: string
-                        format: date-time
-                        example: '2022-02-11T23:19:22-03:00'
                       id:
                         description: Identificador único de la Sesión.
                         type: string
@@ -9981,63 +10026,91 @@ paths:
                         description: 'Identificador UUID del objeto. [Legacy]'
                         type: string
                         example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
-                      name:
+                      object:
+                        type: string
+                        enum:
+                          - session
+                      description:
+                        description: Descripción de la sesión
+                        type: string
+                        example: Ajuste por deuda pasada
+                      amount:
+                        description: Monto a cobrar.
+                        type: number
+                        example: 12.5
+                      kind:
+                        type: string
+                        enum:
+                          - mandate
+                          - payment
+                          - subscription
+                      customer_id:
+                        description: Identificador único del Cliente.
+                        type: string
+                        example: CSljikas98
+                        readOnly: true
+                      customer_name:
                         description: El nombre completo del cliente.
                         type:
                           - 'null'
                           - string
                         example: Jorgelina Castro
-                      email:
+                      customer_email:
                         description: El email del cliente.
                         type:
                           - 'null'
                           - string
                         example: mail@example.com
-                      livemode:
-                        description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
+                      customer_gateway_identifier:
+                        description: La referencia del cliente en los extractos bancarios.
+                        type:
+                          - 'null'
+                          - string
+                        example: '383473'
+                      editable_amount:
+                        description: 'Permita que el cliente establezca la cantidad de pagos, útil para donaciones.'
                         type: boolean
-                        example: true
-                      metadata:
-                        description: |
-                          Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
-                          a un objeto. Esto puede ser útil para almacenar información
-                          sobre el objeto en un formato estructurado.
-                          Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
-                        type:
-                          - object
-                          - 'null'
-                        example:
-                          some: metadata
-                        additionalProperties:
-                          maxLength: 500
-                          type:
-                            - string
-                            - 'null'
-                            - number
-                            - boolean
-                        properties: {}
-                      mobile_number:
-                        type:
-                          - 'null'
-                          - string
-                        example: '5491164531234'
-                      gateway_identifier:
+                      installments:
+                        description: 'Solo para pagos, cantidad de pagos en los que se fraccionará el monto.'
                         type: integer
-                        format: int32
-                        example: 383473
-                      identification_number:
-                        type:
-                          - 'null'
-                          - string
-                        example: 15.555.324
-                      identification_type:
-                        type:
-                          - 'null'
-                          - string
-                        example: DNI
+                      max_installments:
+                        description: 'Solo para pagos, permite que el cliente elija en cuántas cuotas puede fraccionar el pago.'
+                        type: integer
+                      interval_unit:
+                        description: |
+                          Sólo para suscripciones. La unidad de tiempo entre las fechas de pago del cliente. Uno
+                          de: `weekly`, `monthly` or `yearly`. Ejemplo `monthly`.
+                        type: string
+                      interval:
+                        description: 'Sólo para suscripciones. Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.'
+                        type: number
+                      day_of_month:
+                        description: 'Sólo para suscripciones. Día del mes, del 1 al 28. Este campo es requerido si `interval_unit` es `monthly`. El default es 1.'
+                        type: number
+                      day_of_week:
+                        description: 'Sólo para suscripciones. Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.'
+                        type: number
+                      count:
+                        type: number
+                      editable_count:
+                        type: boolean
+                      name_text:
+                        type: string
+                      created_at:
+                        description: |
+                          Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
                       updated_at:
                         description: |
                           Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
+                        type: string
+                        format: date-time
+                        example: '2022-02-11T23:19:22-03:00'
+                      completed_at:
+                        description: |
+                          Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
                         type: string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
@@ -10049,6 +10122,31 @@ paths:
                           - string
                         format: date-time
                         example: '2022-02-11T23:19:22-03:00'
+                      livemode:
+                        description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
+                        type: boolean
+                        example: true
+                      binary_mode:
+                        description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                        type: boolean
+                        example: false
+                      payment_gateway_identifier:
+                        description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
+                        type:
+                          - 'null'
+                          - string
+                        example: null
+                      public_uri:
+                        description: La URL de la sesión de Checkout. Redirige a tus usuario a esta URL para completar el checkout.
+                        type: string
+                        readOnly: true
+                      success_url:
+                        description: La URL al que se redirigirá a su cliente después de completar el pago.
+                        type: string
+                      link_id:
+                        description: Link ID.
+                        type: string
+                        example: LKLj0JV8xzdMoRk549
                     title: Sesión
         '401':
           description: No autorizado
@@ -11811,7 +11909,7 @@ paths:
                   description: 'Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1. Example 1'
                   type: number
                 day_of_month:
-                  description: 'Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.'
+                  description: 'Sólo para suscripciones. Día del mes, del 1 al 28. Este campo es requerido si `interval_unit` es `monthly`. El default es 1.'
                   type: number
                 day_of_week:
                   description: 'Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.'
@@ -16577,6 +16675,10 @@ components:
         - MXN
         - USB
         - USD
+    binary_mode:
+      description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+      type: boolean
+      example: false
     Payment:
       description: Este objeto representa un pago de su organización.
       type: object
@@ -17011,6 +17113,10 @@ components:
             - 'null'
             - string
           example: null
+        binary_mode:
+          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+          type: boolean
+          example: false
         refunds:
           description: Reembolsos asociados con este pago.
           type: array
@@ -17128,26 +17234,6 @@ components:
       description: Este objeto representa una Sesión de su organización.
       type: object
       properties:
-        amount:
-          description: Monto a cobrar.
-          type: number
-          example: 12.5
-        brands:
-          type: array
-        completed_at:
-          description: |
-            Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
-          type: string
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
-        count:
-          type: number
-        created_at:
-          description: |
-            Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
-          type: string
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
         id:
           description: Identificador único de la Sesión.
           type: string
@@ -17157,63 +17243,91 @@ components:
           description: 'Identificador UUID del objeto. [Legacy]'
           type: string
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
-        name:
+        object:
+          type: string
+          enum:
+            - session
+        description:
+          description: Descripción de la sesión
+          type: string
+          example: Ajuste por deuda pasada
+        amount:
+          description: Monto a cobrar.
+          type: number
+          example: 12.5
+        kind:
+          type: string
+          enum:
+            - mandate
+            - payment
+            - subscription
+        customer_id:
+          description: Identificador único del Cliente.
+          type: string
+          example: CSljikas98
+          readOnly: true
+        customer_name:
           description: El nombre completo del cliente.
           type:
             - 'null'
             - string
           example: Jorgelina Castro
-        email:
+        customer_email:
           description: El email del cliente.
           type:
             - 'null'
             - string
           example: mail@example.com
-        livemode:
-          description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
+        customer_gateway_identifier:
+          description: La referencia del cliente en los extractos bancarios.
+          type:
+            - 'null'
+            - string
+          example: '383473'
+        editable_amount:
+          description: 'Permita que el cliente establezca la cantidad de pagos, útil para donaciones.'
           type: boolean
-          example: true
-        metadata:
-          description: |
-            Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
-            a un objeto. Esto puede ser útil para almacenar información
-            sobre el objeto en un formato estructurado.
-            Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
-          type:
-            - object
-            - 'null'
-          example:
-            some: metadata
-          additionalProperties:
-            maxLength: 500
-            type:
-              - string
-              - 'null'
-              - number
-              - boolean
-          properties: {}
-        mobile_number:
-          type:
-            - 'null'
-            - string
-          example: '5491164531234'
-        gateway_identifier:
+        installments:
+          description: 'Solo para pagos, cantidad de pagos en los que se fraccionará el monto.'
           type: integer
-          format: int32
-          example: 383473
-        identification_number:
-          type:
-            - 'null'
-            - string
-          example: 15.555.324
-        identification_type:
-          type:
-            - 'null'
-            - string
-          example: DNI
+        max_installments:
+          description: 'Solo para pagos, permite que el cliente elija en cuántas cuotas puede fraccionar el pago.'
+          type: integer
+        interval_unit:
+          description: |
+            Sólo para suscripciones. La unidad de tiempo entre las fechas de pago del cliente. Uno
+            de: `weekly`, `monthly` or `yearly`. Ejemplo `monthly`.
+          type: string
+        interval:
+          description: 'Sólo para suscripciones. Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.'
+          type: number
+        day_of_month:
+          description: 'Sólo para suscripciones. Día del mes, del 1 al 28. Este campo es requerido si `interval_unit` es `monthly`. El default es 1.'
+          type: number
+        day_of_week:
+          description: 'Sólo para suscripciones. Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.'
+          type: number
+        count:
+          type: number
+        editable_count:
+          type: boolean
+        name_text:
+          type: string
+        created_at:
+          description: |
+            Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        completed_at:
+          description: |
+            Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
@@ -17225,6 +17339,31 @@ components:
             - string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
+        livemode:
+          description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
+          type: boolean
+          example: true
+        binary_mode:
+          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+          type: boolean
+          example: false
+        payment_gateway_identifier:
+          description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
+          type:
+            - 'null'
+            - string
+          example: null
+        public_uri:
+          description: La URL de la sesión de Checkout. Redirige a tus usuario a esta URL para completar el checkout.
+          type: string
+          readOnly: true
+        success_url:
+          description: La URL al que se redirigirá a su cliente después de completar el pago.
+          type: string
+        link_id:
+          description: Link ID.
+          type: string
+          example: LKLj0JV8xzdMoRk549
       title: Sesión
     Subscription:
       description: Este objeto representa una Suscripción de su organización.
@@ -19026,6 +19165,10 @@ components:
             - 'null'
             - string
           example: null
+        binary_mode:
+          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+          type: boolean
+          example: false
         refunds:
           description: Reembolsos asociados con este pago.
           type: array
@@ -19306,26 +19449,6 @@ components:
       description: Este objeto representa una Sesión de su organización.
       type: object
       properties:
-        amount:
-          description: Monto a cobrar.
-          type: number
-          example: 12.5
-        brands:
-          type: array
-        completed_at:
-          description: |
-            Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
-          type: string
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
-        count:
-          type: number
-        created_at:
-          description: |
-            Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
-          type: string
-          format: date-time
-          example: '2022-02-11T23:19:22-03:00'
         id:
           description: Identificador único de la Sesión.
           type: string
@@ -19335,63 +19458,91 @@ components:
           description: 'Identificador UUID del objeto. [Legacy]'
           type: string
           example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
-        name:
+        object:
+          type: string
+          enum:
+            - session
+        description:
+          description: Descripción de la sesión
+          type: string
+          example: Ajuste por deuda pasada
+        amount:
+          description: Monto a cobrar.
+          type: number
+          example: 12.5
+        kind:
+          type: string
+          enum:
+            - mandate
+            - payment
+            - subscription
+        customer_id:
+          description: Identificador único del Cliente.
+          type: string
+          example: CSljikas98
+          readOnly: true
+        customer_name:
           description: El nombre completo del cliente.
           type:
             - 'null'
             - string
           example: Jorgelina Castro
-        email:
+        customer_email:
           description: El email del cliente.
           type:
             - 'null'
             - string
           example: mail@example.com
-        livemode:
-          description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
+        customer_gateway_identifier:
+          description: La referencia del cliente en los extractos bancarios.
+          type:
+            - 'null'
+            - string
+          example: '383473'
+        editable_amount:
+          description: 'Permita que el cliente establezca la cantidad de pagos, útil para donaciones.'
           type: boolean
-          example: true
-        metadata:
-          description: |
-            Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
-            a un objeto. Esto puede ser útil para almacenar información
-            sobre el objeto en un formato estructurado.
-            Todas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.
-          type:
-            - object
-            - 'null'
-          example:
-            some: metadata
-          additionalProperties:
-            maxLength: 500
-            type:
-              - string
-              - 'null'
-              - number
-              - boolean
-          properties: {}
-        mobile_number:
-          type:
-            - 'null'
-            - string
-          example: '5491164531234'
-        gateway_identifier:
+        installments:
+          description: 'Solo para pagos, cantidad de pagos en los que se fraccionará el monto.'
           type: integer
-          format: int32
-          example: 383473
-        identification_number:
-          type:
-            - 'null'
-            - string
-          example: 15.555.324
-        identification_type:
-          type:
-            - 'null'
-            - string
-          example: DNI
+        max_installments:
+          description: 'Solo para pagos, permite que el cliente elija en cuántas cuotas puede fraccionar el pago.'
+          type: integer
+        interval_unit:
+          description: |
+            Sólo para suscripciones. La unidad de tiempo entre las fechas de pago del cliente. Uno
+            de: `weekly`, `monthly` or `yearly`. Ejemplo `monthly`.
+          type: string
+        interval:
+          description: 'Sólo para suscripciones. Número de `interval_unit` entre las fechas de pago del cliente. Debe ser mayor que 1. Si `interval_units` es semanal y el intervalo es 2, luego se le cobrará al cliente cada dos semanas. El valor predeterminado es 1.'
+          type: number
+        day_of_month:
+          description: 'Sólo para suscripciones. Día del mes, del 1 al 28. Este campo es requerido si `interval_unit` es `monthly`. El default es 1.'
+          type: number
+        day_of_week:
+          description: 'Sólo para suscripciones. Número del día de la semana, de 0 (Domingo) a 6 (Sábado). Este campo es obligatorio si `interval_unit` se establece en `weekly`.'
+          type: number
+        count:
+          type: number
+        editable_count:
+          type: boolean
+        name_text:
+          type: string
+        created_at:
+          description: |
+            Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
         updated_at:
           description: |
             Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
+          type: string
+          format: date-time
+          example: '2022-02-11T23:19:22-03:00'
+        completed_at:
+          description: |
+            Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
           type: string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
@@ -19403,6 +19554,31 @@ components:
             - string
           format: date-time
           example: '2022-02-11T23:19:22-03:00'
+        livemode:
+          description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
+          type: boolean
+          example: true
+        binary_mode:
+          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+          type: boolean
+          example: false
+        payment_gateway_identifier:
+          description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
+          type:
+            - 'null'
+            - string
+          example: null
+        public_uri:
+          description: La URL de la sesión de Checkout. Redirige a tus usuario a esta URL para completar el checkout.
+          type: string
+          readOnly: true
+        success_url:
+          description: La URL al que se redirigirá a su cliente después de completar el pago.
+          type: string
+        link_id:
+          description: Link ID.
+          type: string
+          example: LKLj0JV8xzdMoRk549
       title: Sesión
     subscription:
       description: Este objeto representa una Suscripción de su organización.

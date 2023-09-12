@@ -8418,6 +8418,11 @@
                             ],
                             "example": null
                           },
+                          "binary_mode": {
+                            "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+                            "type": "boolean",
+                            "example": false
+                          },
                           "refunds": {
                             "description": "Refunds associated with this payment.",
                             "type": "array",
@@ -9176,6 +9181,11 @@
                           ],
                           "example": null
                         },
+                        "binary_mode": {
+                          "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+                          "type": "boolean",
+                          "example": false
+                        },
                         "refunds": {
                           "description": "Refunds associated with this payment.",
                           "type": "array",
@@ -9796,6 +9806,11 @@
                             "string"
                           ],
                           "example": null
+                        },
+                        "binary_mode": {
+                          "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+                          "type": "boolean",
+                          "example": false
                         },
                         "refunds": {
                           "description": "Refunds associated with this payment.",
@@ -10498,6 +10513,11 @@
                             "string"
                           ],
                           "example": null
+                        },
+                        "binary_mode": {
+                          "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+                          "type": "boolean",
+                          "example": false
                         },
                         "refunds": {
                           "description": "Refunds associated with this payment.",
@@ -11311,6 +11331,11 @@
                               "string"
                             ],
                             "example": null
+                          },
+                          "binary_mode": {
+                            "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+                            "type": "boolean",
+                            "example": false
                           },
                           "refunds": {
                             "description": "Refunds associated with this payment.",
@@ -12233,6 +12258,14 @@
                     "description": "Email of your customer. You can fill it or ask the customer to fill this field in the checkout process.\n",
                     "type": "string"
                   },
+                  "customer_gateway_identifier": {
+                    "description": "The customer's reference for bank account statements.",
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "example": "383473"
+                  },
                   "editable_amount": {
                     "description": "Allow the customer to set the amount, useful for donations.\n",
                     "type": "boolean"
@@ -12265,6 +12298,14 @@
                   "day_of_week": {
                     "description": "Only for subscriptions, the day of week number, from 0 (Sunday) to 6 (Saturday). Use only if you need the subscription to start in a specyfic date. In most cases this should be null, therefore TuCuota will use the date of the moment when the user completes the checkout.\n",
                     "type": "integer"
+                  },
+                  "payment_gateway_identifier": {
+                    "description": "The custom number you send to the gateway network. In most cases this value is null.",
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "example": null
                   },
                   "metadata": {
                     "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
@@ -12316,29 +12357,6 @@
                       "description": "This object represents a Session of your organization.",
                       "type": "object",
                       "properties": {
-                        "amount": {
-                          "description": "Amount to be collected.",
-                          "type": "number",
-                          "example": 12.5
-                        },
-                        "brands": {
-                          "type": "array"
-                        },
-                        "completed_at": {
-                          "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
-                          "type": "string",
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00"
-                        },
-                        "count": {
-                          "type": "number"
-                        },
-                        "created_at": {
-                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
-                          "type": "string",
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00"
-                        },
                         "id": {
                           "description": "Unique identifier for the Session.",
                           "type": "string",
@@ -12350,7 +12368,37 @@
                           "type": "string",
                           "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
                         },
-                        "name": {
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "session"
+                          ]
+                        },
+                        "description": {
+                          "description": "Session description",
+                          "type": "string",
+                          "example": "Ajuste por deuda pasada"
+                        },
+                        "amount": {
+                          "description": "Amount to be collected.",
+                          "type": "number",
+                          "example": 12.5
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "mandate",
+                            "payment",
+                            "subscription"
+                          ]
+                        },
+                        "customer_id": {
+                          "description": "Unique identifier for the Customer.",
+                          "type": "string",
+                          "example": "CSljikas98",
+                          "readOnly": true
+                        },
+                        "customer_name": {
                           "description": "The customer's full name or business name.",
                           "type": [
                             "null",
@@ -12358,7 +12406,7 @@
                           ],
                           "example": "Jorgelina Castro"
                         },
-                        "email": {
+                        "customer_email": {
                           "description": "The customer's email address.",
                           "type": [
                             "null",
@@ -12366,59 +12414,65 @@
                           ],
                           "example": "mail@example.com"
                         },
-                        "livemode": {
-                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
-                          "type": "boolean",
-                          "example": true
-                        },
-                        "metadata": {
-                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
-                          "type": [
-                            "object",
-                            "null"
-                          ],
-                          "example": {
-                            "some": "metadata"
-                          },
-                          "additionalProperties": {
-                            "maxLength": 500,
-                            "type": [
-                              "string",
-                              "null",
-                              "number",
-                              "boolean"
-                            ]
-                          },
-                          "properties": {}
-                        },
-                        "mobile_number": {
+                        "customer_gateway_identifier": {
+                          "description": "The customer's reference for bank account statements.",
                           "type": [
                             "null",
                             "string"
                           ],
-                          "example": "5491164531234"
+                          "example": "383473"
                         },
-                        "gateway_identifier": {
-                          "type": "integer",
-                          "format": "int32",
-                          "example": 383473
+                        "editable_amount": {
+                          "description": "Allow the customer to set the amount, useful for donations.\n",
+                          "type": "boolean"
                         },
-                        "identification_number": {
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "example": "15.555.324"
+                        "installments": {
+                          "description": "Only for payments, quantity of payments on which the amount will be splitted.\n",
+                          "type": "integer"
                         },
-                        "identification_type": {
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "example": "DNI"
+                        "max_installments": {
+                          "description": "Only for payments, allow the customer to choose how many installments can split the payment.\n",
+                          "type": "integer"
+                        },
+                        "interval_unit": {
+                          "description": "Only for subscriptions. The unit of time between customer charge dates. One of `weekly`,\n`monthly` or `yearly`. Example `monthly`.\n",
+                          "type": "string"
+                        },
+                        "interval": {
+                          "description": "Only for subscriptions. Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+                          "type": "number"
+                        },
+                        "day_of_month": {
+                          "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                          "type": "number"
+                        },
+                        "day_of_week": {
+                          "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.",
+                          "type": "number"
+                        },
+                        "count": {
+                          "type": "number"
+                        },
+                        "editable_count": {
+                          "type": "boolean"
+                        },
+                        "name_text": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
                         },
                         "updated_at": {
                           "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "completed_at": {
+                          "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
                           "type": "string",
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
@@ -12431,6 +12485,38 @@
                           ],
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "binary_mode": {
+                          "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "payment_gateway_identifier": {
+                          "description": "The custom number you send to the gateway network. In most cases this value is null.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": null
+                        },
+                        "public_uri": {
+                          "description": "The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout.",
+                          "type": "string",
+                          "readOnly": true
+                        },
+                        "success_url": {
+                          "description": "The uri on which your customer will be redirected after completing the checkout.",
+                          "type": "string"
+                        },
+                        "link_id": {
+                          "description": "Link ID.",
+                          "type": "string",
+                          "example": "LKLj0JV8xzdMoRk549"
                         }
                       },
                       "title": "Session"
@@ -12512,29 +12598,6 @@
                       "description": "This object represents a Session of your organization.",
                       "type": "object",
                       "properties": {
-                        "amount": {
-                          "description": "Amount to be collected.",
-                          "type": "number",
-                          "example": 12.5
-                        },
-                        "brands": {
-                          "type": "array"
-                        },
-                        "completed_at": {
-                          "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
-                          "type": "string",
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00"
-                        },
-                        "count": {
-                          "type": "number"
-                        },
-                        "created_at": {
-                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
-                          "type": "string",
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00"
-                        },
                         "id": {
                           "description": "Unique identifier for the Session.",
                           "type": "string",
@@ -12546,7 +12609,37 @@
                           "type": "string",
                           "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
                         },
-                        "name": {
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "session"
+                          ]
+                        },
+                        "description": {
+                          "description": "Session description",
+                          "type": "string",
+                          "example": "Ajuste por deuda pasada"
+                        },
+                        "amount": {
+                          "description": "Amount to be collected.",
+                          "type": "number",
+                          "example": 12.5
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "mandate",
+                            "payment",
+                            "subscription"
+                          ]
+                        },
+                        "customer_id": {
+                          "description": "Unique identifier for the Customer.",
+                          "type": "string",
+                          "example": "CSljikas98",
+                          "readOnly": true
+                        },
+                        "customer_name": {
                           "description": "The customer's full name or business name.",
                           "type": [
                             "null",
@@ -12554,7 +12647,7 @@
                           ],
                           "example": "Jorgelina Castro"
                         },
-                        "email": {
+                        "customer_email": {
                           "description": "The customer's email address.",
                           "type": [
                             "null",
@@ -12562,59 +12655,65 @@
                           ],
                           "example": "mail@example.com"
                         },
-                        "livemode": {
-                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
-                          "type": "boolean",
-                          "example": true
-                        },
-                        "metadata": {
-                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
-                          "type": [
-                            "object",
-                            "null"
-                          ],
-                          "example": {
-                            "some": "metadata"
-                          },
-                          "additionalProperties": {
-                            "maxLength": 500,
-                            "type": [
-                              "string",
-                              "null",
-                              "number",
-                              "boolean"
-                            ]
-                          },
-                          "properties": {}
-                        },
-                        "mobile_number": {
+                        "customer_gateway_identifier": {
+                          "description": "The customer's reference for bank account statements.",
                           "type": [
                             "null",
                             "string"
                           ],
-                          "example": "5491164531234"
+                          "example": "383473"
                         },
-                        "gateway_identifier": {
-                          "type": "integer",
-                          "format": "int32",
-                          "example": 383473
+                        "editable_amount": {
+                          "description": "Allow the customer to set the amount, useful for donations.\n",
+                          "type": "boolean"
                         },
-                        "identification_number": {
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "example": "15.555.324"
+                        "installments": {
+                          "description": "Only for payments, quantity of payments on which the amount will be splitted.\n",
+                          "type": "integer"
                         },
-                        "identification_type": {
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "example": "DNI"
+                        "max_installments": {
+                          "description": "Only for payments, allow the customer to choose how many installments can split the payment.\n",
+                          "type": "integer"
+                        },
+                        "interval_unit": {
+                          "description": "Only for subscriptions. The unit of time between customer charge dates. One of `weekly`,\n`monthly` or `yearly`. Example `monthly`.\n",
+                          "type": "string"
+                        },
+                        "interval": {
+                          "description": "Only for subscriptions. Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+                          "type": "number"
+                        },
+                        "day_of_month": {
+                          "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                          "type": "number"
+                        },
+                        "day_of_week": {
+                          "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.",
+                          "type": "number"
+                        },
+                        "count": {
+                          "type": "number"
+                        },
+                        "editable_count": {
+                          "type": "boolean"
+                        },
+                        "name_text": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
                         },
                         "updated_at": {
                           "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "completed_at": {
+                          "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
                           "type": "string",
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
@@ -12627,6 +12726,38 @@
                           ],
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "binary_mode": {
+                          "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+                          "type": "boolean",
+                          "example": false
+                        },
+                        "payment_gateway_identifier": {
+                          "description": "The custom number you send to the gateway network. In most cases this value is null.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": null
+                        },
+                        "public_uri": {
+                          "description": "The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout.",
+                          "type": "string",
+                          "readOnly": true
+                        },
+                        "success_url": {
+                          "description": "The uri on which your customer will be redirected after completing the checkout.",
+                          "type": "string"
+                        },
+                        "link_id": {
+                          "description": "Link ID.",
+                          "type": "string",
+                          "example": "LKLj0JV8xzdMoRk549"
                         }
                       },
                       "title": "Session"
@@ -20780,6 +20911,11 @@
           "USD"
         ]
       },
+      "binary_mode": {
+        "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+        "type": "boolean",
+        "example": false
+      },
       "Payment": {
         "description": "This object represents a payments of your organization.",
         "type": "object",
@@ -21315,6 +21451,11 @@
             ],
             "example": null
           },
+          "binary_mode": {
+            "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+            "type": "boolean",
+            "example": false
+          },
           "refunds": {
             "description": "Refunds associated with this payment.",
             "type": "array",
@@ -21449,29 +21590,6 @@
         "description": "This object represents a Session of your organization.",
         "type": "object",
         "properties": {
-          "amount": {
-            "description": "Amount to be collected.",
-            "type": "number",
-            "example": 12.5
-          },
-          "brands": {
-            "type": "array"
-          },
-          "completed_at": {
-            "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00"
-          },
-          "count": {
-            "type": "number"
-          },
-          "created_at": {
-            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00"
-          },
           "id": {
             "description": "Unique identifier for the Session.",
             "type": "string",
@@ -21483,7 +21601,37 @@
             "type": "string",
             "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
           },
-          "name": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "session"
+            ]
+          },
+          "description": {
+            "description": "Session description",
+            "type": "string",
+            "example": "Ajuste por deuda pasada"
+          },
+          "amount": {
+            "description": "Amount to be collected.",
+            "type": "number",
+            "example": 12.5
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "mandate",
+              "payment",
+              "subscription"
+            ]
+          },
+          "customer_id": {
+            "description": "Unique identifier for the Customer.",
+            "type": "string",
+            "example": "CSljikas98",
+            "readOnly": true
+          },
+          "customer_name": {
             "description": "The customer's full name or business name.",
             "type": [
               "null",
@@ -21491,7 +21639,7 @@
             ],
             "example": "Jorgelina Castro"
           },
-          "email": {
+          "customer_email": {
             "description": "The customer's email address.",
             "type": [
               "null",
@@ -21499,59 +21647,65 @@
             ],
             "example": "mail@example.com"
           },
-          "livemode": {
-            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
-            "type": "boolean",
-            "example": true
-          },
-          "metadata": {
-            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
-            "type": [
-              "object",
-              "null"
-            ],
-            "example": {
-              "some": "metadata"
-            },
-            "additionalProperties": {
-              "maxLength": 500,
-              "type": [
-                "string",
-                "null",
-                "number",
-                "boolean"
-              ]
-            },
-            "properties": {}
-          },
-          "mobile_number": {
+          "customer_gateway_identifier": {
+            "description": "The customer's reference for bank account statements.",
             "type": [
               "null",
               "string"
             ],
-            "example": "5491164531234"
+            "example": "383473"
           },
-          "gateway_identifier": {
-            "type": "integer",
-            "format": "int32",
-            "example": 383473
+          "editable_amount": {
+            "description": "Allow the customer to set the amount, useful for donations.\n",
+            "type": "boolean"
           },
-          "identification_number": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "15.555.324"
+          "installments": {
+            "description": "Only for payments, quantity of payments on which the amount will be splitted.\n",
+            "type": "integer"
           },
-          "identification_type": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "DNI"
+          "max_installments": {
+            "description": "Only for payments, allow the customer to choose how many installments can split the payment.\n",
+            "type": "integer"
+          },
+          "interval_unit": {
+            "description": "Only for subscriptions. The unit of time between customer charge dates. One of `weekly`,\n`monthly` or `yearly`. Example `monthly`.\n",
+            "type": "string"
+          },
+          "interval": {
+            "description": "Only for subscriptions. Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+            "type": "number"
+          },
+          "day_of_month": {
+            "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+            "type": "number"
+          },
+          "day_of_week": {
+            "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.",
+            "type": "number"
+          },
+          "count": {
+            "type": "number"
+          },
+          "editable_count": {
+            "type": "boolean"
+          },
+          "name_text": {
+            "type": "string"
+          },
+          "created_at": {
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
           },
           "updated_at": {
             "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          },
+          "completed_at": {
+            "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
             "type": "string",
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00"
@@ -21564,6 +21718,38 @@
             ],
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00"
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean",
+            "example": true
+          },
+          "binary_mode": {
+            "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+            "type": "boolean",
+            "example": false
+          },
+          "payment_gateway_identifier": {
+            "description": "The custom number you send to the gateway network. In most cases this value is null.",
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": null
+          },
+          "public_uri": {
+            "description": "The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout.",
+            "type": "string",
+            "readOnly": true
+          },
+          "success_url": {
+            "description": "The uri on which your customer will be redirected after completing the checkout.",
+            "type": "string"
+          },
+          "link_id": {
+            "description": "Link ID.",
+            "type": "string",
+            "example": "LKLj0JV8xzdMoRk549"
           }
         },
         "title": "Session"
@@ -23756,6 +23942,11 @@
             ],
             "example": null
           },
+          "binary_mode": {
+            "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+            "type": "boolean",
+            "example": false
+          },
           "refunds": {
             "description": "Refunds associated with this payment.",
             "type": "array",
@@ -24097,29 +24288,6 @@
         "description": "This object represents a Session of your organization.",
         "type": "object",
         "properties": {
-          "amount": {
-            "description": "Amount to be collected.",
-            "type": "number",
-            "example": 12.5
-          },
-          "brands": {
-            "type": "array"
-          },
-          "completed_at": {
-            "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00"
-          },
-          "count": {
-            "type": "number"
-          },
-          "created_at": {
-            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00"
-          },
           "id": {
             "description": "Unique identifier for the Session.",
             "type": "string",
@@ -24131,7 +24299,37 @@
             "type": "string",
             "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
           },
-          "name": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "session"
+            ]
+          },
+          "description": {
+            "description": "Session description",
+            "type": "string",
+            "example": "Ajuste por deuda pasada"
+          },
+          "amount": {
+            "description": "Amount to be collected.",
+            "type": "number",
+            "example": 12.5
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "mandate",
+              "payment",
+              "subscription"
+            ]
+          },
+          "customer_id": {
+            "description": "Unique identifier for the Customer.",
+            "type": "string",
+            "example": "CSljikas98",
+            "readOnly": true
+          },
+          "customer_name": {
             "description": "The customer's full name or business name.",
             "type": [
               "null",
@@ -24139,7 +24337,7 @@
             ],
             "example": "Jorgelina Castro"
           },
-          "email": {
+          "customer_email": {
             "description": "The customer's email address.",
             "type": [
               "null",
@@ -24147,59 +24345,65 @@
             ],
             "example": "mail@example.com"
           },
-          "livemode": {
-            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
-            "type": "boolean",
-            "example": true
-          },
-          "metadata": {
-            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
-            "type": [
-              "object",
-              "null"
-            ],
-            "example": {
-              "some": "metadata"
-            },
-            "additionalProperties": {
-              "maxLength": 500,
-              "type": [
-                "string",
-                "null",
-                "number",
-                "boolean"
-              ]
-            },
-            "properties": {}
-          },
-          "mobile_number": {
+          "customer_gateway_identifier": {
+            "description": "The customer's reference for bank account statements.",
             "type": [
               "null",
               "string"
             ],
-            "example": "5491164531234"
+            "example": "383473"
           },
-          "gateway_identifier": {
-            "type": "integer",
-            "format": "int32",
-            "example": 383473
+          "editable_amount": {
+            "description": "Allow the customer to set the amount, useful for donations.\n",
+            "type": "boolean"
           },
-          "identification_number": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "15.555.324"
+          "installments": {
+            "description": "Only for payments, quantity of payments on which the amount will be splitted.\n",
+            "type": "integer"
           },
-          "identification_type": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "DNI"
+          "max_installments": {
+            "description": "Only for payments, allow the customer to choose how many installments can split the payment.\n",
+            "type": "integer"
+          },
+          "interval_unit": {
+            "description": "Only for subscriptions. The unit of time between customer charge dates. One of `weekly`,\n`monthly` or `yearly`. Example `monthly`.\n",
+            "type": "string"
+          },
+          "interval": {
+            "description": "Only for subscriptions. Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.",
+            "type": "number"
+          },
+          "day_of_month": {
+            "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+            "type": "number"
+          },
+          "day_of_week": {
+            "description": "Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.",
+            "type": "number"
+          },
+          "count": {
+            "type": "number"
+          },
+          "editable_count": {
+            "type": "boolean"
+          },
+          "name_text": {
+            "type": "string"
+          },
+          "created_at": {
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
           },
           "updated_at": {
             "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          },
+          "completed_at": {
+            "description": "Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
             "type": "string",
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00"
@@ -24212,6 +24416,38 @@
             ],
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00"
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean",
+            "example": true
+          },
+          "binary_mode": {
+            "description": "Binary mode. This forces processing through online processors to obtain an immediate response.",
+            "type": "boolean",
+            "example": false
+          },
+          "payment_gateway_identifier": {
+            "description": "The custom number you send to the gateway network. In most cases this value is null.",
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": null
+          },
+          "public_uri": {
+            "description": "The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout.",
+            "type": "string",
+            "readOnly": true
+          },
+          "success_url": {
+            "description": "The uri on which your customer will be redirected after completing the checkout.",
+            "type": "string"
+          },
+          "link_id": {
+            "description": "Link ID.",
+            "type": "string",
+            "example": "LKLj0JV8xzdMoRk549"
           }
         },
         "title": "Session"
