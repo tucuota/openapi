@@ -5157,6 +5157,10 @@
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
+                                  },
                                   "last_four_digits": {
                                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                                     "type": "string",
@@ -5879,6 +5883,10 @@
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                                   "type": "string",
@@ -6585,6 +6593,10 @@
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
+                                  },
                                   "last_four_digits": {
                                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                                     "type": "string",
@@ -7076,6 +7088,10 @@
                                 "type": "string",
                                 "example": "8712yh2uihiu1123sxas"
                               },
+                              "identification": {
+                                "description": "Identificación extendida de la cuenta bancaria.",
+                                "type": "object"
+                              },
                               "last_four_digits": {
                                 "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                                 "type": "string",
@@ -7359,6 +7375,14 @@
                       "number": {
                         "description": "CBU de la cuenta bancaria.",
                         "type": "string"
+                      },
+                      "alias": {
+                        "description": "Alias de la cuenta bancaria. Para activar esta funcionalidad, contacte a Soporte.",
+                        "type": "string"
+                      },
+                      "identification": {
+                        "description": "Identificación extendida de la cuenta bancaria. Para activar esta funcionalidad, contacte a Soporte.",
+                        "type": "boolean"
                       }
                     },
                     "title": "CBU"
@@ -7384,6 +7408,25 @@
                     "type": "cbu",
                     "cbu": {
                       "number": "0110022831266917230013"
+                    }
+                  }
+                },
+                "cbu-alias": {
+                  "summary": "Guardar una Cuenta Bancaria usando Alias",
+                  "value": {
+                    "type": "cbu",
+                    "cbu": {
+                      "alias": "casa.carroza.perro"
+                    }
+                  }
+                },
+                "cbu-enhanced": {
+                  "summary": "Guardar una Cuenta Bancaria usando Identificación Extendida.",
+                  "value": {
+                    "type": "cbu",
+                    "cbu": {
+                      "number": "0110022831266917230013",
+                      "identification": true
                     }
                   }
                 }
@@ -7542,6 +7585,10 @@
                               "type": "string",
                               "example": "8712yh2uihiu1123sxas"
                             },
+                            "identification": {
+                              "description": "Identificación extendida de la cuenta bancaria.",
+                              "type": "object"
+                            },
                             "last_four_digits": {
                               "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                               "type": "string",
@@ -7670,6 +7717,61 @@
                         "updated_at": "2022-11-05T20:43:29-03:00"
                       }
                     }
+                  },
+                  "cbu-enhanced": {
+                    "summary": "Cuenta Bancaria CBU con Identificación Extendida",
+                    "value": {
+                      "data": {
+                        "cbu": {
+                          "bank": "Banco de la Nación Argentina",
+                          "country": "AR",
+                          "fingerprint": "jhA2lx68sNppN90k",
+                          "identification": {
+                            "account_routing": {
+                              "address": "******************0025",
+                              "scheme": "CBU"
+                            },
+                            "bank_routing": {
+                              "address": "BANCO INDUSTRIAL S.A.",
+                              "code": "322",
+                              "scheme": "NAME"
+                            },
+                            "currency": "ARS",
+                            "is_active": true,
+                            "label": "BOCHA.ASTRO.NUEZ",
+                            "owners": [
+                              {
+                                "display_name": "Diaz, Bruno",
+                                "id": "20223385072",
+                                "id_type": "CUIT",
+                                "is_physical_person": true
+                              },
+                              {
+                                "display_name": "Parker, Peter",
+                                "id": "20313380002",
+                                "id_type": "CUIT",
+                                "is_physical_person": true
+                              }
+                            ],
+                            "type": "CC"
+                          },
+                          "last_four_digits": "0013",
+                          "providers": {
+                            "available": [
+                              "cbu-galicia"
+                            ],
+                            "preferred": "cbu-galicia"
+                          }
+                        },
+                        "created_at": "2022-11-05T20:43:29-03:00",
+                        "id": "PMBKkz3wjEW9",
+                        "livemode": false,
+                        "metadata": null,
+                        "object": "payment_method",
+                        "type": "cbu",
+                        "updated_at": "2022-11-05T20:43:29-03:00"
+                      }
+                    }
                   }
                 }
               }
@@ -7741,27 +7843,27 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://api.tucuota.com/v1/payment_methods \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\"}}'"
+            "source": "curl --request POST \\\n  --url https://api.tucuota.com/v1/payment_methods \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true}}'"
           },
           {
             "lang": "Node + Request",
-            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.tucuota.com/v1/payment_methods',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    type: 'card',\n    card: {\n      number: 'string',\n      expiration_year: 0,\n      expiration_month: 0,\n      security_code: 'string'\n    },\n    cbu: {number: 'string'}\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.tucuota.com/v1/payment_methods',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    type: 'card',\n    card: {\n      number: 'string',\n      expiration_year: 0,\n      expiration_month: 0,\n      security_code: 'string'\n    },\n    cbu: {number: 'string', alias: 'string', identification: true}\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
           },
           {
             "lang": "Php + Http1",
-            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.tucuota.com/v1/payment_methods');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\"}}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.tucuota.com/v1/payment_methods');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true}}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
           },
           {
             "lang": "Python + Requests",
-            "source": "import requests\n\nurl = \"https://api.tucuota.com/v1/payment_methods\"\n\npayload = {\n    \"type\": \"card\",\n    \"card\": {\n        \"number\": \"string\",\n        \"expiration_year\": 0,\n        \"expiration_month\": 0,\n        \"security_code\": \"string\"\n    },\n    \"cbu\": {\"number\": \"string\"}\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
+            "source": "import requests\n\nurl = \"https://api.tucuota.com/v1/payment_methods\"\n\npayload = {\n    \"type\": \"card\",\n    \"card\": {\n        \"number\": \"string\",\n        \"expiration_year\": 0,\n        \"expiration_month\": 0,\n        \"security_code\": \"string\"\n    },\n    \"cbu\": {\n        \"number\": \"string\",\n        \"alias\": \"string\",\n        \"identification\": True\n    }\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
           },
           {
             "lang": "Java + Unirest",
-            "source": "HttpResponse<String> response = Unirest.post(\"https://api.tucuota.com/v1/payment_methods\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\"}}\")\n  .asString();"
+            "source": "HttpResponse<String> response = Unirest.post(\"https://api.tucuota.com/v1/payment_methods\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\",\\\"alias\\\":\\\"string\\\",\\\"identification\\\":true}}\")\n  .asString();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.tucuota.com/v1/payment_methods\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.tucuota.com/v1/payment_methods\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\",\\\"alias\\\":\\\"string\\\",\\\"identification\\\":true}}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
         ]
       }
@@ -7933,6 +8035,10 @@
                               "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                               "type": "string",
                               "example": "8712yh2uihiu1123sxas"
+                            },
+                            "identification": {
+                              "description": "Identificación extendida de la cuenta bancaria.",
+                              "type": "object"
                             },
                             "last_four_digits": {
                               "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -8275,6 +8381,10 @@
                                 "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                                 "type": "string",
                                 "example": "8712yh2uihiu1123sxas"
+                              },
+                              "identification": {
+                                "description": "Identificación extendida de la cuenta bancaria.",
+                                "type": "object"
                               },
                               "last_four_digits": {
                                 "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -9069,6 +9179,10 @@
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
+                                  },
                                   "last_four_digits": {
                                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                                     "type": "string",
@@ -9858,6 +9972,10 @@
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                                   "type": "string",
@@ -10509,6 +10627,10 @@
                                   "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -11242,6 +11364,10 @@
                                   "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -12164,6 +12290,10 @@
                                     "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
                                   },
                                   "last_four_digits": {
                                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -14364,6 +14494,10 @@
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
                                   },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
+                                  },
                                   "last_four_digits": {
                                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                                     "type": "string",
@@ -15142,6 +15276,10 @@
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                                   "type": "string",
@@ -15844,6 +15982,10 @@
                                   "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -16652,6 +16794,10 @@
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                                   "type": "string",
@@ -17281,6 +17427,10 @@
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
                                 },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                                   "type": "string",
@@ -17904,6 +18054,10 @@
                                   "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -18533,6 +18687,10 @@
                                   "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                                   "type": "string",
                                   "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
                                 },
                                 "last_four_digits": {
                                   "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -19187,6 +19345,10 @@
                                     "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                                     "type": "string",
                                     "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
                                   },
                                   "last_four_digits": {
                                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -21627,6 +21789,10 @@
             "type": "string",
             "example": "8712yh2uihiu1123sxas"
           },
+          "identification": {
+            "description": "Identificación extendida de la cuenta bancaria.",
+            "type": "object"
+          },
           "last_four_digits": {
             "description": "Últimos cuatro dígitos de la cuenta bancaria.",
             "type": "string",
@@ -21799,6 +21965,10 @@
                 "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                 "type": "string",
                 "example": "8712yh2uihiu1123sxas"
+              },
+              "identification": {
+                "description": "Identificación extendida de la cuenta bancaria.",
+                "type": "object"
               },
               "last_four_digits": {
                 "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -22182,6 +22352,10 @@
                     "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
                   },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -22777,6 +22951,10 @@
                     "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
                   },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -23572,6 +23750,10 @@
                     "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
                   },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -24698,6 +24880,10 @@
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
                   },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
+                  },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                     "type": "string",
@@ -25269,6 +25455,10 @@
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
                   },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
+                  },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
                     "type": "string",
@@ -25522,6 +25712,10 @@
                 "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                 "type": "string",
                 "example": "8712yh2uihiu1123sxas"
+              },
+              "identification": {
+                "description": "Identificación extendida de la cuenta bancaria.",
+                "type": "object"
               },
               "last_four_digits": {
                 "description": "Últimos cuatro dígitos de la cuenta bancaria.",
@@ -26270,6 +26464,10 @@
                     "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
                     "type": "string",
                     "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
                   },
                   "last_four_digits": {
                     "description": "Últimos cuatro dígitos de la cuenta bancaria.",
