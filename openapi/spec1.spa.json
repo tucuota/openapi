@@ -7167,11 +7167,9 @@
                 },
                 "example": {
                   "errors": {
-                    "card": {
-                      "number": [
-                        "El número de la tarjeta es inválido."
-                      ]
-                    }
+                    "card.number": [
+                      "El número de la tarjeta es inválido."
+                    ]
                   },
                   "message": "Could not create new payment method."
                 }
