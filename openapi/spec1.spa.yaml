@@ -12,7 +12,7 @@ info:
     Las URLs de la API de TuCuota API son:
 
     - Producción: https://api.tucuota.com/v1/
-    - Sandbox: https://sandbox.tucuota.com/api/
+    - Sandbox: https://sandbox.tucuota.com/v1/
 
     ### Content type
 
@@ -170,7 +170,7 @@ info:
     En modo sandbox, las siguientes tarjetas de prueba y CBU se pueden usar para crear pagos que producen respuestas específicas útiles para probar diferentes escenarios.
 
     | Number                 | Type | Status    | Network    | Funding |
-    |------------------------|------|-----------|------------|---------|
+    | ---------------------- | ---- | --------- | ---------- | ------- |
     | 4242424242424242       | card | approved  | visa       | credit  |
     | 4000056655665556       | card | approved  | visa       | debit   |
     | 4507990000004905       | card | approved  | visa       | credit  |
@@ -202,7 +202,8 @@ info:
     | 4000000000009995       | card | rejected  | visa       | credit  |
     | 4000000000009987       | card | rejected  | visa       | credit  |
     | 4000000000009979       | card | rejected  | visa       | credit  |
-    | 371449635398432        | card | rejected  | amex       | credit  |# Notificaciones de Webhook
+    | 371449635398432        | card | rejected  | amex       | credit  |
+    # Notificaciones de Webhook
 
     Los webhooks son URLs que puedes configurar para recibir notificaciones sobre eventos que suceden en tu cuenta de TuCuota. La mayoría de los usuarios configuran los webhooks desde el panel, que proporciona una interfaz de usuario para registrar y probar sus webhooks.
 
