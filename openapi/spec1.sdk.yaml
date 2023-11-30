@@ -169,25 +169,40 @@ info:
 
     In sandbox mode the following test cards and CBUs can be used to create payments that produce specific responses useful for testing different scenarios.
 
-    | Brand      | Number                 | Result     |
-    | ---------- | ---------------------- | ---------- |
-    | cbu        | 2859363672283668188432 | approved   |
-    | cbu        | 2852656051819605126406 | rejected   |
-    | cbu        | 2858814288841490615567 | failed     |
-    | cbu        | 0110022831266917230013 | will_retry |
-    | mastercard | 5447651834106668       | approved   |
-    | mastercard | 5457948807868523       | rejected   |
-    | mastercard | 5292525121482410       | failed     |
-    | visa       | 4024007127322104       | approved   |
-    | visa       | 4532417816926690       | approved\* |
-    | visa       | 4556854712355908       | rejected   |
-    | visa       | 4485388690536078       | failed     |
-    | amex       | 377539501632477        | approved   |
-    | amex       | 341400508811411        | rejected   |
-    | amex       | 372974912152697        | failed     |
-
-    \* Using the visa number `4532417816926690` will also trigger a `payment_method.automatically_updated` event, which informs that the payment method number has been changed automatically.
-    # Webhook Notifications
+    | Number                 | Type | Status    | Network    | Funding |
+    |------------------------|------|-----------|------------|---------|
+    | 4242424242424242       | card | approved  | visa       | credit  |
+    | 4000056655665556       | card | approved  | visa       | debit   |
+    | 4507990000004905       | card | approved  | visa       | credit  |
+    | 5555555555554444       | card | approved  | mastercard | credit  |
+    | 5896570000000008       | card | approved  | mastercard | credit  |
+    | 2223003122003222       | card | approved  | mastercard | credit  |
+    | 5200828282828210       | card | approved  | mastercard | debit   |
+    | 5105105105105100       | card | approved  | mastercard | prepaid |
+    | 6042451111111117       | card | approved  | discover   | credit  |
+    | 6011111111111117       | card | approved  | discover   | credit  |
+    | 6011000990139424       | card | approved  | discover   | credit  |
+    | 6011981111111113       | card | approved  | discover   | debit   |
+    | 5299910010000015       | card | approved  | discover   | credit  |
+    | 3056930009020004       | card | approved  | diners     | credit  |
+    | 36227206271667         | card | approved  | diners     | credit  |
+    | 3566002020360505       | card | approved  | jcb        | credit  |
+    | 378282246310005        | card | approved  | amex       | credit  |
+    | 371449635398431        | card | approved  | amex       | credit  |
+    | 4000000000005126       | card | submitted | visa       | credit  |
+    | 4000000000003220       | card | submitted | visa       | credit  |
+    | 5895622082273045       | card | approved  | naranja    | credit  |
+    | 5895622082273044       | card | rejected  | naranja    | credit  |
+    | 2859363672283668188432 | cbu  | approved  |            |         |
+    | 3220001823000055910025 | cbu  | approved  |            |         |
+    | 8258975011100070754947 | cbu  | rejected  |            |         |
+    | 1212000002283668188432 | cbu  | rejected  |            |         |
+    | 4000000000000002       | card | rejected  | visa       | credit  |
+    | 4338308001478538       | card | rejected  | visa       | credit  |
+    | 4000000000009995       | card | rejected  | visa       | credit  |
+    | 4000000000009987       | card | rejected  | visa       | credit  |
+    | 4000000000009979       | card | rejected  | visa       | credit  |
+    | 371449635398432        | card | rejected  | amex       | credit  |# Webhook Notifications
 
     Webhooks are endpoints you can configure to be notified about events that happen in your TuCuota account. Most users configure Webhooks from the dashboard, which provides a user interface for registering and testing your webhook endpoints.
 
