@@ -148,7 +148,7 @@
           "show_installments": false
         }
       ],
-      "public_uri": "https://tucuota.com/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2",
+      "public_uri": "https://debi.pro/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2",
       "success_url": null,
       "title": "Test options",
       "updated_at": "2022-02-02T02:06:22.00-03:00",
@@ -156,10 +156,10 @@
         "country": "AR",
         "currency": "ARS",
         "email": "pedrolombardo@email.com",
-        "organization_name": "TuCuota",
+        "organization_name": "Debi",
         "preference_color1": "#ffffff",
         "preference_color2": "#d10000",
-        "preference_logo": "https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png"
+        "preference_logo": "https://debi-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png"
       }
     },
     "mandate": {
@@ -354,16 +354,16 @@
       "max_installments": null,
       "name_text": null,
       "object": "session",
-      "public_uri": "https://tucuota.com/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81",
+      "public_uri": "https://debi.pro/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81",
       "updated_at": "2022-02-11T23:17:55.00-03:00",
       "user": {
         "country": "AR",
         "currency": "ARS",
         "email": "pedrolombardo@email.com",
-        "organization_name": "TuCuota",
+        "organization_name": "Debi",
         "preference_color1": "#ffffff",
         "preference_color2": "#d10000",
-        "preference_logo": "https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png"
+        "preference_logo": "https://debi-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png"
       }
     },
     "subscription": {
@@ -446,7 +446,7 @@
       "object": "webhook",
       "secret": "DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0",
       "updated_at": "2022-02-11T23:19:22-03:00",
-      "url": "https://site.com/tucuota_webhook"
+      "url": "https://site.com/debi_webhook"
     }
   }
 }

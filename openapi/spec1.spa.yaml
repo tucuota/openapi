@@ -2,21 +2,21 @@ openapi: 3.1.0
 info:
   license:
     name: Proprietary
-    url: 'https://tucuota.com/terms'
-  title: TuCuota API
+    url: 'https://debi.pro/terms'
+  title: Debi API
   description: |
     # Introducción
 
-    TuCuota tiene una API REST. Nuestra API tiene direcciones URL predecibles orientadas a los recursos, acepta solicitudes JSON, devuelve respuestas JSON y utiliza códigos de respuesta, autenticación y verbos HTTP estándar.
+    Debi (anteriormente TuCuota) tiene una API REST. Nuestra API tiene direcciones URL predecibles orientadas a los recursos, acepta solicitudes JSON, devuelve respuestas JSON y utiliza códigos de respuesta, autenticación y verbos HTTP estándar.
 
-    Las URLs de la API de TuCuota API son:
+    Las URLs de la API de Debi API son:
 
-    - Producción: https://api.tucuota.com/v1/
-    - Sandbox: https://sandbox.tucuota.com/v1/
+    - Producción: https://api.debi.pro/
+    - Sandbox: https://api.debi-test.pro/
 
     ### Content type
 
-    La API de TuCuota sólo soporta `JSON`. No te olvides de incluir el siguiente header en tus requests.
+    La API de Debi sólo soporta `JSON`. No te olvides de incluir el siguiente header en tus requests.
 
     #### Content-Type Header
 
@@ -29,12 +29,12 @@ info:
 
     ### Crear una clave API
 
-    Para crear nuevas claves API, visite la [sección de desarrolladores](https://tucuota.com/dashboard/developers) de nuestro sitio.
+    Para crear nuevas claves API, visite la [sección de desarrolladores](https://debi.pro/dashboard/developers) de nuestro sitio.
 
     Para cada entorno (producción y sandbox), encontrará dos tipos de claves de API:
 
     - Pública (`pk_...`): puede aparecer en su código del lado del cliente para tokenizar los métodos de pago.
-    - Secreta (`sk_...`): Para ser utilizado en el lado del servidor. Debe ser secreto y almacenarse de forma segura en el código de su aplicación para comunicarse con la API de TuCuota.
+    - Secreta (`sk_...`): Para ser utilizado en el lado del servidor. Debe ser secreto y almacenarse de forma segura en el código de su aplicación para comunicarse con la API de Debi.
 
     Para autenticarse, debe utilizar la clave de API en un Header del request HTTP al realizar solicitudes en la API.
 
@@ -125,7 +125,7 @@ info:
     La respuesta de un método API de lista representa una sola página en un orden cronológico inverso. Si no especificas `starting_after` o `ending_before`, recibirás la primera página de este objecto, que contiene los objetos más nuevos. Puede especificar un ID en el campo `starting_after` para obtener la página de objetos más antiguos que aparecen inmediatamente después del objeto en cuestión. De manera similar, puedes especificar `ending_before` para recibir una página de objetos más nuevos que ocurren inmediatamente antes del objeto en cuestión. Los objetos de una página siempre aparecen en orden cronológico inverso. Solo se puede usar `starting_after` o `ending_before`.
     # IDs de Request
 
-    Cada request a la API tiene un identificador de request asociado. Puede encontrar este valor en el header `Request-Id`. También puede encontrar estos IDs en logs de requests en su [Panel](https://tucuota.com/dashboard/logs).
+    Cada request a la API tiene un identificador de request asociado. Puede encontrar este valor en el header `Request-Id`. También puede encontrar estos IDs en logs de requests en su [Panel](https://debi.pro/dashboard/logs).
     # Convenciones
 
     ### Notational Conventions
@@ -205,7 +205,7 @@ info:
     | 371449635398432        | card | rejected  | amex       | credit  |
     # Notificaciones de Webhook
 
-    Los webhooks son URLs que puedes configurar para recibir notificaciones sobre eventos que suceden en tu cuenta de TuCuota. La mayoría de los usuarios configuran los webhooks desde el panel, que proporciona una interfaz de usuario para registrar y probar sus webhooks.
+    Los webhooks son URLs que puedes configurar para recibir notificaciones sobre eventos que suceden en tu cuenta de Debi. La mayoría de los usuarios configuran los webhooks desde el panel, que proporciona una interfaz de usuario para registrar y probar sus webhooks.
 
     <blockquote>
         Webhook de ejemplo:
@@ -302,19 +302,19 @@ info:
 
     You can easy create test webhooks using https://webhook.site/ With that you will be able to see what we are sending to our API consumers.
 
-    Also, to start integrating the webhooks, your code will need to be accessible from the internet so TuCuota can reach it with HTTP requests. If you’re working locally, the easiest way to do this is with [ngrok](https://ngrok.com/).
+    Also, to start integrating the webhooks, your code will need to be accessible from the internet so Debi can reach it with HTTP requests. If you’re working locally, the easiest way to do this is with [ngrok](https://ngrok.com/).
 
     ### Asegurando los Webhooks
 
-    TuCuota signs the webhook events it sends to your endpoints by including a signature in each event’s TuCuota-Signature header. This allows you to verify that the events were sent by TuCuota, not by a third party.
+    Debi signs the webhook events it sends to your endpoints by including a signature in each event’s Debi-Signature header. This allows you to verify that the events were sent by Debi, not by a third party.
 
-    Before you can verify signatures, you need to retrieve your endpoint’s secret _"Secreto webhook"_ from your webhooks in our [developers panel](https://tucuota.com/dashboard/developers). Add or select the endpoint you want to obtain the secret for, then click the _"mostrar"_ button.
+    Before you can verify signatures, you need to retrieve your endpoint’s secret _"Secreto webhook"_ from your webhooks in our [developers panel](https://debi.pro/dashboard/developers). Add or select the endpoint you want to obtain the secret for, then click the _"mostrar"_ button.
 
-    TuCuota generates a unique secret key for each endpoint. If you use the same endpoint for both test and live API keys, note that the secret is different for each one. Additionally, if you use multiple endpoints, you must obtain a secret for each one you want to verify signatures on. After this setup, TuCuota starts to sign each webhook it sends to the endpoint.
+    Debi generates a unique secret key for each endpoint. If you use the same endpoint for both test and live API keys, note that the secret is different for each one. Additionally, if you use multiple endpoints, you must obtain a secret for each one you want to verify signatures on. After this setup, Debi starts to sign each webhook it sends to the endpoint.
 
     #### Webhooks authenticity validation steps
 
-    TuCuota generates signatures using a hash-based message authentication code (HMAC) with SHA-256. To prevent downgrade attacks.
+    Debi generates signatures using a hash-based message authentication code (HMAC) with SHA-256. To prevent downgrade attacks.
 
     ##### Step 1: Extract the timestamp and signatures from the header
 
@@ -339,19 +339,19 @@ info:
     Compare the signature (or signatures) in the header to the expected signature. For an equality match, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.
 
     To protect against timing attacks, use a constant-time string comparison to compare the expected signature to each of the received signatures.
-  termsOfService: 'https://tucuota.com/terms'
+  termsOfService: 'https://debi.pro/terms'
   contact:
-    name: TuCuota Devs
-    email: devs@tucuota.com
-    url: 'https://tucuota.com/docs/api'
+    name: Debi Devs
+    email: devs@debi.pro
+    url: 'https://debi.pro/docs/api'
   x-logo:
-    url: 'https://tucuota.com/img/TuCuota.svg'
-    altText: TuCuota
+    url: 'https://debi.pro/img/debi.svg'
+    altText: Debi
   version: '2022-08-01'
 servers:
-  - url: 'https://api.tucuota.com'
+  - url: 'https://api.debi.pro'
     description: Servidor de API
-  - url: 'https://sandbox.tucuota.com'
+  - url: 'https://api.debi-test.pro'
     description: Servidor de API Sandbox
 paths:
   /v1/customers:
@@ -541,22 +541,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -570,7 +570,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -603,12 +603,12 @@ paths:
                 links:
                   first: null
                   last: null
-                  next: 'https://api.tucuota.com/v1/customers?starting_after=CS3Z25Agp708'
+                  next: 'https://api.debi.pro/v1/customers?starting_after=CS3Z25Agp708'
                   prev: null
                 meta:
                   per_page: 25
                   total: 2500
-                  path: 'https://api.tucuota.com/v1/customers'
+                  path: 'https://api.debi.pro/v1/customers'
         '401':
           description: No autorizado
           content:
@@ -1375,7 +1375,7 @@ paths:
         - name: q
           in: query
           description: |
-            Puede usar [la sintáxis de búsqueda](https://tucuota.com/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/).
+            Puede usar [la sintáxis de búsqueda](https://debi.pro/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/).
           required: true
           schema:
             type: string
@@ -1527,22 +1527,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -1556,7 +1556,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -1587,8 +1587,8 @@ paths:
                     updated_at: '2021-07-05T12:24:32-03:00'
                     deleted_at: null
                 links:
-                  prev: 'https://api.tucuota.com/customers/search?q=john%20doe&page=1'
-                  next: 'https://api.tucuota.com/customers/search?q=john%20doe&page=3'
+                  prev: 'https://api.debi.pro/customers/search?q=john%20doe&page=1'
+                  next: 'https://api.debi.pro/customers/search?q=john%20doe&page=3'
                 meta:
                   per_page: 25
                   total: 2500
@@ -1710,9 +1710,9 @@ paths:
                 links:
                   first: null
                   last: null
-                  next: 'https://api.tucuota.com/v1/events?starting_after=EVaX3JagwR6x'
+                  next: 'https://api.debi.pro/v1/events?starting_after=EVaX3JagwR6x'
                 meta:
-                  path: 'https://api.tucuota.com/v1/events'
+                  path: 'https://api.debi.pro/v1/events'
                   per_page: 25
                   total: 34
               schema:
@@ -1825,22 +1825,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -1854,7 +1854,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -2199,22 +2199,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -2228,7 +2228,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -2286,11 +2286,11 @@ paths:
                     updated_at: '2023-02-01T16:36:06-03:00'
                     username: user@name.com
                 links:
-                  first: 'https://api.tucuota.com/v1/gateways?page=1'
-                  last: 'https://api.tucuota.com/v1/gateways?page=1'
+                  first: 'https://api.debi.pro/v1/gateways?page=1'
+                  last: 'https://api.debi.pro/v1/gateways?page=1'
                 meta:
                   next_cursor: null
-                  path: 'https://api.tucuota.com/v1/gateways'
+                  path: 'https://api.debi.pro/v1/gateways'
                   per_page: 25
                   prev_cursor: null
                   total: 7
@@ -2478,22 +2478,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -2507,7 +2507,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -2544,11 +2544,11 @@ paths:
                     updated_at: '2020-11-20T02:37:49-03:00'
                     ready_at: '2020-11-20T02:37:49-03:00'
                 links:
-                  first: 'https://api.tucuota.com/v1/imports?page=1'
-                  last: 'https://api.tucuota.com/v1/imports?page=1'
+                  first: 'https://api.debi.pro/v1/imports?page=1'
+                  last: 'https://api.debi.pro/v1/imports?page=1'
                 meta:
                   next_cursor: null
-                  path: 'https://api.tucuota.com/v1/imports'
+                  path: 'https://api.debi.pro/v1/imports'
                   per_page: 25
                   prev_cursor: null
                   total: 7
@@ -3004,22 +3004,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -3033,7 +3033,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -3074,12 +3074,12 @@ paths:
                     created_at: '2022-01-10T10:00:00-03:00'
                     updated_at: '2022-01-10T10:00:00-03:00'
                 links:
-                  first: 'https://api.tucuota.com/v1/imports?page=1'
-                  last: 'https://api.tucuota.com/v1/imports?page=1'
+                  first: 'https://api.debi.pro/v1/imports?page=1'
+                  last: 'https://api.debi.pro/v1/imports?page=1'
                 meta:
                   total: 2730
                   next_cursor: null
-                  path: 'https://tucuota.com/api/imports/IMBPkWDn3J0y/rows'
+                  path: 'https://debi.pro/api/imports/IMBPkWDn3J0y/rows'
                   per_page: 1000
                   prev_cursor: null
         '401':
@@ -3228,22 +3228,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -3257,7 +3257,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -3995,22 +3995,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -4024,7 +4024,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -4621,7 +4621,7 @@ paths:
         - name: q
           in: query
           description: |
-            Puede usar [la sintáxis de búsqueda](https://tucuota.com/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/).
+            Puede usar [la sintáxis de búsqueda](https://debi.pro/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/).
           required: true
           schema:
             type: string
@@ -5012,22 +5012,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -5041,7 +5041,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -5104,8 +5104,8 @@ paths:
                     status: active
                     updated_at: '2022-02-01T19:06:37-03:00'
                 links:
-                  prev: 'https://api.tucuota.com/mandates/search?q=john%20doe&page=1'
-                  next: 'https://api.tucuota.com/mandates/search?q=john%20doe&page=3'
+                  prev: 'https://api.debi.pro/mandates/search?q=john%20doe&page=1'
+                  next: 'https://api.debi.pro/mandates/search?q=john%20doe&page=3'
                 meta:
                   per_page: 25
                   total: 2500
@@ -5335,22 +5335,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -5364,7 +5364,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -5400,9 +5400,9 @@ paths:
                 links:
                   first: null
                   last: null
-                  next: 'https://api.tucuota.com/v1/payment_methods?starting_after=PMVdYaYwkqOw'
+                  next: 'https://api.debi.pro/v1/payment_methods?starting_after=PMVdYaYwkqOw'
                 meta:
-                  path: 'https://api.tucuota.com/v1/payment_methods'
+                  path: 'https://api.debi.pro/v1/payment_methods'
                   per_page: 25
                   total: 34
         '401':
@@ -6031,7 +6031,7 @@ paths:
         - name: q
           in: query
           description: |
-            Puede usar [la sintáxis de búsqueda](https://tucuota.com/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/).
+            Puede usar [la sintáxis de búsqueda](https://debi.pro/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/).
           required: true
           schema:
             type: string
@@ -6241,22 +6241,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -6270,7 +6270,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -6308,8 +6308,8 @@ paths:
                     type: card
                     updated_at: '2022-02-01T23:13:04-03:00'
                 links:
-                  next: 'https://api.tucuota.com/payment_methods/search?q=john%20doe&page=3'
-                  prev: 'https://api.tucuota.com/payment_methods/search?q=john%20doe&page=1'
+                  next: 'https://api.debi.pro/payment_methods/search?q=john%20doe&page=3'
+                  prev: 'https://api.debi.pro/payment_methods/search?q=john%20doe&page=1'
                 meta:
                   per_page: 25
                   total: 2500
@@ -6875,22 +6875,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -6904,7 +6904,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -8682,7 +8682,7 @@ paths:
         - name: q
           in: query
           description: |
-            Puede usar [la sintáxis de búsqueda](https://tucuota.com/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/).
+            Puede usar [la sintáxis de búsqueda](https://debi.pro/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/).
           required: true
           schema:
             type: string
@@ -9185,22 +9185,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -9214,7 +9214,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -9296,8 +9296,8 @@ paths:
                     metadata: null
                     refunds: []
                 links:
-                  prev: 'https://api.tucuota.com/payments/search?q=john%20doe&page=1'
-                  next: 'https://api.tucuota.com/payments/search?q=john%20doe&page=3'
+                  prev: 'https://api.debi.pro/payments/search?q=john%20doe&page=1'
+                  next: 'https://api.debi.pro/payments/search?q=john%20doe&page=3'
                 meta:
                   per_page: 25
                   total: 2500
@@ -9467,22 +9467,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -9496,7 +9496,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -9889,10 +9889,10 @@ paths:
                   description: 'Solo para suscripciones, el número de unidades_intervalo entre las fechas de cargo del cliente. Debe ser mayor que 1. Si la unidad_intervalo es semanal y el intervalo es 2, se cobrará al cliente cada dos semanas. El valor predeterminado es 1.'
                   type: integer
                 day_of_month:
-                  description: 'Solo para suscripciones, el día del mes, del 1 al 28. Úselo solo si necesita que la suscripción comience en una fecha específica. En la mayoría de los casos este debe ser nulo, por lo que TuCuota utilizará la fecha del momento en que el usuario completa el checkout.'
+                  description: 'Solo para suscripciones, el día del mes, del 1 al 28. Úselo solo si necesita que la suscripción comience en una fecha específica. En la mayoría de los casos este debe ser nulo, por lo que Debi utilizará la fecha del momento en que el usuario completa el checkout.'
                   type: integer
                 day_of_week:
-                  description: 'Solo para suscripciones, el número del día de la semana, del 0 (domingo) al 6 (sábado). Úselo solo si necesita que la suscripción comience en una fecha específica. En la mayoría de los casos este debe ser nulo, por lo que TuCuota utilizará la fecha del momento en que el usuario completa el checkout.'
+                  description: 'Solo para suscripciones, el número del día de la semana, del 0 (domingo) al 6 (sábado). Úselo solo si necesita que la suscripción comience en una fecha específica. En la mayoría de los casos este debe ser nulo, por lo que Debi utilizará la fecha del momento en que el usuario completa el checkout.'
                   type: integer
                 payment_gateway_identifier:
                   description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
@@ -10788,22 +10788,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -10817,7 +10817,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -14071,7 +14071,7 @@ paths:
         - name: q
           in: query
           description: |
-            Puede usar [la sintáxis de búsqueda](https://tucuota.com/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/).
+            Puede usar [la sintáxis de búsqueda](https://debi.pro/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/).
           required: true
           schema:
             type: string
@@ -14549,22 +14549,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -14578,7 +14578,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -14656,8 +14656,8 @@ paths:
                       updated_at: '2022-02-01T23:13:04-03:00'
                     metadata: null
                 links:
-                  prev: 'https://api.tucuota.com/subscriptions/search?q=john%20doe&page=1'
-                  next: 'https://api.tucuota.com/subscriptions/search?q=john%20doe&page=3'
+                  prev: 'https://api.debi.pro/subscriptions/search?q=john%20doe&page=1'
+                  next: 'https://api.debi.pro/subscriptions/search?q=john%20doe&page=3'
                 meta:
                   per_page: 25
                   total: 2500
@@ -14739,10 +14739,10 @@ paths:
                     items:
                       title: Webhook
                       description: |-
-                        Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
-                        obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
+                        Puede configurar tus [webhooks](https://debi.pro/docs/webhooks/) a través de la API para
+                        obtener notificaciones sobre eventos que suceden en tu cuenta Debi.
 
-                        La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
+                        La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.debi.pro/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
                       type: object
                       properties:
                         id:
@@ -14757,7 +14757,7 @@ paths:
                         url:
                           description: La URL del webhook.
                           type: string
-                          example: 'https://tucuota.com/webhook/200'
+                          example: 'https://debi.pro/webhook/200'
                           maxLength: 5000
                         enabled:
                           description: Declara si el webhook está habilitado.
@@ -14774,7 +14774,7 @@ paths:
                             - customer.updated
                             - payment.created
                         secret:
-                          description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
+                          description: 'El secreto del webhook, usado para [firmar los mensajes](https://debi.pro/docs/spa/api/#asegurando-los-webhooks).'
                           type: string
                           example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                           maxLength: 5000
@@ -14821,22 +14821,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Metadata de Respuesta
                   meta:
                     description: Metadata de paginación
@@ -14850,7 +14850,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Cursor de Paginación.
                         type:
@@ -14975,10 +14975,10 @@ paths:
                 properties:
                   data:
                     description: |-
-                      Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
-                      obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
+                      Puede configurar tus [webhooks](https://debi.pro/docs/webhooks/) a través de la API para
+                      obtener notificaciones sobre eventos que suceden en tu cuenta Debi.
 
-                      La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
+                      La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.debi.pro/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
                     type: object
                     example:
                       created_at: '2022-02-11T23:19:22-03:00'
@@ -15004,7 +15004,7 @@ paths:
                       url:
                         description: La URL del webhook.
                         type: string
-                        example: 'https://tucuota.com/webhook/200'
+                        example: 'https://debi.pro/webhook/200'
                         maxLength: 5000
                       enabled:
                         description: Declara si el webhook está habilitado.
@@ -15021,7 +15021,7 @@ paths:
                           - customer.updated
                           - payment.created
                       secret:
-                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
+                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://debi.pro/docs/spa/api/#asegurando-los-webhooks).'
                         type: string
                         example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                         maxLength: 5000
@@ -15098,10 +15098,10 @@ paths:
                 properties:
                   data:
                     description: |-
-                      Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
-                      obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
+                      Puede configurar tus [webhooks](https://debi.pro/docs/webhooks/) a través de la API para
+                      obtener notificaciones sobre eventos que suceden en tu cuenta Debi.
 
-                      La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
+                      La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.debi.pro/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
                     type: object
                     example:
                       created_at: '2022-02-11T23:19:22-03:00'
@@ -15127,7 +15127,7 @@ paths:
                       url:
                         description: La URL del webhook.
                         type: string
-                        example: 'https://tucuota.com/webhook/200'
+                        example: 'https://debi.pro/webhook/200'
                         maxLength: 5000
                       enabled:
                         description: Declara si el webhook está habilitado.
@@ -15144,7 +15144,7 @@ paths:
                           - customer.updated
                           - payment.created
                       secret:
-                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
+                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://debi.pro/docs/spa/api/#asegurando-los-webhooks).'
                         type: string
                         example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                         maxLength: 5000
@@ -15219,10 +15219,10 @@ paths:
                 properties:
                   data:
                     description: |-
-                      Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
-                      obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
+                      Puede configurar tus [webhooks](https://debi.pro/docs/webhooks/) a través de la API para
+                      obtener notificaciones sobre eventos que suceden en tu cuenta Debi.
 
-                      La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
+                      La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.debi.pro/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
                     type: object
                     example:
                       created_at: '2022-02-11T23:19:22-03:00'
@@ -15248,7 +15248,7 @@ paths:
                       url:
                         description: La URL del webhook.
                         type: string
-                        example: 'https://tucuota.com/webhook/200'
+                        example: 'https://debi.pro/webhook/200'
                         maxLength: 5000
                       enabled:
                         description: Declara si el webhook está habilitado.
@@ -15265,7 +15265,7 @@ paths:
                           - customer.updated
                           - payment.created
                       secret:
-                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
+                        description: 'El secreto del webhook, usado para [firmar los mensajes](https://debi.pro/docs/spa/api/#asegurando-los-webhooks).'
                         type: string
                         example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                         maxLength: 5000
@@ -15612,22 +15612,22 @@ components:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         last:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         next:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         prev:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
       title: Metadata de Respuesta
     Meta:
       description: Metadata de paginación
@@ -15641,7 +15641,7 @@ components:
           example: 2500
         path:
           type: string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         next_cursor:
           description: Cursor de Paginación.
           type:
@@ -17954,10 +17954,10 @@ components:
       title: Suscripción
     Webhook:
       description: |-
-        Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
-        obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
+        Puede configurar tus [webhooks](https://debi.pro/docs/webhooks/) a través de la API para
+        obtener notificaciones sobre eventos que suceden en tu cuenta Debi.
 
-        La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
+        La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.debi.pro/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
       type: object
       properties:
         id:
@@ -17972,7 +17972,7 @@ components:
         url:
           description: La URL del webhook.
           type: string
-          example: 'https://tucuota.com/webhook/200'
+          example: 'https://debi.pro/webhook/200'
           maxLength: 5000
         enabled:
           description: Declara si el webhook está habilitado.
@@ -17989,7 +17989,7 @@ components:
             - customer.updated
             - payment.created
         secret:
-          description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
+          description: 'El secreto del webhook, usado para [firmar los mensajes](https://debi.pro/docs/spa/api/#asegurando-los-webhooks).'
           type: string
           example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
           maxLength: 5000
@@ -20181,10 +20181,10 @@ components:
       title: Suscripción
     webhook:
       description: |-
-        Puede configurar tus [webhooks](https://tucuota.com/docs/webhooks/) a través de la API para
-        obtener notificaciones sobre eventos que suceden en tu cuenta TuCuota.
+        Puede configurar tus [webhooks](https://debi.pro/docs/webhooks/) a través de la API para
+        obtener notificaciones sobre eventos que suceden en tu cuenta Debi.
 
-        La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.tucuota.com/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
+        La mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.debi.pro/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
       type: object
       properties:
         id:
@@ -20199,7 +20199,7 @@ components:
         url:
           description: La URL del webhook.
           type: string
-          example: 'https://tucuota.com/webhook/200'
+          example: 'https://debi.pro/webhook/200'
           maxLength: 5000
         enabled:
           description: Declara si el webhook está habilitado.
@@ -20216,7 +20216,7 @@ components:
             - customer.updated
             - payment.created
         secret:
-          description: 'El secreto del webhook, usado para [firmar los mensajes](https://tucuota.com/docs/spa/api/#asegurando-los-webhooks).'
+          description: 'El secreto del webhook, usado para [firmar los mensajes](https://debi.pro/docs/spa/api/#asegurando-los-webhooks).'
           type: string
           example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
           maxLength: 5000
@@ -20268,7 +20268,7 @@ components:
           example: 2500
         path:
           type: string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         next_cursor:
           description: Cursor de Paginación.
           type:
@@ -20288,22 +20288,22 @@ components:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         last:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         next:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         prev:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
       title: Metadata de Respuesta
   examples:
     customer:
@@ -20448,7 +20448,7 @@ components:
             max_installments: null
             show_count: false
             show_installments: false
-        public_uri: 'https://tucuota.com/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2'
+        public_uri: 'https://debi.pro/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2'
         success_url: null
         title: Test options
         updated_at: '2022-02-02T02:06:22.00-03:00'
@@ -20456,10 +20456,10 @@ components:
           country: AR
           currency: ARS
           email: pedrolombardo@email.com
-          organization_name: TuCuota
+          organization_name: Debi
           preference_color1: '#ffffff'
           preference_color2: '#d10000'
-          preference_logo: 'https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png'
+          preference_logo: 'https://debi-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png'
     mandate:
       summary: Ejemplo de Adhesión
       value:
@@ -20643,16 +20643,16 @@ components:
         max_installments: null
         name_text: null
         object: session
-        public_uri: 'https://tucuota.com/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81'
+        public_uri: 'https://debi.pro/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81'
         updated_at: '2022-02-11T23:17:55.00-03:00'
         user:
           country: AR
           currency: ARS
           email: pedrolombardo@email.com
-          organization_name: TuCuota
+          organization_name: Debi
           preference_color1: '#ffffff'
           preference_color2: '#d10000'
-          preference_logo: 'https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png'
+          preference_logo: 'https://debi-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png'
     subscription:
       summary: Ejemplo de Suscripción
       value:
@@ -20728,7 +20728,7 @@ components:
         object: webhook
         secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
         updated_at: '2022-02-11T23:19:22-03:00'
-        url: 'https://site.com/tucuota_webhook'
+        url: 'https://site.com/debi_webhook'
   securitySchemes:
     PublishableKeyAuthentication:
       type: apiKey
@@ -20757,12 +20757,12 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/event" exampleRef="#/components/examples/event" showReadOnly={true} showWriteOnly={true} />
   - name: Gateways
     description: |
-      Un gateway es una institución que autoriza y facilita los pagos. Puede ser un procesador de pagos, un banco o una red de tarjetas. En TuCuota, el objeto gateway representa la configuración específica y las credenciales que tu empresa utiliza para acceder a cada servicio.
+      Un gateway es una institución que autoriza y facilita los pagos. Puede ser un procesador de pagos, un banco o una red de tarjetas. En Debi, el objeto gateway representa la configuración específica y las credenciales que tu empresa utiliza para acceder a cada servicio.
 
       <SchemaDefinition schemaRef="#/components/schemas/gateway" exampleRef="#/components/examples/gateway" showReadOnly={true} showWriteOnly={true} />
   - name: Importaciones
     description: |
-      Una Importación es un objeto que contiene datos para ser creados en TuCuota. Como estos objetos pueden ser grandes, se crearán y procesarán más tarde. Puede comprobar el estado de la importación.
+      Una Importación es un objeto que contiene datos para ser creados en Debi. Como estos objetos pueden ser grandes, se crearán y procesarán más tarde. Puede comprobar el estado de la importación.
 
       <SchemaDefinition schemaRef="#/components/schemas/import" exampleRef="#/components/examples/import" showReadOnly={true} showWriteOnly={true} />
   - name: Links
@@ -20814,7 +20814,7 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/refund" exampleRef="#/components/examples/refund" showReadOnly={true} showWriteOnly={true} />
   - name: Sesiones
     description: |
-      Las sesiones te permiten utilizar las páginas de pago alojadas de TuCuota para configurar adhesiones, suscripciones o pagos con tus clientes.
+      Las sesiones te permiten utilizar las páginas de pago alojadas de Debi para configurar adhesiones, suscripciones o pagos con tus clientes.
 
       Primero, crea una sesión para su cliente y los redirige a la URL de redirección devuelta. Su adhiriente proporciona su nombre, correo electrónico, dirección y detalles de la cuenta bancaria o de la tarjeta, y envía el formulario. Esto almacena de forma segura sus detalles y los redirige a su `back_url` con `session_id=THE_SESSION_ID` en la cadena de consulta.
 
@@ -20839,11 +20839,11 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/subscription" exampleRef="#/components/examples/subscription" showReadOnly={true} showWriteOnly={true} />
   - name: Webhooks
     description: |
-      Los webhooks son URLs que puedes configurar para recibir notificaciones sobre eventos que suceden en tu cuenta de TuCuota. La mayoría de los usuarios configuran los webhooks desde el panel, que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
+      Los webhooks son URLs que puedes configurar para recibir notificaciones sobre eventos que suceden en tu cuenta de Debi. La mayoría de los usuarios configuran los webhooks desde el panel, que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.
 
       <SchemaDefinition schemaRef="#/components/schemas/webhook" exampleRef="#/components/examples/webhook" showReadOnly={true} showWriteOnly={true} />
 externalDocs:
-  description: TuCuota Docs.
-  url: 'https://tucuota.com/docs'
+  description: Debi Docs.
+  url: 'https://debi.pro/docs'
 security:
   - SecretKeyAuthentication: []

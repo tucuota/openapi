@@ -2,21 +2,21 @@ openapi: 3.1.0
 info:
   license:
     name: Proprietary
-    url: 'https://tucuota.com/terms'
-  title: TuCuota API
+    url: 'https://debi.pro/terms'
+  title: Debi API
   description: |
     # Introduction
 
-    TuCuota serves a REST API. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+    Debi (formerly TuCuota) serves a REST API. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
-    The base URLs for the TuCuota API are:
+    The base URLs for the Debi API are:
 
-    - Live: https://api.tucuota.com/v1/
-    - Sandbox: https://sandbox.tucuota.com/v1/
+    - Live: https://api.debi.pro/
+    - Sandbox: https://api.debi-test.pro/
 
     ### Content types
 
-    TuCuota API supports only `JSON` content types. Make sure to include the following header on your requests.
+    Debi API supports only `JSON` content types. Make sure to include the following header on your requests.
 
     #### Content-Type Header
 
@@ -29,12 +29,12 @@ info:
 
     ### Get an API key
 
-    To create new API keys, please visit the [developers section](https://tucuota.com/dashboard/developers) of our site.
+    To create new API keys, please visit the [developers section](https://debi.pro/dashboard/developers) of our site.
 
     For each environment (live and test) yo'll find two types of API Keys:
 
     - Publishable (`pk_...`): can be publicly-accessible in your web client-side code to tokenize payment information.
-    - Secret (`sk_...`): To be used on the server-side. Must be secret and stored securely in your application's code to call TuCuota APIs.
+    - Secret (`sk_...`): To be used on the server-side. Must be secret and stored securely in your application's code to call Debi APIs.
 
     To authenticate you must provide the API key in an Authorization request header (using the Bearer authentication scheme) when making API requests.
 
@@ -125,7 +125,7 @@ info:
     The response of a list API method represents a single page in a reverse chronological stream of objects. If you do not specify `starting_after` or `ending_before`, you will receive the first page of this stream, containing the newest objects. You can specify `starting_after` equal to the object ID value of an item to retrieve the page of older objects occurring immediately after the named object in the reverse chronological stream. Similarly, you can specify `ending_before` to receive a page of newer objects occurring immediately before the named object in the stream. Objects in a page always appear in reverse chronological order. Only one of `starting_after` or `ending_before` may be used.
     # Request IDs
 
-    Each API request has an associated request identifier. You can find this value in the response headers, under `Request-Id`. You can also find request identifiers in the URLs of individual request logs in your [Dashboard](https://tucuota.com/dashboard/logs).
+    Each API request has an associated request identifier. You can find this value in the response headers, under `Request-Id`. You can also find request identifiers in the URLs of individual request logs in your [Dashboard](https://debi.pro/dashboard/logs).
     # Conventions
 
     ### Notational Conventions
@@ -205,7 +205,7 @@ info:
     | 371449635398432        | card | rejected  | amex       | credit  |
     # Webhook Notifications
 
-    Webhooks are endpoints you can configure to be notified about events that happen in your TuCuota account. Most users configure Webhooks from the dashboard, which provides a user interface for registering and testing your webhook endpoints.
+    Webhooks are endpoints you can configure to be notified about events that happen in your Debi account. Most users configure Webhooks from the dashboard, which provides a user interface for registering and testing your webhook endpoints.
 
     <blockquote>
         Example webhook:
@@ -302,19 +302,19 @@ info:
 
     You can easy create test webhooks using https://webhook.site/ With that you will be able to see what we are sending to our API consumers.
 
-    Also, to start integrating the webhooks, your code will need to be accessible from the internet so TuCuota can reach it with HTTP requests. If you’re working locally, the easiest way to do this is with [ngrok](https://ngrok.com/).
+    Also, to start integrating the webhooks, your code will need to be accessible from the internet so Debi can reach it with HTTP requests. If you’re working locally, the easiest way to do this is with [ngrok](https://ngrok.com/).
 
     ### Webhooks security
 
-    TuCuota signs the webhook events it sends to your endpoints by including a signature in each event’s TuCuota-Signature header. This allows you to verify that the events were sent by TuCuota, not by a third party.
+    Debi signs the webhook events it sends to your endpoints by including a signature in each event’s Debi-Signature header. This allows you to verify that the events were sent by Debi, not by a third party.
 
-    Before you can verify signatures, you need to retrieve your endpoint’s secret _"Secreto webhook"_ from your webhooks in our [developers panel](https://tucuota.com/dashboard/developers). Add or select the endpoint you want to obtain the secret for, then click the _"mostrar"_ button.
+    Before you can verify signatures, you need to retrieve your endpoint’s secret _"Secreto webhook"_ from your webhooks in our [developers panel](https://debi.pro/dashboard/developers). Add or select the endpoint you want to obtain the secret for, then click the _"mostrar"_ button.
 
-    TuCuota generates a unique secret key for each endpoint. If you use the same endpoint for both test and live API keys, note that the secret is different for each one. Additionally, if you use multiple endpoints, you must obtain a secret for each one you want to verify signatures on. After this setup, TuCuota starts to sign each webhook it sends to the endpoint.
+    Debi generates a unique secret key for each endpoint. If you use the same endpoint for both test and live API keys, note that the secret is different for each one. Additionally, if you use multiple endpoints, you must obtain a secret for each one you want to verify signatures on. After this setup, Debi starts to sign each webhook it sends to the endpoint.
 
     #### Webhooks authenticity validation steps
 
-    TuCuota generates signatures using a hash-based message authentication code (HMAC) with SHA-256. To prevent downgrade attacks.
+    Debi generates signatures using a hash-based message authentication code (HMAC) with SHA-256. To prevent downgrade attacks.
 
     ##### Step 1: Extract the timestamp and signatures from the header
 
@@ -339,19 +339,19 @@ info:
     Compare the signature (or signatures) in the header to the expected signature. For an equality match, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.
 
     To protect against timing attacks, use a constant-time string comparison to compare the expected signature to each of the received signatures.
-  termsOfService: 'https://tucuota.com/terms'
+  termsOfService: 'https://debi.pro/terms'
   contact:
-    name: TuCuota Devs
-    email: devs@tucuota.com
-    url: 'https://tucuota.com/docs/api'
+    name: Debi Devs
+    email: devs@debi.pro
+    url: 'https://debi.pro/docs/api'
   x-logo:
-    url: 'https://tucuota.com/img/TuCuota.svg'
-    altText: TuCuota
+    url: 'https://debi.pro/img/debi.svg'
+    altText: Debi
   version: '2022-08-01'
 servers:
-  - url: 'https://api.tucuota.com'
+  - url: 'https://api.debi.pro'
     description: API server
-  - url: 'https://sandbox.tucuota.com'
+  - url: 'https://api.debi-test.pro'
     description: Sandbox API server
 paths:
   /v1/customers:
@@ -538,22 +538,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -567,7 +567,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -600,12 +600,12 @@ paths:
                 links:
                   first: null
                   last: null
-                  next: 'https://api.tucuota.com/v1/customers?starting_after=CS3Z25Agp708'
+                  next: 'https://api.debi.pro/v1/customers?starting_after=CS3Z25Agp708'
                   prev: null
                 meta:
                   per_page: 25
                   total: 2500
-                  path: 'https://api.tucuota.com/v1/customers'
+                  path: 'https://api.debi.pro/v1/customers'
         '401':
           description: Unauthorized
           content:
@@ -626,7 +626,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/customers?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/customers?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -634,7 +634,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/customers',
+              url: 'https://api.debi.pro/v1/customers',
               qs: {
                 all: 'SOME_BOOLEAN_VALUE',
                 created_at: 'SOME_OBJECT_VALUE',
@@ -655,7 +655,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/customers');
+            $request->setUrl('https://api.debi.pro/v1/customers');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -681,7 +681,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/customers"
+            url = "https://api.debi.pro/v1/customers"
 
             querystring = {"all":"SOME_BOOLEAN_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -692,7 +692,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/customers?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/customers?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -701,7 +701,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/customers?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/customers?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -948,7 +948,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/customers \
+              --url https://api.debi.pro/v1/customers \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"name":"Jorgelina Castro","email":"mail@example.com","gateway_identifier":"383473","identification_type":"DNI","identification_number":"15.555.324","metadata":{"some":"metadata"}}'
@@ -958,7 +958,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/customers',
+              url: 'https://api.debi.pro/v1/customers',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -984,7 +984,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/customers');
+            $request->setUrl('https://api.debi.pro/v1/customers');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -1005,7 +1005,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/customers"
+            url = "https://api.debi.pro/v1/customers"
 
             payload = {
                 "name": "Jorgelina Castro",
@@ -1025,7 +1025,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/customers")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/customers")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"name\":\"Jorgelina Castro\",\"email\":\"mail@example.com\",\"gateway_identifier\":\"383473\",\"identification_type\":\"DNI\",\"identification_number\":\"15.555.324\",\"metadata\":{\"some\":\"metadata\"}}")
@@ -1036,7 +1036,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/customers")
+            url = URI("https://api.debi.pro/v1/customers")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -1216,7 +1216,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/customers/CS9PL8eeo8aB \
+              --url https://api.debi.pro/v1/customers/CS9PL8eeo8aB \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -1224,7 +1224,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/customers/CS9PL8eeo8aB',
+              url: 'https://api.debi.pro/v1/customers/CS9PL8eeo8aB',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -1238,7 +1238,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/customers/CS9PL8eeo8aB');
+            $request->setUrl('https://api.debi.pro/v1/customers/CS9PL8eeo8aB');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -1256,7 +1256,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/customers/CS9PL8eeo8aB"
+            url = "https://api.debi.pro/v1/customers/CS9PL8eeo8aB"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -1265,7 +1265,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/customers/CS9PL8eeo8aB")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/customers/CS9PL8eeo8aB")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -1274,7 +1274,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/customers/CS9PL8eeo8aB")
+            url = URI("https://api.debi.pro/v1/customers/CS9PL8eeo8aB")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -1523,7 +1523,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request PUT \
-              --url https://api.tucuota.com/v1/customers/CS9PL8eeo8aB \
+              --url https://api.debi.pro/v1/customers/CS9PL8eeo8aB \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"name":"Jorgelina Castro","email":"mail@example.com","gateway_identifier":"383473","identification_type":"DNI","identification_number":"15.555.324","metadata":{"some":"metadata"}}'
@@ -1533,7 +1533,7 @@ paths:
 
             const options = {
               method: 'PUT',
-              url: 'https://api.tucuota.com/v1/customers/CS9PL8eeo8aB',
+              url: 'https://api.debi.pro/v1/customers/CS9PL8eeo8aB',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -1559,7 +1559,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/customers/CS9PL8eeo8aB');
+            $request->setUrl('https://api.debi.pro/v1/customers/CS9PL8eeo8aB');
             $request->setMethod(HTTP_METH_PUT);
 
             $request->setHeaders([
@@ -1580,7 +1580,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/customers/CS9PL8eeo8aB"
+            url = "https://api.debi.pro/v1/customers/CS9PL8eeo8aB"
 
             payload = {
                 "name": "Jorgelina Castro",
@@ -1600,7 +1600,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.put("https://api.tucuota.com/v1/customers/CS9PL8eeo8aB")
+            HttpResponse<String> response = Unirest.put("https://api.debi.pro/v1/customers/CS9PL8eeo8aB")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"name\":\"Jorgelina Castro\",\"email\":\"mail@example.com\",\"gateway_identifier\":\"383473\",\"identification_type\":\"DNI\",\"identification_number\":\"15.555.324\",\"metadata\":{\"some\":\"metadata\"}}")
@@ -1611,7 +1611,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/customers/CS9PL8eeo8aB")
+            url = URI("https://api.debi.pro/v1/customers/CS9PL8eeo8aB")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -1680,7 +1680,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/archive \
+              --url https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/archive \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -1688,7 +1688,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/archive',
+              url: 'https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/archive',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -1702,7 +1702,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/archive');
+            $request->setUrl('https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/archive');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -1720,7 +1720,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/archive"
+            url = "https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/archive"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -1729,7 +1729,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/archive")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/archive")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -1738,7 +1738,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/archive")
+            url = URI("https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/archive")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -1804,7 +1804,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/restore \
+              --url https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/restore \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -1812,7 +1812,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/restore',
+              url: 'https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/restore',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -1826,7 +1826,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/restore');
+            $request->setUrl('https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/restore');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -1844,7 +1844,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/restore"
+            url = "https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/restore"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -1853,7 +1853,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/restore")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/restore")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -1862,7 +1862,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/customers/CS9PL8eeo8aB/actions/restore")
+            url = URI("https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/restore")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -1882,7 +1882,7 @@ paths:
         - name: q
           in: query
           description: |
-            The search query string. See [search query language](https://tucuota.com/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/) and the list of supported query fields for charges.
+            The search query string. See [search query language](https://debi.pro/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/) and the list of supported query fields for charges.
           required: true
           schema:
             type: string
@@ -2031,22 +2031,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -2060,7 +2060,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -2091,8 +2091,8 @@ paths:
                     updated_at: '2021-07-05T12:24:32-03:00'
                     deleted_at: null
                 links:
-                  prev: 'https://api.tucuota.com/customers/search?q=john%20doe&page=1'
-                  next: 'https://api.tucuota.com/customers/search?q=john%20doe&page=3'
+                  prev: 'https://api.debi.pro/customers/search?q=john%20doe&page=1'
+                  next: 'https://api.debi.pro/customers/search?q=john%20doe&page=3'
                 meta:
                   per_page: 25
                   total: 2500
@@ -2116,7 +2116,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/customers/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/customers/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -2124,7 +2124,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/customers/search',
+              url: 'https://api.debi.pro/v1/customers/search',
               qs: {q: 'SOME_STRING_VALUE', limit: 'SOME_INTEGER_VALUE', page: 'SOME_STRING_VALUE'},
               headers: {Authorization: 'Bearer sk_live_...'}
             };
@@ -2139,7 +2139,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/customers/search');
+            $request->setUrl('https://api.debi.pro/v1/customers/search');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -2163,7 +2163,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/customers/search"
+            url = "https://api.debi.pro/v1/customers/search"
 
             querystring = {"q":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","page":"SOME_STRING_VALUE"}
 
@@ -2174,7 +2174,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/customers/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/customers/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -2183,7 +2183,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/customers/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/customers/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -2296,9 +2296,9 @@ paths:
                 links:
                   first: null
                   last: null
-                  next: 'https://api.tucuota.com/v1/events?starting_after=EVaX3JagwR6x'
+                  next: 'https://api.debi.pro/v1/events?starting_after=EVaX3JagwR6x'
                 meta:
-                  path: 'https://api.tucuota.com/v1/events'
+                  path: 'https://api.debi.pro/v1/events'
                   per_page: 25
                   total: 34
               schema:
@@ -2409,22 +2409,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -2438,7 +2438,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -2470,7 +2470,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/events?delivery_success=SOME_BOOLEAN_VALUE&related_object=SOME_STRING_VALUE&type=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/events?delivery_success=SOME_BOOLEAN_VALUE&related_object=SOME_STRING_VALUE&type=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -2478,7 +2478,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/events',
+              url: 'https://api.debi.pro/v1/events',
               qs: {
                 delivery_success: 'SOME_BOOLEAN_VALUE',
                 related_object: 'SOME_STRING_VALUE',
@@ -2501,7 +2501,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/events');
+            $request->setUrl('https://api.debi.pro/v1/events');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -2529,7 +2529,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/events"
+            url = "https://api.debi.pro/v1/events"
 
             querystring = {"delivery_success":"SOME_BOOLEAN_VALUE","related_object":"SOME_STRING_VALUE","type":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -2540,7 +2540,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/events?delivery_success=SOME_BOOLEAN_VALUE&related_object=SOME_STRING_VALUE&type=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/events?delivery_success=SOME_BOOLEAN_VALUE&related_object=SOME_STRING_VALUE&type=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -2549,7 +2549,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/events?delivery_success=SOME_BOOLEAN_VALUE&related_object=SOME_STRING_VALUE&type=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/events?delivery_success=SOME_BOOLEAN_VALUE&related_object=SOME_STRING_VALUE&type=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -2710,7 +2710,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/events/EVaX3JagwR6x \
+              --url https://api.debi.pro/v1/events/EVaX3JagwR6x \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -2718,7 +2718,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/events/EVaX3JagwR6x',
+              url: 'https://api.debi.pro/v1/events/EVaX3JagwR6x',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -2732,7 +2732,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/events/EVaX3JagwR6x');
+            $request->setUrl('https://api.debi.pro/v1/events/EVaX3JagwR6x');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -2750,7 +2750,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/events/EVaX3JagwR6x"
+            url = "https://api.debi.pro/v1/events/EVaX3JagwR6x"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -2759,7 +2759,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/events/EVaX3JagwR6x")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/events/EVaX3JagwR6x")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -2768,7 +2768,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/events/EVaX3JagwR6x")
+            url = URI("https://api.debi.pro/v1/events/EVaX3JagwR6x")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -2944,22 +2944,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -2973,7 +2973,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -3031,11 +3031,11 @@ paths:
                     updated_at: '2023-02-01T16:36:06-03:00'
                     username: user@name.com
                 links:
-                  first: 'https://api.tucuota.com/v1/gateways?page=1'
-                  last: 'https://api.tucuota.com/v1/gateways?page=1'
+                  first: 'https://api.debi.pro/v1/gateways?page=1'
+                  last: 'https://api.debi.pro/v1/gateways?page=1'
                 meta:
                   next_cursor: null
-                  path: 'https://api.tucuota.com/v1/gateways'
+                  path: 'https://api.debi.pro/v1/gateways'
                   per_page: 25
                   prev_cursor: null
                   total: 7
@@ -3059,7 +3059,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/gateways?ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/gateways?ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -3067,7 +3067,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/gateways',
+              url: 'https://api.debi.pro/v1/gateways',
               qs: {
                 ending_before: 'SOME_STRING_VALUE',
                 limit: 'SOME_INTEGER_VALUE',
@@ -3086,7 +3086,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/gateways');
+            $request->setUrl('https://api.debi.pro/v1/gateways');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -3110,7 +3110,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/gateways"
+            url = "https://api.debi.pro/v1/gateways"
 
             querystring = {"ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -3121,7 +3121,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/gateways?ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/gateways?ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -3130,7 +3130,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/gateways?ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/gateways?ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -3303,22 +3303,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -3332,7 +3332,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -3369,11 +3369,11 @@ paths:
                     updated_at: '2020-11-20T02:37:49-03:00'
                     ready_at: '2020-11-20T02:37:49-03:00'
                 links:
-                  first: 'https://api.tucuota.com/v1/imports?page=1'
-                  last: 'https://api.tucuota.com/v1/imports?page=1'
+                  first: 'https://api.debi.pro/v1/imports?page=1'
+                  last: 'https://api.debi.pro/v1/imports?page=1'
                 meta:
                   next_cursor: null
-                  path: 'https://api.tucuota.com/v1/imports'
+                  path: 'https://api.debi.pro/v1/imports'
                   per_page: 25
                   prev_cursor: null
                   total: 7
@@ -3397,7 +3397,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/imports?search=SOME_STRING_VALUE&status=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/imports?search=SOME_STRING_VALUE&status=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -3405,7 +3405,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/imports',
+              url: 'https://api.debi.pro/v1/imports',
               qs: {
                 search: 'SOME_STRING_VALUE',
                 status: 'SOME_STRING_VALUE',
@@ -3427,7 +3427,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/imports');
+            $request->setUrl('https://api.debi.pro/v1/imports');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -3454,7 +3454,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/imports"
+            url = "https://api.debi.pro/v1/imports"
 
             querystring = {"search":"SOME_STRING_VALUE","status":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -3465,7 +3465,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/imports?search=SOME_STRING_VALUE&status=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/imports?search=SOME_STRING_VALUE&status=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -3474,7 +3474,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/imports?search=SOME_STRING_VALUE&status=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/imports?search=SOME_STRING_VALUE&status=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -3652,7 +3652,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/imports \
+              --url https://api.debi.pro/v1/imports \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"type":"customers","filename":"a.csv","original_filename":"a.csv","auto":true,"metadata":{"some":"metadata"}}'
@@ -3662,7 +3662,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/imports',
+              url: 'https://api.debi.pro/v1/imports',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -3687,7 +3687,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/imports');
+            $request->setUrl('https://api.debi.pro/v1/imports');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -3708,7 +3708,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/imports"
+            url = "https://api.debi.pro/v1/imports"
 
             payload = {
                 "type": "customers",
@@ -3727,7 +3727,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/imports")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/imports")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"type\":\"customers\",\"filename\":\"a.csv\",\"original_filename\":\"a.csv\",\"auto\":true,\"metadata\":{\"some\":\"metadata\"}}")
@@ -3738,7 +3738,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/imports")
+            url = URI("https://api.debi.pro/v1/imports")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -3885,7 +3885,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/imports/IMKd7zlGJAna \
+              --url https://api.debi.pro/v1/imports/IMKd7zlGJAna \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -3893,7 +3893,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/imports/IMKd7zlGJAna',
+              url: 'https://api.debi.pro/v1/imports/IMKd7zlGJAna',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -3907,7 +3907,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/imports/IMKd7zlGJAna');
+            $request->setUrl('https://api.debi.pro/v1/imports/IMKd7zlGJAna');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -3925,7 +3925,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/imports/IMKd7zlGJAna"
+            url = "https://api.debi.pro/v1/imports/IMKd7zlGJAna"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -3934,7 +3934,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/imports/IMKd7zlGJAna")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/imports/IMKd7zlGJAna")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -3943,7 +3943,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/imports/IMKd7zlGJAna")
+            url = URI("https://api.debi.pro/v1/imports/IMKd7zlGJAna")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -4083,22 +4083,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -4112,7 +4112,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -4153,12 +4153,12 @@ paths:
                     created_at: '2022-01-10T10:00:00-03:00'
                     updated_at: '2022-01-10T10:00:00-03:00'
                 links:
-                  first: 'https://api.tucuota.com/v1/imports?page=1'
-                  last: 'https://api.tucuota.com/v1/imports?page=1'
+                  first: 'https://api.debi.pro/v1/imports?page=1'
+                  last: 'https://api.debi.pro/v1/imports?page=1'
                 meta:
                   total: 2730
                   next_cursor: null
-                  path: 'https://tucuota.com/api/imports/IMBPkWDn3J0y/rows'
+                  path: 'https://debi.pro/api/imports/IMBPkWDn3J0y/rows'
                   per_page: 1000
                   prev_cursor: null
         '401':
@@ -4181,7 +4181,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows?filter=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/imports/IMKd7zlGJAna/rows?filter=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -4189,7 +4189,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows',
+              url: 'https://api.debi.pro/v1/imports/IMKd7zlGJAna/rows',
               qs: {
                 filter: 'SOME_STRING_VALUE',
                 created_at: 'SOME_OBJECT_VALUE',
@@ -4210,7 +4210,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows');
+            $request->setUrl('https://api.debi.pro/v1/imports/IMKd7zlGJAna/rows');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -4236,7 +4236,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows"
+            url = "https://api.debi.pro/v1/imports/IMKd7zlGJAna/rows"
 
             querystring = {"filter":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -4247,7 +4247,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows?filter=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/imports/IMKd7zlGJAna/rows?filter=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -4256,7 +4256,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/imports/IMKd7zlGJAna/rows?filter=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/imports/IMKd7zlGJAna/rows?filter=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -4394,22 +4394,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -4423,7 +4423,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -4457,7 +4457,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/links?search=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/links?search=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -4465,7 +4465,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/links',
+              url: 'https://api.debi.pro/v1/links',
               qs: {
                 search: 'SOME_STRING_VALUE',
                 created_at: 'SOME_OBJECT_VALUE',
@@ -4486,7 +4486,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/links');
+            $request->setUrl('https://api.debi.pro/v1/links');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -4512,7 +4512,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/links"
+            url = "https://api.debi.pro/v1/links"
 
             querystring = {"search":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -4523,7 +4523,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/links?search=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/links?search=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -4532,7 +4532,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/links?search=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/links?search=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -4627,7 +4627,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/links \
+              --url https://api.debi.pro/v1/links \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -4635,7 +4635,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/links',
+              url: 'https://api.debi.pro/v1/links',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -4649,7 +4649,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/links');
+            $request->setUrl('https://api.debi.pro/v1/links');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -4667,7 +4667,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/links"
+            url = "https://api.debi.pro/v1/links"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -4676,7 +4676,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/links")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/links")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -4685,7 +4685,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/links")
+            url = URI("https://api.debi.pro/v1/links")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -4789,7 +4789,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549 \
+              --url https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549 \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -4797,7 +4797,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549',
+              url: 'https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -4811,7 +4811,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549');
+            $request->setUrl('https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -4829,7 +4829,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549"
+            url = "https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -4838,7 +4838,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -4847,7 +4847,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549")
+            url = URI("https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -4959,7 +4959,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request PUT \
-              --url https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549 \
+              --url https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549 \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -4967,7 +4967,7 @@ paths:
 
             const options = {
               method: 'PUT',
-              url: 'https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549',
+              url: 'https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -4981,7 +4981,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549');
+            $request->setUrl('https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549');
             $request->setMethod(HTTP_METH_PUT);
 
             $request->setHeaders([
@@ -4999,7 +4999,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549"
+            url = "https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -5008,7 +5008,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.put("https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549")
+            HttpResponse<String> response = Unirest.put("https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -5017,7 +5017,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/links/LKLj0JV8xzdMoRk549")
+            url = URI("https://api.debi.pro/v1/links/LKLj0JV8xzdMoRk549")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -5453,22 +5453,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -5482,7 +5482,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -5516,7 +5516,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/mandates?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/mandates?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -5524,7 +5524,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/mandates',
+              url: 'https://api.debi.pro/v1/mandates',
               qs: {
                 all: 'SOME_BOOLEAN_VALUE',
                 customer_id: 'SOME_STRING_VALUE',
@@ -5546,7 +5546,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/mandates');
+            $request->setUrl('https://api.debi.pro/v1/mandates');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -5573,7 +5573,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/mandates"
+            url = "https://api.debi.pro/v1/mandates"
 
             querystring = {"all":"SOME_BOOLEAN_VALUE","customer_id":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -5584,7 +5584,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/mandates?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/mandates?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -5593,7 +5593,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/mandates?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/mandates?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -5695,7 +5695,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/mandates \
+              --url https://api.debi.pro/v1/mandates \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"customer_id":"CS3oDRqz9wzB","payment_method_id":"PMBja4YZ2GDR"}'
@@ -5705,7 +5705,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/mandates',
+              url: 'https://api.debi.pro/v1/mandates',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -5724,7 +5724,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/mandates');
+            $request->setUrl('https://api.debi.pro/v1/mandates');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -5745,7 +5745,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/mandates"
+            url = "https://api.debi.pro/v1/mandates"
 
             payload = {
                 "customer_id": "CS3oDRqz9wzB",
@@ -5761,7 +5761,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/mandates")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/mandates")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"customer_id\":\"CS3oDRqz9wzB\",\"payment_method_id\":\"PMBja4YZ2GDR\"}")
@@ -5772,7 +5772,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/mandates")
+            url = URI("https://api.debi.pro/v1/mandates")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -6186,7 +6186,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB \
+              --url https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -6194,7 +6194,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB',
+              url: 'https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -6208,7 +6208,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB');
+            $request->setUrl('https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -6226,7 +6226,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB"
+            url = "https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -6235,7 +6235,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -6244,7 +6244,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB")
+            url = URI("https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -6292,7 +6292,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke \
+              --url https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -6300,7 +6300,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke',
+              url: 'https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -6314,7 +6314,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke');
+            $request->setUrl('https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -6332,7 +6332,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke"
+            url = "https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -6341,7 +6341,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -6350,7 +6350,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke")
+            url = URI("https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -6398,7 +6398,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore \
+              --url https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -6406,7 +6406,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore',
+              url: 'https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -6420,7 +6420,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore');
+            $request->setUrl('https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -6438,7 +6438,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore"
+            url = "https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -6447,7 +6447,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -6456,7 +6456,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore")
+            url = URI("https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -6476,7 +6476,7 @@ paths:
         - name: q
           in: query
           description: |
-            The search query string. See [search query language](https://tucuota.com/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/) and the list of supported query fields for charges.
+            The search query string. See [search query language](https://debi.pro/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/) and the list of supported query fields for charges.
           required: true
           schema:
             type: string
@@ -6859,22 +6859,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -6888,7 +6888,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -6951,8 +6951,8 @@ paths:
                     status: active
                     updated_at: '2022-02-01T19:06:37-03:00'
                 links:
-                  prev: 'https://api.tucuota.com/mandates/search?q=john%20doe&page=1'
-                  next: 'https://api.tucuota.com/mandates/search?q=john%20doe&page=3'
+                  prev: 'https://api.debi.pro/mandates/search?q=john%20doe&page=1'
+                  next: 'https://api.debi.pro/mandates/search?q=john%20doe&page=3'
                 meta:
                   per_page: 25
                   total: 2500
@@ -6976,7 +6976,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/mandates/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/mandates/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -6984,7 +6984,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/mandates/search',
+              url: 'https://api.debi.pro/v1/mandates/search',
               qs: {q: 'SOME_STRING_VALUE', limit: 'SOME_INTEGER_VALUE', page: 'SOME_STRING_VALUE'},
               headers: {Authorization: 'Bearer sk_live_...'}
             };
@@ -6999,7 +6999,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/mandates/search');
+            $request->setUrl('https://api.debi.pro/v1/mandates/search');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -7023,7 +7023,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/mandates/search"
+            url = "https://api.debi.pro/v1/mandates/search"
 
             querystring = {"q":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","page":"SOME_STRING_VALUE"}
 
@@ -7034,7 +7034,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/mandates/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/mandates/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -7043,7 +7043,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/mandates/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/mandates/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -7262,22 +7262,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -7291,7 +7291,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -7327,9 +7327,9 @@ paths:
                 links:
                   first: null
                   last: null
-                  next: 'https://api.tucuota.com/v1/payment_methods?starting_after=PMVdYaYwkqOw'
+                  next: 'https://api.debi.pro/v1/payment_methods?starting_after=PMVdYaYwkqOw'
                 meta:
-                  path: 'https://api.tucuota.com/v1/payment_methods'
+                  path: 'https://api.debi.pro/v1/payment_methods'
                   per_page: 25
                   total: 34
         '401':
@@ -7352,7 +7352,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_INTEGER_VALUE' \
+              --url 'https://api.debi.pro/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_INTEGER_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -7360,7 +7360,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/payment_methods',
+              url: 'https://api.debi.pro/v1/payment_methods',
               qs: {page: 'SOME_NUMBER_VALUE', limit: 'SOME_INTEGER_VALUE'},
               headers: {Authorization: 'Bearer sk_live_...'}
             };
@@ -7375,7 +7375,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payment_methods');
+            $request->setUrl('https://api.debi.pro/v1/payment_methods');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -7398,7 +7398,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payment_methods"
+            url = "https://api.debi.pro/v1/payment_methods"
 
             querystring = {"page":"SOME_NUMBER_VALUE","limit":"SOME_INTEGER_VALUE"}
 
@@ -7409,7 +7409,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_INTEGER_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_INTEGER_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -7418,7 +7418,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_INTEGER_VALUE")
+            url = URI("https://api.debi.pro/v1/payment_methods?page=SOME_NUMBER_VALUE&limit=SOME_INTEGER_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -7810,7 +7810,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/payment_methods \
+              --url https://api.debi.pro/v1/payment_methods \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"string","identification":true}}'
@@ -7820,7 +7820,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/payment_methods',
+              url: 'https://api.debi.pro/v1/payment_methods',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -7848,7 +7848,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payment_methods');
+            $request->setUrl('https://api.debi.pro/v1/payment_methods');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -7869,7 +7869,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payment_methods"
+            url = "https://api.debi.pro/v1/payment_methods"
 
             payload = {
                 "type": "card",
@@ -7895,7 +7895,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/payment_methods")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/payment_methods")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true}}")
@@ -7906,7 +7906,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payment_methods")
+            url = URI("https://api.debi.pro/v1/payment_methods")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -8143,7 +8143,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/payment_methods/PMVA0W8y1aQO \
+              --url https://api.debi.pro/v1/payment_methods/PMVA0W8y1aQO \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -8151,7 +8151,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/payment_methods/PMVA0W8y1aQO',
+              url: 'https://api.debi.pro/v1/payment_methods/PMVA0W8y1aQO',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -8165,7 +8165,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payment_methods/PMVA0W8y1aQO');
+            $request->setUrl('https://api.debi.pro/v1/payment_methods/PMVA0W8y1aQO');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -8183,7 +8183,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payment_methods/PMVA0W8y1aQO"
+            url = "https://api.debi.pro/v1/payment_methods/PMVA0W8y1aQO"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -8192,7 +8192,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/payment_methods/PMVA0W8y1aQO")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/payment_methods/PMVA0W8y1aQO")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -8201,7 +8201,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payment_methods/PMVA0W8y1aQO")
+            url = URI("https://api.debi.pro/v1/payment_methods/PMVA0W8y1aQO")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -8221,7 +8221,7 @@ paths:
         - name: q
           in: query
           description: |
-            The search query string. See [search query language](https://tucuota.com/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/) and the list of supported query fields for charges.
+            The search query string. See [search query language](https://debi.pro/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/) and the list of supported query fields for charges.
           required: true
           schema:
             type: string
@@ -8429,22 +8429,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -8458,7 +8458,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -8496,8 +8496,8 @@ paths:
                     type: card
                     updated_at: '2022-02-01T23:13:04-03:00'
                 links:
-                  next: 'https://api.tucuota.com/payment_methods/search?q=john%20doe&page=3'
-                  prev: 'https://api.tucuota.com/payment_methods/search?q=john%20doe&page=1'
+                  next: 'https://api.debi.pro/payment_methods/search?q=john%20doe&page=3'
+                  prev: 'https://api.debi.pro/payment_methods/search?q=john%20doe&page=1'
                 meta:
                   per_page: 25
                   total: 2500
@@ -8521,7 +8521,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/payment_methods/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/payment_methods/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -8529,7 +8529,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/payment_methods/search',
+              url: 'https://api.debi.pro/v1/payment_methods/search',
               qs: {q: 'SOME_STRING_VALUE', limit: 'SOME_INTEGER_VALUE', page: 'SOME_STRING_VALUE'},
               headers: {Authorization: 'Bearer sk_live_...'}
             };
@@ -8544,7 +8544,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payment_methods/search');
+            $request->setUrl('https://api.debi.pro/v1/payment_methods/search');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -8568,7 +8568,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payment_methods/search"
+            url = "https://api.debi.pro/v1/payment_methods/search"
 
             querystring = {"q":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","page":"SOME_STRING_VALUE"}
 
@@ -8579,7 +8579,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/payment_methods/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/payment_methods/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -8588,7 +8588,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payment_methods/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/payment_methods/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -9138,22 +9138,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -9167,7 +9167,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -9201,7 +9201,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/payments?customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/payments?customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -9209,7 +9209,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/payments',
+              url: 'https://api.debi.pro/v1/payments',
               qs: {
                 customer_id: 'SOME_STRING_VALUE',
                 subscription_id: 'SOME_STRING_VALUE',
@@ -9231,7 +9231,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payments');
+            $request->setUrl('https://api.debi.pro/v1/payments');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -9258,7 +9258,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payments"
+            url = "https://api.debi.pro/v1/payments"
 
             querystring = {"customer_id":"SOME_STRING_VALUE","subscription_id":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -9269,7 +9269,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/payments?customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/payments?customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -9278,7 +9278,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payments?customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/payments?customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -9845,7 +9845,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/payments \
+              --url https://api.debi.pro/v1/payments \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"amount":100,"description":"Unique payment","gateway_identifier":"001234","customer_id":"CSr7Dg3LkDP2","payment_method_id":"PMBja4YZ2GDR"}'
@@ -9855,7 +9855,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/payments',
+              url: 'https://api.debi.pro/v1/payments',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -9880,7 +9880,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payments');
+            $request->setUrl('https://api.debi.pro/v1/payments');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -9901,7 +9901,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payments"
+            url = "https://api.debi.pro/v1/payments"
 
             payload = {
                 "amount": 100,
@@ -9920,7 +9920,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/payments")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/payments")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"amount\":100,\"description\":\"Unique payment\",\"gateway_identifier\":\"001234\",\"customer_id\":\"CSr7Dg3LkDP2\",\"payment_method_id\":\"PMBja4YZ2GDR\"}")
@@ -9931,7 +9931,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payments")
+            url = URI("https://api.debi.pro/v1/payments")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -10458,7 +10458,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/payments/PYdOz9bgVReV \
+              --url https://api.debi.pro/v1/payments/PYdOz9bgVReV \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -10466,7 +10466,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/payments/PYdOz9bgVReV',
+              url: 'https://api.debi.pro/v1/payments/PYdOz9bgVReV',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -10480,7 +10480,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payments/PYdOz9bgVReV');
+            $request->setUrl('https://api.debi.pro/v1/payments/PYdOz9bgVReV');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -10498,7 +10498,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payments/PYdOz9bgVReV"
+            url = "https://api.debi.pro/v1/payments/PYdOz9bgVReV"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -10507,7 +10507,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/payments/PYdOz9bgVReV")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/payments/PYdOz9bgVReV")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -10516,7 +10516,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payments/PYdOz9bgVReV")
+            url = URI("https://api.debi.pro/v1/payments/PYdOz9bgVReV")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -11075,7 +11075,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request PUT \
-              --url https://api.tucuota.com/v1/payments/PYdOz9bgVReV \
+              --url https://api.debi.pro/v1/payments/PYdOz9bgVReV \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"description":"New payment title"}'
@@ -11085,7 +11085,7 @@ paths:
 
             const options = {
               method: 'PUT',
-              url: 'https://api.tucuota.com/v1/payments/PYdOz9bgVReV',
+              url: 'https://api.debi.pro/v1/payments/PYdOz9bgVReV',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -11104,7 +11104,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payments/PYdOz9bgVReV');
+            $request->setUrl('https://api.debi.pro/v1/payments/PYdOz9bgVReV');
             $request->setMethod(HTTP_METH_PUT);
 
             $request->setHeaders([
@@ -11125,7 +11125,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payments/PYdOz9bgVReV"
+            url = "https://api.debi.pro/v1/payments/PYdOz9bgVReV"
 
             payload = {"description": "New payment title"}
             headers = {
@@ -11138,7 +11138,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.put("https://api.tucuota.com/v1/payments/PYdOz9bgVReV")
+            HttpResponse<String> response = Unirest.put("https://api.debi.pro/v1/payments/PYdOz9bgVReV")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"description\":\"New payment title\"}")
@@ -11149,7 +11149,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payments/PYdOz9bgVReV")
+            url = URI("https://api.debi.pro/v1/payments/PYdOz9bgVReV")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -11204,7 +11204,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/cancel \
+              --url https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/cancel \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -11212,7 +11212,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/cancel',
+              url: 'https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/cancel',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -11226,7 +11226,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/cancel');
+            $request->setUrl('https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/cancel');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -11244,7 +11244,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/cancel"
+            url = "https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/cancel"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -11253,7 +11253,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/cancel")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/cancel")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -11262,7 +11262,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/cancel")
+            url = URI("https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/cancel")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -11314,7 +11314,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/retry \
+              --url https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/retry \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -11322,7 +11322,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/retry',
+              url: 'https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/retry',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -11336,7 +11336,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/retry');
+            $request->setUrl('https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/retry');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -11354,7 +11354,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/retry"
+            url = "https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/retry"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -11363,7 +11363,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/retry")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/retry")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -11372,7 +11372,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/retry")
+            url = URI("https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/retry")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -11424,7 +11424,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying \
+              --url https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -11432,7 +11432,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying',
+              url: 'https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -11446,7 +11446,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying');
+            $request->setUrl('https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -11464,7 +11464,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying"
+            url = "https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -11473,7 +11473,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -11482,7 +11482,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying")
+            url = URI("https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -11502,7 +11502,7 @@ paths:
         - name: q
           in: query
           description: |
-            The search query string. See [search query language](https://tucuota.com/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/) and the list of supported query fields for charges.
+            The search query string. See [search query language](https://debi.pro/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/) and the list of supported query fields for charges.
           required: true
           schema:
             type: string
@@ -11998,22 +11998,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -12027,7 +12027,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -12109,8 +12109,8 @@ paths:
                     metadata: null
                     refunds: []
                 links:
-                  prev: 'https://api.tucuota.com/payments/search?q=john%20doe&page=1'
-                  next: 'https://api.tucuota.com/payments/search?q=john%20doe&page=3'
+                  prev: 'https://api.debi.pro/payments/search?q=john%20doe&page=1'
+                  next: 'https://api.debi.pro/payments/search?q=john%20doe&page=3'
                 meta:
                   per_page: 25
                   total: 2500
@@ -12134,7 +12134,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/payments/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/payments/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -12142,7 +12142,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/payments/search',
+              url: 'https://api.debi.pro/v1/payments/search',
               qs: {q: 'SOME_STRING_VALUE', limit: 'SOME_INTEGER_VALUE', page: 'SOME_STRING_VALUE'},
               headers: {Authorization: 'Bearer sk_live_...'}
             };
@@ -12157,7 +12157,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/payments/search');
+            $request->setUrl('https://api.debi.pro/v1/payments/search');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -12181,7 +12181,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/payments/search"
+            url = "https://api.debi.pro/v1/payments/search"
 
             querystring = {"q":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","page":"SOME_STRING_VALUE"}
 
@@ -12192,7 +12192,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/payments/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/payments/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -12201,7 +12201,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/payments/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/payments/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -12360,22 +12360,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -12389,7 +12389,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -12423,7 +12423,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/refunds?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/refunds?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -12431,7 +12431,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/refunds',
+              url: 'https://api.debi.pro/v1/refunds',
               qs: {
                 created_at: 'SOME_OBJECT_VALUE',
                 ending_before: 'SOME_STRING_VALUE',
@@ -12451,7 +12451,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/refunds');
+            $request->setUrl('https://api.debi.pro/v1/refunds');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -12476,7 +12476,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/refunds"
+            url = "https://api.debi.pro/v1/refunds"
 
             querystring = {"created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -12487,7 +12487,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/refunds?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/refunds?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -12496,7 +12496,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/refunds?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/refunds?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -12669,7 +12669,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/refunds \
+              --url https://api.debi.pro/v1/refunds \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"payment_id":"PYgaZlLaPMZO.","amount":12.5,"reason":"requested_by_customer","metadata":{"some":"metadata"}}'
@@ -12679,7 +12679,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/refunds',
+              url: 'https://api.debi.pro/v1/refunds',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -12703,7 +12703,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/refunds');
+            $request->setUrl('https://api.debi.pro/v1/refunds');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -12724,7 +12724,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/refunds"
+            url = "https://api.debi.pro/v1/refunds"
 
             payload = {
                 "payment_id": "PYgaZlLaPMZO.",
@@ -12742,7 +12742,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/refunds")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/refunds")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"payment_id\":\"PYgaZlLaPMZO.\",\"amount\":12.5,\"reason\":\"requested_by_customer\",\"metadata\":{\"some\":\"metadata\"}}")
@@ -12753,7 +12753,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/refunds")
+            url = URI("https://api.debi.pro/v1/refunds")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -12903,7 +12903,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/refunds/RFgaZlLaPMZO \
+              --url https://api.debi.pro/v1/refunds/RFgaZlLaPMZO \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -12911,7 +12911,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/refunds/RFgaZlLaPMZO',
+              url: 'https://api.debi.pro/v1/refunds/RFgaZlLaPMZO',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -12925,7 +12925,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/refunds/RFgaZlLaPMZO');
+            $request->setUrl('https://api.debi.pro/v1/refunds/RFgaZlLaPMZO');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -12943,7 +12943,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/refunds/RFgaZlLaPMZO"
+            url = "https://api.debi.pro/v1/refunds/RFgaZlLaPMZO"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -12952,7 +12952,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/refunds/RFgaZlLaPMZO")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/refunds/RFgaZlLaPMZO")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -12961,7 +12961,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/refunds/RFgaZlLaPMZO")
+            url = URI("https://api.debi.pro/v1/refunds/RFgaZlLaPMZO")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -13045,11 +13045,11 @@ paths:
                   type: integer
                 day_of_month:
                   description: |
-                    Only for subscriptions, the day of month, from 1 to 28. Use only if you need the subscription to start in a specyfic date. In most cases this should be null, therefore TuCuota will use the date of the moment when the user completes the checkout.
+                    Only for subscriptions, the day of month, from 1 to 28. Use only if you need the subscription to start in a specyfic date. In most cases this should be null, therefore Debi will use the date of the moment when the user completes the checkout.
                   type: integer
                 day_of_week:
                   description: |
-                    Only for subscriptions, the day of week number, from 0 (Sunday) to 6 (Saturday). Use only if you need the subscription to start in a specyfic date. In most cases this should be null, therefore TuCuota will use the date of the moment when the user completes the checkout.
+                    Only for subscriptions, the day of week number, from 0 (Sunday) to 6 (Saturday). Use only if you need the subscription to start in a specyfic date. In most cases this should be null, therefore Debi will use the date of the moment when the user completes the checkout.
                   type: integer
                 payment_gateway_identifier:
                   description: The custom number you send to the gateway network. In most cases this value is null.
@@ -13262,7 +13262,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/sessions \
+              --url https://api.debi.pro/v1/sessions \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"kind":"payment","success_url":"http://example.com/success","amount":"200.50","description":"Summer school"}'
@@ -13272,7 +13272,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/sessions',
+              url: 'https://api.debi.pro/v1/sessions',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -13296,7 +13296,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/sessions');
+            $request->setUrl('https://api.debi.pro/v1/sessions');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -13317,7 +13317,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/sessions"
+            url = "https://api.debi.pro/v1/sessions"
 
             payload = {
                 "kind": "payment",
@@ -13335,7 +13335,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/sessions")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/sessions")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"kind\":\"payment\",\"success_url\":\"http://example.com/success\",\"amount\":\"200.50\",\"description\":\"Summer school\"}")
@@ -13346,7 +13346,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/sessions")
+            url = URI("https://api.debi.pro/v1/sessions")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -13541,7 +13541,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m \
+              --url https://api.debi.pro/v1/sessions/SSnO8b9w7B51VE0B5m \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -13549,7 +13549,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m',
+              url: 'https://api.debi.pro/v1/sessions/SSnO8b9w7B51VE0B5m',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -13563,7 +13563,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m');
+            $request->setUrl('https://api.debi.pro/v1/sessions/SSnO8b9w7B51VE0B5m');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -13581,7 +13581,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m"
+            url = "https://api.debi.pro/v1/sessions/SSnO8b9w7B51VE0B5m"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -13590,7 +13590,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/sessions/SSnO8b9w7B51VE0B5m")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -13599,7 +13599,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/sessions/SSnO8b9w7B51VE0B5m")
+            url = URI("https://api.debi.pro/v1/sessions/SSnO8b9w7B51VE0B5m")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -14110,22 +14110,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -14139,7 +14139,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -14173,7 +14173,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -14181,7 +14181,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/subscriptions',
+              url: 'https://api.debi.pro/v1/subscriptions',
               qs: {
                 created_at: 'SOME_OBJECT_VALUE',
                 ending_before: 'SOME_STRING_VALUE',
@@ -14201,7 +14201,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/subscriptions');
+            $request->setUrl('https://api.debi.pro/v1/subscriptions');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -14226,7 +14226,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/subscriptions"
+            url = "https://api.debi.pro/v1/subscriptions"
 
             querystring = {"created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -14237,7 +14237,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -14246,7 +14246,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -14888,7 +14888,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/subscriptions \
+              --url https://api.debi.pro/v1/subscriptions \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"amount":100,"description":"Some subscription description","customer_id":"CS9PL8eeo8aB","payment_method_id":"PMBja4YZ2GDR","interval_unit":"monthly","day_of_month":1,"metadata":{"some":"metadata"}}'
@@ -14898,7 +14898,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/subscriptions',
+              url: 'https://api.debi.pro/v1/subscriptions',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -14925,7 +14925,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/subscriptions');
+            $request->setUrl('https://api.debi.pro/v1/subscriptions');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -14946,7 +14946,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/subscriptions"
+            url = "https://api.debi.pro/v1/subscriptions"
 
             payload = {
                 "amount": 100,
@@ -14967,7 +14967,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/subscriptions")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/subscriptions")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"amount\":100,\"description\":\"Some subscription description\",\"customer_id\":\"CS9PL8eeo8aB\",\"payment_method_id\":\"PMBja4YZ2GDR\",\"interval_unit\":\"monthly\",\"day_of_month\":1,\"metadata\":{\"some\":\"metadata\"}}")
@@ -14978,7 +14978,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/subscriptions")
+            url = URI("https://api.debi.pro/v1/subscriptions")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -15479,7 +15479,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3 \
+              --url https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3 \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -15487,7 +15487,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3',
+              url: 'https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -15501,7 +15501,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3');
+            $request->setUrl('https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -15519,7 +15519,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3"
+            url = "https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -15528,7 +15528,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -15537,7 +15537,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3")
+            url = URI("https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -16179,7 +16179,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request PUT \
-              --url https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3 \
+              --url https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3 \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"amount":100,"description":"Some subscription description","customer_id":"CS9PL8eeo8aB","payment_method_id":"PMBja4YZ2GDR","interval_unit":"monthly","day_of_month":1,"metadata":{"some":"metadata"}}'
@@ -16189,7 +16189,7 @@ paths:
 
             const options = {
               method: 'PUT',
-              url: 'https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3',
+              url: 'https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -16216,7 +16216,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3');
+            $request->setUrl('https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3');
             $request->setMethod(HTTP_METH_PUT);
 
             $request->setHeaders([
@@ -16237,7 +16237,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3"
+            url = "https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3"
 
             payload = {
                 "amount": 100,
@@ -16258,7 +16258,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.put("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3")
+            HttpResponse<String> response = Unirest.put("https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"amount\":100,\"description\":\"Some subscription description\",\"customer_id\":\"CS9PL8eeo8aB\",\"payment_method_id\":\"PMBja4YZ2GDR\",\"interval_unit\":\"monthly\",\"day_of_month\":1,\"metadata\":{\"some\":\"metadata\"}}")
@@ -16269,7 +16269,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3")
+            url = URI("https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -16762,7 +16762,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause \
+              --url https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -16770,7 +16770,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause',
+              url: 'https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -16784,7 +16784,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause');
+            $request->setUrl('https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -16802,7 +16802,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause"
+            url = "https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -16811,7 +16811,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -16820,7 +16820,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause")
+            url = URI("https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -17313,7 +17313,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume \
+              --url https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -17321,7 +17321,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume',
+              url: 'https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -17335,7 +17335,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume');
+            $request->setUrl('https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -17353,7 +17353,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume"
+            url = "https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -17362,7 +17362,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -17371,7 +17371,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume")
+            url = URI("https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -17868,7 +17868,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel \
+              --url https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -17876,7 +17876,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel',
+              url: 'https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -17890,7 +17890,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel');
+            $request->setUrl('https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -17908,7 +17908,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel"
+            url = "https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -17917,7 +17917,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -17926,7 +17926,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel")
+            url = URI("https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -17946,7 +17946,7 @@ paths:
         - name: q
           in: query
           description: |
-            The search query string. See [search query language](https://tucuota.com/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/) and the list of supported query fields for charges.
+            The search query string. See [search query language](https://debi.pro/docs/docs/producto/Sistema%20de%20B%C3%BAsquedas/) and the list of supported query fields for charges.
           required: true
           schema:
             type: string
@@ -18417,22 +18417,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -18446,7 +18446,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -18524,8 +18524,8 @@ paths:
                       updated_at: '2022-02-01T23:13:04-03:00'
                     metadata: null
                 links:
-                  prev: 'https://api.tucuota.com/subscriptions/search?q=john%20doe&page=1'
-                  next: 'https://api.tucuota.com/subscriptions/search?q=john%20doe&page=3'
+                  prev: 'https://api.debi.pro/subscriptions/search?q=john%20doe&page=1'
+                  next: 'https://api.debi.pro/subscriptions/search?q=john%20doe&page=3'
                 meta:
                   per_page: 25
                   total: 2500
@@ -18549,7 +18549,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/subscriptions/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/subscriptions/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -18557,7 +18557,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/subscriptions/search',
+              url: 'https://api.debi.pro/v1/subscriptions/search',
               qs: {q: 'SOME_STRING_VALUE', limit: 'SOME_INTEGER_VALUE', page: 'SOME_STRING_VALUE'},
               headers: {Authorization: 'Bearer sk_live_...'}
             };
@@ -18572,7 +18572,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/subscriptions/search');
+            $request->setUrl('https://api.debi.pro/v1/subscriptions/search');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -18596,7 +18596,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/subscriptions/search"
+            url = "https://api.debi.pro/v1/subscriptions/search"
 
             querystring = {"q":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","page":"SOME_STRING_VALUE"}
 
@@ -18607,7 +18607,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/subscriptions/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/subscriptions/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -18616,7 +18616,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/subscriptions/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/subscriptions/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -18689,11 +18689,11 @@ paths:
                     items:
                       title: Webhook
                       description: |-
-                        You can configure [webhook endpoints](https://tucuota.com/docs/webhooks/) via the API to be
-                        notified about events that happen in your TuCuota account or connected
+                        You can configure [webhook endpoints](https://debi.pro/docs/webhooks/) via the API to be
+                        notified about events that happen in your Debi account or connected
                         accounts.
 
-                        Most users configure webhooks from [the dashboard](https://dashboard.tucuota.com/webhooks), which provides a user interface for registering and testing your webhook endpoints.
+                        Most users configure webhooks from [the dashboard](https://dashboard.debi.pro/webhooks), which provides a user interface for registering and testing your webhook endpoints.
                       type: object
                       properties:
                         id:
@@ -18708,7 +18708,7 @@ paths:
                         url:
                           description: The URL of the webhook endpoint.
                           type: string
-                          example: 'https://tucuota.com/webhook/200'
+                          example: 'https://debi.pro/webhook/200'
                           maxLength: 5000
                         enabled:
                           description: Whether the webhook is enabled.
@@ -18725,7 +18725,7 @@ paths:
                             - customer.updated
                             - payment.created
                         secret:
-                          description: 'The endpoint''s secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).'
+                          description: 'The endpoint''s secret, used to generate [webhook signatures](https://debi.pro/docs/api/#webhooks-security).'
                           type: string
                           example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                           maxLength: 5000
@@ -18770,22 +18770,22 @@ paths:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       last:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       prev:
                         type:
                           - 'null'
                           - string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                     title: Response Meta
                   meta:
                     description: Pagination metadata
@@ -18799,7 +18799,7 @@ paths:
                         example: 2500
                       path:
                         type: string
-                        example: 'https://api.tucuota.com/v1/customers'
+                        example: 'https://api.debi.pro/v1/customers'
                       next_cursor:
                         description: Pagination Cursor.
                         type:
@@ -18833,7 +18833,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.tucuota.com/v1/webhooks?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
+              --url 'https://api.debi.pro/v1/webhooks?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -18841,7 +18841,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/webhooks',
+              url: 'https://api.debi.pro/v1/webhooks',
               qs: {
                 created_at: 'SOME_OBJECT_VALUE',
                 ending_before: 'SOME_STRING_VALUE',
@@ -18861,7 +18861,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/webhooks');
+            $request->setUrl('https://api.debi.pro/v1/webhooks');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setQueryData([
@@ -18886,7 +18886,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/webhooks"
+            url = "https://api.debi.pro/v1/webhooks"
 
             querystring = {"created_at":"SOME_OBJECT_VALUE","ending_before":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE"}
 
@@ -18897,7 +18897,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/webhooks?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/webhooks?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -18906,7 +18906,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/webhooks?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
+            url = URI("https://api.debi.pro/v1/webhooks?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -19012,11 +19012,11 @@ paths:
                 properties:
                   data:
                     description: |-
-                      You can configure [webhook endpoints](https://tucuota.com/docs/webhooks/) via the API to be
-                      notified about events that happen in your TuCuota account or connected
+                      You can configure [webhook endpoints](https://debi.pro/docs/webhooks/) via the API to be
+                      notified about events that happen in your Debi account or connected
                       accounts.
 
-                      Most users configure webhooks from [the dashboard](https://dashboard.tucuota.com/webhooks), which provides a user interface for registering and testing your webhook endpoints.
+                      Most users configure webhooks from [the dashboard](https://dashboard.debi.pro/webhooks), which provides a user interface for registering and testing your webhook endpoints.
                     type: object
                     example:
                       created_at: '2022-02-11T23:19:22-03:00'
@@ -19042,7 +19042,7 @@ paths:
                       url:
                         description: The URL of the webhook endpoint.
                         type: string
-                        example: 'https://tucuota.com/webhook/200'
+                        example: 'https://debi.pro/webhook/200'
                         maxLength: 5000
                       enabled:
                         description: Whether the webhook is enabled.
@@ -19059,7 +19059,7 @@ paths:
                           - customer.updated
                           - payment.created
                       secret:
-                        description: 'The endpoint''s secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).'
+                        description: 'The endpoint''s secret, used to generate [webhook signatures](https://debi.pro/docs/api/#webhooks-security).'
                         type: string
                         example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                         maxLength: 5000
@@ -19115,7 +19115,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.tucuota.com/v1/webhooks \
+              --url https://api.debi.pro/v1/webhooks \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"enabled_events":["*"],"metadata":{"some":"metadata"},"url":"string"}'
@@ -19125,7 +19125,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.tucuota.com/v1/webhooks',
+              url: 'https://api.debi.pro/v1/webhooks',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -19144,7 +19144,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/webhooks');
+            $request->setUrl('https://api.debi.pro/v1/webhooks');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -19165,7 +19165,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/webhooks"
+            url = "https://api.debi.pro/v1/webhooks"
 
             payload = {
                 "enabled_events": ["*"],
@@ -19182,7 +19182,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.tucuota.com/v1/webhooks")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/webhooks")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"enabled_events\":[\"*\"],\"metadata\":{\"some\":\"metadata\"},\"url\":\"string\"}")
@@ -19193,7 +19193,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/webhooks")
+            url = URI("https://api.debi.pro/v1/webhooks")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -19229,11 +19229,11 @@ paths:
                 properties:
                   data:
                     description: |-
-                      You can configure [webhook endpoints](https://tucuota.com/docs/webhooks/) via the API to be
-                      notified about events that happen in your TuCuota account or connected
+                      You can configure [webhook endpoints](https://debi.pro/docs/webhooks/) via the API to be
+                      notified about events that happen in your Debi account or connected
                       accounts.
 
-                      Most users configure webhooks from [the dashboard](https://dashboard.tucuota.com/webhooks), which provides a user interface for registering and testing your webhook endpoints.
+                      Most users configure webhooks from [the dashboard](https://dashboard.debi.pro/webhooks), which provides a user interface for registering and testing your webhook endpoints.
                     type: object
                     example:
                       created_at: '2022-02-11T23:19:22-03:00'
@@ -19259,7 +19259,7 @@ paths:
                       url:
                         description: The URL of the webhook endpoint.
                         type: string
-                        example: 'https://tucuota.com/webhook/200'
+                        example: 'https://debi.pro/webhook/200'
                         maxLength: 5000
                       enabled:
                         description: Whether the webhook is enabled.
@@ -19276,7 +19276,7 @@ paths:
                           - customer.updated
                           - payment.created
                       secret:
-                        description: 'The endpoint''s secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).'
+                        description: 'The endpoint''s secret, used to generate [webhook signatures](https://debi.pro/docs/api/#webhooks-security).'
                         type: string
                         example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                         maxLength: 5000
@@ -19321,7 +19321,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB \
+              --url https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -19329,7 +19329,7 @@ paths:
 
             const options = {
               method: 'GET',
-              url: 'https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB',
+              url: 'https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -19343,7 +19343,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB');
+            $request->setUrl('https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB');
             $request->setMethod(HTTP_METH_GET);
 
             $request->setHeaders([
@@ -19361,7 +19361,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB"
+            url = "https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -19370,7 +19370,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -19379,7 +19379,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB")
+            url = URI("https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -19422,11 +19422,11 @@ paths:
                 properties:
                   data:
                     description: |-
-                      You can configure [webhook endpoints](https://tucuota.com/docs/webhooks/) via the API to be
-                      notified about events that happen in your TuCuota account or connected
+                      You can configure [webhook endpoints](https://debi.pro/docs/webhooks/) via the API to be
+                      notified about events that happen in your Debi account or connected
                       accounts.
 
-                      Most users configure webhooks from [the dashboard](https://dashboard.tucuota.com/webhooks), which provides a user interface for registering and testing your webhook endpoints.
+                      Most users configure webhooks from [the dashboard](https://dashboard.debi.pro/webhooks), which provides a user interface for registering and testing your webhook endpoints.
                     type: object
                     example:
                       created_at: '2022-02-11T23:19:22-03:00'
@@ -19452,7 +19452,7 @@ paths:
                       url:
                         description: The URL of the webhook endpoint.
                         type: string
-                        example: 'https://tucuota.com/webhook/200'
+                        example: 'https://debi.pro/webhook/200'
                         maxLength: 5000
                       enabled:
                         description: Whether the webhook is enabled.
@@ -19469,7 +19469,7 @@ paths:
                           - customer.updated
                           - payment.created
                       secret:
-                        description: 'The endpoint''s secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).'
+                        description: 'The endpoint''s secret, used to generate [webhook signatures](https://debi.pro/docs/api/#webhooks-security).'
                         type: string
                         example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
                         maxLength: 5000
@@ -19525,7 +19525,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request PUT \
-              --url https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB \
+              --url https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
               --data '{"url":"http://somesite.com"}'
@@ -19535,7 +19535,7 @@ paths:
 
             const options = {
               method: 'PUT',
-              url: 'https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB',
+              url: 'https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB',
               headers: {
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
@@ -19554,7 +19554,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB');
+            $request->setUrl('https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB');
             $request->setMethod(HTTP_METH_PUT);
 
             $request->setHeaders([
@@ -19575,7 +19575,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB"
+            url = "https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB"
 
             payload = {"url": "http://somesite.com"}
             headers = {
@@ -19588,7 +19588,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.put("https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB")
+            HttpResponse<String> response = Unirest.put("https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
               .body("{\"url\":\"http://somesite.com\"}")
@@ -19599,7 +19599,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB")
+            url = URI("https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -19648,7 +19648,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request DELETE \
-              --url https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB \
+              --url https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -19656,7 +19656,7 @@ paths:
 
             const options = {
               method: 'DELETE',
-              url: 'https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB',
+              url: 'https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -19670,7 +19670,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB');
+            $request->setUrl('https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB');
             $request->setMethod(HTTP_METH_DELETE);
 
             $request->setHeaders([
@@ -19688,7 +19688,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB"
+            url = "https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -19697,7 +19697,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.delete("https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB")
+            HttpResponse<String> response = Unirest.delete("https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -19706,7 +19706,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.tucuota.com/v1/webhooks/WHq4VzyAzDgB")
+            url = URI("https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -19972,22 +19972,22 @@ components:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         last:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         next:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         prev:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
       title: Response Meta
     Meta:
       description: Pagination metadata
@@ -20001,7 +20001,7 @@ components:
           example: 2500
         path:
           type: string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         next_cursor:
           description: Pagination Cursor.
           type:
@@ -22262,11 +22262,11 @@ components:
       title: Subscription
     Webhook:
       description: |-
-        You can configure [webhook endpoints](https://tucuota.com/docs/webhooks/) via the API to be
-        notified about events that happen in your TuCuota account or connected
+        You can configure [webhook endpoints](https://debi.pro/docs/webhooks/) via the API to be
+        notified about events that happen in your Debi account or connected
         accounts.
 
-        Most users configure webhooks from [the dashboard](https://dashboard.tucuota.com/webhooks), which provides a user interface for registering and testing your webhook endpoints.
+        Most users configure webhooks from [the dashboard](https://dashboard.debi.pro/webhooks), which provides a user interface for registering and testing your webhook endpoints.
       type: object
       properties:
         id:
@@ -22281,7 +22281,7 @@ components:
         url:
           description: The URL of the webhook endpoint.
           type: string
-          example: 'https://tucuota.com/webhook/200'
+          example: 'https://debi.pro/webhook/200'
           maxLength: 5000
         enabled:
           description: Whether the webhook is enabled.
@@ -22298,7 +22298,7 @@ components:
             - customer.updated
             - payment.created
         secret:
-          description: 'The endpoint''s secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).'
+          description: 'The endpoint''s secret, used to generate [webhook signatures](https://debi.pro/docs/api/#webhooks-security).'
           type: string
           example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
           maxLength: 5000
@@ -24443,11 +24443,11 @@ components:
       title: Subscription
     webhook:
       description: |-
-        You can configure [webhook endpoints](https://tucuota.com/docs/webhooks/) via the API to be
-        notified about events that happen in your TuCuota account or connected
+        You can configure [webhook endpoints](https://debi.pro/docs/webhooks/) via the API to be
+        notified about events that happen in your Debi account or connected
         accounts.
 
-        Most users configure webhooks from [the dashboard](https://dashboard.tucuota.com/webhooks), which provides a user interface for registering and testing your webhook endpoints.
+        Most users configure webhooks from [the dashboard](https://dashboard.debi.pro/webhooks), which provides a user interface for registering and testing your webhook endpoints.
       type: object
       properties:
         id:
@@ -24462,7 +24462,7 @@ components:
         url:
           description: The URL of the webhook endpoint.
           type: string
-          example: 'https://tucuota.com/webhook/200'
+          example: 'https://debi.pro/webhook/200'
           maxLength: 5000
         enabled:
           description: Whether the webhook is enabled.
@@ -24479,7 +24479,7 @@ components:
             - customer.updated
             - payment.created
         secret:
-          description: 'The endpoint''s secret, used to generate [webhook signatures](https://tucuota.com/docs/api/#webhooks-security).'
+          description: 'The endpoint''s secret, used to generate [webhook signatures](https://debi.pro/docs/api/#webhooks-security).'
           type: string
           example: Rrdm41mW4x54uUS2A6QnHhm7hXwpuR
           maxLength: 5000
@@ -24529,7 +24529,7 @@ components:
           example: 2500
         path:
           type: string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         next_cursor:
           description: Pagination Cursor.
           type:
@@ -24549,22 +24549,22 @@ components:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         last:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         next:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
         prev:
           type:
             - 'null'
             - string
-          example: 'https://api.tucuota.com/v1/customers'
+          example: 'https://api.debi.pro/v1/customers'
       title: Response Meta
   examples:
     customer:
@@ -24709,7 +24709,7 @@ components:
             max_installments: null
             show_count: false
             show_installments: false
-        public_uri: 'https://tucuota.com/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2'
+        public_uri: 'https://debi.pro/link/b7fba990-83cc-11ec-8c7b-5b2fd150abb2'
         success_url: null
         title: Test options
         updated_at: '2022-02-02T02:06:22.00-03:00'
@@ -24717,10 +24717,10 @@ components:
           country: AR
           currency: ARS
           email: pedrolombardo@email.com
-          organization_name: TuCuota
+          organization_name: Debi
           preference_color1: '#ffffff'
           preference_color2: '#d10000'
-          preference_logo: 'https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png'
+          preference_logo: 'https://debi-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png'
     mandate:
       summary: Sample Mandate
       value:
@@ -24904,16 +24904,16 @@ components:
         max_installments: null
         name_text: null
         object: session
-        public_uri: 'https://tucuota.com/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81'
+        public_uri: 'https://debi.pro/checkout/d6fe7bf0-8b90-11ec-9bb7-ad20fd301d81'
         updated_at: '2022-02-11T23:17:55.00-03:00'
         user:
           country: AR
           currency: ARS
           email: pedrolombardo@email.com
-          organization_name: TuCuota
+          organization_name: Debi
           preference_color1: '#ffffff'
           preference_color2: '#d10000'
-          preference_logo: 'https://tucuota-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png'
+          preference_logo: 'https://debi-user-uploads.s3.amazonaws.com/production/e8d7c19b93dec70b352b68e16fcb066e.png'
     subscription:
       summary: Sample Subscription
       value:
@@ -24989,7 +24989,7 @@ components:
         object: webhook
         secret: DmUeH9E9yJ7ax9IYQVm9HpQ3VWvIx0
         updated_at: '2022-02-11T23:19:22-03:00'
-        url: 'https://site.com/tucuota_webhook'
+        url: 'https://site.com/debi_webhook'
   securitySchemes:
     PublishableKeyAuthentication:
       type: apiKey
@@ -25018,12 +25018,12 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/event" exampleRef="#/components/examples/event" showReadOnly={true} showWriteOnly={true} />
   - name: Gateways
     description: |
-      A gateway is a institution that authorizes and facilitates payments. It can be a payment processor, a bank, or a card network. In TuCuota, the gateway object represents the specific configuration and credentials that your company uses to access each service.
+      A gateway is a institution that authorizes and facilitates payments. It can be a payment processor, a bank, or a card network. In Debi, the gateway object represents the specific configuration and credentials that your company uses to access each service.
 
       <SchemaDefinition schemaRef="#/components/schemas/gateway" exampleRef="#/components/examples/gateway" showReadOnly={true} showWriteOnly={true} />
   - name: Imports
     description: |
-      An Import is an object which contains data to be created in TuCuota. As these objects may be big, they will be created and processed later. You can check the status of the import.
+      An Import is an object which contains data to be created in Debi. As these objects may be big, they will be created and processed later. You can check the status of the import.
 
       <SchemaDefinition schemaRef="#/components/schemas/import" exampleRef="#/components/examples/import" showReadOnly={true} showWriteOnly={true} />
   - name: Links
@@ -25075,7 +25075,7 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/refund" exampleRef="#/components/examples/refund" showReadOnly={true} showWriteOnly={true} />
   - name: Sessions
     description: |
-      Sessions enable you to use TuCuota's hosted payment pages to set up mandates, subscriptions or payments with your customers.
+      Sessions enable you to use Debi's hosted payment pages to set up mandates, subscriptions or payments with your customers.
 
       First you create a Session for your customer, and redirect them to the returned redirect url. Your customer supplies their name, email, address, and bank account or card details, and submits the form. This securely stores their details, and redirects them back to your `back_url` with `session_id=THE_SESSION_ID` in the querystring.
 
@@ -25100,11 +25100,11 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/subscription" exampleRef="#/components/examples/subscription" showReadOnly={true} showWriteOnly={true} />
   - name: Webhooks
     description: |
-      Webhooks are endpoints you can configure to be notified about events that happen in your TuCuota account. Most users configure Webhooks from the dashboard, which provides a user interface for registering and testing your webhook endpoints.
+      Webhooks are endpoints you can configure to be notified about events that happen in your Debi account. Most users configure Webhooks from the dashboard, which provides a user interface for registering and testing your webhook endpoints.
 
       <SchemaDefinition schemaRef="#/components/schemas/webhook" exampleRef="#/components/examples/webhook" showReadOnly={true} showWriteOnly={true} />
 externalDocs:
-  description: TuCuota Docs.
-  url: 'https://tucuota.com/docs'
+  description: Debi Docs.
+  url: 'https://debi.pro/docs'
 security:
   - SecretKeyAuthentication: []
