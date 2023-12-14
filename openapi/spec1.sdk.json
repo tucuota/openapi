@@ -4156,6 +4156,54 @@
                             },
                             "properties": {}
                           },
+                          "extra_fields": {
+                            "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "example": [
+                              {
+                                "name": "source",
+                                "type": "select",
+                                "label": "Cómo nos conociste?",
+                                "options": {
+                                  "key_1": "Opción 1",
+                                  "key_2": "Opción 2"
+                                }
+                              },
+                              {
+                                "name": "age",
+                                "label": "Edad"
+                              }
+                            ]
+                          },
+                          "extra_fields_customer": {
+                            "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "example": [
+                              {
+                                "name": "identification_type",
+                                "type": "select",
+                                "label": "Tipo de documento",
+                                "options": {
+                                  "dni": "DNI",
+                                  "cuit": "CUIT",
+                                  "rut": "RUT",
+                                  "cif": "CIF",
+                                  "passport": "Pasaporte"
+                                }
+                              },
+                              {
+                                "name": "identification_number",
+                                "type": "text",
+                                "label": "Número de documento"
+                              }
+                            ]
+                          },
                           "created_at": {
                             "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
                             "type": "string",
@@ -4359,6 +4407,54 @@
                           },
                           "properties": {}
                         },
+                        "extra_fields": {
+                          "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": [
+                            {
+                              "name": "source",
+                              "type": "select",
+                              "label": "Cómo nos conociste?",
+                              "options": {
+                                "key_1": "Opción 1",
+                                "key_2": "Opción 2"
+                              }
+                            },
+                            {
+                              "name": "age",
+                              "label": "Edad"
+                            }
+                          ]
+                        },
+                        "extra_fields_customer": {
+                          "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": [
+                            {
+                              "name": "identification_type",
+                              "type": "select",
+                              "label": "Tipo de documento",
+                              "options": {
+                                "dni": "DNI",
+                                "cuit": "CUIT",
+                                "rut": "RUT",
+                                "cif": "CIF",
+                                "passport": "Pasaporte"
+                              }
+                            },
+                            {
+                              "name": "identification_number",
+                              "type": "text",
+                              "label": "Número de documento"
+                            }
+                          ]
+                        },
                         "created_at": {
                           "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
                           "type": "string",
@@ -4505,6 +4601,54 @@
                           },
                           "properties": {}
                         },
+                        "extra_fields": {
+                          "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": [
+                            {
+                              "name": "source",
+                              "type": "select",
+                              "label": "Cómo nos conociste?",
+                              "options": {
+                                "key_1": "Opción 1",
+                                "key_2": "Opción 2"
+                              }
+                            },
+                            {
+                              "name": "age",
+                              "label": "Edad"
+                            }
+                          ]
+                        },
+                        "extra_fields_customer": {
+                          "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": [
+                            {
+                              "name": "identification_type",
+                              "type": "select",
+                              "label": "Tipo de documento",
+                              "options": {
+                                "dni": "DNI",
+                                "cuit": "CUIT",
+                                "rut": "RUT",
+                                "cif": "CIF",
+                                "passport": "Pasaporte"
+                              }
+                            },
+                            {
+                              "name": "identification_number",
+                              "type": "text",
+                              "label": "Número de documento"
+                            }
+                          ]
+                        },
                         "created_at": {
                           "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
                           "type": "string",
@@ -4648,6 +4792,54 @@
                             ]
                           },
                           "properties": {}
+                        },
+                        "extra_fields": {
+                          "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": [
+                            {
+                              "name": "source",
+                              "type": "select",
+                              "label": "Cómo nos conociste?",
+                              "options": {
+                                "key_1": "Opción 1",
+                                "key_2": "Opción 2"
+                              }
+                            },
+                            {
+                              "name": "age",
+                              "label": "Edad"
+                            }
+                          ]
+                        },
+                        "extra_fields_customer": {
+                          "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": [
+                            {
+                              "name": "identification_type",
+                              "type": "select",
+                              "label": "Tipo de documento",
+                              "options": {
+                                "dni": "DNI",
+                                "cuit": "CUIT",
+                                "rut": "RUT",
+                                "cif": "CIF",
+                                "passport": "Pasaporte"
+                              }
+                            },
+                            {
+                              "name": "identification_number",
+                              "type": "text",
+                              "label": "Número de documento"
+                            }
+                          ]
                         },
                         "created_at": {
                           "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
@@ -13469,6 +13661,54 @@
                     },
                     "properties": {}
                   },
+                  "extra_fields": {
+                    "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "example": [
+                      {
+                        "name": "source",
+                        "type": "select",
+                        "label": "Cómo nos conociste?",
+                        "options": {
+                          "key_1": "Opción 1",
+                          "key_2": "Opción 2"
+                        }
+                      },
+                      {
+                        "name": "age",
+                        "label": "Edad"
+                      }
+                    ]
+                  },
+                  "extra_fields_customer": {
+                    "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "example": [
+                      {
+                        "name": "identification_type",
+                        "type": "select",
+                        "label": "Tipo de documento",
+                        "options": {
+                          "dni": "DNI",
+                          "cuit": "CUIT",
+                          "rut": "RUT",
+                          "cif": "CIF",
+                          "passport": "Pasaporte"
+                        }
+                      },
+                      {
+                        "name": "identification_number",
+                        "type": "text",
+                        "label": "Número de documento"
+                      }
+                    ]
+                  },
                   "count": {
                     "description": "Only for subscriptions, the total number of payments that should\nbe taken by this subscription. If not specified the subscription\nwill continue until you cancel it.\n",
                     "type": "integer"
@@ -21605,6 +21845,54 @@
         "type": "string",
         "example": "43751655-7580-4bd7-8bad-3c54ed1c4abc"
       },
+      "extra_fields": {
+        "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+        "type": [
+          "object",
+          "null"
+        ],
+        "example": [
+          {
+            "name": "source",
+            "type": "select",
+            "label": "Cómo nos conociste?",
+            "options": {
+              "key_1": "Opción 1",
+              "key_2": "Opción 2"
+            }
+          },
+          {
+            "name": "age",
+            "label": "Edad"
+          }
+        ]
+      },
+      "extra_fields_customer": {
+        "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+        "type": [
+          "object",
+          "null"
+        ],
+        "example": [
+          {
+            "name": "identification_type",
+            "type": "select",
+            "label": "Tipo de documento",
+            "options": {
+              "dni": "DNI",
+              "cuit": "CUIT",
+              "rut": "RUT",
+              "cif": "CIF",
+              "passport": "Pasaporte"
+            }
+          },
+          {
+            "name": "identification_number",
+            "type": "text",
+            "label": "Número de documento"
+          }
+        ]
+      },
       "Link": {
         "description": "This object represents a public link of your organization.",
         "type": "object",
@@ -21643,6 +21931,54 @@
               ]
             },
             "properties": {}
+          },
+          "extra_fields": {
+            "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+            "type": [
+              "object",
+              "null"
+            ],
+            "example": [
+              {
+                "name": "source",
+                "type": "select",
+                "label": "Cómo nos conociste?",
+                "options": {
+                  "key_1": "Opción 1",
+                  "key_2": "Opción 2"
+                }
+              },
+              {
+                "name": "age",
+                "label": "Edad"
+              }
+            ]
+          },
+          "extra_fields_customer": {
+            "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+            "type": [
+              "object",
+              "null"
+            ],
+            "example": [
+              {
+                "name": "identification_type",
+                "type": "select",
+                "label": "Tipo de documento",
+                "options": {
+                  "dni": "DNI",
+                  "cuit": "CUIT",
+                  "rut": "RUT",
+                  "cif": "CIF",
+                  "passport": "Pasaporte"
+                }
+              },
+              {
+                "name": "identification_number",
+                "type": "text",
+                "label": "Número de documento"
+              }
+            ]
           },
           "created_at": {
             "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
@@ -24539,6 +24875,54 @@
               ]
             },
             "properties": {}
+          },
+          "extra_fields": {
+            "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+            "type": [
+              "object",
+              "null"
+            ],
+            "example": [
+              {
+                "name": "source",
+                "type": "select",
+                "label": "Cómo nos conociste?",
+                "options": {
+                  "key_1": "Opción 1",
+                  "key_2": "Opción 2"
+                }
+              },
+              {
+                "name": "age",
+                "label": "Edad"
+              }
+            ]
+          },
+          "extra_fields_customer": {
+            "description": "A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.\n",
+            "type": [
+              "object",
+              "null"
+            ],
+            "example": [
+              {
+                "name": "identification_type",
+                "type": "select",
+                "label": "Tipo de documento",
+                "options": {
+                  "dni": "DNI",
+                  "cuit": "CUIT",
+                  "rut": "RUT",
+                  "cif": "CIF",
+                  "passport": "Pasaporte"
+                }
+              },
+              {
+                "name": "identification_number",
+                "type": "text",
+                "label": "Número de documento"
+              }
+            ]
           },
           "created_at": {
             "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",

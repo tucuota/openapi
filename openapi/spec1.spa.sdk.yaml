@@ -4412,6 +4412,40 @@ paths:
                               - number
                               - boolean
                           properties: {}
+                        extra_fields:
+                          description: |
+                            Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+                          type:
+                            - object
+                            - 'null'
+                          example:
+                            - name: source
+                              type: select
+                              label: Cómo nos conociste?
+                              options:
+                                key_1: Opción 1
+                                key_2: Opción 2
+                            - name: age
+                              label: Edad
+                        extra_fields_customer:
+                          description: |
+                            Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+                          type:
+                            - object
+                            - 'null'
+                          example:
+                            - name: identification_type
+                              type: select
+                              label: Tipo de documento
+                              options:
+                                dni: DNI
+                                cuit: CUIT
+                                rut: RUT
+                                cif: CIF
+                                passport: Pasaporte
+                            - name: identification_number
+                              type: text
+                              label: Número de documento
                         created_at:
                           description: |
                             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
@@ -4635,6 +4669,40 @@ paths:
                             - number
                             - boolean
                         properties: {}
+                      extra_fields:
+                        description: |
+                          Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+                        type:
+                          - object
+                          - 'null'
+                        example:
+                          - name: source
+                            type: select
+                            label: Cómo nos conociste?
+                            options:
+                              key_1: Opción 1
+                              key_2: Opción 2
+                          - name: age
+                            label: Edad
+                      extra_fields_customer:
+                        description: |
+                          Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+                        type:
+                          - object
+                          - 'null'
+                        example:
+                          - name: identification_type
+                            type: select
+                            label: Tipo de documento
+                            options:
+                              dni: DNI
+                              cuit: CUIT
+                              rut: RUT
+                              cif: CIF
+                              passport: Pasaporte
+                          - name: identification_number
+                            type: text
+                            label: Número de documento
                       created_at:
                         description: |
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
@@ -4800,6 +4868,40 @@ paths:
                             - number
                             - boolean
                         properties: {}
+                      extra_fields:
+                        description: |
+                          Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+                        type:
+                          - object
+                          - 'null'
+                        example:
+                          - name: source
+                            type: select
+                            label: Cómo nos conociste?
+                            options:
+                              key_1: Opción 1
+                              key_2: Opción 2
+                          - name: age
+                            label: Edad
+                      extra_fields_customer:
+                        description: |
+                          Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+                        type:
+                          - object
+                          - 'null'
+                        example:
+                          - name: identification_type
+                            type: select
+                            label: Tipo de documento
+                            options:
+                              dni: DNI
+                              cuit: CUIT
+                              rut: RUT
+                              cif: CIF
+                              passport: Pasaporte
+                          - name: identification_number
+                            type: text
+                            label: Número de documento
                       created_at:
                         description: |
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
@@ -4964,6 +5066,40 @@ paths:
                             - number
                             - boolean
                         properties: {}
+                      extra_fields:
+                        description: |
+                          Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+                        type:
+                          - object
+                          - 'null'
+                        example:
+                          - name: source
+                            type: select
+                            label: Cómo nos conociste?
+                            options:
+                              key_1: Opción 1
+                              key_2: Opción 2
+                          - name: age
+                            label: Edad
+                      extra_fields_customer:
+                        description: |
+                          Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+                        type:
+                          - object
+                          - 'null'
+                        example:
+                          - name: identification_type
+                            type: select
+                            label: Tipo de documento
+                            options:
+                              dni: DNI
+                              cuit: CUIT
+                              rut: RUT
+                              cif: CIF
+                              passport: Pasaporte
+                          - name: identification_number
+                            type: text
+                            label: Número de documento
                       created_at:
                         description: |
                           Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
@@ -13198,6 +13334,40 @@ paths:
                       - number
                       - boolean
                   properties: {}
+                extra_fields:
+                  description: |
+                    Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+                  type:
+                    - object
+                    - 'null'
+                  example:
+                    - name: source
+                      type: select
+                      label: Cómo nos conociste?
+                      options:
+                        key_1: Opción 1
+                        key_2: Opción 2
+                    - name: age
+                      label: Edad
+                extra_fields_customer:
+                  description: |
+                    Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+                  type:
+                    - object
+                    - 'null'
+                  example:
+                    - name: identification_type
+                      type: select
+                      label: Tipo de documento
+                      options:
+                        dni: DNI
+                        cuit: CUIT
+                        rut: RUT
+                        cif: CIF
+                        passport: Pasaporte
+                    - name: identification_number
+                      type: text
+                      label: Número de documento
                 count:
                   description: |
                     Solo para suscripciones, el número total de pagos que deben
@@ -20655,6 +20825,40 @@ components:
       description: 'Identificador UUID del objeto. [Legacy]'
       type: string
       example: 43751655-7580-4bd7-8bad-3c54ed1c4abc
+    extra_fields:
+      description: |
+        Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+      type:
+        - object
+        - 'null'
+      example:
+        - name: source
+          type: select
+          label: Cómo nos conociste?
+          options:
+            key_1: Opción 1
+            key_2: Opción 2
+        - name: age
+          label: Edad
+    extra_fields_customer:
+      description: |
+        Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+      type:
+        - object
+        - 'null'
+      example:
+        - name: identification_type
+          type: select
+          label: Tipo de documento
+          options:
+            dni: DNI
+            cuit: CUIT
+            rut: RUT
+            cif: CIF
+            passport: Pasaporte
+        - name: identification_number
+          type: text
+          label: Número de documento
     Link:
       description: Este objeto representa un Link de su organización.
       type: object
@@ -20690,6 +20894,40 @@ components:
               - number
               - boolean
           properties: {}
+        extra_fields:
+          description: |
+            Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+          type:
+            - object
+            - 'null'
+          example:
+            - name: source
+              type: select
+              label: Cómo nos conociste?
+              options:
+                key_1: Opción 1
+                key_2: Opción 2
+            - name: age
+              label: Edad
+        extra_fields_customer:
+          description: |
+            Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+          type:
+            - object
+            - 'null'
+          example:
+            - name: identification_type
+              type: select
+              label: Tipo de documento
+              options:
+                dni: DNI
+                cuit: CUIT
+                rut: RUT
+                cif: CIF
+                passport: Pasaporte
+            - name: identification_number
+              type: text
+              label: Número de documento
         created_at:
           description: |
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
@@ -23059,6 +23297,40 @@ components:
               - number
               - boolean
           properties: {}
+        extra_fields:
+          description: |
+            Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+          type:
+            - object
+            - 'null'
+          example:
+            - name: source
+              type: select
+              label: Cómo nos conociste?
+              options:
+                key_1: Opción 1
+                key_2: Opción 2
+            - name: age
+              label: Edad
+        extra_fields_customer:
+          description: |
+            Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
+          type:
+            - object
+            - 'null'
+          example:
+            - name: identification_type
+              type: select
+              label: Tipo de documento
+              options:
+                dni: DNI
+                cuit: CUIT
+                rut: RUT
+                cif: CIF
+                passport: Pasaporte
+            - name: identification_number
+              type: text
+              label: Número de documento
         created_at:
           description: |
             Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.
