@@ -6883,9 +6883,10 @@ paths:
                             - string
                           example: null
                         binary_mode:
-                          description: Binary mode. This forces processing through online processors to obtain an immediate response.
+                          description: |
+                            Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
                           type: boolean
-                          example: false
+                          example: true
                         refunds:
                           description: Refunds associated with this payment.
                           type: array
@@ -7017,6 +7018,11 @@ paths:
                 gateway_identifier:
                   description: Gateway identifier for your payment.
                   type: string
+                binary_mode:
+                  description: |
+                    Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
+                  type: boolean
+                  example: true
                 metadata:
                   description: |
                     Set of [key-value pairs](#section/Metadata) that you can attach
@@ -7485,9 +7491,10 @@ paths:
                           - string
                         example: null
                       binary_mode:
-                        description: Binary mode. This forces processing through online processors to obtain an immediate response.
+                        description: |
+                          Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
                         type: boolean
-                        example: false
+                        example: true
                       refunds:
                         description: Refunds associated with this payment.
                         type: array
@@ -7981,9 +7988,10 @@ paths:
                           - string
                         example: null
                       binary_mode:
-                        description: Binary mode. This forces processing through online processors to obtain an immediate response.
+                        description: |
+                          Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
                         type: boolean
-                        example: false
+                        example: true
                       refunds:
                         description: Refunds associated with this payment.
                         type: array
@@ -8539,9 +8547,10 @@ paths:
                           - string
                         example: null
                       binary_mode:
-                        description: Binary mode. This forces processing through online processors to obtain an immediate response.
+                        description: |
+                          Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
                         type: boolean
-                        example: false
+                        example: true
                       refunds:
                         description: Refunds associated with this payment.
                         type: array
@@ -9165,9 +9174,10 @@ paths:
                             - string
                           example: null
                         binary_mode:
-                          description: Binary mode. This forces processing through online processors to obtain an immediate response.
+                          description: |
+                            Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
                           type: boolean
-                          example: false
+                          example: true
                         refunds:
                           description: Refunds associated with this payment.
                           type: array
@@ -10103,9 +10113,10 @@ paths:
                         type: boolean
                         example: true
                       binary_mode:
-                        description: Binary mode. This forces processing through online processors to obtain an immediate response.
+                        description: |
+                          Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
                         type: boolean
-                        example: false
+                        example: true
                       payment_gateway_identifier:
                         description: The custom number you send to the gateway network. In most cases this value is null.
                         type:
@@ -10284,9 +10295,10 @@ paths:
                         type: boolean
                         example: true
                       binary_mode:
-                        description: Binary mode. This forces processing through online processors to obtain an immediate response.
+                        description: |
+                          Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
                         type: boolean
-                        example: false
+                        example: true
                       payment_gateway_identifier:
                         description: The custom number you send to the gateway network. In most cases this value is null.
                         type:
@@ -10949,6 +10961,11 @@ paths:
                     - 'null'
                     - number
                   example: null
+                first_payment_in_binary_mode:
+                  description: |
+                    Forces instantaneous payment processing for the first payment of the subscription. This provides an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
+                  type: boolean
+                  example: true
                 metadata:
                   description: |
                     Set of [key-value pairs](#section/Metadata) that you can attach
@@ -16835,9 +16852,10 @@ components:
         - USB
         - USD
     binary_mode:
-      description: Binary mode. This forces processing through online processors to obtain an immediate response.
+      description: |
+        Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
       type: boolean
-      example: false
+      example: true
     Payment:
       description: This object represents a payments of your organization.
       type: object
@@ -17269,9 +17287,10 @@ components:
             - string
           example: null
         binary_mode:
-          description: Binary mode. This forces processing through online processors to obtain an immediate response.
+          description: |
+            Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
           type: boolean
-          example: false
+          example: true
         refunds:
           description: Refunds associated with this payment.
           type: array
@@ -17495,9 +17514,10 @@ components:
           type: boolean
           example: true
         binary_mode:
-          description: Binary mode. This forces processing through online processors to obtain an immediate response.
+          description: |
+            Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
           type: boolean
-          example: false
+          example: true
         payment_gateway_identifier:
           description: The custom number you send to the gateway network. In most cases this value is null.
           type:
@@ -17949,6 +17969,11 @@ components:
         - auto_retries_max_attempts
         - metadata
       title: Subscription
+    first_payment_in_binary_mode:
+      description: |
+        Forces instantaneous payment processing for the first payment of the subscription. This provides an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
+      type: boolean
+      example: true
     Webhook:
       description: |-
         You can configure [webhook endpoints](https://debi.pro/docs/webhooks/) via the API to be
@@ -19319,9 +19344,10 @@ components:
             - string
           example: null
         binary_mode:
-          description: Binary mode. This forces processing through online processors to obtain an immediate response.
+          description: |
+            Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
           type: boolean
-          example: false
+          example: true
         refunds:
           description: Refunds associated with this payment.
           type: array
@@ -19710,9 +19736,10 @@ components:
           type: boolean
           example: true
         binary_mode:
-          description: Binary mode. This forces processing through online processors to obtain an immediate response.
+          description: |
+            Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.
           type: boolean
-          example: false
+          example: true
         payment_gateway_identifier:
           description: The custom number you send to the gateway network. In most cases this value is null.
           type:

@@ -9451,9 +9451,9 @@
                             "example": null
                           },
                           "binary_mode": {
-                            "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+                            "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
                             "type": "boolean",
-                            "example": false
+                            "example": true
                           },
                           "refunds": {
                             "description": "Reembolsos asociados con este pago.",
@@ -9658,6 +9658,11 @@
                   "gateway_identifier": {
                     "description": "Identificador de Gateway para su pago.",
                     "type": "string"
+                  },
+                  "binary_mode": {
+                    "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
+                    "type": "boolean",
+                    "example": true
                   },
                   "metadata": {
                     "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
@@ -10244,9 +10249,9 @@
                           "example": null
                         },
                         "binary_mode": {
-                          "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+                          "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
                           "type": "boolean",
-                          "example": false
+                          "example": true
                         },
                         "refunds": {
                           "description": "Reembolsos asociados con este pago.",
@@ -10900,9 +10905,9 @@
                           "example": null
                         },
                         "binary_mode": {
-                          "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+                          "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
                           "type": "boolean",
-                          "example": false
+                          "example": true
                         },
                         "refunds": {
                           "description": "Reembolsos asociados con este pago.",
@@ -11637,9 +11642,9 @@
                           "example": null
                         },
                         "binary_mode": {
-                          "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+                          "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
                           "type": "boolean",
-                          "example": false
+                          "example": true
                         },
                         "refunds": {
                           "description": "Reembolsos asociados con este pago.",
@@ -12563,9 +12568,9 @@
                             "example": null
                           },
                           "binary_mode": {
-                            "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+                            "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
                             "type": "boolean",
-                            "example": false
+                            "example": true
                           },
                           "refunds": {
                             "description": "Reembolsos asociados con este pago.",
@@ -13874,9 +13879,9 @@
                           "example": true
                         },
                         "binary_mode": {
-                          "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+                          "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
                           "type": "boolean",
-                          "example": false
+                          "example": true
                         },
                         "payment_gateway_identifier": {
                           "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
@@ -14141,9 +14146,9 @@
                           "example": true
                         },
                         "binary_mode": {
-                          "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+                          "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
                           "type": "boolean",
-                          "example": false
+                          "example": true
                         },
                         "payment_gateway_identifier": {
                           "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
@@ -15048,6 +15053,11 @@
                       "number"
                     ],
                     "example": null
+                  },
+                  "first_payment_in_binary_mode": {
+                    "description": "Fuerza el procesamiento instantáneo del primer pago de la suscripción, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
+                    "type": "boolean",
+                    "example": true
                   },
                   "metadata": {
                     "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
@@ -22824,9 +22834,9 @@
         ]
       },
       "binary_mode": {
-        "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+        "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
         "type": "boolean",
-        "example": false
+        "example": true
       },
       "Payment": {
         "description": "Este objeto representa un pago de su organización.",
@@ -23368,9 +23378,9 @@
             "example": null
           },
           "binary_mode": {
-            "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+            "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
             "type": "boolean",
-            "example": false
+            "example": true
           },
           "refunds": {
             "description": "Reembolsos asociados con este pago.",
@@ -23641,9 +23651,9 @@
             "example": true
           },
           "binary_mode": {
-            "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+            "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
             "type": "boolean",
-            "example": false
+            "example": true
           },
           "payment_gateway_identifier": {
             "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
@@ -24204,6 +24214,11 @@
           "metadata"
         ],
         "title": "Suscripción"
+      },
+      "first_payment_in_binary_mode": {
+        "description": "Fuerza el procesamiento instantáneo del primer pago de la suscripción, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
+        "type": "boolean",
+        "example": true
       },
       "Webhook": {
         "description": "Puede configurar tus [webhooks](https://debi.pro/docs/webhooks/) a través de la API para\nobtener notificaciones sobre eventos que suceden en tu cuenta Debi.\n\nLa mayoría de los usuarios configuran webhooks desde [el panel de control](https://dashboard.debi.pro/webhooks), que proporciona una interfaz de usuario para registrar y probar los puntos finales de su webhook.",
@@ -25919,9 +25934,9 @@
             "example": null
           },
           "binary_mode": {
-            "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+            "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
             "type": "boolean",
-            "example": false
+            "example": true
           },
           "refunds": {
             "description": "Reembolsos asociados con este pago.",
@@ -26403,9 +26418,9 @@
             "example": true
           },
           "binary_mode": {
-            "description": "Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.",
+            "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
             "type": "boolean",
-            "example": false
+            "example": true
           },
           "payment_gateway_identifier": {
             "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",

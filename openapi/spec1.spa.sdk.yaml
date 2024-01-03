@@ -9334,9 +9334,10 @@ paths:
                             - string
                           example: null
                         binary_mode:
-                          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                          description: |
+                            Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
                           type: boolean
-                          example: false
+                          example: true
                         refunds:
                           description: Reembolsos asociados con este pago.
                           type: array
@@ -9560,6 +9561,11 @@ paths:
                 gateway_identifier:
                   description: Identificador de Gateway para su pago.
                   type: string
+                binary_mode:
+                  description: |
+                    Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
+                  type: boolean
+                  example: true
                 metadata:
                   description: |
                     Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -10035,9 +10041,10 @@ paths:
                           - string
                         example: null
                       binary_mode:
-                        description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                        description: |
+                          Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
                         type: boolean
-                        example: false
+                        example: true
                       refunds:
                         description: Reembolsos asociados con este pago.
                         type: array
@@ -10641,9 +10648,10 @@ paths:
                           - string
                         example: null
                       binary_mode:
-                        description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                        description: |
+                          Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
                         type: boolean
-                        example: false
+                        example: true
                       refunds:
                         description: Reembolsos asociados con este pago.
                         type: array
@@ -11279,9 +11287,10 @@ paths:
                           - string
                         example: null
                       binary_mode:
-                        description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                        description: |
+                          Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
                         type: boolean
-                        example: false
+                        example: true
                       refunds:
                         description: Reembolsos asociados con este pago.
                         type: array
@@ -12222,9 +12231,10 @@ paths:
                             - string
                           example: null
                         binary_mode:
-                          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                          description: |
+                            Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
                           type: boolean
-                          example: false
+                          example: true
                         refunds:
                           description: Reembolsos asociados con este pago.
                           type: array
@@ -13505,9 +13515,10 @@ paths:
                         type: boolean
                         example: true
                       binary_mode:
-                        description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                        description: |
+                          Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
                         type: boolean
-                        example: false
+                        example: true
                       payment_gateway_identifier:
                         description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
                         type:
@@ -13788,9 +13799,10 @@ paths:
                         type: boolean
                         example: true
                       binary_mode:
-                        description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+                        description: |
+                          Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
                         type: boolean
-                        example: false
+                        example: true
                       payment_gateway_identifier:
                         description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
                         type:
@@ -14620,6 +14632,11 @@ paths:
                     - 'null'
                     - number
                   example: null
+                first_payment_in_binary_mode:
+                  description: |
+                    Fuerza el procesamiento instantáneo del primer pago de la suscripción, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
+                  type: boolean
+                  example: true
                 metadata:
                   description: |
                     Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -21607,9 +21624,10 @@ components:
         - USB
         - USD
     binary_mode:
-      description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+      description: |
+        Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
       type: boolean
-      example: false
+      example: true
     Payment:
       description: Este objeto representa un pago de su organización.
       type: object
@@ -22048,9 +22066,10 @@ components:
             - string
           example: null
         binary_mode:
-          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+          description: |
+            Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
           type: boolean
-          example: false
+          example: true
         refunds:
           description: Reembolsos asociados con este pago.
           type: array
@@ -22278,9 +22297,10 @@ components:
           type: boolean
           example: true
         binary_mode:
-          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+          description: |
+            Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
           type: boolean
-          example: false
+          example: true
         payment_gateway_identifier:
           description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
           type:
@@ -22739,6 +22759,11 @@ components:
         - auto_retries_max_attempts
         - metadata
       title: Suscripción
+    first_payment_in_binary_mode:
+      description: |
+        Fuerza el procesamiento instantáneo del primer pago de la suscripción, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
+      type: boolean
+      example: true
     Webhook:
       description: |-
         Puede configurar tus [webhooks](https://debi.pro/docs/webhooks/) a través de la API para
@@ -24143,9 +24168,10 @@ components:
             - string
           example: null
         binary_mode:
-          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+          description: |
+            Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
           type: boolean
-          example: false
+          example: true
         refunds:
           description: Reembolsos asociados con este pago.
           type: array
@@ -24539,9 +24565,10 @@ components:
           type: boolean
           example: true
         binary_mode:
-          description: Modo de respuesta inmediata. Este parámetro limita el procesamiento a través de proveedores instantáneos.
+          description: |
+            Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
           type: boolean
-          example: false
+          example: true
         payment_gateway_identifier:
           description: El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.
           type:
