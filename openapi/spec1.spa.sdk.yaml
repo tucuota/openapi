@@ -13325,6 +13325,11 @@ paths:
                     - 'null'
                     - string
                   example: null
+                binary_mode:
+                  description: |
+                    Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.
+                  type: boolean
+                  example: true
                 metadata:
                   description: |
                     Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar

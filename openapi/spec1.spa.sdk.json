@@ -13646,6 +13646,11 @@
                     ],
                     "example": null
                   },
+                  "binary_mode": {
+                    "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración elimina los reintentos automáticos para pagos fallidos, garantizando un resultado rápido y concluyente.\n",
+                    "type": "boolean",
+                    "example": true
+                  },
                   "metadata": {
                     "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
                     "type": [
