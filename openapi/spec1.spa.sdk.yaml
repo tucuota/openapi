@@ -203,6 +203,8 @@ info:
     | 4000000000009987       | card | rejected  | visa       | credit  |
     | 4000000000009979       | card | rejected  | visa       | credit  |
     | 371449635398432        | card | rejected  | amex       | credit  |
+
+    Si creas una tarjeta con el número `4000000320000021`, recibirás un evento `payment_method.automatically_updated` similar al que recibirías durante una renovación de una tarjeta de crédito.
     # Notificaciones de Webhook
 
     Los webhooks son URLs que puedes configurar para recibir notificaciones sobre eventos que suceden en tu cuenta de Debi. La mayoría de los usuarios configuran los webhooks desde el panel, que proporciona una interfaz de usuario para registrar y probar sus webhooks.

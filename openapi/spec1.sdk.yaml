@@ -203,6 +203,8 @@ info:
     | 4000000000009987       | card | rejected  | visa       | credit  |
     | 4000000000009979       | card | rejected  | visa       | credit  |
     | 371449635398432        | card | rejected  | amex       | credit  |
+
+    If you create a payment method using number `4000000320000021`, a `payment_method.automatically_updated` event will be dispatched mimicking a credit card renewal.
     # Webhook Notifications
 
     Webhooks are endpoints you can configure to be notified about events that happen in your Debi account. Most users configure Webhooks from the dashboard, which provides a user interface for registering and testing your webhook endpoints.
