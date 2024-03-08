@@ -2113,7 +2113,7 @@ paths:
                             - favacard
                             - fiserv-argentina
                             - fiserv-mexico
-                            - mercado-pago-argentina
+                            - mercado-pago
                             - naranja
                             - payway
                             - prisma-visa
@@ -2252,7 +2252,7 @@ paths:
                     number: '1203764444'
                     number_bank_retries: null
                     object: gateway
-                    provider: mercado-pago-argentina
+                    provider: mercado-pago
                     supported_payment_methods:
                       card:
                         networks:
@@ -11492,7 +11492,7 @@ paths:
                       providers:
                         available:
                           - fiserv-argentina
-                          - mercado-pago-argentina
+                          - mercado-pago
                           - payway
                           - wompi
                         preferred: fiserv-argentina
@@ -12168,7 +12168,7 @@ paths:
                       providers:
                         available:
                           - fiserv-argentina
-                          - mercado-pago-argentina
+                          - mercado-pago
                           - payway
                           - wompi
                         preferred: fiserv-argentina
@@ -15868,7 +15868,7 @@ components:
             - favacard
             - fiserv-argentina
             - fiserv-mexico
-            - mercado-pago-argentina
+            - mercado-pago
             - naranja
             - payway
             - prisma-visa
@@ -18351,7 +18351,7 @@ components:
             - favacard
             - fiserv-argentina
             - fiserv-mexico
-            - mercado-pago-argentina
+            - mercado-pago
             - naranja
             - payway
             - prisma-visa
@@ -20389,7 +20389,7 @@ components:
         number: '1203764444'
         number_bank_retries: null
         object: gateway
-        provider: mercado-pago-argentina
+        provider: mercado-pago
         supported_payment_methods:
           card:
             networks:
