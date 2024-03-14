@@ -63,7 +63,7 @@
       "number": "1203764444",
       "number_bank_retries": null,
       "object": "gateway",
-      "provider": "mercado-pago-argentina",
+      "provider": "mercado-pago",
       "supported_payment_methods": {
         "card": {
           "networks": [
