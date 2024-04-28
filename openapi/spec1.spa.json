@@ -393,7 +393,6 @@
         "summary": "Crear un cliente",
         "description": "Crear un cliente.",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -479,7 +478,8 @@
                 "additionalProperties": false
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -923,7 +923,6 @@
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -1003,7 +1002,8 @@
                 "additionalProperties": false
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2963,7 +2963,6 @@
         "summary": "Crear una importación",
         "description": "Crear una importación.",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -3021,7 +3020,8 @@
                 "additionalProperties": false
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -4754,11 +4754,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -4860,6 +4861,62 @@
                                   }
                                 },
                                 "title": "Tarjeta de Crédito"
+                              },
+                              "sepa_debit": {
+                                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "País de la cuenta bancaria.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Procesadores disponibles para esta cuenta.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Procesador preferido para esta cuenta.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
                               },
                               "cbu": {
                                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -5106,7 +5163,6 @@
         "summary": "Crear una adhesión",
         "description": "Crear una adhesión.",
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -5129,7 +5185,8 @@
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "201": {
@@ -5428,11 +5485,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                              "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -5534,6 +5592,62 @@
                                 }
                               },
                               "title": "Tarjeta de Crédito"
+                            },
+                            "sepa_debit": {
+                              "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Banco.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "País de la cuenta bancaria.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Procesadores disponibles para esta cuenta.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Procesador preferido para esta cuenta.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
                             },
                             "cbu": {
                               "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -6060,11 +6174,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -6166,6 +6281,62 @@
                                   }
                                 },
                                 "title": "Tarjeta de Crédito"
+                              },
+                              "sepa_debit": {
+                                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "País de la cuenta bancaria.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Procesadores disponibles para esta cuenta.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Procesador preferido para esta cuenta.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
                               },
                               "cbu": {
                                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -6529,11 +6700,12 @@
                             ]
                           },
                           "type": {
-                            "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                            "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                             "type": "string",
                             "example": "card",
                             "enum": [
                               "card",
+                              "sepa_debit",
                               "cbu"
                             ]
                           },
@@ -6635,6 +6807,62 @@
                               }
                             },
                             "title": "Tarjeta de Crédito"
+                          },
+                          "sepa_debit": {
+                            "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                            "type": "object",
+                            "properties": {
+                              "bank": {
+                                "description": "Banco.",
+                                "type": "string"
+                              },
+                              "country": {
+                                "description": "País de la cuenta bancaria.",
+                                "type": "string",
+                                "enum": [
+                                  "NL",
+                                  "ES"
+                                ]
+                              },
+                              "fingerprint": {
+                                "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                "type": "string",
+                                "example": "8712yh2uihiu1123sxas"
+                              },
+                              "identification": {
+                                "description": "Identificación extendida de la cuenta bancaria.",
+                                "type": "object"
+                              },
+                              "last_four_digits": {
+                                "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                "type": "string",
+                                "example": "9876"
+                              },
+                              "providers": {
+                                "type": "object",
+                                "properties": {
+                                  "available": {
+                                    "description": "Procesadores disponibles para esta cuenta.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "properties": {}
+                                    },
+                                    "example": [
+                                      "santander-es"
+                                    ]
+                                  },
+                                  "preferred": {
+                                    "description": "Procesador preferido para esta cuenta.",
+                                    "type": "string",
+                                    "example": [
+                                      "santander-es"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "title": "CBU"
                           },
                           "cbu": {
                             "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -6873,7 +7101,6 @@
         "summary": "Crear un método de pago",
         "description": "Crear un método de pago",
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -6884,15 +7111,16 @@
                     "type": "string",
                     "enum": [
                       "card",
+                      "sepa_debit",
                       "cbu"
                     ]
                   },
                   "card": {
-                    "description": "Este objeto representa una tarjeta de crédito de su cuenta.",
+                    "description": "Este objeto representa una tarjeta de su cuenta.",
                     "type": "object",
                     "properties": {
                       "number": {
-                        "description": "Número de la tarjeta de crédito/débito.",
+                        "description": "Número de tarjeta de crédito/débito/prepaga.",
                         "type": "string"
                       },
                       "expiration_year": {
@@ -6900,7 +7128,7 @@
                         "type": "number"
                       },
                       "expiration_month": {
-                        "description": "Mes de vencimiento de la tarjeta de crédito/débito.",
+                        "description": "Mes de vencimiento de la tarjeta.",
                         "type": "number"
                       },
                       "security_code": {
@@ -6908,7 +7136,7 @@
                         "type": "string"
                       }
                     },
-                    "title": "Tarjeta de Crédito"
+                    "title": "Tarjeta"
                   },
                   "cbu": {
                     "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -6928,12 +7156,27 @@
                       }
                     },
                     "title": "CBU"
+                  },
+                  "sepa_debit": {
+                    "description": "Este objeto representa un método de pago para débito directo a una cuenta IBAN de la región de pagos Europea.",
+                    "type": "object",
+                    "properties": {
+                      "iban": {
+                        "description": "Código internacional de cuenta bancaria IBAN",
+                        "type": "string"
+                      }
+                    },
+                    "title": "Débito Sepa (Iban)"
+                  },
+                  "strict": {
+                    "description": "Si es verdadero, el método de pago no se podrá crear si la cuenta no tiene habilitado un medio de cobro para procesar este método de pago.",
+                    "type": "boolean"
                   }
                 }
               },
               "examples": {
                 "card": {
-                  "summary": "Guardar una Tarjeta de Crédito",
+                  "summary": "Guardar una Tarjeta",
                   "value": {
                     "type": "card",
                     "card": {
@@ -6941,6 +7184,16 @@
                       "expiration_year": 2032,
                       "expiration_month": 5,
                       "security_code": "123"
+                    },
+                    "strict": true
+                  }
+                },
+                "sepa_debit": {
+                  "summary": "Guardar un Método de Pago IBAN para débitos Sepa",
+                  "value": {
+                    "type": "sepa_debit",
+                    "sepa_debit": {
+                      "iban": "ES9121000418450200051332"
                     }
                   }
                 },
@@ -6974,7 +7227,8 @@
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "201": {
@@ -7000,11 +7254,12 @@
                           ]
                         },
                         "type": {
-                          "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                          "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                           "type": "string",
                           "example": "card",
                           "enum": [
                             "card",
+                            "sepa_debit",
                             "cbu"
                           ]
                         },
@@ -7106,6 +7361,62 @@
                             }
                           },
                           "title": "Tarjeta de Crédito"
+                        },
+                        "sepa_debit": {
+                          "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                          "type": "object",
+                          "properties": {
+                            "bank": {
+                              "description": "Banco.",
+                              "type": "string"
+                            },
+                            "country": {
+                              "description": "País de la cuenta bancaria.",
+                              "type": "string",
+                              "enum": [
+                                "NL",
+                                "ES"
+                              ]
+                            },
+                            "fingerprint": {
+                              "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                              "type": "string",
+                              "example": "8712yh2uihiu1123sxas"
+                            },
+                            "identification": {
+                              "description": "Identificación extendida de la cuenta bancaria.",
+                              "type": "object"
+                            },
+                            "last_four_digits": {
+                              "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                              "type": "string",
+                              "example": "9876"
+                            },
+                            "providers": {
+                              "type": "object",
+                              "properties": {
+                                "available": {
+                                  "description": "Procesadores disponibles para esta cuenta.",
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "properties": {}
+                                  },
+                                  "example": [
+                                    "santander-es"
+                                  ]
+                                },
+                                "preferred": {
+                                  "description": "Procesador preferido para esta cuenta.",
+                                  "type": "string",
+                                  "example": [
+                                    "santander-es"
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "title": "CBU"
                         },
                         "cbu": {
                           "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -7231,6 +7542,29 @@
                         "object": "payment_method",
                         "type": "card",
                         "updated_at": "2022-02-01T23:13:04-03:00"
+                      }
+                    }
+                  },
+                  "sepa_debit-enhanced": {
+                    "summary": "Método de Pago SEPA Débito para cuentas IBAN",
+                    "value": {
+                      "data": {
+                        "id": "PMja4OP0e4WR",
+                        "object": "payment_method",
+                        "type": "sepa_debit",
+                        "sepa_debit": {
+                          "bank": "CAIXABANK",
+                          "country": "ES",
+                          "last_four_digits": "1332",
+                          "providers": {
+                            "available": [],
+                            "preferred": null
+                          }
+                        },
+                        "created_at": "2024-04-28T17:40:01-03:00",
+                        "livemode": true,
+                        "metadata": null,
+                        "updated_at": "2024-04-28T17:40:01-03:00"
                       }
                     }
                   },
@@ -7423,11 +7757,12 @@
                           ]
                         },
                         "type": {
-                          "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                          "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                           "type": "string",
                           "example": "card",
                           "enum": [
                             "card",
+                            "sepa_debit",
                             "cbu"
                           ]
                         },
@@ -7529,6 +7864,62 @@
                             }
                           },
                           "title": "Tarjeta de Crédito"
+                        },
+                        "sepa_debit": {
+                          "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                          "type": "object",
+                          "properties": {
+                            "bank": {
+                              "description": "Banco.",
+                              "type": "string"
+                            },
+                            "country": {
+                              "description": "País de la cuenta bancaria.",
+                              "type": "string",
+                              "enum": [
+                                "NL",
+                                "ES"
+                              ]
+                            },
+                            "fingerprint": {
+                              "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                              "type": "string",
+                              "example": "8712yh2uihiu1123sxas"
+                            },
+                            "identification": {
+                              "description": "Identificación extendida de la cuenta bancaria.",
+                              "type": "object"
+                            },
+                            "last_four_digits": {
+                              "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                              "type": "string",
+                              "example": "9876"
+                            },
+                            "providers": {
+                              "type": "object",
+                              "properties": {
+                                "available": {
+                                  "description": "Procesadores disponibles para esta cuenta.",
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "properties": {}
+                                  },
+                                  "example": [
+                                    "santander-es"
+                                  ]
+                                },
+                                "preferred": {
+                                  "description": "Procesador preferido para esta cuenta.",
+                                  "type": "string",
+                                  "example": [
+                                    "santander-es"
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "title": "CBU"
                         },
                         "cbu": {
                           "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -7743,11 +8134,12 @@
                             ]
                           },
                           "type": {
-                            "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                            "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                             "type": "string",
                             "example": "card",
                             "enum": [
                               "card",
+                              "sepa_debit",
                               "cbu"
                             ]
                           },
@@ -7849,6 +8241,62 @@
                               }
                             },
                             "title": "Tarjeta de Crédito"
+                          },
+                          "sepa_debit": {
+                            "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                            "type": "object",
+                            "properties": {
+                              "bank": {
+                                "description": "Banco.",
+                                "type": "string"
+                              },
+                              "country": {
+                                "description": "País de la cuenta bancaria.",
+                                "type": "string",
+                                "enum": [
+                                  "NL",
+                                  "ES"
+                                ]
+                              },
+                              "fingerprint": {
+                                "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                "type": "string",
+                                "example": "8712yh2uihiu1123sxas"
+                              },
+                              "identification": {
+                                "description": "Identificación extendida de la cuenta bancaria.",
+                                "type": "object"
+                              },
+                              "last_four_digits": {
+                                "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                "type": "string",
+                                "example": "9876"
+                              },
+                              "providers": {
+                                "type": "object",
+                                "properties": {
+                                  "available": {
+                                    "description": "Procesadores disponibles para esta cuenta.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "properties": {}
+                                    },
+                                    "example": [
+                                      "santander-es"
+                                    ]
+                                  },
+                                  "preferred": {
+                                    "description": "Procesador preferido para esta cuenta.",
+                                    "type": "string",
+                                    "example": [
+                                      "santander-es"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "title": "CBU"
                           },
                           "cbu": {
                             "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -8514,11 +8962,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -8620,6 +9069,62 @@
                                   }
                                 },
                                 "title": "Tarjeta de Crédito"
+                              },
+                              "sepa_debit": {
+                                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "País de la cuenta bancaria.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Procesadores disponibles para esta cuenta.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Procesador preferido para esta cuenta.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
                               },
                               "cbu": {
                                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -8863,7 +9368,6 @@
         "summary": "Crear un pago",
         "description": "Crear un pago.",
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -8946,7 +9450,8 @@
                 ]
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "201": {
@@ -9286,11 +9791,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                              "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -9392,6 +9898,62 @@
                                 }
                               },
                               "title": "Tarjeta de Crédito"
+                            },
+                            "sepa_debit": {
+                              "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Banco.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "País de la cuenta bancaria.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Procesadores disponibles para esta cuenta.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Procesador preferido para esta cuenta.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
                             },
                             "cbu": {
                               "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -9916,11 +10478,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                              "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -10022,6 +10585,62 @@
                                 }
                               },
                               "title": "Tarjeta de Crédito"
+                            },
+                            "sepa_debit": {
+                              "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Banco.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "País de la cuenta bancaria.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Procesadores disponibles para esta cuenta.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Procesador preferido para esta cuenta.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
                             },
                             "cbu": {
                               "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -10228,7 +10847,6 @@
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -10287,7 +10905,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -10627,11 +11246,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                              "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -10733,6 +11353,62 @@
                                 }
                               },
                               "title": "Tarjeta de Crédito"
+                            },
+                            "sepa_debit": {
+                              "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Banco.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "País de la cuenta bancaria.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Procesadores disponibles para esta cuenta.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Procesador preferido para esta cuenta.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
                             },
                             "cbu": {
                               "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -11449,11 +12125,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -11555,6 +12232,62 @@
                                   }
                                 },
                                 "title": "Tarjeta de Crédito"
+                              },
+                              "sepa_debit": {
+                                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "País de la cuenta bancaria.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Procesadores disponibles para esta cuenta.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Procesador preferido para esta cuenta.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
                               },
                               "cbu": {
                                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -12543,7 +13276,6 @@
         "summary": "Crear una sesión",
         "description": "Crear una sesión",
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -12722,7 +13454,8 @@
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "201": {
@@ -13549,11 +14282,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -13655,6 +14389,62 @@
                                   }
                                 },
                                 "title": "Tarjeta de Crédito"
+                              },
+                              "sepa_debit": {
+                                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "País de la cuenta bancaria.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Procesadores disponibles para esta cuenta.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Procesador preferido para esta cuenta.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
                               },
                               "cbu": {
                                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -13904,7 +14694,6 @@
         "summary": "Crear una suscripción",
         "description": "Crear una suscripción",
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "encoding": {
@@ -14012,7 +14801,8 @@
                 ]
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "201": {
@@ -14310,11 +15100,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                              "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -14416,6 +15207,62 @@
                                 }
                               },
                               "title": "Tarjeta de Crédito"
+                            },
+                            "sepa_debit": {
+                              "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Banco.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "País de la cuenta bancaria.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Procesadores disponibles para esta cuenta.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Procesador preferido para esta cuenta.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
                             },
                             "cbu": {
                               "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -14991,11 +15838,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                              "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -15097,6 +15945,62 @@
                                 }
                               },
                               "title": "Tarjeta de Crédito"
+                            },
+                            "sepa_debit": {
+                              "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Banco.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "País de la cuenta bancaria.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Procesadores disponibles para esta cuenta.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Procesador preferido para esta cuenta.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
                             },
                             "cbu": {
                               "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -15308,7 +16212,6 @@
           }
         ],
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "encoding": {
@@ -15405,7 +16308,8 @@
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "200": {
@@ -15776,11 +16680,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                              "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -15882,6 +16787,62 @@
                                 }
                               },
                               "title": "Tarjeta de Crédito"
+                            },
+                            "sepa_debit": {
+                              "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Banco.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "País de la cuenta bancaria.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Procesadores disponibles para esta cuenta.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Procesador preferido para esta cuenta.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
                             },
                             "cbu": {
                               "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -16383,11 +17344,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                              "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -16489,6 +17451,62 @@
                                 }
                               },
                               "title": "Tarjeta de Crédito"
+                            },
+                            "sepa_debit": {
+                              "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Banco.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "País de la cuenta bancaria.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Procesadores disponibles para esta cuenta.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Procesador preferido para esta cuenta.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
                             },
                             "cbu": {
                               "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -16985,11 +18003,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                              "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -17091,6 +18110,62 @@
                                 }
                               },
                               "title": "Tarjeta de Crédito"
+                            },
+                            "sepa_debit": {
+                              "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Banco.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "País de la cuenta bancaria.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Procesadores disponibles para esta cuenta.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Procesador preferido para esta cuenta.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
                             },
                             "cbu": {
                               "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -17592,11 +18667,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                              "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -17698,6 +18774,62 @@
                                 }
                               },
                               "title": "Tarjeta de Crédito"
+                            },
+                            "sepa_debit": {
+                              "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Banco.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "País de la cuenta bancaria.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Identificación extendida de la cuenta bancaria.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Procesadores disponibles para esta cuenta.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Procesador preferido para esta cuenta.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
                             },
                             "cbu": {
                               "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -18224,11 +19356,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -18330,6 +19463,62 @@
                                   }
                                 },
                                 "title": "Tarjeta de Crédito"
+                              },
+                              "sepa_debit": {
+                                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Banco.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "País de la cuenta bancaria.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Identificación extendida de la cuenta bancaria.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Procesadores disponibles para esta cuenta.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Procesador preferido para esta cuenta.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
                               },
                               "cbu": {
                                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -18931,7 +20120,6 @@
         "summary": "Crear un webhook",
         "description": "Crear un webhook.",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -19025,7 +20213,8 @@
                 ]
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -19328,7 +20517,6 @@
           }
         ],
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -19343,7 +20531,8 @@
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "200": {
@@ -20714,6 +21903,62 @@
         },
         "title": "Tarjeta de Crédito"
       },
+      "Sepa_debit": {
+        "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+        "type": "object",
+        "properties": {
+          "bank": {
+            "description": "Banco.",
+            "type": "string"
+          },
+          "country": {
+            "description": "País de la cuenta bancaria.",
+            "type": "string",
+            "enum": [
+              "NL",
+              "ES"
+            ]
+          },
+          "fingerprint": {
+            "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+            "type": "string",
+            "example": "8712yh2uihiu1123sxas"
+          },
+          "identification": {
+            "description": "Identificación extendida de la cuenta bancaria.",
+            "type": "object"
+          },
+          "last_four_digits": {
+            "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+            "type": "string",
+            "example": "9876"
+          },
+          "providers": {
+            "type": "object",
+            "properties": {
+              "available": {
+                "description": "Procesadores disponibles para esta cuenta.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "properties": {}
+                },
+                "example": [
+                  "santander-es"
+                ]
+              },
+              "preferred": {
+                "description": "Procesador preferido para esta cuenta.",
+                "type": "string",
+                "example": [
+                  "santander-es"
+                ]
+              }
+            }
+          }
+        },
+        "title": "CBU"
+      },
       "CBU": {
         "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
         "type": "object",
@@ -20784,11 +22029,12 @@
             ]
           },
           "type": {
-            "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+            "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
             "type": "string",
             "example": "card",
             "enum": [
               "card",
+              "sepa_debit",
               "cbu"
             ]
           },
@@ -20890,6 +22136,62 @@
               }
             },
             "title": "Tarjeta de Crédito"
+          },
+          "sepa_debit": {
+            "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+            "type": "object",
+            "properties": {
+              "bank": {
+                "description": "Banco.",
+                "type": "string"
+              },
+              "country": {
+                "description": "País de la cuenta bancaria.",
+                "type": "string",
+                "enum": [
+                  "NL",
+                  "ES"
+                ]
+              },
+              "fingerprint": {
+                "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                "type": "string",
+                "example": "8712yh2uihiu1123sxas"
+              },
+              "identification": {
+                "description": "Identificación extendida de la cuenta bancaria.",
+                "type": "object"
+              },
+              "last_four_digits": {
+                "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                "type": "string",
+                "example": "9876"
+              },
+              "providers": {
+                "type": "object",
+                "properties": {
+                  "available": {
+                    "description": "Procesadores disponibles para esta cuenta.",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "properties": {}
+                    },
+                    "example": [
+                      "santander-es"
+                    ]
+                  },
+                  "preferred": {
+                    "description": "Procesador preferido para esta cuenta.",
+                    "type": "string",
+                    "example": [
+                      "santander-es"
+                    ]
+                  }
+                }
+              }
+            },
+            "title": "CBU"
           },
           "cbu": {
             "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -21171,11 +22473,12 @@
                 ]
               },
               "type": {
-                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -21277,6 +22580,62 @@
                   }
                 },
                 "title": "Tarjeta de Crédito"
+              },
+              "sepa_debit": {
+                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Banco.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "País de la cuenta bancaria.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Procesadores disponibles para esta cuenta.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Procesador preferido para esta cuenta.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
               },
               "cbu": {
                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -21770,11 +23129,12 @@
                 ]
               },
               "type": {
-                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -21876,6 +23236,62 @@
                   }
                 },
                 "title": "Tarjeta de Crédito"
+              },
+              "sepa_debit": {
+                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Banco.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "País de la cuenta bancaria.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Procesadores disponibles para esta cuenta.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Procesador preferido para esta cuenta.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
               },
               "cbu": {
                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -22569,11 +23985,12 @@
                 ]
               },
               "type": {
-                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -22675,6 +24092,62 @@
                   }
                 },
                 "title": "Tarjeta de Crédito"
+              },
+              "sepa_debit": {
+                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Banco.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "País de la cuenta bancaria.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Procesadores disponibles para esta cuenta.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Procesador preferido para esta cuenta.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
               },
               "cbu": {
                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -23751,11 +25224,12 @@
                 ]
               },
               "type": {
-                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -23857,6 +25331,62 @@
                   }
                 },
                 "title": "Tarjeta de Crédito"
+              },
+              "sepa_debit": {
+                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Banco.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "País de la cuenta bancaria.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Procesadores disponibles para esta cuenta.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Procesador preferido para esta cuenta.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
               },
               "cbu": {
                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -24326,11 +25856,12 @@
                 ]
               },
               "type": {
-                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -24432,6 +25963,62 @@
                   }
                 },
                 "title": "Tarjeta de Crédito"
+              },
+              "sepa_debit": {
+                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Banco.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "País de la cuenta bancaria.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Procesadores disponibles para esta cuenta.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Procesador preferido para esta cuenta.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
               },
               "cbu": {
                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -24584,11 +26171,12 @@
             ]
           },
           "type": {
-            "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+            "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
             "type": "string",
             "example": "card",
             "enum": [
               "card",
+              "sepa_debit",
               "cbu"
             ]
           },
@@ -24690,6 +26278,62 @@
               }
             },
             "title": "Tarjeta de Crédito"
+          },
+          "sepa_debit": {
+            "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+            "type": "object",
+            "properties": {
+              "bank": {
+                "description": "Banco.",
+                "type": "string"
+              },
+              "country": {
+                "description": "País de la cuenta bancaria.",
+                "type": "string",
+                "enum": [
+                  "NL",
+                  "ES"
+                ]
+              },
+              "fingerprint": {
+                "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                "type": "string",
+                "example": "8712yh2uihiu1123sxas"
+              },
+              "identification": {
+                "description": "Identificación extendida de la cuenta bancaria.",
+                "type": "object"
+              },
+              "last_four_digits": {
+                "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                "type": "string",
+                "example": "9876"
+              },
+              "providers": {
+                "type": "object",
+                "properties": {
+                  "available": {
+                    "description": "Procesadores disponibles para esta cuenta.",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "properties": {}
+                    },
+                    "example": [
+                      "santander-es"
+                    ]
+                  },
+                  "preferred": {
+                    "description": "Procesador preferido para esta cuenta.",
+                    "type": "string",
+                    "example": [
+                      "santander-es"
+                    ]
+                  }
+                }
+              }
+            },
+            "title": "CBU"
           },
           "cbu": {
             "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",
@@ -25336,11 +26980,12 @@
                 ]
               },
               "type": {
-                "description": "Tipo de medio de pago. Uno de: `cbu`, `card`.",
+                "description": "Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -25442,6 +27087,62 @@
                   }
                 },
                 "title": "Tarjeta de Crédito"
+              },
+              "sepa_debit": {
+                "description": "Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Banco.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "País de la cuenta bancaria.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Huella digital única para este número de cuenta bancaria de su cuenta.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Identificación extendida de la cuenta bancaria.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Últimos cuatro dígitos de la cuenta bancaria.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Procesadores disponibles para esta cuenta.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Procesador preferido para esta cuenta.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
               },
               "cbu": {
                 "description": "Este objeto representa una cuenta bancaria (CBU) de su cuenta.",

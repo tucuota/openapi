@@ -722,7 +722,6 @@ paths:
       summary: Crear un cliente
       description: Crear un cliente.
       requestBody:
-        required: true
         content:
           application/json:
             encoding:
@@ -790,6 +789,7 @@ paths:
                       - boolean
                   properties: {}
               additionalProperties: false
+        required: true
       responses:
         '201':
           description: OK
@@ -1310,7 +1310,6 @@ paths:
             type: string
           example: CS9PL8eeo8aB
       requestBody:
-        required: true
         content:
           application/json:
             encoding:
@@ -1373,6 +1372,7 @@ paths:
                       - boolean
                   properties: {}
               additionalProperties: false
+        required: true
       responses:
         '200':
           description: OK
@@ -3521,7 +3521,6 @@ paths:
       summary: Crear una importación
       description: Crear una importación.
       requestBody:
-        required: true
         content:
           application/json:
             encoding:
@@ -3568,6 +3567,7 @@ paths:
                       - boolean
                   properties: {}
               additionalProperties: false
+        required: true
       responses:
         '201':
           description: OK
@@ -5449,11 +5449,12 @@ paths:
                               enum:
                                 - payment_method
                             type:
-                              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                               type: string
                               example: card
                               enum:
                                 - card
+                                - sepa_debit
                                 - cbu
                             card:
                               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -5532,6 +5533,47 @@ paths:
                                       type: string
                                       example: fiserv-argentina
                               title: Tarjeta de Crédito
+                            sepa_debit:
+                              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                              type: object
+                              properties:
+                                bank:
+                                  description: Banco.
+                                  type: string
+                                country:
+                                  description: País de la cuenta bancaria.
+                                  type: string
+                                  enum:
+                                    - NL
+                                    - ES
+                                fingerprint:
+                                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                  type: string
+                                  example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Identificación extendida de la cuenta bancaria.
+                                  type: object
+                                last_four_digits:
+                                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                                  type: string
+                                  example: '9876'
+                                providers:
+                                  type: object
+                                  properties:
+                                    available:
+                                      description: Procesadores disponibles para esta cuenta.
+                                      type: array
+                                      items:
+                                        type: string
+                                        properties: {}
+                                      example:
+                                        - santander-es
+                                    preferred:
+                                      description: Procesador preferido para esta cuenta.
+                                      type: string
+                                      example:
+                                        - santander-es
+                              title: CBU
                             cbu:
                               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                               type: object
@@ -5810,7 +5852,6 @@ paths:
       summary: Crear una adhesión
       description: Crear una adhesión.
       requestBody:
-        required: false
         content:
           application/json:
             schema:
@@ -5829,6 +5870,7 @@ paths:
               example:
                 customer_id: CS3oDRqz9wzB
                 payment_method_id: PMBja4YZ2GDR
+        required: false
       responses:
         '201':
           description: OK
@@ -6163,11 +6205,12 @@ paths:
                             enum:
                               - payment_method
                           type:
-                            description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                            description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                             type: string
                             example: card
                             enum:
                               - card
+                              - sepa_debit
                               - cbu
                           card:
                             description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -6246,6 +6289,47 @@ paths:
                                     type: string
                                     example: fiserv-argentina
                             title: Tarjeta de Crédito
+                          sepa_debit:
+                            description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                            type: object
+                            properties:
+                              bank:
+                                description: Banco.
+                                type: string
+                              country:
+                                description: País de la cuenta bancaria.
+                                type: string
+                                enum:
+                                  - NL
+                                  - ES
+                              fingerprint:
+                                description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                type: string
+                                example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Identificación extendida de la cuenta bancaria.
+                                type: object
+                              last_four_digits:
+                                description: Últimos cuatro dígitos de la cuenta bancaria.
+                                type: string
+                                example: '9876'
+                              providers:
+                                type: object
+                                properties:
+                                  available:
+                                    description: Procesadores disponibles para esta cuenta.
+                                    type: array
+                                    items:
+                                      type: string
+                                      properties: {}
+                                    example:
+                                      - santander-es
+                                  preferred:
+                                    description: Procesador preferido para esta cuenta.
+                                    type: string
+                                    example:
+                                      - santander-es
+                            title: CBU
                           cbu:
                             description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                             type: object
@@ -6871,11 +6955,12 @@ paths:
                               enum:
                                 - payment_method
                             type:
-                              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                               type: string
                               example: card
                               enum:
                                 - card
+                                - sepa_debit
                                 - cbu
                             card:
                               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -6954,6 +7039,47 @@ paths:
                                       type: string
                                       example: fiserv-argentina
                               title: Tarjeta de Crédito
+                            sepa_debit:
+                              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                              type: object
+                              properties:
+                                bank:
+                                  description: Banco.
+                                  type: string
+                                country:
+                                  description: País de la cuenta bancaria.
+                                  type: string
+                                  enum:
+                                    - NL
+                                    - ES
+                                fingerprint:
+                                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                  type: string
+                                  example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Identificación extendida de la cuenta bancaria.
+                                  type: object
+                                last_four_digits:
+                                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                                  type: string
+                                  example: '9876'
+                                providers:
+                                  type: object
+                                  properties:
+                                    available:
+                                      description: Procesadores disponibles para esta cuenta.
+                                      type: array
+                                      items:
+                                        type: string
+                                        properties: {}
+                                      example:
+                                        - santander-es
+                                    preferred:
+                                      description: Procesador preferido para esta cuenta.
+                                      type: string
+                                      example:
+                                        - santander-es
+                              title: CBU
                             cbu:
                               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                               type: object
@@ -7316,11 +7442,12 @@ paths:
                           enum:
                             - payment_method
                         type:
-                          description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                          description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                           type: string
                           example: card
                           enum:
                             - card
+                            - sepa_debit
                             - cbu
                         card:
                           description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -7399,6 +7526,47 @@ paths:
                                   type: string
                                   example: fiserv-argentina
                           title: Tarjeta de Crédito
+                        sepa_debit:
+                          description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                          type: object
+                          properties:
+                            bank:
+                              description: Banco.
+                              type: string
+                            country:
+                              description: País de la cuenta bancaria.
+                              type: string
+                              enum:
+                                - NL
+                                - ES
+                            fingerprint:
+                              description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                              type: string
+                              example: 8712yh2uihiu1123sxas
+                            identification:
+                              description: Identificación extendida de la cuenta bancaria.
+                              type: object
+                            last_four_digits:
+                              description: Últimos cuatro dígitos de la cuenta bancaria.
+                              type: string
+                              example: '9876'
+                            providers:
+                              type: object
+                              properties:
+                                available:
+                                  description: Procesadores disponibles para esta cuenta.
+                                  type: array
+                                  items:
+                                    type: string
+                                    properties: {}
+                                  example:
+                                    - santander-es
+                                preferred:
+                                  description: Procesador preferido para esta cuenta.
+                                  type: string
+                                  example:
+                                    - santander-es
+                          title: CBU
                         cbu:
                           description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                           type: object
@@ -7653,7 +7821,6 @@ paths:
       summary: Crear un método de pago
       description: Crear un método de pago
       requestBody:
-        required: false
         content:
           application/json:
             schema:
@@ -7664,24 +7831,25 @@ paths:
                   type: string
                   enum:
                     - card
+                    - sepa_debit
                     - cbu
                 card:
-                  description: Este objeto representa una tarjeta de crédito de su cuenta.
+                  description: Este objeto representa una tarjeta de su cuenta.
                   type: object
                   properties:
                     number:
-                      description: Número de la tarjeta de crédito/débito.
+                      description: Número de tarjeta de crédito/débito/prepaga.
                       type: string
                     expiration_year:
                       description: Año de vencimiento de la tarjeta de crédito/débito.
                       type: number
                     expiration_month:
-                      description: Mes de vencimiento de la tarjeta de crédito/débito.
+                      description: Mes de vencimiento de la tarjeta.
                       type: number
                     security_code:
                       description: Código de seguridad de la tarjeta. Es recomendable incluir siempre este valor.
                       type: string
-                  title: Tarjeta de Crédito
+                  title: Tarjeta
                 cbu:
                   description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                   type: object
@@ -7696,9 +7864,20 @@ paths:
                       description: 'Identificación extendida de la cuenta bancaria. Para activar esta funcionalidad, contacte a Soporte.'
                       type: boolean
                   title: CBU
+                sepa_debit:
+                  description: Este objeto representa un método de pago para débito directo a una cuenta IBAN de la región de pagos Europea.
+                  type: object
+                  properties:
+                    iban:
+                      description: Código internacional de cuenta bancaria IBAN
+                      type: string
+                  title: Débito Sepa (Iban)
+                strict:
+                  description: 'Si es verdadero, el método de pago no se podrá crear si la cuenta no tiene habilitado un medio de cobro para procesar este método de pago.'
+                  type: boolean
             examples:
               card:
-                summary: Guardar una Tarjeta de Crédito
+                summary: Guardar una Tarjeta
                 value:
                   type: card
                   card:
@@ -7706,6 +7885,13 @@ paths:
                     expiration_year: 2032
                     expiration_month: 5
                     security_code: '123'
+                  strict: true
+              sepa_debit:
+                summary: Guardar un Método de Pago IBAN para débitos Sepa
+                value:
+                  type: sepa_debit
+                  sepa_debit:
+                    iban: ES9121000418450200051332
               cbu:
                 summary: Guardar una Cuenta Bancaria CBU
                 value:
@@ -7725,6 +7911,7 @@ paths:
                   cbu:
                     number: '0110022831266917230013'
                     identification: true
+        required: false
       responses:
         '201':
           description: Método de Pago creado
@@ -7746,11 +7933,12 @@ paths:
                         enum:
                           - payment_method
                       type:
-                        description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                        description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                         type: string
                         example: card
                         enum:
                           - card
+                          - sepa_debit
                           - cbu
                       card:
                         description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -7829,6 +8017,47 @@ paths:
                                 type: string
                                 example: fiserv-argentina
                         title: Tarjeta de Crédito
+                      sepa_debit:
+                        description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                        type: object
+                        properties:
+                          bank:
+                            description: Banco.
+                            type: string
+                          country:
+                            description: País de la cuenta bancaria.
+                            type: string
+                            enum:
+                              - NL
+                              - ES
+                          fingerprint:
+                            description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                            type: string
+                            example: 8712yh2uihiu1123sxas
+                          identification:
+                            description: Identificación extendida de la cuenta bancaria.
+                            type: object
+                          last_four_digits:
+                            description: Últimos cuatro dígitos de la cuenta bancaria.
+                            type: string
+                            example: '9876'
+                          providers:
+                            type: object
+                            properties:
+                              available:
+                                description: Procesadores disponibles para esta cuenta.
+                                type: array
+                                items:
+                                  type: string
+                                  properties: {}
+                                example:
+                                  - santander-es
+                              preferred:
+                                description: Procesador preferido para esta cuenta.
+                                type: string
+                                example:
+                                  - santander-es
+                        title: CBU
                       cbu:
                         description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                         type: object
@@ -7930,6 +8159,24 @@ paths:
                       object: payment_method
                       type: card
                       updated_at: '2022-02-01T23:13:04-03:00'
+                sepa_debit-enhanced:
+                  summary: Método de Pago SEPA Débito para cuentas IBAN
+                  value:
+                    data:
+                      id: PMja4OP0e4WR
+                      object: payment_method
+                      type: sepa_debit
+                      sepa_debit:
+                        bank: CAIXABANK
+                        country: ES
+                        last_four_digits: '1332'
+                        providers:
+                          available: []
+                          preferred: null
+                      created_at: '2024-04-28T17:40:01-03:00'
+                      livemode: true
+                      metadata: null
+                      updated_at: '2024-04-28T17:40:01-03:00'
                 cbu:
                   summary: Cuenta Bancaria CBU
                   value:
@@ -8034,7 +8281,7 @@ paths:
               --url https://api.debi.pro/v1/payment_methods \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
-              --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"string","identification":true}}'
+              --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"string","identification":true},"sepa_debit":{"iban":"string"},"strict":true}'
         - lang: Node + Request
           source: |
             const request = require('request');
@@ -8054,7 +8301,9 @@ paths:
                   expiration_month: 0,
                   security_code: 'string'
                 },
-                cbu: {number: 'string', alias: 'string', identification: true}
+                cbu: {number: 'string', alias: 'string', identification: true},
+                sepa_debit: {iban: 'string'},
+                strict: true
               },
               json: true
             };
@@ -8077,7 +8326,7 @@ paths:
               'Authorization' => 'Bearer sk_live_...'
             ]);
 
-            $request->setBody('{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"string","identification":true}}');
+            $request->setBody('{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"string","identification":true},"sepa_debit":{"iban":"string"},"strict":true}');
 
             try {
               $response = $request->send();
@@ -8104,7 +8353,9 @@ paths:
                     "number": "string",
                     "alias": "string",
                     "identification": True
-                }
+                },
+                "sepa_debit": {"iban": "string"},
+                "strict": True
             }
             headers = {
                 "content-type": "application/json",
@@ -8119,7 +8370,7 @@ paths:
             HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/payment_methods")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
-              .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true}}")
+              .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"strict\":true}")
               .asString();
         - lang: Ruby + Native
           source: |-
@@ -8136,7 +8387,7 @@ paths:
             request = Net::HTTP::Post.new(url)
             request["content-type"] = 'application/json'
             request["Authorization"] = 'Bearer sk_live_...'
-            request.body = "{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true}}"
+            request.body = "{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"strict\":true}"
 
             response = http.request(request)
             puts response.read_body
@@ -8174,11 +8425,12 @@ paths:
                         enum:
                           - payment_method
                       type:
-                        description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                        description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                         type: string
                         example: card
                         enum:
                           - card
+                          - sepa_debit
                           - cbu
                       card:
                         description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -8257,6 +8509,47 @@ paths:
                                 type: string
                                 example: fiserv-argentina
                         title: Tarjeta de Crédito
+                      sepa_debit:
+                        description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                        type: object
+                        properties:
+                          bank:
+                            description: Banco.
+                            type: string
+                          country:
+                            description: País de la cuenta bancaria.
+                            type: string
+                            enum:
+                              - NL
+                              - ES
+                          fingerprint:
+                            description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                            type: string
+                            example: 8712yh2uihiu1123sxas
+                          identification:
+                            description: Identificación extendida de la cuenta bancaria.
+                            type: object
+                          last_four_digits:
+                            description: Últimos cuatro dígitos de la cuenta bancaria.
+                            type: string
+                            example: '9876'
+                          providers:
+                            type: object
+                            properties:
+                              available:
+                                description: Procesadores disponibles para esta cuenta.
+                                type: array
+                                items:
+                                  type: string
+                                  properties: {}
+                                example:
+                                  - santander-es
+                              preferred:
+                                description: Procesador preferido para esta cuenta.
+                                type: string
+                                example:
+                                  - santander-es
+                        title: CBU
                       cbu:
                         description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                         type: object
@@ -8489,11 +8782,12 @@ paths:
                           enum:
                             - payment_method
                         type:
-                          description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                          description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                           type: string
                           example: card
                           enum:
                             - card
+                            - sepa_debit
                             - cbu
                         card:
                           description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -8572,6 +8866,47 @@ paths:
                                   type: string
                                   example: fiserv-argentina
                           title: Tarjeta de Crédito
+                        sepa_debit:
+                          description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                          type: object
+                          properties:
+                            bank:
+                              description: Banco.
+                              type: string
+                            country:
+                              description: País de la cuenta bancaria.
+                              type: string
+                              enum:
+                                - NL
+                                - ES
+                            fingerprint:
+                              description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                              type: string
+                              example: 8712yh2uihiu1123sxas
+                            identification:
+                              description: Identificación extendida de la cuenta bancaria.
+                              type: object
+                            last_four_digits:
+                              description: Últimos cuatro dígitos de la cuenta bancaria.
+                              type: string
+                              example: '9876'
+                            providers:
+                              type: object
+                              properties:
+                                available:
+                                  description: Procesadores disponibles para esta cuenta.
+                                  type: array
+                                  items:
+                                    type: string
+                                    properties: {}
+                                  example:
+                                    - santander-es
+                                preferred:
+                                  description: Procesador preferido para esta cuenta.
+                                  type: string
+                                  example:
+                                    - santander-es
+                          title: CBU
                         cbu:
                           description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                           type: object
@@ -9171,11 +9506,12 @@ paths:
                               enum:
                                 - payment_method
                             type:
-                              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                               type: string
                               example: card
                               enum:
                                 - card
+                                - sepa_debit
                                 - cbu
                             card:
                               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -9254,6 +9590,47 @@ paths:
                                       type: string
                                       example: fiserv-argentina
                               title: Tarjeta de Crédito
+                            sepa_debit:
+                              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                              type: object
+                              properties:
+                                bank:
+                                  description: Banco.
+                                  type: string
+                                country:
+                                  description: País de la cuenta bancaria.
+                                  type: string
+                                  enum:
+                                    - NL
+                                    - ES
+                                fingerprint:
+                                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                  type: string
+                                  example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Identificación extendida de la cuenta bancaria.
+                                  type: object
+                                last_four_digits:
+                                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                                  type: string
+                                  example: '9876'
+                                providers:
+                                  type: object
+                                  properties:
+                                    available:
+                                      description: Procesadores disponibles para esta cuenta.
+                                      type: array
+                                      items:
+                                        type: string
+                                        properties: {}
+                                      example:
+                                        - santander-es
+                                    preferred:
+                                      description: Procesador preferido para esta cuenta.
+                                      type: string
+                                      example:
+                                        - santander-es
+                              title: CBU
                             cbu:
                               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                               type: object
@@ -9527,7 +9904,6 @@ paths:
       summary: Crear un pago
       description: Crear un pago.
       requestBody:
-        required: false
         content:
           application/json:
             schema:
@@ -9598,6 +9974,7 @@ paths:
                 - description
                 - customer_id
                 - payment_method_id
+        required: false
       responses:
         '201':
           description: OK
@@ -9878,11 +10255,12 @@ paths:
                             enum:
                               - payment_method
                           type:
-                            description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                            description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                             type: string
                             example: card
                             enum:
                               - card
+                              - sepa_debit
                               - cbu
                           card:
                             description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -9961,6 +10339,47 @@ paths:
                                     type: string
                                     example: fiserv-argentina
                             title: Tarjeta de Crédito
+                          sepa_debit:
+                            description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                            type: object
+                            properties:
+                              bank:
+                                description: Banco.
+                                type: string
+                              country:
+                                description: País de la cuenta bancaria.
+                                type: string
+                                enum:
+                                  - NL
+                                  - ES
+                              fingerprint:
+                                description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                type: string
+                                example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Identificación extendida de la cuenta bancaria.
+                                type: object
+                              last_four_digits:
+                                description: Últimos cuatro dígitos de la cuenta bancaria.
+                                type: string
+                                example: '9876'
+                              providers:
+                                type: object
+                                properties:
+                                  available:
+                                    description: Procesadores disponibles para esta cuenta.
+                                    type: array
+                                    items:
+                                      type: string
+                                      properties: {}
+                                    example:
+                                      - santander-es
+                                  preferred:
+                                    description: Procesador preferido para esta cuenta.
+                                    type: string
+                                    example:
+                                      - santander-es
+                            title: CBU
                           cbu:
                             description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                             type: object
@@ -10485,11 +10904,12 @@ paths:
                             enum:
                               - payment_method
                           type:
-                            description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                            description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                             type: string
                             example: card
                             enum:
                               - card
+                              - sepa_debit
                               - cbu
                           card:
                             description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -10568,6 +10988,47 @@ paths:
                                     type: string
                                     example: fiserv-argentina
                             title: Tarjeta de Crédito
+                          sepa_debit:
+                            description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                            type: object
+                            properties:
+                              bank:
+                                description: Banco.
+                                type: string
+                              country:
+                                description: País de la cuenta bancaria.
+                                type: string
+                                enum:
+                                  - NL
+                                  - ES
+                              fingerprint:
+                                description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                type: string
+                                example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Identificación extendida de la cuenta bancaria.
+                                type: object
+                              last_four_digits:
+                                description: Últimos cuatro dígitos de la cuenta bancaria.
+                                type: string
+                                example: '9876'
+                              providers:
+                                type: object
+                                properties:
+                                  available:
+                                    description: Procesadores disponibles para esta cuenta.
+                                    type: array
+                                    items:
+                                      type: string
+                                      properties: {}
+                                    example:
+                                      - santander-es
+                                  preferred:
+                                    description: Procesador preferido para esta cuenta.
+                                    type: string
+                                    example:
+                                      - santander-es
+                            title: CBU
                           cbu:
                             description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                             type: object
@@ -10795,7 +11256,6 @@ paths:
             type: string
           example: PYdOz9bgVReV
       requestBody:
-        required: true
         content:
           application/json:
             schema:
@@ -10844,6 +11304,7 @@ paths:
                   properties: {}
               example:
                 description: New payment title
+        required: true
       responses:
         '200':
           description: Pago actualizado
@@ -11124,11 +11585,12 @@ paths:
                             enum:
                               - payment_method
                           type:
-                            description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                            description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                             type: string
                             example: card
                             enum:
                               - card
+                              - sepa_debit
                               - cbu
                           card:
                             description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -11207,6 +11669,47 @@ paths:
                                     type: string
                                     example: fiserv-argentina
                             title: Tarjeta de Crédito
+                          sepa_debit:
+                            description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                            type: object
+                            properties:
+                              bank:
+                                description: Banco.
+                                type: string
+                              country:
+                                description: País de la cuenta bancaria.
+                                type: string
+                                enum:
+                                  - NL
+                                  - ES
+                              fingerprint:
+                                description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                type: string
+                                example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Identificación extendida de la cuenta bancaria.
+                                type: object
+                              last_four_digits:
+                                description: Últimos cuatro dígitos de la cuenta bancaria.
+                                type: string
+                                example: '9876'
+                              providers:
+                                type: object
+                                properties:
+                                  available:
+                                    description: Procesadores disponibles para esta cuenta.
+                                    type: array
+                                    items:
+                                      type: string
+                                      properties: {}
+                                    example:
+                                      - santander-es
+                                  preferred:
+                                    description: Procesador preferido para esta cuenta.
+                                    type: string
+                                    example:
+                                      - santander-es
+                            title: CBU
                           cbu:
                             description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                             type: object
@@ -12068,11 +12571,12 @@ paths:
                               enum:
                                 - payment_method
                             type:
-                              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                               type: string
                               example: card
                               enum:
                                 - card
+                                - sepa_debit
                                 - cbu
                             card:
                               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -12151,6 +12655,47 @@ paths:
                                       type: string
                                       example: fiserv-argentina
                               title: Tarjeta de Crédito
+                            sepa_debit:
+                              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                              type: object
+                              properties:
+                                bank:
+                                  description: Banco.
+                                  type: string
+                                country:
+                                  description: País de la cuenta bancaria.
+                                  type: string
+                                  enum:
+                                    - NL
+                                    - ES
+                                fingerprint:
+                                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                  type: string
+                                  example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Identificación extendida de la cuenta bancaria.
+                                  type: object
+                                last_four_digits:
+                                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                                  type: string
+                                  example: '9876'
+                                providers:
+                                  type: object
+                                  properties:
+                                    available:
+                                      description: Procesadores disponibles para esta cuenta.
+                                      type: array
+                                      items:
+                                        type: string
+                                        properties: {}
+                                      example:
+                                        - santander-es
+                                    preferred:
+                                      description: Procesador preferido para esta cuenta.
+                                      type: string
+                                      example:
+                                        - santander-es
+                              title: CBU
                             cbu:
                               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                               type: object
@@ -13255,7 +13800,6 @@ paths:
       summary: Crear una sesión
       description: Crear una sesión
       requestBody:
-        required: false
         content:
           application/json:
             schema:
@@ -13401,6 +13945,7 @@ paths:
                 success_url: 'http://example.com/success'
                 amount: '200.50'
                 description: Summer school
+        required: false
       responses:
         '201':
           description: OK
@@ -14222,11 +14767,12 @@ paths:
                               enum:
                                 - payment_method
                             type:
-                              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                               type: string
                               example: card
                               enum:
                                 - card
+                                - sepa_debit
                                 - cbu
                             card:
                               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -14305,6 +14851,47 @@ paths:
                                       type: string
                                       example: fiserv-argentina
                               title: Tarjeta de Crédito
+                            sepa_debit:
+                              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                              type: object
+                              properties:
+                                bank:
+                                  description: Banco.
+                                  type: string
+                                country:
+                                  description: País de la cuenta bancaria.
+                                  type: string
+                                  enum:
+                                    - NL
+                                    - ES
+                                fingerprint:
+                                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                  type: string
+                                  example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Identificación extendida de la cuenta bancaria.
+                                  type: object
+                                last_four_digits:
+                                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                                  type: string
+                                  example: '9876'
+                                providers:
+                                  type: object
+                                  properties:
+                                    available:
+                                      description: Procesadores disponibles para esta cuenta.
+                                      type: array
+                                      items:
+                                        type: string
+                                        properties: {}
+                                      example:
+                                        - santander-es
+                                    preferred:
+                                      description: Procesador preferido para esta cuenta.
+                                      type: string
+                                      example:
+                                        - santander-es
+                              title: CBU
                             cbu:
                               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                               type: object
@@ -14582,7 +15169,6 @@ paths:
       summary: Crear una suscripción
       description: Crear una suscripción
       requestBody:
-        required: false
         content:
           application/json:
             encoding:
@@ -14677,6 +15263,7 @@ paths:
                 - customer_id
                 - description
                 - interval_unit
+        required: false
       responses:
         '201':
           description: OK
@@ -14924,11 +15511,12 @@ paths:
                             enum:
                               - payment_method
                           type:
-                            description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                            description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                             type: string
                             example: card
                             enum:
                               - card
+                              - sepa_debit
                               - cbu
                           card:
                             description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -15007,6 +15595,47 @@ paths:
                                     type: string
                                     example: fiserv-argentina
                             title: Tarjeta de Crédito
+                          sepa_debit:
+                            description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                            type: object
+                            properties:
+                              bank:
+                                description: Banco.
+                                type: string
+                              country:
+                                description: País de la cuenta bancaria.
+                                type: string
+                                enum:
+                                  - NL
+                                  - ES
+                              fingerprint:
+                                description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                type: string
+                                example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Identificación extendida de la cuenta bancaria.
+                                type: object
+                              last_four_digits:
+                                description: Últimos cuatro dígitos de la cuenta bancaria.
+                                type: string
+                                example: '9876'
+                              providers:
+                                type: object
+                                properties:
+                                  available:
+                                    description: Procesadores disponibles para esta cuenta.
+                                    type: array
+                                    items:
+                                      type: string
+                                      properties: {}
+                                    example:
+                                      - santander-es
+                                  preferred:
+                                    description: Procesador preferido para esta cuenta.
+                                    type: string
+                                    example:
+                                      - santander-es
+                            title: CBU
                           cbu:
                             description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                             type: object
@@ -15583,11 +16212,12 @@ paths:
                             enum:
                               - payment_method
                           type:
-                            description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                            description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                             type: string
                             example: card
                             enum:
                               - card
+                              - sepa_debit
                               - cbu
                           card:
                             description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -15666,6 +16296,47 @@ paths:
                                     type: string
                                     example: fiserv-argentina
                             title: Tarjeta de Crédito
+                          sepa_debit:
+                            description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                            type: object
+                            properties:
+                              bank:
+                                description: Banco.
+                                type: string
+                              country:
+                                description: País de la cuenta bancaria.
+                                type: string
+                                enum:
+                                  - NL
+                                  - ES
+                              fingerprint:
+                                description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                type: string
+                                example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Identificación extendida de la cuenta bancaria.
+                                type: object
+                              last_four_digits:
+                                description: Últimos cuatro dígitos de la cuenta bancaria.
+                                type: string
+                                example: '9876'
+                              providers:
+                                type: object
+                                properties:
+                                  available:
+                                    description: Procesadores disponibles para esta cuenta.
+                                    type: array
+                                    items:
+                                      type: string
+                                      properties: {}
+                                    example:
+                                      - santander-es
+                                  preferred:
+                                    description: Procesador preferido para esta cuenta.
+                                    type: string
+                                    example:
+                                      - santander-es
+                            title: CBU
                           cbu:
                             description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                             type: object
@@ -15899,7 +16570,6 @@ paths:
             type: string
           example: SBmX1MrZ77Mwq3
       requestBody:
-        required: false
         content:
           application/json:
             encoding:
@@ -15983,6 +16653,7 @@ paths:
                 day_of_month: 1
                 metadata:
                   some: metadata
+        required: false
       responses:
         '200':
           description: Subscription updated successfuly.
@@ -16295,11 +16966,12 @@ paths:
                             enum:
                               - payment_method
                           type:
-                            description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                            description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                             type: string
                             example: card
                             enum:
                               - card
+                              - sepa_debit
                               - cbu
                           card:
                             description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -16378,6 +17050,47 @@ paths:
                                     type: string
                                     example: fiserv-argentina
                             title: Tarjeta de Crédito
+                          sepa_debit:
+                            description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                            type: object
+                            properties:
+                              bank:
+                                description: Banco.
+                                type: string
+                              country:
+                                description: País de la cuenta bancaria.
+                                type: string
+                                enum:
+                                  - NL
+                                  - ES
+                              fingerprint:
+                                description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                type: string
+                                example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Identificación extendida de la cuenta bancaria.
+                                type: object
+                              last_four_digits:
+                                description: Últimos cuatro dígitos de la cuenta bancaria.
+                                type: string
+                                example: '9876'
+                              providers:
+                                type: object
+                                properties:
+                                  available:
+                                    description: Procesadores disponibles para esta cuenta.
+                                    type: array
+                                    items:
+                                      type: string
+                                      properties: {}
+                                    example:
+                                      - santander-es
+                                  preferred:
+                                    description: Procesador preferido para esta cuenta.
+                                    type: string
+                                    example:
+                                      - santander-es
+                            title: CBU
                           cbu:
                             description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                             type: object
@@ -16888,11 +17601,12 @@ paths:
                             enum:
                               - payment_method
                           type:
-                            description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                            description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                             type: string
                             example: card
                             enum:
                               - card
+                              - sepa_debit
                               - cbu
                           card:
                             description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -16971,6 +17685,47 @@ paths:
                                     type: string
                                     example: fiserv-argentina
                             title: Tarjeta de Crédito
+                          sepa_debit:
+                            description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                            type: object
+                            properties:
+                              bank:
+                                description: Banco.
+                                type: string
+                              country:
+                                description: País de la cuenta bancaria.
+                                type: string
+                                enum:
+                                  - NL
+                                  - ES
+                              fingerprint:
+                                description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                type: string
+                                example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Identificación extendida de la cuenta bancaria.
+                                type: object
+                              last_four_digits:
+                                description: Últimos cuatro dígitos de la cuenta bancaria.
+                                type: string
+                                example: '9876'
+                              providers:
+                                type: object
+                                properties:
+                                  available:
+                                    description: Procesadores disponibles para esta cuenta.
+                                    type: array
+                                    items:
+                                      type: string
+                                      properties: {}
+                                    example:
+                                      - santander-es
+                                  preferred:
+                                    description: Procesador preferido para esta cuenta.
+                                    type: string
+                                    example:
+                                      - santander-es
+                            title: CBU
                           cbu:
                             description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                             type: object
@@ -17443,11 +18198,12 @@ paths:
                             enum:
                               - payment_method
                           type:
-                            description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                            description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                             type: string
                             example: card
                             enum:
                               - card
+                              - sepa_debit
                               - cbu
                           card:
                             description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -17526,6 +18282,47 @@ paths:
                                     type: string
                                     example: fiserv-argentina
                             title: Tarjeta de Crédito
+                          sepa_debit:
+                            description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                            type: object
+                            properties:
+                              bank:
+                                description: Banco.
+                                type: string
+                              country:
+                                description: País de la cuenta bancaria.
+                                type: string
+                                enum:
+                                  - NL
+                                  - ES
+                              fingerprint:
+                                description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                type: string
+                                example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Identificación extendida de la cuenta bancaria.
+                                type: object
+                              last_four_digits:
+                                description: Últimos cuatro dígitos de la cuenta bancaria.
+                                type: string
+                                example: '9876'
+                              providers:
+                                type: object
+                                properties:
+                                  available:
+                                    description: Procesadores disponibles para esta cuenta.
+                                    type: array
+                                    items:
+                                      type: string
+                                      properties: {}
+                                    example:
+                                      - santander-es
+                                  preferred:
+                                    description: Procesador preferido para esta cuenta.
+                                    type: string
+                                    example:
+                                      - santander-es
+                            title: CBU
                           cbu:
                             description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                             type: object
@@ -18004,11 +18801,12 @@ paths:
                             enum:
                               - payment_method
                           type:
-                            description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                            description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                             type: string
                             example: card
                             enum:
                               - card
+                              - sepa_debit
                               - cbu
                           card:
                             description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -18087,6 +18885,47 @@ paths:
                                     type: string
                                     example: fiserv-argentina
                             title: Tarjeta de Crédito
+                          sepa_debit:
+                            description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                            type: object
+                            properties:
+                              bank:
+                                description: Banco.
+                                type: string
+                              country:
+                                description: País de la cuenta bancaria.
+                                type: string
+                                enum:
+                                  - NL
+                                  - ES
+                              fingerprint:
+                                description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                type: string
+                                example: 8712yh2uihiu1123sxas
+                              identification:
+                                description: Identificación extendida de la cuenta bancaria.
+                                type: object
+                              last_four_digits:
+                                description: Últimos cuatro dígitos de la cuenta bancaria.
+                                type: string
+                                example: '9876'
+                              providers:
+                                type: object
+                                properties:
+                                  available:
+                                    description: Procesadores disponibles para esta cuenta.
+                                    type: array
+                                    items:
+                                      type: string
+                                      properties: {}
+                                    example:
+                                      - santander-es
+                                  preferred:
+                                    description: Procesador preferido para esta cuenta.
+                                    type: string
+                                    example:
+                                      - santander-es
+                            title: CBU
                           cbu:
                             description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                             type: object
@@ -18582,11 +19421,12 @@ paths:
                               enum:
                                 - payment_method
                             type:
-                              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+                              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
                               type: string
                               example: card
                               enum:
                                 - card
+                                - sepa_debit
                                 - cbu
                             card:
                               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -18665,6 +19505,47 @@ paths:
                                       type: string
                                       example: fiserv-argentina
                               title: Tarjeta de Crédito
+                            sepa_debit:
+                              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+                              type: object
+                              properties:
+                                bank:
+                                  description: Banco.
+                                  type: string
+                                country:
+                                  description: País de la cuenta bancaria.
+                                  type: string
+                                  enum:
+                                    - NL
+                                    - ES
+                                fingerprint:
+                                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                                  type: string
+                                  example: 8712yh2uihiu1123sxas
+                                identification:
+                                  description: Identificación extendida de la cuenta bancaria.
+                                  type: object
+                                last_four_digits:
+                                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                                  type: string
+                                  example: '9876'
+                                providers:
+                                  type: object
+                                  properties:
+                                    available:
+                                      description: Procesadores disponibles para esta cuenta.
+                                      type: array
+                                      items:
+                                        type: string
+                                        properties: {}
+                                      example:
+                                        - santander-es
+                                    preferred:
+                                      description: Procesador preferido para esta cuenta.
+                                      type: string
+                                      example:
+                                        - santander-es
+                              title: CBU
                             cbu:
                               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
                               type: object
@@ -19296,7 +20177,6 @@ paths:
       summary: Crear un webhook
       description: Crear un webhook.
       requestBody:
-        required: true
         content:
           application/json:
             encoding:
@@ -19377,6 +20257,7 @@ paths:
               additionalProperties: false
               required:
                 - url
+        required: true
       responses:
         '201':
           description: OK
@@ -19779,7 +20660,6 @@ paths:
             type: string
           example: WHq4VzyAzDgB
       requestBody:
-        required: false
         content:
           application/json:
             schema:
@@ -19789,6 +20669,7 @@ paths:
                   type: string
               example:
                 url: 'http://somesite.com'
+        required: false
       responses:
         '200':
           description: OK
@@ -21050,6 +21931,47 @@ components:
               type: string
               example: fiserv-argentina
       title: Tarjeta de Crédito
+    Sepa_debit:
+      description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+      type: object
+      properties:
+        bank:
+          description: Banco.
+          type: string
+        country:
+          description: País de la cuenta bancaria.
+          type: string
+          enum:
+            - NL
+            - ES
+        fingerprint:
+          description: Huella digital única para este número de cuenta bancaria de su cuenta.
+          type: string
+          example: 8712yh2uihiu1123sxas
+        identification:
+          description: Identificación extendida de la cuenta bancaria.
+          type: object
+        last_four_digits:
+          description: Últimos cuatro dígitos de la cuenta bancaria.
+          type: string
+          example: '9876'
+        providers:
+          type: object
+          properties:
+            available:
+              description: Procesadores disponibles para esta cuenta.
+              type: array
+              items:
+                type: string
+                properties: {}
+              example:
+                - santander-es
+            preferred:
+              description: Procesador preferido para esta cuenta.
+              type: string
+              example:
+                - santander-es
+      title: CBU
     CBU:
       description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
       type: object
@@ -21103,11 +22025,12 @@ components:
           enum:
             - payment_method
         type:
-          description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+          description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
           type: string
           example: card
           enum:
             - card
+            - sepa_debit
             - cbu
         card:
           description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -21186,6 +22109,47 @@ components:
                   type: string
                   example: fiserv-argentina
           title: Tarjeta de Crédito
+        sepa_debit:
+          description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+          type: object
+          properties:
+            bank:
+              description: Banco.
+              type: string
+            country:
+              description: País de la cuenta bancaria.
+              type: string
+              enum:
+                - NL
+                - ES
+            fingerprint:
+              description: Huella digital única para este número de cuenta bancaria de su cuenta.
+              type: string
+              example: 8712yh2uihiu1123sxas
+            identification:
+              description: Identificación extendida de la cuenta bancaria.
+              type: object
+            last_four_digits:
+              description: Últimos cuatro dígitos de la cuenta bancaria.
+              type: string
+              example: '9876'
+            providers:
+              type: object
+              properties:
+                available:
+                  description: Procesadores disponibles para esta cuenta.
+                  type: array
+                  items:
+                    type: string
+                    properties: {}
+                  example:
+                    - santander-es
+                preferred:
+                  description: Procesador preferido para esta cuenta.
+                  type: string
+                  example:
+                    - santander-es
+          title: CBU
         cbu:
           description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
           type: object
@@ -21416,11 +22380,12 @@ components:
               enum:
                 - payment_method
             type:
-              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
               type: string
               example: card
               enum:
                 - card
+                - sepa_debit
                 - cbu
             card:
               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -21499,6 +22464,47 @@ components:
                       type: string
                       example: fiserv-argentina
               title: Tarjeta de Crédito
+            sepa_debit:
+              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+              type: object
+              properties:
+                bank:
+                  description: Banco.
+                  type: string
+                country:
+                  description: País de la cuenta bancaria.
+                  type: string
+                  enum:
+                    - NL
+                    - ES
+                fingerprint:
+                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                  type: string
+                  example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Identificación extendida de la cuenta bancaria.
+                  type: object
+                last_four_digits:
+                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                  type: string
+                  example: '9876'
+                providers:
+                  type: object
+                  properties:
+                    available:
+                      description: Procesadores disponibles para esta cuenta.
+                      type: array
+                      items:
+                        type: string
+                        properties: {}
+                      example:
+                        - santander-es
+                    preferred:
+                      description: Procesador preferido para esta cuenta.
+                      type: string
+                      example:
+                        - santander-es
+              title: CBU
             cbu:
               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
               type: object
@@ -21908,11 +22914,12 @@ components:
               enum:
                 - payment_method
             type:
-              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
               type: string
               example: card
               enum:
                 - card
+                - sepa_debit
                 - cbu
             card:
               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -21991,6 +22998,47 @@ components:
                       type: string
                       example: fiserv-argentina
               title: Tarjeta de Crédito
+            sepa_debit:
+              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+              type: object
+              properties:
+                bank:
+                  description: Banco.
+                  type: string
+                country:
+                  description: País de la cuenta bancaria.
+                  type: string
+                  enum:
+                    - NL
+                    - ES
+                fingerprint:
+                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                  type: string
+                  example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Identificación extendida de la cuenta bancaria.
+                  type: object
+                last_four_digits:
+                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                  type: string
+                  example: '9876'
+                providers:
+                  type: object
+                  properties:
+                    available:
+                      description: Procesadores disponibles para esta cuenta.
+                      type: array
+                      items:
+                        type: string
+                        properties: {}
+                      example:
+                        - santander-es
+                    preferred:
+                      description: Procesador preferido para esta cuenta.
+                      type: string
+                      example:
+                        - santander-es
+              title: CBU
             cbu:
               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
               type: object
@@ -22565,11 +23613,12 @@ components:
               enum:
                 - payment_method
             type:
-              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
               type: string
               example: card
               enum:
                 - card
+                - sepa_debit
                 - cbu
             card:
               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -22648,6 +23697,47 @@ components:
                       type: string
                       example: fiserv-argentina
               title: Tarjeta de Crédito
+            sepa_debit:
+              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+              type: object
+              properties:
+                bank:
+                  description: Banco.
+                  type: string
+                country:
+                  description: País de la cuenta bancaria.
+                  type: string
+                  enum:
+                    - NL
+                    - ES
+                fingerprint:
+                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                  type: string
+                  example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Identificación extendida de la cuenta bancaria.
+                  type: object
+                last_four_digits:
+                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                  type: string
+                  example: '9876'
+                providers:
+                  type: object
+                  properties:
+                    available:
+                      description: Procesadores disponibles para esta cuenta.
+                      type: array
+                      items:
+                        type: string
+                        properties: {}
+                      example:
+                        - santander-es
+                    preferred:
+                      description: Procesador preferido para esta cuenta.
+                      type: string
+                      example:
+                        - santander-es
+              title: CBU
             cbu:
               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
               type: object
@@ -23539,11 +24629,12 @@ components:
               enum:
                 - payment_method
             type:
-              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
               type: string
               example: card
               enum:
                 - card
+                - sepa_debit
                 - cbu
             card:
               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -23622,6 +24713,47 @@ components:
                       type: string
                       example: fiserv-argentina
               title: Tarjeta de Crédito
+            sepa_debit:
+              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+              type: object
+              properties:
+                bank:
+                  description: Banco.
+                  type: string
+                country:
+                  description: País de la cuenta bancaria.
+                  type: string
+                  enum:
+                    - NL
+                    - ES
+                fingerprint:
+                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                  type: string
+                  example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Identificación extendida de la cuenta bancaria.
+                  type: object
+                last_four_digits:
+                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                  type: string
+                  example: '9876'
+                providers:
+                  type: object
+                  properties:
+                    available:
+                      description: Procesadores disponibles para esta cuenta.
+                      type: array
+                      items:
+                        type: string
+                        properties: {}
+                      example:
+                        - santander-es
+                    preferred:
+                      description: Procesador preferido para esta cuenta.
+                      type: string
+                      example:
+                        - santander-es
+              title: CBU
             cbu:
               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
               type: object
@@ -24010,11 +25142,12 @@ components:
               enum:
                 - payment_method
             type:
-              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
               type: string
               example: card
               enum:
                 - card
+                - sepa_debit
                 - cbu
             card:
               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -24093,6 +25226,47 @@ components:
                       type: string
                       example: fiserv-argentina
               title: Tarjeta de Crédito
+            sepa_debit:
+              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+              type: object
+              properties:
+                bank:
+                  description: Banco.
+                  type: string
+                country:
+                  description: País de la cuenta bancaria.
+                  type: string
+                  enum:
+                    - NL
+                    - ES
+                fingerprint:
+                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                  type: string
+                  example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Identificación extendida de la cuenta bancaria.
+                  type: object
+                last_four_digits:
+                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                  type: string
+                  example: '9876'
+                providers:
+                  type: object
+                  properties:
+                    available:
+                      description: Procesadores disponibles para esta cuenta.
+                      type: array
+                      items:
+                        type: string
+                        properties: {}
+                      example:
+                        - santander-es
+                    preferred:
+                      description: Procesador preferido para esta cuenta.
+                      type: string
+                      example:
+                        - santander-es
+              title: CBU
             cbu:
               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
               type: object
@@ -24217,11 +25391,12 @@ components:
           enum:
             - payment_method
         type:
-          description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+          description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
           type: string
           example: card
           enum:
             - card
+            - sepa_debit
             - cbu
         card:
           description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -24300,6 +25475,47 @@ components:
                   type: string
                   example: fiserv-argentina
           title: Tarjeta de Crédito
+        sepa_debit:
+          description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+          type: object
+          properties:
+            bank:
+              description: Banco.
+              type: string
+            country:
+              description: País de la cuenta bancaria.
+              type: string
+              enum:
+                - NL
+                - ES
+            fingerprint:
+              description: Huella digital única para este número de cuenta bancaria de su cuenta.
+              type: string
+              example: 8712yh2uihiu1123sxas
+            identification:
+              description: Identificación extendida de la cuenta bancaria.
+              type: object
+            last_four_digits:
+              description: Últimos cuatro dígitos de la cuenta bancaria.
+              type: string
+              example: '9876'
+            providers:
+              type: object
+              properties:
+                available:
+                  description: Procesadores disponibles para esta cuenta.
+                  type: array
+                  items:
+                    type: string
+                    properties: {}
+                  example:
+                    - santander-es
+                preferred:
+                  description: Procesador preferido para esta cuenta.
+                  type: string
+                  example:
+                    - santander-es
+          title: CBU
         cbu:
           description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
           type: object
@@ -24833,11 +26049,12 @@ components:
               enum:
                 - payment_method
             type:
-              description: 'Tipo de medio de pago. Uno de: `cbu`, `card`.'
+              description: 'Tipo de medio de pago. Uno de: `card`, `sepa_debit` or `cbu`.'
               type: string
               example: card
               enum:
                 - card
+                - sepa_debit
                 - cbu
             card:
               description: Este objeto representa una tarjeta de crédito de su cuenta.
@@ -24916,6 +26133,47 @@ components:
                       type: string
                       example: fiserv-argentina
               title: Tarjeta de Crédito
+            sepa_debit:
+              description: 'Este objeto representa el método de pago a través de débitos SEPA, utlizado para debitar cuentas bancarias en la región europea (SEPA).'
+              type: object
+              properties:
+                bank:
+                  description: Banco.
+                  type: string
+                country:
+                  description: País de la cuenta bancaria.
+                  type: string
+                  enum:
+                    - NL
+                    - ES
+                fingerprint:
+                  description: Huella digital única para este número de cuenta bancaria de su cuenta.
+                  type: string
+                  example: 8712yh2uihiu1123sxas
+                identification:
+                  description: Identificación extendida de la cuenta bancaria.
+                  type: object
+                last_four_digits:
+                  description: Últimos cuatro dígitos de la cuenta bancaria.
+                  type: string
+                  example: '9876'
+                providers:
+                  type: object
+                  properties:
+                    available:
+                      description: Procesadores disponibles para esta cuenta.
+                      type: array
+                      items:
+                        type: string
+                        properties: {}
+                      example:
+                        - santander-es
+                    preferred:
+                      description: Procesador preferido para esta cuenta.
+                      type: string
+                      example:
+                        - santander-es
+              title: CBU
             cbu:
               description: Este objeto representa una cuenta bancaria (CBU) de su cuenta.
               type: object

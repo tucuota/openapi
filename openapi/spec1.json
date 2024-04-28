@@ -393,7 +393,6 @@
         "summary": "Create a customer",
         "description": "Create a customer.",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -479,7 +478,8 @@
                 "additionalProperties": false
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -923,7 +923,6 @@
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -1003,7 +1002,8 @@
                 "additionalProperties": false
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2963,7 +2963,6 @@
         "summary": "Create a import",
         "description": "Create a import.",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -3021,7 +3020,8 @@
                 "additionalProperties": false
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -4754,11 +4754,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Type of paymet method. One of: cbu, card.",
+                                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -4861,8 +4862,64 @@
                                 },
                                 "title": "Credit Card"
                               },
+                              "sepa_debit": {
+                                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Bank.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "Bank account country.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Unique fingerprint for this bank account number of your account.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Enhanced bank account identification.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Bank account last four digits.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Available gateways for this account.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Preferred gateway for this account.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
+                              },
                               "cbu": {
-                                "description": "This object represents a CBU bak account of your account.",
+                                "description": "This object represents a CBU bank account of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -5106,7 +5163,6 @@
         "summary": "Create a mandate",
         "description": "Create a mandate.",
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -5129,7 +5185,8 @@
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "201": {
@@ -5428,11 +5485,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Type of paymet method. One of: cbu, card.",
+                              "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -5535,8 +5593,64 @@
                               },
                               "title": "Credit Card"
                             },
+                            "sepa_debit": {
+                              "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Enhanced bank account identification.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Available gateways for this account.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Preferred gateway for this account.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
+                            },
                             "cbu": {
-                              "description": "This object represents a CBU bak account of your account.",
+                              "description": "This object represents a CBU bank account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -6060,11 +6174,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Type of paymet method. One of: cbu, card.",
+                                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -6167,8 +6282,64 @@
                                 },
                                 "title": "Credit Card"
                               },
+                              "sepa_debit": {
+                                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Bank.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "Bank account country.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Unique fingerprint for this bank account number of your account.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Enhanced bank account identification.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Bank account last four digits.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Available gateways for this account.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Preferred gateway for this account.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
+                              },
                               "cbu": {
-                                "description": "This object represents a CBU bak account of your account.",
+                                "description": "This object represents a CBU bank account of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -6529,11 +6700,12 @@
                             ]
                           },
                           "type": {
-                            "description": "Type of paymet method. One of: cbu, card.",
+                            "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                             "type": "string",
                             "example": "card",
                             "enum": [
                               "card",
+                              "sepa_debit",
                               "cbu"
                             ]
                           },
@@ -6636,8 +6808,64 @@
                             },
                             "title": "Credit Card"
                           },
+                          "sepa_debit": {
+                            "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                            "type": "object",
+                            "properties": {
+                              "bank": {
+                                "description": "Bank.",
+                                "type": "string"
+                              },
+                              "country": {
+                                "description": "Bank account country.",
+                                "type": "string",
+                                "enum": [
+                                  "NL",
+                                  "ES"
+                                ]
+                              },
+                              "fingerprint": {
+                                "description": "Unique fingerprint for this bank account number of your account.",
+                                "type": "string",
+                                "example": "8712yh2uihiu1123sxas"
+                              },
+                              "identification": {
+                                "description": "Enhanced bank account identification.",
+                                "type": "object"
+                              },
+                              "last_four_digits": {
+                                "description": "Bank account last four digits.",
+                                "type": "string",
+                                "example": "9876"
+                              },
+                              "providers": {
+                                "type": "object",
+                                "properties": {
+                                  "available": {
+                                    "description": "Available gateways for this account.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "properties": {}
+                                    },
+                                    "example": [
+                                      "santander-es"
+                                    ]
+                                  },
+                                  "preferred": {
+                                    "description": "Preferred gateway for this account.",
+                                    "type": "string",
+                                    "example": [
+                                      "santander-es"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "title": "CBU"
+                          },
                           "cbu": {
-                            "description": "This object represents a CBU bak account of your account.",
+                            "description": "This object represents a CBU bank account of your account.",
                             "type": "object",
                             "properties": {
                               "bank": {
@@ -6873,34 +7101,34 @@
         "summary": "Create a payment method",
         "description": "Create a payment method",
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "type": {
-                    "description": "One of `card` or `cbu`.",
+                    "description": "One of `card`, `sepa_debit` or `cbu`.",
                     "type": "string",
                     "enum": [
                       "card",
+                      "sepa_debit",
                       "cbu"
                     ]
                   },
                   "card": {
-                    "description": "This object represents a credit card of your account.",
+                    "description": "This object represents a card of your account.",
                     "type": "object",
                     "properties": {
                       "number": {
-                        "description": "Credit's card number.",
+                        "description": "Card number.",
                         "type": "string"
                       },
                       "expiration_year": {
-                        "description": "Credit's card expiration year.",
+                        "description": "Card expiration year.",
                         "type": "number"
                       },
                       "expiration_month": {
-                        "description": "Credit's card expiration month.",
+                        "description": "Card expiration month.",
                         "type": "number"
                       },
                       "security_code": {
@@ -6908,10 +7136,10 @@
                         "type": "string"
                       }
                     },
-                    "title": "Credit Card"
+                    "title": "Card"
                   },
                   "cbu": {
-                    "description": "This object represents a CBU bak account of your account.",
+                    "description": "This object represents a CBU bank account of your account.",
                     "type": "object",
                     "properties": {
                       "number": {
@@ -6928,12 +7156,27 @@
                       }
                     },
                     "title": "CBU"
+                  },
+                  "sepa_debit": {
+                    "description": "This object represents a direct debit to a IBAN account for the SEPA Region.",
+                    "type": "object",
+                    "properties": {
+                      "iban": {
+                        "description": "International Bank account code IBAN",
+                        "type": "string"
+                      }
+                    },
+                    "title": "Sepa Debit (Iban)"
+                  },
+                  "strict": {
+                    "description": "If true, the payment_method won't be created if the account doesn't have an available gateway to process this type of payment_method.",
+                    "type": "boolean"
                   }
                 }
               },
               "examples": {
                 "card": {
-                  "summary": "Store a Credit Card",
+                  "summary": "Store a Card",
                   "value": {
                     "type": "card",
                     "card": {
@@ -6941,6 +7184,16 @@
                       "expiration_year": 2032,
                       "expiration_month": 5,
                       "security_code": "123"
+                    },
+                    "strict": true
+                  }
+                },
+                "sepa_debit": {
+                  "summary": "Store a Sepa Debit Payment Method",
+                  "value": {
+                    "type": "sepa_debit",
+                    "sepa_debit": {
+                      "iban": "ES9121000418450200051332"
                     }
                   }
                 },
@@ -6974,7 +7227,8 @@
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "201": {
@@ -7000,11 +7254,12 @@
                           ]
                         },
                         "type": {
-                          "description": "Type of paymet method. One of: cbu, card.",
+                          "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                           "type": "string",
                           "example": "card",
                           "enum": [
                             "card",
+                            "sepa_debit",
                             "cbu"
                           ]
                         },
@@ -7107,8 +7362,64 @@
                           },
                           "title": "Credit Card"
                         },
+                        "sepa_debit": {
+                          "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                          "type": "object",
+                          "properties": {
+                            "bank": {
+                              "description": "Bank.",
+                              "type": "string"
+                            },
+                            "country": {
+                              "description": "Bank account country.",
+                              "type": "string",
+                              "enum": [
+                                "NL",
+                                "ES"
+                              ]
+                            },
+                            "fingerprint": {
+                              "description": "Unique fingerprint for this bank account number of your account.",
+                              "type": "string",
+                              "example": "8712yh2uihiu1123sxas"
+                            },
+                            "identification": {
+                              "description": "Enhanced bank account identification.",
+                              "type": "object"
+                            },
+                            "last_four_digits": {
+                              "description": "Bank account last four digits.",
+                              "type": "string",
+                              "example": "9876"
+                            },
+                            "providers": {
+                              "type": "object",
+                              "properties": {
+                                "available": {
+                                  "description": "Available gateways for this account.",
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "properties": {}
+                                  },
+                                  "example": [
+                                    "santander-es"
+                                  ]
+                                },
+                                "preferred": {
+                                  "description": "Preferred gateway for this account.",
+                                  "type": "string",
+                                  "example": [
+                                    "santander-es"
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "title": "CBU"
+                        },
                         "cbu": {
-                          "description": "This object represents a CBU bak account of your account.",
+                          "description": "This object represents a CBU bank account of your account.",
                           "type": "object",
                           "properties": {
                             "bank": {
@@ -7231,6 +7542,29 @@
                         "object": "payment_method",
                         "type": "card",
                         "updated_at": "2022-02-01T23:13:04-03:00"
+                      }
+                    }
+                  },
+                  "sepa_debit-enhanced": {
+                    "summary": "SEPA Debit Payment Method for Iban Accounts",
+                    "value": {
+                      "data": {
+                        "id": "PMja4OP0e4WR",
+                        "object": "payment_method",
+                        "type": "sepa_debit",
+                        "sepa_debit": {
+                          "bank": "CAIXABANK",
+                          "country": "ES",
+                          "last_four_digits": "1332",
+                          "providers": {
+                            "available": [],
+                            "preferred": null
+                          }
+                        },
+                        "created_at": "2024-04-28T17:40:01-03:00",
+                        "livemode": true,
+                        "metadata": null,
+                        "updated_at": "2024-04-28T17:40:01-03:00"
                       }
                     }
                   },
@@ -7423,11 +7757,12 @@
                           ]
                         },
                         "type": {
-                          "description": "Type of paymet method. One of: cbu, card.",
+                          "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                           "type": "string",
                           "example": "card",
                           "enum": [
                             "card",
+                            "sepa_debit",
                             "cbu"
                           ]
                         },
@@ -7530,8 +7865,64 @@
                           },
                           "title": "Credit Card"
                         },
+                        "sepa_debit": {
+                          "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                          "type": "object",
+                          "properties": {
+                            "bank": {
+                              "description": "Bank.",
+                              "type": "string"
+                            },
+                            "country": {
+                              "description": "Bank account country.",
+                              "type": "string",
+                              "enum": [
+                                "NL",
+                                "ES"
+                              ]
+                            },
+                            "fingerprint": {
+                              "description": "Unique fingerprint for this bank account number of your account.",
+                              "type": "string",
+                              "example": "8712yh2uihiu1123sxas"
+                            },
+                            "identification": {
+                              "description": "Enhanced bank account identification.",
+                              "type": "object"
+                            },
+                            "last_four_digits": {
+                              "description": "Bank account last four digits.",
+                              "type": "string",
+                              "example": "9876"
+                            },
+                            "providers": {
+                              "type": "object",
+                              "properties": {
+                                "available": {
+                                  "description": "Available gateways for this account.",
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "properties": {}
+                                  },
+                                  "example": [
+                                    "santander-es"
+                                  ]
+                                },
+                                "preferred": {
+                                  "description": "Preferred gateway for this account.",
+                                  "type": "string",
+                                  "example": [
+                                    "santander-es"
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "title": "CBU"
+                        },
                         "cbu": {
-                          "description": "This object represents a CBU bak account of your account.",
+                          "description": "This object represents a CBU bank account of your account.",
                           "type": "object",
                           "properties": {
                             "bank": {
@@ -7743,11 +8134,12 @@
                             ]
                           },
                           "type": {
-                            "description": "Type of paymet method. One of: cbu, card.",
+                            "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                             "type": "string",
                             "example": "card",
                             "enum": [
                               "card",
+                              "sepa_debit",
                               "cbu"
                             ]
                           },
@@ -7850,8 +8242,64 @@
                             },
                             "title": "Credit Card"
                           },
+                          "sepa_debit": {
+                            "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                            "type": "object",
+                            "properties": {
+                              "bank": {
+                                "description": "Bank.",
+                                "type": "string"
+                              },
+                              "country": {
+                                "description": "Bank account country.",
+                                "type": "string",
+                                "enum": [
+                                  "NL",
+                                  "ES"
+                                ]
+                              },
+                              "fingerprint": {
+                                "description": "Unique fingerprint for this bank account number of your account.",
+                                "type": "string",
+                                "example": "8712yh2uihiu1123sxas"
+                              },
+                              "identification": {
+                                "description": "Enhanced bank account identification.",
+                                "type": "object"
+                              },
+                              "last_four_digits": {
+                                "description": "Bank account last four digits.",
+                                "type": "string",
+                                "example": "9876"
+                              },
+                              "providers": {
+                                "type": "object",
+                                "properties": {
+                                  "available": {
+                                    "description": "Available gateways for this account.",
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "properties": {}
+                                    },
+                                    "example": [
+                                      "santander-es"
+                                    ]
+                                  },
+                                  "preferred": {
+                                    "description": "Preferred gateway for this account.",
+                                    "type": "string",
+                                    "example": [
+                                      "santander-es"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "title": "CBU"
+                          },
                           "cbu": {
-                            "description": "This object represents a CBU bak account of your account.",
+                            "description": "This object represents a CBU bank account of your account.",
                             "type": "object",
                             "properties": {
                               "bank": {
@@ -8514,11 +8962,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Type of paymet method. One of: cbu, card.",
+                                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -8621,8 +9070,64 @@
                                 },
                                 "title": "Credit Card"
                               },
+                              "sepa_debit": {
+                                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Bank.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "Bank account country.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Unique fingerprint for this bank account number of your account.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Enhanced bank account identification.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Bank account last four digits.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Available gateways for this account.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Preferred gateway for this account.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
+                              },
                               "cbu": {
-                                "description": "This object represents a CBU bak account of your account.",
+                                "description": "This object represents a CBU bank account of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -8863,7 +9368,6 @@
         "summary": "Create a payment",
         "description": "Create a payment.",
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -8946,7 +9450,8 @@
                 ]
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "201": {
@@ -9286,11 +9791,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Type of paymet method. One of: cbu, card.",
+                              "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -9393,8 +9899,64 @@
                               },
                               "title": "Credit Card"
                             },
+                            "sepa_debit": {
+                              "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Enhanced bank account identification.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Available gateways for this account.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Preferred gateway for this account.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
+                            },
                             "cbu": {
-                              "description": "This object represents a CBU bak account of your account.",
+                              "description": "This object represents a CBU bank account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -9916,11 +10478,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Type of paymet method. One of: cbu, card.",
+                              "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -10023,8 +10586,64 @@
                               },
                               "title": "Credit Card"
                             },
+                            "sepa_debit": {
+                              "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Enhanced bank account identification.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Available gateways for this account.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Preferred gateway for this account.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
+                            },
                             "cbu": {
-                              "description": "This object represents a CBU bak account of your account.",
+                              "description": "This object represents a CBU bank account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -10228,7 +10847,6 @@
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -10287,7 +10905,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -10627,11 +11246,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Type of paymet method. One of: cbu, card.",
+                              "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -10734,8 +11354,64 @@
                               },
                               "title": "Credit Card"
                             },
+                            "sepa_debit": {
+                              "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Enhanced bank account identification.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Available gateways for this account.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Preferred gateway for this account.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
+                            },
                             "cbu": {
-                              "description": "This object represents a CBU bak account of your account.",
+                              "description": "This object represents a CBU bank account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -11449,11 +12125,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Type of paymet method. One of: cbu, card.",
+                                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -11556,8 +12233,64 @@
                                 },
                                 "title": "Credit Card"
                               },
+                              "sepa_debit": {
+                                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Bank.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "Bank account country.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Unique fingerprint for this bank account number of your account.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Enhanced bank account identification.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Bank account last four digits.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Available gateways for this account.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Preferred gateway for this account.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
+                              },
                               "cbu": {
-                                "description": "This object represents a CBU bak account of your account.",
+                                "description": "This object represents a CBU bank account of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -12543,7 +13276,6 @@
         "summary": "Create a sesssion",
         "description": "Create a session",
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -12722,7 +13454,8 @@
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "201": {
@@ -13549,11 +14282,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Type of paymet method. One of: cbu, card.",
+                                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -13656,8 +14390,64 @@
                                 },
                                 "title": "Credit Card"
                               },
+                              "sepa_debit": {
+                                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Bank.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "Bank account country.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Unique fingerprint for this bank account number of your account.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Enhanced bank account identification.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Bank account last four digits.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Available gateways for this account.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Preferred gateway for this account.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
+                              },
                               "cbu": {
-                                "description": "This object represents a CBU bak account of your account.",
+                                "description": "This object represents a CBU bank account of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -13904,7 +14694,6 @@
         "summary": "Create a subscription",
         "description": "Create a subscription",
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "encoding": {
@@ -14012,7 +14801,8 @@
                 ]
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "201": {
@@ -14310,11 +15100,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Type of paymet method. One of: cbu, card.",
+                              "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -14417,8 +15208,64 @@
                               },
                               "title": "Credit Card"
                             },
+                            "sepa_debit": {
+                              "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Enhanced bank account identification.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Available gateways for this account.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Preferred gateway for this account.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
+                            },
                             "cbu": {
-                              "description": "This object represents a CBU bak account of your account.",
+                              "description": "This object represents a CBU bank account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -14991,11 +15838,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Type of paymet method. One of: cbu, card.",
+                              "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -15098,8 +15946,64 @@
                               },
                               "title": "Credit Card"
                             },
+                            "sepa_debit": {
+                              "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Enhanced bank account identification.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Available gateways for this account.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Preferred gateway for this account.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
+                            },
                             "cbu": {
-                              "description": "This object represents a CBU bak account of your account.",
+                              "description": "This object represents a CBU bank account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -15308,7 +16212,6 @@
           }
         ],
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "encoding": {
@@ -15405,7 +16308,8 @@
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "200": {
@@ -15776,11 +16680,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Type of paymet method. One of: cbu, card.",
+                              "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -15883,8 +16788,64 @@
                               },
                               "title": "Credit Card"
                             },
+                            "sepa_debit": {
+                              "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Enhanced bank account identification.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Available gateways for this account.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Preferred gateway for this account.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
+                            },
                             "cbu": {
-                              "description": "This object represents a CBU bak account of your account.",
+                              "description": "This object represents a CBU bank account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -16383,11 +17344,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Type of paymet method. One of: cbu, card.",
+                              "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -16490,8 +17452,64 @@
                               },
                               "title": "Credit Card"
                             },
+                            "sepa_debit": {
+                              "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Enhanced bank account identification.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Available gateways for this account.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Preferred gateway for this account.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
+                            },
                             "cbu": {
-                              "description": "This object represents a CBU bak account of your account.",
+                              "description": "This object represents a CBU bank account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -16985,11 +18003,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Type of paymet method. One of: cbu, card.",
+                              "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -17092,8 +18111,64 @@
                               },
                               "title": "Credit Card"
                             },
+                            "sepa_debit": {
+                              "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Enhanced bank account identification.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Available gateways for this account.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Preferred gateway for this account.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
+                            },
                             "cbu": {
-                              "description": "This object represents a CBU bak account of your account.",
+                              "description": "This object represents a CBU bank account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -17592,11 +18667,12 @@
                               ]
                             },
                             "type": {
-                              "description": "Type of paymet method. One of: cbu, card.",
+                              "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                               "type": "string",
                               "example": "card",
                               "enum": [
                                 "card",
+                                "sepa_debit",
                                 "cbu"
                               ]
                             },
@@ -17699,8 +18775,64 @@
                               },
                               "title": "Credit Card"
                             },
+                            "sepa_debit": {
+                              "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                              "type": "object",
+                              "properties": {
+                                "bank": {
+                                  "description": "Bank.",
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "description": "Bank account country.",
+                                  "type": "string",
+                                  "enum": [
+                                    "NL",
+                                    "ES"
+                                  ]
+                                },
+                                "fingerprint": {
+                                  "description": "Unique fingerprint for this bank account number of your account.",
+                                  "type": "string",
+                                  "example": "8712yh2uihiu1123sxas"
+                                },
+                                "identification": {
+                                  "description": "Enhanced bank account identification.",
+                                  "type": "object"
+                                },
+                                "last_four_digits": {
+                                  "description": "Bank account last four digits.",
+                                  "type": "string",
+                                  "example": "9876"
+                                },
+                                "providers": {
+                                  "type": "object",
+                                  "properties": {
+                                    "available": {
+                                      "description": "Available gateways for this account.",
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "properties": {}
+                                      },
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    },
+                                    "preferred": {
+                                      "description": "Preferred gateway for this account.",
+                                      "type": "string",
+                                      "example": [
+                                        "santander-es"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "title": "CBU"
+                            },
                             "cbu": {
-                              "description": "This object represents a CBU bak account of your account.",
+                              "description": "This object represents a CBU bank account of your account.",
                               "type": "object",
                               "properties": {
                                 "bank": {
@@ -18224,11 +19356,12 @@
                                 ]
                               },
                               "type": {
-                                "description": "Type of paymet method. One of: cbu, card.",
+                                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                                 "type": "string",
                                 "example": "card",
                                 "enum": [
                                   "card",
+                                  "sepa_debit",
                                   "cbu"
                                 ]
                               },
@@ -18331,8 +19464,64 @@
                                 },
                                 "title": "Credit Card"
                               },
+                              "sepa_debit": {
+                                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                                "type": "object",
+                                "properties": {
+                                  "bank": {
+                                    "description": "Bank.",
+                                    "type": "string"
+                                  },
+                                  "country": {
+                                    "description": "Bank account country.",
+                                    "type": "string",
+                                    "enum": [
+                                      "NL",
+                                      "ES"
+                                    ]
+                                  },
+                                  "fingerprint": {
+                                    "description": "Unique fingerprint for this bank account number of your account.",
+                                    "type": "string",
+                                    "example": "8712yh2uihiu1123sxas"
+                                  },
+                                  "identification": {
+                                    "description": "Enhanced bank account identification.",
+                                    "type": "object"
+                                  },
+                                  "last_four_digits": {
+                                    "description": "Bank account last four digits.",
+                                    "type": "string",
+                                    "example": "9876"
+                                  },
+                                  "providers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "available": {
+                                        "description": "Available gateways for this account.",
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "properties": {}
+                                        },
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      },
+                                      "preferred": {
+                                        "description": "Preferred gateway for this account.",
+                                        "type": "string",
+                                        "example": [
+                                          "santander-es"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "title": "CBU"
+                              },
                               "cbu": {
-                                "description": "This object represents a CBU bak account of your account.",
+                                "description": "This object represents a CBU bank account of your account.",
                                 "type": "object",
                                 "properties": {
                                   "bank": {
@@ -18931,7 +20120,6 @@
         "summary": "Create a webhook",
         "description": "Create a webhook.",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "encoding": {
@@ -19025,7 +20213,8 @@
                 ]
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -19328,7 +20517,6 @@
           }
         ],
         "requestBody": {
-          "required": false,
           "content": {
             "application/json": {
               "schema": {
@@ -19343,7 +20531,8 @@
                 }
               }
             }
-          }
+          },
+          "required": false
         },
         "responses": {
           "200": {
@@ -20714,8 +21903,64 @@
         },
         "title": "Credit Card"
       },
+      "Sepa_debit": {
+        "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+        "type": "object",
+        "properties": {
+          "bank": {
+            "description": "Bank.",
+            "type": "string"
+          },
+          "country": {
+            "description": "Bank account country.",
+            "type": "string",
+            "enum": [
+              "NL",
+              "ES"
+            ]
+          },
+          "fingerprint": {
+            "description": "Unique fingerprint for this bank account number of your account.",
+            "type": "string",
+            "example": "8712yh2uihiu1123sxas"
+          },
+          "identification": {
+            "description": "Enhanced bank account identification.",
+            "type": "object"
+          },
+          "last_four_digits": {
+            "description": "Bank account last four digits.",
+            "type": "string",
+            "example": "9876"
+          },
+          "providers": {
+            "type": "object",
+            "properties": {
+              "available": {
+                "description": "Available gateways for this account.",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "properties": {}
+                },
+                "example": [
+                  "santander-es"
+                ]
+              },
+              "preferred": {
+                "description": "Preferred gateway for this account.",
+                "type": "string",
+                "example": [
+                  "santander-es"
+                ]
+              }
+            }
+          }
+        },
+        "title": "CBU"
+      },
       "CBU": {
-        "description": "This object represents a CBU bak account of your account.",
+        "description": "This object represents a CBU bank account of your account.",
         "type": "object",
         "properties": {
           "bank": {
@@ -20784,11 +22029,12 @@
             ]
           },
           "type": {
-            "description": "Type of paymet method. One of: cbu, card.",
+            "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
             "type": "string",
             "example": "card",
             "enum": [
               "card",
+              "sepa_debit",
               "cbu"
             ]
           },
@@ -20891,8 +22137,64 @@
             },
             "title": "Credit Card"
           },
+          "sepa_debit": {
+            "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+            "type": "object",
+            "properties": {
+              "bank": {
+                "description": "Bank.",
+                "type": "string"
+              },
+              "country": {
+                "description": "Bank account country.",
+                "type": "string",
+                "enum": [
+                  "NL",
+                  "ES"
+                ]
+              },
+              "fingerprint": {
+                "description": "Unique fingerprint for this bank account number of your account.",
+                "type": "string",
+                "example": "8712yh2uihiu1123sxas"
+              },
+              "identification": {
+                "description": "Enhanced bank account identification.",
+                "type": "object"
+              },
+              "last_four_digits": {
+                "description": "Bank account last four digits.",
+                "type": "string",
+                "example": "9876"
+              },
+              "providers": {
+                "type": "object",
+                "properties": {
+                  "available": {
+                    "description": "Available gateways for this account.",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "properties": {}
+                    },
+                    "example": [
+                      "santander-es"
+                    ]
+                  },
+                  "preferred": {
+                    "description": "Preferred gateway for this account.",
+                    "type": "string",
+                    "example": [
+                      "santander-es"
+                    ]
+                  }
+                }
+              }
+            },
+            "title": "CBU"
+          },
           "cbu": {
-            "description": "This object represents a CBU bak account of your account.",
+            "description": "This object represents a CBU bank account of your account.",
             "type": "object",
             "properties": {
               "bank": {
@@ -21171,11 +22473,12 @@
                 ]
               },
               "type": {
-                "description": "Type of paymet method. One of: cbu, card.",
+                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -21278,8 +22581,64 @@
                 },
                 "title": "Credit Card"
               },
+              "sepa_debit": {
+                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Bank.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "Bank account country.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Unique fingerprint for this bank account number of your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Enhanced bank account identification.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Bank account last four digits.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Available gateways for this account.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Preferred gateway for this account.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
+              },
               "cbu": {
-                "description": "This object represents a CBU bak account of your account.",
+                "description": "This object represents a CBU bank account of your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
@@ -21770,11 +23129,12 @@
                 ]
               },
               "type": {
-                "description": "Type of paymet method. One of: cbu, card.",
+                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -21877,8 +23237,64 @@
                 },
                 "title": "Credit Card"
               },
+              "sepa_debit": {
+                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Bank.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "Bank account country.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Unique fingerprint for this bank account number of your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Enhanced bank account identification.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Bank account last four digits.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Available gateways for this account.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Preferred gateway for this account.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
+              },
               "cbu": {
-                "description": "This object represents a CBU bak account of your account.",
+                "description": "This object represents a CBU bank account of your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
@@ -22569,11 +23985,12 @@
                 ]
               },
               "type": {
-                "description": "Type of paymet method. One of: cbu, card.",
+                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -22676,8 +24093,64 @@
                 },
                 "title": "Credit Card"
               },
+              "sepa_debit": {
+                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Bank.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "Bank account country.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Unique fingerprint for this bank account number of your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Enhanced bank account identification.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Bank account last four digits.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Available gateways for this account.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Preferred gateway for this account.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
+              },
               "cbu": {
-                "description": "This object represents a CBU bak account of your account.",
+                "description": "This object represents a CBU bank account of your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
@@ -23751,11 +25224,12 @@
                 ]
               },
               "type": {
-                "description": "Type of paymet method. One of: cbu, card.",
+                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -23858,8 +25332,64 @@
                 },
                 "title": "Credit Card"
               },
+              "sepa_debit": {
+                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Bank.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "Bank account country.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Unique fingerprint for this bank account number of your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Enhanced bank account identification.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Bank account last four digits.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Available gateways for this account.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Preferred gateway for this account.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
+              },
               "cbu": {
-                "description": "This object represents a CBU bak account of your account.",
+                "description": "This object represents a CBU bank account of your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
@@ -24326,11 +25856,12 @@
                 ]
               },
               "type": {
-                "description": "Type of paymet method. One of: cbu, card.",
+                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -24433,8 +25964,64 @@
                 },
                 "title": "Credit Card"
               },
+              "sepa_debit": {
+                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Bank.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "Bank account country.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Unique fingerprint for this bank account number of your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Enhanced bank account identification.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Bank account last four digits.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Available gateways for this account.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Preferred gateway for this account.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
+              },
               "cbu": {
-                "description": "This object represents a CBU bak account of your account.",
+                "description": "This object represents a CBU bank account of your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
@@ -24584,11 +26171,12 @@
             ]
           },
           "type": {
-            "description": "Type of paymet method. One of: cbu, card.",
+            "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
             "type": "string",
             "example": "card",
             "enum": [
               "card",
+              "sepa_debit",
               "cbu"
             ]
           },
@@ -24691,8 +26279,64 @@
             },
             "title": "Credit Card"
           },
+          "sepa_debit": {
+            "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+            "type": "object",
+            "properties": {
+              "bank": {
+                "description": "Bank.",
+                "type": "string"
+              },
+              "country": {
+                "description": "Bank account country.",
+                "type": "string",
+                "enum": [
+                  "NL",
+                  "ES"
+                ]
+              },
+              "fingerprint": {
+                "description": "Unique fingerprint for this bank account number of your account.",
+                "type": "string",
+                "example": "8712yh2uihiu1123sxas"
+              },
+              "identification": {
+                "description": "Enhanced bank account identification.",
+                "type": "object"
+              },
+              "last_four_digits": {
+                "description": "Bank account last four digits.",
+                "type": "string",
+                "example": "9876"
+              },
+              "providers": {
+                "type": "object",
+                "properties": {
+                  "available": {
+                    "description": "Available gateways for this account.",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "properties": {}
+                    },
+                    "example": [
+                      "santander-es"
+                    ]
+                  },
+                  "preferred": {
+                    "description": "Preferred gateway for this account.",
+                    "type": "string",
+                    "example": [
+                      "santander-es"
+                    ]
+                  }
+                }
+              }
+            },
+            "title": "CBU"
+          },
           "cbu": {
-            "description": "This object represents a CBU bak account of your account.",
+            "description": "This object represents a CBU bank account of your account.",
             "type": "object",
             "properties": {
               "bank": {
@@ -25336,11 +26980,12 @@
                 ]
               },
               "type": {
-                "description": "Type of paymet method. One of: cbu, card.",
+                "description": "Type of payment method. One of: `card`, `sepa_debit` or `cbu`.",
                 "type": "string",
                 "example": "card",
                 "enum": [
                   "card",
+                  "sepa_debit",
                   "cbu"
                 ]
               },
@@ -25443,8 +27088,64 @@
                 },
                 "title": "Credit Card"
               },
+              "sepa_debit": {
+                "description": "This object represents a SEPA Debit used to debit bank accounts within the Single Euro Payments Area (SEPA) region.",
+                "type": "object",
+                "properties": {
+                  "bank": {
+                    "description": "Bank.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "Bank account country.",
+                    "type": "string",
+                    "enum": [
+                      "NL",
+                      "ES"
+                    ]
+                  },
+                  "fingerprint": {
+                    "description": "Unique fingerprint for this bank account number of your account.",
+                    "type": "string",
+                    "example": "8712yh2uihiu1123sxas"
+                  },
+                  "identification": {
+                    "description": "Enhanced bank account identification.",
+                    "type": "object"
+                  },
+                  "last_four_digits": {
+                    "description": "Bank account last four digits.",
+                    "type": "string",
+                    "example": "9876"
+                  },
+                  "providers": {
+                    "type": "object",
+                    "properties": {
+                      "available": {
+                        "description": "Available gateways for this account.",
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "properties": {}
+                        },
+                        "example": [
+                          "santander-es"
+                        ]
+                      },
+                      "preferred": {
+                        "description": "Preferred gateway for this account.",
+                        "type": "string",
+                        "example": [
+                          "santander-es"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "title": "CBU"
+              },
               "cbu": {
-                "description": "This object represents a CBU bak account of your account.",
+                "description": "This object represents a CBU bank account of your account.",
                 "type": "object",
                 "properties": {
                   "bank": {
