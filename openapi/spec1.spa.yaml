@@ -169,40 +169,46 @@ info:
 
     En modo sandbox, las siguientes tarjetas de prueba y CBU se pueden usar para crear pagos que producen respuestas específicas útiles para probar diferentes escenarios.
 
-    | Number                 | Type | Status    | Network    | Funding |
-    | ---------------------- | ---- | --------- | ---------- | ------- |
-    | 4242424242424242       | card | approved  | visa       | credit  |
-    | 4000056655665556       | card | approved  | visa       | debit   |
-    | 4507990000004905       | card | approved  | visa       | credit  |
-    | 5555555555554444       | card | approved  | mastercard | credit  |
-    | 5896570000000008       | card | approved  | mastercard | credit  |
-    | 2223003122003222       | card | approved  | mastercard | credit  |
-    | 5200828282828210       | card | approved  | mastercard | debit   |
-    | 5105105105105100       | card | approved  | mastercard | prepaid |
-    | 6042451111111117       | card | approved  | discover   | credit  |
-    | 6011111111111117       | card | approved  | discover   | credit  |
-    | 6011000990139424       | card | approved  | discover   | credit  |
-    | 6011981111111113       | card | approved  | discover   | debit   |
-    | 5299910010000015       | card | approved  | discover   | credit  |
-    | 3056930009020004       | card | approved  | diners     | credit  |
-    | 36227206271667         | card | approved  | diners     | credit  |
-    | 3566002020360505       | card | approved  | jcb        | credit  |
-    | 378282246310005        | card | approved  | amex       | credit  |
-    | 371449635398431        | card | approved  | amex       | credit  |
-    | 4000000000005126       | card | submitted | visa       | credit  |
-    | 4000000000003220       | card | submitted | visa       | credit  |
-    | 5895622082273045       | card | approved  | naranja    | credit  |
-    | 5895622082273044       | card | rejected  | naranja    | credit  |
-    | 2859363672283668188432 | cbu  | approved  |            |         |
-    | 3220001823000055910025 | cbu  | approved  |            |         |
-    | 8258975011100070754947 | cbu  | rejected  |            |         |
-    | 1212000002283668188432 | cbu  | rejected  |            |         |
-    | 4000000000000002       | card | rejected  | visa       | credit  |
-    | 4338308001478538       | card | rejected  | visa       | credit  |
-    | 4000000000009995       | card | rejected  | visa       | credit  |
-    | 4000000000009987       | card | rejected  | visa       | credit  |
-    | 4000000000009979       | card | rejected  | visa       | credit  |
-    | 371449635398432        | card | rejected  | amex       | credit  |
+    | Number                   | Type       | Status    | Network    | Funding |
+    | ------------------------ | ---------- | --------- | ---------- | ------- |
+    | 4242424242424242         | card       | approved  | visa       | credit  |
+    | 4000056655665556         | card       | approved  | visa       | debit   |
+    | 4507990000004905         | card       | approved  | visa       | credit  |
+    | 5555555555554444         | card       | approved  | mastercard | credit  |
+    | 5896570000000008         | card       | approved  | mastercard | credit  |
+    | 2223003122003222         | card       | approved  | mastercard | credit  |
+    | 5200828282828210         | card       | approved  | mastercard | debit   |
+    | 5105105105105100         | card       | approved  | mastercard | prepaid |
+    | 6042451111111117         | card       | approved  | discover   | credit  |
+    | 6011111111111117         | card       | approved  | discover   | credit  |
+    | 6011000990139424         | card       | approved  | discover   | credit  |
+    | 6011981111111113         | card       | approved  | discover   | debit   |
+    | 5299910010000015         | card       | approved  | discover   | credit  |
+    | 3056930009020004         | card       | approved  | diners     | credit  |
+    | 36227206271667           | card       | approved  | diners     | credit  |
+    | 3566002020360505         | card       | approved  | jcb        | credit  |
+    | 378282246310005          | card       | approved  | amex       | credit  |
+    | 371449635398431          | card       | approved  | amex       | credit  |
+    | 4000000000005126         | card       | submitted | visa       | credit  |
+    | 4000000000003220         | card       | submitted | visa       | credit  |
+    | 5895622082273045         | card       | approved  | naranja    | credit  |
+    | 5895622082273044         | card       | rejected  | naranja    | credit  |
+    | 2859363672283668188432   | cbu        | approved  |            |         |
+    | 3220001823000055910025   | cbu        | approved  |            |         |
+    | 8258975011100070754947   | cbu        | rejected  |            |         |
+    | 1212000002283668188432   | cbu        | rejected  |            |         |
+    | 4000000000000002         | card       | rejected  | visa       | credit  |
+    | 4338308001478538         | card       | rejected  | visa       | credit  |
+    | 4000000000009995         | card       | rejected  | visa       | credit  |
+    | 4000000000009987         | card       | rejected  | visa       | credit  |
+    | 4000000000009979         | card       | rejected  | visa       | credit  |
+    | 371449635398432          | card       | rejected  | amex       | credit  |
+    | ES9314651865289152293582 | sepa_debit | approved  |            |         |
+    | ES9520808952147978933326 | sepa_debit | rejected  |            |         |
+    | NL69ABNA4040435087       | sepa_debit | approved  |            |         |
+    | NL57INGB4461857859       | sepa_debit | rejected  |            |         |
+    | GB81BARC20038047151643   | sepa_debit | approved  |            |         |
+    | GB75BARC20039513113527   | sepa_debit | rejected  |            |         |
 
     Si creas una tarjeta con el número `4000000320000021`, recibirás un evento `payment_method.automatically_updated` similar al que recibirías durante una renovación de una tarjeta de crédito.
     # Notificaciones de Webhook
