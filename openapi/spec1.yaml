@@ -165,9 +165,9 @@ info:
     #### Example
 
     `PY6b3Rr6nRMo`
-    # Testing Card and account numbers
+    # Testing payment methods and account numbers
 
-    In sandbox mode the following test cards and CBUs can be used to create payments that produce specific responses useful for testing different scenarios.
+    In sandbox mode the following test cards and bank accounts can be used to create payments that produce specific responses useful for testing different scenarios.
 
     | Number                   | Type       | Status    | Network    | Funding |
     | ------------------------ | ---------- | --------- | ---------- | ------- |

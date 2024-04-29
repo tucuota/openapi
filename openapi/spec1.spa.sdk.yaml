@@ -165,9 +165,9 @@ info:
     #### Example
 
     `PY6b3Rr6nRMo`
-    # Tarjetas de prueba
+    # Medios de pago de prueba
 
-    En modo sandbox, las siguientes tarjetas de prueba y CBU se pueden usar para crear pagos que producen respuestas específicas útiles para probar diferentes escenarios.
+    En modo sandbox, las siguientes tarjetas de prueba y cuentas bancarias se pueden usar para crear pagos que producen respuestas específicas útiles para probar diferentes escenarios.
 
     | Number                   | Type       | Status    | Network    | Funding |
     | ------------------------ | ---------- | --------- | ---------- | ------- |
